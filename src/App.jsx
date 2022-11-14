@@ -30,9 +30,11 @@ function App() {
         }).map((post, index) => (
           <div className="box" key={index}>
             <div className="boxContent">
-              <p>{post.modelo}</p>
+              <p>
+                <b>{post.modelo}</b>
+              </p>
               <p>{post.setor}</p>
-              <p>{post.manual_url}</p>
+              <a href={post.manual_url}>Manual</a>
             </div>
           </div>
         ))
