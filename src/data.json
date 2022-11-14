@@ -1,0 +1,27 @@
+[{
+  "id": 1,
+  "modelo": "AP 1250",  
+  "setor": "Empresariais",
+  "manual_url": "https://www.arubanetworks.com/assets/ds/DS_ARUBA_AP-1250.pdf"
+}, {
+  "id": 2,
+  "modelo": "AP 1350",  
+  "setor": "Empresariais",
+  "manual_url": "https://www.arubanetworks.com/assets/ds/DS_ARUBA_AP-1250.pdf"
+}, {
+  "id": 3,
+  "modelo": "KGSD 1120",  
+  "setor": "Fibras",
+  "manual_url": "https://www.arubanetworks.com/assets/ds/DS_ARUBA_AP-1250.pdf"
+},
+ {
+  "id": 4,
+  "modelo": "KGM 1105",  
+  "setor": "Fibras",
+  "manual_url": "https://www.arubanetworks.com/assets/ds/DS_ARUBA_AP-1250.pdf"
+}, {
+  "id": 5,
+  "modelo": "Wom 5A Mimo",  
+  "setor": "Empresariais",
+  "manual_url": "https://www.arubanetworks.com/assets/ds/DS_ARUBA_AP-1250.pdf"
+}]
