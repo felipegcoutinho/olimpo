@@ -14,7 +14,7 @@ export function AP() {
         <th>Qtde Portas</th>
         <th>PoE</th>
         <th>Handover</th>
-        <th>PotMaxTx</th>
+        <th>Potência Máx.</th>
         <th>Status</th>
         <th>Página</th>
         <th>Datasheet</th>
@@ -28,14 +28,15 @@ export function CONVERSOR() {
   return (
     <thead>
       <tr>
+        <th>Modelo</th>
         <th>Conector</th>
         <th>WDM</th>
         <th>Distância</th>
         <th>Modulação</th>
         <th>Fibra</th>
         <th>Potencia Sinal</th>
-        <th>Comprimento TX</th>
-        <th>Comprimento RX</th>
+        <th>Recepção Max</th>
+        <th>Recepção Min</th>
         <th>Status</th>
         <th>Garantia</th>
         <th>Página</th>
@@ -46,19 +47,21 @@ export function CONVERSOR() {
   );
 }
 
-export function SWITCH() {
+export function GBIC() {
   return (
     <>
       <thead>
         <tr>
-          <th>Conecgerencaveltor</th>
+          <th>Modelo</th>
+          <th>Conector</th>
+          <th>Modulo</th>
           <th>WDM</th>
           <th>Distância</th>
           <th>Modulação</th>
           <th>Fibra</th>
           <th>Potencia Sinal</th>
-          <th>Comprimento TX</th>
-          <th>Comprimento RX</th>
+          <th>Recepção Max</th>
+          <th>Recepção Min</th>
           <th>Status</th>
           <th>Garantia</th>
           <th>Página</th>

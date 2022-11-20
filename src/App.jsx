@@ -1,7 +1,10 @@
 import React, {useState} from "react";
-import Data from "./data.json";
+import APs from "./Data/ap.json";
+import Conversores from "./Data/conversores.json";
+import Gbics from "./Data/gbics.json";
+
 import style from "../src/App.module.css";
-import {AP, CONVERSOR, SWITCH} from "./Header";
+import {AP, CONVERSOR, GBIC} from "./Header";
 
 function App() {
   return (
@@ -32,33 +35,37 @@ function App() {
           <h2>Access Point</h2>
           <table className={style.GeneratedTable} id="ap">
             <AP />
-            {Data.map((device) => {
-              if (device.linha === "ap") {
+            {APs.map((ap) => {
+              if (ap.linha === "ap") {
                 return (
                   <tbody>
-                    <tr>
+                    <tr className={style.tr}>
                       <td>
-                        <b>{device.modelo}</b>
+                        <b>{ap.modelo}</b>
                       </td>
-                      <td>{device.cobertura}</td>
-                      <td>{device.raio}</td>
-                      <td>{device.usuarioMax}</td>
-                      <td>{device.porta}</td>
-                      <td>{device.throughputWireless24}</td>
-                      <td>{device.throughputWireless50}</td>
-                      <td>{device.qtdePortas}</td>
-                      <td>{device.PoE}</td>
-                      <td>{device.handover}</td>
-                      <td>{device.PotMaxTx}</td>
-                      <td>{device.status}</td>
+                      <td>{ap.cobertura}</td>
+                      <td>{ap.raio}</td>
+                      <td>{ap.usuarioMax}</td>
+                      <td>{ap.porta}</td>
+                      <td>{ap.throughputWireless24}</td>
+                      <td>{ap.throughputWireless50}</td>
+                      <td>{ap.qtdePortas}</td>
+                      <td>{ap.poe}</td>
+                      <td>{ap.handover}</td>
+                      <td>{ap.potenciaMax}</td>
                       <td>
-                        <a href={device.pagina}>pagina</a>
-                      </td>
-                      <td>
-                        <a href={device.datashet_url}>datasheet</a>
+                        <span className={ap.status === "Em Linha" ? style.statusemlinha : style.statusphaseout}>
+                          {ap.status}
+                        </span>
                       </td>
                       <td>
-                        <a href={device.guia}>guia</a>
+                        <a href={ap.pagina}>pagina</a>
+                      </td>
+                      <td>
+                        <a href={ap.datashet_url}>datasheet</a>
+                      </td>
+                      <td>
+                        <a href={ap.guia}>guia</a>
                       </td>
                     </tr>
                   </tbody>
@@ -71,26 +78,27 @@ function App() {
           <h2>Conversor de Mídia</h2>
           <table className={style.GeneratedTable} id="conversor">
             <CONVERSOR />
-            {Data.map((device) => {
-              if (device.linha === "conversor") {
+            {Conversores.map((conversor) => {
+              if (conversor.linha === "conversor") {
                 return (
                   <tbody>
-                    <tr>
-                      <td>{device.modelo}</td>
-                      <td>{device.cobertura}</td>
-                      <td>{device.raio}</td>
-                      <td>{device.Usuários_simultâneos}</td>
-                      <td>{device.porta}</td>
-                      <td>{device.Wireless_2_4ghz}</td>
-                      <td>{device.Wireless_5ghz}</td>
-                      <td>{device.compTxQtde_Portas}</td>
-                      <td>{device.PoE}</td>
-                      <td>{device.handover}</td>
-                      <td>{device.PotMaxTx}</td>
-                      <td>{device.status}</td>
-                      <td>{device.pagina}</td>
-                      <td>{device.Datasheet}</td>
-                      <td>{device.guia}</td>
+                    <tr className={style.tr}>
+                      <td>
+                        <b>{conversor.modelo}</b>
+                      </td>
+                      <td>{conversor.conector}</td>
+                      <td>{conversor.wdm}</td>
+                      <td>{conversor.distancia}</td>
+                      <td>{conversor.modulação}</td>
+                      <td>{conversor.fibra}</td>
+                      <td>{conversor.potencia}</td>
+                      <td>{conversor.recepMax}</td>
+                      <td>{conversor.recepMin}</td>
+                      <td>{conversor.status}</td>
+                      <td>{conversor.garantia}</td>
+                      <td>{conversor.pagina}</td>
+                      <td>{conversor.datasheet}</td>
+                      <td>{conversor.guia}</td>
                     </tr>
                   </tbody>
                 );
@@ -99,29 +107,31 @@ function App() {
           </table>
         </div>
         <div className={style.box_content}>
-          <h2>Switch</h2>
+          <h2>Gbic</h2>
           <table className={style.GeneratedTable} id="switch">
-            <SWITCH />
-            {Data.map((device) => {
-              if (device.linha === "switch") {
+            <GBIC />
+            {Gbics.map((gbic) => {
+              if (gbic.linha === "gbic") {
                 return (
                   <tbody>
-                    <tr>
-                      <td>{device.modelo}</td>
-                      <td>{device.cobertura}</td>
-                      <td>{device.raio}</td>
-                      <td>{device.Usuários_simultâneos}</td>
-                      <td>{device.porta}</td>
-                      <td>{device.Wireless_2_4ghz}</td>
-                      <td>{device.Wireless_5ghz}</td>
-                      <td>{device.compTxQtde_Portas}</td>
-                      <td>{device.PoE}</td>
-                      <td>{device.handover}</td>
-                      <td>{device.PotMaxTx}</td>
-                      <td>{device.status}</td>
-                      <td>{device.pagina}</td>
-                      <td>{device.Datasheet}</td>
-                      <td>{device.guia}</td>
+                    <tr className={style.tr}>
+                      <td>
+                        <b>{gbic.modelo}</b>
+                      </td>
+                      <td>{gbic.conector}</td>
+                      <td>{gbic.modulo}</td>
+                      <td>{gbic.wdm}</td>
+                      <td>{gbic.distancia}</td>
+                      <td>{gbic.modulação}</td>
+                      <td>{gbic.fibra}</td>
+                      <td>{gbic.potencia}</td>
+                      <td>{gbic.recepMax}</td>
+                      <td>{gbic.recepMin}</td>
+                      <td>{gbic.status}</td>
+                      <td>{gbic.garantia}</td>
+                      <td>{gbic.pagina}</td>
+                      <td>{gbic.datasheet}</td>
+                      <td>{gbic.guia}</td>
                     </tr>
                   </tbody>
                 );
