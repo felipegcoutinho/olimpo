@@ -19,6 +19,32 @@ export function AP() {
         <th>Página</th>
         <th>Datasheet</th>
         <th>Guia</th>
+        <th>Manual</th>
+      </tr>
+    </thead>
+  );
+}
+
+export function RADIO() {
+  return (
+    <thead>
+      <tr>
+        <th>Modelo</th>
+        <th>Indicado</th>
+        <th>Ganho</th>
+        <th>Porta</th>
+        <th>Potência</th>
+        <th>PPS</th>
+        <th>Throughput Efetivo</th>
+        <th>Throughput Nominal</th>
+        <th>Abertura</th>
+        <th>Distância Máx</th>
+        <th>Potência Máx.</th>
+        <th>Status</th>
+        <th>Página</th>
+        <th>Datasheet</th>
+        <th>Guia</th>
+        <th>Manual</th>
       </tr>
     </thead>
   );

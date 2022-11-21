@@ -15,7 +15,7 @@
         "ganho": "3dBi (2,4GHz)",
         "potenciaMax": "100mW (2,4GHz)",
         "tensao": "12V | 24V (PADRÃO B)",
-        "poe": "--",
+        "poe": "-",
         "distancia": "30m",
         "consumo": "12 W",
         "handover": "Não"
@@ -36,7 +36,7 @@
         "ganho": "3dBi (2,4GHz)",
         "potenciaMax": "630mW (2,4GHz)",
         "tensao": "12V | 24V (PADRÃO B)",
-        "poe": "--",
+        "poe": "-",
         "distancia": "30m",
         "consumo": "12 W",
         "handover": "Não"
@@ -57,7 +57,7 @@
         "ganho": "3dBi (2,4GHz)",
         "potenciaMax": "630mW (2,4GHz)",
         "tensao": "12V | 24V (PADRÃO B)",
-        "poe": "--",
+        "poe": "-",
         "distancia": "30m",
         "consumo": "12 W",
         "handover": "Não"
@@ -246,7 +246,7 @@
         "ganho": "5dBi (2,4GHz)",
         "potenciaMax": "500 mW (2,4GHz)",
         "tensao": "12V | 24V (PADRÃO B)",
-        "poe": "--",
+        "poe": "-",
         "distancia": "30m",
         "consumo": "6 W",
         "handover": "Não"
@@ -267,7 +267,7 @@
         "ganho": "5dBi (2,4GHz)",
         "potenciaMax": "500mW (2,4GHz)",
         "tensao": "12V | 24V (PADRÃO B)",
-        "poe": "--",
+        "poe": "-",
         "distancia": "30m",
         "consumo": "6 W",
         "handover": "Não"
