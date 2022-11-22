@@ -3,18 +3,45 @@ import APs from "./Data/ap.json";
 import Conversores from "./Data/conversores.json";
 import Gbics from "./Data/gbics.json";
 import Radios from "./Data/radios.json";
+import Switchs from "./Data/switchs.json";
+import Onus from "./Data/onus.json";
+import Roteadores from "./Data/roteadores.json";
 import style from "../src/App.module.css";
-import {AP, RADIO, CONVERSOR, GBIC} from "./Header";
+import {AP, RADIO, CONVERSOR, GBIC, SWITCH} from "./Header";
 
 function App() {
   const [queryAP, setQueryAP] = React.useState("");
   const [queryRADIO, setQueryRADIO] = React.useState("");
+  const [querySWITCH, setQuerySWITCH] = React.useState("");
+  const [queryCONVERSOR, setQueryCONVERSOR] = React.useState("");
+  const [querySFP, setQuerySFP] = React.useState("");
+  const [queryONU, setQueryONU] = React.useState("");
+  const [queryOLT, setQueryOLT] = React.useState("");
+  const [queryHO, setQueryHO] = React.useState("");
 
   const handleSearchChangeAP = (e) => {
     setQueryAP(e.target.value);
   };
   const handleSearchChangeRADIO = (e) => {
     setQueryRADIO(e.target.value);
+  };
+  const handleSearchChangeSWITCH = (e) => {
+    setQuerySWITCH(e.target.value);
+  };
+  const handleSearchChangeCONVERSOR = (e) => {
+    setQueryCONVERSOR(e.target.value);
+  };
+  const handleSearchChangeSFP = (e) => {
+    setQuerySFP(e.target.value);
+  };
+  const handleSearchChangeONU = (e) => {
+    setQueryONU(e.target.value);
+  };
+  const handleSearchChangeOLT = (e) => {
+    setQueryOLT(e.target.value);
+  };
+  const handleSearchChangeHO = (e) => {
+    setQueryHO(e.target.value);
   };
 
   return (
@@ -33,14 +60,14 @@ function App() {
           <a href="#conversor">
             <button>Conversor</button>
           </a>
-          <a href="#olt">
-            <button>OLT</button>
-          </a>
-          <a href="#olt">
-            <button>Roteadores</button>
+          <a href="#onu">
+            <button>ONUs/ONTs</button>
           </a>
           <a href="#gbic">
-            <button>Gbic</button>
+            <button>Modulo SFP</button>
+          </a>
+          <a href="#ho">
+            <button>Home Office</button>
           </a>
         </div>
       </div>
@@ -210,40 +237,147 @@ function App() {
             })}
           </table>
         </div>
+        {/* SWITCHS */}
         <div className={style.box_content}>
-          <h2 id="conversor">Conversor de Mídia</h2>
+          <div className={style.header_box_content}>
+            <h2 id="switch">Switchs</h2>
+            <label>
+              <i className="fa-solid fa-magnifying-glass"></i>
+              <input
+                placeholder="Pesquise o AP"
+                value={querySWITCH}
+                onChange={handleSearchChangeSWITCH}
+                className={style.searchbar}
+              />
+            </label>
+          </div>
+
           <table className={style.devicesTable}>
-            <CONVERSOR />
-            {Conversores.map((conversor) => {
-              if (conversor.linha === "conversor") {
-                return (
-                  <tbody>
-                    <tr>
-                      <td>
-                        <b>{conversor.modelo}</b>
-                      </td>
-                      <td>{conversor.conector}</td>
-                      <td>{conversor.wdm}</td>
-                      <td>{conversor.distancia}</td>
-                      <td>{conversor.modulação}</td>
-                      <td>{conversor.fibra}</td>
-                      <td>{conversor.potencia}</td>
-                      <td>{conversor.recepMax}</td>
-                      <td>{conversor.recepMin}</td>
-                      <td>{conversor.status}</td>
-                      <td>{conversor.garantia}</td>
-                      <td>{conversor.pagina}</td>
-                      <td>{conversor.datasheet}</td>
-                      <td>{conversor.guia}</td>
-                    </tr>
-                  </tbody>
-                );
+            <SWITCH />
+            {Switchs.filter((swicth) => {
+              if (swicth.modelo.toLowerCase().includes(querySWITCH.toLowerCase())) {
+                return swicth;
+              } else if (swicth.gerenciavel.toLowerCase().includes(querySWITCH.toLowerCase())) {
+                return swicth;
               }
+            }).map((swicth) => {
+              return (
+                <tbody>
+                  <tr>
+                    <td>
+                      <b>{swicth.modelo}</b>
+                    </td>
+                    <td>{swicth.portas}</td>
+                    <td>{swicth.modulação}</td>
+                    <td>{swicth.gerenciavel}</td>
+                    <td>{swicth.poe}</td>
+                    <td>{swicth.sfp}</td>
+                    <td>{swicth.ieee}</td>
+                    <td>{swicth.poeExtender}</td>
+                    <td>{swicth.qos}</td>
+                    <td>{swicth.garantia}</td>
+                    <td>
+                      <span className={style.tooltip}>
+                        <span>
+                          {swicth.status === "Em Linha" && (
+                            <span className={style.status_emlinha}>{swicth.status}</span>
+                          )}
+                          {swicth.status === "Phaseout" && (
+                            <span className={style.status_phaseout}>
+                              {swicth.status}
+                              <i className="fa-regular fa-circle-question"></i>
+                            </span>
+                          )}
+                          {swicth.status === "Suporte" && (
+                            <span className={style.status_suporte}>
+                              {swicth.status}
+                              <i className="fa-regular fa-circle-question"></i>
+                            </span>
+                          )}
+                        </span>
+                        {swicth.status === "Phaseout" && <span className={style.tooltiptext}>Apenas email</span>}
+                        {swicth.status === "Suporte" && (
+                          <span className={style.tooltiptext}>Ainda fornecemos suporte</span>
+                        )}
+                      </span>
+                    </td>
+                    <td>
+                      <a href={swicth.pagina}>
+                        <i className="fa-solid fa-xl fa-file-pdf"></i>
+                      </a>
+                    </td>
+                    <td>
+                      <a href={swicth.datashet}>
+                        <i className="fa-solid fa-xl fa-file-pdf"></i>
+                      </a>
+                    </td>
+                    <td>
+                      <a href={swicth.guia}>
+                        <i className="fa-solid fa-xl fa-file-pdf"></i>
+                      </a>
+                    </td>
+                    <td>
+                      <a href={swicth.manual}>
+                        <i className="fa-solid fa-xl fa-file-pdf"></i>
+                      </a>
+                    </td>
+                  </tr>
+                </tbody>
+              );
             })}
           </table>
         </div>
+        {/* CONVERSOR */}
         <div className={style.box_content}>
-          <h2 id="gbic">Gbic</h2>
+          <div className={style.header_box_content}>
+            <h2 id="conversor">Conversor de Mídia</h2>
+            <label>
+              <i className="fa-solid fa-magnifying-glass"></i>
+              <input
+                placeholder="Pesquise o Conversor"
+                value={queryCONVERSOR}
+                onChange={handleSearchChangeCONVERSOR}
+                className={style.searchbar}
+              />
+            </label>
+          </div>
+          <table className={style.devicesTable}>
+            <CONVERSOR />
+            {Conversores.filter((conversor) => {
+              if (conversor.modelo.toLowerCase().includes(queryCONVERSOR.toLowerCase())) {
+                return conversor;
+              } else if (conversor.conector.toLowerCase().includes(queryCONVERSOR.toLowerCase())) {
+                return conversor;
+              }
+            }).map((conversor) => {
+              return (
+                <tbody>
+                  <tr>
+                    <td>
+                      <b>{conversor.modelo}</b>
+                    </td>
+                    <td>{conversor.conector}</td>
+                    <td>{conversor.wdm}</td>
+                    <td>{conversor.distancia}</td>
+                    <td>{conversor.modulação}</td>
+                    <td>{conversor.fibra}</td>
+                    <td>{conversor.potencia}</td>
+                    <td>{conversor.recepMax}</td>
+                    <td>{conversor.recepMin}</td>
+                    <td>{conversor.status}</td>
+                    <td>{conversor.garantia}</td>
+                    <td>{conversor.pagina}</td>
+                    <td>{conversor.datasheet}</td>
+                    <td>{conversor.guia}</td>
+                  </tr>
+                </tbody>
+              );
+            })}
+          </table>
+        </div>
+        {/* SFP */}
+        <div className={style.box_content}>
+          <h2 id="gbic">Módulo SFP</h2>
           <table className={style.devicesTable}>
             <GBIC />
             {Gbics.map((gbic) => {
@@ -268,6 +402,74 @@ function App() {
                       <td>{gbic.pagina}</td>
                       <td>{gbic.datasheet}</td>
                       <td>{gbic.guia}</td>
+                    </tr>
+                  </tbody>
+                );
+              }
+            })}
+          </table>
+        </div>
+        {/* ONU */}
+        <div className={style.box_content}>
+          <h2 id="gbic">ONUs/ONTs</h2>
+          <table className={style.devicesTable}>
+            <GBIC />
+            {Onus.map((onu) => {
+              if (onu.linha === "onu/ont") {
+                return (
+                  <tbody>
+                    <tr>
+                      <td>
+                        <b>{onu.modelo}</b>
+                      </td>
+                      <td>{onu.conector}</td>
+                      <td>{onu.fxs}</td>
+                      <td>{onu.wdm}</td>
+                      <td>{onu.distancia}</td>
+                      <td>{onu.modulação}</td>
+                      <td>{onu.fibra}</td>
+                      <td>{onu.potencia}</td>
+                      <td>{onu.recepMax}</td>
+                      <td>{onu.recepMin}</td>
+                      <td>{onu.status}</td>
+                      <td>{onu.garantia}</td>
+                      <td>{onu.pagina}</td>
+                      <td>{onu.datasheet}</td>
+                      <td>{onu.guia}</td>
+                    </tr>
+                  </tbody>
+                );
+              }
+            })}
+          </table>
+        </div>
+        {/* HO */}
+        <div className={style.box_content}>
+          <h2 id="ho">Roteadores HO</h2>
+          <table className={style.devicesTable}>
+            <GBIC />
+            {Roteadores.map((roteador) => {
+              if (roteador.linha === "roteador") {
+                return (
+                  <tbody>
+                    <tr>
+                      <td>
+                        <b>{roteador.modelo}</b>
+                      </td>
+                      <td>{roteador.conector}</td>
+                      <td>{roteador.fxs}</td>
+                      <td>{roteador.wdm}</td>
+                      <td>{roteador.distancia}</td>
+                      <td>{roteador.modulação}</td>
+                      <td>{roteador.fibra}</td>
+                      <td>{roteador.potencia}</td>
+                      <td>{roteador.recepMax}</td>
+                      <td>{roteador.recepMin}</td>
+                      <td>{roteador.status}</td>
+                      <td>{roteador.garantia}</td>
+                      <td>{roteador.pagina}</td>
+                      <td>{roteador.datasheet}</td>
+                      <td>{roteador.guia}</td>
                     </tr>
                   </tbody>
                 );

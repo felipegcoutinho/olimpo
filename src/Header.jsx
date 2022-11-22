@@ -1,4 +1,4 @@
-import React from "react";
+import React from 'react';
 
 export function AP() {
   return (
@@ -93,6 +93,33 @@ export function GBIC() {
           <th>Página</th>
           <th>Datasheet</th>
           <th>Guia</th>
+        </tr>
+      </thead>
+    </>
+  );
+}
+
+export function SWITCH() {
+  return (
+    <>
+      <thead>
+        <tr>
+          <th>Modelo</th>
+
+          <th>Portas</th>
+          <th>Modulação</th>
+          <th>Gerenciável</th>
+          <th>PoE</th>
+          <th>SFP</th>
+          <th>IEEE</th>
+          <th>PoE Extender</th>
+          <th>Qos</th>
+          <th>Garantia</th>
+          <th>Status</th>
+          <th>Página</th>
+          <th>Datasheet</th>
+          <th>Guia</th>
+          <th>Manual</th>
         </tr>
       </thead>
     </>
