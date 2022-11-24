@@ -7,7 +7,7 @@ import Switchs from "./Data/switchs.json";
 import Onus from "./Data/onus.json";
 import Roteadores from "./Data/roteadores.json";
 import style from "../src/App.module.css";
-import {AP, RADIO, CONVERSOR, GBIC, SWITCH} from "./Header";
+import {AP, RADIO, CONVERSOR, GBIC, SWITCH, ONU, ROTEADOR} from "./Header";
 
 function App() {
   const [queryAP, setQueryAP] = React.useState("");
@@ -79,12 +79,7 @@ function App() {
             <h2 id="ap">Access Point</h2>
             <label>
               <i className="fa-solid fa-magnifying-glass"></i>
-              <input
-                placeholder="Pesquise o AP"
-                value={queryAP}
-                onChange={handleSearchChangeAP}
-                className={style.searchbar}
-              />
+              <input placeholder="Pesquise o AP" value={queryAP} onChange={handleSearchChangeAP} className={style.searchbar} />
             </label>
           </div>
 
@@ -165,12 +160,7 @@ function App() {
             <label>
               <i className="fa-solid fa-magnifying-glass"></i>
 
-              <input
-                placeholder="Pesquise o Radio"
-                value={queryRADIO}
-                onChange={handleSearchChangeRADIO}
-                className={style.searchbar}
-              />
+              <input placeholder="Pesquise o Radio" value={queryRADIO} onChange={handleSearchChangeRADIO} className={style.searchbar} />
             </label>
           </div>
           <table className={style.devicesTable}>
@@ -214,9 +204,7 @@ function App() {
                           )}
                         </span>
                         {radio.status === "Phaseout" && <span className={style.tooltiptext}>Apenas email</span>}
-                        {radio.status === "Suporte" && (
-                          <span className={style.tooltiptext}>Ainda fornecemos suporte</span>
-                        )}
+                        {radio.status === "Suporte" && <span className={style.tooltiptext}>Ainda fornecemos suporte</span>}
                       </span>
                     </td>
                     <td>
@@ -243,12 +231,7 @@ function App() {
             <h2 id="switch">Switchs</h2>
             <label>
               <i className="fa-solid fa-magnifying-glass"></i>
-              <input
-                placeholder="Pesquise o AP"
-                value={querySWITCH}
-                onChange={handleSearchChangeSWITCH}
-                className={style.searchbar}
-              />
+              <input placeholder="Pesquise o AP" value={querySWITCH} onChange={handleSearchChangeSWITCH} className={style.searchbar} />
             </label>
           </div>
 
@@ -263,25 +246,41 @@ function App() {
             }).map((swicth) => {
               return (
                 <tbody>
-                  <tr>
+                  <tr id={style.swicth_id}>
                     <td>
                       <b>{swicth.modelo}</b>
                     </td>
-                    <td>{swicth.portas}</td>
-                    <td>{swicth.modulação}</td>
-                    <td>{swicth.gerenciavel}</td>
-                    <td>{swicth.poe}</td>
-                    <td>{swicth.sfp}</td>
-                    <td>{swicth.ieee}</td>
-                    <td>{swicth.poeExtender}</td>
-                    <td>{swicth.qos}</td>
-                    <td>{swicth.garantia}</td>
+                    <td>
+                      <span className={style.normal}>{swicth.portas}</span>
+                    </td>
+                    <td>
+                      <span className={swicth.modulação === "Fast" ? style.fast : style.gigabit}>{swicth.modulação}</span>
+                    </td>
+                    <td>
+                      <span className={swicth.gerenciavel === "Sim" ? style.sim : style.nao}>{swicth.gerenciavel}</span>
+                    </td>
+                    <td>
+                      <span className={swicth.poe === "Não" ? style.nao : style.sim}>{swicth.poe}</span>
+                    </td>
+                    <td>
+                      <span className={style.normal}>{swicth.taxaTransferencia}</span>
+                    </td>
+                    <td>
+                      <span className={swicth.sfp === "Não" ? style.nao : style.sim}>{swicth.sfp}</span>
+                    </td>
+                    <td>
+                      <span className={swicth.poeExtender === "Não" ? style.nao : style.sim}>{swicth.poeExtender}</span>
+                    </td>
+                    <td>
+                      <span className={swicth.qos === "Não" ? style.nao : style.sim}>{swicth.qos}</span>
+                    </td>
+                    <td>
+                      <span className={style.normal}>{swicth.garantia}</span>
+                    </td>
                     <td>
                       <span className={style.tooltip}>
                         <span>
-                          {swicth.status === "Em Linha" && (
-                            <span className={style.status_emlinha}>{swicth.status}</span>
-                          )}
+                          {swicth.status === "Em Linha" && <span className={style.status_emlinha}>{swicth.status}</span>}
                           {swicth.status === "Phaseout" && (
                             <span className={style.status_phaseout}>
                               {swicth.status}
@@ -296,9 +295,7 @@ function App() {
                           )}
                         </span>
                         {swicth.status === "Phaseout" && <span className={style.tooltiptext}>Apenas email</span>}
-                        {swicth.status === "Suporte" && (
-                          <span className={style.tooltiptext}>Ainda fornecemos suporte</span>
-                        )}
+                        {swicth.status === "Suporte" && <span className={style.tooltiptext}>Ainda fornecemos suporte</span>}
                       </span>
                     </td>
                     <td>
@@ -389,7 +386,7 @@ function App() {
                         <b>{gbic.modelo}</b>
                       </td>
                       <td>{gbic.conector}</td>
-                      <td>{gbic.modulo}</td>
+                      <td>{gbic.modulação}</td>
                       <td>{gbic.wdm}</td>
                       <td>{gbic.distancia}</td>
                       <td>{gbic.modulação}</td>
@@ -411,9 +408,9 @@ function App() {
         </div>
         {/* ONU */}
         <div className={style.box_content}>
-          <h2 id="gbic">ONUs/ONTs</h2>
+          <h2 id="onu">ONUs/ONTs</h2>
           <table className={style.devicesTable}>
-            <GBIC />
+            <ONU />
             {Onus.map((onu) => {
               if (onu.linha === "onu/ont") {
                 return (
@@ -423,19 +420,37 @@ function App() {
                         <b>{onu.modelo}</b>
                       </td>
                       <td>{onu.conector}</td>
-                      <td>{onu.fxs}</td>
-                      <td>{onu.wdm}</td>
-                      <td>{onu.distancia}</td>
                       <td>{onu.modulação}</td>
+                      <td>{onu.fxs}</td>
+                      <td>{onu.tipo}</td>
+                      <td>{onu.Transmissao2ghz}</td>
+                      <td>{onu.Transmissao5ghz}</td>
                       <td>{onu.fibra}</td>
-                      <td>{onu.potencia}</td>
-                      <td>{onu.recepMax}</td>
-                      <td>{onu.recepMin}</td>
+                      <td>{onu.ssid}</td>
+                      <td>{onu.Customize}</td>
+                      <td>{onu.remotize}</td>
                       <td>{onu.status}</td>
                       <td>{onu.garantia}</td>
-                      <td>{onu.pagina}</td>
-                      <td>{onu.datasheet}</td>
-                      <td>{onu.guia}</td>
+                      <td>
+                        <a href={onu.pagina}>
+                          <i className="fa-solid fa-xl fa-file-pdf"></i>
+                        </a>
+                      </td>
+                      <td>
+                        <a href={onu.datashet}>
+                          <i className="fa-solid fa-xl fa-file-pdf"></i>
+                        </a>
+                      </td>
+                      <td>
+                        <a href={onu.guia}>
+                          <i className="fa-solid fa-xl fa-file-pdf"></i>
+                        </a>
+                      </td>
+                      <td>
+                        <a href={onu.manual}>
+                          <i className="fa-solid fa-xl fa-file-pdf"></i>
+                        </a>
+                      </td>
                     </tr>
                   </tbody>
                 );
@@ -447,7 +462,7 @@ function App() {
         <div className={style.box_content}>
           <h2 id="ho">Roteadores HO</h2>
           <table className={style.devicesTable}>
-            <GBIC />
+            <ROTEADOR />
             {Roteadores.map((roteador) => {
               if (roteador.linha === "roteador") {
                 return (
@@ -456,20 +471,42 @@ function App() {
                       <td>
                         <b>{roteador.modelo}</b>
                       </td>
-                      <td>{roteador.conector}</td>
-                      <td>{roteador.fxs}</td>
-                      <td>{roteador.wdm}</td>
-                      <td>{roteador.distancia}</td>
-                      <td>{roteador.modulação}</td>
-                      <td>{roteador.fibra}</td>
-                      <td>{roteador.potencia}</td>
-                      <td>{roteador.recepMax}</td>
-                      <td>{roteador.recepMin}</td>
-                      <td>{roteador.status}</td>
+                      <td>{roteador.cobertura}</td>
+                      <td>{roteador.raio}</td>
+                      <td>{roteador.usuarioMax}</td>
+                      <td>{roteador.planoRecomendado}</td>
+                      <td>{roteador.porta}</td>
+                      <td>{roteador.QtdePortas}</td>
+                      <td>{roteador.datarateMax}</td>
+                      <td>{roteador.ganho}</td>
+                      <td>{roteador.ipv6}</td>
+                      <td>{roteador.tensao}</td>
+                      <td>
+                        <span className={style.tooltip}>
+                          <span>
+                            {roteador.status === "Em Linha" && <span className={style.status_emlinha}>{roteador.status}</span>}
+                            {roteador.status === "Phaseout" && (
+                              <span className={style.status_phaseout}>
+                                {roteador.status}
+                                <i className="fa-regular fa-circle-question"></i>
+                              </span>
+                            )}
+                            {roteador.status === "Suporte" && (
+                              <span className={style.status_suporte}>
+                                {roteador.status}
+                                <i className="fa-regular fa-circle-question"></i>
+                              </span>
+                            )}
+                          </span>
+                          {roteador.status === "Phaseout" && <span className={style.tooltiptext}>Apenas email</span>}
+                          {roteador.status === "Suporte" && <span className={style.tooltiptext}>Ainda fornecemos suporte</span>}
+                        </span>
+                      </td>
                       <td>{roteador.garantia}</td>
                       <td>{roteador.pagina}</td>
                       <td>{roteador.datasheet}</td>
                       <td>{roteador.guia}</td>
+                      <td>{roteador.manual}</td>
                     </tr>
                   </tbody>
                 );

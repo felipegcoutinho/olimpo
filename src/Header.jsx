@@ -1,4 +1,4 @@
-import React from 'react';
+import React from "react";
 
 export function AP() {
   return (
@@ -105,17 +105,72 @@ export function SWITCH() {
       <thead>
         <tr>
           <th>Modelo</th>
-
           <th>Portas</th>
           <th>Modulação</th>
           <th>Gerenciável</th>
-          <th>PoE</th>
-          <th>SFP</th>
-          <th>IEEE</th>
+          <th>Alimenta via PoE</th>
+          <th>Encaminhamento de Pacotes</th>
+          <th>Possui SFP</th>
           <th>PoE Extender</th>
           <th>Qos</th>
           <th>Garantia</th>
           <th>Status</th>
+          <th>Página</th>
+          <th>Datasheet</th>
+          <th>Guia</th>
+          <th>Manual</th>
+        </tr>
+      </thead>
+    </>
+  );
+}
+
+export function ONU() {
+  return (
+    <>
+      <thead>
+        <tr>
+          <th>Modelo</th>
+          <th>Conector</th>
+          <th>Porta</th>
+          <th>Fxs</th>
+          <th>Tipo</th>
+          <th>Transmissao 2.4ghz</th>
+          <th>Transmissao 5ghz</th>
+          <th>Tipo de Fibra</th>
+          <th>SSID</th>
+          <th>Customize</th>
+          <th>remotize</th>
+          <th>Status</th>
+          <th>Garantia</th>
+          <th>Página</th>
+          <th>Datasheet</th>
+          <th>Guia</th>
+          <th>Manual</th>
+        </tr>
+      </thead>
+    </>
+  );
+}
+
+export function ROTEADOR() {
+  return (
+    <>
+      <thead>
+        <tr>
+          <th>Modelo</th>
+          <th>Cobertura</th>
+          <th>Raio</th>
+          <th>Usuários Máximos</th>
+          <th>Plano Recomendado</th>
+          <th>Porta</th>
+          <th>Quantidade de Portas</th>
+          <th>Datarate Máx.</th>
+          <th>Ganho da antena</th>
+          <th>IPV6</th>
+          <th>Tensao</th>
+          <th>Status</th>
+          <th>Garantia</th>
           <th>Página</th>
           <th>Datasheet</th>
           <th>Guia</th>
