@@ -63,11 +63,12 @@ export function CONVERSOR() {
         <th>Potencia Sinal</th>
         <th>Recepção Max</th>
         <th>Recepção Min</th>
-        <th>Status</th>
         <th>Garantia</th>
+        <th>Status</th>
         <th>Página</th>
         <th>Datasheet</th>
         <th>Guia</th>
+        <th>Manual</th>
       </tr>
     </thead>
   );
