@@ -252,7 +252,7 @@ function App() {
             <h2 id="switch">Switchs</h2>
             <label>
               <i className="fa-solid fa-magnifying-glass"></i>
-              <input placeholder="Pesquise o Switch" value={querySWITCH} onChange={handleSearchChangeSWITCH} className={style.searchbar} />
+              <input className={style.searchbar} placeholder="Pesquise o Switch" value={querySWITCH} onChange={handleSearchChangeSWITCH} />
             </label>
           </div>
 
