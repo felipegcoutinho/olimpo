@@ -14,6 +14,7 @@ export function AP() {
         <th>Qtde Portas</th>
         <th>PoE</th>
         <th>Handover</th>
+        <th>Wisefi</th>
         <th>Potência Máx.</th>
         <th>Status</th>
         <th>Página</th>
@@ -39,7 +40,7 @@ export function RADIO() {
         <th>Throughput Nominal</th>
         <th>Abertura</th>
         <th>Distância Máx</th>
-        <th>Potência Máx.</th>
+        <th>Wireless</th>
         <th>Status</th>
         <th>Página</th>
         <th>Datasheet</th>
@@ -60,7 +61,7 @@ export function CONVERSOR() {
         <th>Distância</th>
         <th>Modulação</th>
         <th>Fibra</th>
-        <th>Potencia Sinal</th>
+        <th>Potência Sinal</th>
         <th>Recepção Max</th>
         <th>Recepção Min</th>
         <th>Garantia</th>
@@ -68,7 +69,6 @@ export function CONVERSOR() {
         <th>Página</th>
         <th>Datasheet</th>
         <th>Guia</th>
-        <th>Manual</th>
       </tr>
     </thead>
   );
@@ -86,11 +86,10 @@ export function GBIC() {
           <th>Distância</th>
           <th>Modulação</th>
           <th>Fibra</th>
-          <th>Potencia Sinal</th>
-          <th>Recepção Max</th>
-          <th>Recepção Min</th>
-          <th>Status</th>
+          <th>Potência Sinal</th>
+          <th>Sensibilidade Max | Min</th>
           <th>Garantia</th>
+          <th>Status</th>
           <th>Página</th>
           <th>Datasheet</th>
           <th>Guia</th>
@@ -169,7 +168,7 @@ export function ROTEADOR() {
           <th>Datarate Máx.</th>
           <th>Ganho da antena</th>
           <th>IPV6</th>
-          <th>Tensao</th>
+          <th>Tensão</th>
           <th>Status</th>
           <th>Garantia</th>
           <th>Página</th>

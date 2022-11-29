@@ -65,7 +65,7 @@ h2 {
   align-self: center;
   display: flex;
   flex-direction: column;
-  width: 90%;
+  width: 93%;
 }
 
 .box_content {
@@ -118,7 +118,7 @@ h2 {
   color: #dda600;
 }
 
-.TrEmLinha {
+/* .TrEmLinha {
   background-color: #f4fdf7;
 }
 
@@ -129,7 +129,7 @@ h2 {
 .TrEmLinha:hover,
 .TrForaLinha:hover {
   background-color: #b3b3b3;
-}
+} */
 
 .pdfbtn,
 .paginalink,
@@ -190,7 +190,10 @@ h2 {
 .gigabit,
 .sim,
 .nao,
-.normal {
+.normal,
+.variado1,
+.variado2,
+.variado3 {
   border-radius: 20px;
   font-weight: bold;
   padding: 1px 15px;
@@ -220,6 +223,21 @@ h2 {
 .normal {
   background-color: #e2e2e2;
   color: #333;
+}
+
+.variado1 {
+  background-color: #ee99ce;
+  color: 523756;
+}
+
+.variado2 {
+  background-color: #a3d8d3;
+  color: #333;
+}
+
+.variado3 {
+  background-color: #dade8b;
+  color: #60623c;
 }
 
 /* TABELAS */

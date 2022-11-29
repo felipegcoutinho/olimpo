@@ -100,6 +100,7 @@ function App() {
                     <td>{ap.qtdePortas}</td>
                     <td>{ap.poe}</td>
                     <td>{ap.handover}</td>
+                    <td>{ap.wisefi}</td>
                     <td>{ap.potenciaMax}</td>
                     <td>
                       <span className={style.tooltip}>
@@ -246,6 +247,64 @@ function App() {
             })}
           </table>
         </div>
+        {/* HO */}
+        <div className={style.box_content}>
+          <div className={style.header_box_content}>
+            <h2 id="ho">Roteadores HO</h2>
+          </div>
+          <table className={style.devicesTable}>
+            <ROTEADOR />
+            {Roteadores.map((roteador) => {
+              if (roteador.linha === "roteador") {
+                return (
+                  <tbody>
+                    <tr>
+                      <td>
+                        <b>{roteador.modelo}</b>
+                      </td>
+                      <td>{roteador.cobertura}</td>
+                      <td>{roteador.raio}</td>
+                      <td>{roteador.usuarioMax}</td>
+                      <td>{roteador.planoRecomendado}</td>
+                      <td>{roteador.porta}</td>
+                      <td>{roteador.QtdePortas}</td>
+                      <td>{roteador.datarateMax}</td>
+                      <td>{roteador.ganho}</td>
+                      <td>{roteador.ipv6}</td>
+                      <td>{roteador.tensao}</td>
+                      <td>
+                        <span className={style.tooltip}>
+                          <span>
+                            {roteador.status === "Em Linha" && <span className={style.status_emlinha}>{roteador.status}</span>}
+                            {roteador.status === "Phaseout" && (
+                              <span className={style.status_phaseout}>
+                                {roteador.status}
+                                <i className="fa-regular fa-circle-question"></i>
+                              </span>
+                            )}
+                            {roteador.status === "Suporte" && (
+                              <span className={style.status_suporte}>
+                                {roteador.status}
+                                <i className="fa-regular fa-circle-question"></i>
+                              </span>
+                            )}
+                          </span>
+                          {roteador.status === "Phaseout" && <span className={style.tooltiptext}>Apenas email</span>}
+                          {roteador.status === "Suporte" && <span className={style.tooltiptext}>Ainda fornecemos suporte</span>}
+                        </span>
+                      </td>
+                      <td>{roteador.garantia}</td>
+                      <td>{roteador.pagina}</td>
+                      <td>{roteador.datasheet}</td>
+                      <td>{roteador.guia}</td>
+                      <td>{roteador.manual}</td>
+                    </tr>
+                  </tbody>
+                );
+              }
+            })}
+          </table>
+        </div>
         {/* SWITCHS */}
         <div className={style.box_content}>
           <div className={style.header_box_content}>
@@ -309,19 +368,37 @@ function App() {
                       </a>
                     </td>
                     <td>
-                      <a target="_blank" rel="noopener noreferrer" href={swicth.datashet}>
-                        <span className={style.pdfbtn}>Datasheet</span>
-                      </a>
+                      {swicth.datasheet === "-" ? (
+                        <a target="_blank" rel="noopener noreferrer" href="#">
+                          <span className={style.pdfbtn_NA}>N/A</span>
+                        </a>
+                      ) : (
+                        <a target="_blank" rel="noopener noreferrer" href={swicth.datasheet}>
+                          <span className={style.pdfbtn}>Datasheet</span>
+                        </a>
+                      )}
                     </td>
                     <td>
-                      <a target="_blank" rel="noopener noreferrer" href={swicth.guia}>
-                        <span className={style.pdfbtn}>Guia</span>
-                      </a>
+                      {swicth.guia === "-" ? (
+                        <a target="_blank" rel="noopener noreferrer" href="#">
+                          <span className={style.pdfbtn_NA}>N/A</span>
+                        </a>
+                      ) : (
+                        <a target="_blank" rel="noopener noreferrer" href={swicth.guia}>
+                          <span className={style.pdfbtn}>Guia</span>
+                        </a>
+                      )}
                     </td>
                     <td>
-                      <a target="_blank" rel="noopener noreferrer" href={swicth.manual}>
-                        <span className={style.pdfbtn}>Manual</span>
-                      </a>
+                      {swicth.manual === "-" ? (
+                        <a target="_blank" rel="noopener noreferrer" href="#">
+                          <span className={style.pdfbtn_NA}>N/A</span>
+                        </a>
+                      ) : (
+                        <a target="_blank" rel="noopener noreferrer" href={swicth.manual}>
+                          <span className={style.pdfbtn}>Manual</span>
+                        </a>
+                      )}
                     </td>
                   </tr>
                 </tbody>
@@ -402,17 +479,6 @@ function App() {
                         </a>
                       )}
                     </td>
-                    <td>
-                      {conversor.manual === "-" ? (
-                        <a target="_blank" rel="noopener noreferrer" href="#">
-                          <span className={style.pdfbtn_NA}>N/A</span>
-                        </a>
-                      ) : (
-                        <a target="_blank" rel="noopener noreferrer" href={conversor.manual}>
-                          <span className={style.pdfbtn}>Manual</span>
-                        </a>
-                      )}
-                    </td>
                   </tr>
                 </tbody>
               );
@@ -434,20 +500,61 @@ function App() {
                       <td>
                         <b>{gbic.modelo}</b>
                       </td>
-                      <td>{gbic.conector}</td>
-                      <td>{gbic.modulação}</td>
+                      <td>{gbic.tipoConector}</td>
+                      <td>
+                        {gbic.modulo === "SFP+" && <span className={style.variado1}>SFP+</span>}
+                        {gbic.modulo === "SFP" && <span className={style.variado2}>SFP</span>}
+                        {gbic.modulo === "Epon" && <span className={style.variado3}>EPON</span>}
+                        {gbic.modulo === "Gpon" && <span className={style.fast}>GPON</span>}
+                        {gbic.modulo === "XFP" && <span className={style.gigabit}>XFP</span>}
+                      </td>
                       <td>{gbic.wdm}</td>
-                      <td>{gbic.distancia}</td>
+
+                      <td>
+                        <span className={style.tooltip}>
+                          {gbic.distancia} {gbic.fibra === "Multimodo" && <i className="fa-regular fa-circle-question"></i>}
+                          {gbic.fibra === "Multimodo" && <span className={style.tooltiptext}>62,5 / 125 μm até 275 mts</span>}
+                        </span>
+                      </td>
                       <td>{gbic.modulação}</td>
                       <td>{gbic.fibra}</td>
                       <td>{gbic.potencia}</td>
-                      <td>{gbic.recepMax}</td>
-                      <td>{gbic.recepMin}</td>
-                      <td>{gbic.status}</td>
+                      <td>{gbic.recepMaxMin}</td>
                       <td>{gbic.garantia}</td>
-                      <td>{gbic.pagina}</td>
-                      <td>{gbic.datasheet}</td>
-                      <td>{gbic.guia}</td>
+                      <td>
+                        <span className={style.tooltip}>
+                          <span>
+                            {gbic.status === "Em Linha" && <span className={style.status_emlinha}>{gbic.status}</span>}
+                            {gbic.status === "Phaseout" && (
+                              <span className={style.status_phaseout}>
+                                {gbic.status} <i className="fa-regular fa-circle-question"></i>
+                              </span>
+                            )}
+                            {gbic.status === "Suporte" && (
+                              <span className={style.status_suporte}>
+                                {gbic.status} <i className="fa-regular fa-circle-question"></i>
+                              </span>
+                            )}
+                          </span>
+                          {gbic.status === "Phaseout" && <span className={style.tooltiptext}>Apenas email</span>}
+                          {gbic.status === "Suporte" && <span className={style.tooltiptext}>Ainda fornecemos suporte</span>}
+                        </span>
+                      </td>
+                      <td>
+                        <a target="_blank" rel="noopener noreferrer" href={gbic.pagina}>
+                          <span className={style.paginalink}>Página</span>
+                        </a>
+                      </td>
+                      <td>
+                        <a target="_blank" rel="noopener noreferrer" href={gbic.datasheet}>
+                          <span className={style.pdfbtn}>Datasheet</span>
+                        </a>
+                      </td>
+                      <td>
+                        <a target="_blank" rel="noopener noreferrer" href={gbic.guia}>
+                          <span className={style.pdfbtn}>Guia</span>
+                        </a>
+                      </td>
                     </tr>
                   </tbody>
                 );
@@ -502,64 +609,6 @@ function App() {
                           <i className="fa-solid fa-xl fa-file-pdf"></i>
                         </a>
                       </td>
-                    </tr>
-                  </tbody>
-                );
-              }
-            })}
-          </table>
-        </div>
-        {/* HO */}
-        <div className={style.box_content}>
-          <div className={style.header_box_content}>
-            <h2 id="ho">Roteadores HO</h2>
-          </div>
-          <table className={style.devicesTable}>
-            <ROTEADOR />
-            {Roteadores.map((roteador) => {
-              if (roteador.linha === "roteador") {
-                return (
-                  <tbody>
-                    <tr>
-                      <td>
-                        <b>{roteador.modelo}</b>
-                      </td>
-                      <td>{roteador.cobertura}</td>
-                      <td>{roteador.raio}</td>
-                      <td>{roteador.usuarioMax}</td>
-                      <td>{roteador.planoRecomendado}</td>
-                      <td>{roteador.porta}</td>
-                      <td>{roteador.QtdePortas}</td>
-                      <td>{roteador.datarateMax}</td>
-                      <td>{roteador.ganho}</td>
-                      <td>{roteador.ipv6}</td>
-                      <td>{roteador.tensao}</td>
-                      <td>
-                        <span className={style.tooltip}>
-                          <span>
-                            {roteador.status === "Em Linha" && <span className={style.status_emlinha}>{roteador.status}</span>}
-                            {roteador.status === "Phaseout" && (
-                              <span className={style.status_phaseout}>
-                                {roteador.status}
-                                <i className="fa-regular fa-circle-question"></i>
-                              </span>
-                            )}
-                            {roteador.status === "Suporte" && (
-                              <span className={style.status_suporte}>
-                                {roteador.status}
-                                <i className="fa-regular fa-circle-question"></i>
-                              </span>
-                            )}
-                          </span>
-                          {roteador.status === "Phaseout" && <span className={style.tooltiptext}>Apenas email</span>}
-                          {roteador.status === "Suporte" && <span className={style.tooltiptext}>Ainda fornecemos suporte</span>}
-                        </span>
-                      </td>
-                      <td>{roteador.garantia}</td>
-                      <td>{roteador.pagina}</td>
-                      <td>{roteador.datasheet}</td>
-                      <td>{roteador.guia}</td>
-                      <td>{roteador.manual}</td>
                     </tr>
                   </tbody>
                 );
