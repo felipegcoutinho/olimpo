@@ -577,37 +577,76 @@ function App() {
                       <td>
                         <b>{onu.modelo}</b>
                       </td>
-                      <td>{onu.conector}</td>
+
                       <td>{onu.modulação}</td>
                       <td>{onu.fxs}</td>
                       <td>{onu.tipo}</td>
-                      <td>{onu.Transmissao2ghz}</td>
-                      <td>{onu.Transmissao5ghz}</td>
-                      <td>{onu.fibra}</td>
+                      <td>{onu.transmissao2ghz}</td>
+                      <td>{onu.transmissao5ghz}</td>
+
                       <td>{onu.ssid}</td>
-                      <td>{onu.Customize}</td>
+                      <td>{onu.tr069}</td>
+                      <td>{onu.customize}</td>
                       <td>{onu.remotize}</td>
-                      <td>{onu.status}</td>
                       <td>{onu.garantia}</td>
                       <td>
+                        <span className={style.tooltip}>
+                          <span>
+                            {onu.status === "Em Linha" && <span className={style.status_emlinha}>{onu.status}</span>}
+                            {onu.status === "Phaseout" && (
+                              <span className={style.status_phaseout}>
+                                {onu.status}
+                                <i className="fa-regular fa-circle-question"></i>
+                              </span>
+                            )}
+                            {onu.status === "Suporte" && (
+                              <span className={style.status_suporte}>
+                                {onu.status}
+                                <i className="fa-regular fa-circle-question"></i>
+                              </span>
+                            )}
+                          </span>
+                          {onu.status === "Phaseout" && <span className={style.tooltiptext}>Apenas email</span>}
+                          {onu.status === "Suporte" && <span className={style.tooltiptext}>Ainda fornecemos suporte</span>}
+                        </span>
+                      </td>
+                      <td>
                         <a target="_blank" rel="noopener noreferrer" href={onu.pagina}>
-                          <i className="fa-solid fa-xl fa-file-pdf"></i>
+                          <span className={style.paginalink}>Página</span>
                         </a>
                       </td>
                       <td>
-                        <a target="_blank" rel="noopener noreferrer" href={onu.datasheet}>
-                          <i className="fa-solid fa-xl fa-file-pdf"></i>
-                        </a>
+                        {onu.datasheet === "-" ? (
+                          <a target="_blank" rel="noopener noreferrer" href="#">
+                            <span className={style.pdfbtn_NA}>N/A</span>
+                          </a>
+                        ) : (
+                          <a target="_blank" rel="noopener noreferrer" href={onu.datasheet}>
+                            <span className={style.pdfbtn}>Datasheet</span>
+                          </a>
+                        )}
                       </td>
                       <td>
-                        <a target="_blank" rel="noopener noreferrer" href={onu.guia}>
-                          <i className="fa-solid fa-xl fa-file-pdf"></i>
-                        </a>
+                        {onu.guia === "-" ? (
+                          <a target="_blank" rel="noopener noreferrer" href="#">
+                            <span className={style.pdfbtn_NA}>N/A</span>
+                          </a>
+                        ) : (
+                          <a target="_blank" rel="noopener noreferrer" href={onu.guia}>
+                            <span className={style.pdfbtn}>Guia</span>
+                          </a>
+                        )}
                       </td>
                       <td>
-                        <a target="_blank" rel="noopener noreferrer" href={onu.manual}>
-                          <i className="fa-solid fa-xl fa-file-pdf"></i>
-                        </a>
+                        {onu.manual === "-" ? (
+                          <a target="_blank" rel="noopener noreferrer" href="#">
+                            <span className={style.pdfbtn_NA}>N/A</span>
+                          </a>
+                        ) : (
+                          <a target="_blank" rel="noopener noreferrer" href={onu.manual}>
+                            <span className={style.pdfbtn}>Manual</span>
+                          </a>
+                        )}
                       </td>
                     </tr>
                   </tbody>
