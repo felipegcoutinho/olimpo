@@ -1,4 +1,4 @@
-import React from "react";
+import React from 'react';
 
 export function AP() {
   return (
@@ -131,16 +131,15 @@ export function ONU() {
       <thead>
         <tr>
           <th>Modelo</th>
-          <th>Conector</th>
           <th>Porta</th>
           <th>Fxs</th>
           <th>Tipo</th>
-          <th>Transmissao 2.4ghz</th>
-          <th>Transmissao 5ghz</th>
-          <th>Tipo de Fibra</th>
+          <th>Wireless 2.4ghz</th>
+          <th>Wireless 5ghz</th>
           <th>SSID</th>
+          <th>TR069</th>
           <th>Customize</th>
-          <th>remotize</th>
+          <th>Remotize</th>
           <th>Status</th>
           <th>Garantia</th>
           <th>Página</th>
@@ -168,7 +167,7 @@ export function ROTEADOR() {
           <th>Datarate Máx.</th>
           <th>Ganho da antena</th>
           <th>IPV6</th>
-          <th>Tensão</th>
+          {/* <th>Tensão</th> */}
           <th>Status</th>
           <th>Garantia</th>
           <th>Página</th>
