@@ -354,7 +354,6 @@ tbody:nth-child(even) {
   padding: 5px 0;
   font-size: 0.7rem;
   text-transform: uppercase;
-
   /* Position the tooltip */
   position: absolute;
   text-align: center;

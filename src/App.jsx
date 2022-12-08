@@ -11,11 +11,15 @@ import {AP, RADIO, CONVERSOR, GBIC, SWITCH, ONU, ROTEADOR} from "./Header";
 
 function App() {
   const [queryAP, setQueryAP] = React.useState("");
+  const [HideAP, setHideAP] = React.useState();
+  const handleHideAP = () => setHideAP(!HideAP);
+
   const [queryRADIO, setQueryRADIO] = React.useState("");
+  const [HideRADIO, setHideRADIO] = React.useState();
+  const handleHideRADIO = () => setHideRADIO(!HideRADIO);
+
   const [querySWITCH, setQuerySWITCH] = React.useState("");
-  const [queryOLT, setQueryOLT] = React.useState("");
   const [queryHO, setQueryHO] = React.useState("");
-  const [Hide, setHide] = React.useState();
 
   const handleSearchChangeAP = (e) => {
     setQueryAP(e.target.value);
@@ -26,14 +30,14 @@ function App() {
   const handleSearchChangeSWITCH = (e) => {
     setQuerySWITCH(e.target.value);
   };
-  const handleSearchChangeOLT = (e) => {
-    setQueryOLT(e.target.value);
-  };
   const handleSearchChangeHO = (e) => {
     setQueryHO(e.target.value);
   };
 
-  const handleHide = () => setHide(!Hide);
+  const MostrarTudo = () => {
+    setHideAP(!HideAP);
+    setHideRADIO(!HideRADIO);
+  };
 
   return (
     <div className={style.container}>
@@ -67,6 +71,7 @@ function App() {
             <button className={style.mainBtn}>ONUs/ONTs</button>
           </a>
         </div>
+        <button onClick={MostrarTudo}>Tudo</button>
         <div className={style.info}>
           <p>N/A = Informação não encontrada</p>
           <p>x = Não possui</p>
@@ -78,8 +83,8 @@ function App() {
           <div className={style.header_box_content}>
             <h2 id="ap">
               Access Point
-              <button className={Hide ? style.btnHide : style.btnShow} onClick={handleHide}>
-                {Hide ? "Esconder" : "Mostrar"}
+              <button className={HideAP ? style.btnHide : style.btnShow} onClick={handleHideAP}>
+                {HideAP ? "Esconder" : "Mostrar"}
               </button>
             </h2>
             <label>
@@ -87,7 +92,7 @@ function App() {
               <input placeholder="Pesquise o Equipamento" value={queryAP} onChange={handleSearchChangeAP} className={style.searchbar} />
             </label>
           </div>
-          {Hide ? (
+          {HideAP ? (
             <div style={{overflowX: "auto"}}>
               <table className={style.devicesTable}>
                 <AP />
@@ -167,8 +172,12 @@ function App() {
         {/* RADIOS OUTDOOR */}
         <div className={style.box_content}>
           <div className={style.header_box_content}>
-            <h2 id="radio">Radios Outdoor</h2>
-
+            <h2 id="radio">
+              Radios Outdoor
+              <button className={HideRADIO ? style.btnHide : style.btnShow} onClick={handleHideRADIO}>
+                {HideRADIO ? "Esconder" : "Mostrar"}
+              </button>
+            </h2>
             <label>
               <i className="fa-solid fa-magnifying-glass"></i>
               <input
@@ -179,97 +188,99 @@ function App() {
               />
             </label>
           </div>
-          <div style={{overflowX: "auto"}}>
-            <table className={style.devicesTable}>
-              <RADIO />
-              {Radios.filter((radio) => {
-                if (radio.modelo.toLowerCase().includes(queryRADIO.toLowerCase())) {
-                  return radio;
-                } else if (radio.porta.toLowerCase().includes(queryRADIO.toLowerCase())) {
-                  return radio;
-                }
-              }).map((radio) => {
-                return (
-                  <tbody>
-                    <tr>
-                      <td>
-                        <b>{radio.modelo}</b>
-                      </td>
-                      <td>{radio.indicado}</td>
-                      <td>{radio.ganho}</td>
-                      <td>
-                        <span className={radio.porta === "Fast" ? style.fast : style.gigabit}>{radio.porta}</span>
-                      </td>
-                      <td>{radio.potencia}</td>
-                      <td>{radio.pps}</td>
-                      <td>{radio.throughputEfetivo}</td>
-                      <td>{radio.throughputNominal}</td>
-                      <td>{radio.aberturaHorVer}</td>
-                      <td>{radio.distancia}</td>
-                      <td>{radio.wireless}</td>
-                      <td>
-                        <span className={style.tooltip}>
-                          <span>
-                            {radio.status === "Em Linha" && <span className={style.status_emlinha}>{radio.status}</span>}
-                            {radio.status === "Phaseout" && (
-                              <span className={style.status_phaseout}>
-                                {radio.status} <i className="fa-regular fa-circle-question"></i>
-                              </span>
-                            )}
-                            {radio.status === "Suporte" && (
-                              <span className={style.status_suporte}>
-                                {radio.status} <i className="fa-regular fa-circle-question"></i>
-                              </span>
-                            )}
+          {HideRADIO ? (
+            <div style={{overflowX: "auto"}}>
+              <table className={style.devicesTable}>
+                <RADIO />
+                {Radios.filter((radio) => {
+                  if (radio.modelo.toLowerCase().includes(queryRADIO.toLowerCase())) {
+                    return radio;
+                  } else if (radio.porta.toLowerCase().includes(queryRADIO.toLowerCase())) {
+                    return radio;
+                  }
+                }).map((radio) => {
+                  return (
+                    <tbody>
+                      <tr>
+                        <td>
+                          <b>{radio.modelo}</b>
+                        </td>
+                        <td>{radio.indicado}</td>
+                        <td>{radio.ganho}</td>
+                        <td>
+                          <span className={radio.porta === "Fast" ? style.fast : style.gigabit}>{radio.porta}</span>
+                        </td>
+                        <td>{radio.potencia}</td>
+                        <td>{radio.pps}</td>
+                        <td>{radio.throughputEfetivo}</td>
+                        <td>{radio.throughputNominal}</td>
+                        <td>{radio.aberturaHorVer}</td>
+                        <td>{radio.distancia}</td>
+                        <td>{radio.wireless}</td>
+                        <td>
+                          <span className={style.tooltip}>
+                            <span>
+                              {radio.status === "Em Linha" && <span className={style.status_emlinha}>{radio.status}</span>}
+                              {radio.status === "Phaseout" && (
+                                <span className={style.status_phaseout}>
+                                  {radio.status} <i className="fa-regular fa-circle-question"></i>
+                                </span>
+                              )}
+                              {radio.status === "Suporte" && (
+                                <span className={style.status_suporte}>
+                                  {radio.status} <i className="fa-regular fa-circle-question"></i>
+                                </span>
+                              )}
+                            </span>
+                            {radio.status === "Phaseout" && <span className={style.tooltiptext}>Apenas email</span>}
+                            {radio.status === "Suporte" && <span className={style.tooltiptext}>Ainda fornecemos suporte</span>}
                           </span>
-                          {radio.status === "Phaseout" && <span className={style.tooltiptext}>Apenas email</span>}
-                          {radio.status === "Suporte" && <span className={style.tooltiptext}>Ainda fornecemos suporte</span>}
-                        </span>
-                      </td>
-                      <td>
-                        <a target="_blank" rel="noopener noreferrer" href={radio.pagina}>
-                          <span className={style.paginalink}>Página</span>
-                        </a>
-                      </td>
-                      <td>
-                        {radio.datasheet === "-" ? (
-                          <a target="_blank" rel="noopener noreferrer" href="#">
-                            <span className={style.pdfbtn_NA}>N/A</span>
+                        </td>
+                        <td>
+                          <a target="_blank" rel="noopener noreferrer" href={radio.pagina}>
+                            <span className={style.paginalink}>Página</span>
                           </a>
-                        ) : (
-                          <a target="_blank" rel="noopener noreferrer" href={radio.datasheet}>
-                            <span className={style.pdfbtn}>Datasheet</span>
-                          </a>
-                        )}
-                      </td>
-                      <td>
-                        {radio.guia === "-" ? (
-                          <a target="_blank" rel="noopener noreferrer" href="#">
-                            <span className={style.pdfbtn_NA}>N/A</span>
-                          </a>
-                        ) : (
-                          <a target="_blank" rel="noopener noreferrer" href={radio.guia}>
-                            <span className={style.pdfbtn}>Guia</span>
-                          </a>
-                        )}
-                      </td>
-                      <td>
-                        {radio.manual === "-" ? (
-                          <a target="_blank" rel="noopener noreferrer" href="#">
-                            <span className={style.pdfbtn_NA}>N/A</span>
-                          </a>
-                        ) : (
-                          <a target="_blank" rel="noopener noreferrer" href={radio.manual}>
-                            <span className={style.pdfbtn}>Manual</span>
-                          </a>
-                        )}
-                      </td>
-                    </tr>
-                  </tbody>
-                );
-              })}
-            </table>
-          </div>
+                        </td>
+                        <td>
+                          {radio.datasheet === "-" ? (
+                            <a target="_blank" rel="noopener noreferrer" href="#">
+                              <span className={style.pdfbtn_NA}>N/A</span>
+                            </a>
+                          ) : (
+                            <a target="_blank" rel="noopener noreferrer" href={radio.datasheet}>
+                              <span className={style.pdfbtn}>Datasheet</span>
+                            </a>
+                          )}
+                        </td>
+                        <td>
+                          {radio.guia === "-" ? (
+                            <a target="_blank" rel="noopener noreferrer" href="#">
+                              <span className={style.pdfbtn_NA}>N/A</span>
+                            </a>
+                          ) : (
+                            <a target="_blank" rel="noopener noreferrer" href={radio.guia}>
+                              <span className={style.pdfbtn}>Guia</span>
+                            </a>
+                          )}
+                        </td>
+                        <td>
+                          {radio.manual === "-" ? (
+                            <a target="_blank" rel="noopener noreferrer" href="#">
+                              <span className={style.pdfbtn_NA}>N/A</span>
+                            </a>
+                          ) : (
+                            <a target="_blank" rel="noopener noreferrer" href={radio.manual}>
+                              <span className={style.pdfbtn}>Manual</span>
+                            </a>
+                          )}
+                        </td>
+                      </tr>
+                    </tbody>
+                  );
+                })}
+              </table>
+            </div>
+          ) : null}
         </div>
         {/* HO */}
         <div className={style.box_content}>
