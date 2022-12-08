@@ -15,6 +15,7 @@ function App() {
   const [querySWITCH, setQuerySWITCH] = React.useState("");
   const [queryOLT, setQueryOLT] = React.useState("");
   const [queryHO, setQueryHO] = React.useState("");
+  const [Hide, setHide] = React.useState();
 
   const handleSearchChangeAP = (e) => {
     setQueryAP(e.target.value);
@@ -31,6 +32,8 @@ function App() {
   const handleSearchChangeHO = (e) => {
     setQueryHO(e.target.value);
   };
+
+  const handleHide = () => setHide(!Hide);
 
   return (
     <div className={style.container}>
@@ -73,103 +76,101 @@ function App() {
         {/* ACCESS POINT */}
         <div className={style.box_content}>
           <div className={style.header_box_content}>
-            <h2 id="ap">Access Point</h2>
+            <h2 id="ap">
+              Access Point
+              <button className={Hide ? style.btnHide : style.btnShow} onClick={handleHide}>
+                {Hide ? "Esconder" : "Mostrar"}
+              </button>
+            </h2>
             <label>
               <i className="fa-solid fa-magnifying-glass"></i>
               <input placeholder="Pesquise o Equipamento" value={queryAP} onChange={handleSearchChangeAP} className={style.searchbar} />
             </label>
           </div>
-          <div style={{overflowX: "auto"}}>
-            <table className={style.devicesTable}>
-              <AP />
-              {APs.filter((ap) => {
-                if (ap.modelo.toLowerCase().includes(queryAP.toLowerCase())) {
-                  return ap;
-                } else if (ap.porta.toLowerCase().includes(queryAP.toLowerCase())) {
-                  return ap;
-                }
-              }).map((ap) => {
-                return (
-                  <tbody>
-                    <tr>
-                      <td>
-                        <b>{ap.modelo}</b>
-                      </td>
-                      <td>{ap.cobertura}</td>
-                      <td>{ap.raio}</td>
-                      <td>{ap.usuarioMax}</td>
-                      <td>
-                        <span className={ap.porta === "Fast" ? style.fast : style.gigabit}>{ap.porta}</span>
-                      </td>
-                      <td>{ap.throughputWireless24}</td>
-                      <td>{ap.throughputWireless50}</td>
-                      <td>{ap.qtdePortas}</td>
-                      <td>{ap.poe}</td>
-                      <td>TESTE</td>
-                      <td>TESTE</td>
-                      <td>TESTE</td>
-                      <td>TESTE</td>
-                      <td>TESTE</td>
-                      <td>TESTE</td>
-                      <td>TESTE</td>
-                      <td>TESTE</td>
-                      <td>TESTE</td>
-                      <td>{ap.handover}</td>
-                      <td>{ap.wisefi}</td>
-                      <td>{ap.potenciaMax}</td>
-                      <td>
-                        <span className={style.tooltip}>
-                          <span>
-                            {ap.status === "Em Linha" && <span className={style.status_emlinha}>{ap.status}</span>}
-                            {ap.status === "Phaseout" && (
-                              <span className={style.status_phaseout}>
-                                {ap.status} <i className="fa-regular fa-circle-question"></i>
-                              </span>
-                            )}
-                            {ap.status === "Suporte" && (
-                              <span className={style.status_suporte}>
-                                {ap.status} <i className="fa-regular fa-circle-question"></i>
-                              </span>
-                            )}
+          {Hide ? (
+            <div style={{overflowX: "auto"}}>
+              <table className={style.devicesTable}>
+                <AP />
+                {APs.filter((ap) => {
+                  if (ap.modelo.toLowerCase().includes(queryAP.toLowerCase())) {
+                    return ap;
+                  } else if (ap.porta.toLowerCase().includes(queryAP.toLowerCase())) {
+                    return ap;
+                  }
+                }).map((ap) => {
+                  return (
+                    <tbody>
+                      <tr>
+                        <td>
+                          <b>{ap.modelo}</b>
+                        </td>
+                        <td>{ap.cobertura}</td>
+                        <td>{ap.raio}</td>
+                        <td>{ap.usuarioMax}</td>
+                        <td>
+                          <span className={ap.porta === "Fast" ? style.fast : style.gigabit}>{ap.porta}</span>
+                        </td>
+                        <td>{ap.throughputWireless24}</td>
+                        <td>{ap.throughputWireless50}</td>
+                        <td>{ap.qtdePortas}</td>
+                        <td>{ap.poe}</td>
+                        <td>{ap.handover}</td>
+                        <td>{ap.wisefi}</td>
+                        <td>{ap.potenciaMax}</td>
+                        <td>
+                          <span className={style.tooltip}>
+                            <span>
+                              {ap.status === "Em Linha" && <span className={style.status_emlinha}>{ap.status}</span>}
+                              {ap.status === "Phaseout" && (
+                                <span className={style.status_phaseout}>
+                                  {ap.status} <i className="fa-regular fa-circle-question"></i>
+                                </span>
+                              )}
+                              {ap.status === "Suporte" && (
+                                <span className={style.status_suporte}>
+                                  {ap.status} <i className="fa-regular fa-circle-question"></i>
+                                </span>
+                              )}
+                            </span>
+                            {ap.status === "Phaseout" && <span className={style.tooltiptext}>Apenas email</span>}
+                            {ap.status === "Suporte" && <span className={style.tooltiptext}>Ainda fornecemos suporte</span>}
                           </span>
-                          {ap.status === "Phaseout" && <span className={style.tooltiptext}>Apenas email</span>}
-                          {ap.status === "Suporte" && <span className={style.tooltiptext}>Ainda fornecemos suporte</span>}
-                        </span>
-                      </td>
-                      <td>
-                        <a target="_blank" rel="noopener noreferrer" href={ap.pagina}>
-                          <span className={style.paginalink}>Página</span>
-                        </a>
-                      </td>
-                      <td>
-                        <a target="_blank" rel="noopener noreferrer" href={ap.datasheet}>
-                          <span className={style.pdfbtn}>Datasheet</span>
-                        </a>
-                      </td>
-                      <td>
-                        <a target="_blank" rel="noopener noreferrer" href={ap.guia}>
-                          <span className={style.pdfbtn}>Guia</span>
-                        </a>
-                      </td>
-                      <td>
-                        <a target="_blank" rel="noopener noreferrer" href={ap.manual}>
-                          <span className={style.pdfbtn}>Manual</span>
-                        </a>
-                      </td>
-                    </tr>
-                  </tbody>
-                );
-              })}
-            </table>
-          </div>
+                        </td>
+                        <td>
+                          <a target="_blank" rel="noopener noreferrer" href={ap.pagina}>
+                            <span className={style.paginalink}>Página</span>
+                          </a>
+                        </td>
+                        <td>
+                          <a target="_blank" rel="noopener noreferrer" href={ap.datasheet}>
+                            <span className={style.pdfbtn}>Datasheet</span>
+                          </a>
+                        </td>
+                        <td>
+                          <a target="_blank" rel="noopener noreferrer" href={ap.guia}>
+                            <span className={style.pdfbtn}>Guia</span>
+                          </a>
+                        </td>
+                        <td>
+                          <a target="_blank" rel="noopener noreferrer" href={ap.manual}>
+                            <span className={style.pdfbtn}>Manual</span>
+                          </a>
+                        </td>
+                      </tr>
+                    </tbody>
+                  );
+                })}
+              </table>
+            </div>
+          ) : null}
         </div>
         {/* RADIOS OUTDOOR */}
         <div className={style.box_content}>
           <div className={style.header_box_content}>
             <h2 id="radio">Radios Outdoor</h2>
+
             <label>
               <i className="fa-solid fa-magnifying-glass"></i>
-
               <input
                 placeholder="Pesquise o Equipamento"
                 value={queryRADIO}
@@ -267,7 +268,7 @@ function App() {
                   </tbody>
                 );
               })}
-            </table>{" "}
+            </table>
           </div>
         </div>
         {/* HO */}

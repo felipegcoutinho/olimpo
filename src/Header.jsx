@@ -13,15 +13,6 @@ export function AP() {
         <th>Wireless 5ghz</th>
         <th>Qtde Portas</th>
         <th>PoE</th>
-        <th>TESTE</th>
-        <th>TESTE</th>
-        <th>TESTE</th>
-        <th>TESTE</th>
-        <th>TESTE</th>
-        <th>TESTE</th>
-        <th>TESTE</th>
-        <th>TESTE</th>
-        <th>TESTE</th>
         <th>Handover</th>
         <th>Wisefi</th>
         <th>Potência Máx.</th>
