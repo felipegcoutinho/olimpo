@@ -1,4 +1,4 @@
-import React from 'react';
+import React from "react";
 
 export function AP() {
   return (
@@ -13,6 +13,15 @@ export function AP() {
         <th>Wireless 5ghz</th>
         <th>Qtde Portas</th>
         <th>PoE</th>
+        <th>TESTE</th>
+        <th>TESTE</th>
+        <th>TESTE</th>
+        <th>TESTE</th>
+        <th>TESTE</th>
+        <th>TESTE</th>
+        <th>TESTE</th>
+        <th>TESTE</th>
+        <th>TESTE</th>
         <th>Handover</th>
         <th>Wisefi</th>
         <th>Potência Máx.</th>
@@ -167,7 +176,10 @@ export function ROTEADOR() {
           <th>Datarate Máx.</th>
           <th>Ganho da antena</th>
           <th>IPV6</th>
-          {/* <th>Tensão</th> */}
+          <th>Repetidor</th>
+          <th>Roteador AP</th>
+          <th>Cliente Wireless</th>
+          <th>Modo AP </th>
           <th>Status</th>
           <th>Garantia</th>
           <th>Página</th>
