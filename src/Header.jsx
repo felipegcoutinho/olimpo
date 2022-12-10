@@ -1,4 +1,4 @@
-import React from "react";
+import React from 'react';
 
 export function AP() {
   return (
@@ -14,7 +14,7 @@ export function AP() {
         <th>Qtde Portas</th>
         <th>PoE</th>
         <th>Handover</th>
-        <th>Wisefi</th>
+        <th>WiseFi</th>
         <th>Potência Máx.</th>
         <th>Status</th>
         <th>Página</th>
