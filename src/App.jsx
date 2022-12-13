@@ -11,15 +11,29 @@ import { AP, RADIO, CONVERSOR, GBIC, SWITCH, ONU, ROTEADOR } from './Header';
 
 function App() {
   const [queryAP, setQueryAP] = React.useState('');
-  const [HideAP, setHideAP] = React.useState(true);
+  const [HideAP, setHideAP] = React.useState(false);
   const handleHideAP = () => setHideAP(!HideAP);
 
   const [queryRADIO, setQueryRADIO] = React.useState('');
-  const [HideRADIO, setHideRADIO] = React.useState(true);
+  const [HideRADIO, setHideRADIO] = React.useState(false);
   const handleHideRADIO = () => setHideRADIO(!HideRADIO);
 
-  const [querySWITCH, setQuerySWITCH] = React.useState('');
   const [queryHO, setQueryHO] = React.useState('');
+  const [HideHO, setHideHO] = React.useState(false);
+  const handleHideHO = () => setHideHO(!HideHO);
+
+  const [querySWITCH, setQuerySWITCH] = React.useState('');
+  const [HideSwitch, setHideSwitch] = React.useState(false);
+  const handleHideSwitch = () => setHideSwitch(!HideSwitch);
+
+  const [HideConversor, setHideConversor] = React.useState(false);
+  const handleHideConversor = () => setHideConversor(!HideConversor);
+
+  const [HideSFP, setHideSFP] = React.useState(false);
+  const handleHideSFP = () => setHideSFP(!HideSFP);
+
+  const [HideONU, setHideONU] = React.useState(false);
+  const handleHideONU = () => setHideONU(!HideONU);
 
   const handleSearchChangeAP = (e) => {
     setQueryAP(e.target.value);
@@ -34,10 +48,15 @@ function App() {
     setQueryHO(e.target.value);
   };
 
-  // const MostrarTudo = () => {
-  //   setHideAP(!HideAP);
-  //   setHideRADIO(!HideRADIO);
-  // };
+  const MostrarTudo = () => {
+    setHideAP(!HideAP);
+    setHideRADIO(!HideRADIO);
+    setHideHO(!HideHO);
+    setHideSwitch(!HideSwitch);
+    setHideConversor(!HideConversor);
+    setHideSFP(!HideSFP);
+    setHideONU(!HideONU);
+  };
 
   return (
     <div className={style.container}>
@@ -45,9 +64,9 @@ function App() {
         <div className={style.top}></div>
       </a>
       <div className={style.header_content} id="home">
-        {/* <div className={style.logo}>
+        <div className={style.logo}>
           <p>Olimpo</p>
-        </div> */}
+        </div>
         <div className={style.btn_container}>
           <a href="#ap">
             <button className={style.mainBtn}>Access Point</button>
@@ -71,7 +90,7 @@ function App() {
             <button className={style.mainBtn}>ONUs/ONTs</button>
           </a>
         </div>
-        {/* <button onClick={MostrarTudo}>Tudo</button> */}
+        <button onClick={MostrarTudo}>Tudo</button>
         <div className={style.info}>
           <p>N/A = Informação não encontrada</p>
           <p>x = Não possui</p>
@@ -86,9 +105,7 @@ function App() {
               <button
                 className={HideAP ? style.btnHide : style.btnShow}
                 onClick={handleHideAP}
-              >
-                {/* {HideAP ? "Esconder" : "Mostrar"} */}
-              </button>
+              ></button>
             </h2>
             <label>
               <i className="fa-solid fa-magnifying-glass"></i>
@@ -231,9 +248,7 @@ function App() {
               <button
                 className={HideRADIO ? style.btnHide : style.btnShow}
                 onClick={handleHideRADIO}
-              >
-                {/* {HideRADIO ? 'Esconder' : 'Mostrar'} */}
-              </button>
+              ></button>
             </h2>
             <label>
               <i className="fa-solid fa-magnifying-glass"></i>
@@ -396,7 +411,13 @@ function App() {
         {/* HO */}
         <div className={style.box_content}>
           <div className={style.header_box_content}>
-            <h2 id="ho">Roteadores HO</h2>
+            <h2 id="ho">
+              Roteadores HO
+              <button
+                className={HideHO ? style.btnHide : style.btnShow}
+                onClick={handleHideHO}
+              ></button>
+            </h2>
             <label>
               <i className="fa-solid fa-magnifying-glass"></i>
               <input
@@ -407,139 +428,161 @@ function App() {
               />
             </label>
           </div>
-          <div style={{ overflowX: 'auto' }}>
-            <table className={style.devicesTable}>
-              <ROTEADOR />
-              {Roteadores.filter((roteador) => {
-                if (
-                  roteador.modelo.toLowerCase().includes(queryHO.toLowerCase())
-                ) {
-                  return roteador;
-                } else if (
-                  roteador.porta.toLowerCase().includes(queryHO.toLowerCase())
-                ) {
-                  return roteador;
-                }
-              }).map((roteador) => {
-                return (
-                  <tbody>
-                    <tr>
-                      <td>
-                        <b>{roteador.modelo}</b>
-                      </td>
-                      <td>{roteador.cobertura}</td>
-                      <td>{roteador.raio}</td>
-                      <td>{roteador.usuarioMax}</td>
-                      <td>{roteador.planoRecomendado}</td>
-                      <td>{roteador.porta}</td>
-                      <td>{roteador.QtdePortas}</td>
-                      <td>{roteador.datarateMax}</td>
-                      <td>{roteador.ganho}</td>
-                      <td>{roteador.ipv6}</td>
-                      <td>{roteador.repetidor}</td>
-                      <td>{roteador.roteador}</td>
-                      <td>{roteador.cliente}</td>
-                      <td>{roteador.ap}</td>
+          {HideHO ? (
+            <div style={{ overflowX: 'auto' }}>
+              <table className={style.devicesTable}>
+                <ROTEADOR />
+                {Roteadores.filter((roteador) => {
+                  if (
+                    roteador.modelo
+                      .toLowerCase()
+                      .includes(queryHO.toLowerCase())
+                  ) {
+                    return roteador;
+                  } else if (
+                    roteador.porta.toLowerCase().includes(queryHO.toLowerCase())
+                  ) {
+                    return roteador;
+                  }
+                }).map((roteador) => {
+                  return (
+                    <tbody>
+                      <tr>
+                        <td>
+                          <b>{roteador.modelo}</b>
+                        </td>
+                        <td>{roteador.cobertura}</td>
+                        <td>{roteador.raio}</td>
+                        <td>{roteador.usuarioMax}</td>
+                        <td>{roteador.planoRecomendado}</td>
+                        <td>{roteador.porta}</td>
+                        <td>{roteador.QtdePortas}</td>
+                        <td>{roteador.datarateMax}</td>
+                        <td>{roteador.ganho}</td>
+                        <td>{roteador.ipv6}</td>
+                        <td>{roteador.repetidor}</td>
+                        <td>{roteador.roteador}</td>
+                        <td>{roteador.cliente}</td>
+                        <td>{roteador.ap}</td>
 
-                      <td>
-                        <span className={style.tooltip}>
-                          <span>
-                            {roteador.status === 'Em Linha' && (
-                              <span className={style.status_emlinha}>
-                                {roteador.status}
-                              </span>
-                            )}
+                        <td>
+                          <span className={style.tooltip}>
+                            <span>
+                              {roteador.status === 'Em Linha' && (
+                                <span className={style.status_emlinha}>
+                                  {roteador.status}
+                                </span>
+                              )}
+                              {roteador.status === 'Phaseout' && (
+                                <span className={style.status_phaseout}>
+                                  {roteador.status}
+                                  <i className="fa-regular fa-circle-question"></i>
+                                </span>
+                              )}
+                              {roteador.status === 'Suporte' && (
+                                <span className={style.status_suporte}>
+                                  {roteador.status}
+                                  <i className="fa-regular fa-circle-question"></i>
+                                </span>
+                              )}
+                            </span>
                             {roteador.status === 'Phaseout' && (
-                              <span className={style.status_phaseout}>
-                                {roteador.status}
-                                <i className="fa-regular fa-circle-question"></i>
+                              <span className={style.tooltiptext}>
+                                Apenas email
                               </span>
                             )}
                             {roteador.status === 'Suporte' && (
-                              <span className={style.status_suporte}>
-                                {roteador.status}
-                                <i className="fa-regular fa-circle-question"></i>
+                              <span className={style.tooltiptext}>
+                                Ainda fornecemos suporte
                               </span>
                             )}
                           </span>
-                          {roteador.status === 'Phaseout' && (
-                            <span className={style.tooltiptext}>
-                              Apenas email
-                            </span>
+                        </td>
+                        <td>{roteador.garantia}</td>
+                        <td>
+                          <a
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            href={roteador.pagina}
+                          >
+                            <span className={style.paginalink}>Página</span>
+                          </a>
+                        </td>
+                        <td>
+                          {roteador.datasheet === '-' ? (
+                            <a
+                              target="_blank"
+                              rel="noopener noreferrer"
+                              href="#"
+                            >
+                              <span className={style.pdfbtn_NA}>N/A</span>
+                            </a>
+                          ) : (
+                            <a
+                              target="_blank"
+                              rel="noopener noreferrer"
+                              href={roteador.datasheet}
+                            >
+                              <span className={style.pdfbtn}>Datasheet</span>
+                            </a>
                           )}
-                          {roteador.status === 'Suporte' && (
-                            <span className={style.tooltiptext}>
-                              Ainda fornecemos suporte
-                            </span>
+                        </td>
+                        <td>
+                          {roteador.guia === '-' ? (
+                            <a
+                              target="_blank"
+                              rel="noopener noreferrer"
+                              href="#"
+                            >
+                              <span className={style.pdfbtn_NA}>N/A</span>
+                            </a>
+                          ) : (
+                            <a
+                              target="_blank"
+                              rel="noopener noreferrer"
+                              href={roteador.guia}
+                            >
+                              <span className={style.pdfbtn}>Guia</span>
+                            </a>
                           )}
-                        </span>
-                      </td>
-                      <td>{roteador.garantia}</td>
-                      <td>
-                        <a
-                          target="_blank"
-                          rel="noopener noreferrer"
-                          href={roteador.pagina}
-                        >
-                          <span className={style.paginalink}>Página</span>
-                        </a>
-                      </td>
-                      <td>
-                        {roteador.datasheet === '-' ? (
-                          <a target="_blank" rel="noopener noreferrer" href="#">
-                            <span className={style.pdfbtn_NA}>N/A</span>
-                          </a>
-                        ) : (
-                          <a
-                            target="_blank"
-                            rel="noopener noreferrer"
-                            href={roteador.datasheet}
-                          >
-                            <span className={style.pdfbtn}>Datasheet</span>
-                          </a>
-                        )}
-                      </td>
-                      <td>
-                        {roteador.guia === '-' ? (
-                          <a target="_blank" rel="noopener noreferrer" href="#">
-                            <span className={style.pdfbtn_NA}>N/A</span>
-                          </a>
-                        ) : (
-                          <a
-                            target="_blank"
-                            rel="noopener noreferrer"
-                            href={roteador.guia}
-                          >
-                            <span className={style.pdfbtn}>Guia</span>
-                          </a>
-                        )}
-                      </td>
-                      <td>
-                        {roteador.manual === '-' ? (
-                          <a target="_blank" rel="noopener noreferrer" href="#">
-                            <span className={style.pdfbtn_NA}>N/A</span>
-                          </a>
-                        ) : (
-                          <a
-                            target="_blank"
-                            rel="noopener noreferrer"
-                            href={roteador.manual}
-                          >
-                            <span className={style.pdfbtn}>Manual</span>
-                          </a>
-                        )}
-                      </td>
-                    </tr>
-                  </tbody>
-                );
-              })}
-            </table>{' '}
-          </div>
+                        </td>
+                        <td>
+                          {roteador.manual === '-' ? (
+                            <a
+                              target="_blank"
+                              rel="noopener noreferrer"
+                              href="#"
+                            >
+                              <span className={style.pdfbtn_NA}>N/A</span>
+                            </a>
+                          ) : (
+                            <a
+                              target="_blank"
+                              rel="noopener noreferrer"
+                              href={roteador.manual}
+                            >
+                              <span className={style.pdfbtn}>Manual</span>
+                            </a>
+                          )}
+                        </td>
+                      </tr>
+                    </tbody>
+                  );
+                })}
+              </table>{' '}
+            </div>
+          ) : null}
         </div>
         {/* SWITCHS */}
         <div className={style.box_content}>
           <div className={style.header_box_content}>
-            <h2 id="switch">Switchs</h2>
+            <h2 id="switch">
+              Switchs
+              <button
+                className={HideSwitch ? style.btnHide : style.btnShow}
+                onClick={handleHideSwitch}
+              ></button>
+            </h2>
             <label>
               <i className="fa-solid fa-magnifying-glass"></i>
               <input
@@ -550,331 +593,224 @@ function App() {
               />
             </label>
           </div>
-
-          <table className={style.devicesTable}>
-            <SWITCH />
-            {Switchs.filter((swicth) => {
-              if (
-                swicth.modelo.toLowerCase().includes(querySWITCH.toLowerCase())
-              ) {
-                return swicth;
-              } else if (
-                swicth.gerenciavel
-                  .toLowerCase()
-                  .includes(querySWITCH.toLowerCase())
-              ) {
-                return swicth;
-              }
-            }).map((swicth) => {
-              return (
-                <tbody>
-                  <tr id={style.swicth_id}>
-                    <td>
-                      <b>{swicth.modelo}</b>
-                    </td>
-                    <td>{swicth.portas}</td>
-                    <td>
-                      <span
-                        className={
-                          swicth.modulação === 'Fast'
-                            ? style.fast
-                            : style.gigabit
-                        }
-                      >
-                        {swicth.modulação}
-                      </span>
-                    </td>
-                    <td>{swicth.gerenciavel}</td>
-                    <td>{swicth.poe}</td>
-                    <td>{swicth.taxaTransferencia}</td>
-                    <td>{swicth.sfp}</td>
-                    <td>{swicth.poeExtender}</td>
-                    <td>{swicth.qos}</td>
-                    <td>{swicth.garantia}</td>
-                    <td>
-                      <span className={style.tooltip}>
-                        <span>
-                          {swicth.status === 'Em Linha' && (
-                            <span className={style.status_emlinha}>
-                              {swicth.status}
-                            </span>
-                          )}
-                          {swicth.status === 'Phaseout' && (
-                            <span className={style.status_phaseout}>
-                              {swicth.status}
-                              <i className="fa-regular fa-circle-question"></i>
-                            </span>
-                          )}
-                          {swicth.status === 'Suporte' && (
-                            <span className={style.status_suporte}>
-                              {swicth.status}
-                              <i className="fa-regular fa-circle-question"></i>
-                            </span>
-                          )}
-                        </span>
-                        {swicth.status === 'Phaseout' && (
-                          <span className={style.tooltiptext}>
-                            Apenas email
+          {HideSwitch ? (
+            <div style={{ overflowX: 'auto' }}>
+              <table className={style.devicesTable}>
+                <SWITCH />
+                {Switchs.filter((swicth) => {
+                  if (
+                    swicth.modelo
+                      .toLowerCase()
+                      .includes(querySWITCH.toLowerCase())
+                  ) {
+                    return swicth;
+                  } else if (
+                    swicth.gerenciavel
+                      .toLowerCase()
+                      .includes(querySWITCH.toLowerCase())
+                  ) {
+                    return swicth;
+                  }
+                }).map((swicth) => {
+                  return (
+                    <tbody>
+                      <tr id={style.swicth_id}>
+                        <td>
+                          <b>{swicth.modelo}</b>
+                        </td>
+                        <td>{swicth.portas}</td>
+                        <td>
+                          <span
+                            className={
+                              swicth.modulação === 'Fast'
+                                ? style.fast
+                                : style.gigabit
+                            }
+                          >
+                            {swicth.modulação}
                           </span>
-                        )}
-                        {swicth.status === 'Suporte' && (
-                          <span className={style.tooltiptext}>
-                            Ainda fornecemos suporte
+                        </td>
+                        <td>{swicth.gerenciavel}</td>
+                        <td>{swicth.poe}</td>
+                        <td>{swicth.taxaTransferencia}</td>
+                        <td>{swicth.sfp}</td>
+                        <td>{swicth.poeExtender}</td>
+                        <td>{swicth.qos}</td>
+                        <td>{swicth.garantia}</td>
+                        <td>
+                          <span className={style.tooltip}>
+                            <span>
+                              {swicth.status === 'Em Linha' && (
+                                <span className={style.status_emlinha}>
+                                  {swicth.status}
+                                </span>
+                              )}
+                              {swicth.status === 'Phaseout' && (
+                                <span className={style.status_phaseout}>
+                                  {swicth.status}
+                                  <i className="fa-regular fa-circle-question"></i>
+                                </span>
+                              )}
+                              {swicth.status === 'Suporte' && (
+                                <span className={style.status_suporte}>
+                                  {swicth.status}
+                                  <i className="fa-regular fa-circle-question"></i>
+                                </span>
+                              )}
+                            </span>
+                            {swicth.status === 'Phaseout' && (
+                              <span className={style.tooltiptext}>
+                                Apenas email
+                              </span>
+                            )}
+                            {swicth.status === 'Suporte' && (
+                              <span className={style.tooltiptext}>
+                                Ainda fornecemos suporte
+                              </span>
+                            )}
                           </span>
-                        )}
-                      </span>
-                    </td>
-                    <td>
-                      <a
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        href={swicth.pagina}
-                      >
-                        <span className={style.paginalink}>Página</span>
-                      </a>
-                    </td>
-                    <td>
-                      {swicth.datasheet === '-' ? (
-                        <a target="_blank" rel="noopener noreferrer" href="#">
-                          <span className={style.pdfbtn_NA}>N/A</span>
-                        </a>
-                      ) : (
-                        <a
-                          target="_blank"
-                          rel="noopener noreferrer"
-                          href={swicth.datasheet}
-                        >
-                          <span className={style.pdfbtn}>Datasheet</span>
-                        </a>
-                      )}
-                    </td>
-                    <td>
-                      {swicth.guia === '-' ? (
-                        <a target="_blank" rel="noopener noreferrer" href="#">
-                          <span className={style.pdfbtn_NA}>N/A</span>
-                        </a>
-                      ) : (
-                        <a
-                          target="_blank"
-                          rel="noopener noreferrer"
-                          href={swicth.guia}
-                        >
-                          <span className={style.pdfbtn}>Guia</span>
-                        </a>
-                      )}
-                    </td>
-                    <td>
-                      {swicth.manual === '-' ? (
-                        <a target="_blank" rel="noopener noreferrer" href="#">
-                          <span className={style.pdfbtn_NA}>N/A</span>
-                        </a>
-                      ) : (
-                        <a
-                          target="_blank"
-                          rel="noopener noreferrer"
-                          href={swicth.manual}
-                        >
-                          <span className={style.pdfbtn}>Manual</span>
-                        </a>
-                      )}
-                    </td>
-                  </tr>
-                </tbody>
-              );
-            })}
-          </table>
+                        </td>
+                        <td>
+                          <a
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            href={swicth.pagina}
+                          >
+                            <span className={style.paginalink}>Página</span>
+                          </a>
+                        </td>
+                        <td>
+                          {swicth.datasheet === '-' ? (
+                            <a
+                              target="_blank"
+                              rel="noopener noreferrer"
+                              href="#"
+                            >
+                              <span className={style.pdfbtn_NA}>N/A</span>
+                            </a>
+                          ) : (
+                            <a
+                              target="_blank"
+                              rel="noopener noreferrer"
+                              href={swicth.datasheet}
+                            >
+                              <span className={style.pdfbtn}>Datasheet</span>
+                            </a>
+                          )}
+                        </td>
+                        <td>
+                          {swicth.guia === '-' ? (
+                            <a
+                              target="_blank"
+                              rel="noopener noreferrer"
+                              href="#"
+                            >
+                              <span className={style.pdfbtn_NA}>N/A</span>
+                            </a>
+                          ) : (
+                            <a
+                              target="_blank"
+                              rel="noopener noreferrer"
+                              href={swicth.guia}
+                            >
+                              <span className={style.pdfbtn}>Guia</span>
+                            </a>
+                          )}
+                        </td>
+                        <td>
+                          {swicth.manual === '-' ? (
+                            <a
+                              target="_blank"
+                              rel="noopener noreferrer"
+                              href="#"
+                            >
+                              <span className={style.pdfbtn_NA}>N/A</span>
+                            </a>
+                          ) : (
+                            <a
+                              target="_blank"
+                              rel="noopener noreferrer"
+                              href={swicth.manual}
+                            >
+                              <span className={style.pdfbtn}>Manual</span>
+                            </a>
+                          )}
+                        </td>
+                      </tr>
+                    </tbody>
+                  );
+                })}
+              </table>
+            </div>
+          ) : null}
         </div>
         {/* CONVERSOR */}
         <div className={style.box_content}>
           <div className={style.header_box_content}>
-            <h2 id="conversor">Conversor de Mídia</h2>
+            <h2 id="conversor">
+              Conversor de Mídia
+              <button
+                className={HideConversor ? style.btnHide : style.btnShow}
+                onClick={handleHideConversor}
+              ></button>
+            </h2>
           </div>
-          <table className={style.devicesTable}>
-            <CONVERSOR />
-            {Conversores.map((conversor) => {
-              return (
-                <tbody>
-                  <tr>
-                    <td>
-                      <b>{conversor.modelo}</b>
-                    </td>
-                    <td>{conversor.conector}</td>
-                    <td>{conversor.wdm}</td>
-                    <td>{conversor.distancia}</td>
-                    <td>
-                      <span
-                        className={
-                          conversor.modulação === 'Fast'
-                            ? style.fast
-                            : style.gigabit
-                        }
-                      >
-                        {conversor.modulação}
-                      </span>
-                    </td>
-                    <td>{conversor.fibra}</td>
-                    <td>{conversor.potencia}</td>
-                    <td>{conversor.recepMax}</td>
-                    <td>{conversor.recepMin}</td>
-                    <td>{conversor.garantia}</td>
-                    <td>
-                      <span className={style.tooltip}>
-                        <span>
-                          {conversor.status === 'Em Linha' && (
-                            <span className={style.status_emlinha}>
-                              {conversor.status}
-                            </span>
-                          )}
+          {HideConversor ? (
+            <table className={style.devicesTable}>
+              <CONVERSOR />
+              {Conversores.map((conversor) => {
+                return (
+                  <tbody>
+                    <tr>
+                      <td>
+                        <b>{conversor.modelo}</b>
+                      </td>
+                      <td>{conversor.conector}</td>
+                      <td>{conversor.wdm}</td>
+                      <td>{conversor.distancia}</td>
+                      <td>
+                        <span
+                          className={
+                            conversor.modulação === 'Fast'
+                              ? style.fast
+                              : style.gigabit
+                          }
+                        >
+                          {conversor.modulação}
+                        </span>
+                      </td>
+                      <td>{conversor.fibra}</td>
+                      <td>{conversor.potencia}</td>
+                      <td>{conversor.recepMax}</td>
+                      <td>{conversor.recepMin}</td>
+                      <td>{conversor.garantia}</td>
+                      <td>
+                        <span className={style.tooltip}>
+                          <span>
+                            {conversor.status === 'Em Linha' && (
+                              <span className={style.status_emlinha}>
+                                {conversor.status}
+                              </span>
+                            )}
+                            {conversor.status === 'Phaseout' && (
+                              <span className={style.status_phaseout}>
+                                {conversor.status}
+                                <i className="fa-regular fa-circle-question"></i>
+                              </span>
+                            )}
+                            {conversor.status === 'Suporte' && (
+                              <span className={style.status_suporte}>
+                                {conversor.status}
+                                <i className="fa-regular fa-circle-question"></i>
+                              </span>
+                            )}
+                          </span>
                           {conversor.status === 'Phaseout' && (
-                            <span className={style.status_phaseout}>
-                              {conversor.status}
-                              <i className="fa-regular fa-circle-question"></i>
+                            <span className={style.tooltiptext}>
+                              Apenas email
                             </span>
                           )}
                           {conversor.status === 'Suporte' && (
-                            <span className={style.status_suporte}>
-                              {conversor.status}
-                              <i className="fa-regular fa-circle-question"></i>
-                            </span>
-                          )}
-                        </span>
-                        {conversor.status === 'Phaseout' && (
-                          <span className={style.tooltiptext}>
-                            Apenas email
-                          </span>
-                        )}
-                        {conversor.status === 'Suporte' && (
-                          <span className={style.tooltiptext}>
-                            Ainda fornecemos suporte
-                          </span>
-                        )}
-                      </span>
-                    </td>
-                    <td>
-                      <a
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        href={conversor.pagina}
-                      >
-                        <span className={style.paginalink}>Página</span>
-                      </a>
-                    </td>
-                    <td>
-                      {conversor.datasheet === '-' ? (
-                        <a target="_blank" rel="noopener noreferrer" href="#">
-                          <span className={style.pdfbtn_NA}>N/A</span>
-                        </a>
-                      ) : (
-                        <a
-                          target="_blank"
-                          rel="noopener noreferrer"
-                          href={conversor.datasheet}
-                        >
-                          <span className={style.pdfbtn}>Datasheet</span>
-                        </a>
-                      )}
-                    </td>
-                    <td>
-                      {conversor.guia === '-' ? (
-                        <a target="_blank" rel="noopener noreferrer" href="#">
-                          <span className={style.pdfbtn_NA}>N/A</span>
-                        </a>
-                      ) : (
-                        <a
-                          target="_blank"
-                          rel="noopener noreferrer"
-                          href={conversor.guia}
-                        >
-                          <span className={style.pdfbtn}>Guia</span>
-                        </a>
-                      )}
-                    </td>
-                  </tr>
-                </tbody>
-              );
-            })}
-          </table>
-        </div>
-        {/* SFP */}
-        <div className={style.box_content}>
-          <div className={style.header_box_content}>
-            <h2 id="gbic">Módulo SFP</h2>
-          </div>
-          <table className={style.devicesTable}>
-            <GBIC />
-            {Gbics.map((gbic) => {
-              if (gbic.linha === 'gbic') {
-                return (
-                  <tbody>
-                    <tr>
-                      <td>
-                        <b>{gbic.modelo}</b>
-                      </td>
-                      <td>{gbic.tipoConector}</td>
-                      <td>
-                        {gbic.modulo === 'SFP+' && (
-                          <span className={style.variado1}>SFP+</span>
-                        )}
-                        {gbic.modulo === 'SFP' && (
-                          <span className={style.variado2}>SFP</span>
-                        )}
-                        {gbic.modulo === 'Epon' && (
-                          <span className={style.variado3}>EPON</span>
-                        )}
-                        {gbic.modulo === 'Gpon' && (
-                          <span className={style.fast}>GPON</span>
-                        )}
-                        {gbic.modulo === 'XFP' && (
-                          <span className={style.gigabit}>XFP</span>
-                        )}
-                      </td>
-                      <td>{gbic.wdm}</td>
-
-                      <td>
-                        <span className={style.tooltip}>
-                          {gbic.distancia}{' '}
-                          {gbic.fibra === 'Multimodo' && (
-                            <i className="fa-regular fa-circle-question"></i>
-                          )}
-                          {gbic.fibra === 'Multimodo' && (
-                            <span className={style.tooltiptext}>
-                              62,5 / 125 μm até 275 mts
-                            </span>
-                          )}
-                        </span>
-                      </td>
-                      <td>{gbic.modulação}</td>
-                      <td>{gbic.fibra}</td>
-                      <td>{gbic.potencia}</td>
-                      <td>{gbic.recepMaxMin}</td>
-                      <td>{gbic.garantia}</td>
-                      <td>
-                        <span className={style.tooltip}>
-                          <span>
-                            {gbic.status === 'Em Linha' && (
-                              <span className={style.status_emlinha}>
-                                {gbic.status}
-                              </span>
-                            )}
-                            {gbic.status === 'Phaseout' && (
-                              <span className={style.status_phaseout}>
-                                {gbic.status}{' '}
-                                <i className="fa-regular fa-circle-question"></i>
-                              </span>
-                            )}
-                            {gbic.status === 'Suporte' && (
-                              <span className={style.status_suporte}>
-                                {gbic.status}{' '}
-                                <i className="fa-regular fa-circle-question"></i>
-                              </span>
-                            )}
-                          </span>
-                          {gbic.status === 'Phaseout' && (
-                            <span className={style.tooltiptext}>
-                              Apenas email
-                            </span>
-                          )}
-                          {gbic.status === 'Suporte' && (
                             <span className={style.tooltiptext}>
                               Ainda fornecemos suporte
                             </span>
@@ -885,112 +821,13 @@ function App() {
                         <a
                           target="_blank"
                           rel="noopener noreferrer"
-                          href={gbic.pagina}
+                          href={conversor.pagina}
                         >
                           <span className={style.paginalink}>Página</span>
                         </a>
                       </td>
                       <td>
-                        <a
-                          target="_blank"
-                          rel="noopener noreferrer"
-                          href={gbic.datasheet}
-                        >
-                          <span className={style.pdfbtn}>Datasheet</span>
-                        </a>
-                      </td>
-                      <td>
-                        <a
-                          target="_blank"
-                          rel="noopener noreferrer"
-                          href={gbic.guia}
-                        >
-                          <span className={style.pdfbtn}>Guia</span>
-                        </a>
-                      </td>
-                    </tr>
-                  </tbody>
-                );
-              }
-            })}
-          </table>
-        </div>
-        {/* ONU */}
-        <div className={style.box_content}>
-          <div className={style.header_box_content}>
-            <h2 id="onu">ONUs/ONTs</h2>
-          </div>
-          <table className={style.devicesTable}>
-            <ONU />
-            {Onus.map((onu) => {
-              if (onu.linha === 'onu/ont') {
-                return (
-                  <tbody>
-                    <tr>
-                      <td>
-                        <b>{onu.modelo}</b>
-                      </td>
-                      <td>{onu.modulação}</td>
-                      <td>{onu.fxs}</td>
-                      <td>
-                        {onu.tipo === 'EPON/GPON' && (
-                          <span className={style.variado1}>{onu.tipo}</span>
-                        )}
-                        {onu.tipo === 'GPON' && (
-                          <span className={style.variado2}>{onu.tipo}</span>
-                        )}
-                      </td>
-                      <td>{onu.transmissao2ghz}</td>
-                      <td>{onu.transmissao5ghz}</td>
-                      <td>{onu.ssid}</td>
-                      <td>{onu.tr069}</td>
-                      <td>{onu.customize}</td>
-                      <td>{onu.remotize}</td>
-                      <td>{onu.garantia}</td>
-                      <td>
-                        <span className={style.tooltip}>
-                          <span>
-                            {onu.status === 'Em Linha' && (
-                              <span className={style.status_emlinha}>
-                                {onu.status}
-                              </span>
-                            )}
-                            {onu.status === 'Phaseout' && (
-                              <span className={style.status_phaseout}>
-                                {onu.status}
-                                <i className="fa-regular fa-circle-question"></i>
-                              </span>
-                            )}
-                            {onu.status === 'Suporte' && (
-                              <span className={style.status_suporte}>
-                                {onu.status}
-                                <i className="fa-regular fa-circle-question"></i>
-                              </span>
-                            )}
-                          </span>
-                          {onu.status === 'Phaseout' && (
-                            <span className={style.tooltiptext}>
-                              Apenas email
-                            </span>
-                          )}
-                          {onu.status === 'Suporte' && (
-                            <span className={style.tooltiptext}>
-                              Ainda fornecemos suporte
-                            </span>
-                          )}
-                        </span>
-                      </td>
-                      <td>
-                        <a
-                          target="_blank"
-                          rel="noopener noreferrer"
-                          href={onu.pagina}
-                        >
-                          <span className={style.paginalink}>Página</span>
-                        </a>
-                      </td>
-                      <td>
-                        {onu.datasheet === '-' ? (
+                        {conversor.datasheet === '-' ? (
                           <a target="_blank" rel="noopener noreferrer" href="#">
                             <span className={style.pdfbtn_NA}>N/A</span>
                           </a>
@@ -998,14 +835,14 @@ function App() {
                           <a
                             target="_blank"
                             rel="noopener noreferrer"
-                            href={onu.datasheet}
+                            href={conversor.datasheet}
                           >
                             <span className={style.pdfbtn}>Datasheet</span>
                           </a>
                         )}
                       </td>
                       <td>
-                        {onu.guia === '-' ? (
+                        {conversor.guia === '-' ? (
                           <a target="_blank" rel="noopener noreferrer" href="#">
                             <span className={style.pdfbtn_NA}>N/A</span>
                           </a>
@@ -1013,33 +850,292 @@ function App() {
                           <a
                             target="_blank"
                             rel="noopener noreferrer"
-                            href={onu.guia}
+                            href={conversor.guia}
                           >
                             <span className={style.pdfbtn}>Guia</span>
-                          </a>
-                        )}
-                      </td>
-                      <td>
-                        {onu.manual === '-' ? (
-                          <a target="_blank" rel="noopener noreferrer" href="#">
-                            <span className={style.pdfbtn_NA}>N/A</span>
-                          </a>
-                        ) : (
-                          <a
-                            target="_blank"
-                            rel="noopener noreferrer"
-                            href={onu.manual}
-                          >
-                            <span className={style.pdfbtn}>Manual</span>
                           </a>
                         )}
                       </td>
                     </tr>
                   </tbody>
                 );
-              }
-            })}
-          </table>
+              })}
+            </table>
+          ) : null}
+        </div>
+        {/* SFP */}
+        <div className={style.box_content}>
+          <div className={style.header_box_content}>
+            <h2 id="gbic">
+              Módulo SFP
+              <button
+                className={HideSFP ? style.btnHide : style.btnShow}
+                onClick={handleHideSFP}
+              ></button>
+            </h2>
+          </div>
+          {HideSFP ? (
+            <table className={style.devicesTable}>
+              <GBIC />
+              {Gbics.map((gbic) => {
+                if (gbic.linha === 'gbic') {
+                  return (
+                    <tbody>
+                      <tr>
+                        <td>
+                          <b>{gbic.modelo}</b>
+                        </td>
+                        <td>{gbic.tipoConector}</td>
+                        <td>
+                          {gbic.modulo === 'SFP+' && (
+                            <span className={style.variado1}>SFP+</span>
+                          )}
+                          {gbic.modulo === 'SFP' && (
+                            <span className={style.variado2}>SFP</span>
+                          )}
+                          {gbic.modulo === 'Epon' && (
+                            <span className={style.variado3}>EPON</span>
+                          )}
+                          {gbic.modulo === 'Gpon' && (
+                            <span className={style.fast}>GPON</span>
+                          )}
+                          {gbic.modulo === 'XFP' && (
+                            <span className={style.gigabit}>XFP</span>
+                          )}
+                        </td>
+                        <td>{gbic.wdm}</td>
+
+                        <td>
+                          <span className={style.tooltip}>
+                            {gbic.distancia}{' '}
+                            {gbic.fibra === 'Multimodo' && (
+                              <i className="fa-regular fa-circle-question"></i>
+                            )}
+                            {gbic.fibra === 'Multimodo' && (
+                              <span className={style.tooltiptext}>
+                                62,5 / 125 μm até 275 mts
+                              </span>
+                            )}
+                          </span>
+                        </td>
+                        <td>{gbic.modulação}</td>
+                        <td>{gbic.fibra}</td>
+                        <td>{gbic.potencia}</td>
+                        <td>{gbic.recepMaxMin}</td>
+                        <td>{gbic.garantia}</td>
+                        <td>
+                          <span className={style.tooltip}>
+                            <span>
+                              {gbic.status === 'Em Linha' && (
+                                <span className={style.status_emlinha}>
+                                  {gbic.status}
+                                </span>
+                              )}
+                              {gbic.status === 'Phaseout' && (
+                                <span className={style.status_phaseout}>
+                                  {gbic.status}{' '}
+                                  <i className="fa-regular fa-circle-question"></i>
+                                </span>
+                              )}
+                              {gbic.status === 'Suporte' && (
+                                <span className={style.status_suporte}>
+                                  {gbic.status}{' '}
+                                  <i className="fa-regular fa-circle-question"></i>
+                                </span>
+                              )}
+                            </span>
+                            {gbic.status === 'Phaseout' && (
+                              <span className={style.tooltiptext}>
+                                Apenas email
+                              </span>
+                            )}
+                            {gbic.status === 'Suporte' && (
+                              <span className={style.tooltiptext}>
+                                Ainda fornecemos suporte
+                              </span>
+                            )}
+                          </span>
+                        </td>
+                        <td>
+                          <a
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            href={gbic.pagina}
+                          >
+                            <span className={style.paginalink}>Página</span>
+                          </a>
+                        </td>
+                        <td>
+                          <a
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            href={gbic.datasheet}
+                          >
+                            <span className={style.pdfbtn}>Datasheet</span>
+                          </a>
+                        </td>
+                        <td>
+                          <a
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            href={gbic.guia}
+                          >
+                            <span className={style.pdfbtn}>Guia</span>
+                          </a>
+                        </td>
+                      </tr>
+                    </tbody>
+                  );
+                }
+              })}
+            </table>
+          ) : null}
+        </div>
+        {/* ONU */}
+        <div className={style.box_content}>
+          <div className={style.header_box_content}>
+            <h2 id="onu">
+              ONUs/ONTs
+              <button
+                className={HideONU ? style.btnHide : style.btnShow}
+                onClick={handleHideONU}
+              ></button>
+            </h2>
+          </div>
+          {HideONU ? (
+            <table className={style.devicesTable}>
+              <ONU />
+              {Onus.map((onu) => {
+                if (onu.linha === 'onu/ont') {
+                  return (
+                    <tbody>
+                      <tr>
+                        <td>
+                          <b>{onu.modelo}</b>
+                        </td>
+                        <td>{onu.modulação}</td>
+                        <td>{onu.fxs}</td>
+                        <td>
+                          {onu.tipo === 'EPON/GPON' && (
+                            <span className={style.variado1}>{onu.tipo}</span>
+                          )}
+                          {onu.tipo === 'GPON' && (
+                            <span className={style.variado2}>{onu.tipo}</span>
+                          )}
+                        </td>
+                        <td>{onu.transmissao2ghz}</td>
+                        <td>{onu.transmissao5ghz}</td>
+                        <td>{onu.ssid}</td>
+                        <td>{onu.tr069}</td>
+                        <td>{onu.customize}</td>
+                        <td>{onu.remotize}</td>
+                        <td>{onu.garantia}</td>
+                        <td>
+                          <span className={style.tooltip}>
+                            <span>
+                              {onu.status === 'Em Linha' && (
+                                <span className={style.status_emlinha}>
+                                  {onu.status}
+                                </span>
+                              )}
+                              {onu.status === 'Phaseout' && (
+                                <span className={style.status_phaseout}>
+                                  {onu.status}
+                                  <i className="fa-regular fa-circle-question"></i>
+                                </span>
+                              )}
+                              {onu.status === 'Suporte' && (
+                                <span className={style.status_suporte}>
+                                  {onu.status}
+                                  <i className="fa-regular fa-circle-question"></i>
+                                </span>
+                              )}
+                            </span>
+                            {onu.status === 'Phaseout' && (
+                              <span className={style.tooltiptext}>
+                                Apenas email
+                              </span>
+                            )}
+                            {onu.status === 'Suporte' && (
+                              <span className={style.tooltiptext}>
+                                Ainda fornecemos suporte
+                              </span>
+                            )}
+                          </span>
+                        </td>
+                        <td>
+                          <a
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            href={onu.pagina}
+                          >
+                            <span className={style.paginalink}>Página</span>
+                          </a>
+                        </td>
+                        <td>
+                          {onu.datasheet === '-' ? (
+                            <a
+                              target="_blank"
+                              rel="noopener noreferrer"
+                              href="#"
+                            >
+                              <span className={style.pdfbtn_NA}>N/A</span>
+                            </a>
+                          ) : (
+                            <a
+                              target="_blank"
+                              rel="noopener noreferrer"
+                              href={onu.datasheet}
+                            >
+                              <span className={style.pdfbtn}>Datasheet</span>
+                            </a>
+                          )}
+                        </td>
+                        <td>
+                          {onu.guia === '-' ? (
+                            <a
+                              target="_blank"
+                              rel="noopener noreferrer"
+                              href="#"
+                            >
+                              <span className={style.pdfbtn_NA}>N/A</span>
+                            </a>
+                          ) : (
+                            <a
+                              target="_blank"
+                              rel="noopener noreferrer"
+                              href={onu.guia}
+                            >
+                              <span className={style.pdfbtn}>Guia</span>
+                            </a>
+                          )}
+                        </td>
+                        <td>
+                          {onu.manual === '-' ? (
+                            <a
+                              target="_blank"
+                              rel="noopener noreferrer"
+                              href="#"
+                            >
+                              <span className={style.pdfbtn_NA}>N/A</span>
+                            </a>
+                          ) : (
+                            <a
+                              target="_blank"
+                              rel="noopener noreferrer"
+                              href={onu.manual}
+                            >
+                              <span className={style.pdfbtn}>Manual</span>
+                            </a>
+                          )}
+                        </td>
+                      </tr>
+                    </tbody>
+                  );
+                }
+              })}
+            </table>
+          ) : null}
         </div>
       </div>
     </div>
