@@ -1,4 +1,4 @@
-import React from 'react';
+import React from "react";
 
 export function AP() {
   return (
@@ -41,6 +41,7 @@ export function RADIO() {
         <th>Abertura</th>
         <th>Distância Máx</th>
         <th>Wireless</th>
+        <th>Garantia</th>
         <th>Status</th>
         <th>Página</th>
         <th>Datasheet</th>

@@ -41,7 +41,7 @@ h2 {
 .btn_container {
   display: flex;
   justify-content: center;
-  padding: 50px 0;
+  padding: 30px 0;
 }
 
 .mainBtn {
@@ -83,9 +83,11 @@ h2 {
 
 .info {
   color: white;
-  padding: 10px;
-  background-color: #006e39;
-  margin-bottom: 5px;
+  padding: 10px 40px;
+  background-color: #08bd5a;
+  margin-bottom: 30px;
+  border-radius: 5px;
+  border: 1px solid #00a54b;
 }
 
 .logo {
@@ -108,7 +110,6 @@ h2 {
   width: 250px;
 }
 
-.status_emlinha,
 .status_phaseout,
 .status_suporte {
   border-radius: 20px;
@@ -116,19 +117,26 @@ h2 {
   padding: 1px 10px;
 }
 
-.status_emlinha {
-  background-color: #e1f5e8;
-  color: #2ca152;
-}
-
 .status_phaseout {
   background-color: #fff2f2;
   color: #e34646;
 }
 
+.status_phaseout::before {
+  content: " \f057\ ";
+  font-family: FontAwesome;
+  font-size: 0.7rem;
+}
+
 .status_suporte {
-  background-color: #fffbef;
-  color: #dda600;
+  background-color: #e1f5e8;
+  color: #2ca152;
+}
+
+.status_suporte:before {
+  content: " \f058\ ";
+  font-family: FontAwesome;
+  font-size: 0.7rem;
 }
 
 .pdfbtn,
@@ -272,6 +280,29 @@ h2 {
   font-family: FontAwesome;
   font-size: 1.1rem;
   /* color: #006e39; */
+}
+
+.hideShowContainer {
+  display: flex;
+  justify-content: left;
+}
+
+.btn_hideShow {
+  background-color: #fff;
+  border: none;
+  border-radius: 5px;
+  box-shadow: 0 0 5px 0 rgb(0 0 0 / 20%);
+  color: #333;
+  cursor: pointer;
+  font-weight: bold;
+  height: 40px;
+  margin: 3px;
+  width: 120px;
+  font-size: 0.8rem;
+}
+
+.btn_hideShow:hover {
+  background-color: #cecece;
 }
 
 /* TABELAS */
