@@ -285,6 +285,7 @@ h2 {
 .hideShowContainer {
   display: flex;
   justify-content: left;
+  align-items: center;
 }
 
 .btn_hideShow {

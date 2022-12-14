@@ -116,12 +116,21 @@ function App() {
       {/* BOTÃO MOSTRAR / OCULTAR */}
       <div className={style.box_container}>
         <div className={style.hideShowContainer}>
-          <button className={style.btn_hideShow} onClick={MostrarTudo}>
-            Mostrar Tudo <i class="fa-solid fa-eye"></i>
-          </button>
-          <button className={style.btn_hideShow} onClick={OcultarTudo}>
-            Ocultar Tudo <i class="fa-regular fa-eye-slash"></i>
-          </button>
+          <div>
+            <button className={style.btn_hideShow} onClick={MostrarTudo}>
+              Mostrar Tudo <i class="fa-solid fa-eye"></i>
+            </button>
+            <button className={style.btn_hideShow} onClick={OcultarTudo}>
+              Ocultar Tudo <i class="fa-regular fa-eye-slash"></i>
+            </button>
+          </div>
+
+          <div>
+            <b>N/A</b>= Informação Não Encontrada
+          </div>
+          <div>
+            <span className={style.colorRed}></span> = Não Possui a Função.
+          </div>
         </div>
 
         {/* ACCESS POINT */}
