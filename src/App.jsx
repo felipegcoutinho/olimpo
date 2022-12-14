@@ -336,7 +336,9 @@ function App() {
                         <td>{roteador.raio}</td>
                         <td>{roteador.usuarioMax}</td>
                         <td>{roteador.planoRecomendado}</td>
-                        <td>{roteador.porta}</td>
+                        <td>
+                          <span className={roteador.porta === "Fast" ? style.fast : style.gigabit}>{roteador.porta}</span>
+                        </td>
                         <td>{roteador.QtdePortas}</td>
                         <td>{roteador.datarateMax}</td>
                         <td>{roteador.ganho}</td>
