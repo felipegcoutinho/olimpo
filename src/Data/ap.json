@@ -320,7 +320,7 @@
     "raio": "9,77 m",
     "usuarioMax": "100 usuários",
     "qtdePortas": "1",
-    "status": "Suporte",
+    "status": "Phaseout",
     "porta": "Fast",
     "throughputWireless24": "300Mbps (2x2)",
     "throughputWireless50": "",
