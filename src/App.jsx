@@ -11,28 +11,28 @@ import {AP, RADIO, CONVERSOR, GBIC, SWITCH, ONU, ROTEADOR} from "./Header";
 
 function App() {
   const [queryAP, setQueryAP] = React.useState("");
-  const [HideAP, setHideAP] = React.useState(false);
+  const [HideAP, setHideAP] = React.useState(true);
   const handleHideAP = () => setHideAP(!HideAP);
 
   const [queryRADIO, setQueryRADIO] = React.useState("");
-  const [HideRADIO, setHideRADIO] = React.useState(false);
+  const [HideRADIO, setHideRADIO] = React.useState(true);
   const handleHideRADIO = () => setHideRADIO(!HideRADIO);
 
   const [queryHO, setQueryHO] = React.useState("");
-  const [HideHO, setHideHO] = React.useState(false);
+  const [HideHO, setHideHO] = React.useState(true);
   const handleHideHO = () => setHideHO(!HideHO);
 
   const [querySWITCH, setQuerySWITCH] = React.useState("");
-  const [HideSwitch, setHideSwitch] = React.useState(false);
+  const [HideSwitch, setHideSwitch] = React.useState(true);
   const handleHideSwitch = () => setHideSwitch(!HideSwitch);
 
-  const [HideConversor, setHideConversor] = React.useState(false);
+  const [HideConversor, setHideConversor] = React.useState(true);
   const handleHideConversor = () => setHideConversor(!HideConversor);
 
-  const [HideSFP, setHideSFP] = React.useState(false);
+  const [HideSFP, setHideSFP] = React.useState(true);
   const handleHideSFP = () => setHideSFP(!HideSFP);
 
-  const [HideONU, setHideONU] = React.useState(false);
+  const [HideONU, setHideONU] = React.useState(true);
   const handleHideONU = () => setHideONU(!HideONU);
 
   const [urlValue, setUrlValue] = React.useState("");
