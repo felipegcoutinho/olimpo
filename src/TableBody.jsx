@@ -136,8 +136,8 @@ function App() {
           <p>X = Não Possui a Função.</p>
         </div>
       </div>
-      {/* BOTÃO MOSTRAR / OCULTAR */}
 
+      {/* BOTÃO MOSTRAR / OCULTAR */}
       <div className={style.box_container}>
         <div>
           <button className={style.btn_hideShow} onClick={MostrarTudo}>
