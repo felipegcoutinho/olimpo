@@ -238,7 +238,7 @@
     "cobertura": "180m²",
     "raio": "7,56m",
     "usuarioMax": "60 usuários",
-    "planoRecomendado": "Acima de 100Mbps",
+    "planoRecomendado": "Até 400Mbps",
     "QtdePortas": "1(LAN) + 1(W / L)",
     "porta": "Giga",
     "datarateMax": "2Ghz (300Mbps) | 5G (867Mbps)",
@@ -256,9 +256,9 @@
     "garantia": "5 anos",
     "status": "Suporte",
     "pagina": "https://www.intelbras.com/pt-br/roteador-wireless-mesh-twibi-giga",
-    "datasheet": "http://backend.intelbras.com/sites/default/files/2021-12/Datasheet%20Twibi%20Giga%20-%2001.12.pdf",
+    "datasheet": "https://backend.intelbras.com/sites/default/files/2022-12/Datasheet%20Twibi%20Giga%20-%2020.12.pdf",
     "guia": "https://backend.intelbras.com/sites/default/files/2022-11/Manual_Twibi_GIGA_portugues_05-22.pdf",
-    "manual": "https://backend.intelbras.com/sites/default/files/2022-11/Manual_Twibi_GIGA_portugues_05-22_site_0.pdf"
+    "manual": "https://backend.intelbras.com/sites/default/files/2022-12/Manual_Twibi_GIGA_portugues_06-22_0.pdf"
   },
   {
     "id": "10",
@@ -285,7 +285,7 @@
     "garantia": "5 anos",
     "status": "Suporte",
     "pagina": "https://www.intelbras.com/pt-br/roteador-wi-fi-5-mesh-ac-1200-twibi-giga",
-    "datasheet": "http://backend.intelbras.com/sites/default/files/2021-12/Datasheet%20Twibi%20Giga%2B%20-%2001.12.pdf",
+    "datasheet": "https://backend.intelbras.com/sites/default/files/2022-12/Datasheet%20Twibi%20Giga%2B%20-%2020.12.pdf",
     "guia": "https://backend.intelbras.com/sites/default/files/2021-02/Guia_Twibi_Giga%2B_03-20_site.pdf",
     "manual": "https://backend.intelbras.com/sites/default/files/2022-12/Manual_Twibi_GIGA%20_portugues_07-22.pdf"
   },
