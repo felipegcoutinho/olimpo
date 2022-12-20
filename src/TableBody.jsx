@@ -7,7 +7,7 @@ import Switchs from "./Data/switchs.json";
 import Onus from "./Data/onus.json";
 import Roteadores from "./Data/roteadores.json";
 import style from "../src/App.module.css";
-import {AP, RADIO, CONVERSOR, GBIC, SWITCH, ONU, ROTEADOR} from "./Header";
+import {AP, RADIO, CONVERSOR, GBIC, SWITCH, ONU, ROTEADOR} from "./TableHead";
 
 function App() {
   const [queryAP, setQueryAP] = React.useState("");
