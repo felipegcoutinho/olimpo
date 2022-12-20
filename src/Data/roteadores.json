@@ -267,7 +267,7 @@
     "cobertura": "180m²",
     "raio": "7,56m",
     "usuarioMax": "60 usuários",
-    "planoRecomendado": "Acima de 100Mbps",
+    "planoRecomendado": "Até 400Mbps",
     "QtdePortas": "1(LAN) + 1(W / L)",
     "porta": "Giga",
     "datarateMax": "2Ghz (300Mbps) | 5G (867Mbps)",
@@ -287,7 +287,7 @@
     "pagina": "https://www.intelbras.com/pt-br/roteador-wi-fi-5-mesh-ac-1200-twibi-giga",
     "datasheet": "http://backend.intelbras.com/sites/default/files/2021-12/Datasheet%20Twibi%20Giga%2B%20-%2001.12.pdf",
     "guia": "https://backend.intelbras.com/sites/default/files/2021-02/Guia_Twibi_Giga%2B_03-20_site.pdf",
-    "manual": "https://backend.intelbras.com/sites/default/files/2022-11/Manual_Twibi_GIGA%20_portugues_06-22.pdf"
+    "manual": "https://backend.intelbras.com/sites/default/files/2022-12/Manual_Twibi_GIGA%20_portugues_07-22.pdf"
   },
   {
     "id": "11",
@@ -296,7 +296,7 @@
     "cobertura": "N/A",
     "raio": "N/A",
     "usuarioMax": "N/A",
-    "planoRecomendado":"N/A",
+    "planoRecomendado": "N/A",
     "QtdePortas": "1 (USB)",
     "porta": "USB 3.0",
     "datarateMax": "2Ghz (300Mbps) | 5G (867Mbps)",

@@ -35,7 +35,7 @@ export function RADIO() {
         <th>Ganho</th>
         <th>Porta</th>
         <th>Potência</th>
-        <th>PPS</th>
+        <th>Encam. de Pacotes</th>
         <th>Throughput Efetivo</th>
         <th>Throughput Nominal</th>
         <th>Abertura</th>
@@ -110,9 +110,12 @@ export function SWITCH() {
           <th>Modulação</th>
           <th>Gerenciável</th>
           <th>Alimenta via PoE</th>
-          <th>Encaminhamento de Pacotes</th>
+          <th>Encam. de Pacotes</th>
+          <th>Backplane</th>
           <th>Possui SFP</th>
           <th>PoE Extender</th>
+          <th>PoE/Porta</th>
+          <th>PoE/Total</th>
           <th>Qos</th>
           <th>Garantia</th>
           <th>Status</th>

@@ -17,7 +17,7 @@ body {
 }
 
 a {
-  color: black;
+  color: white;
   font-weight: bold;
   text-decoration: none;
 }
@@ -287,6 +287,7 @@ input {
 .giga,
 .sim,
 .nao,
+.normal,
 .variado1,
 .variado2,
 .variado3 {
@@ -314,6 +315,11 @@ input {
 .nao {
   background-color: #fff2f2;
   color: #c76a6a;
+}
+
+.normal {
+  background-color: #d4d4d4;
+  color: #464646;
 }
 
 .variado1 {

@@ -264,7 +264,17 @@ function App() {
                       <tr>
                         <td>{radio.modelo}</td>
                         <td>{radio.indicado}</td>
-                        <td>{radio.ganho}</td>
+                        <td>
+                          <span className={style.tooltip}>
+                            {radio.ganho}
+                            {radio.ganho === "SEM ANTENA" && <i className="fa-regular fa-circle-question"></i>}
+                            {radio.ganho === "SEM ANTENA" && (
+                              <span className={style.tooltiptext}>
+                                Indicar parceria <a href="http://www.algcom.com.br">ALGCOM</a>
+                              </span>
+                            )}
+                          </span>
+                        </td>
                         <td>
                           <span className={radio.porta === "Fast" ? style.fast : style.giga}>{radio.porta}</span>
                         </td>
@@ -272,8 +282,8 @@ function App() {
                         <td>{radio.pps}</td>
                         <td>{radio.throughputEfetivo}</td>
                         <td>{radio.throughputNominal}</td>
-                        <td>{radio.aberturaHorVer}</td>
-                        <td>{radio.distancia}</td>
+                        <td className={radio.aberturaHorVer === " " && style.NaoPossui}>{radio.aberturaHorVer}</td>
+                        <td className={radio.distancia === " " && style.NaoPossui}>{radio.distancia}</td>
                         <td>{radio.wireless}</td>
                         <td>{radio.garantia}</td>
                         <td>
@@ -484,8 +494,11 @@ function App() {
                         <td>{swicth.gerenciavel}</td>
                         <td>{swicth.poe}</td>
                         <td>{swicth.taxaTransferencia}</td>
+                        <td>{swicth.backplane}</td>
                         <td>{swicth.sfp}</td>
                         <td>{swicth.poeExtender}</td>
+                        <td className={swicth.poePorta === " " && style.NaoPossui}>{swicth.poePorta}</td>
+                        <td className={swicth.poeTotal === " " && style.NaoPossui}>{swicth.poeTotal}</td>
                         <td>{swicth.qos}</td>
                         <td>{swicth.garantia}</td>
                         <td>
@@ -709,7 +722,10 @@ function App() {
                         <td>
                           <b>{onu.modelo}</b>
                         </td>
-                        <td>{onu.modulação}</td>
+
+                        <td>
+                          <span className={onu.modulação === "Fast" ? style.fast : style.giga}>{onu.modulação}</span>
+                        </td>
                         <td className={onu.fxs === "" ? style.NaoPossui : null}>{onu.fxs}</td>
                         <td>
                           {onu.tipo === "EPON/GPON" && <span className={style.variado1}>{onu.tipo}</span>}
