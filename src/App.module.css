@@ -339,13 +339,15 @@ input {
 
 .NaoPossui {
   color: #e34646;
+  font-size: 0.8rem !important;
+  font-weight: 600 !important;
 }
 
-.NaoPossui::before {
+/* .NaoPossui::before {
   content: " \f00d\ ";
   font-family: FontAwesome;
   font-size: 1.1rem;
-}
+} */
 
 /* TABELAS */
 
@@ -422,12 +424,12 @@ tbody:nth-child(even) {
   font-size: 0.7rem;
   left: 50%;
   margin-left: -60px;
-  padding: 5px 0;
+  padding: 5px 10px;
   position: absolute;
   text-align: center;
   text-transform: uppercase;
   visibility: hidden;
-  width: 200px;
+  width: fit-content;
   z-index: 1;
 }
 

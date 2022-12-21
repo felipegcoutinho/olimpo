@@ -180,16 +180,17 @@ function App() {
                     <tbody>
                       <tr>
                         <td>{ap.modelo}</td>
+                        <td>
+                          <span className={ap.modulação === "Fast" ? style.fast : style.giga}>{ap.modulação}</span>
+                        </td>
                         <td>{ap.cobertura}</td>
                         <td>{ap.raio}</td>
                         <td>{ap.usuarioMax}</td>
-                        <td>
-                          <span className={ap.porta === "Fast" ? style.fast : style.giga}>{ap.porta}</span>
-                        </td>
+
                         <td>{ap.throughputWireless24}</td>
-                        <td className={ap.throughputWireless50 === "" ? style.NaoPossui : null}>{ap.throughputWireless50}</td>
+                        <td className={ap.throughputWireless50 === "x" ? style.NaoPossui : null}>{ap.throughputWireless50}</td>
                         <td>{ap.qtdePortas}</td>
-                        <td className={ap.poe === "" && style.NaoPossui}>{ap.poe}</td>
+                        <td className={ap.poe === "x" && style.NaoPossui}>{ap.poe}</td>
                         <td>{ap.handover}</td>
                         <td>{ap.wisefi}</td>
                         <td>{ap.potenciaMax}</td>
@@ -263,27 +264,27 @@ function App() {
                     <tbody>
                       <tr>
                         <td>{radio.modelo}</td>
+
                         <td>{radio.indicado}</td>
                         <td>
+                          <span className={radio.modulação === "Fast" ? style.fast : style.giga}>{radio.modulação}</span>
+                        </td>
+                        <td>
                           <span className={style.tooltip}>
-                            {radio.ganho}
-                            {radio.ganho === "SEM ANTENA" && <i className="fa-regular fa-circle-question"></i>}
+                            {radio.ganho} {radio.ganho === "SEM ANTENA" && <i className="fa-regular fa-circle-question"></i>}
                             {radio.ganho === "SEM ANTENA" && (
                               <span className={style.tooltiptext}>
-                                Indicar parceria <a href="http://www.algcom.com.br">ALGCOM</a>
+                                Antena adquirida separadamente, indicar parceria <a href="http://www.algcom.com.br">ALGCOM</a>
                               </span>
                             )}
                           </span>
-                        </td>
-                        <td>
-                          <span className={radio.porta === "Fast" ? style.fast : style.giga}>{radio.porta}</span>
                         </td>
                         <td>{radio.potencia}</td>
                         <td>{radio.pps}</td>
                         <td>{radio.throughputEfetivo}</td>
                         <td>{radio.throughputNominal}</td>
-                        <td className={radio.aberturaHorVer === " " && style.NaoPossui}>{radio.aberturaHorVer}</td>
-                        <td className={radio.distancia === " " && style.NaoPossui}>{radio.distancia}</td>
+                        <td className={radio.aberturaHorVer === "x" && style.NaoPossui}>{radio.aberturaHorVer}</td>
+                        <td className={radio.distancia === "x" && style.NaoPossui}>{radio.distancia}</td>
                         <td>{radio.wireless}</td>
                         <td>{radio.garantia}</td>
                         <td>
@@ -386,11 +387,11 @@ function App() {
                         <td>{roteador.QtdePortas}</td>
                         <td>{roteador.datarateMax}</td>
                         <td>{roteador.ganho}</td>
-                        <td>{roteador.ipv6}</td>
-                        <td>{roteador.repetidor}</td>
-                        <td>{roteador.roteador}</td>
-                        <td>{roteador.cliente}</td>
-                        <td>{roteador.ap}</td>
+                        <td className={roteador.ipv6 === "x" ? style.NaoPossui : null}>{roteador.ipv6}</td>
+                        <td className={roteador.repetidor === "x" ? style.NaoPossui : null}>{roteador.repetidor}</td>
+                        <td className={roteador.roteador === "x" ? style.NaoPossui : null}>{roteador.roteador}</td>
+                        <td className={roteador.cliente === "x" ? style.NaoPossui : null}>{roteador.cliente}</td>
+                        <td className={roteador.ap === "x" ? style.NaoPossui : null}>{roteador.ap}</td>
                         <td>
                           <span className={style.tooltip}>
                             <span>
@@ -486,19 +487,18 @@ function App() {
                             {swicth.modelo === "SG 2404 PoE L2+" && <span className={style.tooltiptext}>SG 2404 PoE L2+ (4760062)</span>}
                           </span>
                         </td>
-
-                        <td>{swicth.portas}</td>
                         <td>
                           <span className={swicth.modulação === "Fast" ? style.fast : style.giga}>{swicth.modulação}</span>
                         </td>
-                        <td>{swicth.gerenciavel}</td>
-                        <td>{swicth.poe}</td>
+                        <td>{swicth.portas}</td>
+                        <td className={swicth.gerenciavel === "x" && style.NaoPossui}>{swicth.gerenciavel}</td>
+                        <td className={swicth.poe === "x" && style.NaoPossui}>{swicth.poe}</td>
                         <td>{swicth.taxaTransferencia}</td>
                         <td>{swicth.backplane}</td>
-                        <td>{swicth.sfp}</td>
-                        <td>{swicth.poeExtender}</td>
-                        <td className={swicth.poePorta === " " && style.NaoPossui}>{swicth.poePorta}</td>
-                        <td className={swicth.poeTotal === " " && style.NaoPossui}>{swicth.poeTotal}</td>
+                        <td className={swicth.sfp === "x" && style.NaoPossui}>{swicth.sfp}</td>
+                        <td className={swicth.poeExtender === "x" && style.NaoPossui}>{swicth.poeExtender}</td>
+                        <td className={swicth.poePorta === "x" && style.NaoPossui}>{swicth.poePorta}</td>
+                        <td className={swicth.poeTotal === "x" && style.NaoPossui}>{swicth.poeTotal}</td>
                         <td>{swicth.qos}</td>
                         <td>{swicth.garantia}</td>
                         <td>
@@ -576,7 +576,7 @@ function App() {
                         <b>{conversor.modelo}</b>
                       </td>
                       <td>{conversor.conector}</td>
-                      <td>{conversor.wdm}</td>
+                      <td className={conversor.wdm === "x" ? style.NaoPossui : null}>{conversor.wdm}</td>
                       <td>{conversor.distancia}</td>
                       <td>
                         <span className={conversor.modulação === "Fast" ? style.fast : style.giga}>{conversor.modulação}</span>
@@ -657,18 +657,20 @@ function App() {
                           {gbic.modulo === "Gpon" && <span className={style.fast}>GPON</span>}
                           {gbic.modulo === "XFP" && <span className={style.giga}>XFP</span>}
                         </td>
-                        <td>{gbic.wdm}</td>
-
+                        <td className={gbic.wdm === "x" ? style.NaoPossui : null}>{gbic.wdm}</td>
                         <td>
                           <span className={style.tooltip}>
                             {gbic.distancia} {gbic.fibra === "Multimodo" && <i className="fa-regular fa-circle-question"></i>}
                             {gbic.fibra === "Multimodo" && <span className={style.tooltiptext}>62,5 / 125 μm até 275 mts</span>}
                           </span>
                         </td>
-                        <td>{gbic.modulação}</td>
+
+                        <td>
+                          <span className={gbic.modulação === "Fast" ? style.fast : style.giga}>{gbic.modulação}</span>
+                        </td>
                         <td>{gbic.fibra}</td>
                         <td>{gbic.potencia}</td>
-                        <td>{gbic.recepMaxMin}</td>
+                        <td>{gbic.sensibilidade}</td>
                         <td>{gbic.garantia}</td>
                         <td>
                           <span className={style.tooltip}>
@@ -726,18 +728,20 @@ function App() {
                         <td>
                           <span className={onu.modulação === "Fast" ? style.fast : style.giga}>{onu.modulação}</span>
                         </td>
-                        <td className={onu.fxs === "" ? style.NaoPossui : null}>{onu.fxs}</td>
+                        <td className={onu.fxs === "x" ? style.NaoPossui : null}>{onu.fxs}</td>
                         <td>
                           {onu.tipo === "EPON/GPON" && <span className={style.variado1}>{onu.tipo}</span>}
                           {onu.tipo === "GPON" && <span className={style.variado2}>{onu.tipo}</span>}
                         </td>
-
-                        <td className={onu.transmissao2ghz === "" ? style.NaoPossui : null}>{onu.transmissao2ghz}</td>
-                        <td className={onu.transmissao5ghz === "" ? style.NaoPossui : null}>{onu.transmissao5ghz}</td>
-                        <td className={onu.ssid === "" ? style.NaoPossui : null}>{onu.ssid}</td>
-                        <td>{onu.tr069}</td>
-                        <td>{onu.customize}</td>
-                        <td>{onu.remotize}</td>
+                        <td>{onu.sensibilidade}</td>
+                        <td className={onu.cobertura === "x" ? style.NaoPossui : null}>{onu.cobertura}</td>
+                        <td className={onu.clientesSimultaneos === "x" ? style.NaoPossui : null}>{onu.clientesSimultaneos}</td>
+                        <td className={onu.transmissao2ghz === "x" ? style.NaoPossui : null}>{onu.transmissao2ghz}</td>
+                        <td className={onu.transmissao5ghz === "x" ? style.NaoPossui : null}>{onu.transmissao5ghz}</td>
+                        <td className={onu.ssid === "x" ? style.NaoPossui : null}>{onu.ssid}</td>
+                        <td className={onu.tr069 === "x" ? style.NaoPossui : null}>{onu.tr069}</td>
+                        <td className={onu.customize === "x" ? style.NaoPossui : null}>{onu.customize}</td>
+                        <td className={onu.remotize === "x" ? style.NaoPossui : null}>{onu.remotize}</td>
                         <td>{onu.garantia}</td>
                         <td>
                           <span className={style.tooltip}>

@@ -5,10 +5,10 @@ export function AP() {
     <thead>
       <tr>
         <th>Modelo</th>
+        <th>Modulação</th>
         <th>Cobertura</th>
         <th>Raio</th>
         <th>Usuários simultâneos</th>
-        <th>Porta</th>
         <th>Wireless 2.4ghz</th>
         <th>Wireless 5ghz</th>
         <th>Qtde Portas</th>
@@ -32,8 +32,9 @@ export function RADIO() {
       <tr>
         <th>Modelo</th>
         <th>Indicado</th>
+        <th>Modulação</th>
+
         <th>Ganho</th>
-        <th>Porta</th>
         <th>Potência</th>
         <th>Encam. de Pacotes</th>
         <th>Throughput Efetivo</th>
@@ -106,8 +107,8 @@ export function SWITCH() {
       <thead>
         <tr>
           <th>Modelo</th>
-          <th>Portas</th>
           <th>Modulação</th>
+          <th>Qtde Portas</th>
           <th>Gerenciável</th>
           <th>Alimenta via PoE</th>
           <th>Encam. de Pacotes</th>
@@ -135,9 +136,12 @@ export function ONU() {
       <thead>
         <tr>
           <th>Modelo</th>
-          <th>Porta</th>
-          <th>Fxs</th>
+          <th>Modulação</th>
+          <th>FXS</th>
           <th>Tipo</th>
+          <th>Sensibilidade Max | Min</th>
+          <th>Cobertura</th>
+          <th>Usuários simultâneos</th>
           <th>Wireless 2.4ghz</th>
           <th>Wireless 5ghz</th>
           <th>SSID</th>
@@ -167,7 +171,7 @@ export function ROTEADOR() {
           <th>Usuários Máximos</th>
           <th>Plano Recomendado</th>
           <th>Porta</th>
-          <th>Quantidade de Portas</th>
+          <th>Qtde Portas</th>
           <th>Datarate Máx.</th>
           <th>Ganho da antena</th>
           <th>IPV6</th>
