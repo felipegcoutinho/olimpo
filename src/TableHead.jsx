@@ -14,7 +14,7 @@ export function AP() {
         <th>Datarate Máx. 5G</th>
         <th>Qtde Portas</th>
         <th>PoE</th>
-        <th>Connecti</th>
+        <th>ConnectFi</th>
         <th>Handover</th>
         <th>WiseFi</th>
         <th>Potência de TX 2G</th>
