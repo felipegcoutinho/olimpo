@@ -385,6 +385,10 @@ input {
   padding: 0 30px;
 }
 
+#ONU th:nth-child(3) {
+  padding: 0 25px;
+}
+
 .devicesTable thead {
   background-color: #2f3542;
   color: white;

@@ -135,7 +135,7 @@ export function ONU() {
   return (
     <>
       <thead>
-        <tr>
+        <tr id={style.ONU}>
           <th>Modelo</th>
           <th>Modulação</th>
           <th>FXS</th>
