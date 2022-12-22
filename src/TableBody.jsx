@@ -186,14 +186,26 @@ function App() {
                         <td>{ap.cobertura}</td>
                         <td>{ap.raio}</td>
                         <td>{ap.usuarioMax}</td>
-
                         <td>{ap.throughputWireless24}</td>
                         <td className={ap.throughputWireless50 === "x" ? style.NaoPossui : null}>{ap.throughputWireless50}</td>
                         <td>{ap.qtdePortas}</td>
                         <td className={ap.poe === "x" && style.NaoPossui}>{ap.poe}</td>
-                        <td>{ap.handover}</td>
-                        <td>{ap.wisefi}</td>
-                        <td>{ap.potenciaMax}</td>
+
+                        <td>
+                          <span className={style.tooltip}>
+                            {ap.connectiVersion} {ap.connectiVersion !== "N/A" && <i className="fa-regular fa-circle-question"></i>}
+                            {ap.connectiVersion !== "N/A" && (
+                              <span className={style.tooltiptext}>
+                                O AP precisa estar com a versão {ap.connectiVersion} para o connectFi funcionar.
+                              </span>
+                            )}
+                          </span>
+                        </td>
+
+                        <td className={ap.handover === "x" && style.NaoPossui}>{ap.handover}</td>
+                        <td className={ap.wisefi === "x" && style.NaoPossui}>{ap.wisefi}</td>
+                        <td>{ap.potencia2G}</td>
+                        <td className={ap.potencia5G === "x" && style.NaoPossui}>{ap.potencia5G}</td>
                         <td>
                           <span className={style.tooltip}>
                             <span>

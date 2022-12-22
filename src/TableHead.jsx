@@ -1,9 +1,10 @@
 import React from "react";
+import style from "../src/App.module.css";
 
 export function AP() {
   return (
     <thead>
-      <tr>
+      <tr id={style.AP}>
         <th>Modelo</th>
         <th>Modulação</th>
         <th>Cobertura</th>
@@ -13,9 +14,11 @@ export function AP() {
         <th>Datarate Máx. 5G</th>
         <th>Qtde Portas</th>
         <th>PoE</th>
+        <th>Connecti</th>
         <th>Handover</th>
         <th>WiseFi</th>
-        <th>Potência de Transmissão</th>
+        <th>Potência TX 2G</th>
+        <th>Potência TX 5G</th>
         <th>Status</th>
         <th>Página</th>
         <th>Datasheet</th>
