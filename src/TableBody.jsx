@@ -152,8 +152,8 @@ function App() {
         <div className={style.box_content}>
           <div className={style.header_box_content}>
             <h2 id="ap">
-              Access Point
               <button className={HideAP ? style.arrowHide : style.arrowShow} onClick={handleHideAP}></button>
+              Access Point
             </h2>
             <label>
               <i className="fa-solid fa-magnifying-glass"></i>
@@ -172,7 +172,7 @@ function App() {
                 {APs.filter((ap) => {
                   if (ap.modelo.toLowerCase().includes(queryAP.toLowerCase())) {
                     return ap;
-                  } else if (ap.porta.toLowerCase().includes(queryAP.toLowerCase())) {
+                  } else if (ap.modulação.toLowerCase().includes(queryAP.toLowerCase())) {
                     return ap;
                   }
                 }).map((ap) => {
@@ -236,8 +236,8 @@ function App() {
         <div className={style.box_content}>
           <div className={style.header_box_content}>
             <h2 id="radio">
-              Radios Outdoor
               <button className={HideRADIO ? style.arrowHide : style.arrowShow} onClick={handleHideRADIO}></button>
+              Radios Outdoor
             </h2>
             <label>
               <i className="fa-solid fa-magnifying-glass"></i>
@@ -256,7 +256,7 @@ function App() {
                 {Radios.filter((radio) => {
                   if (radio.modelo.toLowerCase().includes(queryRADIO.toLowerCase())) {
                     return radio;
-                  } else if (radio.porta.toLowerCase().includes(queryRADIO.toLowerCase())) {
+                  } else if (radio.modulação.toLowerCase().includes(queryRADIO.toLowerCase())) {
                     return radio;
                   }
                 }).map((radio) => {
@@ -347,8 +347,8 @@ function App() {
         <div className={style.box_content}>
           <div className={style.header_box_content}>
             <h2 id="ho">
-              Roteadores HO
               <button className={HideHO ? style.arrowHide : style.arrowShow} onClick={handleHideHO}></button>
+              Roteadores Home Office
             </h2>
             <label>
               <i className="fa-solid fa-magnifying-glass"></i>
@@ -367,7 +367,7 @@ function App() {
                 {Roteadores.filter((roteador) => {
                   if (roteador.modelo.toLowerCase().includes(queryHO.toLowerCase())) {
                     return roteador;
-                  } else if (roteador.porta.toLowerCase().includes(queryHO.toLowerCase())) {
+                  } else if (roteador.modulação.toLowerCase().includes(queryHO.toLowerCase())) {
                     return roteador;
                   }
                 }).map((roteador) => {
@@ -382,7 +382,7 @@ function App() {
                         <td>{roteador.usuarioMax}</td>
                         <td>{roteador.planoRecomendado}</td>
                         <td>
-                          <span className={roteador.porta === "Fast" ? style.fast : style.giga}>{roteador.porta}</span>
+                          <span className={roteador.modulação === "Fast" ? style.fast : style.giga}>{roteador.modulação}</span>
                         </td>
                         <td>{roteador.QtdePortas}</td>
                         <td>{roteador.datarateMax}</td>
@@ -453,8 +453,8 @@ function App() {
         <div className={style.box_content}>
           <div className={style.header_box_content}>
             <h2 id="switch">
-              Switchs
               <button className={HideSwitch ? style.arrowHide : style.arrowShow} onClick={handleHideSwitch}></button>
+              Switchs
             </h2>
             <label>
               <i className="fa-solid fa-magnifying-glass"></i>
@@ -561,242 +561,248 @@ function App() {
         <div className={style.box_content}>
           <div className={style.header_box_content}>
             <h2 id="conversor">
-              Conversor de Mídia
               <button className={HideConversor ? style.arrowHide : style.arrowShow} onClick={handleHideConversor}></button>
+              Conversor de Mídia
             </h2>
           </div>
           {HideConversor ? (
-            <table className={style.devicesTable}>
-              <CONVERSOR />
-              {Conversores.map((conversor) => {
-                return (
-                  <tbody>
-                    <tr>
-                      <td>
-                        <b>{conversor.modelo}</b>
-                      </td>
-                      <td>{conversor.conector}</td>
-                      <td className={conversor.wdm === "x" ? style.NaoPossui : null}>{conversor.wdm}</td>
-                      <td>{conversor.distancia}</td>
-                      <td>
-                        <span className={conversor.modulação === "Fast" ? style.fast : style.giga}>{conversor.modulação}</span>
-                      </td>
-                      <td>{conversor.fibra}</td>
-                      <td>{conversor.potencia}</td>
-                      <td>{conversor.recepMax}</td>
-                      <td>{conversor.recepMin}</td>
-                      <td>{conversor.garantia}</td>
-                      <td>
-                        <span className={style.tooltip}>
-                          <span>
-                            {conversor.status === "Phaseout" && <span className={style.status_phaseout}>{conversor.status}</span>}
-                            {conversor.status === "Suporte" && <span className={style.status_suporte}>{conversor.status}</span>}
+            <div style={{overflowX: "auto"}}>
+              <table className={style.devicesTable}>
+                <CONVERSOR />
+                {Conversores.map((conversor) => {
+                  return (
+                    <tbody>
+                      <tr>
+                        <td>
+                          <b>{conversor.modelo}</b>
+                        </td>
+                        <td>{conversor.conector}</td>
+                        <td className={conversor.wdm === "x" ? style.NaoPossui : null}>{conversor.wdm}</td>
+                        <td>{conversor.distancia}</td>
+                        <td>
+                          <span className={conversor.modulação === "Fast" ? style.fast : style.giga}>{conversor.modulação}</span>
+                        </td>
+                        <td>{conversor.fibra}</td>
+                        <td>{conversor.potencia}</td>
+                        <td>{conversor.recepMax}</td>
+                        <td>{conversor.recepMin}</td>
+                        <td>{conversor.garantia}</td>
+                        <td>
+                          <span className={style.tooltip}>
+                            <span>
+                              {conversor.status === "Phaseout" && <span className={style.status_phaseout}>{conversor.status}</span>}
+                              {conversor.status === "Suporte" && <span className={style.status_suporte}>{conversor.status}</span>}
+                            </span>
+                            {conversor.status === "Phaseout" && <span className={style.tooltiptext}>Apenas email</span>}
+                            {conversor.status === "Suporte" && <span className={style.tooltiptext}>Fornecemos suporte</span>}
                           </span>
-                          {conversor.status === "Phaseout" && <span className={style.tooltiptext}>Apenas email</span>}
-                          {conversor.status === "Suporte" && <span className={style.tooltiptext}>Fornecemos suporte</span>}
-                        </span>
-                      </td>
-                      <td>
-                        <a target="_blank" rel="noopener noreferrer" href={conversor.pagina}>
-                          <span className={style.paginalink}>Página</span>
-                        </a>
-                      </td>
-                      <td>
-                        {conversor.datasheet === "-" ? (
-                          <a target="_blank" rel="noopener noreferrer" href="#">
-                            <span className={style.pdfbtn_NA}>N/A</span>
+                        </td>
+                        <td>
+                          <a target="_blank" rel="noopener noreferrer" href={conversor.pagina}>
+                            <span className={style.paginalink}>Página</span>
                           </a>
-                        ) : (
-                          <a target="_blank" rel="noopener noreferrer" href={conversor.datasheet}>
-                            <span className={style.pdfbtn}>Datasheet</span>
-                          </a>
-                        )}
-                      </td>
-                      <td>
-                        {conversor.guia === "-" ? (
-                          <a target="_blank" rel="noopener noreferrer" href="#">
-                            <span className={style.pdfbtn_NA}>N/A</span>
-                          </a>
-                        ) : (
-                          <a target="_blank" rel="noopener noreferrer" href={conversor.guia}>
-                            <span className={style.pdfbtn}>Guia</span>
-                          </a>
-                        )}
-                      </td>
-                    </tr>
-                  </tbody>
-                );
-              })}
-            </table>
+                        </td>
+                        <td>
+                          {conversor.datasheet === "-" ? (
+                            <a target="_blank" rel="noopener noreferrer" href="#">
+                              <span className={style.pdfbtn_NA}>N/A</span>
+                            </a>
+                          ) : (
+                            <a target="_blank" rel="noopener noreferrer" href={conversor.datasheet}>
+                              <span className={style.pdfbtn}>Datasheet</span>
+                            </a>
+                          )}
+                        </td>
+                        <td>
+                          {conversor.guia === "-" ? (
+                            <a target="_blank" rel="noopener noreferrer" href="#">
+                              <span className={style.pdfbtn_NA}>N/A</span>
+                            </a>
+                          ) : (
+                            <a target="_blank" rel="noopener noreferrer" href={conversor.guia}>
+                              <span className={style.pdfbtn}>Guia</span>
+                            </a>
+                          )}
+                        </td>
+                      </tr>
+                    </tbody>
+                  );
+                })}
+              </table>
+            </div>
           ) : null}
         </div>
         {/* SFP */}
         <div className={style.box_content}>
           <div className={style.header_box_content}>
             <h2 id="sfp">
-              Módulo SFP
               <button className={HideSFP ? style.arrowHide : style.arrowShow} onClick={handleHideSFP}></button>
+              Módulo SFP
             </h2>
           </div>
           {HideSFP ? (
-            <table className={style.devicesTable}>
-              <GBIC />
-              {Gbics.map((gbic) => {
-                if (gbic.linha === "gbic") {
-                  return (
-                    <tbody>
-                      <tr>
-                        <td>
-                          <b>{gbic.modelo}</b>
-                        </td>
-                        <td>{gbic.tipoConector}</td>
-                        <td>
-                          {gbic.modulo === "SFP+" && <span className={style.variado1}>SFP+</span>}
-                          {gbic.modulo === "SFP" && <span className={style.variado2}>SFP</span>}
-                          {gbic.modulo === "Epon" && <span className={style.variado3}>EPON</span>}
-                          {gbic.modulo === "Gpon" && <span className={style.fast}>GPON</span>}
-                          {gbic.modulo === "XFP" && <span className={style.giga}>XFP</span>}
-                        </td>
-                        <td className={gbic.wdm === "x" ? style.NaoPossui : null}>{gbic.wdm}</td>
-                        <td>
-                          <span className={style.tooltip}>
-                            {gbic.distancia} {gbic.fibra === "Multimodo" && <i className="fa-regular fa-circle-question"></i>}
-                            {gbic.fibra === "Multimodo" && <span className={style.tooltiptext}>62,5 / 125 μm até 275 mts</span>}
-                          </span>
-                        </td>
-
-                        <td>
-                          <span className={gbic.modulação === "Fast" ? style.fast : style.giga}>{gbic.modulação}</span>
-                        </td>
-                        <td>{gbic.fibra}</td>
-                        <td>{gbic.potencia}</td>
-                        <td>{gbic.sensibilidade}</td>
-                        <td>{gbic.garantia}</td>
-                        <td>
-                          <span className={style.tooltip}>
-                            <span>
-                              {gbic.status === "Phaseout" && <span className={style.status_phaseout}>{gbic.status}</span>}
-                              {gbic.status === "Suporte" && <span className={style.status_suporte}>{gbic.status}</span>}
+            <div style={{overflowX: "auto"}}>
+              <table className={style.devicesTable}>
+                <GBIC />
+                {Gbics.map((gbic) => {
+                  if (gbic.linha === "gbic") {
+                    return (
+                      <tbody>
+                        <tr>
+                          <td>
+                            <b>{gbic.modelo}</b>
+                          </td>
+                          <td>{gbic.tipoConector}</td>
+                          <td>
+                            {gbic.modulo === "SFP+" && <span className={style.variado1}>SFP+</span>}
+                            {gbic.modulo === "SFP" && <span className={style.variado2}>SFP</span>}
+                            {gbic.modulo === "Epon" && <span className={style.variado3}>EPON</span>}
+                            {gbic.modulo === "Gpon" && <span className={style.fast}>GPON</span>}
+                            {gbic.modulo === "XFP" && <span className={style.giga}>XFP</span>}
+                          </td>
+                          <td className={gbic.wdm === "x" ? style.NaoPossui : null}>{gbic.wdm}</td>
+                          <td>
+                            <span className={style.tooltip}>
+                              {gbic.distancia} {gbic.fibra === "Multimodo" && <i className="fa-regular fa-circle-question"></i>}
+                              {gbic.fibra === "Multimodo" && <span className={style.tooltiptext}>62,5 / 125 μm até 275 mts</span>}
                             </span>
-                            {gbic.status === "Phaseout" && <span className={style.tooltiptext}>Apenas email</span>}
-                            {gbic.status === "Suporte" && <span className={style.tooltiptext}>Fornecemos suporte</span>}
-                          </span>
-                        </td>
-                        <td>
-                          <a target="_blank" rel="noopener noreferrer" href={gbic.pagina}>
-                            <span className={style.paginalink}>Página</span>
-                          </a>
-                        </td>
-                        <td>
-                          <a target="_blank" rel="noopener noreferrer" href={gbic.datasheet}>
-                            <span className={style.pdfbtn}>Datasheet</span>
-                          </a>
-                        </td>
-                        <td>
-                          <a target="_blank" rel="noopener noreferrer" href={gbic.guia}>
-                            <span className={style.pdfbtn}>Guia</span>
-                          </a>
-                        </td>
-                      </tr>
-                    </tbody>
-                  );
-                }
-              })}
-            </table>
+                          </td>
+
+                          <td>
+                            <span className={gbic.modulação === "Fast" ? style.fast : style.giga}>{gbic.modulação}</span>
+                          </td>
+                          <td>{gbic.fibra}</td>
+                          <td>{gbic.potencia}</td>
+                          <td>{gbic.sensibilidade}</td>
+                          <td>{gbic.garantia}</td>
+                          <td>
+                            <span className={style.tooltip}>
+                              <span>
+                                {gbic.status === "Phaseout" && <span className={style.status_phaseout}>{gbic.status}</span>}
+                                {gbic.status === "Suporte" && <span className={style.status_suporte}>{gbic.status}</span>}
+                              </span>
+                              {gbic.status === "Phaseout" && <span className={style.tooltiptext}>Apenas email</span>}
+                              {gbic.status === "Suporte" && <span className={style.tooltiptext}>Fornecemos suporte</span>}
+                            </span>
+                          </td>
+                          <td>
+                            <a target="_blank" rel="noopener noreferrer" href={gbic.pagina}>
+                              <span className={style.paginalink}>Página</span>
+                            </a>
+                          </td>
+                          <td>
+                            <a target="_blank" rel="noopener noreferrer" href={gbic.datasheet}>
+                              <span className={style.pdfbtn}>Datasheet</span>
+                            </a>
+                          </td>
+                          <td>
+                            <a target="_blank" rel="noopener noreferrer" href={gbic.guia}>
+                              <span className={style.pdfbtn}>Guia</span>
+                            </a>
+                          </td>
+                        </tr>
+                      </tbody>
+                    );
+                  }
+                })}
+              </table>
+            </div>
           ) : null}
         </div>
         {/* ONU */}
         <div className={style.box_content}>
           <div className={style.header_box_content}>
             <h2 id="onu">
-              ONUs/ONTs
               <button className={HideONU ? style.arrowHide : style.arrowShow} onClick={handleHideONU}></button>
+              ONUs/ONTs
             </h2>
           </div>
           {HideONU ? (
-            <table className={style.devicesTable}>
-              <ONU />
-              {Onus.map((onu) => {
-                if (onu.linha === "onu/ont") {
-                  return (
-                    <tbody>
-                      <tr>
-                        <td>
-                          <b>{onu.modelo}</b>
-                        </td>
+            <div style={{overflowX: "auto"}}>
+              <table className={style.devicesTable}>
+                <ONU />
+                {Onus.map((onu) => {
+                  if (onu.linha === "onu/ont") {
+                    return (
+                      <tbody>
+                        <tr>
+                          <td>
+                            <b>{onu.modelo}</b>
+                          </td>
 
-                        <td>
-                          <span className={onu.modulação === "Fast" ? style.fast : style.giga}>{onu.modulação}</span>
-                        </td>
-                        <td className={onu.fxs === "x" ? style.NaoPossui : null}>{onu.fxs}</td>
-                        <td>
-                          {onu.tipo === "EPON/GPON" && <span className={style.variado1}>{onu.tipo}</span>}
-                          {onu.tipo === "GPON" && <span className={style.variado2}>{onu.tipo}</span>}
-                        </td>
-                        <td>{onu.sensibilidade}</td>
-                        <td className={onu.cobertura === "x" ? style.NaoPossui : null}>{onu.cobertura}</td>
-                        <td className={onu.clientesSimultaneos === "x" ? style.NaoPossui : null}>{onu.clientesSimultaneos}</td>
-                        <td className={onu.transmissao2ghz === "x" ? style.NaoPossui : null}>{onu.transmissao2ghz}</td>
-                        <td className={onu.transmissao5ghz === "x" ? style.NaoPossui : null}>{onu.transmissao5ghz}</td>
-                        <td className={onu.ssid === "x" ? style.NaoPossui : null}>{onu.ssid}</td>
-                        <td className={onu.tr069 === "x" ? style.NaoPossui : null}>{onu.tr069}</td>
-                        <td className={onu.customize === "x" ? style.NaoPossui : null}>{onu.customize}</td>
-                        <td className={onu.remotize === "x" ? style.NaoPossui : null}>{onu.remotize}</td>
-                        <td>{onu.garantia}</td>
-                        <td>
-                          <span className={style.tooltip}>
-                            <span>
-                              {onu.status === "Phaseout" && <span className={style.status_phaseout}>{onu.status}</span>}
-                              {onu.status === "Suporte" && <span className={style.status_suporte}>{onu.status}</span>}
+                          <td>
+                            <span className={onu.modulação === "Fast" ? style.fast : style.giga}>{onu.modulação}</span>
+                          </td>
+                          <td className={onu.fxs === "x" ? style.NaoPossui : null}>{onu.fxs}</td>
+                          <td>
+                            {onu.tipo === "EPON/GPON" && <span className={style.variado1}>{onu.tipo}</span>}
+                            {onu.tipo === "GPON" && <span className={style.variado2}>{onu.tipo}</span>}
+                          </td>
+                          <td>{onu.sensibilidade}</td>
+                          <td className={onu.cobertura === "x" ? style.NaoPossui : null}>{onu.cobertura}</td>
+                          <td className={onu.clientesSimultaneos === "x" ? style.NaoPossui : null}>{onu.clientesSimultaneos}</td>
+                          <td className={onu.transmissao2ghz === "x" ? style.NaoPossui : null}>{onu.transmissao2ghz}</td>
+                          <td className={onu.transmissao5ghz === "x" ? style.NaoPossui : null}>{onu.transmissao5ghz}</td>
+                          <td className={onu.ssid === "x" ? style.NaoPossui : null}>{onu.ssid}</td>
+                          <td className={onu.tr069 === "x" ? style.NaoPossui : null}>{onu.tr069}</td>
+                          <td className={onu.customize === "x" ? style.NaoPossui : null}>{onu.customize}</td>
+                          <td className={onu.remotize === "x" ? style.NaoPossui : null}>{onu.remotize}</td>
+                          <td>{onu.garantia}</td>
+                          <td>
+                            <span className={style.tooltip}>
+                              <span>
+                                {onu.status === "Phaseout" && <span className={style.status_phaseout}>{onu.status}</span>}
+                                {onu.status === "Suporte" && <span className={style.status_suporte}>{onu.status}</span>}
+                              </span>
+                              {onu.status === "Phaseout" && <span className={style.tooltiptext}>Apenas email</span>}
+                              {onu.status === "Suporte" && <span className={style.tooltiptext}>Fornecemos suporte</span>}
                             </span>
-                            {onu.status === "Phaseout" && <span className={style.tooltiptext}>Apenas email</span>}
-                            {onu.status === "Suporte" && <span className={style.tooltiptext}>Fornecemos suporte</span>}
-                          </span>
-                        </td>
-                        <td>
-                          <a target="_blank" rel="noopener noreferrer" href={onu.pagina}>
-                            <span className={style.paginalink}>Página</span>
-                          </a>
-                        </td>
-                        <td>
-                          {onu.datasheet === "-" ? (
-                            <a target="_blank" rel="noopener noreferrer" href="#">
-                              <span className={style.pdfbtn_NA}>N/A</span>
+                          </td>
+                          <td>
+                            <a target="_blank" rel="noopener noreferrer" href={onu.pagina}>
+                              <span className={style.paginalink}>Página</span>
                             </a>
-                          ) : (
-                            <a target="_blank" rel="noopener noreferrer" href={onu.datasheet}>
-                              <span className={style.pdfbtn}>Datasheet</span>
-                            </a>
-                          )}
-                        </td>
-                        <td>
-                          {onu.guia === "-" ? (
-                            <a target="_blank" rel="noopener noreferrer" href="#">
-                              <span className={style.pdfbtn_NA}>N/A</span>
-                            </a>
-                          ) : (
-                            <a target="_blank" rel="noopener noreferrer" href={onu.guia}>
-                              <span className={style.pdfbtn}>Guia</span>
-                            </a>
-                          )}
-                        </td>
-                        <td>
-                          {onu.manual === "-" ? (
-                            <a target="_blank" rel="noopener noreferrer" href="#">
-                              <span className={style.pdfbtn_NA}>N/A</span>
-                            </a>
-                          ) : (
-                            <a target="_blank" rel="noopener noreferrer" href={onu.manual}>
-                              <span className={style.pdfbtn}>Manual</span>
-                            </a>
-                          )}
-                        </td>
-                      </tr>
-                    </tbody>
-                  );
-                }
-              })}
-            </table>
+                          </td>
+                          <td>
+                            {onu.datasheet === "-" ? (
+                              <a target="_blank" rel="noopener noreferrer" href="#">
+                                <span className={style.pdfbtn_NA}>N/A</span>
+                              </a>
+                            ) : (
+                              <a target="_blank" rel="noopener noreferrer" href={onu.datasheet}>
+                                <span className={style.pdfbtn}>Datasheet</span>
+                              </a>
+                            )}
+                          </td>
+                          <td>
+                            {onu.guia === "-" ? (
+                              <a target="_blank" rel="noopener noreferrer" href="#">
+                                <span className={style.pdfbtn_NA}>N/A</span>
+                              </a>
+                            ) : (
+                              <a target="_blank" rel="noopener noreferrer" href={onu.guia}>
+                                <span className={style.pdfbtn}>Guia</span>
+                              </a>
+                            )}
+                          </td>
+                          <td>
+                            {onu.manual === "-" ? (
+                              <a target="_blank" rel="noopener noreferrer" href="#">
+                                <span className={style.pdfbtn_NA}>N/A</span>
+                              </a>
+                            ) : (
+                              <a target="_blank" rel="noopener noreferrer" href={onu.manual}>
+                                <span className={style.pdfbtn}>Manual</span>
+                              </a>
+                            )}
+                          </td>
+                        </tr>
+                      </tbody>
+                    );
+                  }
+                })}
+              </table>
+            </div>
           ) : null}
         </div>
       </div>

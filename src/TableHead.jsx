@@ -1,4 +1,4 @@
-import React from "react";
+import React from 'react';
 
 export function AP() {
   return (
@@ -33,7 +33,6 @@ export function RADIO() {
         <th>Modelo</th>
         <th>Indicado</th>
         <th>Modulação</th>
-
         <th>Ganho</th>
         <th>Potência</th>
         <th>Encam. de Pacotes</th>
@@ -148,8 +147,8 @@ export function ONU() {
           <th>TR069</th>
           <th>Customize</th>
           <th>Remotize</th>
-          <th>Status</th>
           <th>Garantia</th>
+          <th>Status</th>
           <th>Página</th>
           <th>Datasheet</th>
           <th>Guia</th>
@@ -170,7 +169,7 @@ export function ROTEADOR() {
           <th>Raio</th>
           <th>Usuários Máximos</th>
           <th>Plano Recomendado</th>
-          <th>Porta</th>
+          <th>Modulação</th>
           <th>Qtde Portas</th>
           <th>Datarate Máx.</th>
           <th>Ganho da antena</th>
