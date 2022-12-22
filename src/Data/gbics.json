@@ -149,7 +149,7 @@
     "distancia": "10 Km",
     "modulação": "10 Gbps",
     "fibra": "Monomodo",
-    "potencia": "- 7 | 0,5 dBm",
+    "potencia": "-7 dBm | 0,5 dBm",
     "sensibilidade": "0,5 dBm | -14.4 dBm",
     "CompTX": "1490 nm ",
     "CompRX": "1310 nm",

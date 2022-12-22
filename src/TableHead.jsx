@@ -1,4 +1,4 @@
-import React from 'react';
+import React from "react";
 
 export function AP() {
   return (
@@ -9,13 +9,13 @@ export function AP() {
         <th>Cobertura</th>
         <th>Raio</th>
         <th>Usuários simultâneos</th>
-        <th>Wireless 2.4ghz</th>
-        <th>Wireless 5ghz</th>
+        <th>Datarate Máx. 2G</th>
+        <th>Datarate Máx. 5G</th>
         <th>Qtde Portas</th>
         <th>PoE</th>
         <th>Handover</th>
         <th>WiseFi</th>
-        <th>Potência Máx.</th>
+        <th>Potência de Transmissão</th>
         <th>Status</th>
         <th>Página</th>
         <th>Datasheet</th>
@@ -34,7 +34,7 @@ export function RADIO() {
         <th>Indicado</th>
         <th>Modulação</th>
         <th>Ganho</th>
-        <th>Potência</th>
+        <th>Potência de Transmissão</th>
         <th>Encam. de Pacotes</th>
         <th>Throughput Efetivo</th>
         <th>Throughput Nominal</th>
@@ -62,9 +62,8 @@ export function CONVERSOR() {
         <th>Distância</th>
         <th>Modulação</th>
         <th>Fibra</th>
-        <th>Potência Sinal</th>
-        <th>Recepção Max</th>
-        <th>Recepção Min</th>
+        <th>Potência Sinal Max | Min</th>
+        <th>Sensibilidade Max | Min</th>
         <th>Garantia</th>
         <th>Status</th>
         <th>Página</th>
@@ -87,7 +86,7 @@ export function GBIC() {
           <th>Distância</th>
           <th>Modulação</th>
           <th>Fibra</th>
-          <th>Potência Sinal</th>
+          <th>Potência Sinal Max | Min</th>
           <th>Sensibilidade Max | Min</th>
           <th>Garantia</th>
           <th>Status</th>
@@ -141,8 +140,8 @@ export function ONU() {
           <th>Sensibilidade Max | Min</th>
           <th>Cobertura</th>
           <th>Usuários simultâneos</th>
-          <th>Wireless 2.4ghz</th>
-          <th>Wireless 5ghz</th>
+          <th>Datarate Máx. 2G</th>
+          <th>Datarate Máx. 5G</th>
           <th>SSID</th>
           <th>TR069</th>
           <th>Customize</th>
@@ -171,13 +170,14 @@ export function ROTEADOR() {
           <th>Plano Recomendado</th>
           <th>Modulação</th>
           <th>Qtde Portas</th>
-          <th>Datarate Máx.</th>
+          <th>Datarate Máx. 2G</th>
+          <th>Datarate Máx. 5G</th>
           <th>Ganho da antena</th>
           <th>IPV6</th>
           <th>Repetidor</th>
           <th>Roteador AP</th>
           <th>Cliente Wireless</th>
-          <th>Modo AP </th>
+          <th>Modo AP</th>
           <th>Status</th>
           <th>Garantia</th>
           <th>Página</th>

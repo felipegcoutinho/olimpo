@@ -1,5 +1,5 @@
-@import url('https://fonts.googleapis.com/css2?family=Pacifico&display=swap');
-@import url('https://fonts.googleapis.com/css2?family=Inter:wght@500;700&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Pacifico&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Inter:wght@500;700&display=swap");
 
 * {
   box-sizing: border-box;
@@ -23,7 +23,7 @@ a {
 }
 
 h2 {
-  color: #3e5055;
+  color: #2f3542;
 }
 
 input {
@@ -39,8 +39,7 @@ input {
 .header_content {
   align-items: center;
   background-color: #268946;
-  box-shadow: 0px 3px 3px -2px #00000033, 0px 3px 4px 0px #00000024,
-    0px 1px 8px 0px #0000001f;
+  box-shadow: 0px 3px 3px -2px #00000033, 0px 3px 4px 0px #00000024, 0px 1px 8px 0px #0000001f;
   display: flex;
   flex-direction: column;
   margin-bottom: 20px;
@@ -57,7 +56,7 @@ input {
   color: white;
   font-size: 2.5rem;
   margin-top: 20px;
-  font-family: 'Pacifico', segoe UI, sans-serif, arial, Helvetica;
+  font-family: "Pacifico", segoe UI, sans-serif, arial, Helvetica;
 }
 
 /* main Search */
@@ -98,7 +97,7 @@ input {
 }
 
 .mainSearchBtn:after {
-  content: ' \f002\ ';
+  content: " \f002\ ";
   font-family: FontAwesome;
   font-size: 1.2rem;
 }
@@ -108,7 +107,7 @@ input {
 }
 
 .mainSearchBtnClean::after {
-  content: ' \f00d\ ';
+  content: " \f00d\ ";
   font-family: FontAwesome;
   font-size: 1.2rem;
 }
@@ -204,13 +203,13 @@ input {
 }
 
 .arrowHide:after {
-  content: ' \f107\ ';
+  content: " \f107\ ";
   font-family: FontAwesome;
   font-size: 1.1rem;
 }
 
 .arrowShow:after {
-  content: ' \f054\ ';
+  content: " \f054\ ";
   font-family: FontAwesome;
   font-size: 1.1rem;
 }
@@ -245,13 +244,13 @@ input {
 }
 
 .status_phaseout::before {
-  content: ' \f057\ ';
+  content: " \f057\ ";
   font-family: FontAwesome;
   font-size: 0.7rem;
 }
 
 .status_suporte:before {
-  content: ' \f058\ ';
+  content: " \f058\ ";
   font-family: FontAwesome;
   font-size: 0.7rem;
 }
@@ -280,7 +279,7 @@ input {
 }
 
 .paginalink:after {
-  content: ' \f35d\ ';
+  content: " \f35d\ ";
   font-family: FontAwesome;
   font-size: 0.75rem;
 }
@@ -345,12 +344,6 @@ input {
   font-weight: 600 !important;
 }
 
-/* .NaoPossui::before {
-  content: " \f00d\ ";
-  font-family: FontAwesome;
-  font-size: 1.1rem;
-} */
-
 /* TABELAS */
 
 .devicesTable {
@@ -376,12 +369,17 @@ input {
 .devicesTable th {
   font-size: 0.8rem;
   padding: 5px;
+  border: 1px solid white;
 }
 
 .devicesTable thead {
   background-color: #2f3542;
   color: white;
 }
+
+/* .devicesTable th:nth-child(even) {
+  background-color: #596273;
+} */
 
 .devicesTable td:not(:first-child) {
   font-size: 0.8rem;
@@ -400,7 +398,7 @@ td:first-child {
 
 th:first-child {
   background-color: #474e5c;
-  display: block;
+  /* display: block; */
   left: 0;
   position: sticky;
 }
@@ -454,7 +452,7 @@ tbody:nth-child(even) {
 }
 
 .top:after {
-  content: ' \f30c\ ';
+  content: " \f30c\ ";
   font-family: FontAwesome;
   font-size: 1.3rem;
 }

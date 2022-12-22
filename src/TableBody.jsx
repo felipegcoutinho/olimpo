@@ -108,7 +108,7 @@ function App() {
             <button className={style.btns}>Radio Outdoor</button>
           </a>
           <a href="#ho">
-            <button className={style.btns}>Roteador HO</button>
+            <button className={style.btns}>Home Office</button>
           </a>
           <a href="#switch">
             <button className={style.btns}>Switch</button>
@@ -348,7 +348,7 @@ function App() {
           <div className={style.header_box_content}>
             <h2 id="ho">
               <button className={HideHO ? style.arrowHide : style.arrowShow} onClick={handleHideHO}></button>
-              Roteadores Home Office
+              Home Office
             </h2>
             <label>
               <i className="fa-solid fa-magnifying-glass"></i>
@@ -385,7 +385,8 @@ function App() {
                           <span className={roteador.modulação === "Fast" ? style.fast : style.giga}>{roteador.modulação}</span>
                         </td>
                         <td>{roteador.QtdePortas}</td>
-                        <td>{roteador.datarateMax}</td>
+                        <td>{roteador.datarateMax2G}</td>
+                        <td className={roteador.datarateMax5G === "x" ? style.NaoPossui : null}>{roteador.datarateMax5G}</td>
                         <td>{roteador.ganho}</td>
                         <td className={roteador.ipv6 === "x" ? style.NaoPossui : null}>{roteador.ipv6}</td>
                         <td className={roteador.repetidor === "x" ? style.NaoPossui : null}>{roteador.repetidor}</td>
@@ -499,7 +500,7 @@ function App() {
                         <td className={swicth.poeExtender === "x" && style.NaoPossui}>{swicth.poeExtender}</td>
                         <td className={swicth.poePorta === "x" && style.NaoPossui}>{swicth.poePorta}</td>
                         <td className={swicth.poeTotal === "x" && style.NaoPossui}>{swicth.poeTotal}</td>
-                        <td>{swicth.qos}</td>
+                        <td className={swicth.qos === "x" && style.NaoPossui}>{swicth.qos}</td>
                         <td>{swicth.garantia}</td>
                         <td>
                           <span className={style.tooltip}>
@@ -584,8 +585,7 @@ function App() {
                         </td>
                         <td>{conversor.fibra}</td>
                         <td>{conversor.potencia}</td>
-                        <td>{conversor.recepMax}</td>
-                        <td>{conversor.recepMin}</td>
+                        <td>{conversor.sensibilidade}</td>
                         <td>{conversor.garantia}</td>
                         <td>
                           <span className={style.tooltip}>
