@@ -17,8 +17,8 @@ export function AP() {
         <th>Connecti</th>
         <th>Handover</th>
         <th>WiseFi</th>
-        <th>Potência TX 2G</th>
-        <th>Potência TX 5G</th>
+        <th>Potência de TX 2G</th>
+        <th>Potência de TX 5G</th>
         <th>Status</th>
         <th>Página</th>
         <th>Datasheet</th>
@@ -32,12 +32,12 @@ export function AP() {
 export function RADIO() {
   return (
     <thead>
-      <tr>
+      <tr id={style.RADIO}>
         <th>Modelo</th>
         <th>Indicado</th>
         <th>Modulação</th>
         <th>Ganho</th>
-        <th>Potência de Transmissão</th>
+        <th>Potência de TX</th>
         <th>Encam. de Pacotes</th>
         <th>Throughput Efetivo</th>
         <th>Throughput Nominal</th>
