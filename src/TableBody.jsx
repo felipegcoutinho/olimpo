@@ -1,28 +1,28 @@
-import React from "react";
-import APs from "./Data/ap.json";
-import Conversores from "./Data/conversores.json";
-import Gbics from "./Data/gbics.json";
-import Radios from "./Data/radios.json";
-import Switchs from "./Data/switchs.json";
-import Onus from "./Data/onus.json";
-import Roteadores from "./Data/roteadores.json";
-import style from "../src/App.module.css";
-import {AP, RADIO, CONVERSOR, GBIC, SWITCH, ONU, ROTEADOR} from "./TableHead";
+import React from 'react';
+import APs from './Data/ap.json';
+import Conversores from './Data/conversores.json';
+import Gbics from './Data/gbics.json';
+import Radios from './Data/radios.json';
+import Switchs from './Data/switchs.json';
+import Onus from './Data/onus.json';
+import Roteadores from './Data/roteadores.json';
+import style from '../src/App.module.css';
+import { AP, RADIO, CONVERSOR, GBIC, SWITCH, ONU, ROTEADOR } from './TableHead';
 
 function App() {
-  const [queryAP, setQueryAP] = React.useState("");
+  const [queryAP, setQueryAP] = React.useState('');
   const [HideAP, setHideAP] = React.useState(true);
   const handleHideAP = () => setHideAP(!HideAP);
 
-  const [queryRADIO, setQueryRADIO] = React.useState("");
+  const [queryRADIO, setQueryRADIO] = React.useState('');
   const [HideRADIO, setHideRADIO] = React.useState(true);
   const handleHideRADIO = () => setHideRADIO(!HideRADIO);
 
-  const [queryHO, setQueryHO] = React.useState("");
+  const [queryHO, setQueryHO] = React.useState('');
   const [HideHO, setHideHO] = React.useState(true);
   const handleHideHO = () => setHideHO(!HideHO);
 
-  const [querySWITCH, setQuerySWITCH] = React.useState("");
+  const [querySWITCH, setQuerySWITCH] = React.useState('');
   const [HideSwitch, setHideSwitch] = React.useState(true);
   const handleHideSwitch = () => setHideSwitch(!HideSwitch);
 
@@ -35,7 +35,7 @@ function App() {
   const [HideONU, setHideONU] = React.useState(true);
   const handleHideONU = () => setHideONU(!HideONU);
 
-  const [urlValue, setUrlValue] = React.useState("");
+  const [urlValue, setUrlValue] = React.useState('');
 
   const handleSearchChangeAP = (e) => {
     setQueryAP(e.target.value);
@@ -82,7 +82,8 @@ function App() {
       </a>
       <div className={style.aviso}>
         <p>
-          <b>Aviso!</b> Este é um material para facilitar o acesso a informações dos principais equipamentos.
+          <b>Aviso!</b> Este é um material para facilitar o acesso a informações
+          dos principais equipamentos.
           <b> Sempre consulte a documentação oficial.</b> :)
         </p>
       </div>
@@ -92,12 +93,24 @@ function App() {
         </div>
 
         <div className={style.searchbarContainer}>
-          <input className={style.mainsearchbar} value={urlValue} onChange={handleSearch} placeholder="Pesquise em intelbras.com.br" />
+          <input
+            className={style.mainsearchbar}
+            value={urlValue}
+            onChange={handleSearch}
+            placeholder="Pesquise em intelbras.com.br"
+          />
 
           <a target="_blank" rel="noopener noreferrer" href={urlSearch}>
-            {urlValue === "" ? null : <button className={style.mainSearchBtn}></button>}
+            {urlValue === '' ? null : (
+              <button className={style.mainSearchBtn}></button>
+            )}
           </a>
-          {urlValue === "" ? null : <button className={style.mainSearchBtnClean} onClick={() => setUrlValue("")}></button>}
+          {urlValue === '' ? null : (
+            <button
+              className={style.mainSearchBtnClean}
+              onClick={() => setUrlValue('')}
+            ></button>
+          )}
         </div>
 
         <div className={style.btns_container}>
@@ -151,10 +164,13 @@ function App() {
         {/* ACCESS POINT */}
         <div className={style.box_content}>
           <div className={style.header_box_content}>
-            <h2 id="ap">
-              <button className={HideAP ? style.arrowHide : style.arrowShow} onClick={handleHideAP}></button>
-              Access Point
-            </h2>
+            <button
+              id="ap"
+              className={HideAP ? style.arrowHide : style.arrowShow}
+              onClick={handleHideAP}
+            >
+              <span className={style.title}>Access Point</span>
+            </button>
             <label>
               <i className="fa-solid fa-magnifying-glass"></i>
               <input
@@ -166,13 +182,15 @@ function App() {
             </label>
           </div>
           {HideAP ? (
-            <div style={{overflowX: "auto"}}>
+            <div style={{ overflowX: 'auto' }}>
               <table className={style.devicesTable}>
                 <AP />
                 {APs.filter((ap) => {
                   if (ap.modelo.toLowerCase().includes(queryAP.toLowerCase())) {
                     return ap;
-                  } else if (ap.modulação.toLowerCase().includes(queryAP.toLowerCase())) {
+                  } else if (
+                    ap.modulação.toLowerCase().includes(queryAP.toLowerCase())
+                  ) {
                     return ap;
                   }
                 }).map((ap) => {
@@ -181,58 +199,118 @@ function App() {
                       <tr>
                         <td>{ap.modelo}</td>
                         <td>
-                          <span className={ap.modulação === "Fast" ? style.fast : style.giga}>{ap.modulação}</span>
+                          <span
+                            className={
+                              ap.modulação === 'Fast' ? style.fast : style.giga
+                            }
+                          >
+                            {ap.modulação}
+                          </span>
                         </td>
                         <td>{ap.cobertura}</td>
                         <td>{ap.raio}</td>
                         <td>{ap.usuarioMax}</td>
                         <td>{ap.throughputWireless24}</td>
-                        <td className={ap.throughputWireless50 === "x" ? style.NaoPossui : null}>{ap.throughputWireless50}</td>
+                        <td
+                          className={
+                            ap.throughputWireless50 === 'x'
+                              ? style.NaoPossui
+                              : null
+                          }
+                        >
+                          {ap.throughputWireless50}
+                        </td>
                         <td>{ap.qtdePortas}</td>
-                        <td className={ap.poe === "x" && style.NaoPossui}>{ap.poe}</td>
+                        <td className={ap.poe === 'x' && style.NaoPossui}>
+                          {ap.poe}
+                        </td>
 
                         <td>
                           <span className={style.tooltip}>
-                            {ap.connectiVersion} {ap.connectiVersion !== "N/A" && <i className="fa-regular fa-circle-question"></i>}
-                            {ap.connectiVersion !== "N/A" && (
+                            {ap.connectiVersion}{' '}
+                            {ap.connectiVersion !== 'N/A' && (
+                              <i className="fa-regular fa-circle-question"></i>
+                            )}
+                            {ap.connectiVersion !== 'N/A' && (
                               <span className={style.tooltiptext}>
-                                O AP precisa estar com a versão {ap.connectiVersion} para o connectFi funcionar.
+                                O AP precisa estar com a versão{' '}
+                                {ap.connectiVersion} para o connectFi funcionar.
                               </span>
                             )}
                           </span>
                         </td>
 
-                        <td className={ap.handover === "x" && style.NaoPossui}>{ap.handover}</td>
-                        <td className={ap.wisefi === "x" && style.NaoPossui}>{ap.wisefi}</td>
+                        <td className={ap.handover === 'x' && style.NaoPossui}>
+                          {ap.handover}
+                        </td>
+                        <td className={ap.wisefi === 'x' && style.NaoPossui}>
+                          {ap.wisefi}
+                        </td>
                         <td>{ap.potencia2G}</td>
-                        <td className={ap.potencia5G === "x" && style.NaoPossui}>{ap.potencia5G}</td>
+                        <td
+                          className={ap.potencia5G === 'x' && style.NaoPossui}
+                        >
+                          {ap.potencia5G}
+                        </td>
                         <td>
                           <span className={style.tooltip}>
                             <span>
-                              {ap.status === "Phaseout" && <span className={style.status_phaseout}>{ap.status}</span>}
-                              {ap.status === "Suporte" && <span className={style.status_suporte}>{ap.status}</span>}
+                              {ap.status === 'Phaseout' && (
+                                <span className={style.status_phaseout}>
+                                  {ap.status}
+                                </span>
+                              )}
+                              {ap.status === 'Suporte' && (
+                                <span className={style.status_suporte}>
+                                  {ap.status}
+                                </span>
+                              )}
                             </span>
-                            {ap.status === "Phaseout" && <span className={style.tooltiptext}>Apenas email</span>}
-                            {ap.status === "Suporte" && <span className={style.tooltiptext}>Fornecemos suporte</span>}
+                            {ap.status === 'Phaseout' && (
+                              <span className={style.tooltiptext}>
+                                Apenas email
+                              </span>
+                            )}
+                            {ap.status === 'Suporte' && (
+                              <span className={style.tooltiptext}>
+                                Fornecemos suporte
+                              </span>
+                            )}
                           </span>
                         </td>
                         <td>
-                          <a target="_blank" rel="noopener noreferrer" href={ap.pagina}>
+                          <a
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            href={ap.pagina}
+                          >
                             <span className={style.paginalink}>Página</span>
                           </a>
                         </td>
                         <td>
-                          <a target="_blank" rel="noopener noreferrer" href={ap.datasheet}>
+                          <a
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            href={ap.datasheet}
+                          >
                             <span className={style.pdfbtn}>Datasheet</span>
                           </a>
                         </td>
                         <td>
-                          <a target="_blank" rel="noopener noreferrer" href={ap.guia}>
+                          <a
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            href={ap.guia}
+                          >
                             <span className={style.pdfbtn}>Guia</span>
                           </a>
                         </td>
                         <td>
-                          <a target="_blank" rel="noopener noreferrer" href={ap.manual}>
+                          <a
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            href={ap.manual}
+                          >
                             <span className={style.pdfbtn}>Manual</span>
                           </a>
                         </td>
@@ -244,13 +322,16 @@ function App() {
             </div>
           ) : null}
         </div>
+
         {/* RADIOS OUTDOOR */}
         <div className={style.box_content}>
           <div className={style.header_box_content}>
-            <h2 id="radio">
-              <button className={HideRADIO ? style.arrowHide : style.arrowShow} onClick={handleHideRADIO}></button>
-              Radios Outdoor
-            </h2>
+            <button
+              className={HideRADIO ? style.arrowHide : style.arrowShow}
+              onClick={handleHideRADIO}
+            >
+              <span className={style.title}>Radios Outdoor</span>
+            </button>
             <label>
               <i className="fa-solid fa-magnifying-glass"></i>
               <input
@@ -262,13 +343,21 @@ function App() {
             </label>
           </div>
           {HideRADIO ? (
-            <div style={{overflowX: "auto"}}>
+            <div style={{ overflowX: 'auto' }}>
               <table className={style.devicesTable}>
                 <RADIO />
                 {Radios.filter((radio) => {
-                  if (radio.modelo.toLowerCase().includes(queryRADIO.toLowerCase())) {
+                  if (
+                    radio.modelo
+                      .toLowerCase()
+                      .includes(queryRADIO.toLowerCase())
+                  ) {
                     return radio;
-                  } else if (radio.modulação.toLowerCase().includes(queryRADIO.toLowerCase())) {
+                  } else if (
+                    radio.modulação
+                      .toLowerCase()
+                      .includes(queryRADIO.toLowerCase())
+                  ) {
                     return radio;
                   }
                 }).map((radio) => {
@@ -279,14 +368,26 @@ function App() {
 
                         <td>{radio.indicado}</td>
                         <td>
-                          <span className={radio.modulação === "Fast" ? style.fast : style.giga}>{radio.modulação}</span>
+                          <span
+                            className={
+                              radio.modulação === 'Fast'
+                                ? style.fast
+                                : style.giga
+                            }
+                          >
+                            {radio.modulação}
+                          </span>
                         </td>
                         <td>
                           <span className={style.tooltip}>
-                            {radio.ganho} {radio.ganho === "SEM ANTENA" && <i className="fa-regular fa-circle-question"></i>}
-                            {radio.ganho === "SEM ANTENA" && (
+                            {radio.ganho}{' '}
+                            {radio.ganho === 'SEM ANTENA' && (
+                              <i className="fa-regular fa-circle-question"></i>
+                            )}
+                            {radio.ganho === 'SEM ANTENA' && (
                               <span className={style.tooltiptext}>
-                                Antena adquirida separadamente, indicar parceria <a href="http://www.algcom.com.br">ALGCOM</a>
+                                Antena adquirida separadamente, indicar parceria{' '}
+                                <a href="http://www.algcom.com.br">ALGCOM</a>
                               </span>
                             )}
                           </span>
@@ -295,54 +396,108 @@ function App() {
                         <td>{radio.pps}</td>
                         <td>{radio.throughputEfetivo}</td>
                         <td>{radio.throughputNominal}</td>
-                        <td className={radio.aberturaHorVer === "x" && style.NaoPossui}>{radio.aberturaHorVer}</td>
-                        <td className={radio.distancia === "x" && style.NaoPossui}>{radio.distancia}</td>
+                        <td
+                          className={
+                            radio.aberturaHorVer === 'x' && style.NaoPossui
+                          }
+                        >
+                          {radio.aberturaHorVer}
+                        </td>
+                        <td
+                          className={radio.distancia === 'x' && style.NaoPossui}
+                        >
+                          {radio.distancia}
+                        </td>
                         <td>{radio.wireless}</td>
                         <td>{radio.garantia}</td>
                         <td>
                           <span className={style.tooltip}>
                             <span>
-                              {radio.status === "Phaseout" && <span className={style.status_phaseout}>{radio.status}</span>}
-                              {radio.status === "Suporte" && <span className={style.status_suporte}>{radio.status}</span>}
+                              {radio.status === 'Phaseout' && (
+                                <span className={style.status_phaseout}>
+                                  {radio.status}
+                                </span>
+                              )}
+                              {radio.status === 'Suporte' && (
+                                <span className={style.status_suporte}>
+                                  {radio.status}
+                                </span>
+                              )}
                             </span>
-                            {radio.status === "Phaseout" && <span className={style.tooltiptext}>Apenas email</span>}
-                            {radio.status === "Suporte" && <span className={style.tooltiptext}>Fornecemos suporte</span>}
+                            {radio.status === 'Phaseout' && (
+                              <span className={style.tooltiptext}>
+                                Apenas email
+                              </span>
+                            )}
+                            {radio.status === 'Suporte' && (
+                              <span className={style.tooltiptext}>
+                                Fornecemos suporte
+                              </span>
+                            )}
                           </span>
                         </td>
                         <td>
-                          <a target="_blank" rel="noopener noreferrer" href={radio.pagina}>
+                          <a
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            href={radio.pagina}
+                          >
                             <span className={style.paginalink}>Página</span>
                           </a>
                         </td>
                         <td>
-                          {radio.datasheet === "-" ? (
-                            <a target="_blank" rel="noopener noreferrer" href="#">
+                          {radio.datasheet === '-' ? (
+                            <a
+                              target="_blank"
+                              rel="noopener noreferrer"
+                              href="#"
+                            >
                               <span className={style.pdfbtn_NA}>N/A</span>
                             </a>
                           ) : (
-                            <a target="_blank" rel="noopener noreferrer" href={radio.datasheet}>
+                            <a
+                              target="_blank"
+                              rel="noopener noreferrer"
+                              href={radio.datasheet}
+                            >
                               <span className={style.pdfbtn}>Datasheet</span>
                             </a>
                           )}
                         </td>
                         <td>
-                          {radio.guia === "-" ? (
-                            <a target="_blank" rel="noopener noreferrer" href="#">
+                          {radio.guia === '-' ? (
+                            <a
+                              target="_blank"
+                              rel="noopener noreferrer"
+                              href="#"
+                            >
                               <span className={style.pdfbtn_NA}>N/A</span>
                             </a>
                           ) : (
-                            <a target="_blank" rel="noopener noreferrer" href={radio.guia}>
+                            <a
+                              target="_blank"
+                              rel="noopener noreferrer"
+                              href={radio.guia}
+                            >
                               <span className={style.pdfbtn}>Guia</span>
                             </a>
                           )}
                         </td>
                         <td>
-                          {radio.manual === "-" ? (
-                            <a target="_blank" rel="noopener noreferrer" href="#">
+                          {radio.manual === '-' ? (
+                            <a
+                              target="_blank"
+                              rel="noopener noreferrer"
+                              href="#"
+                            >
                               <span className={style.pdfbtn_NA}>N/A</span>
                             </a>
                           ) : (
-                            <a target="_blank" rel="noopener noreferrer" href={radio.manual}>
+                            <a
+                              target="_blank"
+                              rel="noopener noreferrer"
+                              href={radio.manual}
+                            >
                               <span className={style.pdfbtn}>Manual</span>
                             </a>
                           )}
@@ -355,13 +510,18 @@ function App() {
             </div>
           ) : null}
         </div>
+
         {/* HO */}
         <div className={style.box_content}>
           <div className={style.header_box_content}>
-            <h2 id="ho">
-              <button className={HideHO ? style.arrowHide : style.arrowShow} onClick={handleHideHO}></button>
-              Home Office
-            </h2>
+            <button
+              id="ho"
+              className={HideHO ? style.arrowHide : style.arrowShow}
+              onClick={handleHideHO}
+            >
+              <span className={style.title}>Home Office</span>
+            </button>
+
             <label>
               <i className="fa-solid fa-magnifying-glass"></i>
               <input
@@ -373,13 +533,21 @@ function App() {
             </label>
           </div>
           {HideHO ? (
-            <div style={{overflowX: "auto"}}>
+            <div style={{ overflowX: 'auto' }}>
               <table className={style.devicesTable}>
                 <ROTEADOR />
                 {Roteadores.filter((roteador) => {
-                  if (roteador.modelo.toLowerCase().includes(queryHO.toLowerCase())) {
+                  if (
+                    roteador.modelo
+                      .toLowerCase()
+                      .includes(queryHO.toLowerCase())
+                  ) {
                     return roteador;
-                  } else if (roteador.modulação.toLowerCase().includes(queryHO.toLowerCase())) {
+                  } else if (
+                    roteador.modulação
+                      .toLowerCase()
+                      .includes(queryHO.toLowerCase())
+                  ) {
                     return roteador;
                   }
                 }).map((roteador) => {
@@ -394,62 +562,152 @@ function App() {
                         <td>{roteador.usuarioMax}</td>
                         <td>{roteador.planoRecomendado}</td>
                         <td>
-                          <span className={roteador.modulação === "Fast" ? style.fast : style.giga}>{roteador.modulação}</span>
+                          <span
+                            className={
+                              roteador.modulação === 'Fast'
+                                ? style.fast
+                                : style.giga
+                            }
+                          >
+                            {roteador.modulação}
+                          </span>
                         </td>
                         <td>{roteador.QtdePortas}</td>
                         <td>{roteador.datarateMax2G}</td>
-                        <td className={roteador.datarateMax5G === "x" ? style.NaoPossui : null}>{roteador.datarateMax5G}</td>
+                        <td
+                          className={
+                            roteador.datarateMax5G === 'x'
+                              ? style.NaoPossui
+                              : null
+                          }
+                        >
+                          {roteador.datarateMax5G}
+                        </td>
                         <td>{roteador.ganho}</td>
-                        <td className={roteador.ipv6 === "x" ? style.NaoPossui : null}>{roteador.ipv6}</td>
-                        <td className={roteador.repetidor === "x" ? style.NaoPossui : null}>{roteador.repetidor}</td>
-                        <td className={roteador.roteador === "x" ? style.NaoPossui : null}>{roteador.roteador}</td>
-                        <td className={roteador.cliente === "x" ? style.NaoPossui : null}>{roteador.cliente}</td>
-                        <td className={roteador.ap === "x" ? style.NaoPossui : null}>{roteador.ap}</td>
+                        <td
+                          className={
+                            roteador.ipv6 === 'x' ? style.NaoPossui : null
+                          }
+                        >
+                          {roteador.ipv6}
+                        </td>
+                        <td
+                          className={
+                            roteador.repetidor === 'x' ? style.NaoPossui : null
+                          }
+                        >
+                          {roteador.repetidor}
+                        </td>
+                        <td
+                          className={
+                            roteador.roteador === 'x' ? style.NaoPossui : null
+                          }
+                        >
+                          {roteador.roteador}
+                        </td>
+                        <td
+                          className={
+                            roteador.cliente === 'x' ? style.NaoPossui : null
+                          }
+                        >
+                          {roteador.cliente}
+                        </td>
+                        <td
+                          className={
+                            roteador.ap === 'x' ? style.NaoPossui : null
+                          }
+                        >
+                          {roteador.ap}
+                        </td>
                         <td>
                           <span className={style.tooltip}>
                             <span>
-                              {roteador.status === "Phaseout" && <span className={style.status_phaseout}>{roteador.status}</span>}
-                              {roteador.status === "Suporte" && <span className={style.status_suporte}>{roteador.status}</span>}
+                              {roteador.status === 'Phaseout' && (
+                                <span className={style.status_phaseout}>
+                                  {roteador.status}
+                                </span>
+                              )}
+                              {roteador.status === 'Suporte' && (
+                                <span className={style.status_suporte}>
+                                  {roteador.status}
+                                </span>
+                              )}
                             </span>
-                            {roteador.status === "Phaseout" && <span className={style.tooltiptext}>Apenas email</span>}
-                            {roteador.status === "Suporte" && <span className={style.tooltiptext}>Fornecemos suporte</span>}
+                            {roteador.status === 'Phaseout' && (
+                              <span className={style.tooltiptext}>
+                                Apenas email
+                              </span>
+                            )}
+                            {roteador.status === 'Suporte' && (
+                              <span className={style.tooltiptext}>
+                                Fornecemos suporte
+                              </span>
+                            )}
                           </span>
                         </td>
                         <td>{roteador.garantia}</td>
                         <td>
-                          <a target="_blank" rel="noopener noreferrer" href={roteador.pagina}>
+                          <a
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            href={roteador.pagina}
+                          >
                             <span className={style.paginalink}>Página</span>
                           </a>
                         </td>
                         <td>
-                          {roteador.datasheet === "-" ? (
-                            <a target="_blank" rel="noopener noreferrer" href="#">
+                          {roteador.datasheet === '-' ? (
+                            <a
+                              target="_blank"
+                              rel="noopener noreferrer"
+                              href="#"
+                            >
                               <span className={style.pdfbtn_NA}>N/A</span>
                             </a>
                           ) : (
-                            <a target="_blank" rel="noopener noreferrer" href={roteador.datasheet}>
+                            <a
+                              target="_blank"
+                              rel="noopener noreferrer"
+                              href={roteador.datasheet}
+                            >
                               <span className={style.pdfbtn}>Datasheet</span>
                             </a>
                           )}
                         </td>
                         <td>
-                          {roteador.guia === "-" ? (
-                            <a target="_blank" rel="noopener noreferrer" href="#">
+                          {roteador.guia === '-' ? (
+                            <a
+                              target="_blank"
+                              rel="noopener noreferrer"
+                              href="#"
+                            >
                               <span className={style.pdfbtn_NA}>N/A</span>
                             </a>
                           ) : (
-                            <a target="_blank" rel="noopener noreferrer" href={roteador.guia}>
+                            <a
+                              target="_blank"
+                              rel="noopener noreferrer"
+                              href={roteador.guia}
+                            >
                               <span className={style.pdfbtn}>Guia</span>
                             </a>
                           )}
                         </td>
                         <td>
-                          {roteador.manual === "-" ? (
-                            <a target="_blank" rel="noopener noreferrer" href="#">
+                          {roteador.manual === '-' ? (
+                            <a
+                              target="_blank"
+                              rel="noopener noreferrer"
+                              href="#"
+                            >
                               <span className={style.pdfbtn_NA}>N/A</span>
                             </a>
                           ) : (
-                            <a target="_blank" rel="noopener noreferrer" href={roteador.manual}>
+                            <a
+                              target="_blank"
+                              rel="noopener noreferrer"
+                              href={roteador.manual}
+                            >
                               <span className={style.pdfbtn}>Manual</span>
                             </a>
                           )}
@@ -458,17 +716,21 @@ function App() {
                     </tbody>
                   );
                 })}
-              </table>{" "}
+              </table>{' '}
             </div>
           ) : null}
         </div>
+
         {/* SWITCHS */}
         <div className={style.box_content}>
           <div className={style.header_box_content}>
-            <h2 id="switch">
-              <button className={HideSwitch ? style.arrowHide : style.arrowShow} onClick={handleHideSwitch}></button>
-              Switchs
-            </h2>
+            <button
+              id="switch"
+              className={HideSwitch ? style.arrowHide : style.arrowShow}
+              onClick={handleHideSwitch}
+            >
+              <span className={style.title}>Switchs</span>
+            </button>
             <label>
               <i className="fa-solid fa-magnifying-glass"></i>
               <input
@@ -480,13 +742,21 @@ function App() {
             </label>
           </div>
           {HideSwitch ? (
-            <div style={{overflowX: "auto"}}>
+            <div style={{ overflowX: 'auto' }}>
               <table className={style.devicesTable}>
                 <SWITCH />
                 {Switchs.filter((swicth) => {
-                  if (swicth.modelo.toLowerCase().includes(querySWITCH.toLowerCase())) {
+                  if (
+                    swicth.modelo
+                      .toLowerCase()
+                      .includes(querySWITCH.toLowerCase())
+                  ) {
                     return swicth;
-                  } else if (swicth.gerenciavel.toLowerCase().includes(querySWITCH.toLowerCase())) {
+                  } else if (
+                    swicth.gerenciavel
+                      .toLowerCase()
+                      .includes(querySWITCH.toLowerCase())
+                  ) {
                     return swicth;
                   }
                 }).map((swicth) => {
@@ -496,68 +766,152 @@ function App() {
                         <td>
                           <span className={style.tooltip}>
                             {swicth.modelo}
-                            {swicth.modelo === "SG 2404 PoE L2+" && <i className="fa-regular fa-circle-question"></i>}
-                            {swicth.modelo === "SG 2404 PoE L2+" && <span className={style.tooltiptext}>SG 2404 PoE L2+ (4760062)</span>}
+                            {swicth.modelo === 'SG 2404 PoE L2+' && (
+                              <i className="fa-regular fa-circle-question"></i>
+                            )}
+                            {swicth.modelo === 'SG 2404 PoE L2+' && (
+                              <span className={style.tooltiptext}>
+                                SG 2404 PoE L2+ (4760062)
+                              </span>
+                            )}
                           </span>
                         </td>
                         <td>
-                          <span className={swicth.modulação === "Fast" ? style.fast : style.giga}>{swicth.modulação}</span>
+                          <span
+                            className={
+                              swicth.modulação === 'Fast'
+                                ? style.fast
+                                : style.giga
+                            }
+                          >
+                            {swicth.modulação}
+                          </span>
                         </td>
                         <td>{swicth.portas}</td>
-                        <td className={swicth.gerenciavel === "x" && style.NaoPossui}>{swicth.gerenciavel}</td>
-                        <td className={swicth.poe === "x" && style.NaoPossui}>{swicth.poe}</td>
+                        <td
+                          className={
+                            swicth.gerenciavel === 'x' && style.NaoPossui
+                          }
+                        >
+                          {swicth.gerenciavel}
+                        </td>
+                        <td className={swicth.poe === 'x' && style.NaoPossui}>
+                          {swicth.poe}
+                        </td>
                         <td>{swicth.taxaTransferencia}</td>
                         <td>{swicth.backplane}</td>
-                        <td className={swicth.sfp === "x" && style.NaoPossui}>{swicth.sfp}</td>
-                        <td className={swicth.poeExtender === "x" && style.NaoPossui}>{swicth.poeExtender}</td>
-                        <td className={swicth.poePorta === "x" && style.NaoPossui}>{swicth.poePorta}</td>
-                        <td className={swicth.poeTotal === "x" && style.NaoPossui}>{swicth.poeTotal}</td>
-                        <td className={swicth.qos === "x" && style.NaoPossui}>{swicth.qos}</td>
+                        <td className={swicth.sfp === 'x' && style.NaoPossui}>
+                          {swicth.sfp}
+                        </td>
+                        <td
+                          className={
+                            swicth.poeExtender === 'x' && style.NaoPossui
+                          }
+                        >
+                          {swicth.poeExtender}
+                        </td>
+                        <td
+                          className={swicth.poePorta === 'x' && style.NaoPossui}
+                        >
+                          {swicth.poePorta}
+                        </td>
+                        <td
+                          className={swicth.poeTotal === 'x' && style.NaoPossui}
+                        >
+                          {swicth.poeTotal}
+                        </td>
+                        <td className={swicth.qos === 'x' && style.NaoPossui}>
+                          {swicth.qos}
+                        </td>
                         <td>{swicth.garantia}</td>
                         <td>
                           <span className={style.tooltip}>
                             <span>
-                              {swicth.status === "Phaseout" && <span className={style.status_phaseout}>{swicth.status}</span>}
-                              {swicth.status === "Suporte" && <span className={style.status_suporte}>{swicth.status}</span>}
+                              {swicth.status === 'Phaseout' && (
+                                <span className={style.status_phaseout}>
+                                  {swicth.status}
+                                </span>
+                              )}
+                              {swicth.status === 'Suporte' && (
+                                <span className={style.status_suporte}>
+                                  {swicth.status}
+                                </span>
+                              )}
                             </span>
-                            {swicth.status === "Phaseout" && <span className={style.tooltiptext}>Apenas email</span>}
-                            {swicth.status === "Suporte" && <span className={style.tooltiptext}>Fornecemos suporte</span>}
+                            {swicth.status === 'Phaseout' && (
+                              <span className={style.tooltiptext}>
+                                Apenas email
+                              </span>
+                            )}
+                            {swicth.status === 'Suporte' && (
+                              <span className={style.tooltiptext}>
+                                Fornecemos suporte
+                              </span>
+                            )}
                           </span>
                         </td>
                         <td>
-                          <a target="_blank" rel="noopener noreferrer" href={swicth.pagina}>
+                          <a
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            href={swicth.pagina}
+                          >
                             <span className={style.paginalink}>Página</span>
                           </a>
                         </td>
                         <td>
-                          {swicth.datasheet === "-" ? (
-                            <a target="_blank" rel="noopener noreferrer" href="#">
+                          {swicth.datasheet === '-' ? (
+                            <a
+                              target="_blank"
+                              rel="noopener noreferrer"
+                              href="#"
+                            >
                               <span className={style.pdfbtn_NA}>N/A</span>
                             </a>
                           ) : (
-                            <a target="_blank" rel="noopener noreferrer" href={swicth.datasheet}>
+                            <a
+                              target="_blank"
+                              rel="noopener noreferrer"
+                              href={swicth.datasheet}
+                            >
                               <span className={style.pdfbtn}>Datasheet</span>
                             </a>
                           )}
                         </td>
                         <td>
-                          {swicth.guia === "-" ? (
-                            <a target="_blank" rel="noopener noreferrer" href="#">
+                          {swicth.guia === '-' ? (
+                            <a
+                              target="_blank"
+                              rel="noopener noreferrer"
+                              href="#"
+                            >
                               <span className={style.pdfbtn_NA}>N/A</span>
                             </a>
                           ) : (
-                            <a target="_blank" rel="noopener noreferrer" href={swicth.guia}>
+                            <a
+                              target="_blank"
+                              rel="noopener noreferrer"
+                              href={swicth.guia}
+                            >
                               <span className={style.pdfbtn}>Guia</span>
                             </a>
                           )}
                         </td>
                         <td>
-                          {swicth.manual === "-" ? (
-                            <a target="_blank" rel="noopener noreferrer" href="#">
+                          {swicth.manual === '-' ? (
+                            <a
+                              target="_blank"
+                              rel="noopener noreferrer"
+                              href="#"
+                            >
                               <span className={style.pdfbtn_NA}>N/A</span>
                             </a>
                           ) : (
-                            <a target="_blank" rel="noopener noreferrer" href={swicth.manual}>
+                            <a
+                              target="_blank"
+                              rel="noopener noreferrer"
+                              href={swicth.manual}
+                            >
                               <span className={style.pdfbtn}>Manual</span>
                             </a>
                           )}
@@ -570,16 +924,20 @@ function App() {
             </div>
           ) : null}
         </div>
+
         {/* CONVERSOR */}
         <div className={style.box_content}>
           <div className={style.header_box_content}>
-            <h2 id="conversor">
-              <button className={HideConversor ? style.arrowHide : style.arrowShow} onClick={handleHideConversor}></button>
-              Conversor de Mídia
-            </h2>
+            <button
+              id="conversor"
+              className={HideConversor ? style.arrowHide : style.arrowShow}
+              onClick={handleHideConversor}
+            >
+              <span className={style.title}>Conversor de Mídia</span>
+            </button>
           </div>
           {HideConversor ? (
-            <div style={{overflowX: "auto"}}>
+            <div style={{ overflowX: 'auto' }}>
               <table className={style.devicesTable}>
                 <CONVERSOR />
                 {Conversores.map((conversor) => {
@@ -590,10 +948,24 @@ function App() {
                           <b>{conversor.modelo}</b>
                         </td>
                         <td>{conversor.conector}</td>
-                        <td className={conversor.wdm === "x" ? style.NaoPossui : null}>{conversor.wdm}</td>
+                        <td
+                          className={
+                            conversor.wdm === 'x' ? style.NaoPossui : null
+                          }
+                        >
+                          {conversor.wdm}
+                        </td>
                         <td>{conversor.distancia}</td>
                         <td>
-                          <span className={conversor.modulação === "Fast" ? style.fast : style.giga}>{conversor.modulação}</span>
+                          <span
+                            className={
+                              conversor.modulação === 'Fast'
+                                ? style.fast
+                                : style.giga
+                            }
+                          >
+                            {conversor.modulação}
+                          </span>
                         </td>
                         <td>{conversor.fibra}</td>
                         <td>{conversor.potencia}</td>
@@ -602,36 +974,72 @@ function App() {
                         <td>
                           <span className={style.tooltip}>
                             <span>
-                              {conversor.status === "Phaseout" && <span className={style.status_phaseout}>{conversor.status}</span>}
-                              {conversor.status === "Suporte" && <span className={style.status_suporte}>{conversor.status}</span>}
+                              {conversor.status === 'Phaseout' && (
+                                <span className={style.status_phaseout}>
+                                  {conversor.status}
+                                </span>
+                              )}
+                              {conversor.status === 'Suporte' && (
+                                <span className={style.status_suporte}>
+                                  {conversor.status}
+                                </span>
+                              )}
                             </span>
-                            {conversor.status === "Phaseout" && <span className={style.tooltiptext}>Apenas email</span>}
-                            {conversor.status === "Suporte" && <span className={style.tooltiptext}>Fornecemos suporte</span>}
+                            {conversor.status === 'Phaseout' && (
+                              <span className={style.tooltiptext}>
+                                Apenas email
+                              </span>
+                            )}
+                            {conversor.status === 'Suporte' && (
+                              <span className={style.tooltiptext}>
+                                Fornecemos suporte
+                              </span>
+                            )}
                           </span>
                         </td>
                         <td>
-                          <a target="_blank" rel="noopener noreferrer" href={conversor.pagina}>
+                          <a
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            href={conversor.pagina}
+                          >
                             <span className={style.paginalink}>Página</span>
                           </a>
                         </td>
                         <td>
-                          {conversor.datasheet === "-" ? (
-                            <a target="_blank" rel="noopener noreferrer" href="#">
+                          {conversor.datasheet === '-' ? (
+                            <a
+                              target="_blank"
+                              rel="noopener noreferrer"
+                              href="#"
+                            >
                               <span className={style.pdfbtn_NA}>N/A</span>
                             </a>
                           ) : (
-                            <a target="_blank" rel="noopener noreferrer" href={conversor.datasheet}>
+                            <a
+                              target="_blank"
+                              rel="noopener noreferrer"
+                              href={conversor.datasheet}
+                            >
                               <span className={style.pdfbtn}>Datasheet</span>
                             </a>
                           )}
                         </td>
                         <td>
-                          {conversor.guia === "-" ? (
-                            <a target="_blank" rel="noopener noreferrer" href="#">
+                          {conversor.guia === '-' ? (
+                            <a
+                              target="_blank"
+                              rel="noopener noreferrer"
+                              href="#"
+                            >
                               <span className={style.pdfbtn_NA}>N/A</span>
                             </a>
                           ) : (
-                            <a target="_blank" rel="noopener noreferrer" href={conversor.guia}>
+                            <a
+                              target="_blank"
+                              rel="noopener noreferrer"
+                              href={conversor.guia}
+                            >
                               <span className={style.pdfbtn}>Guia</span>
                             </a>
                           )}
@@ -644,20 +1052,24 @@ function App() {
             </div>
           ) : null}
         </div>
+
         {/* SFP */}
         <div className={style.box_content}>
           <div className={style.header_box_content}>
-            <h2 id="sfp">
-              <button className={HideSFP ? style.arrowHide : style.arrowShow} onClick={handleHideSFP}></button>
-              Módulo SFP
-            </h2>
+            <button
+              id="sfp"
+              className={HideSFP ? style.arrowHide : style.arrowShow}
+              onClick={handleHideSFP}
+            >
+              <span className={style.title}>Módulo SFP</span>
+            </button>
           </div>
           {HideSFP ? (
-            <div style={{overflowX: "auto"}}>
+            <div style={{ overflowX: 'auto' }}>
               <table className={style.devicesTable}>
                 <GBIC />
                 {Gbics.map((gbic) => {
-                  if (gbic.linha === "gbic") {
+                  if (gbic.linha === 'gbic') {
                     return (
                       <tbody>
                         <tr>
@@ -666,22 +1078,53 @@ function App() {
                           </td>
                           <td>{gbic.tipoConector}</td>
                           <td>
-                            {gbic.modulo === "SFP+" && <span className={style.variado1}>SFP+</span>}
-                            {gbic.modulo === "SFP" && <span className={style.variado2}>SFP</span>}
-                            {gbic.modulo === "Epon" && <span className={style.variado3}>EPON</span>}
-                            {gbic.modulo === "Gpon" && <span className={style.fast}>GPON</span>}
-                            {gbic.modulo === "XFP" && <span className={style.giga}>XFP</span>}
+                            {gbic.modulo === 'SFP+' && (
+                              <span className={style.variado1}>SFP+</span>
+                            )}
+                            {gbic.modulo === 'SFP' && (
+                              <span className={style.variado2}>SFP</span>
+                            )}
+                            {gbic.modulo === 'Epon' && (
+                              <span className={style.variado3}>EPON</span>
+                            )}
+                            {gbic.modulo === 'Gpon' && (
+                              <span className={style.fast}>GPON</span>
+                            )}
+                            {gbic.modulo === 'XFP' && (
+                              <span className={style.giga}>XFP</span>
+                            )}
                           </td>
-                          <td className={gbic.wdm === "x" ? style.NaoPossui : null}>{gbic.wdm}</td>
+                          <td
+                            className={
+                              gbic.wdm === 'x' ? style.NaoPossui : null
+                            }
+                          >
+                            {gbic.wdm}
+                          </td>
                           <td>
                             <span className={style.tooltip}>
-                              {gbic.distancia} {gbic.fibra === "Multimodo" && <i className="fa-regular fa-circle-question"></i>}
-                              {gbic.fibra === "Multimodo" && <span className={style.tooltiptext}>62,5 / 125 μm até 275 mts</span>}
+                              {gbic.distancia}{' '}
+                              {gbic.fibra === 'Multimodo' && (
+                                <i className="fa-regular fa-circle-question"></i>
+                              )}
+                              {gbic.fibra === 'Multimodo' && (
+                                <span className={style.tooltiptext}>
+                                  62,5 / 125 μm até 275 mts
+                                </span>
+                              )}
                             </span>
                           </td>
 
                           <td>
-                            <span className={gbic.modulação === "Fast" ? style.fast : style.giga}>{gbic.modulação}</span>
+                            <span
+                              className={
+                                gbic.modulação === 'Fast'
+                                  ? style.fast
+                                  : style.giga
+                              }
+                            >
+                              {gbic.modulação}
+                            </span>
                           </td>
                           <td>{gbic.fibra}</td>
                           <td>{gbic.potencia}</td>
@@ -690,25 +1133,53 @@ function App() {
                           <td>
                             <span className={style.tooltip}>
                               <span>
-                                {gbic.status === "Phaseout" && <span className={style.status_phaseout}>{gbic.status}</span>}
-                                {gbic.status === "Suporte" && <span className={style.status_suporte}>{gbic.status}</span>}
+                                {gbic.status === 'Phaseout' && (
+                                  <span className={style.status_phaseout}>
+                                    {gbic.status}
+                                  </span>
+                                )}
+                                {gbic.status === 'Suporte' && (
+                                  <span className={style.status_suporte}>
+                                    {gbic.status}
+                                  </span>
+                                )}
                               </span>
-                              {gbic.status === "Phaseout" && <span className={style.tooltiptext}>Apenas email</span>}
-                              {gbic.status === "Suporte" && <span className={style.tooltiptext}>Fornecemos suporte</span>}
+                              {gbic.status === 'Phaseout' && (
+                                <span className={style.tooltiptext}>
+                                  Apenas email
+                                </span>
+                              )}
+                              {gbic.status === 'Suporte' && (
+                                <span className={style.tooltiptext}>
+                                  Fornecemos suporte
+                                </span>
+                              )}
                             </span>
                           </td>
                           <td>
-                            <a target="_blank" rel="noopener noreferrer" href={gbic.pagina}>
+                            <a
+                              target="_blank"
+                              rel="noopener noreferrer"
+                              href={gbic.pagina}
+                            >
                               <span className={style.paginalink}>Página</span>
                             </a>
                           </td>
                           <td>
-                            <a target="_blank" rel="noopener noreferrer" href={gbic.datasheet}>
+                            <a
+                              target="_blank"
+                              rel="noopener noreferrer"
+                              href={gbic.datasheet}
+                            >
                               <span className={style.pdfbtn}>Datasheet</span>
                             </a>
                           </td>
                           <td>
-                            <a target="_blank" rel="noopener noreferrer" href={gbic.guia}>
+                            <a
+                              target="_blank"
+                              rel="noopener noreferrer"
+                              href={gbic.guia}
+                            >
                               <span className={style.pdfbtn}>Guia</span>
                             </a>
                           </td>
@@ -721,20 +1192,24 @@ function App() {
             </div>
           ) : null}
         </div>
+
         {/* ONU */}
         <div className={style.box_content}>
           <div className={style.header_box_content}>
-            <h2 id="onu">
-              <button className={HideONU ? style.arrowHide : style.arrowShow} onClick={handleHideONU}></button>
-              ONUs/ONTs
-            </h2>
+            <button
+              id="sfp"
+              className={HideONU ? style.arrowHide : style.arrowShow}
+              onClick={handleHideONU}
+            >
+              <span className={style.title}> ONUs/ONTs</span>
+            </button>
           </div>
           {HideONU ? (
-            <div style={{overflowX: "auto"}}>
+            <div style={{ overflowX: 'auto' }}>
               <table className={style.devicesTable}>
                 <ONU />
                 {Onus.map((onu) => {
-                  if (onu.linha === "onu/ont") {
+                  if (onu.linha === 'onu/ont') {
                     return (
                       <tbody>
                         <tr>
@@ -743,67 +1218,181 @@ function App() {
                           </td>
 
                           <td>
-                            <span className={onu.modulação === "Fast" ? style.fast : style.giga}>{onu.modulação}</span>
+                            <span
+                              className={
+                                onu.modulação === 'Fast'
+                                  ? style.fast
+                                  : style.giga
+                              }
+                            >
+                              {onu.modulação}
+                            </span>
                           </td>
-                          <td className={onu.fxs === "x" ? style.NaoPossui : null}>{onu.fxs}</td>
+                          <td
+                            className={onu.fxs === 'x' ? style.NaoPossui : null}
+                          >
+                            {onu.fxs}
+                          </td>
                           <td>
-                            {onu.tipo === "EPON/GPON" && <span className={style.variado1}>{onu.tipo}</span>}
-                            {onu.tipo === "GPON" && <span className={style.variado2}>{onu.tipo}</span>}
+                            {onu.tipo === 'EPON/GPON' && (
+                              <span className={style.variado1}>{onu.tipo}</span>
+                            )}
+                            {onu.tipo === 'GPON' && (
+                              <span className={style.variado2}>{onu.tipo}</span>
+                            )}
                           </td>
                           <td>{onu.sensibilidade}</td>
-                          <td className={onu.cobertura === "x" ? style.NaoPossui : null}>{onu.cobertura}</td>
-                          <td className={onu.clientesSimultaneos === "x" ? style.NaoPossui : null}>{onu.clientesSimultaneos}</td>
-                          <td className={onu.transmissao2ghz === "x" ? style.NaoPossui : null}>{onu.transmissao2ghz}</td>
-                          <td className={onu.transmissao5ghz === "x" ? style.NaoPossui : null}>{onu.transmissao5ghz}</td>
-                          <td className={onu.ssid === "x" ? style.NaoPossui : null}>{onu.ssid}</td>
-                          <td className={onu.tr069 === "x" ? style.NaoPossui : null}>{onu.tr069}</td>
-                          <td className={onu.customize === "x" ? style.NaoPossui : null}>{onu.customize}</td>
-                          <td className={onu.remotize === "x" ? style.NaoPossui : null}>{onu.remotize}</td>
+                          <td
+                            className={
+                              onu.cobertura === 'x' ? style.NaoPossui : null
+                            }
+                          >
+                            {onu.cobertura}
+                          </td>
+                          <td
+                            className={
+                              onu.clientesSimultaneos === 'x'
+                                ? style.NaoPossui
+                                : null
+                            }
+                          >
+                            {onu.clientesSimultaneos}
+                          </td>
+                          <td
+                            className={
+                              onu.transmissao2ghz === 'x'
+                                ? style.NaoPossui
+                                : null
+                            }
+                          >
+                            {onu.transmissao2ghz}
+                          </td>
+                          <td
+                            className={
+                              onu.transmissao5ghz === 'x'
+                                ? style.NaoPossui
+                                : null
+                            }
+                          >
+                            {onu.transmissao5ghz}
+                          </td>
+                          <td
+                            className={
+                              onu.ssid === 'x' ? style.NaoPossui : null
+                            }
+                          >
+                            {onu.ssid}
+                          </td>
+                          <td
+                            className={
+                              onu.tr069 === 'x' ? style.NaoPossui : null
+                            }
+                          >
+                            {onu.tr069}
+                          </td>
+                          <td
+                            className={
+                              onu.customize === 'x' ? style.NaoPossui : null
+                            }
+                          >
+                            {onu.customize}
+                          </td>
+                          <td
+                            className={
+                              onu.remotize === 'x' ? style.NaoPossui : null
+                            }
+                          >
+                            {onu.remotize}
+                          </td>
                           <td>{onu.garantia}</td>
                           <td>
                             <span className={style.tooltip}>
                               <span>
-                                {onu.status === "Phaseout" && <span className={style.status_phaseout}>{onu.status}</span>}
-                                {onu.status === "Suporte" && <span className={style.status_suporte}>{onu.status}</span>}
+                                {onu.status === 'Phaseout' && (
+                                  <span className={style.status_phaseout}>
+                                    {onu.status}
+                                  </span>
+                                )}
+                                {onu.status === 'Suporte' && (
+                                  <span className={style.status_suporte}>
+                                    {onu.status}
+                                  </span>
+                                )}
                               </span>
-                              {onu.status === "Phaseout" && <span className={style.tooltiptext}>Apenas email</span>}
-                              {onu.status === "Suporte" && <span className={style.tooltiptext}>Fornecemos suporte</span>}
+                              {onu.status === 'Phaseout' && (
+                                <span className={style.tooltiptext}>
+                                  Apenas email
+                                </span>
+                              )}
+                              {onu.status === 'Suporte' && (
+                                <span className={style.tooltiptext}>
+                                  Fornecemos suporte
+                                </span>
+                              )}
                             </span>
                           </td>
                           <td>
-                            <a target="_blank" rel="noopener noreferrer" href={onu.pagina}>
+                            <a
+                              target="_blank"
+                              rel="noopener noreferrer"
+                              href={onu.pagina}
+                            >
                               <span className={style.paginalink}>Página</span>
                             </a>
                           </td>
                           <td>
-                            {onu.datasheet === "-" ? (
-                              <a target="_blank" rel="noopener noreferrer" href="#">
+                            {onu.datasheet === '-' ? (
+                              <a
+                                target="_blank"
+                                rel="noopener noreferrer"
+                                href="#"
+                              >
                                 <span className={style.pdfbtn_NA}>N/A</span>
                               </a>
                             ) : (
-                              <a target="_blank" rel="noopener noreferrer" href={onu.datasheet}>
+                              <a
+                                target="_blank"
+                                rel="noopener noreferrer"
+                                href={onu.datasheet}
+                              >
                                 <span className={style.pdfbtn}>Datasheet</span>
                               </a>
                             )}
                           </td>
                           <td>
-                            {onu.guia === "-" ? (
-                              <a target="_blank" rel="noopener noreferrer" href="#">
+                            {onu.guia === '-' ? (
+                              <a
+                                target="_blank"
+                                rel="noopener noreferrer"
+                                href="#"
+                              >
                                 <span className={style.pdfbtn_NA}>N/A</span>
                               </a>
                             ) : (
-                              <a target="_blank" rel="noopener noreferrer" href={onu.guia}>
+                              <a
+                                target="_blank"
+                                rel="noopener noreferrer"
+                                href={onu.guia}
+                              >
                                 <span className={style.pdfbtn}>Guia</span>
                               </a>
                             )}
                           </td>
                           <td>
-                            {onu.manual === "-" ? (
-                              <a target="_blank" rel="noopener noreferrer" href="#">
+                            {onu.manual === '-' ? (
+                              <a
+                                target="_blank"
+                                rel="noopener noreferrer"
+                                href="#"
+                              >
                                 <span className={style.pdfbtn_NA}>N/A</span>
                               </a>
                             ) : (
-                              <a target="_blank" rel="noopener noreferrer" href={onu.manual}>
+                              <a
+                                target="_blank"
+                                rel="noopener noreferrer"
+                                href={onu.manual}
+                              >
                                 <span className={style.pdfbtn}>Manual</span>
                               </a>
                             )}
