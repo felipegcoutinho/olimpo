@@ -73,6 +73,8 @@ function App() {
     setHideONU(false);
   };
 
+  const urlSearch = `https://www.intelbras.com/pt-br/busca/?q=${urlValue}&tipo_busca=pagina-resultado`;
+
   return (
     <div className={style.container}>
       <a href="#home">
@@ -101,6 +103,11 @@ function App() {
               }
             }}
           />
+
+          <a target="_blank" rel="noopener noreferrer" href={urlSearch}>
+            {urlValue === "" ? null : <button className={style.mainSearchBtn}></button>}
+          </a>
+
           {urlValue === "" ? null : <button className={style.searchBtnClean} onClick={() => setUrlValue("")}></button>}
         </div>
 

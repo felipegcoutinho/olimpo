@@ -76,6 +76,7 @@ input {
   color: #8bcbac;
 }
 
+.mainSearchBtn,
 .searchBtnClean {
   border: none;
   border-radius: 3px;
@@ -87,7 +88,11 @@ input {
   width: 70px;
 }
 
-.searchBtnClean:after {
+.mainSearchBtn {
+  background-color: #eab42a;
+}
+
+.mainSearchBtn:after {
   content: " \f002\ ";
   font-family: FontAwesome;
   font-size: 1.2rem;
