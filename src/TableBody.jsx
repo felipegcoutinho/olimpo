@@ -209,7 +209,7 @@ function App() {
                         <td className={ap.wisefi === "x" && style.NaoPossui}>{ap.wisefi}</td>
                         <td>{ap.potencia2G}</td>
                         <td className={ap.potencia5G === "x" && style.NaoPossui}>{ap.potencia5G}</td>
-                        <td>
+                        {/* <td>
                           <span className={style.tooltip}>
                             <span>
                               {ap.status === "Phaseout" && <span className={style.status_phaseout}>{ap.status}</span>}
@@ -218,13 +218,13 @@ function App() {
                             {ap.status === "Phaseout" && <span className={style.tooltiptext}>Apenas email</span>}
                             {ap.status === "Suporte" && <span className={style.tooltiptext}>Fornecemos suporte</span>}
                           </span>
-                        </td>
+                        </td> */}
                         <td>
                           <a target="_blank" rel="noopener noreferrer" href={ap.pagina}>
-                            <span className={style.paginalink}>Página</span>
+                            <span className={style.paginalink}>Ir para Página</span>
                           </a>
                         </td>
-                        <td>
+                        {/* <td>
                           <a target="_blank" rel="noopener noreferrer" href={ap.datasheet}>
                             <span className={style.pdfbtn}>Datasheet</span>
                           </a>
@@ -238,7 +238,7 @@ function App() {
                           <a target="_blank" rel="noopener noreferrer" href={ap.manual}>
                             <span className={style.pdfbtn}>Manual</span>
                           </a>
-                        </td>
+                        </td> */}
                       </tr>
                     </tbody>
                   );
@@ -302,7 +302,7 @@ function App() {
                         <td className={radio.distancia === "x" && style.NaoPossui}>{radio.distancia}</td>
                         <td>{radio.wireless}</td>
                         <td>{radio.garantia}</td>
-                        <td>
+                        {/* <td>
                           <span className={style.tooltip}>
                             <span>
                               {radio.status === "Phaseout" && <span className={style.status_phaseout}>{radio.status}</span>}
@@ -311,13 +311,13 @@ function App() {
                             {radio.status === "Phaseout" && <span className={style.tooltiptext}>Apenas email</span>}
                             {radio.status === "Suporte" && <span className={style.tooltiptext}>Fornecemos suporte</span>}
                           </span>
-                        </td>
+                        </td> */}
                         <td>
                           <a target="_blank" rel="noopener noreferrer" href={radio.pagina}>
-                            <span className={style.paginalink}>Página</span>
+                            <span className={style.paginalink}>Ir para Página</span>
                           </a>
                         </td>
-                        <td>
+                        {/* <td>
                           {radio.datasheet === "-" ? (
                             <a target="_blank" rel="noopener noreferrer" href="#">
                               <span className={style.pdfbtn_NA}>N/A</span>
@@ -349,7 +349,7 @@ function App() {
                               <span className={style.pdfbtn}>Manual</span>
                             </a>
                           )}
-                        </td>
+                        </td> */}
                       </tr>
                     </tbody>
                   );
@@ -409,7 +409,7 @@ function App() {
                         <td className={roteador.roteador === "x" ? style.NaoPossui : null}>{roteador.roteador}</td>
                         <td className={roteador.cliente === "x" ? style.NaoPossui : null}>{roteador.cliente}</td>
                         <td className={roteador.ap === "x" ? style.NaoPossui : null}>{roteador.ap}</td>
-                        <td>
+                        {/* <td>
                           <span className={style.tooltip}>
                             <span>
                               {roteador.status === "Phaseout" && <span className={style.status_phaseout}>{roteador.status}</span>}
@@ -418,14 +418,14 @@ function App() {
                             {roteador.status === "Phaseout" && <span className={style.tooltiptext}>Apenas email</span>}
                             {roteador.status === "Suporte" && <span className={style.tooltiptext}>Fornecemos suporte</span>}
                           </span>
-                        </td>
+                        </td> */}
                         <td>{roteador.garantia}</td>
                         <td>
                           <a target="_blank" rel="noopener noreferrer" href={roteador.pagina}>
-                            <span className={style.paginalink}>Página</span>
+                            <span className={style.paginalink}>Ir para Página</span>
                           </a>
                         </td>
-                        <td>
+                        {/* <td>
                           {roteador.datasheet === "-" ? (
                             <a target="_blank" rel="noopener noreferrer" href="#">
                               <span className={style.pdfbtn_NA}>N/A</span>
@@ -457,7 +457,7 @@ function App() {
                               <span className={style.pdfbtn}>Manual</span>
                             </a>
                           )}
-                        </td>
+                        </td> */}
                       </tr>
                     </tbody>
                   );
@@ -518,7 +518,7 @@ function App() {
                         <td className={swicth.poeTotal === "x" && style.NaoPossui}>{swicth.poeTotal}</td>
                         <td className={swicth.qos === "x" && style.NaoPossui}>{swicth.qos}</td>
                         <td>{swicth.garantia}</td>
-                        <td>
+                        {/* <td>
                           <span className={style.tooltip}>
                             <span>
                               {swicth.status === "Phaseout" && <span className={style.status_phaseout}>{swicth.status}</span>}
@@ -527,13 +527,13 @@ function App() {
                             {swicth.status === "Phaseout" && <span className={style.tooltiptext}>Apenas email</span>}
                             {swicth.status === "Suporte" && <span className={style.tooltiptext}>Fornecemos suporte</span>}
                           </span>
-                        </td>
+                        </td> */}
                         <td>
                           <a target="_blank" rel="noopener noreferrer" href={swicth.pagina}>
-                            <span className={style.paginalink}>Página</span>
+                            <span className={style.paginalink}>Ir para Página</span>
                           </a>
                         </td>
-                        <td>
+                        {/* <td>
                           {swicth.datasheet === "-" ? (
                             <a target="_blank" rel="noopener noreferrer" href="#">
                               <span className={style.pdfbtn_NA}>N/A</span>
@@ -565,7 +565,7 @@ function App() {
                               <span className={style.pdfbtn}>Manual</span>
                             </a>
                           )}
-                        </td>
+                        </td> */}
                       </tr>
                     </tbody>
                   );
@@ -603,7 +603,7 @@ function App() {
                         <td>{conversor.potencia}</td>
                         <td>{conversor.sensibilidade}</td>
                         <td>{conversor.garantia}</td>
-                        <td>
+                        {/* <td>
                           <span className={style.tooltip}>
                             <span>
                               {conversor.status === "Phaseout" && <span className={style.status_phaseout}>{conversor.status}</span>}
@@ -612,13 +612,13 @@ function App() {
                             {conversor.status === "Phaseout" && <span className={style.tooltiptext}>Apenas email</span>}
                             {conversor.status === "Suporte" && <span className={style.tooltiptext}>Fornecemos suporte</span>}
                           </span>
-                        </td>
+                        </td> */}
                         <td>
                           <a target="_blank" rel="noopener noreferrer" href={conversor.pagina}>
-                            <span className={style.paginalink}>Página</span>
+                            <span className={style.paginalink}>Ir para Página</span>
                           </a>
                         </td>
-                        <td>
+                        {/* <td>
                           {conversor.datasheet === "-" ? (
                             <a target="_blank" rel="noopener noreferrer" href="#">
                               <span className={style.pdfbtn_NA}>N/A</span>
@@ -639,7 +639,7 @@ function App() {
                               <span className={style.pdfbtn}>Guia</span>
                             </a>
                           )}
-                        </td>
+                        </td> */}
                       </tr>
                     </tbody>
                   );
@@ -691,7 +691,7 @@ function App() {
                           <td>{gbic.potencia}</td>
                           <td>{gbic.sensibilidade}</td>
                           <td>{gbic.garantia}</td>
-                          <td>
+                          {/* <td>
                             <span className={style.tooltip}>
                               <span>
                                 {gbic.status === "Phaseout" && <span className={style.status_phaseout}>{gbic.status}</span>}
@@ -700,13 +700,13 @@ function App() {
                               {gbic.status === "Phaseout" && <span className={style.tooltiptext}>Apenas email</span>}
                               {gbic.status === "Suporte" && <span className={style.tooltiptext}>Fornecemos suporte</span>}
                             </span>
-                          </td>
+                          </td> */}
                           <td>
                             <a target="_blank" rel="noopener noreferrer" href={gbic.pagina}>
-                              <span className={style.paginalink}>Página</span>
+                              <span className={style.paginalink}>Ir para Página</span>
                             </a>
                           </td>
-                          <td>
+                          {/* <td>
                             <a target="_blank" rel="noopener noreferrer" href={gbic.datasheet}>
                               <span className={style.pdfbtn}>Datasheet</span>
                             </a>
@@ -715,7 +715,7 @@ function App() {
                             <a target="_blank" rel="noopener noreferrer" href={gbic.guia}>
                               <span className={style.pdfbtn}>Guia</span>
                             </a>
-                          </td>
+                          </td> */}
                         </tr>
                       </tbody>
                     );
@@ -764,7 +764,7 @@ function App() {
                           <td className={onu.customize === "x" ? style.NaoPossui : null}>{onu.customize}</td>
                           <td className={onu.remotize === "x" ? style.NaoPossui : null}>{onu.remotize}</td>
                           <td>{onu.garantia}</td>
-                          <td>
+                          {/* <td>
                             <span className={style.tooltip}>
                               <span>
                                 {onu.status === "Phaseout" && <span className={style.status_phaseout}>{onu.status}</span>}
@@ -773,13 +773,13 @@ function App() {
                               {onu.status === "Phaseout" && <span className={style.tooltiptext}>Apenas email</span>}
                               {onu.status === "Suporte" && <span className={style.tooltiptext}>Fornecemos suporte</span>}
                             </span>
-                          </td>
+                          </td> */}
                           <td>
                             <a target="_blank" rel="noopener noreferrer" href={onu.pagina}>
-                              <span className={style.paginalink}>Página</span>
+                              <span className={style.paginalink}>Ir para Página</span>
                             </a>
                           </td>
-                          <td>
+                          {/* <td>
                             {onu.datasheet === "-" ? (
                               <a target="_blank" rel="noopener noreferrer" href="#">
                                 <span className={style.pdfbtn_NA}>N/A</span>
@@ -811,7 +811,7 @@ function App() {
                                 <span className={style.pdfbtn}>Manual</span>
                               </a>
                             )}
-                          </td>
+                          </td> */}
                         </tr>
                       </tbody>
                     );
