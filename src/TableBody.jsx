@@ -197,10 +197,12 @@ function App() {
                         <td>{ap.raio}</td>
                         <td>{ap.usuarioMax}</td>
                         <td>{ap.throughputWireless24}</td>
-                        <td className={ap.throughputWireless50 === "x" ? style.NaoPossui : null}>{ap.throughputWireless50}</td>
+                        <td className={ap.throughputWireless50 === "x" ? style.NaoPossui : null}>
+                          {ap.throughputWireless50 === "x" ? null : ap.throughputWireless50}
+                        </td>
                         <td>{ap.qtdePortas}</td>
-                        <td className={ap.poe === "x" && style.NaoPossui}>{ap.poe}</td>
-
+                        <td className={ap.poe === "x" && style.NaoPossui}>{ap.poe === "x" ? null : ap.poe}</td>
+                        <td>{ap.tensao}</td>
                         <td>
                           <span className={style.tooltip}>
                             {ap.connectiVersion} {ap.connectiVersion !== "N/A" && <i className="fa-regular fa-circle-question"></i>}
@@ -212,40 +214,15 @@ function App() {
                           </span>
                         </td>
 
-                        <td className={ap.handover === "x" && style.NaoPossui}>{ap.handover}</td>
-                        <td className={ap.wisefi === "x" && style.NaoPossui}>{ap.wisefi}</td>
+                        <td className={ap.handover === "x" ? style.NaoPossui : style.Possui}></td>
+                        <td className={ap.wisefi === "x" ? style.NaoPossui : style.Possui}></td>
                         <td>{ap.potencia2G}</td>
-                        <td className={ap.potencia5G === "x" && style.NaoPossui}>{ap.potencia5G}</td>
-                        {/* <td>
-                          <span className={style.tooltip}>
-                            <span>
-                              {ap.status === "Phaseout" && <span className={style.status_phaseout}>{ap.status}</span>}
-                              {ap.status === "Suporte" && <span className={style.status_suporte}>{ap.status}</span>}
-                            </span>
-                            {ap.status === "Phaseout" && <span className={style.tooltiptext}>Apenas email</span>}
-                            {ap.status === "Suporte" && <span className={style.tooltiptext}>Fornecemos suporte</span>}
-                          </span>
-                        </td> */}
+                        <td className={ap.potencia5G === "x" && style.NaoPossui}>{ap.potencia5G === "x" ? null : ap.potencia5G}</td>
                         <td>
                           <a target="_blank" rel="noopener noreferrer" href={ap.pagina}>
                             <span className={style.paginalink}>Ir para Página</span>
                           </a>
                         </td>
-                        {/* <td>
-                          <a target="_blank" rel="noopener noreferrer" href={ap.datasheet}>
-                            <span className={style.pdfbtn}>Datasheet</span>
-                          </a>
-                        </td>
-                        <td>
-                          <a target="_blank" rel="noopener noreferrer" href={ap.guia}>
-                            <span className={style.pdfbtn}>Guia</span>
-                          </a>
-                        </td>
-                        <td>
-                          <a target="_blank" rel="noopener noreferrer" href={ap.manual}>
-                            <span className={style.pdfbtn}>Manual</span>
-                          </a>
-                        </td> */}
                       </tr>
                     </tbody>
                   );
@@ -305,58 +282,17 @@ function App() {
                         <td>{radio.pps}</td>
                         <td>{radio.throughputEfetivo}</td>
                         <td>{radio.throughputNominal}</td>
-                        <td className={radio.aberturaHorVer === "x" && style.NaoPossui}>{radio.aberturaHorVer}</td>
-                        <td className={radio.distancia === "x" && style.NaoPossui}>{radio.distancia}</td>
+                        <td className={radio.aberturaHorVer === "x" && style.NaoPossui}>
+                          {radio.aberturaHorVer === "x" ? null : radio.aberturaHorVer}
+                        </td>
+                        <td className={radio.distancia === "x" && style.NaoPossui}>{radio.distancia === "x" ? null : radio.distancia}</td>
                         <td>{radio.wireless}</td>
                         <td>{radio.garantia}</td>
-                        {/* <td>
-                          <span className={style.tooltip}>
-                            <span>
-                              {radio.status === "Phaseout" && <span className={style.status_phaseout}>{radio.status}</span>}
-                              {radio.status === "Suporte" && <span className={style.status_suporte}>{radio.status}</span>}
-                            </span>
-                            {radio.status === "Phaseout" && <span className={style.tooltiptext}>Apenas email</span>}
-                            {radio.status === "Suporte" && <span className={style.tooltiptext}>Fornecemos suporte</span>}
-                          </span>
-                        </td> */}
                         <td>
                           <a target="_blank" rel="noopener noreferrer" href={radio.pagina}>
                             <span className={style.paginalink}>Ir para Página</span>
                           </a>
                         </td>
-                        {/* <td>
-                          {radio.datasheet === "-" ? (
-                            <a target="_blank" rel="noopener noreferrer" href="#">
-                              <span className={style.pdfbtn_NA}>N/A</span>
-                            </a>
-                          ) : (
-                            <a target="_blank" rel="noopener noreferrer" href={radio.datasheet}>
-                              <span className={style.pdfbtn}>Datasheet</span>
-                            </a>
-                          )}
-                        </td>
-                        <td>
-                          {radio.guia === "-" ? (
-                            <a target="_blank" rel="noopener noreferrer" href="#">
-                              <span className={style.pdfbtn_NA}>N/A</span>
-                            </a>
-                          ) : (
-                            <a target="_blank" rel="noopener noreferrer" href={radio.guia}>
-                              <span className={style.pdfbtn}>Guia</span>
-                            </a>
-                          )}
-                        </td>
-                        <td>
-                          {radio.manual === "-" ? (
-                            <a target="_blank" rel="noopener noreferrer" href="#">
-                              <span className={style.pdfbtn_NA}>N/A</span>
-                            </a>
-                          ) : (
-                            <a target="_blank" rel="noopener noreferrer" href={radio.manual}>
-                              <span className={style.pdfbtn}>Manual</span>
-                            </a>
-                          )}
-                        </td> */}
                       </tr>
                     </tbody>
                   );
@@ -409,67 +345,42 @@ function App() {
                         </td>
                         <td>{roteador.QtdePortas}</td>
                         <td>{roteador.datarateMax2G}</td>
-                        <td className={roteador.datarateMax5G === "x" ? style.NaoPossui : null}>{roteador.datarateMax5G}</td>
+                        <td className={roteador.datarateMax5G === "x" ? style.NaoPossui : null}>
+                          {roteador.datarateMax5G === "x" ? null : roteador.datarateMax5G}
+                        </td>
                         <td>{roteador.ganho}</td>
-                        <td className={roteador.ipv6 === "x" ? style.NaoPossui : null}>{roteador.ipv6}</td>
-                        <td className={roteador.repetidor === "x" ? style.NaoPossui : null}>{roteador.repetidor}</td>
-                        <td className={roteador.roteador === "x" ? style.NaoPossui : null}>{roteador.roteador}</td>
-                        <td className={roteador.cliente === "x" ? style.NaoPossui : null}>{roteador.cliente}</td>
-                        <td className={roteador.ap === "x" ? style.NaoPossui : null}>{roteador.ap}</td>
-                        {/* <td>
-                          <span className={style.tooltip}>
-                            <span>
-                              {roteador.status === "Phaseout" && <span className={style.status_phaseout}>{roteador.status}</span>}
-                              {roteador.status === "Suporte" && <span className={style.status_suporte}>{roteador.status}</span>}
-                            </span>
-                            {roteador.status === "Phaseout" && <span className={style.tooltiptext}>Apenas email</span>}
-                            {roteador.status === "Suporte" && <span className={style.tooltiptext}>Fornecemos suporte</span>}
-                          </span>
-                        </td> */}
+                        <td className={roteador.ipv6 === "x" ? style.NaoPossui : style.Possui}></td>
+                        <td>
+                          {roteador.repetidor === "x" && <span className={style.NaoPossui}></span>}
+                          {roteador.repetidor === "Sim" && <span className={style.Possui}></span>}
+                          {roteador.repetidor === "N/A" && <span>{roteador.repetidor}</span>}
+                        </td>
+                        <td>
+                          {roteador.roteador === "x" && <span className={style.NaoPossui}></span>}
+                          {roteador.roteador === "Sim" && <span className={style.Possui}></span>}
+                          {roteador.roteador === "N/A" && <span>{roteador.roteador}</span>}
+                        </td>
+                        <td>
+                          {roteador.cliente === "x" && <span className={style.NaoPossui}></span>}
+                          {roteador.cliente === "Sim" && <span className={style.Possui}></span>}
+                          {roteador.cliente === "N/A" && <span>{roteador.cliente}</span>}
+                        </td>
+                        <td>
+                          {roteador.ap === "x" && <span className={style.NaoPossui}></span>}
+                          {roteador.ap === "Sim" && <span className={style.Possui}></span>}
+                          {roteador.ap === "N/A" && <span>{roteador.ap}</span>}
+                        </td>
                         <td>{roteador.garantia}</td>
                         <td>
                           <a target="_blank" rel="noopener noreferrer" href={roteador.pagina}>
                             <span className={style.paginalink}>Ir para Página</span>
                           </a>
                         </td>
-                        {/* <td>
-                          {roteador.datasheet === "-" ? (
-                            <a target="_blank" rel="noopener noreferrer" href="#">
-                              <span className={style.pdfbtn_NA}>N/A</span>
-                            </a>
-                          ) : (
-                            <a target="_blank" rel="noopener noreferrer" href={roteador.datasheet}>
-                              <span className={style.pdfbtn}>Datasheet</span>
-                            </a>
-                          )}
-                        </td>
-                        <td>
-                          {roteador.guia === "-" ? (
-                            <a target="_blank" rel="noopener noreferrer" href="#">
-                              <span className={style.pdfbtn_NA}>N/A</span>
-                            </a>
-                          ) : (
-                            <a target="_blank" rel="noopener noreferrer" href={roteador.guia}>
-                              <span className={style.pdfbtn}>Guia</span>
-                            </a>
-                          )}
-                        </td>
-                        <td>
-                          {roteador.manual === "-" ? (
-                            <a target="_blank" rel="noopener noreferrer" href="#">
-                              <span className={style.pdfbtn_NA}>N/A</span>
-                            </a>
-                          ) : (
-                            <a target="_blank" rel="noopener noreferrer" href={roteador.manual}>
-                              <span className={style.pdfbtn}>Manual</span>
-                            </a>
-                          )}
-                        </td> */}
                       </tr>
                     </tbody>
                   );
                 })}
-              </table>{" "}
+              </table>
             </div>
           ) : null}
         </div>
@@ -515,64 +426,42 @@ function App() {
                           <span className={swicth.modulação === "Fast" ? style.fast : style.giga}>{swicth.modulação}</span>
                         </td>
                         <td>{swicth.portas}</td>
-                        <td className={swicth.gerenciavel === "x" && style.NaoPossui}>{swicth.gerenciavel}</td>
-                        <td className={swicth.poe === "x" && style.NaoPossui}>{swicth.poe}</td>
+                        <td>
+                          {swicth.gerenciavel === "x" && <span className={style.NaoPossui}></span>}
+                          {swicth.gerenciavel === "Sim" && <span className={style.Possui}></span>}
+                        </td>
+                        <td>
+                          {swicth.poe === "x" && <span className={style.NaoPossui}></span>}
+                          {swicth.poe !== "x" && <span>{swicth.poe}</span>}
+                        </td>
                         <td>{swicth.taxaTransferencia}</td>
                         <td>{swicth.backplane}</td>
-                        <td className={swicth.sfp === "x" && style.NaoPossui}>{swicth.sfp}</td>
-                        <td className={swicth.poeExtender === "x" && style.NaoPossui}>{swicth.poeExtender}</td>
-                        <td className={swicth.poePorta === "x" && style.NaoPossui}>{swicth.poePorta}</td>
-                        <td className={swicth.poeTotal === "x" && style.NaoPossui}>{swicth.poeTotal}</td>
-                        <td className={swicth.qos === "x" && style.NaoPossui}>{swicth.qos}</td>
+                        <td>
+                          {swicth.sfp === "x" && <span className={style.NaoPossui}></span>}
+                          {swicth.sfp !== "x" && <span>{swicth.sfp}</span>}
+                        </td>
+                        <td>
+                          {swicth.poeExtender === "x" && <span className={style.NaoPossui}></span>}
+                          {swicth.poeExtender !== "x" && <span className={style.Possui}></span>}
+                        </td>
+                        <td>
+                          {swicth.poePorta === "x" && <span className={style.NaoPossui}></span>}
+                          {swicth.poePorta !== "x" && <span>{swicth.poePorta}</span>}
+                        </td>
+                        <td>
+                          {swicth.poeTotal === "x" && <span className={style.NaoPossui}></span>}
+                          {swicth.poeTotal !== "x" && <span>{swicth.poeTotal}</span>}
+                        </td>
+                        <td>
+                          {swicth.qos === "x" && <span className={style.NaoPossui}></span>}
+                          {swicth.qos === "Sim" && <span className={style.Possui}></span>}
+                        </td>
                         <td>{swicth.garantia}</td>
-                        {/* <td>
-                          <span className={style.tooltip}>
-                            <span>
-                              {swicth.status === "Phaseout" && <span className={style.status_phaseout}>{swicth.status}</span>}
-                              {swicth.status === "Suporte" && <span className={style.status_suporte}>{swicth.status}</span>}
-                            </span>
-                            {swicth.status === "Phaseout" && <span className={style.tooltiptext}>Apenas email</span>}
-                            {swicth.status === "Suporte" && <span className={style.tooltiptext}>Fornecemos suporte</span>}
-                          </span>
-                        </td> */}
                         <td>
                           <a target="_blank" rel="noopener noreferrer" href={swicth.pagina}>
                             <span className={style.paginalink}>Ir para Página</span>
                           </a>
                         </td>
-                        {/* <td>
-                          {swicth.datasheet === "-" ? (
-                            <a target="_blank" rel="noopener noreferrer" href="#">
-                              <span className={style.pdfbtn_NA}>N/A</span>
-                            </a>
-                          ) : (
-                            <a target="_blank" rel="noopener noreferrer" href={swicth.datasheet}>
-                              <span className={style.pdfbtn}>Datasheet</span>
-                            </a>
-                          )}
-                        </td>
-                        <td>
-                          {swicth.guia === "-" ? (
-                            <a target="_blank" rel="noopener noreferrer" href="#">
-                              <span className={style.pdfbtn_NA}>N/A</span>
-                            </a>
-                          ) : (
-                            <a target="_blank" rel="noopener noreferrer" href={swicth.guia}>
-                              <span className={style.pdfbtn}>Guia</span>
-                            </a>
-                          )}
-                        </td>
-                        <td>
-                          {swicth.manual === "-" ? (
-                            <a target="_blank" rel="noopener noreferrer" href="#">
-                              <span className={style.pdfbtn_NA}>N/A</span>
-                            </a>
-                          ) : (
-                            <a target="_blank" rel="noopener noreferrer" href={swicth.manual}>
-                              <span className={style.pdfbtn}>Manual</span>
-                            </a>
-                          )}
-                        </td> */}
                       </tr>
                     </tbody>
                   );
@@ -601,7 +490,10 @@ function App() {
                           <b>{conversor.modelo}</b>
                         </td>
                         <td>{conversor.conector}</td>
-                        <td className={conversor.wdm === "x" ? style.NaoPossui : null}>{conversor.wdm}</td>
+                        <td>
+                          {conversor.wdm === "x" && <span className={style.NaoPossui}></span>}
+                          {conversor.wdm !== "x" && <span className={style.Possui}></span>}
+                        </td>
                         <td>{conversor.distancia}</td>
                         <td>
                           <span className={conversor.modulação === "Fast" ? style.fast : style.giga}>{conversor.modulação}</span>
@@ -610,43 +502,11 @@ function App() {
                         <td>{conversor.potencia}</td>
                         <td>{conversor.sensibilidade}</td>
                         <td>{conversor.garantia}</td>
-                        {/* <td>
-                          <span className={style.tooltip}>
-                            <span>
-                              {conversor.status === "Phaseout" && <span className={style.status_phaseout}>{conversor.status}</span>}
-                              {conversor.status === "Suporte" && <span className={style.status_suporte}>{conversor.status}</span>}
-                            </span>
-                            {conversor.status === "Phaseout" && <span className={style.tooltiptext}>Apenas email</span>}
-                            {conversor.status === "Suporte" && <span className={style.tooltiptext}>Fornecemos suporte</span>}
-                          </span>
-                        </td> */}
                         <td>
                           <a target="_blank" rel="noopener noreferrer" href={conversor.pagina}>
                             <span className={style.paginalink}>Ir para Página</span>
                           </a>
                         </td>
-                        {/* <td>
-                          {conversor.datasheet === "-" ? (
-                            <a target="_blank" rel="noopener noreferrer" href="#">
-                              <span className={style.pdfbtn_NA}>N/A</span>
-                            </a>
-                          ) : (
-                            <a target="_blank" rel="noopener noreferrer" href={conversor.datasheet}>
-                              <span className={style.pdfbtn}>Datasheet</span>
-                            </a>
-                          )}
-                        </td>
-                        <td>
-                          {conversor.guia === "-" ? (
-                            <a target="_blank" rel="noopener noreferrer" href="#">
-                              <span className={style.pdfbtn_NA}>N/A</span>
-                            </a>
-                          ) : (
-                            <a target="_blank" rel="noopener noreferrer" href={conversor.guia}>
-                              <span className={style.pdfbtn}>Guia</span>
-                            </a>
-                          )}
-                        </td> */}
                       </tr>
                     </tbody>
                   );
@@ -672,9 +532,7 @@ function App() {
                     return (
                       <tbody>
                         <tr>
-                          <td>
-                            <b>{gbic.modelo}</b>
-                          </td>
+                          <td>{gbic.modelo}</td>
                           <td>{gbic.tipoConector}</td>
                           <td>
                             {gbic.modulo === "SFP+" && <span className={style.variado1}>SFP+</span>}
@@ -683,7 +541,10 @@ function App() {
                             {gbic.modulo === "Gpon" && <span className={style.fast}>GPON</span>}
                             {gbic.modulo === "XFP" && <span className={style.giga}>XFP</span>}
                           </td>
-                          <td className={gbic.wdm === "x" ? style.NaoPossui : null}>{gbic.wdm}</td>
+                          <td>
+                            {gbic.wdm === "x" && <span className={style.NaoPossui}></span>}
+                            {gbic.wdm !== "x" && <span className={style.Possui}></span>}
+                          </td>
                           <td>
                             <span className={style.tooltip}>
                               {gbic.distancia} {gbic.fibra === "Multimodo" && <i className="fa-regular fa-circle-question"></i>}
@@ -698,31 +559,11 @@ function App() {
                           <td>{gbic.potencia}</td>
                           <td>{gbic.sensibilidade}</td>
                           <td>{gbic.garantia}</td>
-                          {/* <td>
-                            <span className={style.tooltip}>
-                              <span>
-                                {gbic.status === "Phaseout" && <span className={style.status_phaseout}>{gbic.status}</span>}
-                                {gbic.status === "Suporte" && <span className={style.status_suporte}>{gbic.status}</span>}
-                              </span>
-                              {gbic.status === "Phaseout" && <span className={style.tooltiptext}>Apenas email</span>}
-                              {gbic.status === "Suporte" && <span className={style.tooltiptext}>Fornecemos suporte</span>}
-                            </span>
-                          </td> */}
                           <td>
                             <a target="_blank" rel="noopener noreferrer" href={gbic.pagina}>
                               <span className={style.paginalink}>Ir para Página</span>
                             </a>
                           </td>
-                          {/* <td>
-                            <a target="_blank" rel="noopener noreferrer" href={gbic.datasheet}>
-                              <span className={style.pdfbtn}>Datasheet</span>
-                            </a>
-                          </td>
-                          <td>
-                            <a target="_blank" rel="noopener noreferrer" href={gbic.guia}>
-                              <span className={style.pdfbtn}>Guia</span>
-                            </a>
-                          </td> */}
                         </tr>
                       </tbody>
                     );
@@ -749,76 +590,57 @@ function App() {
                     return (
                       <tbody>
                         <tr>
-                          <td>
-                            <b>{onu.modelo}</b>
-                          </td>
-
+                          <td>{onu.modelo}</td>
                           <td>
                             <span className={onu.modulação === "Fast" ? style.fast : style.giga}>{onu.modulação}</span>
                           </td>
-                          <td className={onu.fxs === "x" ? style.NaoPossui : null}>{onu.fxs}</td>
+                          <td>
+                            {onu.fxs === "x" && <span className={style.NaoPossui}></span>}
+                            {onu.fxs !== "x" && <span>{onu.fxs}</span>}
+                          </td>
                           <td>
                             {onu.tipo === "EPON/GPON" && <span className={style.variado1}>{onu.tipo}</span>}
                             {onu.tipo === "GPON" && <span className={style.variado2}>{onu.tipo}</span>}
                           </td>
                           <td>{onu.sensibilidade}</td>
-                          <td className={onu.cobertura === "x" ? style.NaoPossui : null}>{onu.cobertura}</td>
-                          <td className={onu.clientesSimultaneos === "x" ? style.NaoPossui : null}>{onu.clientesSimultaneos}</td>
-                          <td className={onu.transmissao2ghz === "x" ? style.NaoPossui : null}>{onu.transmissao2ghz}</td>
-                          <td className={onu.transmissao5ghz === "x" ? style.NaoPossui : null}>{onu.transmissao5ghz}</td>
-                          <td className={onu.ssid === "x" ? style.NaoPossui : null}>{onu.ssid}</td>
-                          <td className={onu.tr069 === "x" ? style.NaoPossui : null}>{onu.tr069}</td>
-                          <td className={onu.customize === "x" ? style.NaoPossui : null}>{onu.customize}</td>
-                          <td className={onu.remotize === "x" ? style.NaoPossui : null}>{onu.remotize}</td>
+                          <td>
+                            {onu.cobertura === "x" && <span className={style.NaoPossui}></span>}
+                            {onu.cobertura !== "x" && <span>{onu.cobertura}</span>}
+                          </td>
+                          <td>
+                            {onu.clientesSimultaneos === "x" && <span className={style.NaoPossui}></span>}
+                            {onu.clientesSimultaneos !== "x" && <span>{onu.clientesSimultaneos}</span>}
+                          </td>
+                          <td>
+                            {onu.transmissao2ghz === "x" && <span className={style.NaoPossui}></span>}
+                            {onu.transmissao2ghz !== "x" && <span>{onu.transmissao2ghz}</span>}
+                          </td>
+                          <td>
+                            {onu.transmissao5ghz === "x" && <span className={style.NaoPossui}></span>}
+                            {onu.transmissao5ghz !== "x" && <span>{onu.transmissao5ghz}</span>}
+                          </td>
+                          <td>
+                            {onu.ssid === "x" && <span className={style.NaoPossui}></span>}
+                            {onu.ssid !== "x" && <span>{onu.ssid}</span>}
+                          </td>
+                          <td>
+                            {onu.tr069 === "x" && <span className={style.NaoPossui}></span>}
+                            {onu.tr069 === "Sim" && <span className={style.Possui}></span>}
+                          </td>
+                          <td>
+                            {onu.customize === "x" && <span className={style.NaoPossui}></span>}
+                            {onu.customize === "Sim" && <span className={style.Possui}></span>}
+                          </td>
+                          <td>
+                            {onu.remotize === "x" && <span className={style.NaoPossui}></span>}
+                            {onu.remotize === "Sim" && <span className={style.Possui}></span>}
+                          </td>
                           <td>{onu.garantia}</td>
-                          {/* <td>
-                            <span className={style.tooltip}>
-                              <span>
-                                {onu.status === "Phaseout" && <span className={style.status_phaseout}>{onu.status}</span>}
-                                {onu.status === "Suporte" && <span className={style.status_suporte}>{onu.status}</span>}
-                              </span>
-                              {onu.status === "Phaseout" && <span className={style.tooltiptext}>Apenas email</span>}
-                              {onu.status === "Suporte" && <span className={style.tooltiptext}>Fornecemos suporte</span>}
-                            </span>
-                          </td> */}
                           <td>
                             <a target="_blank" rel="noopener noreferrer" href={onu.pagina}>
                               <span className={style.paginalink}>Ir para Página</span>
                             </a>
                           </td>
-                          {/* <td>
-                            {onu.datasheet === "-" ? (
-                              <a target="_blank" rel="noopener noreferrer" href="#">
-                                <span className={style.pdfbtn_NA}>N/A</span>
-                              </a>
-                            ) : (
-                              <a target="_blank" rel="noopener noreferrer" href={onu.datasheet}>
-                                <span className={style.pdfbtn}>Datasheet</span>
-                              </a>
-                            )}
-                          </td>
-                          <td>
-                            {onu.guia === "-" ? (
-                              <a target="_blank" rel="noopener noreferrer" href="#">
-                                <span className={style.pdfbtn_NA}>N/A</span>
-                              </a>
-                            ) : (
-                              <a target="_blank" rel="noopener noreferrer" href={onu.guia}>
-                                <span className={style.pdfbtn}>Guia</span>
-                              </a>
-                            )}
-                          </td>
-                          <td>
-                            {onu.manual === "-" ? (
-                              <a target="_blank" rel="noopener noreferrer" href="#">
-                                <span className={style.pdfbtn_NA}>N/A</span>
-                              </a>
-                            ) : (
-                              <a target="_blank" rel="noopener noreferrer" href={onu.manual}>
-                                <span className={style.pdfbtn}>Manual</span>
-                              </a>
-                            )}
-                          </td> */}
                         </tr>
                       </tbody>
                     );

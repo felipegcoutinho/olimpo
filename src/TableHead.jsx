@@ -13,17 +13,14 @@ export function AP() {
         <th>Datarate Máx. 2G</th>
         <th>Datarate Máx. 5G</th>
         <th>Qtde Portas</th>
-        <th>PoE</th>
+        <th>PoE Ativo</th>
+        <th>PoE Passivo</th>
         <th>ConnectFi</th>
         <th>Handover</th>
         <th>WiseFi</th>
         <th>Potência de TX 2G</th>
         <th>Potência de TX 5G</th>
-        {/* <th>Status</th> */}
         <th>Página</th>
-        {/* <th>Datasheet</th>
-        <th>Guia</th>
-        <th>Manual</th> */}
       </tr>
     </thead>
   );
@@ -45,11 +42,7 @@ export function RADIO() {
         <th>Distância Máx</th>
         <th>Wireless</th>
         <th>Garantia</th>
-        {/* <th>Status</th> */}
         <th>Página</th>
-        {/* <th>Datasheet</th>
-        <th>Guia</th>
-        <th>Manual</th> */}
       </tr>
     </thead>
   );
@@ -68,10 +61,7 @@ export function CONVERSOR() {
         <th>Potência Sinal Max | Min</th>
         <th>Sensibilidade Max | Min</th>
         <th>Garantia</th>
-        {/* <th>Status</th> */}
         <th>Página</th>
-        {/* <th>Datasheet</th>
-        <th>Guia</th> */}
       </tr>
     </thead>
   );
@@ -92,10 +82,7 @@ export function GBIC() {
           <th>Potência Sinal Max | Min</th>
           <th>Sensibilidade Max | Min</th>
           <th>Garantia</th>
-          {/* <th>Status</th> */}
           <th>Página</th>
-          {/* <th>Datasheet</th>
-          <th>Guia</th> */}
         </tr>
       </thead>
     </>
@@ -120,11 +107,7 @@ export function SWITCH() {
           <th>PoE/Total</th>
           <th>Qos</th>
           <th>Garantia</th>
-          {/* <th>Status</th> */}
           <th>Página</th>
-          {/* <th>Datasheet</th>
-          <th>Guia</th>
-          <th>Manual</th> */}
         </tr>
       </thead>
     </>
@@ -150,11 +133,7 @@ export function ONU() {
           <th>Customize</th>
           <th>Remotize</th>
           <th>Garantia</th>
-          {/* <th>Status</th> */}
           <th>Página</th>
-          {/* <th>Datasheet</th>
-          <th>Guia</th>
-          <th>Manual</th> */}
         </tr>
       </thead>
     </>
@@ -181,12 +160,8 @@ export function ROTEADOR() {
           <th>Roteador AP</th>
           <th>Cliente Wireless</th>
           <th>Modo AP</th>
-          {/* <th>Status</th> */}
           <th>Garantia</th>
           <th>Página</th>
-          {/* <th>Datasheet</th>
-          <th>Guia</th>
-          <th>Manual</th> */}
         </tr>
       </thead>
     </>

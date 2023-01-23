@@ -206,13 +206,13 @@ input {
 }
 
 .arrowHide:before {
-  content: " \f107\ ";
+  content: " \f0d7\ ";
   font-family: FontAwesome;
   font-size: 1.1rem;
 }
 
 .arrowShow:before {
-  content: " \f054\ ";
+  content: " \f0da\ ";
   font-family: FontAwesome;
   font-size: 1.1rem;
 }
@@ -341,10 +341,18 @@ input {
   color: #60623c;
 }
 
-.NaoPossui {
-  color: #e34646;
-  font-size: 0.8rem !important;
-  font-weight: 600 !important;
+.NaoPossui:after {
+  color: #f75151;
+  content: " \f00d\ ";
+  font-family: FontAwesome;
+  font-size: 1.2rem;
+}
+
+.Possui:after {
+  color: #77be77;
+  content: " \f00c\ ";
+  font-family: FontAwesome;
+  font-size: 1.2rem;
 }
 
 /* TABELAS */
@@ -375,10 +383,10 @@ input {
   border: 1px solid white;
 }
 
-#AP th:nth-child(13),
-#AP th:nth-child(14),
-#AP th:nth-child(10) {
-  padding: 0 10px;
+#AP th:nth-child(9),
+#AP th:nth-child(10),
+#AP th:nth-child(11) {
+  padding: 0 20px;
 }
 
 #AP th:nth-child(9) {
