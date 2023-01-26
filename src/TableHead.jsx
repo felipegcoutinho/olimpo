@@ -51,7 +51,7 @@ export function RADIO() {
 export function CONVERSOR() {
   return (
     <thead>
-      <tr>
+      <tr id={style.CONVERSOR}>
         <th>Modelo</th>
         <th>Conector</th>
         <th>WDM</th>
@@ -71,7 +71,7 @@ export function GBIC() {
   return (
     <>
       <thead>
-        <tr>
+        <tr id={style.GBIC}>
           <th>Modelo</th>
           <th>Conector</th>
           <th>Modulo</th>
@@ -93,7 +93,7 @@ export function SWITCH() {
   return (
     <>
       <thead>
-        <tr>
+        <tr id={style.SWITCH}>
           <th>Modelo</th>
           <th>Modulação</th>
           <th>Qtde Portas</th>
@@ -144,7 +144,7 @@ export function ROTEADOR() {
   return (
     <>
       <thead>
-        <tr>
+        <tr id={style.ROTEADOR}>
           <th>Modelo</th>
           <th>Cobertura</th>
           <th>Raio</th>

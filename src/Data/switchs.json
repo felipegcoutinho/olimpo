@@ -391,29 +391,6 @@
     "manual": "-"
   },
   {
-    "id": "9",
-    "modelo": "SF 910 PAC",
-    "linha": "switch",
-    "portas": "9 Portas",
-    "modulação": "Fast",
-    "gerenciavel": "x",
-    "sfp": "x",
-    "taxaTransferencia": "2.67 Mpps",
-    "backplane": "3,6 Gbps",
-    "pdAlive": "x",
-    "qos": "Sim",
-    "poe": "x",
-    "poeExtender": "x",
-    "poePorta": "x",
-    "poeTotal": "x",
-    "status": "Suporte",
-    "garantia": "1 Ano",
-    "pagina": "https://www.intelbras.com/pt-br/switch-com-9-portas-sf-910-pac",
-    "datasheet": "http://backend.intelbras.com/sites/default/files/2020-08/datasheet-SF-910-PAC-v2.pdf",
-    "guia": "-",
-    "manual": "https://backend.intelbras.com/sites/default/files/2022-03/Manual_SF%20910%20PAC_portugues_01-22_site.pdf"
-  },
-  {
     "id": "21",
     "modelo": "SG 1002 MR",
     "linha": "switch",
@@ -734,5 +711,28 @@
     "datasheet": "http://backend.intelbras.com/sites/default/files/2022-11/datasheet-sg-800%20VLAN%2018.11.22.pdf",
     "guia": "https://manuais-switches.intelbras.com.br/pt-BR/SG_800.html",
     "manual": "-"
+  },
+  {
+    "id": "9",
+    "modelo": "SF 910 PAC",
+    "linha": "switch",
+    "portas": "9 Portas",
+    "modulação": "Fast",
+    "gerenciavel": "x",
+    "sfp": "x",
+    "taxaTransferencia": "2.67 Mpps",
+    "backplane": "3,6 Gbps",
+    "pdAlive": "x",
+    "qos": "Sim",
+    "poe": "x",
+    "poeExtender": "x",
+    "poePorta": "x",
+    "poeTotal": "x",
+    "status": "Suporte",
+    "garantia": "1 Ano",
+    "pagina": "https://www.intelbras.com/pt-br/switch-com-9-portas-sf-910-pac",
+    "datasheet": "http://backend.intelbras.com/sites/default/files/2020-08/datasheet-SF-910-PAC-v2.pdf",
+    "guia": "-",
+    "manual": "https://backend.intelbras.com/sites/default/files/2022-03/Manual_SF%20910%20PAC_portugues_01-22_site.pdf"
   }
 ]

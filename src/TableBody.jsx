@@ -142,9 +142,11 @@ function App() {
             </b>
           </p>
           <p>
-            <b>N/A</b> = Informação Não Encontrada.
+            <b>N/A</b> = Informação não encontrada.
           </p>
-          <p>X = Não Possui a Função.</p>
+          <p>
+            <span className={style.NaoPossui}></span> = Não possui a função.
+          </p>
         </div>
       </div>
 
@@ -189,7 +191,7 @@ function App() {
                   return (
                     <tbody>
                       <tr>
-                        <td>{ap.modelo}</td>
+                        <td className={ap.status === "Phaseout" ? style.status_phaseout : style.status_suporte}>{ap.modelo}</td>
                         <td>
                           <span className={ap.modulação === "Fast" ? style.fast : style.giga}>{ap.modulação}</span>
                         </td>
@@ -262,8 +264,8 @@ function App() {
                   return (
                     <tbody>
                       <tr>
-                        <td>{radio.modelo}</td>
-
+                        {/* <td className="">{radio.modelo}</td> */}
+                        <td className={radio.status === "Phaseout" ? style.status_phaseout : style.status_suporte}>{radio.modelo}</td>
                         <td>{radio.indicado}</td>
                         <td>
                           <span className={radio.modulação === "Fast" ? style.fast : style.giga}>{radio.modulação}</span>
@@ -333,9 +335,7 @@ function App() {
                   return (
                     <tbody>
                       <tr>
-                        <td>
-                          <b>{roteador.modelo}</b>
-                        </td>
+                        <td className={roteador.status === "Phaseout" ? style.status_phaseout : style.status_suporte}>{roteador.modelo}</td>
                         <td>{roteador.cobertura}</td>
                         <td>{roteador.raio}</td>
                         <td>{roteador.usuarioMax}</td>
@@ -415,7 +415,7 @@ function App() {
                   return (
                     <tbody>
                       <tr id={style.swicth_id}>
-                        <td>
+                        <td className={swicth.status === "Phaseout" ? style.status_phaseout : style.status_suporte}>
                           <span className={style.tooltip}>
                             {swicth.modelo}
                             {swicth.modelo === "SG 2404 PoE L2+" && <i className="fa-regular fa-circle-question"></i>}
@@ -486,9 +486,10 @@ function App() {
                   return (
                     <tbody>
                       <tr>
-                        <td>
-                          <b>{conversor.modelo}</b>
+                        <td className={conversor.status === "Phaseout" ? style.status_phaseout : style.status_suporte}>
+                          {conversor.modelo}
                         </td>
+
                         <td>{conversor.conector}</td>
                         <td>
                           {conversor.wdm === "x" && <span className={style.NaoPossui}></span>}
@@ -532,7 +533,7 @@ function App() {
                     return (
                       <tbody>
                         <tr>
-                          <td>{gbic.modelo}</td>
+                          <td className={gbic.status === "Phaseout" ? style.status_phaseout : style.status_suporte}>{gbic.modelo}</td>
                           <td>{gbic.tipoConector}</td>
                           <td>
                             {gbic.modulo === "SFP+" && <span className={style.variado1}>SFP+</span>}
@@ -590,7 +591,7 @@ function App() {
                     return (
                       <tbody>
                         <tr>
-                          <td>{onu.modelo}</td>
+                          <td className={onu.status === "Phaseout" ? style.status_phaseout : style.status_suporte}>{onu.modelo}</td>
                           <td>
                             <span className={onu.modulação === "Fast" ? style.fast : style.giga}>{onu.modulação}</span>
                           </td>

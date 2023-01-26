@@ -124,7 +124,7 @@ input {
   font-weight: bold;
   height: 50px;
   margin: 3px;
-  width: 110px;
+  width: 135px;
 }
 
 .btns:hover {
@@ -229,24 +229,24 @@ input {
   width: 250px;
 }
 
-.status_phaseout,
+/* .status_phaseout,
 .status_suporte {
   border-radius: 20px;
   font-weight: bold;
   padding: 1px 10px;
-}
+} */
 
 .status_phaseout {
   background-color: #fff2f2;
-  color: #e34646;
+  color: #661e1e;
 }
 
 .status_suporte {
   background-color: #e1f5e8;
-  color: #2ca152;
+  color: #17562c;
 }
 
-.status_phaseout::before {
+/* .status_phaseout::before {
   content: " \f057\ ";
   font-family: FontAwesome;
   font-size: 0.7rem;
@@ -256,7 +256,7 @@ input {
   content: " \f058\ ";
   font-family: FontAwesome;
   font-size: 0.7rem;
-}
+} */
 
 .pdfbtn,
 .paginalink,
@@ -389,12 +389,20 @@ input {
   padding: 0 20px;
 }
 
+#AP th:nth-child(1) {
+  padding: 0 70px;
+}
+
 #AP th:nth-child(9) {
   padding: 0 50px;
 }
 
 #RADIO th:nth-child(5) {
   padding: 0 30px;
+}
+
+#ROTEADOR th:nth-child(1) {
+  padding: 0 60px;
 }
 
 #ONU th:nth-child(3) {
@@ -406,10 +414,6 @@ input {
   color: white;
 }
 
-/* .devicesTable th:nth-child(even) {
-  background-color: #596273;
-} */
-
 .devicesTable td:not(:first-child) {
   font-size: 0.8rem;
   font-weight: 500;
@@ -417,23 +421,21 @@ input {
 }
 
 td:first-child {
-  background-color: #f2f2f2;
   font-size: 0.9rem;
   font-weight: bold;
-  left: 0;
-  padding: 0 5px;
+  padding-left: 10px;
   position: sticky;
+  text-align: left;
 }
 
 th:first-child {
-  background-color: #474e5c;
-  /* display: block; */
   left: 0;
   position: sticky;
 }
 
 tbody tr:hover {
   background: #fee5a1;
+  box-shadow: 0px 0px 0px 1px #fdd872 inset;
 }
 
 tbody:nth-child(even) {
