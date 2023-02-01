@@ -135,18 +135,13 @@ function App() {
           </a>
         </div>
 
-        <div className={style.legendas}>
-          <p>
-            <b>
-              <i>Legendas</i>
-            </b>
-          </p>
-          <p>
-            <b>N/A</b> = Informação não encontrada.
-          </p>
-          <p>
-            <span className={style.NaoPossui}></span> = Não possui a função.
-          </p>
+        <div className={style.legendas_container}>
+          <div className={style.legendas_title}>Legendas</div>
+          <div className={style.legendas_content}>
+            N/A - Informação não encontrada.
+            <div className={style.status_suporte}></div> - Não possui a função.
+            <div className={style.status_phaseout}></div> - Não possui a função.
+          </div>
         </div>
       </div>
 

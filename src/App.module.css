@@ -132,22 +132,28 @@ input {
   color: white;
 }
 
-.legendas,
 .aviso {
   color: white;
   font-size: 0.9rem;
 }
 
-.legendas {
+.legendas_container {
   background-color: #20773c;
   border: 1px solid #1e6d37;
   border-radius: 3px;
   margin-bottom: 30px;
   padding: 10px 40px;
+  color: white;
 }
 
-.legendas p {
-  padding: 3px;
+.legendas_title {
+  font-weight: bold;
+  font-style: italic;
+}
+
+.legendas_content {
+  display: flex;
+  justify-content: space-around;
 }
 
 .btn_hideShow {
@@ -246,17 +252,19 @@ input {
   color: #17562c;
 }
 
-/* .status_phaseout::before {
-  content: " \f057\ ";
+.status_phaseout::before {
+  content: " \f0e0\ ";
   font-family: FontAwesome;
   font-size: 0.7rem;
+  padding: 0;
 }
 
 .status_suporte:before {
   content: " \f058\ ";
   font-family: FontAwesome;
   font-size: 0.7rem;
-} */
+  padding: 0;
+}
 
 .pdfbtn,
 .paginalink,
@@ -423,7 +431,7 @@ input {
 td:first-child {
   font-size: 0.9rem;
   font-weight: bold;
-  padding-left: 10px;
+  padding-left: 5px;
   position: sticky;
   text-align: left;
 }
