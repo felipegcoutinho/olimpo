@@ -1,7 +1,7 @@
-import React from "react";
-import style from "../src/App.module.css";
+import React from 'react';
+import style from '../src/App.module.css';
 
-export function AP() {
+export default function AP() {
   return (
     <thead>
       <tr id={style.AP}>
@@ -67,7 +67,7 @@ export function CONVERSOR() {
   );
 }
 
-export function GBIC() {
+export function SFP() {
   return (
     <>
       <thead>
