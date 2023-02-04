@@ -1,13 +1,13 @@
-import React from 'react';
-import style from '../src/App.module.css';
-import Header from '../src/Components/Header.jsx';
-import AccessPoints from '../src/Components/Ap.jsx';
-import RadiosOutdoor from '../src/Components/Radios.jsx';
-import RoteadoresHO from '../src/Components/Roteadores.jsx';
-import Switches from '../src/Components/Switches.jsx';
-import Conversores from '../src/Components/Conversores.jsx';
-import Sfp from '../src/Components/Sfp.jsx';
-import Onu from '../src/Components/Onu.jsx';
+import React from "react";
+import style from "../src/App.module.css";
+import Header from "../src/Components/Header.jsx";
+import AccessPoints from "../src/Components/Ap.jsx";
+import RadiosOutdoor from "../src/Components/Radios.jsx";
+import RoteadoresHO from "../src/Components/Roteadores.jsx";
+import Switches from "../src/Components/Switches.jsx";
+import Conversores from "../src/Components/Conversores.jsx";
+import Sfp from "../src/Components/Sfp.jsx";
+import Onu from "../src/Components/Onu.jsx";
 
 function App() {
   const MostrarTudo = () => {
@@ -49,22 +49,22 @@ function App() {
         <AccessPoints />
 
         {/* Rádios */}
-        <RadiosOutdoor />
+        {/* <RadiosOutdoor /> */}
 
         {/* Roteadores HO */}
-        <RoteadoresHO />
+        {/* <RoteadoresHO /> */}
 
         {/* SWITCHES */}
-        <Switches />
+        {/* <Switches /> */}
 
         {/* CONVERSORES */}
-        <Conversores />
+        {/* <Conversores /> */}
 
         {/* SFPs */}
-        <Sfp />
+        {/* <Sfp /> */}
 
         {/* ONUs */}
-        <Onu />
+        {/* <Onu /> */}
       </div>
     </div>
   );
