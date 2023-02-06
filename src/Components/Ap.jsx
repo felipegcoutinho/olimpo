@@ -133,7 +133,6 @@ export default function Ap() {
         <button id="ap" className={HideAP ? style.arrowHide : style.arrowShow} onClick={handleHideAP}>
           <span className={style.title}>Access Point</span>
         </button>
-
         <button className={style.btn_add} onClick={openModal}>
           Adicionar Access Point
         </button>
@@ -181,19 +180,30 @@ export default function Ap() {
           <table className={style.devicesTable}>
             {/* Table Headers*/}
             <AP_Heads />
-            <tbody>
-              {accessPoint.map((ap, index) => (
-                <tr key={index}>
-                  <td>{ap.modelo}</td>
-                  <td>{ap.modulação}</td>
-                  <td>{ap.cobertura}</td>
-                  <td>
-                    <button onClick={() => openUpdateModal(ap)}>Editar</button>
-                    <button onClick={() => deleteProduct(ap.id)}>Excluir</button>
-                  </td>
-                </tr>
-              ))}
-            </tbody>
+
+            {accessPoint
+              .filter((ap) => {
+                if (ap.modelo.toLowerCase().includes(queryAP.toLowerCase())) {
+                  return ap;
+                } else if (ap.modulação.toLowerCase().includes(queryAP.toLowerCase())) {
+                  return ap;
+                }
+              })
+              .map((ap, index) => {
+                return (
+                  <tbody>
+                    <tr key={index}>
+                      <td>{ap.modelo}</td>
+                      <td>{ap.modulação}</td>
+                      <td>{ap.cobertura}</td>
+                      <td>
+                        <button onClick={() => openUpdateModal(ap)}>Editar</button>
+                        <button onClick={() => deleteProduct(ap.id)}>Excluir</button>
+                      </td>
+                    </tr>
+                  </tbody>
+                );
+              })}
           </table>
         </div>
       ) : null}

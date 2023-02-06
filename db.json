@@ -1,30 +1,10 @@
 {
   "aps": [
     {
-      "modelo": "AA",
-      "modulação": "AA",
-      "cobertura": "A",
+      "modelo": "1250",
+      "modulação": "fast",
+      "cobertura": "500",
       "id": 1
-    },
-    {
-      "modelo": "A",
-      "modulação": "AA",
-      "cobertura": "",
-      "id": 2
-    },
-    [
-      {
-        "modelo": "AA",
-        "modulação": "AA",
-        "cobertura": "A",
-        "id": 1
-      },
-      {
-        "modelo": "A",
-        "modulação": "AA",
-        "cobertura": "",
-        "id": 2
-      }
-    ]
+    }
   ]
 }
