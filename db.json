@@ -1,42 +1,30 @@
 {
-  "posts": [
-    {
-      "id": 1,
-      "title": "json-server",
-      "author": "typicode"
-    }
-  ],
   "aps": [
     {
-      "id": "8",
-      "linha": "ap",
-      "modelo": "AP 1250 AC MAX",
-      "garantia": "1 ano",
-      "cobertura": "450 m²",
-      "raio": "11,97 m",
-      "usuarioMax": "350 usuários",
-      "qtdePortas": "2 (WAN E LAN)",
-      "status": "Suporte",
-      "modulação": "Giga",
-      "connectiVersion": "v2.9.17",
-      "throughputWireless24": "300 Mbps (2x2)",
-      "throughputWireless50": "886 Mbps (2x2)",
-      "ganho": "3dBi(2,4GHz) | 4dBi (5,0GHz)",
-      "potencia2G": "28 dBm (630mW)",
-      "potencia5G": "27 dBm (501mW)",
-      "tensao": "48V / 12 VDC (P4)",
-      "poe": "PoE 802.3at",
-      "distancia": "CAT 5E(50m) e CAT 6(95m)",
-      "consumo": "15 W",
-      "wisefi": "Sim",
-      "handover": "Sim",
-      "pagina": "https://www.intelbras.com/pt-br/access-point-dual-band-ac-de-alta-potencia-ap-1250-ac-max",
-      "datasheet": "http://backend.intelbras.com/sites/default/files/2022-07/Datasheet_AP_1250_AC_MAX_PT_07.22.pdf",
-      "guia": "https://backend.intelbras.com/sites/default/files/2022-05/Guia_AP_1250AC_Max_01-22_site_1.pdf",
-      "manual": "https://manual-zeus-os.intelbras.com.br/"
-    }
-  ],
-  "profile": {
-    "name": "typicode"
-  }
+      "modelo": "AA",
+      "modulação": "AA",
+      "cobertura": "A",
+      "id": 1
+    },
+    {
+      "modelo": "A",
+      "modulação": "AA",
+      "cobertura": "",
+      "id": 2
+    },
+    [
+      {
+        "modelo": "AA",
+        "modulação": "AA",
+        "cobertura": "A",
+        "id": 1
+      },
+      {
+        "modelo": "A",
+        "modulação": "AA",
+        "cobertura": "",
+        "id": 2
+      }
+    ]
+  ]
 }

@@ -1,5 +1,5 @@
-import React from 'react';
-import style from '../src/App.module.css';
+import React from "react";
+import style from "../src/App.module.css";
 
 export default function AP() {
   return (
