@@ -335,6 +335,34 @@
       "datasheet": "https://backend.intelbras.com/sites/default/files/2019-07/Datasheet_AP_1210_AC_03-19.pdf",
       "guia": "https://backend.intelbras.com/sites/default/files/2019-05/Guia_de_instalacao_AP_1210_AC_Lite_01-19.pdf",
       "manual": "https://manual-zeus-os.intelbras.com.br/"
+    },
+    {
+      "id": "13",
+      "linha": "ap",
+      "modelo": "AP 300",
+      "garantia": "1 ano",
+      "cobertura": "300 m²",
+      "raio": "9,77 m",
+      "usuarioMax": "100 usuários",
+      "qtdePortas": "2 (WAN E LAN)",
+      "status": "Phaseout",
+      "modulação": "Fast",
+      "connectiVersion": "v2.0.0",
+      "throughputWireless24": "300 Mbps (2x2)",
+      "throughputWireless50": "x",
+      "ganho": "5dBi (2,4GHz)",
+      "potencia2G": "27 dBm (500mW)",
+      "potencia5G": "x",
+      "tensao": "12V | 24V (PADRÃO B)",
+      "poe": "x",
+      "distancia": "30m",
+      "consumo": "6 W",
+      "wisefi": "x",
+      "handover": "x",
+      "pagina": "https://www.intelbras.com/pt-br/ajuda-download/download/access-point-corporativo-com-gerenciamento-centralizado-ap-300",
+      "datasheet": "https://backend.intelbras.com/sites/default/files/2019-04/Datasheet_AP_300_01-19_Zeus%20OS.pdf",
+      "guia": "https://backend.intelbras.com/sites/default/files/2019-04/Guia_AP_300_portugues_01-19-ZeusOS.pdf",
+      "manual": "https://backend.intelbras.com/sites/default/files/2019-05/Manual_do_usuario_Zeus_OS_AP_300_e_HotSpot_300_AP_310_AP_360_AP_1210AC_02-19_site.pdf"
     }
   ]
 }

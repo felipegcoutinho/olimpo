@@ -39,7 +39,7 @@ export default function Header() {
             {urlValue === "" ? null : <button className={style.mainSearchBtn}></button>}
           </a>
           {urlValue === "" ? null : <button className={style.searchBtnClean} onClick={() => setUrlValue("")}></button>}
-          {urlValue === "!olimpo" ? <button className={style.adminBtn} onClick={() => alert("admin :)")}></button> : null}
+          {urlValue === "olimpo@admin" ? <button className={style.adminBtn} onClick={() => alert("admin :)")}></button> : null}
         </div>
 
         <div className={style.btns_container}>

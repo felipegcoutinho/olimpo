@@ -1,16 +1,23 @@
 import React from "react";
+import {useContext} from "react";
+import {APContext} from "./Ap";
+import Modal from "react-modal";
+import style from "/src/App.module.css";
 
 function AP_Modal() {
+  const {setModelo, addProduct, updateProduct, updatedProduct, setUpdatedProduct, customStyles, modalIsOpen, closeModal} =
+    useContext(APContext);
+
   return (
-    <Modal isOpen={modalIsOpen} onAfterOpen={afterOpenModal} onRequestClose={closeModal} style={customStyles} contentLabel="Example Modal">
+    <Modal isOpen={modalIsOpen} onRequestClose={closeModal} style={customStyles} contentLabel="Example Modal">
       <h1>{updatedProduct.id ? "Atualizar Equipamento" : "Adicionar Equipamento"}</h1>
       <form onSubmit={updatedProduct.id ? updateProduct : addProduct}>
         <div className={style.formContainer}>
           <input
             type="text"
             placeholder="Modelo do produto"
-            value={updatedProduct.modelo || ""}
-            onChange={(e) => setUpdatedProduct({...updatedProduct, modelo: e.target.value}) || setModelo(e.target.value)}
+            value={updatedProduct.modelo}
+            onChange={(e) => setUpdatedProduct({...updatedProduct, modelo: e.target.value})}
           />
 
           <input
