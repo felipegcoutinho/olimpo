@@ -1,13 +1,13 @@
 import React from "react";
 import style from "../src/App.module.css";
-import Header from "../src/Components/Header.jsx";
-import AccessPoints from "../src/Components/Ap.jsx";
-import RadiosOutdoor from "../src/Components/Radios.jsx";
-import RoteadoresHO from "../src/Components/Roteadores.jsx";
-import Switches from "../src/Components/Switches.jsx";
-import Conversores from "../src/Components/Conversores.jsx";
-import Sfp from "../src/Components/Sfp.jsx";
-import Onu from "../src/Components/Onu.jsx";
+import Header from "./Components/Header.jsx";
+import AccessPoints from "./Components/Ap.jsx";
+import RadiosOutdoor from "./Components/Radios.jsx";
+import RoteadoresHO from "./Components/Roteadores.jsx";
+import Switches from "./Components/Switches.jsx";
+import Conversores from "./Components/Conversores.jsx";
+import Sfp from "./Components/Sfp.jsx";
+import Onu from "./Components/Onu.jsx";
 
 function App() {
   const MostrarTudo = () => {

@@ -1,8 +1,8 @@
-import React from 'react';
-import style from '/src/App.module.css';
+import React from "react";
+import style from "/src/App.module.css";
 
 export default function Header() {
-  const [urlValue, setUrlValue] = React.useState('');
+  const [urlValue, setUrlValue] = React.useState("");
   const handleSearch = (e) => {
     setUrlValue(e.target.value);
   };
@@ -13,8 +13,7 @@ export default function Header() {
     <div>
       <div className={style.aviso}>
         <p>
-          <b>Aviso!</b> Este é um material para facilitar o acesso a informações
-          dos principais equipamentos.
+          <b>Aviso!</b> Este é um material para facilitar o acesso a informações dos principais equipamentos.
           <b> Sempre consulte a documentação oficial.</b> :)
         </p>
       </div>
@@ -30,27 +29,17 @@ export default function Header() {
             onChange={handleSearch}
             placeholder="Pesquise em intelbras.com.br"
             onKeyDown={(event) => {
-              if (event.key === 'Enter') {
-                window.open(
-                  `https://www.intelbras.com/pt-br/busca/?q=${urlValue}&tipo_busca=pagina-resultado`,
-                  '_blank'
-                );
+              if (event.key === "Enter") {
+                window.open(`https://www.intelbras.com/pt-br/busca/?q=${urlValue}&tipo_busca=pagina-resultado`, "_blank");
               }
             }}
           />
 
           <a target="_blank" rel="noopener noreferrer" href={urlSearch}>
-            {urlValue === '' ? null : (
-              <button className={style.mainSearchBtn}></button>
-            )}
+            {urlValue === "" ? null : <button className={style.mainSearchBtn}></button>}
           </a>
-
-          {urlValue === '' ? null : (
-            <button
-              className={style.searchBtnClean}
-              onClick={() => setUrlValue('')}
-            ></button>
-          )}
+          {urlValue === "" ? null : <button className={style.searchBtnClean} onClick={() => setUrlValue("")}></button>}
+          {urlValue === "!olimpo" ? <button className={style.adminBtn} onClick={() => alert("admin :)")}></button> : null}
         </div>
 
         <div className={style.btns_container}>
@@ -85,8 +74,7 @@ export default function Header() {
               <span className={style.status_suporte}></span>- Suporte normal.
             </p>
             <p>
-              <span className={style.status_phaseout}></span>- Suporte por
-              email.
+              <span className={style.status_phaseout}></span>- Suporte por email.
             </p>
           </div>
         </div>

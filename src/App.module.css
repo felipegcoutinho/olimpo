@@ -85,6 +85,7 @@ input {
 }
 
 .mainSearchBtn,
+.adminBtn,
 .searchBtnClean {
   border: none;
   border-radius: 3px;
@@ -96,14 +97,19 @@ input {
   width: 70px;
 }
 
+.mainSearchBtn:after,
+.searchBtnClean::after,
+.adminBtn::after {
+  font-family: FontAwesome;
+  font-size: 1.2rem;
+}
+
 .mainSearchBtn {
   background-color: #eab42a;
 }
 
 .mainSearchBtn:after {
   content: " \f002\ ";
-  font-family: FontAwesome;
-  font-size: 1.2rem;
 }
 
 .searchBtnClean {
@@ -112,8 +118,14 @@ input {
 
 .searchBtnClean::after {
   content: " \f00d\ ";
-  font-family: FontAwesome;
-  font-size: 1.2rem;
+}
+
+.adminBtn {
+  background-color: black;
+}
+
+.adminBtn::after {
+  content: " \f3c1\ ";
 }
 
 .btns_container {
@@ -240,6 +252,72 @@ input {
   padding: 5px;
   text-align: center;
   width: 250px;
+}
+
+input {
+  background-color: #dbdbdb;
+  border: none;
+  border-radius: 5px;
+  font-size: 0.9rem;
+  font-weight: bold;
+  padding: 5px;
+  margin: 2px 0;
+}
+
+.btn_addUpd,
+.btn_addUpdCancel {
+  padding: 5px;
+  border: none;
+  margin: 3px 0;
+  cursor: pointer;
+}
+
+.btn_addUpd {
+  background-color: #006e39;
+  color: white;
+}
+
+.btn_addUpdCancel {
+  background-color: #af4343;
+  color: white;
+}
+
+.formContainer {
+  display: flex;
+  flex-direction: column;
+}
+
+.btn_alterar,
+.btn_excluir {
+  border: none;
+  cursor: pointer;
+  padding: 8px;
+  border-radius: 3px;
+  margin: 0 3px;
+}
+
+.btn_alterar {
+  background-color: #d6a400;
+  color: white;
+}
+
+.btn_excluir {
+  background-color: #a32c2c;
+  color: white;
+}
+
+.btn_alterar:before {
+  content: " \f304\ ";
+  font-family: FontAwesome;
+  font-size: 0.7rem;
+  padding: 0;
+}
+
+.btn_excluir:before {
+  content: " \f1f8\ ";
+  font-family: FontAwesome;
+  font-size: 0.7rem;
+  padding: 0;
 }
 
 /* .status_phaseout,
