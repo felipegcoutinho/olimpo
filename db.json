@@ -2,7 +2,7 @@
   "aps": [
     {
       "modelo": "1250",
-      "modulação": "fast",
+      "modulação": "Fast",
       "cobertura": "500",
       "id": 1
     }
