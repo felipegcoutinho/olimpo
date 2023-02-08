@@ -144,7 +144,7 @@ function AP_Modal() {
             onChange={(e) => setUpdatedProduct({...updatedProduct, poe: e.target.value})}
           />
 
-          <label>Comprimento do Cabo</label>
+          <label>Comprimento do Cabos</label>
           <input
             type="text"
             placeholder="Comprimento do Cabo"
