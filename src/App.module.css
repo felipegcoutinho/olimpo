@@ -1,13 +1,5 @@
 @import url("https://fonts.googleapis.com/css2?family=Pacifico&display=swap");
 
-.btn_add {
-  background-color: #006e39;
-  border: none;
-  color: white;
-  padding: 5px 10px;
-  cursor: pointer;
-}
-
 * {
   box-sizing: border-box;
   margin: 0;
@@ -207,9 +199,18 @@ input {
 }
 
 .header_box_content {
+  padding: 15px 0;
   display: flex;
   justify-content: space-between;
-  padding: 15px 0;
+}
+
+.btn_add {
+  background-color: #006e39;
+  border: none;
+  color: white;
+  padding: 10px;
+  cursor: pointer;
+  border-radius: 3px;
 }
 
 .title {
@@ -264,16 +265,18 @@ label {
   display: flex;
   flex-direction: column;
   background-color: white;
+  padding: 5px 0;
 }
 
 .formContainer input,
 select {
   background-color: #ececec;
-  border: 2px solid #9f9f9f;
+  border: 1px solid #e5e5e5;
   border-radius: 3px;
   font-size: 0.8rem;
   padding: 4px;
   margin: 3px 0;
+  font-weight: 600;
 }
 
 .btn_addUpd,
@@ -287,11 +290,13 @@ select {
 .btn_addUpd {
   background-color: #006e39;
   color: white;
+  padding: 7px 0;
 }
 
 .btn_addUpdCancel {
   background-color: #af4343;
   color: white;
+  padding: 7px 0;
 }
 
 .formContainer {

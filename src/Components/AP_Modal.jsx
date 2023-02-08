@@ -10,6 +10,8 @@ function AP_Modal() {
   return (
     <Modal isOpen={modalIsOpen} onRequestClose={closeModal} style={customStyles} contentLabel="Example Modal">
       {updatedProduct.id ? <h1>Atualizar Access Point</h1> : <h1>Adicionar Access Point</h1>}
+      <h4>Caso o produto não possua a função, preencha o campo com "x".</h4>
+      <h4>Caso a informação do campo não foi encontrada, preencha o campo com "N/A".</h4>
       <form onSubmit={updatedProduct.id ? updateProduct : addProduto}>
         <div className={style.formContainer}>
           <label>Modelo</label>
@@ -104,7 +106,7 @@ function AP_Modal() {
             onChange={(e) => setUpdatedProduct({...updatedProduct, throughputWireless50: e.target.value})}
           />
 
-          <label>Ganho de Antena</label>
+          <label>Ganho de Antena (2.4ghz | 5ghz)</label>
           <input
             type="text"
             placeholder="Ganho de Antena"
@@ -136,7 +138,7 @@ function AP_Modal() {
             onChange={(e) => setUpdatedProduct({...updatedProduct, tensao: e.target.value})}
           />
 
-          <label>PoE</label>
+          <label>Tipo do PoE</label>
           <input
             type="text"
             placeholder="PoE"
@@ -144,7 +146,7 @@ function AP_Modal() {
             onChange={(e) => setUpdatedProduct({...updatedProduct, poe: e.target.value})}
           />
 
-          <label>Comprimento do Cabos</label>
+          <label>Comprimento do Cabo PoE</label>
           <input
             type="text"
             placeholder="Comprimento do Cabo"

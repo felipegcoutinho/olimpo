@@ -1,10 +1,11 @@
 import React from "react";
 import style from "/src/App.module.css";
 import AP_Heads from "../TableHead";
-import {useEffect, useState} from "react";
+import {useEffect, useState, useContext} from "react";
 import Modal from "react-modal";
 import AP_Modal from "./AP_Modal";
 import {createContext} from "react";
+import {AdminContext} from "../App";
 
 export const APContext = createContext();
 
@@ -44,6 +45,8 @@ export default function Ap() {
     setQueryAP(e.target.value);
   };
 
+  const {admin, setAdmin} = useContext(AdminContext);
+
   /* Modal Configs */
   const customStyles = {
     content: {
@@ -55,6 +58,7 @@ export default function Ap() {
       marginRight: "-50%",
       transform: "translate(-50%, -50%)",
       height: "80%",
+      width: "30%",
     },
   };
 
@@ -127,29 +131,30 @@ export default function Ap() {
         <button id="ap" className={HideAP ? style.arrowHide : style.arrowShow} onClick={handleHideAP}>
           <span className={style.title}>Access Point</span>
         </button>
-        <button className={style.btn_add} onClick={openModal}>
-          Adicionar Access Point
-        </button>
-        <APContext.Provider
-          value={{
-            updateProduct,
-            updatedProduct,
-            setUpdatedProduct,
-            customStyles,
-            modalIsOpen,
-            setIsOpen,
-            openModal,
-            closeModal,
-            addProduto,
-          }}>
-          <AP_Modal />
-        </APContext.Provider>
 
-        <label>
-          <i className="fa-solid fa-magnifying-glass"></i>
-          <input placeholder="Pesquise o Equipamento" value={queryAP} onChange={handleSearchChangeAP} className={style.searchBarDevices} />
-        </label>
+        {admin && (
+          <button className={style.btn_add} onClick={openModal}>
+            Adicionar Access Point
+          </button>
+        )}
+
+        <input placeholder="Pesquise por um AP" value={queryAP} onChange={handleSearchChangeAP} className={style.searchBarDevices} />
       </div>
+
+      <APContext.Provider
+        value={{
+          updateProduct,
+          updatedProduct,
+          setUpdatedProduct,
+          customStyles,
+          modalIsOpen,
+          setIsOpen,
+          openModal,
+          closeModal,
+          addProduto,
+        }}>
+        <AP_Modal />
+      </APContext.Provider>
 
       {HideAP ? (
         <div style={{overflowX: "auto"}}>
@@ -177,12 +182,13 @@ export default function Ap() {
                     <td>{ap.tensao}</td>
                     <td>
                       <span className={style.tooltip}>
-                        {ap.connectiVersion} {ap.connectiVersion !== "N/A" && <i className="fa-regular fa-circle-question"></i>}
+                        {ap.connectiVersion}
+                        {/* {ap.connectiVersion !== "N/A" && <i className="fa-regular fa-circle-question"></i>}
                         {ap.connectiVersion !== "N/A" && (
                           <span className={style.tooltiptext}>
                             O AP precisa estar com a versão {ap.connectiVersion} para o connectFi funcionar.
                           </span>
-                        )}
+                        )}*/}
                       </span>
                     </td>
                     <td className={ap.handover === "x" ? style.NaoPossui : style.Possui}></td>

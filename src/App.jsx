@@ -8,6 +8,9 @@ import Switches from "./Components/Switches.jsx";
 import Conversores from "./Components/Conversores.jsx";
 import Sfp from "./Components/Sfp.jsx";
 import Onu from "./Components/Onu.jsx";
+import {createContext} from "react";
+
+export const AdminContext = createContext();
 
 function App() {
   const MostrarTudo = () => {
@@ -30,23 +33,26 @@ function App() {
     setHideONU(false);
   };
 
+  const [admin, setAdmin] = React.useState(false);
+
   return (
     <div className={style.container}>
-      <Header />
-
       {/* BOTÃO MOSTRAR / OCULTAR */}
       <div className={style.box_container}>
-        <div>
+        {/* <div>
           <button className={style.btn_hideShow} onClick={MostrarTudo}>
             Mostrar Tudo <i className="fa-solid fa-eye"></i>
           </button>
           <button className={style.btn_hideShow} onClick={OcultarTudo}>
             Ocultar Tudo <i className="fa-regular fa-eye-slash"></i>
           </button>
-        </div>
+        </div> */}
+        <AdminContext.Provider value={{setAdmin, admin}}>
+          <Header />
+          <AccessPoints />
+        </AdminContext.Provider>
 
         {/* APs */}
-        <AccessPoints />
 
         {/* Rádios */}
         {/* <RadiosOutdoor /> */}
