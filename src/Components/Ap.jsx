@@ -9,7 +9,6 @@ import {createContext} from "react";
 export const APContext = createContext();
 
 export default function Ap() {
-  const [linha, setLinha] = useState("");
   const [modelo, setModelo] = useState("");
   const [garantia, setGarantia] = useState("");
   const [cobertura, setCobertura] = useState("");
@@ -51,10 +50,11 @@ export default function Ap() {
       top: "50%",
       left: "50%",
       right: "auto",
-      padding: "30px",
+      padding: "30px 30px 0 30px",
       bottom: "auto",
       marginRight: "-50%",
       transform: "translate(-50%, -50%)",
+      height: "80%",
     },
   };
 
@@ -79,7 +79,7 @@ export default function Ap() {
   };
 
   /* Adicionar Produto */
-  const addProduct = async (e) => {
+  const addProduto = async (e) => {
     e.preventDefault();
     await fetch("http://localhost:3000/aps", {
       method: "POST",
@@ -132,7 +132,6 @@ export default function Ap() {
         </button>
         <APContext.Provider
           value={{
-            setModelo,
             updateProduct,
             updatedProduct,
             setUpdatedProduct,
@@ -141,7 +140,7 @@ export default function Ap() {
             setIsOpen,
             openModal,
             closeModal,
-            addProduct,
+            addProduto,
           }}>
           <AP_Modal />
         </APContext.Provider>
