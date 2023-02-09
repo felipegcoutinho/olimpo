@@ -299,6 +299,30 @@ select {
   padding: 7px 0;
 }
 
+.modal {
+  position: absolute;
+  inset: 50% auto auto 50%;
+  border: 1px solid rgb(204, 204, 204);
+  background: rgb(255, 255, 255);
+  overflow: auto;
+  border-radius: 4px;
+  outline: none;
+  padding: 30px 30px 0px;
+  margin-right: -50%;
+  transform: translate(-50%, -50%);
+  height: 80%;
+  width: 30%;
+}
+
+.modal_overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: #ffffffbd;
+}
+
 .formContainer {
   display: flex;
   flex-direction: column;
@@ -586,7 +610,7 @@ tbody:nth-child(even) {
   display: flex;
   height: 50px;
   justify-content: center;
-  margin-left: 20px;
+  margin-left: -80px;
   position: fixed;
   top: 90%;
   width: 50px;

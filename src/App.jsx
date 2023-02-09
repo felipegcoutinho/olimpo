@@ -13,6 +13,9 @@ import {createContext} from "react";
 export const AdminContext = createContext();
 
 function App() {
+  const [admin, setAdmin] = React.useState(true);
+  const [HideAP, setHideAP] = React.useState(true);
+
   const MostrarTudo = () => {
     setHideAP(true);
     setHideRADIO(true);
@@ -33,44 +36,40 @@ function App() {
     setHideONU(false);
   };
 
-  const [admin, setAdmin] = React.useState(false);
-
   return (
     <div className={style.container}>
-      {/* BOTÃO MOSTRAR / OCULTAR */}
       <div className={style.box_container}>
-        {/* <div>
-          <button className={style.btn_hideShow} onClick={MostrarTudo}>
-            Mostrar Tudo <i className="fa-solid fa-eye"></i>
-          </button>
-          <button className={style.btn_hideShow} onClick={OcultarTudo}>
-            Ocultar Tudo <i className="fa-regular fa-eye-slash"></i>
-          </button>
-        </div> */}
-        <AdminContext.Provider value={{setAdmin, admin}}>
+        <AdminContext.Provider value={{setAdmin, admin, HideAP, setHideAP}}>
           <Header />
+          <div>
+            <button className={style.btn_hideShow} onClick={MostrarTudo}>
+              Mostrar Tudo <i className="fa-solid fa-eye"></i>
+            </button>
+            <button className={style.btn_hideShow} onClick={OcultarTudo}>
+              Ocultar Tudo <i className="fa-regular fa-eye-slash"></i>
+            </button>
+          </div>
+          {/* APs */}
           <AccessPoints />
+
+          {/* Rádios */}
+          {/* <RadiosOutdoor /> */}
+
+          {/* Roteadores HO */}
+          {/* <RoteadoresHO /> */}
+
+          {/* SWITCHES */}
+          {/* <Switches /> */}
+
+          {/* CONVERSORES */}
+          {/* <Conversores /> */}
+
+          {/* SFPs */}
+          {/* <Sfp /> */}
+
+          {/* ONUs */}
+          {/* <Onu /> */}
         </AdminContext.Provider>
-
-        {/* APs */}
-
-        {/* Rádios */}
-        {/* <RadiosOutdoor /> */}
-
-        {/* Roteadores HO */}
-        {/* <RoteadoresHO /> */}
-
-        {/* SWITCHES */}
-        {/* <Switches /> */}
-
-        {/* CONVERSORES */}
-        {/* <Conversores /> */}
-
-        {/* SFPs */}
-        {/* <Sfp /> */}
-
-        {/* ONUs */}
-        {/* <Onu /> */}
       </div>
     </div>
   );

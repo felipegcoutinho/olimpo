@@ -1,7 +1,9 @@
-import React from "react";
+import React, {useContext} from "react";
 import style from "../src/App.module.css";
+import {AdminContext} from "./App";
 
 export default function AP() {
+  const {admin} = useContext(AdminContext);
   return (
     <thead>
       <tr id={style.AP}>
@@ -21,6 +23,7 @@ export default function AP() {
         <th>Potência de TX 2G</th>
         <th>Potência de TX 5G</th>
         <th>Página</th>
+        {admin && <th>Ações</th>}
       </tr>
     </thead>
   );

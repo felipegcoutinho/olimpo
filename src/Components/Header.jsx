@@ -2,16 +2,29 @@ import React from "react";
 import {useContext} from "react";
 import {AdminContext} from "../App";
 import style from "/src/App.module.css";
+import Swal from "sweetalert2";
 
 export default function Header() {
   const {admin, setAdmin} = useContext(AdminContext);
   const [urlValue, setUrlValue] = React.useState("");
+  const urlSearch = `https://www.intelbras.com/pt-br/busca/?q=${urlValue}&tipo_busca=pagina-resultado`;
 
   const handleSearch = (e) => {
     setUrlValue(e.target.value);
   };
 
-  const urlSearch = `https://www.intelbras.com/pt-br/busca/?q=${urlValue}&tipo_busca=pagina-resultado`;
+  const EnableAdmin = () => {
+    setAdmin(!admin);
+    {
+      admin
+        ? Swal.fire({
+            title: "Error!",
+            text: "Do you want to continue",
+            icon: "error",
+          })
+        : alert("admin!!!!");
+    }
+  };
 
   return (
     <div>
@@ -43,7 +56,7 @@ export default function Header() {
             {urlValue === "" ? null : <button className={style.mainSearchBtn}></button>}
           </a>
           {urlValue === "" ? null : <button className={style.searchBtnClean} onClick={() => setUrlValue("")}></button>}
-          {urlValue === "olimpo@admin" && <button className={style.adminBtn} onClick={() => setAdmin(true)}></button>}
+          {urlValue === "admin" && <button className={style.adminBtn} onClick={EnableAdmin}></button>}
         </div>
 
         <div className={style.btns_container}>
