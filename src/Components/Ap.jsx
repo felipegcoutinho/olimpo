@@ -76,7 +76,10 @@ export default function Ap() {
       },
       body: JSON.stringify(updatedProduct),
     });
-    Swal.fire("Adicionado!");
+    Swal.fire({
+      title: "Adicionado!",
+      confirmButtonColor: "#006e39",
+    });
     setUpdatedProduct({});
     fetchProducts();
     closeModal();
@@ -91,9 +94,9 @@ export default function Ap() {
       title: "Você tem certeza?",
       icon: "warning",
       showCancelButton: true,
-      confirmButtonColor: "#18a034",
+      confirmButtonColor: "#006e39",
       cancelButtonColor: "#d33",
-      confirmButtonText: "Sim, deletar!",
+      confirmButtonText: "Sim, deletar",
     }).then((result) => {
       if (result.isConfirmed) {
         Swal.fire("Access Point deletado!");
@@ -116,7 +119,11 @@ export default function Ap() {
       },
       body: JSON.stringify(updatedProduct),
     });
-    Swal.fire("Atualizado!");
+    Swal.fire({
+      title: "Atualizado!",
+      confirmButtonColor: "#006e39",
+    });
+
     setUpdatedProduct({});
     fetchProducts();
     closeModal();

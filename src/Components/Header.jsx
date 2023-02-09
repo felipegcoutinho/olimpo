@@ -18,21 +18,21 @@ export default function Header() {
     {
       admin
         ? Swal.fire({
-            title: "Error!",
-            text: "Do you want to continue",
+            title: "Modo admin desativado!",
             icon: "error",
           })
-        : alert("admin!!!!");
+        : Swal.fire({
+            title: "Modo admin ativado!",
+            icon: "success",
+          });
     }
   };
 
   return (
     <div>
       <div className={style.aviso}>
-        <p>
-          <b>Aviso!</b> Este é um material para facilitar o acesso a informações dos principais equipamentos.
-          <b> Sempre consulte a documentação oficial.</b> :)
-        </p>
+        <b>Aviso!</b> Este é um material para facilitar o acesso a informações dos principais equipamentos.
+        <b> Sempre consulte a documentação oficial.</b> :)
       </div>
       <div className={style.header_content} id="home">
         <div className={style.logo}>
@@ -51,12 +51,12 @@ export default function Header() {
               }
             }}
           />
-
           <a target="_blank" rel="noopener noreferrer" href={urlSearch}>
-            {urlValue === "" ? null : <button className={style.mainSearchBtn}></button>}
+            {urlValue !== "" && <button className={style.mainSearchBtn}></button>}
           </a>
-          {urlValue === "" ? null : <button className={style.searchBtnClean} onClick={() => setUrlValue("")}></button>}
-          {urlValue === "admin" && <button className={style.adminBtn} onClick={EnableAdmin}></button>}
+          {urlValue !== "" && <button className={style.searchBtnClean} onClick={() => setUrlValue("")}></button>}
+          {urlValue !== "" && <button className={admin ? style.adminBtnDisable : style.adminBtnEnable} onClick={EnableAdmin}></button>}
+          <button className={admin ? style.adminBtnDisable : style.adminBtnEnable} onClick={EnableAdmin}></button>
         </div>
 
         <div className={style.btns_container}>

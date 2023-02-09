@@ -13,7 +13,7 @@ import {createContext} from "react";
 export const AdminContext = createContext();
 
 function App() {
-  const [admin, setAdmin] = React.useState(true);
+  const [admin, setAdmin] = React.useState(false);
   const [HideAP, setHideAP] = React.useState(true);
 
   const MostrarTudo = () => {

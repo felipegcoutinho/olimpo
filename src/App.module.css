@@ -76,7 +76,8 @@ input {
 }
 
 .mainSearchBtn,
-.adminBtn,
+.adminBtnDisable,
+.adminBtnEnable,
 .searchBtnClean {
   border: none;
   border-radius: 3px;
@@ -88,35 +89,40 @@ input {
   width: 70px;
 }
 
-.mainSearchBtn:after,
-.searchBtnClean::after,
-.adminBtn::after {
-  font-family: FontAwesome;
-  font-size: 1.2rem;
-}
-
 .mainSearchBtn {
   background-color: #eab42a;
+}
+.searchBtnClean {
+  background-color: #d72736;
+}
+
+.adminBtnDisable,
+.adminBtnEnable {
+  background-color: black;
+}
+
+.mainSearchBtn:after,
+.searchBtnClean::after,
+.adminBtnDisable::after,
+.adminBtnEnable::after {
+  font-family: FontAwesome;
+  font-size: 1.2rem;
 }
 
 .mainSearchBtn:after {
   content: " \f002\ ";
 }
 
-.searchBtnClean {
-  background-color: #d72736;
-}
-
 .searchBtnClean::after {
   content: " \f00d\ ";
 }
 
-.adminBtn {
-  background-color: black;
+.adminBtnDisable::after {
+  content: " \f3c1\ ";
 }
 
-.adminBtn::after {
-  content: " \f3c1\ ";
+.adminBtnEnable::after {
+  content: " \f023\ ";
 }
 
 .btns_container {
@@ -268,6 +274,11 @@ label {
   padding: 5px 0;
 }
 
+.formContainer {
+  display: flex;
+  flex-direction: column;
+}
+
 .formContainer input,
 select {
   background-color: #ececec;
@@ -276,7 +287,7 @@ select {
   font-size: 0.8rem;
   padding: 4px;
   margin: 3px 0;
-  font-weight: 600;
+  font-weight: 700;
 }
 
 .btn_addUpd,
@@ -323,11 +334,6 @@ select {
   background-color: #ffffffbd;
 }
 
-.formContainer {
-  display: flex;
-  flex-direction: column;
-}
-
 .btn_alterar,
 .btn_excluir {
   border: none;
@@ -361,13 +367,6 @@ select {
   padding: 0;
 }
 
-/* .status_phaseout,
-.status_suporte {
-  border-radius: 20px;
-  font-weight: bold;
-  padding: 1px 10px;
-} */
-
 .status_phaseout {
   background-color: #fff2f2;
   color: #a32c2c;
@@ -396,8 +395,8 @@ select {
 .paginalink,
 .pdfbtn_NA {
   border-radius: 20px;
-  font-size: 0.7rem;
-  padding: 3px 10px;
+  font-size: 0.75rem;
+  padding: 5px 10px;
 }
 
 .pdfbtn {
