@@ -21,8 +21,7 @@ export default function Radios() {
   const [throughputNominal, setThroughputNominal] = useState("");
   const [aberturaHorVer, setAberturaHorVer] = useState("");
   const [distancia, setDistancia] = useState("");
-  const [distanciaMax, setDistanciaMax] = useState("");
-  const [consumo, setConsumo] = useState("");
+  const [comprimentoCabo, setComprimentoCabo] = useState("");
   const [alimentaçao, setAlimentaçao] = useState("");
   const [wireless, setWireless] = useState("");
   const [status, setStatus] = useState("");
@@ -158,7 +157,6 @@ export default function Radios() {
           closeModal,
           addProduto,
           admin,
-          RadiosOutdoor,
         }}>
         <RadioModal />
       </RadioContext.Provider>
