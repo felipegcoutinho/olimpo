@@ -5,7 +5,7 @@ import Modal from "react-modal";
 import style from "/src/App.module.css";
 
 function RadioModal() {
-  const {addProduto, RadiosOutdoor, updateProduct, updatedProduct, setUpdatedProduct, modalIsOpen, closeModal} = useContext(RadioContext);
+  const {addProduto, updateProduct, updatedProduct, setUpdatedProduct, modalIsOpen, closeModal} = useContext(RadioContext);
 
   return (
     <Modal isOpen={modalIsOpen} onRequestClose={closeModal} className={style.modal} overlayClassName={style.modal_overlay}>
@@ -21,20 +21,29 @@ function RadioModal() {
             value={updatedProduct.modelo}
             onChange={(e) => setUpdatedProduct({...updatedProduct, modelo: e.target.value})}
           />
-          <label>Indicado ***</label>
-          <input
-            type="text"
+          <label>Indicado</label>
+          <select
             placeholder="Indicado"
             value={updatedProduct.indicado}
-            onChange={(e) => setUpdatedProduct({...updatedProduct, indicado: e.target.value})}
-          />
+            onChange={(e) => setUpdatedProduct({...updatedProduct, indicado: e.target.value})}>
+            <option value="PTP">PTP</option>
+            <option value="BASE">BASE</option>
+            <option value="BASE/PTP">BASE/PTP</option>
+          </select>
+
           <label>Garantia</label>
-          <input
+          <select
             type="text"
-            placeholder="Tempo de garantia"
+            placeholder="Status do suporte"
             value={updatedProduct.garantia}
-            onChange={(e) => setUpdatedProduct({...updatedProduct, garantia: e.target.value})}
-          />
+            onChange={(e) => setUpdatedProduct({...updatedProduct, garantia: e.target.value})}>
+            <option value="1 ano">1 ano</option>
+            <option value="2 anos">2 anos</option>
+            <option value="3 anos">3 anos</option>
+            <option value="4 anos">4 anos</option>
+            <option value="5 anos">5 anos</option>
+          </select>
+
           <label>Ganho</label>
           <input
             type="text"
@@ -46,18 +55,20 @@ function RadioModal() {
           <label>Potência</label>
           <input
             type="text"
-            placeholder="Ganho"
+            placeholder="Potência"
             value={updatedProduct.potencia}
             onChange={(e) => setUpdatedProduct({...updatedProduct, potencia: e.target.value})}
           />
 
           <label>Modulação</label>
-          <input
+          <select
             type="text"
             placeholder="Modulação"
             value={updatedProduct.modulação}
-            onChange={(e) => setUpdatedProduct({...updatedProduct, modulação: e.target.value})}
-          />
+            onChange={(e) => setUpdatedProduct({...updatedProduct, modulação: e.target.value})}>
+            <option value="Giga">Giga</option>
+            <option value="Fast">Fast</option>
+          </select>
 
           <label>PPS</label>
           <input
@@ -97,6 +108,64 @@ function RadioModal() {
             placeholder="Distância"
             value={updatedProduct.distancia}
             onChange={(e) => setUpdatedProduct({...updatedProduct, distancia: e.target.value})}
+          />
+
+          <label>Alimentaçao</label>
+          <input
+            type="text"
+            placeholder="Alimentação"
+            value={updatedProduct.alimentaçao}
+            onChange={(e) => setUpdatedProduct({...updatedProduct, alimentaçao: e.target.value})}
+          />
+
+          <label>Wireless</label>
+          <input
+            type="text"
+            placeholder="Wireless"
+            value={updatedProduct.wireless}
+            onChange={(e) => setUpdatedProduct({...updatedProduct, wireless: e.target.value})}
+          />
+
+          <label>Status do suporte</label>
+          <select
+            type="text"
+            placeholder="Status do suporte"
+            value={updatedProduct.status}
+            onChange={(e) => setUpdatedProduct({...updatedProduct, status: e.target.value})}>
+            <option value="Suporte">Suporte</option>
+            <option value="Phaseout">Phaseout</option>
+          </select>
+
+          <label>Link da Página</label>
+          <input
+            type="text"
+            placeholder="Link da Página"
+            value={updatedProduct.pagina}
+            onChange={(e) => setUpdatedProduct({...updatedProduct, pagina: e.target.value})}
+          />
+
+          <label>Link do Datasheet</label>
+          <input
+            type="text"
+            placeholder="Link do Datasheet"
+            value={updatedProduct.datasheet}
+            onChange={(e) => setUpdatedProduct({...updatedProduct, datasheet: e.target.value})}
+          />
+
+          <label>Link do Guia</label>
+          <input
+            type="text"
+            placeholder="Link do Guia"
+            value={updatedProduct.guia}
+            onChange={(e) => setUpdatedProduct({...updatedProduct, guia: e.target.value})}
+          />
+
+          <label>Link do Manual</label>
+          <input
+            type="text"
+            placeholder="Link do Manual"
+            value={updatedProduct.manual}
+            onChange={(e) => setUpdatedProduct({...updatedProduct, manual: e.target.value})}
           />
 
           <div className={style.btnModalActions}>
