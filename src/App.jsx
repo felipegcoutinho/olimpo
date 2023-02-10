@@ -2,7 +2,7 @@ import React from "react";
 import style from "../src/App.module.css";
 import Header from "./Components/Header.jsx";
 import AccessPoints from "./Components/Ap.jsx";
-import RadiosOutdoor from "./Components/Radios.jsx";
+import RadiosOutdoor from "./Components/Radio.jsx";
 import RoteadoresHO from "./Components/Roteadores.jsx";
 import Switches from "./Components/Switches.jsx";
 import Conversores from "./Components/Conversores.jsx";
@@ -15,6 +15,7 @@ export const AdminContext = createContext();
 function App() {
   const [admin, setAdmin] = React.useState(false);
   const [HideAP, setHideAP] = React.useState(true);
+  const [HideRADIO, setHideRADIO] = React.useState(true);
 
   const MostrarTudo = () => {
     setHideAP(true);
@@ -39,7 +40,7 @@ function App() {
   return (
     <div className={style.container}>
       <div className={style.box_container}>
-        <AdminContext.Provider value={{setAdmin, admin, HideAP, setHideAP}}>
+        <AdminContext.Provider value={{setAdmin, admin, HideAP, setHideAP, HideRADIO, setHideRADIO}}>
           <Header />
           <div>
             <button className={style.btn_hideShow} onClick={MostrarTudo}>
@@ -53,7 +54,7 @@ function App() {
           <AccessPoints />
 
           {/* Rádios */}
-          {/* <RadiosOutdoor /> */}
+          <RadiosOutdoor />
 
           {/* Roteadores HO */}
           {/* <RoteadoresHO /> */}

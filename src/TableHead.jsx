@@ -30,6 +30,7 @@ export default function AP() {
 }
 
 export function RADIO() {
+  const {admin} = useContext(AdminContext);
   return (
     <thead>
       <tr id={style.RADIO}>
@@ -46,6 +47,7 @@ export function RADIO() {
         <th>Wireless</th>
         <th>Garantia</th>
         <th>Página</th>
+        {admin && <th>Ações</th>}
       </tr>
     </thead>
   );

@@ -34,13 +34,15 @@ export default function Ap() {
   const [datasheet, setDatasheet] = useState("");
   const [guia, setGuia] = useState("");
   const [manual, setManual] = useState("");
+
   const [accessPoint, setAccessPoint] = useState([]);
   const [updatedProduct, setUpdatedProduct] = useState("");
 
-  const {admin, setAdmin, HideAP, setHideAP} = useContext(AdminContext);
-
+  const {admin, HideAP, setHideAP} = useContext(AdminContext);
   const [queryAP, setQueryAP] = React.useState("");
+
   const handleHideAP = () => setHideAP(!HideAP);
+
   const handleSearchChangeAP = (e) => {
     setQueryAP(e.target.value);
   };
