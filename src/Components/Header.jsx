@@ -55,9 +55,7 @@ export default function Header() {
             {urlValue !== "" && <button className={style.mainSearchBtn}></button>}
           </a>
           {urlValue !== "" && <button className={style.searchBtnClean} onClick={() => setUrlValue("")}></button>}
-          {urlValue === "@olimpo.admin" && (
-            <button className={admin ? style.adminBtnDisable : style.adminBtnEnable} onClick={EnableAdmin}></button>
-          )}
+          {/* {urlValue !== "@@@" && <button className={admin ? style.adminBtnDisable : style.adminBtnEnable} onClick={EnableAdmin}></button>} */}
         </div>
 
         <div className={style.btns_container}>

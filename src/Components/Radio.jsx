@@ -126,12 +126,6 @@ export default function Radios() {
     closeModal();
   };
 
-  const inputData = [
-    {title: "A", state: "2", name: "color"},
-    {title: "B", state: "3", name: "colorA"},
-    {title: "C", state: "3", name: "colorA"},
-  ];
-
   return (
     <div className={style.box_content}>
       <div className={style.header_box_content}>
@@ -155,7 +149,6 @@ export default function Radios() {
 
       <RadioContext.Provider
         value={{
-          inputData,
           updateProduct,
           updatedProduct,
           setUpdatedProduct,
@@ -165,6 +158,7 @@ export default function Radios() {
           closeModal,
           addProduto,
           admin,
+          RadiosOutdoor,
         }}>
         <RadioModal />
       </RadioContext.Provider>

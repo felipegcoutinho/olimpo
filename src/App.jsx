@@ -13,7 +13,7 @@ import {createContext} from "react";
 export const AdminContext = createContext();
 
 function App() {
-  const [admin, setAdmin] = React.useState(false);
+  const [admin, setAdmin] = React.useState(true);
   const [HideAP, setHideAP] = React.useState(true);
   const [HideRADIO, setHideRADIO] = React.useState(true);
 
@@ -51,7 +51,7 @@ function App() {
             </button>
           </div>
           {/* APs */}
-          <AccessPoints />
+          {/* <AccessPoints /> */}
 
           {/* Rádios */}
           <RadiosOutdoor />
