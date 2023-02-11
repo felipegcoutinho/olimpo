@@ -42,6 +42,7 @@ function RadioModal() {
             <option value="3 anos">3 anos</option>
             <option value="4 anos">4 anos</option>
             <option value="5 anos">5 anos</option>
+            <option value="N/A">N/A</option>
           </select>
 
           <label>Ganho</label>
@@ -102,15 +103,15 @@ function RadioModal() {
             onChange={(e) => setUpdatedProduct({...updatedProduct, aberturaHorVer: e.target.value})}
           />
 
-          <label>Distância</label>
+          <label>Distância do Enlace</label>
           <input
             type="text"
-            placeholder="Distância"
+            placeholder="Distância do Enlace"
             value={updatedProduct.distancia}
             onChange={(e) => setUpdatedProduct({...updatedProduct, distancia: e.target.value})}
           />
 
-          <label>Alimentaçao</label>
+          <label>Alimentação</label>
           <input
             type="text"
             placeholder="Alimentação"

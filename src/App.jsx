@@ -54,10 +54,10 @@ function App() {
           {/* <AccessPoints /> */}
 
           {/* Rádios */}
-          <RadiosOutdoor />
+          {/* <RadiosOutdoor /> */}
 
           {/* Roteadores HO */}
-          {/* <RoteadoresHO /> */}
+          <RoteadoresHO />
 
           {/* SWITCHES */}
           {/* <Switches /> */}
