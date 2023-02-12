@@ -146,29 +146,29 @@ export function ONU() {
 }
 
 export function ROTEADOR() {
+  const {admin} = useContext(AdminContext);
   return (
-    <>
-      <thead>
-        <tr id={style.ROTEADOR}>
-          <th>Modelo</th>
-          <th>Cobertura</th>
-          <th>Raio</th>
-          <th>Usuários Máximos</th>
-          <th>Plano Recomendado</th>
-          <th>Modulação</th>
-          <th>Qtde Portas</th>
-          <th>Datarate Máx. 2G</th>
-          <th>Datarate Máx. 5G</th>
-          <th>Ganho da antena</th>
-          <th>IPV6</th>
-          <th>Repetidor</th>
-          <th>Roteador AP</th>
-          <th>Cliente Wireless</th>
-          <th>Modo AP</th>
-          <th>Garantia</th>
-          <th>Página</th>
-        </tr>
-      </thead>
-    </>
+    <thead>
+      <tr id={style.ROTEADOR}>
+        <th>Modelo</th>
+        <th>Cobertura</th>
+        <th>Raio</th>
+        <th>Usuários Máximos</th>
+        <th>Plano Recomendado</th>
+        <th>Modulação</th>
+        <th>Qtde Portas</th>
+        <th>Datarate Máx. 2G</th>
+        <th>Datarate Máx. 5G</th>
+        <th>Ganho da antena</th>
+        <th>IPV6</th>
+        <th>Repetidor</th>
+        <th>Roteador AP</th>
+        <th>Cliente Wireless</th>
+        <th>Modo AP</th>
+        <th>Garantia</th>
+        <th>Página</th>
+        {admin && <th>Ações</th>}
+      </tr>
+    </thead>
   );
 }

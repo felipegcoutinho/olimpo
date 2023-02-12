@@ -60,6 +60,8 @@ function HoModal() {
             onChange={(e) => setUpdatedProduct({...updatedProduct, modulação: e.target.value})}>
             <option value="Giga">Giga</option>
             <option value="Fast">Fast</option>
+            <option value="Giga WAN | Fast LAN">Giga WAN | Fast LAN</option>
+            <option value="N/A">N/A</option>
           </select>
 
           <label>Datarate Máx. 2G</label>
@@ -82,6 +84,7 @@ function HoModal() {
           <select type="text" value={updatedProduct.ipv6} onChange={(e) => setUpdatedProduct({...updatedProduct, ipv6: e.target.value})}>
             <option value="Sim">Sim</option>
             <option value="x">Não</option>
+            <option value="N/A">N/A</option>
           </select>
 
           <label>WPS</label>
@@ -139,6 +142,7 @@ function HoModal() {
             onChange={(e) => setUpdatedProduct({...updatedProduct, repetidor: e.target.value})}>
             <option value="Sim">Sim</option>
             <option value="x">Não</option>
+            <option value="N/A">N/A</option>
           </select>
 
           <label>Modo Roteador</label>
@@ -148,6 +152,7 @@ function HoModal() {
             onChange={(e) => setUpdatedProduct({...updatedProduct, roteador: e.target.value})}>
             <option value="Sim">Sim</option>
             <option value="x">Não</option>
+            <option value="N/A">N/A</option>
           </select>
 
           <label>Cliente Wireless</label>
@@ -157,12 +162,14 @@ function HoModal() {
             onChange={(e) => setUpdatedProduct({...updatedProduct, cliente: e.target.value})}>
             <option value="Sim">Sim</option>
             <option value="x">Não</option>
+            <option value="N/A">N/A</option>
           </select>
 
           <label>Modo AP</label>
           <select type="text" value={updatedProduct.ap} onChange={(e) => setUpdatedProduct({...updatedProduct, ap: e.target.value})}>
             <option value="Sim">Sim</option>
             <option value="x">Não</option>
+            <option value="N/A">N/A</option>
           </select>
 
           <label>Garantia</label>
