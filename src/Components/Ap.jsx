@@ -88,7 +88,7 @@ export default function Ap() {
   };
 
   /* Deletar Produto */
-  const deleteProduct = async (id, updateProduct) => {
+  const deleteProduct = async (id) => {
     await fetch(`http://localhost:3000/aps/${id}`, {
       method: "DELETE",
     });

@@ -1,11 +1,11 @@
 import React from "react";
-import {useContext} from "react";
-import {APContext} from "./Ap";
 import Modal from "react-modal";
 import style from "/src/App.module.css";
+import {useContext} from "react";
+import {HOContext} from "./Roteadores";
 
-function AP_Modal() {
-  const {addProduto, updateProduct, updatedProduct, setUpdatedProduct, modalIsOpen, closeModal} = useContext(APContext);
+function HoModal() {
+  const {addProduto, updateProduct, updatedProduct, setUpdatedProduct, modalIsOpen, closeModal} = useContext(HOContext);
 
   return (
     <Modal isOpen={modalIsOpen} onRequestClose={closeModal} className={style.modal} overlayClassName={style.modal_overlay}>
@@ -21,20 +21,6 @@ function AP_Modal() {
             value={updatedProduct.modelo}
             onChange={(e) => setUpdatedProduct({...updatedProduct, modelo: e.target.value})}
           />
-
-          <label>Tempo da Garantia</label>
-          <select
-            type="text"
-            value={updatedProduct.garantia}
-            onChange={(e) => setUpdatedProduct({...updatedProduct, garantia: e.target.value})}>
-            <option value="1 ano">1 ano</option>
-            <option value="2 anos">2 anos</option>
-            <option value="3 anos">3 anos</option>
-            <option value="4 anos">4 anos</option>
-            <option value="5 anos">5 anos</option>
-            <option value="N/A">N/A</option>
-          </select>
-
           <label>Área de cobertura</label>
           <input
             type="text"
@@ -67,48 +53,51 @@ function AP_Modal() {
             onChange={(e) => setUpdatedProduct({...updatedProduct, qtdePortas: e.target.value})}
           />
 
-          <label>Status do suporte</label>
-          <select
-            type="text"
-            placeholder="Status do suporte"
-            value={updatedProduct.status}
-            onChange={(e) => setUpdatedProduct({...updatedProduct, status: e.target.value})}>
-            <option value="Suporte">Suporte</option>
-            <option value="Phaseout">Phaseout</option>
-          </select>
-
           <label>Modulação</label>
           <select
             type="text"
-            placeholder="Modulação"
             value={updatedProduct.modulação}
             onChange={(e) => setUpdatedProduct({...updatedProduct, modulação: e.target.value})}>
             <option value="Giga">Giga</option>
             <option value="Fast">Fast</option>
           </select>
 
-          <label>Versão do connectiFi</label>
-          <input
-            type="text"
-            placeholder="Versão do connectiFi"
-            value={updatedProduct.connectiVersion}
-            onChange={(e) => setUpdatedProduct({...updatedProduct, connectiVersion: e.target.value})}
-          />
-
           <label>Datarate Máx. 2G</label>
           <input
             type="text"
             placeholder="Datarate Máx. 2G"
-            value={updatedProduct.throughputWireless24}
-            onChange={(e) => setUpdatedProduct({...updatedProduct, throughputWireless24: e.target.value})}
+            value={updatedProduct.datarateMax2G}
+            onChange={(e) => setUpdatedProduct({...updatedProduct, datarateMax2G: e.target.value})}
           />
 
           <label>Datarate Máx. 5G</label>
           <input
             type="text"
             placeholder="Datarate Máx. 5G"
-            value={updatedProduct.throughputWireless50}
-            onChange={(e) => setUpdatedProduct({...updatedProduct, throughputWireless50: e.target.value})}
+            value={updatedProduct.datarateMax5G}
+            onChange={(e) => setUpdatedProduct({...updatedProduct, datarateMax5G: e.target.value})}
+          />
+
+          <label>IPv6</label>
+          <select type="text" value={updatedProduct.ipv6} onChange={(e) => setUpdatedProduct({...updatedProduct, ipv6: e.target.value})}>
+            <option value="Sim">Sim</option>
+            <option value="x">Não</option>
+          </select>
+
+          <label>WPS</label>
+          <input
+            type="text"
+            placeholder="WPS"
+            value={updatedProduct.wps}
+            onChange={(e) => setUpdatedProduct({...updatedProduct, wps: e.target.value})}
+          />
+
+          <label>Qtde de Antenas</label>
+          <input
+            type="text"
+            placeholder="Qtde de Antenas"
+            value={updatedProduct.antenas}
+            onChange={(e) => setUpdatedProduct({...updatedProduct, antenas: e.target.value})}
           />
 
           <label>Ganho de Antena (2.4ghz | 5ghz)</label>
@@ -119,20 +108,12 @@ function AP_Modal() {
             onChange={(e) => setUpdatedProduct({...updatedProduct, ganho: e.target.value})}
           />
 
-          <label>Potência de TX 2G</label>
+          <label>Potência Máx.</label>
           <input
             type="text"
-            placeholder="Potência de TX 2G"
-            value={updatedProduct.potencia2G}
-            onChange={(e) => setUpdatedProduct({...updatedProduct, potencia2G: e.target.value})}
-          />
-
-          <label>Potência de TX 5G </label>
-          <input
-            type="text"
-            placeholder="Potência de TX 5G"
-            value={updatedProduct.potencia5G}
-            onChange={(e) => setUpdatedProduct({...updatedProduct, potencia5G: e.target.value})}
+            placeholder="Potência Máx."
+            value={updatedProduct.potenciaMax}
+            onChange={(e) => setUpdatedProduct({...updatedProduct, potenciaMax: e.target.value})}
           />
 
           <label>Tensão</label>
@@ -143,40 +124,58 @@ function AP_Modal() {
             onChange={(e) => setUpdatedProduct({...updatedProduct, tensao: e.target.value})}
           />
 
-          <label>Tipo do PoE</label>
+          <label>Consumo</label>
           <input
             type="text"
-            placeholder="PoE"
-            value={updatedProduct.poe}
-            onChange={(e) => setUpdatedProduct({...updatedProduct, poe: e.target.value})}
+            placeholder="Consumo"
+            value={updatedProduct.consumo}
+            onChange={(e) => setUpdatedProduct({...updatedProduct, consumo: e.target.value})}
           />
 
-          <label>Comprimento do Cabo PoE</label>
-          <input
-            type="text"
-            placeholder="Comprimento do Cabo"
-            value={updatedProduct.distancia}
-            onChange={(e) => setUpdatedProduct({...updatedProduct, distancia: e.target.value})}
-          />
-
-          <label>Possui Handover</label>
+          <label>Modo Repetidor</label>
           <select
             type="text"
-            placeholder="Possui Handover"
-            value={updatedProduct.handover}
-            onChange={(e) => setUpdatedProduct({...updatedProduct, handover: e.target.value})}>
+            value={updatedProduct.repetidor}
+            onChange={(e) => setUpdatedProduct({...updatedProduct, repetidor: e.target.value})}>
             <option value="Sim">Sim</option>
             <option value="x">Não</option>
           </select>
 
-          <label>Possui WiseFi</label>
+          <label>Modo Roteador</label>
           <select
             type="text"
-            placeholder="Possui WiseFi"
-            value={updatedProduct.wisefi}
-            onChange={(e) => setUpdatedProduct({...updatedProduct, wisefi: e.target.value})}>
+            value={updatedProduct.roteador}
+            onChange={(e) => setUpdatedProduct({...updatedProduct, roteador: e.target.value})}>
             <option value="Sim">Sim</option>
             <option value="x">Não</option>
+          </select>
+
+          <label>Cliente Wireless</label>
+          <select
+            type="text"
+            value={updatedProduct.cliente}
+            onChange={(e) => setUpdatedProduct({...updatedProduct, cliente: e.target.value})}>
+            <option value="Sim">Sim</option>
+            <option value="x">Não</option>
+          </select>
+
+          <label>Modo AP</label>
+          <select type="text" value={updatedProduct.ap} onChange={(e) => setUpdatedProduct({...updatedProduct, ap: e.target.value})}>
+            <option value="Sim">Sim</option>
+            <option value="x">Não</option>
+          </select>
+
+          <label>Garantia</label>
+          <select
+            type="text"
+            value={updatedProduct.garantia}
+            onChange={(e) => setUpdatedProduct({...updatedProduct, garantia: e.target.value})}>
+            <option value="1 ano">1 ano</option>
+            <option value="2 anos">2 anos</option>
+            <option value="3 anos">3 anos</option>
+            <option value="4 anos">4 anos</option>
+            <option value="5 anos">5 anos</option>
+            <option value="N/A">N/A</option>
           </select>
 
           <label>Link da Página</label>
@@ -210,6 +209,7 @@ function AP_Modal() {
             value={updatedProduct.manual}
             onChange={(e) => setUpdatedProduct({...updatedProduct, manual: e.target.value})}
           />
+
           <div className={style.btnModalActions}>
             <button type="submit" className={style.btn_addUpd}>
               {updatedProduct.id ? "Atualizar Access Point" : "Adicionar Access Point"}
@@ -224,4 +224,4 @@ function AP_Modal() {
   );
 }
 
-export default AP_Modal;
+export default HoModal;

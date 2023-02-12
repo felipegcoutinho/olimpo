@@ -1,45 +1,137 @@
 import React from "react";
+import {useEffect, useState, useContext, createContext} from "react";
 import style from "/src/App.module.css";
 import {ROTEADOR} from "/src/TableHead";
-import Roteadores from "/src/Database/db_roteadores.json";
+import Modal from "react-modal";
+import {AdminContext} from "../App";
+import Swal from "sweetalert2";
+import HoModal from "./HoModal";
 
-export default function Ap() {
+export const HOContext = createContext();
+
+export default function Roteador() {
+  const [modelo, SetModelo] = useState("");
+  const [cobertura, SetCobertura] = useState("");
+  const [raio, SetRaio] = useState("");
+  const [usuarioMax, SetUsuarioMax] = useState("");
+  const [planoRecomendado, SetPlanoRecomendado] = useState("");
+  const [qtdePortas, SetQtdePortas] = useState("");
+  const [modulação, SetModulação] = useState("");
+  const [datarateMax2G, SetDatarateMax2G] = useState("");
+  const [datarateMax5G, SetDatarateMax5G] = useState("");
+  const [ipv6, SetIpv6] = useState("");
+  const [wps, SetWps] = useState("");
+  const [antenas, SetAntenas] = useState("");
+  const [ganho, SetGanho] = useState("");
+  const [potenciaMax, SetPotenciaMax] = useState("");
+  const [tensao, SetTensao] = useState("");
+  const [consumo, SetConsumo] = useState("");
+  const [repetidor, SetRepetidor] = useState("");
+  const [roteador, SetRoteador] = useState("");
+  const [cliente, SetCliente] = useState("");
+  const [ap, SetAp] = useState("");
+  const [garantia, SetGarantia] = useState("");
+  const [status, SetStatus] = useState("");
+  const [pagina, SetPagina] = useState("");
+  const [datasheet, SetDatasheet] = useState("");
+  const [guia, SetGuia] = useState("");
+  const [manual, SetManual] = useState("");
+
+  const [roteadorHO, setRoteadorHO] = useState([]);
+  const [updatedProduct, setUpdatedProduct] = useState("");
+
+  const {admin, HideHO, setHideHO} = useContext(AdminContext);
   const [queryHO, setQueryHO] = React.useState("");
-  const [HideHO, setHideHO] = React.useState(true);
+
   const handleHideHO = () => setHideHO(!HideHO);
 
   const handleSearchChangeHO = (e) => {
     setQueryHO(e.target.value);
   };
 
-  const [id, Setid] = useState("");
-  const [modelo, SetModelo] = useState("");
-  const [linha, Setlinha] = useState("");
-  const [cobertura, Setcobertura] = useState("");
-  const [raio, Setraio] = useState("");
-  const [usuarioMax, SetusuarioMax] = useState("");
-  const [planoRecomendado, SetplanoRecomendado] = useState("");
-  const [QtdePortas, SetQtdePortas] = useState("");
-  const [modulação, Setmodulação] = useState("");
-  const [datarateMax2G, SetdatarateMax2G] = useState("");
-  const [datarateMax5G, SetdatarateMax5G] = useState("");
-  const [ipv6, Setipv6] = useState("");
-  const [wps, Setwps] = useState("");
-  const [antenas, Setantenas] = useState("");
-  const [ganho, Setganho] = useState("");
-  const [potenciaMax, SetpotenciaMax] = useState("");
-  const [tensao, Settensao] = useState("");
-  const [consumo, Setconsumo] = useState("");
-  const [repetidor, Setrepetidor] = useState("");
-  const [roteador, Setroteador] = useState("");
-  const [cliente, Setcliente] = useState("");
-  const [ap, Setap] = useState("");
-  const [garantia, Setgarantia] = useState("");
-  const [status, Setstatus] = useState("");
-  const [pagina, Setpagina] = useState("");
-  const [datasheet, Setdatasheet] = useState("");
-  const [guia, Setguia] = useState("");
-  const [manual, Setmanual] = useState("");
+  /* Configs Modal */
+  Modal.setAppElement("#root");
+  const [modalIsOpen, setIsOpen] = React.useState(false);
+  function openModal() {
+    setIsOpen(true);
+  }
+  function closeModal() {
+    setIsOpen(false);
+    setUpdatedProduct(false);
+  }
+  useEffect(() => {
+    fetchProducts();
+  }, []);
+
+  /* Buscar Produto */
+  const fetchProducts = async () => {
+    const response = await fetch("http://localhost:3000/roteadorHO");
+    const data = await response.json();
+    setRoteadorHO(data);
+  };
+
+  /* Adicionar Produto */
+  const addProduto = async (e) => {
+    e.preventDefault();
+    await fetch("http://localhost:3000/roteadorHO", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(updatedProduct),
+    });
+    Swal.fire({
+      title: "Adicionado!",
+      confirmButtonColor: "#006e39",
+    });
+    setUpdatedProduct({});
+    fetchProducts();
+    closeModal();
+  };
+
+  /* Deletar Produto */
+  const deleteProduct = async (id) => {
+    await fetch(`http://localhost:3000/roteadorHO/${id}`, {
+      method: "DELETE",
+    });
+    Swal.fire({
+      title: "Você tem certeza?",
+      icon: "warning",
+      showCancelButton: true,
+      confirmButtonColor: "#006e39",
+      cancelButtonColor: "#d33",
+      confirmButtonText: "Sim, deletar",
+    }).then((result) => {
+      if (result.isConfirmed) {
+        Swal.fire("Equipamento deletado!");
+        fetchProducts();
+      }
+    });
+  };
+
+  /* Atualizar  Produto */
+  const openUpdateModal = (updatedProduct) => {
+    setUpdatedProduct(updatedProduct);
+    setIsOpen(true);
+  };
+  const updateProduct = async (e) => {
+    e.preventDefault();
+    await fetch(`http://localhost:3000/roteadorHO/${updatedProduct.id}`, {
+      method: "PUT",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(updatedProduct),
+    });
+    Swal.fire({
+      title: "Atualizado!",
+      confirmButtonColor: "#006e39",
+    });
+
+    setUpdatedProduct({});
+    fetchProducts();
+    closeModal();
+  };
 
   return (
     <div className={style.box_content}>
@@ -48,25 +140,44 @@ export default function Ap() {
           <span className={style.title}>Home Office</span>
         </button>
 
-        <label>
-          <i className="fa-solid fa-magnifying-glass"></i>
-          <input placeholder="Pesquise o Equipamento" value={queryHO} onChange={handleSearchChangeHO} className={style.searchBarDevices} />
-        </label>
+        {admin && (
+          <button className={style.btn_add} onClick={openModal}>
+            Adicionar Roteador Home Office
+          </button>
+        )}
+
+        <input
+          placeholder="Pesquise por um Equipamento HO"
+          value={queryHO}
+          onChange={handleSearchChangeHO}
+          className={style.searchBarDevices}
+        />
       </div>
-      {HideHO ? (
+
+      <HOContext.Provider
+        value={{
+          updateProduct,
+          updatedProduct,
+          setUpdatedProduct,
+          modalIsOpen,
+          setIsOpen,
+          openModal,
+          closeModal,
+          addProduto,
+          admin,
+        }}>
+        <HoModal />
+      </HOContext.Provider>
+
+      {HideHO && (
         <div style={{overflowX: "auto"}}>
           <table className={style.devicesTable}>
             <ROTEADOR />
-            {Roteadores.filter((roteador) => {
-              if (roteador.modelo.toLowerCase().includes(queryHO.toLowerCase())) {
-                return roteador;
-              } else if (roteador.modulação.toLowerCase().includes(queryHO.toLowerCase())) {
-                return roteador;
-              }
-            }).map((roteador) => {
+
+            {roteadorHO.map((roteador, index) => {
               return (
                 <tbody>
-                  <tr>
+                  <tr key={index}>
                     <td className={roteador.status === "Phaseout" ? style.status_phaseout : style.status_suporte}>{roteador.modelo}</td>
                     <td>{roteador.cobertura}</td>
                     <td>{roteador.raio}</td>
@@ -108,13 +219,19 @@ export default function Ap() {
                         <span className={style.paginalink}>Ir para Página</span>
                       </a>
                     </td>
+                    {admin && (
+                      <td>
+                        <button className={style.btn_alterar} onClick={() => openUpdateModal(roteador)}></button>
+                        <button className={style.btn_excluir} onClick={() => deleteProduct(roteador.id)}></button>
+                      </td>
+                    )}
                   </tr>
                 </tbody>
               );
             })}
           </table>
         </div>
-      ) : null}
+      )}
     </div>
   );
 }

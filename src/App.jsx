@@ -16,6 +16,7 @@ function App() {
   const [admin, setAdmin] = React.useState(true);
   const [HideAP, setHideAP] = React.useState(true);
   const [HideRADIO, setHideRADIO] = React.useState(true);
+  const [HideHO, setHideHO] = React.useState(true);
 
   const MostrarTudo = () => {
     setHideAP(true);
@@ -40,7 +41,7 @@ function App() {
   return (
     <div className={style.container}>
       <div className={style.box_container}>
-        <AdminContext.Provider value={{setAdmin, admin, HideAP, setHideAP, HideRADIO, setHideRADIO}}>
+        <AdminContext.Provider value={{setAdmin, admin, HideAP, setHideAP, HideRADIO, setHideRADIO, HideHO, setHideHO}}>
           <Header />
           <div>
             <button className={style.btn_hideShow} onClick={MostrarTudo}>
