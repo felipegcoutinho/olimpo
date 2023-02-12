@@ -20,8 +20,8 @@ export default function AP() {
         <th>ConnectFi</th>
         <th>Handover</th>
         <th>WiseFi</th>
-        <th>Potência de TX 2G</th>
-        <th>Potência de TX 5G</th>
+        <th>Potência TX 2G</th>
+        <th>Potência TX 5G</th>
         <th>Página</th>
         {admin && <th>Ações</th>}
       </tr>

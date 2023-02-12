@@ -33,11 +33,11 @@ export default function Onu() {
   const [guia, setguia] = useState("");
 
   const [onu, setOnu] = React.useState([]);
-  const [updatedProduct, setUpdatedProduct] = useState("");
 
-  const {admin, HideONU, setHideONU} = useContext(AdminContext);
+  const {admin, HideONU, setHideONU, updatedProduct, setUpdatedProduct} = useContext(AdminContext);
   const handleHideONU = () => setHideONU(!HideONU);
 
+  /* Configs Modal */
   Modal.setAppElement("#root");
   const [modalIsOpen, setIsOpen] = React.useState(false);
   function openModal() {
@@ -47,9 +47,6 @@ export default function Onu() {
     setIsOpen(false);
     setUpdatedProduct(false);
   }
-  useEffect(() => {
-    fetchProducts();
-  }, []);
 
   /* Buscar Produto */
   const fetchProducts = async () => {
@@ -57,6 +54,10 @@ export default function Onu() {
     const data = await response.json();
     setOnu(data);
   };
+
+  useEffect(() => {
+    fetchProducts();
+  }, []);
 
   /* Adicionar Produto */
   const addProduto = async (e) => {

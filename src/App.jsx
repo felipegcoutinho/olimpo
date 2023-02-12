@@ -1,5 +1,6 @@
 import React from "react";
 import style from "../src/App.module.css";
+import Modal from "react-modal";
 import Header from "./Components/Header.jsx";
 import AccessPoints from "./Components/Ap.jsx";
 import RadiosOutdoor from "./Components/Radio.jsx";
@@ -21,6 +22,7 @@ function App() {
   const [HideConversor, setHideConversor] = React.useState(true);
   const [HideSFP, setHideSFP] = React.useState(true);
   const [HideONU, setHideONU] = React.useState(true);
+  const [updatedProduct, setUpdatedProduct] = React.useState("");
 
   const MostrarTudo = () => {
     setHideAP(true);
@@ -63,6 +65,8 @@ function App() {
             setHideSFP,
             HideONU,
             setHideONU,
+            updatedProduct,
+            setUpdatedProduct,
           }}>
           <Header />
           <div>

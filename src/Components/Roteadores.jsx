@@ -38,9 +38,8 @@ export default function Roteador() {
   const [manual, SetManual] = useState("");
 
   const [roteadorHO, setRoteadorHO] = useState([]);
-  const [updatedProduct, setUpdatedProduct] = useState("");
 
-  const {admin, HideHO, setHideHO} = useContext(AdminContext);
+  const {admin, HideHO, setHideHO, updatedProduct, setUpdatedProduct} = useContext(AdminContext);
   const [queryHO, setQueryHO] = React.useState("");
 
   const handleHideHO = () => setHideHO(!HideHO);
@@ -59,9 +58,6 @@ export default function Roteador() {
     setIsOpen(false);
     setUpdatedProduct(false);
   }
-  useEffect(() => {
-    fetchProducts();
-  }, []);
 
   /* Buscar Produto */
   const fetchProducts = async () => {
@@ -69,6 +65,10 @@ export default function Roteador() {
     const data = await response.json();
     setRoteadorHO(data);
   };
+
+  useEffect(() => {
+    fetchProducts();
+  }, []);
 
   /* Adicionar Produto */
   const addProduto = async (e) => {

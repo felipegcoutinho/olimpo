@@ -28,10 +28,11 @@ export default function Ap() {
   const [guia, setguia] = useState("");
 
   const [sfp, setSfp] = useState([]);
-  const [updatedProduct, setUpdatedProduct] = useState("");
-  const {admin, HideSFP, setHideSFP} = useContext(AdminContext);
+
+  const {admin, HideSFP, setHideSFP, updatedProduct, setUpdatedProduct} = useContext(AdminContext);
   const handleHideSFP = () => setHideSFP(!HideSFP);
 
+  /* Configs Modal */
   Modal.setAppElement("#root");
   const [modalIsOpen, setIsOpen] = React.useState(false);
   function openModal() {
@@ -41,9 +42,6 @@ export default function Ap() {
     setIsOpen(false);
     setUpdatedProduct(false);
   }
-  useEffect(() => {
-    fetchProducts();
-  }, []);
 
   /* Buscar Produto */
   const fetchProducts = async () => {
@@ -51,6 +49,10 @@ export default function Ap() {
     const data = await response.json();
     setSfp(data);
   };
+
+  useEffect(() => {
+    fetchProducts();
+  }, []);
 
   /* Adicionar Produto */
   const addProduto = async (e) => {

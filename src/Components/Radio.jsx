@@ -31,13 +31,10 @@ export default function Radios() {
   const [manual, setManual] = useState("");
 
   const [RadiosOutdoor, setRadiosOutdoor] = useState([]);
-  const [updatedProduct, setUpdatedProduct] = useState("");
 
-  const {admin, HideRADIO, setHideRADIO} = useContext(AdminContext);
+  const {admin, HideRADIO, setHideRADIO, updatedProduct, setUpdatedProduct} = useContext(AdminContext);
   const [queryRADIO, setQueryRADIO] = useState("");
-
   const handleHideRADIO = () => setHideRADIO(!HideRADIO);
-
   const handleSearchChangeRADIO = (e) => {
     setQueryRADIO(e.target.value);
   };
@@ -52,9 +49,6 @@ export default function Radios() {
     setIsOpen(false);
     setUpdatedProduct(false);
   }
-  useEffect(() => {
-    fetchProducts();
-  }, []);
 
   /* Buscar Produto */
   const fetchProducts = async () => {
@@ -62,6 +56,10 @@ export default function Radios() {
     const data = await response.json();
     setRadiosOutdoor(data);
   };
+
+  useEffect(() => {
+    fetchProducts();
+  }, []);
 
   /* Adicionar Produto */
   const addProduto = async (e) => {

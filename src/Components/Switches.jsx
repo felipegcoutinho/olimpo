@@ -31,9 +31,8 @@ export default function Ap() {
   const [manual, Setmanual] = useState("");
 
   const [switches, setSwitches] = useState([]);
-  const [updatedProduct, setUpdatedProduct] = useState("");
 
-  const {admin, HideSwitch, setHideSwitch} = useContext(AdminContext);
+  const {admin, HideSwitch, setHideSwitch, updatedProduct, setUpdatedProduct} = useContext(AdminContext);
   const [querySWITCH, setQuerySWITCH] = React.useState("");
   const handleHideSwitch = () => setHideSwitch(!HideSwitch);
 
@@ -51,9 +50,6 @@ export default function Ap() {
     setIsOpen(false);
     setUpdatedProduct(false);
   }
-  useEffect(() => {
-    fetchProducts();
-  }, []);
 
   /* Buscar Produto */
   const fetchProducts = async () => {
@@ -61,6 +57,10 @@ export default function Ap() {
     const data = await response.json();
     setSwitches(data);
   };
+
+  useEffect(() => {
+    fetchProducts();
+  }, []);
 
   /* Adicionar Produto */
   const addProduto = async (e) => {
