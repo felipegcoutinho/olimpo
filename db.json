@@ -2477,30 +2477,6 @@
       "manual": "https://guiasmanuais.intelbras.com.br/WiFiber120AC/home.html"
     },
     {
-      "id": "3",
-      "linha": "radio",
-      "modelo": "APC 5A-20a",
-      "indicado": "PTP",
-      "garantia": "2 anos",
-      "ganho": "20 dBi",
-      "potencia": "29 dBm - 800 mW",
-      "modulação": "Fast",
-      "pps": "80.000 Pps",
-      "throughputEfetivo": "180 Mbps",
-      "throughputNominal": "300 Mbps",
-      "aberturaHorVer": "H-16° | V-16°",
-      "distancia": "10km (PtMP) - 15km (PtP)",
-      "comprimentoCabo": "50m (CAT5E) 90m (CAT6)",
-      "consumo": "4,5 W",
-      "alimentaçao": "12V - 24V",
-      "wireless": " MiMo 2x2",
-      "status": "Suporte",
-      "pagina": "https://www.intelbras.com/pt-br/cpeptp-5-ghz-com-20-dbi-mimo-2x2-apc-5a-20",
-      "datasheet": "http://backend.intelbras.com/sites/default/files/2022-09/APC_5A-20_V2.pdf",
-      "guia": "https://backend.intelbras.com/sites/default/files/2022-10/Guia_APC_5A-20_02-22_site.pdf",
-      "manual": "https://backend.intelbras.com/sites/default/files/2022-10/Manual_APC_5A_portugues_03-22_site.pdf"
-    },
-    {
       "id": "2",
       "modelo": "WiFiber 121 AC",
       "qtdeportas": "2 portas",
@@ -2645,33 +2621,6 @@
       "manual": "https://backend.intelbras.com/sites/default/files/2021-05/Manual_ONU_110_portugues_01-21_site.pdf"
     },
     {
-      "id": "9",
-      "modelo": "AP 1250 AC OUTDOORa",
-      "garantia": "1 ano",
-      "cobertura": "400 ",
-      "raio": "11,2",
-      "usuarioMax": "350",
-      "qtdePortas": "2 (WAN E LAN)",
-      "status": "Suporte",
-      "modulação": "Giga",
-      "connectiVersion": "N/A",
-      "throughputWireless24": "300 Mbps (2x2)",
-      "throughputWireless50": "886 Mbps (2x2)",
-      "ganho": "5dBi (2.4GHz) | 5dBi (5GHz)",
-      "potencia2G": "26 dBm (398mW)",
-      "potencia5G": "26 dBm (398mW)",
-      "tensao": "48V | 12 VDC (P4)",
-      "poe": "PoE 802.3at",
-      "distancia": "CAT 5E(50m) e CAT 6(95m)",
-      "consumo": "20 W",
-      "wisefi": "Sim",
-      "handover": "Sim",
-      "pagina": "https://www.intelbras.com/pt-br/access-point-dual-band-ac-outdoor-ap-1250-ac-outdoor",
-      "datasheet": "http://backend.intelbras.com/sites/default/files/2022-08/datasheet-ap-1250-ac-outdoor-pt.pdf",
-      "guia": "https://backend.intelbras.com/sites/default/files/2022-10/Guia_AP_1250AC_Outdoor_03-22_site.pdf",
-      "manual": "https://backend.intelbras.com/sites/default/files/2022-08/manual-do-usuario-ap-1250-ac-outdoor-pt.pdf"
-    },
-    {
       "id": "6",
       "modelo": "142NG",
       "qtdeportas": "4 portas",
@@ -2694,23 +2643,6 @@
       "datasheet": "https://backend.intelbras.com/sites/default/files/2019-11/Datasheet_Gpon_ONT_1420_G_e_ONT_142N_G_01-19.pdf",
       "guia": "https://backend.intelbras.com/sites/default/files/2022-06/Guia_de_instalacao_ONT_142N_G_portugues_01-22_0.pdf",
       "manual": "https://backend.intelbras.com/sites/default/files/2022-06/Manual_do_usuario_ONT_142N_G_1420_G_portugues_01-22.pdf"
-    },
-    {
-      "modelo": "a",
-      "modulação": "Giga",
-      "id": "reEHvqk"
-    },
-    {
-      "modelo": "a",
-      "id": "RkcMy3E"
-    },
-    {
-      "modelo": "a",
-      "id": "r2QQh0v"
-    },
-    {
-      "modelo": "a",
-      "id": "OCGCzvz"
     }
   ]
 }

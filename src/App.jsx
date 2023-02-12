@@ -1,6 +1,5 @@
 import React from "react";
 import style from "../src/App.module.css";
-import Modal from "react-modal";
 import Header from "./Components/Header.jsx";
 import AccessPoints from "./Components/Ap.jsx";
 import RadiosOutdoor from "./Components/Radio.jsx";
@@ -78,25 +77,25 @@ function App() {
             </button>
           </div>
           {/* APs */}
-          <AccessPoints />
+          {/* <AccessPoints /> */}
 
           {/* Rádios */}
           <RadiosOutdoor />
 
           {/* Roteadores HO */}
-          <RoteadoresHO />
+          {/* <RoteadoresHO /> */}
 
           {/* SWITCHES */}
-          <Switches />
+          {/* <Switches /> */}
 
           {/* CONVERSORES */}
-          <Conversores />
+          {/* <Conversores /> */}
 
           {/* SFPs */}
-          <Sfp />
+          {/* <Sfp /> */}
 
           {/* ONUs */}
-          <Onu />
+          {/* <Onu /> */}
         </AdminContext.Provider>
       </div>
     </div>

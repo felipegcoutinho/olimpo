@@ -187,10 +187,10 @@ export default function Radios() {
                     <td>{radio.pps}</td>
                     <td>{radio.throughputEfetivo}</td>
                     <td>{radio.throughputNominal}</td>
-                    <td className={radio.aberturaHorVer === "x" && style.NaoPossui}>
-                      {radio.aberturaHorVer === "x" ? null : radio.aberturaHorVer}
+                    <td className={radio.aberturaHorVer === "-" && style.NaoPossui}>
+                      {radio.aberturaHorVer === "-" ? null : radio.aberturaHorVer}
                     </td>
-                    <td className={radio.distancia === "x" && style.NaoPossui}>{radio.distancia === "x" ? null : radio.distancia}</td>
+                    <td className={radio.distancia === "-" && style.NaoPossui}>{radio.distancia === "-" ? null : radio.distancia}</td>
                     <td>{radio.wireless}</td>
                     <td>{radio.garantia}</td>
                     <td>
