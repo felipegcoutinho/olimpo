@@ -54,6 +54,7 @@ export function RADIO() {
 }
 
 export function CONVERSOR() {
+  const {admin} = useContext(AdminContext);
   return (
     <thead>
       <tr id={style.CONVERSOR}>
@@ -67,81 +68,83 @@ export function CONVERSOR() {
         <th>Sensibilidade Max | Min</th>
         <th>Garantia</th>
         <th>Página</th>
+        {admin && <th>Ações</th>}
       </tr>
     </thead>
   );
 }
 
 export function SFP() {
+  const {admin} = useContext(AdminContext);
   return (
-    <>
-      <thead>
-        <tr id={style.GBIC}>
-          <th>Modelo</th>
-          <th>Conector</th>
-          <th>Modulo</th>
-          <th>WDM</th>
-          <th>Distância</th>
-          <th>Modulação</th>
-          <th>Fibra</th>
-          <th>Potência Sinal Max | Min</th>
-          <th>Sensibilidade Max | Min</th>
-          <th>Garantia</th>
-          <th>Página</th>
-        </tr>
-      </thead>
-    </>
+    <thead>
+      <tr id={style.GBIC}>
+        <th>Modelo</th>
+        <th>Modulação</th>
+        <th>Conector</th>
+        <th>Modulo</th>
+        <th>WDM</th>
+        <th>Distância</th>
+        <th>Fibra</th>
+        <th>Potência Sinal Max | Min</th>
+        <th>Sensibilidade Max | Min</th>
+        <th>Garantia</th>
+        <th>Página</th>
+        {admin && <th>Ações</th>}
+      </tr>
+    </thead>
   );
 }
 
 export function SWITCH() {
+  const {admin} = useContext(AdminContext);
   return (
-    <>
-      <thead>
-        <tr id={style.SWITCH}>
-          <th>Modelo</th>
-          <th>Modulação</th>
-          <th>Qtde Portas</th>
-          <th>Gerenciável</th>
-          <th>Alimenta via PoE</th>
-          <th>Encam. de Pacotes</th>
-          <th>Backplane</th>
-          <th>Possui SFP</th>
-          <th>PoE Extender</th>
-          <th>PoE/Porta</th>
-          <th>PoE/Total</th>
-          <th>Qos</th>
-          <th>Garantia</th>
-          <th>Página</th>
-        </tr>
-      </thead>
-    </>
+    <thead>
+      <tr id={style.SWITCH}>
+        <th>Modelo</th>
+        <th>Modulação</th>
+        <th>Qtde Portas</th>
+        <th>Gerenciável</th>
+        <th>Alimenta via PoE</th>
+        <th>Encam. de Pacotes</th>
+        <th>Backplane</th>
+        <th>Possui SFP</th>
+        <th>PoE Extender</th>
+        <th>PoE/Porta</th>
+        <th>PoE/Total</th>
+        <th>Qos</th>
+        <th>Garantia</th>
+        <th>Página</th>
+        {admin && <th>Ações</th>}
+      </tr>
+    </thead>
   );
 }
 
 export function ONU() {
+  const {admin} = useContext(AdminContext);
   return (
-    <>
-      <thead>
-        <tr id={style.ONU}>
-          <th>Modelo</th>
-          <th>Modulação</th>
-          <th>FXS</th>
-          <th>Tipo</th>
-          <th>Sensibilidade Max | Min</th>
-          <th>Cobertura</th>
-          <th>Usuários simultâneos</th>
-          <th>Datarate Máx. 2G</th>
-          <th>Datarate Máx. 5G</th>
-          <th>SSID</th>
-          <th>TR069</th>
-          <th>Customize</th>
-          <th>Remotize</th>
-          <th>Garantia</th>
-          <th>Página</th>
-        </tr>
-      </thead>
-    </>
+    <thead>
+      <tr id={style.ONU}>
+        <th>Modelo</th>
+        <th>Modulação</th>
+        <th>Qtde FXS</th>
+        <th>Qtde RJ45</th>
+        <th>Tipo</th>
+        <th>Sensibilidade Max | Min</th>
+        <th>Cobertura</th>
+        <th>Usuários simultâneos</th>
+        <th>Datarate Máx. 2G</th>
+        <th>Datarate Máx. 5G</th>
+        <th>SSID</th>
+        <th>TR069</th>
+        <th>Customize</th>
+        <th>Remotize</th>
+        <th>Garantia</th>
+        <th>Página</th>
+        {admin && <th>Ações</th>}
+      </tr>
+    </thead>
   );
 }
 

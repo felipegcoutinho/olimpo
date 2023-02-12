@@ -4,12 +4,12 @@ import style from "/src/App.module.css";
 import {useContext} from "react";
 import {HOContext} from "./Roteadores";
 
-function HoModal() {
+function RoteadoresModal() {
   const {addProduto, updateProduct, updatedProduct, setUpdatedProduct, modalIsOpen, closeModal} = useContext(HOContext);
 
   return (
     <Modal isOpen={modalIsOpen} onRequestClose={closeModal} className={style.modal} overlayClassName={style.modal_overlay}>
-      {updatedProduct.id ? <h1>Atualizar {updatedProduct.modelo}</h1> : <h1>Adicionar Access Point</h1>}
+      {updatedProduct.id ? <h1>Atualizar {updatedProduct.modelo}</h1> : <h1>Adicionar Equipamento HO</h1>}
       <h4>Caso o produto não possua a função, preencha o campo com "x".</h4>
       <h4>E caso a informação do produto não for encontrada, preencha o campo com "N/A".</h4>
       <form onSubmit={updatedProduct.id ? updateProduct : addProduto}>
@@ -49,7 +49,7 @@ function HoModal() {
           <input
             type="text"
             placeholder="Qtde Portas"
-            value={updatedProduct.qtdePortas}
+            value={updatedProduct.QtdePortas}
             onChange={(e) => setUpdatedProduct({...updatedProduct, qtdePortas: e.target.value})}
           />
 
@@ -231,4 +231,4 @@ function HoModal() {
   );
 }
 
-export default HoModal;
+export default RoteadoresModal;

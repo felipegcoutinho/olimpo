@@ -5,7 +5,7 @@ import {ROTEADOR} from "/src/TableHead";
 import Modal from "react-modal";
 import {AdminContext} from "../App";
 import Swal from "sweetalert2";
-import HoModal from "./HoModal";
+import RoteadoresModal from "./RoteadoresModal";
 
 export const HOContext = createContext();
 
@@ -166,7 +166,7 @@ export default function Roteador() {
           addProduto,
           admin,
         }}>
-        <HoModal />
+        <RoteadoresModal />
       </HOContext.Provider>
 
       {HideHO && (

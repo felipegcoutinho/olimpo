@@ -17,6 +17,10 @@ function App() {
   const [HideAP, setHideAP] = React.useState(true);
   const [HideRADIO, setHideRADIO] = React.useState(true);
   const [HideHO, setHideHO] = React.useState(true);
+  const [HideSwitch, setHideSwitch] = React.useState(true);
+  const [HideConversor, setHideConversor] = React.useState(true);
+  const [HideSFP, setHideSFP] = React.useState(true);
+  const [HideONU, setHideONU] = React.useState(true);
 
   const MostrarTudo = () => {
     setHideAP(true);
@@ -41,7 +45,25 @@ function App() {
   return (
     <div className={style.container}>
       <div className={style.box_container}>
-        <AdminContext.Provider value={{setAdmin, admin, HideAP, setHideAP, HideRADIO, setHideRADIO, HideHO, setHideHO}}>
+        <AdminContext.Provider
+          value={{
+            setAdmin,
+            admin,
+            HideAP,
+            setHideAP,
+            HideRADIO,
+            setHideRADIO,
+            HideHO,
+            setHideHO,
+            HideSwitch,
+            setHideSwitch,
+            HideConversor,
+            setHideConversor,
+            HideSFP,
+            setHideSFP,
+            HideONU,
+            setHideONU,
+          }}>
           <Header />
           <div>
             <button className={style.btn_hideShow} onClick={MostrarTudo}>
@@ -52,25 +74,25 @@ function App() {
             </button>
           </div>
           {/* APs */}
-          {/* <AccessPoints /> */}
+          <AccessPoints />
 
           {/* Rádios */}
-          {/* <RadiosOutdoor /> */}
+          <RadiosOutdoor />
 
           {/* Roteadores HO */}
           <RoteadoresHO />
 
           {/* SWITCHES */}
-          {/* <Switches /> */}
+          <Switches />
 
           {/* CONVERSORES */}
-          {/* <Conversores /> */}
+          <Conversores />
 
           {/* SFPs */}
-          {/* <Sfp /> */}
+          <Sfp />
 
           {/* ONUs */}
-          {/* <Onu /> */}
+          <Onu />
         </AdminContext.Provider>
       </div>
     </div>

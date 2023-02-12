@@ -75,6 +75,7 @@ function AP_Modal() {
             onChange={(e) => setUpdatedProduct({...updatedProduct, status: e.target.value})}>
             <option value="Suporte">Suporte</option>
             <option value="Phaseout">Phaseout</option>
+            <option value="N/A">N/A</option>
           </select>
 
           <label>Modulação</label>
@@ -85,6 +86,7 @@ function AP_Modal() {
             onChange={(e) => setUpdatedProduct({...updatedProduct, modulação: e.target.value})}>
             <option value="Giga">Giga</option>
             <option value="Fast">Fast</option>
+            <option value="N/A">N/A</option>
           </select>
 
           <label>Versão do connectiFi</label>
@@ -167,6 +169,7 @@ function AP_Modal() {
             onChange={(e) => setUpdatedProduct({...updatedProduct, handover: e.target.value})}>
             <option value="Sim">Sim</option>
             <option value="x">Não</option>
+            <option value="N/A">N/A</option>
           </select>
 
           <label>Possui WiseFi</label>
@@ -177,6 +180,7 @@ function AP_Modal() {
             onChange={(e) => setUpdatedProduct({...updatedProduct, wisefi: e.target.value})}>
             <option value="Sim">Sim</option>
             <option value="x">Não</option>
+            <option value="N/A">N/A</option>
           </select>
 
           <label>Link da Página</label>
