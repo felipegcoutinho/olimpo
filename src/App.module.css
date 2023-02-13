@@ -34,6 +34,7 @@ option,
 select,
 input {
   font-family: "Inter", segoe UI, arial, Helvetica;
+  transition: 0.5s;
 }
 
 .container {
@@ -241,6 +242,11 @@ input {
   padding: 10px;
 }
 
+.btn_add:hover {
+  box-shadow: 0 0 0 0.25rem #00a94d40;
+  background-color: #0f7842;
+}
+
 .btn_add:before {
   content: " \2b\ ";
   font-family: FontAwesome;
@@ -289,7 +295,7 @@ input {
 }
 
 .searchBarDevices:focus-visible {
-  border: 3px solid #129552;
+  box-shadow: 0 0 0 0.25rem #00a94d40;
   outline: none;
 }
 
@@ -314,11 +320,6 @@ label {
   flex-direction: column;
 }
 
-input,
-select {
-  transition: 0.5s;
-}
-
 .formContainer input,
 select {
   border: 3px solid #dee8e9;
@@ -337,12 +338,13 @@ select {
   font-size: 0.85rem;
   margin: 5px 0;
   padding: 10px;
+  line-height: 20px;
 }
 
 input[type="text"]:focus-visible,
 select[type="text"]:focus-visible {
   border: 3px solid #129552;
-  box-shadow: 0 0 4pt 0pt #85d485;
+  box-shadow: 0 0 0 0.25rem #00a94d40;
 }
 
 input::placeholder {

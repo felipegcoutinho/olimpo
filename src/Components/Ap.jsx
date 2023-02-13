@@ -145,7 +145,12 @@ export default function Ap() {
           </button>
         )}
 
-        <input className={style.searchBarDevices} placeholder="Pesquise por um AP" value={queryAP} onChange={handleSearchChangeAP} />
+        <input
+          className={style.searchBarDevices}
+          placeholder="Pesquise por um equipamento"
+          value={queryAP}
+          onChange={handleSearchChangeAP}
+        />
       </div>
 
       <APContext.Provider

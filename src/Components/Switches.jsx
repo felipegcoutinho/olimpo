@@ -138,7 +138,12 @@ export default function Ap() {
           </button>
         )}
 
-        <input className={style.searchBarDevices} placeholder="Pesquise o Switch" value={querySWITCH} onChange={handleSearchChangeSWITCH} />
+        <input
+          className={style.searchBarDevices}
+          placeholder="Pesquise por um equipamento"
+          value={querySWITCH}
+          onChange={handleSearchChangeSWITCH}
+        />
       </div>
 
       <SwContext.Provider

@@ -137,7 +137,7 @@ export default function Radios() {
         )}
 
         <input
-          placeholder="Pesquise o Equipamento"
+          placeholder="Pesquise por um equipamento"
           value={queryRADIO}
           onChange={handleSearchChangeRADIO}
           className={style.searchBarDevices}
