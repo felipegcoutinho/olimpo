@@ -10,18 +10,36 @@ function RoteadoresModal() {
   return (
     <Modal isOpen={modalIsOpen} onRequestClose={closeModal} className={style.modal} overlayClassName={style.modal_overlay}>
       {updatedProduct.id ? <h1>Atualizar {updatedProduct.modelo}</h1> : <h1>Adicionar Equipamento HO</h1>}
-      <h4>Caso o produto não possua a função, preencha o campo com "x".</h4>
+      <h4>Caso o produto não possua a função, preencha o campo com "-".</h4>
       <h4>E caso a informação do produto não for encontrada, preencha o campo com "N/A".</h4>
       <form onSubmit={updatedProduct.id ? updateProduct : addProduto}>
         <div className={style.formContainer}>
           <label>Modelo</label>
           <input
+            required
             type="text"
             placeholder="Modelo do produto"
             value={updatedProduct.modelo}
             onChange={(e) => setUpdatedProduct({...updatedProduct, modelo: e.target.value})}
           />
-          <label>Área de cobertura</label>
+
+          <label>Modulação</label>
+          <select
+            type="text"
+            value={updatedProduct.modulação}
+            onChange={(e) => setUpdatedProduct({...updatedProduct, modulação: e.target.value})}>
+            {!updatedProduct.id && (
+              <option selected disabled>
+                Escolha
+              </option>
+            )}
+            <option value="Giga">Giga</option>
+            <option value="Fast">Fast</option>
+            <option value="Giga WAN | Fast LAN">Giga WAN | Fast LAN</option>
+            <option value="N/A">N/A</option>
+          </select>
+
+          <label>Área de cobertura (Em m²)</label>
           <input
             type="text"
             placeholder="Área de cobertura"
@@ -29,7 +47,7 @@ function RoteadoresModal() {
             onChange={(e) => setUpdatedProduct({...updatedProduct, cobertura: e.target.value})}
           />
 
-          <label>Raio</label>
+          <label>Raio (Em m)</label>
           <input
             type="text"
             placeholder="Raio"
@@ -53,47 +71,59 @@ function RoteadoresModal() {
             onChange={(e) => setUpdatedProduct({...updatedProduct, qtdePortas: e.target.value})}
           />
 
-          <label>Modulação</label>
+          <label>Datarate Máx. 2G</label>
           <select
             type="text"
-            value={updatedProduct.modulação}
-            onChange={(e) => setUpdatedProduct({...updatedProduct, modulação: e.target.value})}>
-            <option value="Giga">Giga</option>
-            <option value="Fast">Fast</option>
-            <option value="Giga WAN | Fast LAN">Giga WAN | Fast LAN</option>
+            value={updatedProduct.datarateMax2G}
+            onChange={(e) => setUpdatedProduct({...updatedProduct, datarateMax2G: e.target.value})}>
+            {!updatedProduct.id && (
+              <option selected disabled>
+                Escolha
+              </option>
+            )}
+            <option value="150 Mbps">150 Mbps</option>
+            <option value="300 Mbps">300 Mbps</option>
             <option value="N/A">N/A</option>
           </select>
 
-          <label>Datarate Máx. 2G</label>
-          <input
-            type="text"
-            placeholder="Datarate Máx. 2G"
-            value={updatedProduct.datarateMax2G}
-            onChange={(e) => setUpdatedProduct({...updatedProduct, datarateMax2G: e.target.value})}
-          />
-
           <label>Datarate Máx. 5G</label>
-          <input
+          <select
             type="text"
-            placeholder="Datarate Máx. 5G"
             value={updatedProduct.datarateMax5G}
-            onChange={(e) => setUpdatedProduct({...updatedProduct, datarateMax5G: e.target.value})}
-          />
+            onChange={(e) => setUpdatedProduct({...updatedProduct, datarateMax5G: e.target.value})}>
+            {!updatedProduct.id && (
+              <option selected disabled>
+                Escolha
+              </option>
+            )}
+            <option value="867 Mbps">867 Mbps</option>
+            <option value="1200 Mbps">1200 Mbps</option>
+            <option value="N/A">N/A</option>
+          </select>
 
           <label>IPv6</label>
           <select type="text" value={updatedProduct.ipv6} onChange={(e) => setUpdatedProduct({...updatedProduct, ipv6: e.target.value})}>
+            {!updatedProduct.id && (
+              <option selected disabled>
+                Escolha
+              </option>
+            )}
             <option value="Sim">Sim</option>
-            <option value="x">Não</option>
+            <option value="-">Não</option>
             <option value="N/A">N/A</option>
           </select>
 
           <label>WPS</label>
-          <input
-            type="text"
-            placeholder="WPS"
-            value={updatedProduct.wps}
-            onChange={(e) => setUpdatedProduct({...updatedProduct, wps: e.target.value})}
-          />
+          <select type="text" value={updatedProduct.wps} onChange={(e) => setUpdatedProduct({...updatedProduct, wps: e.target.value})}>
+            {!updatedProduct.id && (
+              <option selected disabled>
+                Escolha
+              </option>
+            )}
+            <option value="Sim">Sim</option>
+            <option value="-">Não</option>
+            <option value="N/A">N/A</option>
+          </select>
 
           <label>Qtde de Antenas</label>
           <input
@@ -140,8 +170,13 @@ function RoteadoresModal() {
             type="text"
             value={updatedProduct.repetidor}
             onChange={(e) => setUpdatedProduct({...updatedProduct, repetidor: e.target.value})}>
+            {!updatedProduct.id && (
+              <option selected disabled>
+                Escolha
+              </option>
+            )}
             <option value="Sim">Sim</option>
-            <option value="x">Não</option>
+            <option value="-">Não</option>
             <option value="N/A">N/A</option>
           </select>
 
@@ -150,8 +185,13 @@ function RoteadoresModal() {
             type="text"
             value={updatedProduct.roteador}
             onChange={(e) => setUpdatedProduct({...updatedProduct, roteador: e.target.value})}>
+            {!updatedProduct.id && (
+              <option selected disabled>
+                Escolha
+              </option>
+            )}
             <option value="Sim">Sim</option>
-            <option value="x">Não</option>
+            <option value="-">Não</option>
             <option value="N/A">N/A</option>
           </select>
 
@@ -160,15 +200,25 @@ function RoteadoresModal() {
             type="text"
             value={updatedProduct.cliente}
             onChange={(e) => setUpdatedProduct({...updatedProduct, cliente: e.target.value})}>
+            {!updatedProduct.id && (
+              <option selected disabled>
+                Escolha
+              </option>
+            )}
             <option value="Sim">Sim</option>
-            <option value="x">Não</option>
+            <option value="-">Não</option>
             <option value="N/A">N/A</option>
           </select>
 
           <label>Modo AP</label>
           <select type="text" value={updatedProduct.ap} onChange={(e) => setUpdatedProduct({...updatedProduct, ap: e.target.value})}>
+            {!updatedProduct.id && (
+              <option selected disabled>
+                Escolha
+              </option>
+            )}{" "}
             <option value="Sim">Sim</option>
-            <option value="x">Não</option>
+            <option value="-">Não</option>
             <option value="N/A">N/A</option>
           </select>
 
@@ -177,6 +227,11 @@ function RoteadoresModal() {
             type="text"
             value={updatedProduct.garantia}
             onChange={(e) => setUpdatedProduct({...updatedProduct, garantia: e.target.value})}>
+            {!updatedProduct.id && (
+              <option selected disabled>
+                Escolha
+              </option>
+            )}{" "}
             <option value="1 ano">1 ano</option>
             <option value="2 anos">2 anos</option>
             <option value="3 anos">3 anos</option>

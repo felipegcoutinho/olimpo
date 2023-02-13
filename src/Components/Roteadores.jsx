@@ -179,37 +179,46 @@ export default function Roteador() {
                 <tbody>
                   <tr key={index}>
                     <td className={roteador.status === "Phaseout" ? style.status_phaseout : style.status_suporte}>{roteador.modelo}</td>
-                    <td>{roteador.cobertura}</td>
-                    <td>{roteador.raio}</td>
-                    <td>{roteador.usuarioMax}</td>
-                    <td>{roteador.planoRecomendado}</td>
                     <td>
                       <span className={roteador.modulação === "Fast" ? style.fast : style.giga}>{roteador.modulação}</span>
                     </td>
+                    <td>
+                      {roteador.cobertura}
+                      {roteador.cobertura === "N/A" ? null : "m²"}
+                    </td>
+                    <td>
+                      {roteador.raio}
+                      {roteador.raio === "N/A" ? null : "m"}
+                    </td>
+                    <td>
+                      {roteador.usuarioMax}
+                      {roteador.usuarioMax === "N/A" ? null : " usuários"}
+                    </td>
+                    <td>{roteador.planoRecomendado}</td>
                     <td>{roteador.QtdePortas}</td>
                     <td>{roteador.datarateMax2G}</td>
-                    <td className={roteador.datarateMax5G === "x" ? style.NaoPossui : null}>
-                      {roteador.datarateMax5G === "x" ? null : roteador.datarateMax5G}
+                    <td className={roteador.datarateMax5G === "-" ? style.NaoPossui : null}>
+                      {roteador.datarateMax5G === "-" ? null : roteador.datarateMax5G}
                     </td>
                     <td>{roteador.ganho}</td>
-                    <td className={roteador.ipv6 === "x" ? style.NaoPossui : style.Possui}></td>
+                    <td className={roteador.ipv6 === "-" ? style.NaoPossui : style.Possui}></td>
                     <td>
-                      {roteador.repetidor === "x" && <span className={style.NaoPossui}></span>}
+                      {roteador.repetidor === "-" && <span className={style.NaoPossui}></span>}
                       {roteador.repetidor === "Sim" && <span className={style.Possui}></span>}
                       {roteador.repetidor === "N/A" && <span>{roteador.repetidor}</span>}
                     </td>
                     <td>
-                      {roteador.roteador === "x" && <span className={style.NaoPossui}></span>}
+                      {roteador.roteador === "-" && <span className={style.NaoPossui}></span>}
                       {roteador.roteador === "Sim" && <span className={style.Possui}></span>}
                       {roteador.roteador === "N/A" && <span>{roteador.roteador}</span>}
                     </td>
                     <td>
-                      {roteador.cliente === "x" && <span className={style.NaoPossui}></span>}
+                      {roteador.cliente === "-" && <span className={style.NaoPossui}></span>}
                       {roteador.cliente === "Sim" && <span className={style.Possui}></span>}
                       {roteador.cliente === "N/A" && <span>{roteador.cliente}</span>}
                     </td>
                     <td>
-                      {roteador.ap === "x" && <span className={style.NaoPossui}></span>}
+                      {roteador.ap === "-" && <span className={style.NaoPossui}></span>}
                       {roteador.ap === "Sim" && <span className={style.Possui}></span>}
                       {roteador.ap === "N/A" && <span>{roteador.ap}</span>}
                     </td>

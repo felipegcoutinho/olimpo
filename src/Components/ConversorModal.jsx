@@ -23,11 +23,31 @@ function ConversorModal() {
             onChange={(e) => setUpdatedProduct({...updatedProduct, modelo: e.target.value})}
           />
 
+          <label>Modulação</label>
+          <select
+            type="text"
+            value={updatedProduct.modulação}
+            onChange={(e) => setUpdatedProduct({...updatedProduct, modulação: e.target.value})}>
+            {!updatedProduct.id && (
+              <option selected disabled>
+                Escolha
+              </option>
+            )}
+            <option value="Giga">Giga</option>
+            <option value="Fast">Fast</option>
+            <option value="N/A">N/A</option>
+          </select>
+
           <label>Tipo do Conector</label>
           <select
             type="text"
             value={updatedProduct.conector}
             onChange={(e) => setUpdatedProduct({...updatedProduct, conector: e.target.value})}>
+            {!updatedProduct.id && (
+              <option selected disabled>
+                Escolha
+              </option>
+            )}
             <option value="SC/UPC (Duplo)">SC/UPC (Duplo)</option>
             <option value="SC/UPC (Única)">SC/UPC (Única)</option>
             <option value="N/A">N/A</option>
@@ -35,6 +55,11 @@ function ConversorModal() {
 
           <label>WDM</label>
           <select type="text" value={updatedProduct.wdm} onChange={(e) => setUpdatedProduct({...updatedProduct, wdm: e.target.value})}>
+            {!updatedProduct.id && (
+              <option selected disabled>
+                Escolha
+              </option>
+            )}
             <option value="Sim">Sim</option>
             <option value="x">Não</option>
             <option value="N/A">N/A</option>
@@ -48,18 +73,13 @@ function ConversorModal() {
             onChange={(e) => setUpdatedProduct({...updatedProduct, distancia: e.target.value})}
           />
 
-          <label>Modulação</label>
-          <select
-            type="text"
-            value={updatedProduct.modulação}
-            onChange={(e) => setUpdatedProduct({...updatedProduct, modulação: e.target.value})}>
-            <option value="Giga">Giga</option>
-            <option value="Fast">Fast</option>
-            <option value="N/A">N/A</option>
-          </select>
-
           <label>Tipo da Fibra</label>
           <select type="text" value={updatedProduct.fibra} onChange={(e) => setUpdatedProduct({...updatedProduct, fibra: e.target.value})}>
+            {!updatedProduct.id && (
+              <option selected disabled>
+                Escolha
+              </option>
+            )}
             <option value="Monomodo">Monomodo</option>
             <option value="Multimodo">Multimodo</option>
             <option value="N/A">N/A</option>
@@ -102,6 +122,11 @@ function ConversorModal() {
             type="text"
             value={updatedProduct.status}
             onChange={(e) => setUpdatedProduct({...updatedProduct, status: e.target.value})}>
+            {!updatedProduct.id && (
+              <option selected disabled>
+                Escolha
+              </option>
+            )}
             <option value="Suporte">Suporte</option>
             <option value="Phaseout">Phaseout</option>
             <option value="N/A">N/A</option>

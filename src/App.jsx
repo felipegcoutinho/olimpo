@@ -80,7 +80,7 @@ function App() {
           {/* <AccessPoints /> */}
 
           {/* Rádios */}
-          <RadiosOutdoor />
+          {/* <RadiosOutdoor /> */}
 
           {/* Roteadores HO */}
           {/* <RoteadoresHO /> */}
@@ -95,7 +95,7 @@ function App() {
           {/* <Sfp /> */}
 
           {/* ONUs */}
-          {/* <Onu /> */}
+          <Onu />
         </AdminContext.Provider>
       </div>
     </div>

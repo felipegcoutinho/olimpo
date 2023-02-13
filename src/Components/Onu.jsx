@@ -164,8 +164,8 @@ export default function Onu() {
                       <span className={onu.modulação === "Fast" ? style.fast : style.giga}>{onu.modulação}</span>
                     </td>
                     <td>
-                      {onu.fxs === "x" && <span className={style.NaoPossui}></span>}
-                      {onu.fxs !== "x" && <span>{onu.fxs}</span>}
+                      {onu.fxs === "-" && <span className={style.NaoPossui}></span>}
+                      {onu.fxs !== "-" && <span>{onu.fxs}</span>}
                     </td>
                     <td>{onu.qtdeportas}</td>
                     <td>
@@ -174,35 +174,36 @@ export default function Onu() {
                     </td>
                     <td>{onu.sensibilidade}</td>
                     <td>
-                      {onu.cobertura === "x" && <span className={style.NaoPossui}></span>}
-                      {onu.cobertura !== "x" && <span>{onu.cobertura}</span>}
+                      {onu.cobertura === "-" && <span className={style.NaoPossui}></span>}
+                      {onu.cobertura !== "-" && <span>{onu.cobertura} m²</span>}
+                      {onu.cobertura === "N/A" && null}
                     </td>
                     <td>
-                      {onu.clientesSimultaneos === "x" && <span className={style.NaoPossui}></span>}
-                      {onu.clientesSimultaneos !== "x" && <span>{onu.clientesSimultaneos}</span>}
+                      {onu.clientesSimultaneos === "-" && <span className={style.NaoPossui}></span>}
+                      {onu.clientesSimultaneos !== "-" && <span>{onu.clientesSimultaneos}</span>}
                     </td>
                     <td>
-                      {onu.transmissao2ghz === "x" && <span className={style.NaoPossui}></span>}
-                      {onu.transmissao2ghz !== "x" && <span>{onu.transmissao2ghz}</span>}
+                      {onu.transmissao2ghz === "-" && <span className={style.NaoPossui}></span>}
+                      {onu.transmissao2ghz !== "-" && <span>{onu.transmissao2ghz}</span>}
                     </td>
                     <td>
-                      {onu.transmissao5ghz === "x" && <span className={style.NaoPossui}></span>}
-                      {onu.transmissao5ghz !== "x" && <span>{onu.transmissao5ghz}</span>}
+                      {onu.transmissao5ghz === "-" && <span className={style.NaoPossui}></span>}
+                      {onu.transmissao5ghz !== "-" && <span>{onu.transmissao5ghz}</span>}
                     </td>
                     <td>
-                      {onu.ssid === "x" && <span className={style.NaoPossui}></span>}
-                      {onu.ssid !== "x" && <span>{onu.ssid} SSIDs</span>}
+                      {onu.ssid === "-" && <span className={style.NaoPossui}></span>}
+                      {onu.ssid !== "-" && <span>{onu.ssid} SSIDs</span>}
                     </td>
                     <td>
-                      {onu.tr069 === "x" && <span className={style.NaoPossui}></span>}
+                      {onu.tr069 === "-" && <span className={style.NaoPossui}></span>}
                       {onu.tr069 === "Sim" && <span className={style.Possui}></span>}
                     </td>
                     <td>
-                      {onu.customize === "x" && <span className={style.NaoPossui}></span>}
+                      {onu.customize === "-" && <span className={style.NaoPossui}></span>}
                       {onu.customize === "Sim" && <span className={style.Possui}></span>}
                     </td>
                     <td>
-                      {onu.remotize === "x" && <span className={style.NaoPossui}></span>}
+                      {onu.remotize === "-" && <span className={style.NaoPossui}></span>}
                       {onu.remotize === "Sim" && <span className={style.Possui}></span>}
                     </td>
                     <td>{onu.garantia}</td>

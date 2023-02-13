@@ -164,7 +164,14 @@ export default function Radios() {
           <table className={style.devicesTable}>
             {/* Table Headers*/}
             <RADIO />
-            {RadiosOutdoor.map((radio, index) => {
+
+            {RadiosOutdoor.filter((radio) => {
+              if (radio.modelo.toLowerCase().includes(queryRADIO.toLowerCase())) {
+                return radio;
+              } else if (radio.modulação.toLowerCase().includes(queryRADIO.toLowerCase())) {
+                return radio;
+              }
+            }).map((radio, index) => {
               return (
                 <tbody>
                   <tr key={index}>
@@ -188,10 +195,11 @@ export default function Radios() {
                     <td>{radio.throughputEfetivo}</td>
                     <td>{radio.throughputNominal}</td>
                     <td className={radio.aberturaHorVer === "-" && style.NaoPossui}>
-                      {radio.aberturaHorVer === "-" ? null : radio.aberturaHorVer}
+                      {radio.aberturaHorVer !== "-" && radio.aberturaHorVer}
                     </td>
-                    <td className={radio.distancia === "-" && style.NaoPossui}>{radio.distancia === "-" ? null : radio.distancia}</td>
+                    <td className={radio.distancia === "-" && style.NaoPossui}>{radio.distancia !== "-" && radio.distancia}</td>
                     <td>{radio.wireless}</td>
+                    <td>{radio.alimentaçao}</td>
                     <td>{radio.garantia}</td>
                     <td>
                       <a target="_blank" rel="noopener noreferrer" href={radio.pagina}>

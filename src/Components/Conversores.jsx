@@ -148,49 +148,47 @@ export default function Ap() {
         <ConversorModal />
       </ConversorContext.Provider>
 
-      {HideConversor ? (
+      {HideConversor && (
         <div style={{overflowX: "auto"}}>
           <table className={style.devicesTable}>
             <CONVERSOR />
-            {conversor.map((conversor) => {
+            {conversor.map((conversor, index) => {
               return (
-                <>
-                  <tbody>
-                    <tr>
-                      <td className={conversor.status === "Phaseout" ? style.status_phaseout : style.status_suporte}>{conversor.modelo}</td>
+                <tbody>
+                  <tr key={index}>
+                    <td className={conversor.status === "Phaseout" ? style.status_phaseout : style.status_suporte}>{conversor.modelo}</td>
+                    <td>
+                      <span className={conversor.modulação === "Fast" ? style.fast : style.giga}>{conversor.modulação}</span>
+                    </td>
+                    <td>{conversor.conector}</td>
+                    <td>
+                      {conversor.wdm === "x" && <span className={style.NaoPossui}></span>}
+                      {conversor.wdm !== "x" && <span className={style.Possui}></span>}
+                    </td>
+                    <td>{conversor.distancia}</td>
 
-                      <td>{conversor.conector}</td>
+                    <td>{conversor.fibra}</td>
+                    <td>{conversor.potencia}</td>
+                    <td>{conversor.sensibilidade}</td>
+                    <td>{conversor.garantia}</td>
+                    <td>
+                      <a target="_blank" rel="noopener noreferrer" href={conversor.pagina}>
+                        <span className={style.paginalink}>Ir para Página</span>
+                      </a>
+                    </td>
+                    {admin && (
                       <td>
-                        {conversor.wdm === "x" && <span className={style.NaoPossui}></span>}
-                        {conversor.wdm !== "x" && <span className={style.Possui}></span>}
+                        <button className={style.btn_alterar} onClick={() => openUpdateModal(conversor)}></button>
+                        <button className={style.btn_excluir} onClick={() => deleteProduct(conversor.id)}></button>
                       </td>
-                      <td>{conversor.distancia}</td>
-                      <td>
-                        <span className={conversor.modulação === "Fast" ? style.fast : style.giga}>{conversor.modulação}</span>
-                      </td>
-                      <td>{conversor.fibra}</td>
-                      <td>{conversor.potencia}</td>
-                      <td>{conversor.sensibilidade}</td>
-                      <td>{conversor.garantia}</td>
-                      <td>
-                        <a target="_blank" rel="noopener noreferrer" href={conversor.pagina}>
-                          <span className={style.paginalink}>Ir para Página</span>
-                        </a>
-                      </td>
-                      {admin && (
-                        <td>
-                          <button className={style.btn_alterar} onClick={() => openUpdateModal(conversor)}></button>
-                          <button className={style.btn_excluir} onClick={() => deleteProduct(conversor.id)}></button>
-                        </td>
-                      )}
-                    </tr>
-                  </tbody>
-                </>
+                    )}
+                  </tr>
+                </tbody>
               );
             })}
           </table>
         </div>
-      ) : null}
+      )}
     </div>
   );
 }

@@ -35,6 +35,11 @@ function SwModal() {
             type="text"
             value={updatedProduct.modulação}
             onChange={(e) => setUpdatedProduct({...updatedProduct, modulação: e.target.value})}>
+            {!updatedProduct.id && (
+              <option selected disabled>
+                Escolha
+              </option>
+            )}
             <option value="Giga">Giga</option>
             <option value="Fast">Fast</option>
             <option value="Giga (Uplink)">Giga (Uplink)</option>
@@ -46,15 +51,20 @@ function SwModal() {
             type="text"
             value={updatedProduct.gerenciavel}
             onChange={(e) => setUpdatedProduct({...updatedProduct, gerenciavel: e.target.value})}>
+            {!updatedProduct.id && (
+              <option selected disabled>
+                Escolha
+              </option>
+            )}
             <option value="Sim">Sim</option>
             <option value="x">Não</option>
             <option value="N/A">N/A</option>
           </select>
 
-          <label>Interfaces SFP</label>
+          <label>Qtde Interfaces SFP</label>
           <input
             type="text"
-            placeholder="Interfaces SFP"
+            placeholder="Qtde Interfaces SFP"
             value={updatedProduct.sfp}
             onChange={(e) => setUpdatedProduct({...updatedProduct, sfp: e.target.value})}
           />
@@ -80,6 +90,11 @@ function SwModal() {
             type="text"
             value={updatedProduct.pdAlive}
             onChange={(e) => setUpdatedProduct({...updatedProduct, pdAlive: e.target.value})}>
+            {!updatedProduct.id && (
+              <option selected disabled>
+                Escolha
+              </option>
+            )}
             <option value="Sim">Sim</option>
             <option value="x">Não</option>
             <option value="N/A">N/A</option>
@@ -94,6 +109,11 @@ function SwModal() {
 
           <label>Alimenta via PoE</label>
           <select type="text" value={updatedProduct.poe} onChange={(e) => setUpdatedProduct({...updatedProduct, poe: e.target.value})}>
+            {!updatedProduct.id && (
+              <option selected disabled>
+                Escolha
+              </option>
+            )}
             <option value="802.3af - 802.3at">802.3af - 802.3at</option>
             <option value="802.3af/B - 802.3at">802.3af/B - 802.3at</option>
             <option value="x">Não</option>
@@ -105,6 +125,11 @@ function SwModal() {
             type="text"
             value={updatedProduct.poeExtender}
             onChange={(e) => setUpdatedProduct({...updatedProduct, poeExtender: e.target.value})}>
+            {!updatedProduct.id && (
+              <option selected disabled>
+                Escolha
+              </option>
+            )}
             <option value="Sim">Sim</option>
             <option value="x">Não</option>
             <option value="N/A">N/A</option>
@@ -132,6 +157,11 @@ function SwModal() {
             placeholder="Status do suporte"
             value={updatedProduct.status}
             onChange={(e) => setUpdatedProduct({...updatedProduct, status: e.target.value})}>
+            {!updatedProduct.id && (
+              <option selected disabled>
+                Escolha
+              </option>
+            )}
             <option value="Suporte">Suporte</option>
             <option value="Phaseout">Phaseout</option>
             <option value="N/A">N/A</option>

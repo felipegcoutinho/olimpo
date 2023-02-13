@@ -168,10 +168,10 @@ export default function Ap() {
                   return swicth;
                 }
               })
-              .map((swicth) => {
+              .map((swicth, index) => {
                 return (
                   <tbody>
-                    <tr id={style.swicth_id}>
+                    <tr key={index}>
                       <td className={swicth.status === "Phaseout" ? style.status_phaseout : style.status_suporte}>
                         <span className={style.tooltip}>
                           {swicth.modelo}
@@ -184,33 +184,33 @@ export default function Ap() {
                       </td>
                       <td>{swicth.qtdePortas}</td>
                       <td>
-                        {swicth.gerenciavel === "x" && <span className={style.NaoPossui}></span>}
+                        {swicth.gerenciavel === "-" && <span className={style.NaoPossui}></span>}
                         {swicth.gerenciavel === "Sim" && <span className={style.Possui}></span>}
                       </td>
                       <td>
-                        {swicth.poe === "x" && <span className={style.NaoPossui}></span>}
-                        {swicth.poe !== "x" && <span>{swicth.poe}</span>}
+                        {swicth.poe === "-" && <span className={style.NaoPossui}></span>}
+                        {swicth.poe !== "-" && <span>{swicth.poe}</span>}
                       </td>
                       <td>{swicth.pps}</td>
                       <td>{swicth.backplane}</td>
                       <td>
-                        {swicth.sfp === "x" && <span className={style.NaoPossui}></span>}
-                        {swicth.sfp !== "x" && <span>{swicth.sfp}</span>}
+                        {swicth.sfp === "-" && <span className={style.NaoPossui}></span>}
+                        {swicth.sfp !== "-" && <span>{swicth.sfp}</span>}
                       </td>
                       <td>
-                        {swicth.poeExtender === "x" && <span className={style.NaoPossui}></span>}
-                        {swicth.poeExtender !== "x" && <span className={style.Possui}></span>}
+                        {swicth.poeExtender === "-" && <span className={style.NaoPossui}></span>}
+                        {swicth.poeExtender !== "-" && <span className={style.Possui}></span>}
                       </td>
                       <td>
-                        {swicth.poePorta === "x" && <span className={style.NaoPossui}></span>}
-                        {swicth.poePorta !== "x" && <span>{swicth.poePorta}</span>}
+                        {swicth.poePorta === "-" && <span className={style.NaoPossui}></span>}
+                        {swicth.poePorta !== "-" && <span>{swicth.poePorta}</span>}
                       </td>
                       <td>
-                        {swicth.poeTotal === "x" && <span className={style.NaoPossui}></span>}
-                        {swicth.poeTotal !== "x" && <span>{swicth.poeTotal}</span>}
+                        {swicth.poeTotal === "-" && <span className={style.NaoPossui}></span>}
+                        {swicth.poeTotal !== "-" && <span>{swicth.poeTotal}</span>}
                       </td>
                       <td>
-                        {swicth.qos === "x" && <span className={style.NaoPossui}></span>}
+                        {swicth.qos === "-" && <span className={style.NaoPossui}></span>}
                         {swicth.qos === "Sim" && <span className={style.Possui}></span>}
                       </td>
                       <td>{swicth.garantia}</td>

@@ -42,7 +42,7 @@ function AP_Modal() {
 
           <label>Área de cobertura (em m²)</label>
           <input
-            type="number"
+            type="text"
             placeholder="Área de cobertura"
             value={updatedProduct.cobertura}
             onChange={(e) => setUpdatedProduct({...updatedProduct, cobertura: e.target.value})}
@@ -50,7 +50,7 @@ function AP_Modal() {
 
           <label>Raio (em m)</label>
           <input
-            type="number"
+            type="text"
             placeholder="Raio"
             value={updatedProduct.raio}
             onChange={(e) => setUpdatedProduct({...updatedProduct, raio: e.target.value})}
@@ -58,7 +58,7 @@ function AP_Modal() {
 
           <label>Usuários simultâneos</label>
           <input
-            type="number"
+            type="text"
             placeholder="Usuários simultâneos"
             value={updatedProduct.usuarioMax}
             onChange={(e) => setUpdatedProduct({...updatedProduct, usuarioMax: e.target.value})}
