@@ -69,7 +69,7 @@ input {
   font-size: 0.9rem;
 }
 
-/* main Search */
+/* Busca principal */
 .searchbarContainer {
   display: flex;
   margin-top: 20px;
@@ -146,11 +146,11 @@ input {
   content: " \f023\ ";
 }
 
-.btns_container {
+.categoryContainer {
   margin: 40px 0;
 }
 
-.btns {
+.categoryButton {
   background-color: #f0fff7;
   border: none;
   border-radius: 3px;
@@ -164,7 +164,7 @@ input {
   width: 160px;
 }
 
-.btns:hover {
+.categoryButton:hover {
   background-color: #1d3f2e;
   color: white;
 }
@@ -172,24 +172,6 @@ input {
 .aviso {
   color: white;
   font-size: 0.9rem;
-}
-
-.legendas_container {
-  background-color: #20773c;
-  border: 1px solid #1e6d37;
-  border-radius: 3px;
-  color: white;
-  margin-bottom: 30px;
-  padding: 10px 40px;
-}
-
-.legendas_title {
-  font-style: italic;
-  font-weight: bold;
-}
-
-.legendas_content {
-  font-size: 0.85rem;
 }
 
 .btn_hideShow {
@@ -243,8 +225,8 @@ input {
 }
 
 .btn_add:hover {
-  box-shadow: 0 0 0 0.25rem #00a94d40;
   background-color: #0f7842;
+  box-shadow: 0 0 0 0.25rem #00a94d40;
 }
 
 .btn_add:before {
@@ -336,9 +318,9 @@ select {
   border-radius: 5px;
   color: #d48d53;
   font-size: 0.85rem;
+  line-height: 20px;
   margin: 5px 0;
   padding: 10px;
-  line-height: 20px;
 }
 
 input[type="text"]:focus-visible,

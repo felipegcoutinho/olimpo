@@ -30,15 +30,13 @@ export default function Header() {
 
   return (
     <div>
-      <div className={style.aviso}>
+      <div className={style.aviso} id="home">
         <b>Aviso!</b> Este é um material para facilitar o acesso a informações dos principais equipamentos.
         <b> Sempre consulte a documentação oficial.</b> :)
       </div>
-      <div className={style.header_content} id="home">
+      <div className={style.header_content}>
         <div className={style.logo}>
-          <p>
-            Olimpo!<span className={style.version}>v1.1</span>
-          </p>
+          Olimpo!<span className={style.version}>v1.1</span>
         </div>
 
         <div className={style.searchbarContainer}>
@@ -57,45 +55,34 @@ export default function Header() {
             {urlValue !== "" && <button className={style.mainSearchBtn}></button>}
           </a>
           {urlValue !== "" && <button className={style.searchBtnClean} onClick={() => setUrlValue("")}></button>}
-          {urlValue === "@@@" && <button className={admin ? style.adminBtnDisable : style.adminBtnEnable} onClick={EnableAdmin}></button>}
+          {urlValue === "@admin" && (
+            <button className={admin ? style.adminBtnDisable : style.adminBtnEnable} onClick={EnableAdmin}></button>
+          )}
         </div>
 
-        <div className={style.btns_container}>
+        <div className={style.categoryContainer}>
           <a href="#ap">
-            <button className={style.btns}>Access Point</button>
+            <button className={style.categoryButton}>Access Point</button>
           </a>
           <a href="#radio">
-            <button className={style.btns}>Radio Outdoor</button>
+            <button className={style.categoryButton}>Radio Outdoor</button>
           </a>
           <a href="#homeOffice">
-            <button className={style.btns}>Home Office</button>
+            <button className={style.categoryButton}>Home Office</button>
           </a>
           <a href="#switch">
-            <button className={style.btns}>Switch</button>
+            <button className={style.categoryButton}>Switch</button>
           </a>
           <a href="#conversor">
-            <button className={style.btns}>Conversor de Mídia</button>
+            <button className={style.categoryButton}>Conversor de Mídia</button>
           </a>
           <a href="#sfp">
-            <button className={style.btns}>Módulo SFP</button>
+            <button className={style.categoryButton}>Módulo SFP</button>
           </a>
           <a href="#onu">
-            <button className={style.btns}>Onu/Ont</button>
+            <button className={style.categoryButton}>Onu/Ont</button>
           </a>
         </div>
-
-        {/* <div className={style.legendas_container}>
-          <div className={style.legendas_title}>Legendas</div>
-          <div className={style.legendas_content}>
-            <p>N/A - Informação não encontrada.</p>
-            <p>
-              <span className={style.status_suporte}></span>- Suporte normal.
-            </p>
-            <p>
-              <span className={style.status_phaseout}></span>- Suporte por email.
-            </p>
-          </div>
-        </div> */}
       </div>
       <a href="#home">
         <span className={style.top}></span>
