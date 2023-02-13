@@ -91,6 +91,44 @@ function OnuModal() {
             <option value="N/A">N/A</option>
           </select>
 
+          <label>Datarate Máx. 2G</label>
+          <select
+            type="text"
+            value={updatedProduct.transmissao2ghz}
+            onChange={(e) => setUpdatedProduct({...updatedProduct, transmissao2ghz: e.target.value})}>
+            {!updatedProduct.id && (
+              <option selected disabled>
+                Escolha
+              </option>
+            )}
+            <option value="300 Mbps">300 Mbps</option>
+            <option value="570 Mbps">570 Mbps</option>
+            <option value="N/A">N/A</option>
+          </select>
+
+          <label>Datarate Máx. 5G</label>
+          <select
+            type="text"
+            value={updatedProduct.transmissao5ghz}
+            onChange={(e) => setUpdatedProduct({...updatedProduct, transmissao5ghz: e.target.value})}>
+            {!updatedProduct.id && (
+              <option selected disabled>
+                Escolha
+              </option>
+            )}
+            <option value="867 Mbps">867 Mbps</option>
+            <option value="1200 Mbps">1200 Mbps</option>
+            <option value="N/A">N/A</option>
+          </select>
+
+          <label>Área de cobertura</label>
+          <input
+            type="text"
+            placeholder="Área de cobertura"
+            value={updatedProduct.cobertura}
+            onChange={(e) => setUpdatedProduct({...updatedProduct, cobertura: e.target.value})}
+          />
+
           <label>Qtde SSIDs</label>
           <input
             type="number"
@@ -141,33 +179,9 @@ function OnuModal() {
             <option value="N/A">N/A</option>
           </select>
 
-          <label>Datarate Máx. 2G</label>
-          <input
-            type="text"
-            placeholder="Datarate Máx. 2G"
-            value={updatedProduct.transmissao2ghz}
-            onChange={(e) => setUpdatedProduct({...updatedProduct, transmissao2ghz: e.target.value})}
-          />
-
-          <label>Datarate Máx. 5G</label>
-          <input
-            type="text"
-            placeholder="Datarate Máx. 5G"
-            value={updatedProduct.transmissao5ghz}
-            onChange={(e) => setUpdatedProduct({...updatedProduct, transmissao5ghz: e.target.value})}
-          />
-
-          <label>Área de cobertura</label>
-          <input
-            type="text"
-            placeholder="Área de cobertura"
-            value={updatedProduct.cobertura}
-            onChange={(e) => setUpdatedProduct({...updatedProduct, cobertura: e.target.value})}
-          />
-
           <label>Qtde Antenas</label>
           <input
-            type="number"
+            type="text"
             placeholder="Qtde Antenas"
             value={updatedProduct.antenas}
             onChange={(e) => setUpdatedProduct({...updatedProduct, antenas: e.target.value})}

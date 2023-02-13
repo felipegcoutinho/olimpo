@@ -162,8 +162,8 @@ export default function Ap() {
                     </td>
                     <td>{conversor.conector}</td>
                     <td>
-                      {conversor.wdm === "x" && <span className={style.NaoPossui}></span>}
-                      {conversor.wdm !== "x" && <span className={style.Possui}></span>}
+                      {conversor.wdm === "-" && <span className={style.NaoPossui}></span>}
+                      {conversor.wdm !== "-" && <span className={style.Possui}></span>}
                     </td>
                     <td>{conversor.distancia}</td>
 

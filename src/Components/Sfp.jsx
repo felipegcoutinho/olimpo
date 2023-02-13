@@ -167,8 +167,8 @@ export default function Ap() {
                       {sfp.modulo === "XFP" && <span className={style.giga}>XFP</span>}
                     </td>
                     <td>
-                      {sfp.wdm === "x" && <span className={style.NaoPossui}></span>}
-                      {sfp.wdm !== "x" && <span className={style.Possui}></span>}
+                      {sfp.wdm === "-" && <span className={style.NaoPossui}></span>}
+                      {sfp.wdm !== "-" && <span className={style.Possui}></span>}
                     </td>
                     <td>
                       <span className={style.tooltip}>

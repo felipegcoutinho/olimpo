@@ -1,4 +1,9 @@
 @import url("https://fonts.googleapis.com/css2?family=Pacifico&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Inter:wght@400;700&display=swap");
+
+.teste:hover {
+  background-color: deepskyblue;
+}
 
 * {
   box-sizing: border-box;
@@ -11,8 +16,8 @@ html {
 }
 
 body {
-  background-color: #e1e1e1;
-  font-family: arial, Helvetica;
+  background-color: #f4f6fa;
+  font-family: segoe UI, arial, Helvetica;
 }
 
 a {
@@ -21,7 +26,8 @@ a {
   text-decoration: none;
 }
 
-input {
+input,
+select {
   font-family: segoe UI, sans-serif, arial, Helvetica;
 }
 
@@ -32,8 +38,8 @@ input {
 
 .header_content {
   align-items: center;
-  background-color: #268946;
-  box-shadow: 0px 3px 3px -2px #00000033, 0px 3px 4px 0px #00000024, 0px 1px 8px 0px #0000001f;
+  background-color: #129552;
+  /* box-shadow: 0px 3px 3px -2px #00000033, 0px 3px 4px 0px #00000024, 0px 1px 8px 0px #0000001f; */
   display: flex;
   flex-direction: column;
   margin-bottom: 20px;
@@ -69,6 +75,11 @@ input {
   padding: 15px;
   text-align: center;
   width: 500px;
+}
+
+.mainsearchbar:focus-visible {
+  outline: none;
+  box-shadow: inset 0px 0px 0px 2px #ffc568;
 }
 
 .mainsearchbar::placeholder {
@@ -211,12 +222,21 @@ input {
 }
 
 .btn_add {
-  background-color: #006e39;
+  background-color: #129552;
   border: none;
   color: white;
   padding: 10px;
   cursor: pointer;
   border-radius: 3px;
+  font-weight: bold;
+  text-transform: uppercase;
+  font-size: 0.7rem;
+}
+
+.btn_add:before {
+  content: " \2b\ ";
+  font-family: FontAwesome;
+  font-size: 1rem;
 }
 
 .title {
@@ -249,20 +269,28 @@ input {
 }
 
 .searchBarDevices {
-  background-color: #dbdbdb;
+  background-color: #f4f6fa;
   border: none;
-  border-radius: 20px;
+  border-radius: 3px;
   font-size: 0.9rem;
   font-weight: bold;
   margin-left: 10px;
-  padding: 5px;
+  padding: 3px;
   text-align: center;
   width: 250px;
+  border: 3px solid #dee8e9;
+}
+
+.searchBarDevices:focus-visible {
+  outline: none;
+  border: 3px solid #2a96ed;
 }
 
 label {
   font-size: 0.9rem;
   padding-top: 2px;
+  color: #5f758e;
+  font-weight: bold;
 }
 
 .btnModalActions {
@@ -281,33 +309,58 @@ label {
 
 .formContainer input,
 select {
-  background-color: #ececec;
-  border: 1px solid #e5e5e5;
+  border: 3px solid #dee8e9;
   border-radius: 3px;
   font-size: 0.8rem;
-  padding: 4px;
-  margin: 3px 0;
-  font-weight: 700;
+  padding: 10px 5px;
+  margin: 5px 0;
+  font-weight: bold;
+  outline: none;
+}
+
+.formLegenda {
+  background-color: #fae1bc;
+  color: #d48d53;
+  padding: 10px;
+  border-radius: 5px;
+  font-size: 0.85rem;
+  margin: 5px 0;
+}
+
+input[type="text"]:focus-visible,
+select[type="text"]:focus-visible {
+  border: 3px solid #2a96ed;
+}
+
+input::placeholder {
+  color: #a5afb0;
+}
+
+option {
+  font-size: 0.9rem;
+  background-color: #ecfff8;
+  font-weight: bold;
 }
 
 .btn_addUpd,
 .btn_addUpdCancel {
-  padding: 5px;
+  padding: 10px;
   border: none;
   margin: 3px 0;
   cursor: pointer;
+  text-transform: uppercase;
+  font-weight: bold;
+  font-size: 0.75rem;
 }
 
 .btn_addUpd {
-  background-color: #006e39;
+  background-color: #129552;
   color: white;
-  padding: 7px 0;
 }
 
 .btn_addUpdCancel {
-  background-color: #af4343;
-  color: white;
-  padding: 7px 0;
+  background-color: #e5e5e5;
+  color: #404f61;
 }
 
 .modal {
@@ -321,7 +374,7 @@ select {
   padding: 30px 30px 0px;
   margin-right: -50%;
   transform: translate(-50%, -50%);
-  height: 80%;
+  height: 85%;
   width: 30%;
 }
 

@@ -10,8 +10,10 @@ function AP_Modal() {
   return (
     <Modal isOpen={modalIsOpen} onRequestClose={closeModal} className={style.modal} overlayClassName={style.modal_overlay}>
       {updatedProduct.id ? <h1>Atualizar {updatedProduct.modelo}</h1> : <h1>Adicionar Access Point</h1>}
-      <h4>Caso o produto não possua a função, preencha o campo com "-".</h4>
-      <h4>E caso a informação do produto não for encontrada, preencha o campo com "N/A".</h4>
+      <div className={style.formLegenda}>
+        <h4>Caso o produto não possua a função, preencha o campo com "-".</h4>
+        <h4>E caso a informação do produto não for encontrada, preencha o campo com "N/A".</h4>
+      </div>
       <form onSubmit={updatedProduct.id ? updateProduct : addProduto}>
         <div className={style.formContainer}>
           <label>Modelo</label>
@@ -229,34 +231,34 @@ function AP_Modal() {
             <option value="N/A">N/A</option>
           </select>
 
-          <label>Link da Página</label>
+          <label>URL da Página</label>
           <input
             type="text"
-            placeholder="Link da Página"
+            placeholder="URL da Página"
             value={updatedProduct.pagina}
             onChange={(e) => setUpdatedProduct({...updatedProduct, pagina: e.target.value})}
           />
 
-          <label>Link do Datasheet</label>
+          <label>URL do Datasheet</label>
           <input
             type="text"
-            placeholder="Link do Datasheet"
+            placeholder="URL do Datasheet"
             value={updatedProduct.datasheet}
             onChange={(e) => setUpdatedProduct({...updatedProduct, datasheet: e.target.value})}
           />
 
-          <label>Link do Guia</label>
+          <label>URL do Guia</label>
           <input
             type="text"
-            placeholder="Link do Guia"
+            placeholder="URL do Guia"
             value={updatedProduct.guia}
             onChange={(e) => setUpdatedProduct({...updatedProduct, guia: e.target.value})}
           />
 
-          <label>Link do Manual</label>
+          <label>URL do Manual</label>
           <input
             type="text"
-            placeholder="Link do Manual"
+            placeholder="URL do Manual"
             value={updatedProduct.manual}
             onChange={(e) => setUpdatedProduct({...updatedProduct, manual: e.target.value})}
           />

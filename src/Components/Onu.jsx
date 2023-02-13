@@ -175,8 +175,8 @@ export default function Onu() {
                     <td>{onu.sensibilidade}</td>
                     <td>
                       {onu.cobertura === "-" && <span className={style.NaoPossui}></span>}
-                      {onu.cobertura !== "-" && <span>{onu.cobertura} m²</span>}
-                      {onu.cobertura === "N/A" && null}
+                      {onu.cobertura === "N/A" && onu.cobertura}
+                      {onu.cobertura !== "-" && onu.cobertura !== "N/A" && <span>{onu.cobertura} m²</span>}
                     </td>
                     <td>
                       {onu.clientesSimultaneos === "-" && <span className={style.NaoPossui}></span>}
