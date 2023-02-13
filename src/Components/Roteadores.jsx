@@ -136,18 +136,18 @@ export default function Roteador() {
   return (
     <div className={style.box_content}>
       <div className={style.header_box_content}>
-        <button id="ho" className={HideHO ? style.arrowHide : style.arrowShow} onClick={handleHideHO}>
+        <button id="homeOffice" className={HideHO ? style.arrowHide : style.arrowShow} onClick={handleHideHO}>
           <span className={style.title}>Home Office</span>
         </button>
 
         {admin && (
           <button className={style.btn_add} onClick={openModal}>
-            Adicionar Roteador Home Office
+            Adicionar Roteador
           </button>
         )}
 
         <input
-          placeholder="Pesquise por um Equipamento HO"
+          placeholder="Pesquise por um equipamento"
           value={queryHO}
           onChange={handleSearchChangeHO}
           className={style.searchBarDevices}

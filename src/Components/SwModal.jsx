@@ -10,8 +10,10 @@ function SwModal() {
   return (
     <Modal isOpen={modalIsOpen} onRequestClose={closeModal} className={style.modal} overlayClassName={style.modal_overlay}>
       {updatedProduct.id ? <h1>Atualizar {updatedProduct.modelo}</h1> : <h1>Adicionar Switch</h1>}
-      <h4>Caso o produto não possua a função, preencha o campo com "x".</h4>
-      <h4>E caso a informação do produto não for encontrada, preencha o campo com "N/A".</h4>
+      <div className={style.formLegenda}>
+        <h4>Caso o produto não possua a função, preencha o campo com "-".</h4>
+        <h4>Se a informação do produto não houver sido encontrada, preencha o campo com "N/A".</h4>
+      </div>
       <form onSubmit={updatedProduct.id ? updateProduct : addProduto}>
         <div className={style.formContainer}>
           <label>Modelo</label>
@@ -72,7 +74,7 @@ function SwModal() {
           <label>Pacotes por Segundo</label>
           <input
             type="text"
-            placeholder=">Pacotes por Segundo"
+            placeholder="Pacotes por Segundo"
             value={updatedProduct.pps}
             onChange={(e) => setUpdatedProduct({...updatedProduct, pps: e.target.value})}
           />

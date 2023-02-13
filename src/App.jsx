@@ -83,19 +83,19 @@ function App() {
           <RadiosOutdoor />
 
           {/* Roteadores HO */}
-          {/* <RoteadoresHO /> */}
+          <RoteadoresHO />
 
           {/* SWITCHES */}
-          {/* <Switches /> */}
+          <Switches />
 
           {/* CONVERSORES */}
-          {/* <Conversores /> */}
+          <Conversores />
 
           {/* SFPs */}
-          {/* <Sfp /> */}
+          <Sfp />
 
           {/* ONUs */}
-          {/* <Onu /> */}
+          <Onu />
         </AdminContext.Provider>
       </div>
     </div>

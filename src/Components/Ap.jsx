@@ -39,6 +39,7 @@ export default function Ap() {
 
   const {admin, HideAP, setHideAP, updatedProduct, setUpdatedProduct} = useContext(AdminContext);
   const [queryAP, setQueryAP] = React.useState("");
+
   const handleHideAP = () => setHideAP(!HideAP);
   const handleSearchChangeAP = (e) => {
     setQueryAP(e.target.value);
@@ -132,94 +133,93 @@ export default function Ap() {
   };
 
   return (
-    <>
-      <div className={style.box_content}>
-        <div className={style.header_box_content}>
-          <button id="ap" className={HideAP ? style.arrowHide : style.arrowShow} onClick={handleHideAP}>
-            <span className={style.title}>Access Point</span>
+    <div className={style.box_content}>
+      <div className={style.header_box_content}>
+        <button id="ap" className={HideAP ? style.arrowHide : style.arrowShow} onClick={handleHideAP}>
+          <span className={style.title}>Access Point</span>
+        </button>
+
+        {admin && (
+          <button className={style.btn_add} onClick={openModal}>
+            Novo Access Point
           </button>
-
-          {admin && (
-            <button className={style.btn_add} onClick={openModal}>
-              Adicionar Access Point
-            </button>
-          )}
-
-          <input className={style.searchBarDevices} placeholder="Pesquise por um AP" value={queryAP} onChange={handleSearchChangeAP} />
-        </div>
-
-        <APContext.Provider
-          value={{
-            updateProduct,
-            updatedProduct,
-            setUpdatedProduct,
-            modalIsOpen,
-            setIsOpen,
-            openModal,
-            closeModal,
-            addProduto,
-            admin,
-          }}>
-          <Ap_Modal />
-        </APContext.Provider>
-
-        {HideAP && (
-          <div style={{overflowX: "auto"}}>
-            <table className={style.devicesTable}>
-              {/* Table Headers*/}
-              <Ap_theads />
-
-              {accessPoint
-                .filter((ap) => {
-                  if (ap.modelo.toLowerCase().includes(queryAP.toLowerCase())) {
-                    return ap;
-                  } else if (ap.modulação.toLowerCase().includes(queryAP.toLowerCase())) {
-                    return ap;
-                  }
-                })
-                .map((ap, index) => {
-                  return (
-                    <tbody>
-                      <tr key={index}>
-                        <td className={ap.status === "Phaseout" ? style.status_phaseout : style.status_suporte}>{ap.modelo}</td>
-                        <td>
-                          <span className={ap.modulação === "Fast" ? style.fast : style.giga}>{ap.modulação}</span>
-                        </td>
-                        <td>{ap.cobertura} m²</td>
-                        <td>{ap.raio} m</td>
-                        <td>{ap.usuarioMax} usuários</td>
-                        <td>{ap.throughputWireless24}</td>
-
-                        <td className={ap.throughputWireless50 === "-" && style.NaoPossui}>
-                          {ap.throughputWireless50 !== "-" && ap.throughputWireless50}
-                        </td>
-                        <td>{ap.qtdePortas}</td>
-                        <td className={ap.poe === "-" && style.NaoPossui}>{ap.poe !== "-" && ap.poe}</td>
-                        <td>{ap.tensao}</td>
-                        <td>{ap.connectiVersion}</td>
-                        <td className={ap.handover === "-" ? style.NaoPossui : style.Possui}></td>
-                        <td className={ap.wisefi === "-" ? style.NaoPossui : style.Possui}></td>
-                        <td>{ap.potencia2G}</td>
-                        <td className={ap.potencia5G === "-" && style.NaoPossui}>{ap.potencia5G !== "-" && ap.potencia5G}</td>
-                        <td>
-                          <a target="_blank" rel="noopener noreferrer" href={ap.pagina}>
-                            <span className={style.paginalink}>Ir para Página</span>
-                          </a>
-                        </td>
-                        {admin && (
-                          <td>
-                            <button className={style.btn_alterar} onClick={() => openUpdateModal(ap)}></button>
-                            <button className={style.btn_excluir} onClick={() => deleteProduct(ap.id)}></button>
-                          </td>
-                        )}
-                      </tr>
-                    </tbody>
-                  );
-                })}
-            </table>
-          </div>
         )}
+
+        <input className={style.searchBarDevices} placeholder="Pesquise por um AP" value={queryAP} onChange={handleSearchChangeAP} />
       </div>
-    </>
+
+      <APContext.Provider
+        value={{
+          updateProduct,
+          updatedProduct,
+          setUpdatedProduct,
+          modalIsOpen,
+          setIsOpen,
+          openModal,
+          closeModal,
+          addProduto,
+          admin,
+        }}>
+        <Ap_Modal />
+      </APContext.Provider>
+
+      {HideAP && (
+        <div style={{overflowX: "auto"}}>
+          <table className={style.devicesTable}>
+            {/* Table Headers*/}
+            <Ap_theads />
+
+            {accessPoint
+              .filter((ap) => {
+                if (ap.modelo.toLowerCase().includes(queryAP.toLowerCase())) {
+                  return ap;
+                } else if (ap.modulação.toLowerCase().includes(queryAP.toLowerCase())) {
+                  return ap;
+                } else {
+                }
+              })
+              .map((ap, index) => {
+                return (
+                  <tbody>
+                    <tr key={index}>
+                      <td className={ap.status === "Phaseout" ? style.status_phaseout : style.status_suporte}>{ap.modelo}</td>
+                      <td>
+                        <span className={ap.modulação === "Fast" ? style.fast : style.giga}>{ap.modulação}</span>
+                      </td>
+                      <td>{ap.cobertura} m²</td>
+                      <td>{ap.raio} m</td>
+                      <td>{ap.usuarioMax} usuários</td>
+                      <td>{ap.throughputWireless24}</td>
+
+                      <td className={ap.throughputWireless50 === "-" && style.NaoPossui}>
+                        {ap.throughputWireless50 !== "-" && ap.throughputWireless50}
+                      </td>
+                      <td>{ap.qtdePortas}</td>
+                      <td className={ap.poe === "-" && style.NaoPossui}>{ap.poe !== "-" && ap.poe}</td>
+                      <td>{ap.tensao}</td>
+                      <td>{ap.connectiVersion}</td>
+                      <td className={ap.handover === "-" ? style.NaoPossui : style.Possui}></td>
+                      <td className={ap.wisefi === "-" ? style.NaoPossui : style.Possui}></td>
+                      <td>{ap.potencia2G}</td>
+                      <td className={ap.potencia5G === "-" && style.NaoPossui}>{ap.potencia5G !== "-" && ap.potencia5G}</td>
+                      <td>
+                        <a target="_blank" rel="noopener noreferrer" href={ap.pagina}>
+                          <span className={style.paginalink}>Ir para Página</span>
+                        </a>
+                      </td>
+                      {admin && (
+                        <td>
+                          <button className={style.btn_alterar} onClick={() => openUpdateModal(ap)}></button>
+                          <button className={style.btn_excluir} onClick={() => deleteProduct(ap.id)}></button>
+                        </td>
+                      )}
+                    </tr>
+                  </tbody>
+                );
+              })}
+          </table>
+        </div>
+      )}
+    </div>
   );
 }

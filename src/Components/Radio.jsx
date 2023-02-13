@@ -132,7 +132,7 @@ export default function Radios() {
 
         {admin && (
           <button className={style.btn_add} onClick={openModal}>
-            Adicionar Radio Outdoor
+            Novo Radio Outdoor
           </button>
         )}
 

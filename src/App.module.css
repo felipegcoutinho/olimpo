@@ -29,6 +29,7 @@ a {
 input,
 select {
   font-family: segoe UI, sans-serif, arial, Helvetica;
+  transition: 0.5s;
 }
 
 .container {
@@ -46,17 +47,21 @@ select {
 }
 
 .aviso {
-  background-color: #195a2e;
+  background-color: #0f8a4b;
+  font-size: 0.8rem;
   padding: 10px;
   text-align: center;
-  font-size: 0.8rem;
 }
 
 .logo {
   color: white;
-  font-size: 2.5rem;
-  margin-top: 20px;
   font-family: "Pacifico", segoe UI, sans-serif, arial, Helvetica;
+  font-size: 2.5rem;
+  margin: 20px 0;
+}
+
+.version {
+  font-size: 0.9rem;
 }
 
 /* main Search */
@@ -67,19 +72,20 @@ select {
 }
 
 .mainsearchbar {
-  background-color: #17622f;
+  background-color: #0b6637;
   border: none;
   border-radius: 3px;
   color: white;
-  font-size: 1.2rem;
+  font-size: 1rem;
   padding: 15px;
   text-align: center;
   width: 500px;
+  font-weight: bold;
 }
 
 .mainsearchbar:focus-visible {
-  outline: none;
   box-shadow: inset 0px 0px 0px 2px #ffc568;
+  outline: none;
 }
 
 .mainsearchbar::placeholder {
@@ -137,9 +143,7 @@ select {
 }
 
 .btns_container {
-  display: flex;
-  justify-content: center;
-  padding: 30px 0;
+  margin: 40px 0;
 }
 
 .btns {
@@ -149,10 +153,11 @@ select {
   box-shadow: 0 0 5px 0 rgba(0, 0, 0, 0.2);
   color: #006e39;
   cursor: pointer;
+  font-size: 0.95rem;
   font-weight: bold;
-  height: 50px;
+  height: 80px;
   margin: 3px;
-  width: 135px;
+  width: 160px;
 }
 
 .btns:hover {
@@ -169,14 +174,14 @@ select {
   background-color: #20773c;
   border: 1px solid #1e6d37;
   border-radius: 3px;
+  color: white;
   margin-bottom: 30px;
   padding: 10px 40px;
-  color: white;
 }
 
 .legendas_title {
-  font-weight: bold;
   font-style: italic;
+  font-weight: bold;
 }
 
 .legendas_content {
@@ -184,14 +189,13 @@ select {
 }
 
 .btn_hideShow {
-  background-color: #2f3542;
+  background-color: black;
   border: none;
   border-radius: 3px;
   box-shadow: 0 0 5px 0 #00000033;
   color: white;
   cursor: pointer;
   font-size: 0.8rem;
-  font-weight: bold;
   height: 40px;
   margin: 3px 5px 15px 0;
   width: 120px;
@@ -216,21 +220,21 @@ select {
 }
 
 .header_box_content {
-  padding: 15px 0;
   display: flex;
   justify-content: space-between;
+  padding: 10px 0;
 }
 
 .btn_add {
   background-color: #129552;
   border: none;
-  color: white;
-  padding: 10px;
-  cursor: pointer;
   border-radius: 3px;
+  color: white;
+  cursor: pointer;
+  font-size: 0.75rem;
   font-weight: bold;
-  text-transform: uppercase;
-  font-size: 0.7rem;
+  margin-right: auto;
+  padding: 10px;
 }
 
 .btn_add:before {
@@ -240,10 +244,11 @@ select {
 }
 
 .title {
-  color: #2f3542;
+  color: black;
+  font-family: segoe UI, sans-serif, arial, Helvetica;
   font-size: 1.5rem;
   font-weight: bold;
-  font-family: segoe UI, sans-serif, arial, Helvetica;
+  margin-right: 20px;
 }
 
 .arrowHide,
@@ -252,7 +257,6 @@ select {
   border: none;
   cursor: pointer;
   font-weight: bold;
-  margin-left: 10px;
   padding: 0 10px;
 }
 
@@ -271,6 +275,7 @@ select {
 .searchBarDevices {
   background-color: #f4f6fa;
   border: none;
+  border: 3px solid #dee8e9;
   border-radius: 3px;
   font-size: 0.9rem;
   font-weight: bold;
@@ -278,28 +283,27 @@ select {
   padding: 3px;
   text-align: center;
   width: 250px;
-  border: 3px solid #dee8e9;
 }
 
 .searchBarDevices:focus-visible {
+  border: 3px solid #129552;
   outline: none;
-  border: 3px solid #2a96ed;
 }
 
 label {
-  font-size: 0.9rem;
-  padding-top: 2px;
   color: #5f758e;
+  font-size: 0.9rem;
   font-weight: bold;
+  padding-top: 2px;
 }
 
 .btnModalActions {
-  position: sticky;
+  background-color: white;
   bottom: 0;
   display: flex;
   flex-direction: column;
-  background-color: white;
   padding: 5px 0;
+  position: sticky;
 }
 
 .formContainer {
@@ -312,24 +316,29 @@ select {
   border: 3px solid #dee8e9;
   border-radius: 3px;
   font-size: 0.8rem;
-  padding: 10px 5px;
-  margin: 5px 0;
   font-weight: bold;
+  margin: 5px 0;
   outline: none;
+  padding: 10px 5px;
+}
+
+.header_box_content select {
+  padding: 5px;
 }
 
 .formLegenda {
   background-color: #fae1bc;
-  color: #d48d53;
-  padding: 10px;
   border-radius: 5px;
+  color: #d48d53;
   font-size: 0.85rem;
   margin: 5px 0;
+  padding: 10px;
 }
 
 input[type="text"]:focus-visible,
 select[type="text"]:focus-visible {
-  border: 3px solid #2a96ed;
+  border: 3px solid #129552;
+  /* box-shadow: 0 0 4pt 0pt #85d485; */
 }
 
 input::placeholder {
@@ -337,20 +346,20 @@ input::placeholder {
 }
 
 option {
-  font-size: 0.9rem;
   background-color: #ecfff8;
+  font-size: 0.9rem;
   font-weight: bold;
 }
 
 .btn_addUpd,
 .btn_addUpdCancel {
-  padding: 10px;
   border: none;
-  margin: 3px 0;
   cursor: pointer;
-  text-transform: uppercase;
-  font-weight: bold;
   font-size: 0.75rem;
+  font-weight: bold;
+  margin: 3px 0;
+  padding: 10px;
+  text-transform: uppercase;
 }
 
 .btn_addUpd {
@@ -364,50 +373,50 @@ option {
 }
 
 .modal {
-  position: absolute;
-  inset: 50% auto auto 50%;
-  border: 1px solid rgb(204, 204, 204);
   background: rgb(255, 255, 255);
-  overflow: auto;
+  border: 1px solid rgb(204, 204, 204);
   border-radius: 4px;
-  outline: none;
-  padding: 30px 30px 0px;
-  margin-right: -50%;
-  transform: translate(-50%, -50%);
   height: 85%;
+  inset: 50% auto auto 50%;
+  margin-right: -50%;
+  outline: none;
+  overflow: auto;
+  padding: 30px 30px 0px;
+  position: absolute;
+  transform: translate(-50%, -50%);
   width: 30%;
 }
 
 .modal_overlay {
-  position: fixed;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
   background-color: #ffffffbd;
+  bottom: 0;
+  left: 0;
+  position: fixed;
+  right: 0;
+  top: 0;
 }
 
 .btn_alterar,
 .btn_excluir {
   border: none;
-  cursor: pointer;
-  padding: 8px;
   border-radius: 3px;
+  cursor: pointer;
   margin: 0 3px;
+  padding: 8px;
 }
 
 .btn_alterar {
-  background-color: #d6a400;
+  background-color: #f1b32a;
   color: white;
 }
 
 .btn_excluir {
-  background-color: #a32c2c;
+  background-color: #f12a2a;
   color: white;
 }
 
 .btn_alterar:before {
-  content: " \f304\ ";
+  content: " \f303\ ";
   font-family: FontAwesome;
   font-size: 0.7rem;
   padding: 0;
@@ -447,9 +456,9 @@ option {
 .pdfbtn,
 .paginalink,
 .pdfbtn_NA {
-  border-radius: 20px;
-  font-size: 0.75rem;
-  padding: 5px 10px;
+  border-radius: 3px;
+  font-size: 0.8rem;
+  padding: 3px 6px;
 }
 
 .pdfbtn {
@@ -467,7 +476,7 @@ option {
   color: white;
 }
 
-.paginalink:after {
+.paginalink:before {
   content: " \f35d\ ";
   font-family: FontAwesome;
   font-size: 0.75rem;
@@ -536,7 +545,7 @@ option {
 
 .Possui:after {
   color: #77be77;
-  content: " \f00c\ ";
+  content: " \f058\ ";
   font-family: FontAwesome;
   font-size: 1.2rem;
 }
@@ -557,16 +566,14 @@ option {
 
 .devicesTable td,
 .devicesTable th {
-  border-color: transparent;
-  border-style: solid;
-  border-width: 1px;
+  border: 0px solid transparent;
   text-align: center;
 }
 
 .devicesTable th {
+  border: 3px solid white;
   font-size: 0.8rem;
   padding: 5px;
-  border: 1px solid white;
 }
 
 #AP th:nth-child(9),
@@ -596,7 +603,7 @@ option {
 }
 
 .devicesTable thead {
-  background-color: #2f3542;
+  background-color: black;
   color: white;
 }
 
@@ -620,12 +627,12 @@ th:first-child {
 }
 
 tbody tr:hover {
-  background: #fee5a1;
-  box-shadow: 0px 0px 0px 1px #fdd872 inset;
+  background: #fae1bc;
+  /* box-shadow: 0px 0px 0px 1px #d48d53 inset; */
 }
 
 tbody:nth-child(even) {
-  background-color: #f2f2f2;
+  background-color: #f4f6fa;
 }
 
 .tooltip {
@@ -658,6 +665,7 @@ tbody:nth-child(even) {
   align-items: center;
   background-color: #268946;
   border-radius: 50%;
+  box-shadow: 0 0 0 0.25rem rgb(0 169 77 / 25%);
   color: white;
   display: flex;
   height: 50px;
