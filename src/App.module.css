@@ -1,8 +1,11 @@
-@import url("https://fonts.googleapis.com/css2?family=Pacifico&display=swap");
-@import url("https://fonts.googleapis.com/css2?family=Inter:wght@400;700&display=swap");
+@font-face {
+  font-family: "Inter";
+  src: local("Inter"), url(./fonts/Inter-Regular.ttf) format("truetype");
+}
 
-.teste:hover {
-  background-color: deepskyblue;
+@font-face {
+  font-family: "Pacifico";
+  src: local("Pacifico"), url(./fonts/Pacifico-Regular.ttf) format("truetype");
 }
 
 * {
@@ -16,8 +19,8 @@ html {
 }
 
 body {
-  background-color: #f4f6fa;
-  font-family: segoe UI, arial, Helvetica;
+  background-color: #dfe9e6;
+  font-family: "Inter", segoe UI, arial, Helvetica;
 }
 
 a {
@@ -26,10 +29,11 @@ a {
   text-decoration: none;
 }
 
-input,
-select {
-  font-family: segoe UI, sans-serif, arial, Helvetica;
-  transition: 0.5s;
+button,
+option,
+select,
+input {
+  font-family: "Inter", segoe UI, arial, Helvetica;
 }
 
 .container {
@@ -65,7 +69,6 @@ select {
 }
 
 /* main Search */
-
 .searchbarContainer {
   display: flex;
   margin-top: 20px;
@@ -77,14 +80,14 @@ select {
   border-radius: 3px;
   color: white;
   font-size: 1rem;
+  font-weight: bold;
   padding: 15px;
   text-align: center;
   width: 500px;
-  font-weight: bold;
 }
 
 .mainsearchbar:focus-visible {
-  box-shadow: inset 0px 0px 0px 2px #ffc568;
+  box-shadow: inset 0px 0px 0px 2px white;
   outline: none;
 }
 
@@ -153,7 +156,7 @@ select {
   box-shadow: 0 0 5px 0 rgba(0, 0, 0, 0.2);
   color: #006e39;
   cursor: pointer;
-  font-size: 0.95rem;
+  font-size: 0.9rem;
   font-weight: bold;
   height: 80px;
   margin: 3px;
@@ -196,6 +199,7 @@ select {
   color: white;
   cursor: pointer;
   font-size: 0.8rem;
+  font-weight: bold;
   height: 40px;
   margin: 3px 5px 15px 0;
   width: 120px;
@@ -245,7 +249,6 @@ select {
 
 .title {
   color: black;
-  font-family: segoe UI, sans-serif, arial, Helvetica;
   font-size: 1.5rem;
   font-weight: bold;
   margin-right: 20px;
@@ -311,6 +314,11 @@ label {
   flex-direction: column;
 }
 
+input,
+select {
+  transition: 0.5s;
+}
+
 .formContainer input,
 select {
   border: 3px solid #dee8e9;
@@ -320,10 +328,6 @@ select {
   margin: 5px 0;
   outline: none;
   padding: 10px 5px;
-}
-
-.header_box_content select {
-  padding: 5px;
 }
 
 .formLegenda {
@@ -338,7 +342,7 @@ select {
 input[type="text"]:focus-visible,
 select[type="text"]:focus-visible {
   border: 3px solid #129552;
-  /* box-shadow: 0 0 4pt 0pt #85d485; */
+  box-shadow: 0 0 4pt 0pt #85d485;
 }
 
 input::placeholder {
@@ -608,8 +612,8 @@ option {
 }
 
 .devicesTable td:not(:first-child) {
-  font-size: 0.8rem;
-  font-weight: 500;
+  font-size: 0.75rem;
+  font-weight: bold;
   padding: 1px;
 }
 

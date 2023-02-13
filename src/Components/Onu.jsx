@@ -131,7 +131,7 @@ export default function Onu() {
 
         {admin && (
           <button className={style.btn_add} onClick={openModal}>
-            Adicionar Onu/Ont
+            Novo Onu/Ont
           </button>
         )}
       </div>

@@ -126,7 +126,7 @@ export default function Ap() {
 
         {admin && (
           <button className={style.btn_add} onClick={openModal}>
-            Adicionar Módulo SFP
+            Novo Módulo SFP
           </button>
         )}
       </div>

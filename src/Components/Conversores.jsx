@@ -128,7 +128,7 @@ export default function Ap() {
 
         {admin && (
           <button className={style.btn_add} onClick={openModal}>
-            Adicionar Conversor de Mídia
+            Novo Conversor de Mídia
           </button>
         )}
       </div>

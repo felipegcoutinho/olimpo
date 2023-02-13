@@ -134,7 +134,7 @@ export default function Ap() {
 
         {admin && (
           <button className={style.btn_add} onClick={openModal}>
-            Adicionar Switch
+            Novo Switch
           </button>
         )}
 

@@ -125,7 +125,7 @@ function AP_Modal() {
             )}
             <option value="886 Mbps (2x2)">886 Mbps (2x2)</option>
             <option value="1300 Mbps (3x3)">1300 Mbps (3x3)</option>
-            <option value="-">-</option>
+            <option value="-">Não Possui</option>
             <option value="N/A">N/A</option>
           </select>
 

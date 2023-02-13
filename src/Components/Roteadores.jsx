@@ -142,7 +142,7 @@ export default function Roteador() {
 
         {admin && (
           <button className={style.btn_add} onClick={openModal}>
-            Adicionar Roteador
+            Novo Roteador
           </button>
         )}
 
