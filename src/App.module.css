@@ -405,6 +405,10 @@ option {
   top: 0;
 }
 
+.buttonAnterior .buttonProxima {
+  background-color: red !important;
+}
+
 .btn_alterar,
 .btn_excluir {
   border: none;

@@ -31,7 +31,9 @@ export function Paginacao({dados, mapFunction, Tablehead, query}) {
         <select id="itensPorPagina" value={itensPorPagina} onChange={handleItensPorPaginaChange}>
           <option value="5">5</option>
           <option value="10">10</option>
+          <option defaultValue="15">15</option>
           <option value="20">20</option>
+          <option value="30">30</option>
         </select>
         <table className={style.devicesTable}>
           {Tablehead}
@@ -49,10 +51,10 @@ export function Paginacao({dados, mapFunction, Tablehead, query}) {
       </div>
 
       {/* Renderiza os botões de navegação */}
-      <button onClick={paginaAnterior} disabled={paginaAtual === 0}>
+      <button className={style.buttonAnterior} onClick={paginaAnterior} disabled={paginaAtual === 0}>
         Anterior
       </button>
-      <button onClick={proximaPagina} disabled={paginaAtual === paginasTotais - 1}>
+      <button className={style.buttonProxima} onClick={proximaPagina} disabled={paginaAtual === paginasTotais - 1}>
         Próxima
       </button>
     </>
