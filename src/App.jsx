@@ -8,39 +8,32 @@ import Switches from "./Components/Switches.jsx";
 import Conversores from "./Components/Conversores.jsx";
 import Sfp from "./Components/Sfp.jsx";
 import Onu from "./Components/Onu.jsx";
-import {createContext} from "react";
+import {createContext, useState} from "react";
 
 export const AdminContext = createContext();
 
 function App() {
-  const [admin, setAdmin] = React.useState(true);
-  const [HideAP, setHideAP] = React.useState(true);
-  const [HideRADIO, setHideRADIO] = React.useState(true);
-  const [HideHO, setHideHO] = React.useState(true);
-  const [HideSwitch, setHideSwitch] = React.useState(true);
-  const [HideConversor, setHideConversor] = React.useState(true);
-  const [HideSFP, setHideSFP] = React.useState(true);
-  const [HideONU, setHideONU] = React.useState(true);
-  const [updatedProduct, setUpdatedProduct] = React.useState("");
+  const [admin, setAdmin] = useState(true);
+  const [HideAP, setHideAP] = useState(true);
+  const [HideRADIO, setHideRADIO] = useState(true);
+  const [HideHO, setHideHO] = useState(true);
+  const [HideSwitch, setHideSwitch] = useState(true);
+  const [HideConversor, setHideConversor] = useState(true);
+  const [HideSFP, setHideSFP] = useState(true);
+  const [HideONU, setHideONU] = useState(true);
+  const [updatedProduct, setUpdatedProduct] = useState("");
 
-  const MostrarTudo = () => {
-    setHideAP(true);
-    setHideRADIO(true);
-    setHideHO(true);
-    setHideSwitch(true);
-    setHideConversor(true);
-    setHideSFP(true);
-    setHideONU(true);
-  };
+  const [ShowHide, setShowHide] = useState(true);
 
-  const OcultarTudo = () => {
-    setHideAP(false);
-    setHideRADIO(false);
-    setHideHO(false);
-    setHideSwitch(false);
-    setHideConversor(false);
-    setHideSFP(false);
-    setHideONU(false);
+  const alternarMostrarOcultar = () => {
+    setShowHide(!ShowHide);
+    setHideAP(!ShowHide);
+    setHideRADIO(!ShowHide);
+    setHideHO(!ShowHide);
+    setHideSwitch(!ShowHide);
+    setHideConversor(!ShowHide);
+    setHideSFP(!ShowHide);
+    setHideONU(!ShowHide);
   };
 
   return (
@@ -68,14 +61,17 @@ function App() {
             setUpdatedProduct,
           }}>
           <Header />
-          <div>
-            <button className={style.buttonShowAll} onClick={MostrarTudo}>
-              Mostrar Tudo
-            </button>
-            <button className={style.buttonHideAll} onClick={OcultarTudo}>
+
+          {ShowHide ? (
+            <button className={style.buttonShowAll} onClick={alternarMostrarOcultar}>
               Ocultar Tudo
             </button>
-          </div>
+          ) : (
+            <button className={style.buttonHideAll} onClick={alternarMostrarOcultar}>
+              Mostrar Tudo
+            </button>
+          )}
+
           {/* APs */}
           <AccessPoints />
 

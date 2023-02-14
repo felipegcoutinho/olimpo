@@ -6,6 +6,8 @@ import Modal from "react-modal";
 import RadioModal from "./RadioModal";
 import {AdminContext} from "../App";
 import Swal from "sweetalert2";
+import {Paginacao} from "./Pagination";
+import TableBar from "./TableBar";
 
 export const RadioContext = createContext();
 
@@ -125,24 +127,17 @@ export default function Radios() {
 
   return (
     <div className={style.box_content}>
-      <div className={style.header_box_content}>
-        <button id="radio" className={HideRADIO ? style.arrowHide : style.arrowShow} onClick={handleHideRADIO}>
-          <span className={style.title}>Radios Outdoor</span>
-        </button>
-
-        {admin && (
-          <button className={style.btn_add} onClick={openModal}>
-            Novo Radio Outdoor
-          </button>
-        )}
-
-        <input
-          placeholder="Pesquise por um equipamento"
-          value={queryRADIO}
-          onChange={handleSearchChangeRADIO}
-          className={style.searchBarDevices}
-        />
-      </div>
+      <TableBar
+        id="radio"
+        Hide={HideRADIO}
+        handleHide={handleHideRADIO}
+        tableName="Radios Outdoor"
+        openModal={openModal}
+        admin={admin}
+        handleSearchChange={handleSearchChangeRADIO}
+        query={queryRADIO}
+        newButton="Novo Radio Outdoor"
+      />
 
       <RadioContext.Provider
         value={{
@@ -160,64 +155,52 @@ export default function Radios() {
       </RadioContext.Provider>
 
       {HideRADIO && (
-        <div style={{overflowX: "auto"}}>
-          <table className={style.devicesTable}>
-            {/* Table Headers*/}
-            <RADIO />
-
-            {RadiosOutdoor.filter((radio) => {
-              if (radio.modelo.toLowerCase().includes(queryRADIO.toLowerCase())) {
-                return radio;
-              } else if (radio.modulação.toLowerCase().includes(queryRADIO.toLowerCase())) {
-                return radio;
-              }
-            }).map((radio, index) => {
-              return (
-                <tbody>
-                  <tr key={index}>
-                    <td className={radio.status === "Phaseout" ? style.status_phaseout : style.status_suporte}>{radio.modelo}</td>
-                    <td>{radio.indicado}</td>
-                    <td>
-                      <span className={radio.modulação === "Fast" ? style.fast : style.giga}>{radio.modulação}</span>
-                    </td>
-                    <td>
-                      <span className={style.tooltip}>
-                        {radio.ganho} {radio.ganho === "SEM ANTENA" && <i className="fa-regular fa-circle-question"></i>}
-                        {radio.ganho === "SEM ANTENA" && (
-                          <span className={style.tooltiptext}>
-                            Antena adquirida separadamente, indicar parceria <a href="http://www.algcom.com.br">ALGCOM</a>
-                          </span>
-                        )}
+        <Paginacao
+          dados={RadiosOutdoor}
+          Tablehead={<RADIO />}
+          query={queryRADIO}
+          mapFunction={(radio, index) => (
+            <tbody>
+              <tr key={index}>
+                <td className={radio.status === "Phaseout" ? style.status_phaseout : style.status_suporte}>{radio.modelo}</td>
+                <td>{radio.indicado}</td>
+                <td>
+                  <span className={radio.modulação === "Fast" ? style.fast : style.giga}>{radio.modulação}</span>
+                </td>
+                <td>
+                  <span className={style.tooltip}>
+                    {radio.ganho} {radio.ganho === "SEM ANTENA" && <i className="fa-regular fa-circle-question"></i>}
+                    {radio.ganho === "SEM ANTENA" && (
+                      <span className={style.tooltiptext}>
+                        Antena adquirida separadamente, indicar parceria <a href="http://www.algcom.com.br">ALGCOM</a>
                       </span>
-                    </td>
-                    <td>{radio.potencia}</td>
-                    <td>{radio.pps}</td>
-                    <td>{radio.throughputEfetivo}</td>
-                    <td>{radio.throughputNominal}</td>
-                    <td className={radio.aberturaHorVer === "-" && style.NaoPossui}>
-                      {radio.aberturaHorVer !== "-" && radio.aberturaHorVer}
-                    </td>
-                    <td className={radio.distancia === "-" && style.NaoPossui}>{radio.distancia !== "-" && radio.distancia}</td>
-                    <td>{radio.wireless}</td>
-                    <td>{radio.alimentaçao}</td>
-                    <td>{radio.garantia}</td>
-                    <td>
-                      <a target="_blank" rel="noopener noreferrer" href={radio.pagina}>
-                        <span className={style.paginalink}>Ir para Página</span>
-                      </a>
-                    </td>
-                    {admin && (
-                      <td>
-                        <button className={style.btn_alterar} onClick={() => openUpdateModal(radio)}></button>
-                        <button className={style.btn_excluir} onClick={() => deleteProduct(radio.id)}></button>
-                      </td>
                     )}
-                  </tr>
-                </tbody>
-              );
-            })}
-          </table>
-        </div>
+                  </span>
+                </td>
+                <td>{radio.potencia}</td>
+                <td>{radio.pps}</td>
+                <td>{radio.throughputEfetivo}</td>
+                <td>{radio.throughputNominal}</td>
+                <td className={radio.aberturaHorVer === "-" && style.NaoPossui}>{radio.aberturaHorVer !== "-" && radio.aberturaHorVer}</td>
+                <td className={radio.distancia === "-" && style.NaoPossui}>{radio.distancia !== "-" && radio.distancia}</td>
+                <td>{radio.wireless}</td>
+                <td>{radio.alimentaçao}</td>
+                <td>{radio.garantia}</td>
+                <td>
+                  <a target="_blank" rel="noopener noreferrer" href={radio.pagina}>
+                    <span className={style.paginalink}>Ir para Página</span>
+                  </a>
+                </td>
+                {admin && (
+                  <td>
+                    <button className={style.btn_alterar} onClick={() => openUpdateModal(radio)}></button>
+                    <button className={style.btn_excluir} onClick={() => deleteProduct(radio.id)}></button>
+                  </td>
+                )}
+              </tr>
+            </tbody>
+          )}
+        />
       )}
     </div>
   );
