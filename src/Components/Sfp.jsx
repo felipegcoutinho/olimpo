@@ -6,6 +6,8 @@ import Modal from "react-modal";
 import {AdminContext} from "../App";
 import Swal from "sweetalert2";
 import SfpModal from "./SfpModal";
+import TableBar from "./TableBar";
+import {Paginacao} from "./Pagination";
 
 export const SfpContext = createContext();
 
@@ -26,10 +28,15 @@ export default function Ap() {
   const [pagina, setpagina] = useState("");
   const [datasheet, setdatasheet] = useState("");
   const [guia, setguia] = useState("");
-
   const [sfp, setSfp] = useState([]);
 
   const {admin, HideSFP, setHideSFP, updatedProduct, setUpdatedProduct} = useContext(AdminContext);
+
+  const [querySfp, setQuerySfp] = React.useState("");
+  const handleSearchChangeSfp = (e) => {
+    setQuerySfp(e.target.value);
+  };
+
   const handleHideSFP = () => setHideSFP(!HideSFP);
 
   /* Configs Modal */
@@ -119,17 +126,17 @@ export default function Ap() {
 
   return (
     <div className={style.box_content}>
-      <div className={style.header_box_content}>
-        <button id="sfp" className={HideSFP ? style.arrowHide : style.arrowShow} onClick={handleHideSFP}>
-          <span className={style.title}>Módulo SFP</span>
-        </button>
-
-        {admin && (
-          <button className={style.btn_add} onClick={openModal}>
-            Novo Módulo SFP
-          </button>
-        )}
-      </div>
+      <TableBar
+        id="sfp"
+        Hide={HideSFP}
+        handleHide={handleHideSFP}
+        tableName="Módulo SFP"
+        openModal={openModal}
+        admin={admin}
+        handleSearchChange={handleSearchChangeSfp}
+        query={querySfp}
+        newButton="Novo Módulo SFP"
+      />
 
       <SfpContext.Provider
         value={{
@@ -147,57 +154,55 @@ export default function Ap() {
       </SfpContext.Provider>
 
       {HideSFP && (
-        <div style={{overflowX: "auto"}}>
-          <table className={style.devicesTable}>
-            <SFP />
-            {sfp.map((sfp, index) => {
-              return (
-                <tbody>
-                  <tr key={index}>
-                    <td className={sfp.status === "Phaseout" ? style.status_phaseout : style.status_suporte}>{sfp.modelo}</td>
-                    <td>
-                      <span className={sfp.modulação === "Fast" ? style.fast : style.giga}>{sfp.modulação}</span>
-                    </td>
-                    <td>{sfp.tipoConector}</td>
-                    <td>
-                      {sfp.modulo === "SFP+" && <span className={style.variado1}>SFP+</span>}
-                      {sfp.modulo === "SFP" && <span className={style.variado2}>SFP</span>}
-                      {sfp.modulo === "Epon" && <span className={style.variado3}>EPON</span>}
-                      {sfp.modulo === "Gpon" && <span className={style.fast}>GPON</span>}
-                      {sfp.modulo === "XFP" && <span className={style.giga}>XFP</span>}
-                    </td>
-                    <td>
-                      {sfp.wdm === "-" && <span className={style.NaoPossui}></span>}
-                      {sfp.wdm !== "-" && <span className={style.Possui}></span>}
-                    </td>
-                    <td>
-                      <span className={style.tooltip}>
-                        {sfp.distancia} {sfp.fibra === "Multimodo" && <i className="fa-regular fa-circle-question"></i>}
-                        {sfp.fibra === "Multimodo" && <span className={style.tooltiptext}>62,5 / 125 μm até 275 mts</span>}
-                      </span>
-                    </td>
+        <Paginacao
+          dados={sfp}
+          Tablehead={<SFP />}
+          query={querySfp}
+          mapFunction={(sfp, index) => (
+            <tbody>
+              <tr key={index}>
+                <td className={sfp.status === "Phaseout" ? style.status_phaseout : style.status_suporte}>{sfp.modelo}</td>
+                <td>
+                  <span className={sfp.modulação === "Fast" ? style.fast : style.giga}>{sfp.modulação}</span>
+                </td>
+                <td>{sfp.tipoConector}</td>
+                <td>
+                  {sfp.modulo === "SFP+" && <span className={style.variado1}>SFP+</span>}
+                  {sfp.modulo === "SFP" && <span className={style.variado2}>SFP</span>}
+                  {sfp.modulo === "Epon" && <span className={style.variado3}>EPON</span>}
+                  {sfp.modulo === "Gpon" && <span className={style.fast}>GPON</span>}
+                  {sfp.modulo === "XFP" && <span className={style.giga}>XFP</span>}
+                </td>
+                <td>
+                  {sfp.wdm === "-" && <span className={style.NaoPossui}></span>}
+                  {sfp.wdm !== "-" && <span className={style.Possui}></span>}
+                </td>
+                <td>
+                  <span className={style.tooltip}>
+                    {sfp.distancia} {sfp.fibra === "Multimodo" && <i className="fa-regular fa-circle-question"></i>}
+                    {sfp.fibra === "Multimodo" && <span className={style.tooltiptext}>62,5 / 125 μm até 275 mts</span>}
+                  </span>
+                </td>
 
-                    <td>{sfp.fibra}</td>
-                    <td>{sfp.potencia}</td>
-                    <td>{sfp.sensibilidade}</td>
-                    <td>{sfp.garantia}</td>
-                    <td>
-                      <a target="_blank" rel="noopener noreferrer" href={sfp.pagina}>
-                        <span className={style.paginalink}>Ir para Página</span>
-                      </a>
-                    </td>
-                    {admin && (
-                      <td>
-                        <button className={style.btn_alterar} onClick={() => openUpdateModal(sfp)}></button>
-                        <button className={style.btn_excluir} onClick={() => deleteProduct(sfp.id)}></button>
-                      </td>
-                    )}
-                  </tr>
-                </tbody>
-              );
-            })}
-          </table>
-        </div>
+                <td>{sfp.fibra}</td>
+                <td>{sfp.potencia}</td>
+                <td>{sfp.sensibilidade}</td>
+                <td>{sfp.garantia}</td>
+                <td>
+                  <a target="_blank" rel="noopener noreferrer" href={sfp.pagina}>
+                    <span className={style.paginalink}>Ir para Página</span>
+                  </a>
+                </td>
+                {admin && (
+                  <td>
+                    <button className={style.btn_alterar} onClick={() => openUpdateModal(sfp)}></button>
+                    <button className={style.btn_excluir} onClick={() => deleteProduct(sfp.id)}></button>
+                  </td>
+                )}
+              </tr>
+            </tbody>
+          )}
+        />
       )}
     </div>
   );

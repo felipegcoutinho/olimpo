@@ -6,6 +6,8 @@ import Modal from "react-modal";
 import {AdminContext} from "../App";
 import Swal from "sweetalert2";
 import RoteadoresModal from "./RoteadoresModal";
+import TableBar from "./TableBar";
+import {Paginacao} from "./Pagination";
 
 export const HOContext = createContext();
 
@@ -135,24 +137,17 @@ export default function Roteador() {
 
   return (
     <div className={style.box_content}>
-      <div className={style.header_box_content}>
-        <button id="homeOffice" className={HideHO ? style.arrowHide : style.arrowShow} onClick={handleHideHO}>
-          <span className={style.title}>Home Office</span>
-        </button>
-
-        {admin && (
-          <button className={style.btn_add} onClick={openModal}>
-            Novo Roteador
-          </button>
-        )}
-
-        <input
-          placeholder="Pesquise por um equipamento"
-          value={queryHO}
-          onChange={handleSearchChangeHO}
-          className={style.searchBarDevices}
-        />
-      </div>
+      <TableBar
+        id="homeOffice"
+        Hide={HideHO}
+        handleHide={handleHideHO}
+        tableName="Home Office"
+        openModal={openModal}
+        admin={admin}
+        handleSearchChange={handleSearchChangeHO}
+        query={queryHO}
+        newButton="Novo Roteador"
+      />
 
       <HOContext.Provider
         value={{
@@ -170,84 +165,73 @@ export default function Roteador() {
       </HOContext.Provider>
 
       {HideHO && (
-        <div style={{overflowX: "auto"}}>
-          <table className={style.devicesTable}>
-            <ROTEADOR />
-
-            {roteadorHO
-              .filter((roteador) => {
-                if (roteador.modelo.toLowerCase().includes(queryHO.toLowerCase())) {
-                  return roteador;
-                } else if (roteador.modulação.toLowerCase().includes(queryHO.toLowerCase())) {
-                  return roteador;
-                }
-              })
-              .map((roteador, index) => {
-                return (
-                  <tbody>
-                    <tr key={index}>
-                      <td className={roteador.status === "Phaseout" ? style.status_phaseout : style.status_suporte}>{roteador.modelo}</td>
-                      <td>
-                        <span className={roteador.modulação === "Fast" ? style.fast : style.giga}>{roteador.modulação}</span>
-                      </td>
-                      <td>
-                        {roteador.cobertura}
-                        {roteador.cobertura === "N/A" ? null : "m²"}
-                      </td>
-                      <td>
-                        {roteador.raio}
-                        {roteador.raio === "N/A" ? null : "m"}
-                      </td>
-                      <td>
-                        {roteador.usuarioMax}
-                        {roteador.usuarioMax === "N/A" ? null : " usuários"}
-                      </td>
-                      <td>{roteador.planoRecomendado}</td>
-                      <td>{roteador.QtdePortas}</td>
-                      <td>{roteador.datarateMax2G}</td>
-                      <td className={roteador.datarateMax5G === "-" ? style.NaoPossui : null}>
-                        {roteador.datarateMax5G === "-" ? null : roteador.datarateMax5G}
-                      </td>
-                      <td>{roteador.ganho}</td>
-                      <td className={roteador.ipv6 === "-" ? style.NaoPossui : style.Possui}></td>
-                      <td>
-                        {roteador.repetidor === "-" && <span className={style.NaoPossui}></span>}
-                        {roteador.repetidor === "Sim" && <span className={style.Possui}></span>}
-                        {roteador.repetidor === "N/A" && <span>{roteador.repetidor}</span>}
-                      </td>
-                      <td>
-                        {roteador.roteador === "-" && <span className={style.NaoPossui}></span>}
-                        {roteador.roteador === "Sim" && <span className={style.Possui}></span>}
-                        {roteador.roteador === "N/A" && <span>{roteador.roteador}</span>}
-                      </td>
-                      <td>
-                        {roteador.cliente === "-" && <span className={style.NaoPossui}></span>}
-                        {roteador.cliente === "Sim" && <span className={style.Possui}></span>}
-                        {roteador.cliente === "N/A" && <span>{roteador.cliente}</span>}
-                      </td>
-                      <td>
-                        {roteador.ap === "-" && <span className={style.NaoPossui}></span>}
-                        {roteador.ap === "Sim" && <span className={style.Possui}></span>}
-                        {roteador.ap === "N/A" && <span>{roteador.ap}</span>}
-                      </td>
-                      <td>{roteador.garantia}</td>
-                      <td>
-                        <a target="_blank" rel="noopener noreferrer" href={roteador.pagina}>
-                          <span className={style.paginalink}>Ir para Página</span>
-                        </a>
-                      </td>
-                      {admin && (
-                        <td>
-                          <button className={style.btn_alterar} onClick={() => openUpdateModal(roteador)}></button>
-                          <button className={style.btn_excluir} onClick={() => deleteProduct(roteador.id)}></button>
-                        </td>
-                      )}
-                    </tr>
-                  </tbody>
-                );
-              })}
-          </table>
-        </div>
+        <Paginacao
+          dados={roteadorHO}
+          Tablehead={<ROTEADOR />}
+          query={queryHO}
+          mapFunction={(roteador, index) => (
+            <tbody>
+              <tr key={index}>
+                <td className={roteador.status === "Phaseout" ? style.status_phaseout : style.status_suporte}>{roteador.modelo}</td>
+                <td>
+                  <span className={roteador.modulação === "Fast" ? style.fast : style.giga}>{roteador.modulação}</span>
+                </td>
+                <td>
+                  {roteador.cobertura}
+                  {roteador.cobertura === "N/A" ? null : "m²"}
+                </td>
+                <td>
+                  {roteador.raio}
+                  {roteador.raio === "N/A" ? null : "m"}
+                </td>
+                <td>
+                  {roteador.usuarioMax}
+                  {roteador.usuarioMax === "N/A" ? null : " usuários"}
+                </td>
+                <td>{roteador.planoRecomendado}</td>
+                <td>{roteador.QtdePortas}</td>
+                <td>{roteador.datarateMax2G}</td>
+                <td className={roteador.datarateMax5G === "-" ? style.NaoPossui : null}>
+                  {roteador.datarateMax5G === "-" ? null : roteador.datarateMax5G}
+                </td>
+                <td>{roteador.ganho}</td>
+                <td className={roteador.ipv6 === "-" ? style.NaoPossui : style.Possui}></td>
+                <td>
+                  {roteador.repetidor === "-" && <span className={style.NaoPossui}></span>}
+                  {roteador.repetidor === "Sim" && <span className={style.Possui}></span>}
+                  {roteador.repetidor === "N/A" && <span>{roteador.repetidor}</span>}
+                </td>
+                <td>
+                  {roteador.roteador === "-" && <span className={style.NaoPossui}></span>}
+                  {roteador.roteador === "Sim" && <span className={style.Possui}></span>}
+                  {roteador.roteador === "N/A" && <span>{roteador.roteador}</span>}
+                </td>
+                <td>
+                  {roteador.cliente === "-" && <span className={style.NaoPossui}></span>}
+                  {roteador.cliente === "Sim" && <span className={style.Possui}></span>}
+                  {roteador.cliente === "N/A" && <span>{roteador.cliente}</span>}
+                </td>
+                <td>
+                  {roteador.ap === "-" && <span className={style.NaoPossui}></span>}
+                  {roteador.ap === "Sim" && <span className={style.Possui}></span>}
+                  {roteador.ap === "N/A" && <span>{roteador.ap}</span>}
+                </td>
+                <td>{roteador.garantia}</td>
+                <td>
+                  <a target="_blank" rel="noopener noreferrer" href={roteador.pagina}>
+                    <span className={style.paginalink}>Ir para Página</span>
+                  </a>
+                </td>
+                {admin && (
+                  <td>
+                    <button className={style.btn_alterar} onClick={() => openUpdateModal(roteador)}></button>
+                    <button className={style.btn_excluir} onClick={() => deleteProduct(roteador.id)}></button>
+                  </td>
+                )}
+              </tr>
+            </tbody>
+          )}
+        />
       )}
     </div>
   );

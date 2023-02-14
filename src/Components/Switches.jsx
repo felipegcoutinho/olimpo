@@ -6,6 +6,8 @@ import Modal from "react-modal";
 import {AdminContext} from "../App";
 import Swal from "sweetalert2";
 import SwModal from "./SwModal";
+import {Paginacao} from "./Pagination";
+import TableBar from "./TableBar";
 
 export const SwContext = createContext();
 
@@ -127,24 +129,17 @@ export default function Ap() {
 
   return (
     <div className={style.box_content}>
-      <div className={style.header_box_content}>
-        <button id="switch" className={HideSwitch ? style.arrowHide : style.arrowShow} onClick={handleHideSwitch}>
-          <span className={style.title}>Switches</span>
-        </button>
-
-        {admin && (
-          <button className={style.btn_add} onClick={openModal}>
-            Novo Switch
-          </button>
-        )}
-
-        <input
-          className={style.searchBarDevices}
-          placeholder="Pesquise por um equipamento"
-          value={querySWITCH}
-          onChange={handleSearchChangeSWITCH}
-        />
-      </div>
+      <TableBar
+        id="switch"
+        Hide={HideSwitch}
+        handleHide={handleHideSwitch}
+        tableName="Switches"
+        openModal={openModal}
+        admin={admin}
+        handleSearchChange={handleSearchChangeSWITCH}
+        query={querySWITCH}
+        newButton="Novo Switch"
+      />
 
       <SwContext.Provider
         value={{
@@ -161,82 +156,72 @@ export default function Ap() {
         <SwModal />
       </SwContext.Provider>
 
-      {HideSwitch ? (
-        <div style={{overflowX: "auto"}}>
-          <table className={style.devicesTable}>
-            <SWITCH />
-            {switches
-              .filter((swicth) => {
-                if (swicth.modelo.toLowerCase().includes(querySWITCH.toLowerCase())) {
-                  return swicth;
-                } else if (swicth.gerenciavel.toLowerCase().includes(querySWITCH.toLowerCase())) {
-                  return swicth;
-                }
-              })
-              .map((swicth, index) => {
-                return (
-                  <tbody>
-                    <tr key={index}>
-                      <td className={swicth.status === "Phaseout" ? style.status_phaseout : style.status_suporte}>
-                        <span className={style.tooltip}>
-                          {swicth.modelo}
-                          {swicth.modelo === "SG 2404 PoE L2+" && <i className="fa-regular fa-circle-question"></i>}
-                          {swicth.modelo === "SG 2404 PoE L2+" && <span className={style.tooltiptext}>SG 2404 PoE L2+ (4760062)</span>}
-                        </span>
-                      </td>
-                      <td>
-                        <span className={swicth.modulação === "Fast" ? style.fast : style.giga}>{swicth.modulação}</span>
-                      </td>
-                      <td>{swicth.qtdePortas}</td>
-                      <td>
-                        {swicth.gerenciavel === "-" && <span className={style.NaoPossui}></span>}
-                        {swicth.gerenciavel === "Sim" && <span className={style.Possui}></span>}
-                      </td>
-                      <td>
-                        {swicth.poe === "-" && <span className={style.NaoPossui}></span>}
-                        {swicth.poe !== "-" && <span>{swicth.poe}</span>}
-                      </td>
-                      <td>{swicth.pps}</td>
-                      <td>{swicth.backplane}</td>
-                      <td>
-                        {swicth.sfp === "-" && <span className={style.NaoPossui}></span>}
-                        {swicth.sfp !== "-" && <span>{swicth.sfp}</span>}
-                      </td>
-                      <td>
-                        {swicth.poeExtender === "-" && <span className={style.NaoPossui}></span>}
-                        {swicth.poeExtender !== "-" && <span className={style.Possui}></span>}
-                      </td>
-                      <td>
-                        {swicth.poePorta === "-" && <span className={style.NaoPossui}></span>}
-                        {swicth.poePorta !== "-" && <span>{swicth.poePorta}</span>}
-                      </td>
-                      <td>
-                        {swicth.poeTotal === "-" && <span className={style.NaoPossui}></span>}
-                        {swicth.poeTotal !== "-" && <span>{swicth.poeTotal}</span>}
-                      </td>
-                      <td>
-                        {swicth.qos === "-" && <span className={style.NaoPossui}></span>}
-                        {swicth.qos === "Sim" && <span className={style.Possui}></span>}
-                      </td>
-                      <td>{swicth.garantia}</td>
-                      <td>
-                        <a target="_blank" rel="noopener noreferrer" href={swicth.pagina}>
-                          <span className={style.paginalink}>Ir para Página</span>
-                        </a>
-                      </td>
-                      {admin && (
-                        <td>
-                          <button className={style.btn_alterar} onClick={() => openUpdateModal(swicth)}></button>
-                          <button className={style.btn_excluir} onClick={() => deleteProduct(swicth.id)}></button>
-                        </td>
-                      )}
-                    </tr>
-                  </tbody>
-                );
-              })}
-          </table>
-        </div>
-      ) : null}
+      {HideSwitch && (
+        <Paginacao
+          dados={switches}
+          Tablehead={<SWITCH />}
+          query={querySWITCH}
+          mapFunction={(swicth, index) => (
+            <tbody>
+              <tr key={index}>
+                <td className={swicth.status === "Phaseout" ? style.status_phaseout : style.status_suporte}>
+                  <span className={style.tooltip}>
+                    {swicth.modelo}
+                    {swicth.modelo === "SG 2404 PoE L2+" && <i className="fa-regular fa-circle-question"></i>}
+                    {swicth.modelo === "SG 2404 PoE L2+" && <span className={style.tooltiptext}>SG 2404 PoE L2+ (4760062)</span>}
+                  </span>
+                </td>
+                <td>
+                  <span className={swicth.modulação === "Fast" ? style.fast : style.giga}>{swicth.modulação}</span>
+                </td>
+                <td>{swicth.qtdePortas}</td>
+                <td>
+                  {swicth.gerenciavel === "-" && <span className={style.NaoPossui}></span>}
+                  {swicth.gerenciavel === "Sim" && <span className={style.Possui}></span>}
+                </td>
+                <td>
+                  {swicth.poe === "-" && <span className={style.NaoPossui}></span>}
+                  {swicth.poe !== "-" && <span>{swicth.poe}</span>}
+                </td>
+                <td>{swicth.pps}</td>
+                <td>{swicth.backplane}</td>
+                <td>
+                  {swicth.sfp === "-" && <span className={style.NaoPossui}></span>}
+                  {swicth.sfp !== "-" && <span>{swicth.sfp}</span>}
+                </td>
+                <td>
+                  {swicth.poeExtender === "-" && <span className={style.NaoPossui}></span>}
+                  {swicth.poeExtender !== "-" && <span className={style.Possui}></span>}
+                </td>
+                <td>
+                  {swicth.poePorta === "-" && <span className={style.NaoPossui}></span>}
+                  {swicth.poePorta !== "-" && <span>{swicth.poePorta}</span>}
+                </td>
+                <td>
+                  {swicth.poeTotal === "-" && <span className={style.NaoPossui}></span>}
+                  {swicth.poeTotal !== "-" && <span>{swicth.poeTotal}</span>}
+                </td>
+                <td>
+                  {swicth.qos === "-" && <span className={style.NaoPossui}></span>}
+                  {swicth.qos === "Sim" && <span className={style.Possui}></span>}
+                </td>
+                <td>{swicth.garantia}</td>
+                <td>
+                  <a target="_blank" rel="noopener noreferrer" href={swicth.pagina}>
+                    <span className={style.paginalink}>Ir para Página</span>
+                  </a>
+                </td>
+                {admin && (
+                  <td>
+                    <button className={style.btn_alterar} onClick={() => openUpdateModal(swicth)}></button>
+                    <button className={style.btn_excluir} onClick={() => deleteProduct(swicth.id)}></button>
+                  </td>
+                )}
+              </tr>
+            </tbody>
+          )}
+        />
+      )}
     </div>
   );
 }

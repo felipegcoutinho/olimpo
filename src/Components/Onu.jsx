@@ -6,6 +6,8 @@ import {AdminContext} from "../App";
 import Modal from "react-modal";
 import Swal from "sweetalert2";
 import OnuModal from "./OnuModal";
+import {Paginacao} from "./Pagination";
+import TableBar from "./TableBar";
 
 export const OnuContext = createContext();
 
@@ -35,6 +37,12 @@ export default function Onu() {
   const [onu, setOnu] = React.useState([]);
 
   const {admin, HideONU, setHideONU, updatedProduct, setUpdatedProduct} = useContext(AdminContext);
+
+  const [queryOnu, setQueryOnu] = React.useState("");
+  const handleSearchChangeOnu = (e) => {
+    setQueryOnu(e.target.value);
+  };
+
   const handleHideONU = () => setHideONU(!HideONU);
 
   /* Configs Modal */
@@ -124,17 +132,17 @@ export default function Onu() {
 
   return (
     <div className={style.box_content}>
-      <div className={style.header_box_content}>
-        <button id="onu" className={HideONU ? style.arrowHide : style.arrowShow} onClick={handleHideONU}>
-          <span className={style.title}> ONUs/ONTs</span>
-        </button>
-
-        {admin && (
-          <button className={style.btn_add} onClick={openModal}>
-            Novo Onu/Ont
-          </button>
-        )}
-      </div>
+      <TableBar
+        id="onu"
+        Hide={HideONU}
+        handleHide={handleHideONU}
+        tableName="ONUs/ONTs"
+        openModal={openModal}
+        admin={admin}
+        handleSearchChange={handleSearchChangeOnu}
+        query={queryOnu}
+        newButton="Novo Onu/Ont"
+      />
 
       <OnuContext.Provider
         value={{
@@ -152,78 +160,76 @@ export default function Onu() {
       </OnuContext.Provider>
 
       {HideONU && (
-        <div style={{overflowX: "auto"}}>
-          <table className={style.devicesTable}>
-            <ONU />
-            {onu.map((onu, index) => {
-              return (
-                <tbody>
-                  <tr key={index}>
-                    <td className={onu.status === "Phaseout" ? style.status_phaseout : style.status_suporte}>{onu.modelo}</td>
-                    <td>
-                      <span className={onu.modulação === "Fast" ? style.fast : style.giga}>{onu.modulação}</span>
-                    </td>
-                    <td>
-                      {onu.fxs === "-" && <span className={style.NaoPossui}></span>}
-                      {onu.fxs !== "-" && <span>{onu.fxs}</span>}
-                    </td>
-                    <td>{onu.qtdeportas}</td>
-                    <td>
-                      {onu.tipo === "EPON/GPON" && <span className={style.variado1}>{onu.tipo}</span>}
-                      {onu.tipo === "GPON" && <span className={style.variado2}>{onu.tipo}</span>}
-                    </td>
-                    <td>{onu.sensibilidade}</td>
-                    <td>
-                      {onu.cobertura === "-" && <span className={style.NaoPossui}></span>}
-                      {onu.cobertura === "N/A" && onu.cobertura}
-                      {onu.cobertura !== "-" && onu.cobertura !== "N/A" && <span>{onu.cobertura} m²</span>}
-                    </td>
-                    <td>
-                      {onu.clientesSimultaneos === "-" && <span className={style.NaoPossui}></span>}
-                      {onu.clientesSimultaneos !== "-" && <span>{onu.clientesSimultaneos}</span>}
-                    </td>
-                    <td>
-                      {onu.transmissao2ghz === "-" && <span className={style.NaoPossui}></span>}
-                      {onu.transmissao2ghz !== "-" && <span>{onu.transmissao2ghz}</span>}
-                    </td>
-                    <td>
-                      {onu.transmissao5ghz === "-" && <span className={style.NaoPossui}></span>}
-                      {onu.transmissao5ghz !== "-" && <span>{onu.transmissao5ghz}</span>}
-                    </td>
-                    <td>
-                      {onu.ssid === "-" && <span className={style.NaoPossui}></span>}
-                      {onu.ssid !== "-" && <span>{onu.ssid} SSIDs</span>}
-                    </td>
-                    <td>
-                      {onu.tr069 === "-" && <span className={style.NaoPossui}></span>}
-                      {onu.tr069 === "Sim" && <span className={style.Possui}></span>}
-                    </td>
-                    <td>
-                      {onu.customize === "-" && <span className={style.NaoPossui}></span>}
-                      {onu.customize === "Sim" && <span className={style.Possui}></span>}
-                    </td>
-                    <td>
-                      {onu.remotize === "-" && <span className={style.NaoPossui}></span>}
-                      {onu.remotize === "Sim" && <span className={style.Possui}></span>}
-                    </td>
-                    <td>{onu.garantia}</td>
-                    <td>
-                      <a target="_blank" rel="noopener noreferrer" href={onu.pagina}>
-                        <span className={style.paginalink}>Ir para Página</span>
-                      </a>
-                    </td>
-                    {admin && (
-                      <td>
-                        <button className={style.btn_alterar} onClick={() => openUpdateModal(onu)}></button>
-                        <button className={style.btn_excluir} onClick={() => deleteProduct(onu.id)}></button>
-                      </td>
-                    )}
-                  </tr>
-                </tbody>
-              );
-            })}
-          </table>
-        </div>
+        <Paginacao
+          dados={onu}
+          Tablehead={<ONU />}
+          query={queryOnu}
+          mapFunction={(onu, index) => (
+            <tbody>
+              <tr key={index}>
+                <td className={onu.status === "Phaseout" ? style.status_phaseout : style.status_suporte}>{onu.modelo}</td>
+                <td>
+                  <span className={onu.modulação === "Fast" ? style.fast : style.giga}>{onu.modulação}</span>
+                </td>
+                <td>
+                  {onu.fxs === "-" && <span className={style.NaoPossui}></span>}
+                  {onu.fxs !== "-" && <span>{onu.fxs}</span>}
+                </td>
+                <td>{onu.qtdeportas}</td>
+                <td>
+                  {onu.tipo === "EPON/GPON" && <span className={style.variado1}>{onu.tipo}</span>}
+                  {onu.tipo === "GPON" && <span className={style.variado2}>{onu.tipo}</span>}
+                </td>
+                <td>{onu.sensibilidade}</td>
+                <td>
+                  {onu.cobertura === "-" && <span className={style.NaoPossui}></span>}
+                  {onu.cobertura === "N/A" && onu.cobertura}
+                  {onu.cobertura !== "-" && onu.cobertura !== "N/A" && <span>{onu.cobertura} m²</span>}
+                </td>
+                <td>
+                  {onu.clientesSimultaneos === "-" && <span className={style.NaoPossui}></span>}
+                  {onu.clientesSimultaneos !== "-" && <span>{onu.clientesSimultaneos}</span>}
+                </td>
+                <td>
+                  {onu.transmissao2ghz === "-" && <span className={style.NaoPossui}></span>}
+                  {onu.transmissao2ghz !== "-" && <span>{onu.transmissao2ghz}</span>}
+                </td>
+                <td>
+                  {onu.transmissao5ghz === "-" && <span className={style.NaoPossui}></span>}
+                  {onu.transmissao5ghz !== "-" && <span>{onu.transmissao5ghz}</span>}
+                </td>
+                <td>
+                  {onu.ssid === "-" && <span className={style.NaoPossui}></span>}
+                  {onu.ssid !== "-" && <span>{onu.ssid} SSIDs</span>}
+                </td>
+                <td>
+                  {onu.tr069 === "-" && <span className={style.NaoPossui}></span>}
+                  {onu.tr069 === "Sim" && <span className={style.Possui}></span>}
+                </td>
+                <td>
+                  {onu.customize === "-" && <span className={style.NaoPossui}></span>}
+                  {onu.customize === "Sim" && <span className={style.Possui}></span>}
+                </td>
+                <td>
+                  {onu.remotize === "-" && <span className={style.NaoPossui}></span>}
+                  {onu.remotize === "Sim" && <span className={style.Possui}></span>}
+                </td>
+                <td>{onu.garantia}</td>
+                <td>
+                  <a target="_blank" rel="noopener noreferrer" href={onu.pagina}>
+                    <span className={style.paginalink}>Ir para Página</span>
+                  </a>
+                </td>
+                {admin && (
+                  <td>
+                    <button className={style.btn_alterar} onClick={() => openUpdateModal(onu)}></button>
+                    <button className={style.btn_excluir} onClick={() => deleteProduct(onu.id)}></button>
+                  </td>
+                )}
+              </tr>
+            </tbody>
+          )}
+        />
       )}
     </div>
   );

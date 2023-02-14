@@ -6,6 +6,8 @@ import Modal from "react-modal";
 import {AdminContext} from "../App";
 import Swal from "sweetalert2";
 import ConversorModal from "./ConversorModal";
+import TableBar from "./TableBar";
+import {Paginacao} from "./Pagination";
 
 export const ConversorContext = createContext();
 
@@ -31,6 +33,12 @@ export default function Ap() {
 
   const {admin, HideConversor, setHideConversor, updatedProduct, setUpdatedProduct} = useContext(AdminContext);
   const handleHideConversor = () => setHideConversor(!HideConversor);
+
+  const [queryCONVERSOR, setQueryCONVERSOR] = React.useState("");
+
+  const handleSearchChangeCONVERSOR = (e) => {
+    setQueryCONVERSOR(e.target.value);
+  };
 
   /* Configs Modal */
   Modal.setAppElement("#root");
@@ -121,17 +129,17 @@ export default function Ap() {
 
   return (
     <div className={style.box_content}>
-      <div className={style.header_box_content}>
-        <button id="conversor" className={HideConversor ? style.arrowHide : style.arrowShow} onClick={handleHideConversor}>
-          <span className={style.title}>Conversor de Mídia</span>
-        </button>
-
-        {admin && (
-          <button className={style.btn_add} onClick={openModal}>
-            Novo Conversor de Mídia
-          </button>
-        )}
-      </div>
+      <TableBar
+        id="conversor"
+        Hide={HideConversor}
+        handleHide={handleHideConversor}
+        tableName="Conversor de Mídia"
+        openModal={openModal}
+        admin={admin}
+        handleSearchChange={handleSearchChangeCONVERSOR}
+        query={queryCONVERSOR}
+        newButton="Novo Conversor de Mídia"
+      />
 
       <ConversorContext.Provider
         value={{
@@ -149,45 +157,43 @@ export default function Ap() {
       </ConversorContext.Provider>
 
       {HideConversor && (
-        <div style={{overflowX: "auto"}}>
-          <table className={style.devicesTable}>
-            <CONVERSOR />
-            {conversor.map((conversor, index) => {
-              return (
-                <tbody>
-                  <tr key={index}>
-                    <td className={conversor.status === "Phaseout" ? style.status_phaseout : style.status_suporte}>{conversor.modelo}</td>
-                    <td>
-                      <span className={conversor.modulação === "Fast" ? style.fast : style.giga}>{conversor.modulação}</span>
-                    </td>
-                    <td>{conversor.conector}</td>
-                    <td>
-                      {conversor.wdm === "-" && <span className={style.NaoPossui}></span>}
-                      {conversor.wdm !== "-" && <span className={style.Possui}></span>}
-                    </td>
-                    <td>{conversor.distancia}</td>
+        <Paginacao
+          dados={conversor}
+          Tablehead={<CONVERSOR />}
+          query={queryCONVERSOR}
+          mapFunction={(conversor, index) => (
+            <tbody>
+              <tr key={index}>
+                <td className={conversor.status === "Phaseout" ? style.status_phaseout : style.status_suporte}>{conversor.modelo}</td>
+                <td>
+                  <span className={conversor.modulação === "Fast" ? style.fast : style.giga}>{conversor.modulação}</span>
+                </td>
+                <td>{conversor.conector}</td>
+                <td>
+                  {conversor.wdm === "-" && <span className={style.NaoPossui}></span>}
+                  {conversor.wdm !== "-" && <span className={style.Possui}></span>}
+                </td>
+                <td>{conversor.distancia}</td>
 
-                    <td>{conversor.fibra}</td>
-                    <td>{conversor.potencia}</td>
-                    <td>{conversor.sensibilidade}</td>
-                    <td>{conversor.garantia}</td>
-                    <td>
-                      <a target="_blank" rel="noopener noreferrer" href={conversor.pagina}>
-                        <span className={style.paginalink}>Ir para Página</span>
-                      </a>
-                    </td>
-                    {admin && (
-                      <td>
-                        <button className={style.btn_alterar} onClick={() => openUpdateModal(conversor)}></button>
-                        <button className={style.btn_excluir} onClick={() => deleteProduct(conversor.id)}></button>
-                      </td>
-                    )}
-                  </tr>
-                </tbody>
-              );
-            })}
-          </table>
-        </div>
+                <td>{conversor.fibra}</td>
+                <td>{conversor.potencia}</td>
+                <td>{conversor.sensibilidade}</td>
+                <td>{conversor.garantia}</td>
+                <td>
+                  <a target="_blank" rel="noopener noreferrer" href={conversor.pagina}>
+                    <span className={style.paginalink}>Ir para Página</span>
+                  </a>
+                </td>
+                {admin && (
+                  <td>
+                    <button className={style.btn_alterar} onClick={() => openUpdateModal(conversor)}></button>
+                    <button className={style.btn_excluir} onClick={() => deleteProduct(conversor.id)}></button>
+                  </td>
+                )}
+              </tr>
+            </tbody>
+          )}
+        />
       )}
     </div>
   );
