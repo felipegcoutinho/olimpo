@@ -169,12 +169,20 @@ input {
   color: white;
 }
 
+.categoryButton:after {
+  font-family: FontAwesome;
+  font-size: 0.8rem;
+  content: " \f054\ ";
+  color: #ff8c1f;
+}
+
 .aviso {
   color: white;
   font-size: 0.9rem;
 }
 
-.btn_hideShow {
+.buttonShowAll,
+.buttonHideAll {
   background-color: black;
   border: none;
   border-radius: 3px;
@@ -188,7 +196,20 @@ input {
   width: 120px;
 }
 
-.btn_hideShow:hover {
+.buttonShowAll::before {
+  font-family: FontAwesome;
+  font-size: 1rem;
+  content: " \f0fe\ ";
+}
+
+.buttonHideAll::before {
+  font-family: FontAwesome;
+  font-size: 1rem;
+  content: " \f146\ ";
+}
+
+.buttonShowAll:hover,
+.buttonHideAll:hover {
   background-color: #545d72;
 }
 

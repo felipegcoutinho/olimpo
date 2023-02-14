@@ -69,11 +69,11 @@ function App() {
           }}>
           <Header />
           <div>
-            <button className={style.btn_hideShow} onClick={MostrarTudo}>
-              Mostrar Tudo <i className="fa-solid fa-eye"></i>
+            <button className={style.buttonShowAll} onClick={MostrarTudo}>
+              Mostrar Tudo
             </button>
-            <button className={style.btn_hideShow} onClick={OcultarTudo}>
-              Ocultar Tudo <i className="fa-regular fa-eye-slash"></i>
+            <button className={style.buttonHideAll} onClick={OcultarTudo}>
+              Ocultar Tudo
             </button>
           </div>
           {/* APs */}
