@@ -29,7 +29,7 @@ export default function AP() {
   );
 }
 
-export function RADIO() {
+export function Radio_Thead() {
   const {admin} = useContext(AdminContext);
   return (
     <thead>
@@ -54,7 +54,7 @@ export function RADIO() {
   );
 }
 
-export function ROTEADOR() {
+export function Roteador_Thead() {
   const {admin} = useContext(AdminContext);
   return (
     <thead>
@@ -82,7 +82,7 @@ export function ROTEADOR() {
   );
 }
 
-export function SWITCH() {
+export function Switch_Thead() {
   const {admin} = useContext(AdminContext);
   return (
     <thead>
@@ -107,7 +107,7 @@ export function SWITCH() {
   );
 }
 
-export function CONVERSOR() {
+export function Conversor_Thead() {
   const {admin} = useContext(AdminContext);
   return (
     <thead>
@@ -128,7 +128,7 @@ export function CONVERSOR() {
   );
 }
 
-export function SFP() {
+export function Sfp_Thead() {
   const {admin} = useContext(AdminContext);
   return (
     <thead>
@@ -136,7 +136,7 @@ export function SFP() {
         <th>Modelo</th>
         <th>Modulação</th>
         <th>Conector</th>
-        <th>Modulo</th>
+        <th>Tipo do Módulo</th>
         <th>WDM</th>
         <th>Distância</th>
         <th>Fibra</th>
@@ -150,7 +150,7 @@ export function SFP() {
   );
 }
 
-export function ONU() {
+export function Onu_Thead() {
   const {admin} = useContext(AdminContext);
   return (
     <thead>

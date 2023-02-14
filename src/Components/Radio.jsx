@@ -1,7 +1,7 @@
 import React from "react";
 import {useEffect, useState, useContext, createContext} from "react";
 import style from "/src/App.module.css";
-import {RADIO} from "/src/TableHead";
+import {Radio_Thead} from "/src/TableHead";
 import Modal from "react-modal";
 import RadioModal from "./RadioModal";
 import {AdminContext} from "../App";
@@ -157,7 +157,7 @@ export default function Radios() {
       {HideRADIO && (
         <Paginacao
           dados={RadiosOutdoor}
-          Tablehead={<RADIO />}
+          Tablehead={<Radio_Thead />}
           query={queryRADIO}
           mapFunction={(radio, index) => (
             <tbody>

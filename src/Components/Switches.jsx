@@ -1,7 +1,7 @@
 import React from "react";
 import {useEffect, useState, useContext, createContext} from "react";
 import style from "/src/App.module.css";
-import {SWITCH} from "/src/TableHead";
+import {Switch_Thead} from "/src/TableHead";
 import Modal from "react-modal";
 import {AdminContext} from "../App";
 import Swal from "sweetalert2";
@@ -159,7 +159,7 @@ export default function Ap() {
       {HideSwitch && (
         <Paginacao
           dados={switches}
-          Tablehead={<SWITCH />}
+          Tablehead={<Switch_Thead />}
           query={querySWITCH}
           mapFunction={(swicth, index) => (
             <tbody>

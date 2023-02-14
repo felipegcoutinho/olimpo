@@ -1,7 +1,7 @@
 import React from "react";
 import {useEffect, useState, useContext, createContext} from "react";
 import style from "/src/App.module.css";
-import Ap_theads from "../TableHead";
+import AP_Thead from "../TableHead";
 import Ap_Modal from "./ApModal";
 import {AdminContext} from "../App";
 import Swal from "sweetalert2";
@@ -166,7 +166,7 @@ export default function Ap() {
       {HideAP && (
         <Paginacao
           dados={accessPoint}
-          Tablehead={<Ap_theads />}
+          Tablehead={<AP_Thead />}
           query={queryAP}
           mapFunction={(ap, index) => (
             <tbody>

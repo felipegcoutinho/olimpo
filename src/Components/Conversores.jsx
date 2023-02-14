@@ -1,7 +1,7 @@
 import React from "react";
 import {useEffect, useState, useContext, createContext} from "react";
 import style from "/src/App.module.css";
-import {CONVERSOR} from "/src/TableHead";
+import {Conversor_Thead} from "/src/TableHead";
 import Modal from "react-modal";
 import {AdminContext} from "../App";
 import Swal from "sweetalert2";
@@ -159,7 +159,7 @@ export default function Ap() {
       {HideConversor && (
         <Paginacao
           dados={conversor}
-          Tablehead={<CONVERSOR />}
+          Tablehead={<Conversor_Thead />}
           query={queryCONVERSOR}
           mapFunction={(conversor, index) => (
             <tbody>

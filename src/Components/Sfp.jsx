@@ -1,7 +1,7 @@
 import React from "react";
 import {useEffect, useState, useContext, createContext} from "react";
 import style from "/src/App.module.css";
-import {SFP} from "/src/TableHead";
+import {Sfp_Thead} from "/src/TableHead";
 import Modal from "react-modal";
 import {AdminContext} from "../App";
 import Swal from "sweetalert2";
@@ -156,7 +156,7 @@ export default function Ap() {
       {HideSFP && (
         <Paginacao
           dados={sfp}
-          Tablehead={<SFP />}
+          Tablehead={<Sfp_Thead />}
           query={querySfp}
           mapFunction={(sfp, index) => (
             <tbody>

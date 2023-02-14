@@ -1,7 +1,7 @@
 import React from "react";
 import {useEffect, useState, useContext, createContext} from "react";
 import style from "/src/App.module.css";
-import {ROTEADOR} from "/src/TableHead";
+import {Roteador_Thead} from "/src/TableHead";
 import Modal from "react-modal";
 import {AdminContext} from "../App";
 import Swal from "sweetalert2";
@@ -167,7 +167,7 @@ export default function Roteador() {
       {HideHO && (
         <Paginacao
           dados={roteadorHO}
-          Tablehead={<ROTEADOR />}
+          Tablehead={<Roteador_Thead />}
           query={queryHO}
           mapFunction={(roteador, index) => (
             <tbody>

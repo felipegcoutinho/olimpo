@@ -1,7 +1,7 @@
 import React from "react";
 import {useEffect, useState, useContext, createContext} from "react";
 import style from "/src/App.module.css";
-import {ONU} from "/src/TableHead";
+import {Onu_Thead} from "/src/TableHead";
 import {AdminContext} from "../App";
 import Modal from "react-modal";
 import Swal from "sweetalert2";
@@ -162,7 +162,7 @@ export default function Onu() {
       {HideONU && (
         <Paginacao
           dados={onu}
-          Tablehead={<ONU />}
+          Tablehead={<Onu_Thead />}
           query={queryOnu}
           mapFunction={(onu, index) => (
             <tbody>
