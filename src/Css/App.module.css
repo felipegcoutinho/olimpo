@@ -42,6 +42,12 @@ input {
   flex-direction: column;
 }
 
+.containerDark {
+  display: flex;
+  flex-direction: column;
+  background-color: black;
+}
+
 .header_content {
   align-items: center;
   background-color: #129552;
@@ -170,10 +176,10 @@ input {
 }
 
 .categoryButton:after {
+  color: #ff8c1f;
+  content: " \f054\ ";
   font-family: FontAwesome;
   font-size: 0.8rem;
-  content: " \f054\ ";
-  color: #ff8c1f;
 }
 
 .aviso {
@@ -197,15 +203,15 @@ input {
 }
 
 .buttonShowAll::before {
+  content: " \f146\ ";
   font-family: FontAwesome;
   font-size: 1rem;
-  content: " \f146\ ";
 }
 
 .buttonHideAll::before {
+  content: " \f0fe\ ";
   font-family: FontAwesome;
   font-size: 1rem;
-  content: " \f0fe\ ";
 }
 
 .buttonShowAll:hover,
@@ -405,8 +411,15 @@ option {
   top: 0;
 }
 
-.buttonAnterior .buttonProxima {
-  background-color: red !important;
+.buttonAnterior,
+.buttonProxima {
+  background-color: #dee8e9;
+  border: none;
+  cursor: pointer;
+  font-size: 0.75rem;
+  font-weight: bold;
+  margin: 2px;
+  padding: 3px;
 }
 
 .btn_alterar,
