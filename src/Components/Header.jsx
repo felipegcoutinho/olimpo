@@ -1,4 +1,4 @@
-import React from "react";
+import React, {useState} from "react";
 import {useContext} from "react";
 import {AdminContext} from "../App";
 import style from "../css/App.module.css";
@@ -7,10 +7,18 @@ import Swal from "sweetalert2";
 export default function Header() {
   const {admin, setAdmin} = useContext(AdminContext);
   const [urlValue, setUrlValue] = React.useState("");
+  const isPwd = urlValue.startsWith("@");
+
   const urlSearch = `https://www.intelbras.com/pt-br/busca/?q=${urlValue}&tipo_busca=pagina-resultado`;
 
   const handleSearch = (e) => {
     setUrlValue(e.target.value);
+  };
+
+  const handleKeyPress = (event) => {
+    if (event.key === "Enter") {
+      window.open(urlSearch, "_blank");
+    }
   };
 
   const EnableAdmin = () => {
@@ -41,15 +49,12 @@ export default function Header() {
 
         <div className={style.searchbarContainer}>
           <input
+            type={isPwd ? "password" : "text"}
             className={style.mainsearchbar}
             value={urlValue}
-            onChange={handleSearch}
             placeholder="Pesquise em intelbras.com.br"
-            onKeyDown={(event) => {
-              if (event.key === "Enter") {
-                window.open(`https://www.intelbras.com/pt-br/busca/?q=${urlValue}&tipo_busca=pagina-resultado`, "_blank");
-              }
-            }}
+            onChange={handleSearch}
+            onKeyDown={handleKeyPress}
           />
           <a target="_blank" rel="noopener noreferrer" href={urlSearch}>
             {urlValue !== "" && <button className={style.mainSearchBtn}></button>}
