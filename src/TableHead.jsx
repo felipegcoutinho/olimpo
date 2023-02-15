@@ -1,5 +1,5 @@
 import React, {useContext} from "react";
-import style from "../src/App.module.css";
+import style from "./css/App.module.css";
 import {AdminContext} from "./App";
 
 export default function AP() {

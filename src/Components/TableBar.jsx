@@ -1,5 +1,5 @@
 import React from "react";
-import style from "../../src/App.module.css";
+import style from "../css/App.module.css";
 
 function TableBar({id, Hide, handleHide, tableName, admin, openModal, newButton, query, handleSearchChange}) {
   return (

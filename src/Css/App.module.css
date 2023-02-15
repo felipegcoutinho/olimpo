@@ -1,11 +1,11 @@
 @font-face {
   font-family: "Inter";
-  src: local("Inter"), url(./webfonts/Inter-Regular.ttf) format("truetype");
+  src: local("Inter"), url(../webfonts/Inter-Regular.ttf) format("truetype");
 }
 
 @font-face {
   font-family: "Pacifico";
-  src: local("Pacifico"), url(./webfonts/Pacifico-Regular.ttf) format("truetype");
+  src: local("Pacifico"), url(../webfonts/Pacifico-Regular.ttf) format("truetype");
 }
 
 * {

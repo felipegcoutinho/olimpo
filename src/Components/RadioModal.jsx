@@ -2,7 +2,7 @@ import React from "react";
 import {useContext} from "react";
 import {RadioContext} from "./Radio";
 import Modal from "react-modal";
-import style from "/src/App.module.css";
+import style from "../css/App.module.css";
 
 function RadioModal() {
   const {addProduto, updateProduct, updatedProduct, setUpdatedProduct, modalIsOpen, closeModal} = useContext(RadioContext);

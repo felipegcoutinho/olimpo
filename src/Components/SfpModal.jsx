@@ -2,7 +2,7 @@ import React from "react";
 import {useContext} from "react";
 import {SfpContext} from "./Sfp";
 import Modal from "react-modal";
-import style from "/src/App.module.css";
+import style from "../css/App.module.css";
 
 function SfpModal() {
   const {addProduto, updateProduct, updatedProduct, setUpdatedProduct, modalIsOpen, closeModal} = useContext(SfpContext);

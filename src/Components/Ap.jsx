@@ -1,6 +1,6 @@
 import React from "react";
 import {useEffect, useState, useContext, createContext} from "react";
-import style from "/src/App.module.css";
+import style from "../css/App.module.css";
 import AP_Thead from "../TableHead";
 import Ap_Modal from "./ApModal";
 import {AdminContext} from "../App";

@@ -1,5 +1,5 @@
 import {useState} from "react";
-import style from "../../src/App.module.css";
+import style from "../css/App.module.css";
 
 export function Paginacao({dados, mapFunction, Tablehead, query}) {
   const [paginaAtual, setPaginaAtual] = useState(0);

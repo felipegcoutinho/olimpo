@@ -2,7 +2,7 @@ import React from "react";
 import {useContext} from "react";
 import {OnuContext} from "./Onu";
 import Modal from "react-modal";
-import style from "/src/App.module.css";
+import style from "../css/App.module.css";
 
 function OnuModal() {
   const {addProduto, updateProduct, updatedProduct, setUpdatedProduct, modalIsOpen, closeModal} = useContext(OnuContext);

@@ -1,7 +1,7 @@
 import React from "react";
 import {useContext} from "react";
 import {AdminContext} from "../App";
-import style from "/src/App.module.css";
+import style from "../css/App.module.css";
 import Swal from "sweetalert2";
 
 export default function Header() {

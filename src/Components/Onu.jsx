@@ -1,6 +1,6 @@
 import React from "react";
 import {useEffect, useState, useContext, createContext} from "react";
-import style from "/src/App.module.css";
+import style from "../css/App.module.css";
 import {Onu_Thead} from "/src/TableHead";
 import {AdminContext} from "../App";
 import Modal from "react-modal";

@@ -1,6 +1,6 @@
 import React from "react";
 import Modal from "react-modal";
-import style from "/src/App.module.css";
+import style from "../css/App.module.css";
 import {useContext} from "react";
 import {HOContext} from "./Roteadores";
 
