@@ -34,7 +34,7 @@ export default function Ap() {
 
   const [switches, setSwitches] = useState([]);
 
-  const {admin, HideSwitch, setHideSwitch, updatedProduct, setUpdatedProduct} = useContext(AdminContext);
+  const {admin, HideSwitch, setHideSwitch, updatedProduct, setUpdatedProduct, urlJsonServer} = useContext(AdminContext);
   const [querySWITCH, setQuerySWITCH] = React.useState("");
   const handleHideSwitch = () => setHideSwitch(!HideSwitch);
 
@@ -55,7 +55,7 @@ export default function Ap() {
 
   /* Buscar Produto */
   const fetchProducts = async () => {
-    const response = await fetch("http://localhost:3000/switches");
+    const response = await fetch(`${urlJsonServer}/switches`);
     const data = await response.json();
     setSwitches(data);
   };
@@ -67,7 +67,7 @@ export default function Ap() {
   /* Adicionar Produto */
   const addProduto = async (e) => {
     e.preventDefault();
-    await fetch("http://localhost:3000/switches", {
+    await fetch(`${urlJsonServer}/switches`, {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
@@ -85,7 +85,7 @@ export default function Ap() {
 
   /* Deletar Produto */
   const deleteProduct = async (id) => {
-    await fetch(`http://localhost:3000/switches/${id}`, {
+    await fetch(`${urlJsonServer}/switches/${id}`, {
       method: "DELETE",
     });
     Swal.fire({
@@ -110,7 +110,7 @@ export default function Ap() {
   };
   const updateProduct = async (e) => {
     e.preventDefault();
-    await fetch(`http://localhost:3000/switches/${updatedProduct.id}`, {
+    await fetch(`${urlJsonServer}/switches/${updatedProduct.id}`, {
       method: "PUT",
       headers: {
         "Content-Type": "application/json",

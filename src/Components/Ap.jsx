@@ -39,7 +39,7 @@ export default function Ap() {
 
   const [accessPoint, setAccessPoint] = useState([]);
 
-  const {admin, HideAP, setHideAP, updatedProduct, setUpdatedProduct} = useContext(AdminContext);
+  const {admin, HideAP, setHideAP, updatedProduct, setUpdatedProduct, urlJsonServer} = useContext(AdminContext);
   const [queryAP, setQueryAP] = React.useState("");
 
   const handleHideAP = () => setHideAP(!HideAP);
@@ -62,7 +62,7 @@ export default function Ap() {
 
   /* Buscar Produto */
   const fetchProducts = async () => {
-    const response = await fetch("http://localhost:3000/aps");
+    const response = await fetch(`${urlJsonServer}/aps`);
     const data = await response.json();
     setAccessPoint(data);
   };
@@ -74,7 +74,7 @@ export default function Ap() {
   /* Adicionar Produto */
   const addProduto = async (e) => {
     e.preventDefault();
-    await fetch("http://localhost:3000/aps", {
+    await fetch(`${urlJsonServer}/aps`, {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
@@ -92,7 +92,7 @@ export default function Ap() {
 
   /* Deletar Produto */
   const deleteProduct = async (id) => {
-    await fetch(`http://localhost:3000/aps/${id}`, {
+    await fetch(`${urlJsonServer}/aps/${id}`, {
       method: "DELETE",
     });
     Swal.fire({
@@ -117,7 +117,7 @@ export default function Ap() {
   };
   const updateProduct = async (e) => {
     e.preventDefault();
-    await fetch(`http://localhost:3000/aps/${updatedProduct.id}`, {
+    await fetch(`${urlJsonServer}/aps/${updatedProduct.id}`, {
       method: "PUT",
       headers: {
         "Content-Type": "application/json",

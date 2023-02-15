@@ -41,7 +41,7 @@ export default function Roteador() {
 
   const [roteadorHO, setRoteadorHO] = useState([]);
 
-  const {admin, HideHO, setHideHO, updatedProduct, setUpdatedProduct} = useContext(AdminContext);
+  const {admin, HideHO, setHideHO, updatedProduct, setUpdatedProduct, urlJsonServer} = useContext(AdminContext);
   const [queryHO, setQueryHO] = React.useState("");
 
   const handleHideHO = () => setHideHO(!HideHO);
@@ -63,7 +63,7 @@ export default function Roteador() {
 
   /* Buscar Produto */
   const fetchProducts = async () => {
-    const response = await fetch("http://localhost:3000/roteadorHO");
+    const response = await fetch(`${urlJsonServer}/roteadorHO`);
     const data = await response.json();
     setRoteadorHO(data);
   };
@@ -75,7 +75,7 @@ export default function Roteador() {
   /* Adicionar Produto */
   const addProduto = async (e) => {
     e.preventDefault();
-    await fetch("http://localhost:3000/roteadorHO", {
+    await fetch(`${urlJsonServer}/roteadorHO`, {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
@@ -93,7 +93,7 @@ export default function Roteador() {
 
   /* Deletar Produto */
   const deleteProduct = async (id) => {
-    await fetch(`http://localhost:3000/roteadorHO/${id}`, {
+    await fetch(`${urlJsonServer}/roteadorHO/${id}`, {
       method: "DELETE",
     });
     Swal.fire({
@@ -118,7 +118,7 @@ export default function Roteador() {
   };
   const updateProduct = async (e) => {
     e.preventDefault();
-    await fetch(`http://localhost:3000/roteadorHO/${updatedProduct.id}`, {
+    await fetch(`${urlJsonServer}/roteadorHO/${updatedProduct.id}`, {
       method: "PUT",
       headers: {
         "Content-Type": "application/json",

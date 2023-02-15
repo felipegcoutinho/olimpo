@@ -34,7 +34,7 @@ export default function Radios() {
 
   const [RadiosOutdoor, setRadiosOutdoor] = useState([]);
 
-  const {admin, HideRADIO, setHideRADIO, updatedProduct, setUpdatedProduct} = useContext(AdminContext);
+  const {admin, HideRADIO, setHideRADIO, updatedProduct, setUpdatedProduct, urlJsonServer} = useContext(AdminContext);
   const [queryRADIO, setQueryRADIO] = useState("");
   const handleHideRADIO = () => setHideRADIO(!HideRADIO);
   const handleSearchChangeRADIO = (e) => {
@@ -54,7 +54,7 @@ export default function Radios() {
 
   /* Buscar Produto */
   const fetchProducts = async () => {
-    const response = await fetch("http://localhost:3000/radios");
+    const response = await fetch(`${urlJsonServer}/radios`);
     const data = await response.json();
     setRadiosOutdoor(data);
   };
@@ -66,7 +66,7 @@ export default function Radios() {
   /* Adicionar Produto */
   const addProduto = async (e) => {
     e.preventDefault();
-    await fetch("http://localhost:3000/radios", {
+    await fetch(`${urlJsonServer}/radios`, {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
@@ -84,7 +84,7 @@ export default function Radios() {
 
   /* Deletar Produto */
   const deleteProduct = async (id) => {
-    await fetch(`http://localhost:3000/radios/${id}`, {
+    await fetch(`${urlJsonServer}/radios/${id}`, {
       method: "DELETE",
     });
     Swal.fire({
@@ -109,7 +109,7 @@ export default function Radios() {
   };
   const updateProduct = async (e) => {
     e.preventDefault();
-    await fetch(`http://localhost:3000/radios/${updatedProduct.id}`, {
+    await fetch(`${urlJsonServer}/radios/${updatedProduct.id}`, {
       method: "PUT",
       headers: {
         "Content-Type": "application/json",

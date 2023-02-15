@@ -30,7 +30,7 @@ export default function Ap() {
   const [guia, setguia] = useState("");
   const [sfp, setSfp] = useState([]);
 
-  const {admin, HideSFP, setHideSFP, updatedProduct, setUpdatedProduct} = useContext(AdminContext);
+  const {admin, HideSFP, setHideSFP, updatedProduct, setUpdatedProduct, urlJsonServer} = useContext(AdminContext);
 
   const [querySfp, setQuerySfp] = React.useState("");
   const handleSearchChangeSfp = (e) => {
@@ -52,7 +52,7 @@ export default function Ap() {
 
   /* Buscar Produto */
   const fetchProducts = async () => {
-    const response = await fetch("http://localhost:3000/sfp");
+    const response = await fetch(`${urlJsonServer}/sfp`);
     const data = await response.json();
     setSfp(data);
   };
@@ -64,7 +64,7 @@ export default function Ap() {
   /* Adicionar Produto */
   const addProduto = async (e) => {
     e.preventDefault();
-    await fetch("http://localhost:3000/sfp", {
+    await fetch(`${urlJsonServer}/sfp`, {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
@@ -82,7 +82,7 @@ export default function Ap() {
 
   /* Deletar Produto */
   const deleteProduct = async (id) => {
-    await fetch(`http://localhost:3000/sfp/${id}`, {
+    await fetch(`${urlJsonServer}/sfp/${id}`, {
       method: "DELETE",
     });
     Swal.fire({
@@ -107,7 +107,7 @@ export default function Ap() {
   };
   const updateProduct = async (e) => {
     e.preventDefault();
-    await fetch(`http://localhost:3000/sfp/${updatedProduct.id}`, {
+    await fetch(`${urlJsonServer}/sfp/${updatedProduct.id}`, {
       method: "PUT",
       headers: {
         "Content-Type": "application/json",

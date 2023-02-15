@@ -25,6 +25,8 @@ function App() {
 
   const [ShowHide, setShowHide] = useState(true);
 
+  const urlJsonServer = `http://localhost:3000`;
+
   const alternarMostrarOcultar = () => {
     setShowHide(!ShowHide);
     setHideAP(!ShowHide);
@@ -59,6 +61,7 @@ function App() {
             setHideONU,
             updatedProduct,
             setUpdatedProduct,
+            urlJsonServer,
           }}>
           <Header />
 

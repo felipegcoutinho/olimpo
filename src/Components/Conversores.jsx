@@ -31,7 +31,7 @@ export default function Ap() {
 
   const [conversor, setConversor] = useState([]);
 
-  const {admin, HideConversor, setHideConversor, updatedProduct, setUpdatedProduct} = useContext(AdminContext);
+  const {admin, HideConversor, setHideConversor, updatedProduct, setUpdatedProduct, urlJsonServer} = useContext(AdminContext);
   const handleHideConversor = () => setHideConversor(!HideConversor);
 
   const [queryCONVERSOR, setQueryCONVERSOR] = React.useState("");
@@ -55,7 +55,7 @@ export default function Ap() {
 
   /* Buscar Produto */
   const fetchProducts = async () => {
-    const response = await fetch("http://localhost:3000/conversores");
+    const response = await fetch(`${urlJsonServer}/conversores`);
     const data = await response.json();
     setConversor(data);
   };
@@ -67,7 +67,7 @@ export default function Ap() {
   /* Adicionar Produto */
   const addProduto = async (e) => {
     e.preventDefault();
-    await fetch("http://localhost:3000/conversores", {
+    await fetch(`${urlJsonServer}/conversores`, {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
@@ -85,7 +85,7 @@ export default function Ap() {
 
   /* Deletar Produto */
   const deleteProduct = async (id) => {
-    await fetch(`http://localhost:3000/conversores/${id}`, {
+    await fetch(`${urlJsonServer}/conversores/${id}`, {
       method: "DELETE",
     });
     Swal.fire({
@@ -110,7 +110,7 @@ export default function Ap() {
   };
   const updateProduct = async (e) => {
     e.preventDefault();
-    await fetch(`http://localhost:3000/conversores/${updatedProduct.id}`, {
+    await fetch(`${urlJsonServer}/conversores/${updatedProduct.id}`, {
       method: "PUT",
       headers: {
         "Content-Type": "application/json",

@@ -36,7 +36,7 @@ export default function Onu() {
 
   const [onu, setOnu] = React.useState([]);
 
-  const {admin, HideONU, setHideONU, updatedProduct, setUpdatedProduct} = useContext(AdminContext);
+  const {admin, HideONU, setHideONU, updatedProduct, setUpdatedProduct, urlJsonServer} = useContext(AdminContext);
 
   const [queryOnu, setQueryOnu] = React.useState("");
   const handleSearchChangeOnu = (e) => {
@@ -58,7 +58,7 @@ export default function Onu() {
 
   /* Buscar Produto */
   const fetchProducts = async () => {
-    const response = await fetch("http://localhost:3000/onu");
+    const response = await fetch(`${urlJsonServer}/onu`);
     const data = await response.json();
     setOnu(data);
   };
@@ -70,7 +70,7 @@ export default function Onu() {
   /* Adicionar Produto */
   const addProduto = async (e) => {
     e.preventDefault();
-    await fetch("http://localhost:3000/onu", {
+    await fetch(`${urlJsonServer}/onu`, {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
@@ -88,7 +88,7 @@ export default function Onu() {
 
   /* Deletar Produto */
   const deleteProduct = async (id) => {
-    await fetch(`http://localhost:3000/onu/${id}`, {
+    await fetch(`${urlJsonServer}/onu/${id}`, {
       method: "DELETE",
     });
     Swal.fire({
@@ -113,7 +113,7 @@ export default function Onu() {
   };
   const updateProduct = async (e) => {
     e.preventDefault();
-    await fetch(`http://localhost:3000/onu/${updatedProduct.id}`, {
+    await fetch(`${urlJsonServer}/onu/${updatedProduct.id}`, {
       method: "PUT",
       headers: {
         "Content-Type": "application/json",
