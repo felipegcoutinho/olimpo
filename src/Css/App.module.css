@@ -324,6 +324,16 @@ label {
   position: sticky;
 }
 
+.formLegenda {
+  background-color: #fae1bc;
+  border-radius: 5px;
+  color: #d48d53;
+  font-size: 0.85rem;
+  line-height: 20px;
+  margin: 5px 0;
+  padding: 10px;
+}
+
 .formContainer {
   display: flex;
   flex-direction: column;
@@ -340,18 +350,8 @@ select {
   padding: 10px 5px;
 }
 
-.formLegenda {
-  background-color: #fae1bc;
-  border-radius: 5px;
-  color: #d48d53;
-  font-size: 0.85rem;
-  line-height: 20px;
-  margin: 5px 0;
-  padding: 10px;
-}
-
-input[type="text"]:focus-visible,
-select[type="text"]:focus-visible {
+.formContainer input:focus-visible,
+.formContainer select:focus-visible {
   border: 3px solid #129552;
   box-shadow: 0 0 0 0.25rem #00a94d40;
 }
