@@ -23,14 +23,10 @@ export default function Radios() {
   const [throughputNominal, setThroughputNominal] = useState("");
   const [aberturaHorVer, setAberturaHorVer] = useState("");
   const [distancia, setDistancia] = useState("");
-  const [comprimentoCabo, setComprimentoCabo] = useState("");
   const [alimentaçao, setAlimentaçao] = useState("");
   const [wireless, setWireless] = useState("");
   const [status, setStatus] = useState("");
   const [pagina, setPagina] = useState("");
-  const [datasheet, setDatasheet] = useState("");
-  const [guia, setGuia] = useState("");
-  const [manual, setManual] = useState("");
 
   const [RadiosOutdoor, setRadiosOutdoor] = useState([]);
 

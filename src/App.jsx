@@ -13,7 +13,7 @@ import {createContext, useState} from "react";
 export const AdminContext = createContext();
 
 function App() {
-  const [admin, setAdmin] = useState(false);
+  const [admin, setAdmin] = useState(true);
   const [HideAP, setHideAP] = useState(true);
   const [HideRADIO, setHideRADIO] = useState(true);
   const [HideHO, setHideHO] = useState(true);
@@ -76,25 +76,25 @@ function App() {
           )}
 
           {/* APs */}
-          <AccessPoints />
+          {/* <AccessPoints /> */}
 
           {/* Rádios */}
-          <RadiosOutdoor />
+          {/* <RadiosOutdoor /> */}
 
           {/* Roteadores HO */}
           <RoteadoresHO />
 
           {/* SWITCHES */}
-          <Switches />
+          {/* <Switches /> */}
 
           {/* CONVERSORES */}
-          <Conversores />
+          {/* <Conversores /> */}
 
           {/* SFPs */}
-          <Sfp />
+          {/* <Sfp /> */}
 
           {/* ONUs */}
-          <Onu />
+          {/* <Onu /> */}
         </AdminContext.Provider>
       </div>
     </div>

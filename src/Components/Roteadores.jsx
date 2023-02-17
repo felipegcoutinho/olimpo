@@ -178,7 +178,7 @@ export default function Roteador() {
                 </td>
                 <td>
                   {roteador.cobertura}
-                  {roteador.cobertura === "N/A" ? null : "m²"}
+                  {roteador.cobertura === "N/A" ? null : " m²"}
                 </td>
                 <td>
                   {roteador.raio}
@@ -189,7 +189,7 @@ export default function Roteador() {
                   {roteador.usuarioMax === "N/A" ? null : " usuários"}
                 </td>
                 <td>{roteador.planoRecomendado}</td>
-                <td>{roteador.QtdePortas}</td>
+                <td>{roteador.qtdePortas}</td>
                 <td>{roteador.datarateMax2G}</td>
                 <td className={roteador.datarateMax5G === "-" ? style.NaoPossui : null}>
                   {roteador.datarateMax5G === "-" ? null : roteador.datarateMax5G}

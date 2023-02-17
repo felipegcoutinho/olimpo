@@ -20,58 +20,9 @@ function AP_Modal() {
           <input
             required
             type="text"
-            placeholder="Modelo do produto"
+            placeholder="AP 1250 AC MAX"
             value={updatedProduct.modelo}
             onChange={(e) => setUpdatedProduct({...updatedProduct, modelo: e.target.value})}
-          />
-
-          <label>Modulação</label>
-          <select
-            required
-            type="text"
-            placeholder="Modulação"
-            value={updatedProduct.modulação}
-            onChange={(e) => setUpdatedProduct({...updatedProduct, modulação: e.target.value})}>
-            {!updatedProduct.id && (
-              <option selected disabled>
-                Escolha
-              </option>
-            )}
-            <option value="Giga">Giga</option>
-            <option value="Fast">Fast</option>
-            <option value="N/A">N/A</option>
-          </select>
-
-          <label>Área de cobertura (em m²)</label>
-          <input
-            type="text"
-            placeholder="Área de cobertura"
-            value={updatedProduct.cobertura}
-            onChange={(e) => setUpdatedProduct({...updatedProduct, cobertura: e.target.value})}
-          />
-
-          <label>Raio (em m)</label>
-          <input
-            type="text"
-            placeholder="Raio"
-            value={updatedProduct.raio}
-            onChange={(e) => setUpdatedProduct({...updatedProduct, raio: e.target.value})}
-          />
-
-          <label>Usuários simultâneos</label>
-          <input
-            type="text"
-            placeholder="Usuários simultâneos"
-            value={updatedProduct.usuarioMax}
-            onChange={(e) => setUpdatedProduct({...updatedProduct, usuarioMax: e.target.value})}
-          />
-
-          <label>Qtde Portas</label>
-          <input
-            type="text"
-            placeholder="Qtde Portas"
-            value={updatedProduct.qtdePortas}
-            onChange={(e) => setUpdatedProduct({...updatedProduct, qtdePortas: e.target.value})}
           />
 
           <label>Status do suporte</label>
@@ -90,78 +41,71 @@ function AP_Modal() {
             <option value="N/A">N/A</option>
           </select>
 
-          <label>Versão do connectiFi</label>
+          <label>Modulação</label>
+          <select
+            required
+            type="text"
+            value={updatedProduct.modulação}
+            onChange={(e) => setUpdatedProduct({...updatedProduct, modulação: e.target.value})}>
+            {!updatedProduct.id && (
+              <option selected disabled>
+                Escolha
+              </option>
+            )}
+            <option value="Giga">Giga</option>
+            <option value="Fast">Fast</option>
+            <option value="N/A">N/A</option>
+          </select>
+
+          <label>Área de cobertura (em m²)</label>
           <input
             type="text"
-            placeholder="Versão do connectiFi"
-            value={updatedProduct.connectiVersion}
-            onChange={(e) => setUpdatedProduct({...updatedProduct, connectiVersion: e.target.value})}
+            placeholder="400 m²"
+            value={updatedProduct.cobertura}
+            onChange={(e) => setUpdatedProduct({...updatedProduct, cobertura: e.target.value})}
+          />
+
+          <label>Raio (em m)</label>
+          <input
+            type="text"
+            placeholder="11,2 m"
+            value={updatedProduct.raio}
+            onChange={(e) => setUpdatedProduct({...updatedProduct, raio: e.target.value})}
+          />
+
+          <label>Usuários simultâneos</label>
+          <input
+            type="text"
+            placeholder="100 usuários"
+            value={updatedProduct.usuarioMax}
+            onChange={(e) => setUpdatedProduct({...updatedProduct, usuarioMax: e.target.value})}
           />
 
           <label>Datarate Máx. 2G</label>
-          <select
+          <input
             type="text"
+            placeholder="300 Mbps (2x2)"
             value={updatedProduct.throughputWireless24}
-            onChange={(e) => setUpdatedProduct({...updatedProduct, throughputWireless24: e.target.value})}>
-            {!updatedProduct.id && (
-              <option selected disabled>
-                Escolha
-              </option>
-            )}
-            <option value="300 Mbps (2x2)">300 Mbps (2x2)</option>
-            <option value="450 Mbps (3x3)">450 Mbps (3x3)</option>
-            <option value="N/A">N/A</option>
-          </select>
+            onChange={(e) => setUpdatedProduct({...updatedProduct, throughputWireless24: e.target.value})}
+          />
 
           <label>Datarate Máx. 5G</label>
-          <select
+          <input
             type="text"
+            placeholder="866 Mbps (2x2)"
             value={updatedProduct.throughputWireless50}
-            onChange={(e) => setUpdatedProduct({...updatedProduct, throughputWireless50: e.target.value})}>
-            {!updatedProduct.id && (
-              <option selected disabled>
-                Escolha
-              </option>
-            )}
-            <option value="886 Mbps (2x2)">886 Mbps (2x2)</option>
-            <option value="1300 Mbps (3x3)">1300 Mbps (3x3)</option>
-            <option value="-">Não Possui</option>
-            <option value="N/A">N/A</option>
-          </select>
-
-          <label>Ganho de Antena (2.4ghz | 5ghz)</label>
-          <input
-            type="text"
-            placeholder="Ganho de Antena"
-            value={updatedProduct.ganho}
-            onChange={(e) => setUpdatedProduct({...updatedProduct, ganho: e.target.value})}
+            onChange={(e) => setUpdatedProduct({...updatedProduct, throughputWireless50: e.target.value})}
           />
 
-          <label>Potência de TX 2G</label>
+          <label>Qtde Portas</label>
           <input
             type="text"
-            placeholder="Potência de TX 2G"
-            value={updatedProduct.potencia2G}
-            onChange={(e) => setUpdatedProduct({...updatedProduct, potencia2G: e.target.value})}
+            placeholder="1 Porta"
+            value={updatedProduct.qtdePortas}
+            onChange={(e) => setUpdatedProduct({...updatedProduct, qtdePortas: e.target.value})}
           />
 
-          <label>Potência de TX 5G </label>
-          <input
-            type="text"
-            placeholder="Potência de TX 5G"
-            value={updatedProduct.potencia5G}
-            onChange={(e) => setUpdatedProduct({...updatedProduct, potencia5G: e.target.value})}
-          />
-
-          <label>Tensão</label>
-          <input
-            type="text"
-            placeholder="Tensão"
-            value={updatedProduct.tensao}
-            onChange={(e) => setUpdatedProduct({...updatedProduct, tensao: e.target.value})}
-          />
-
-          <label>Tipo do PoE</label>
+          <label>Tipo PoE</label>
           <select type="text" value={updatedProduct.poe} onChange={(e) => setUpdatedProduct({...updatedProduct, poe: e.target.value})}>
             {!updatedProduct.id && (
               <option selected disabled>
@@ -175,12 +119,20 @@ function AP_Modal() {
             <option value="N/A">N/A</option>
           </select>
 
-          <label>Comprimento do Cabo PoE</label>
+          <label>Tensão</label>
           <input
             type="text"
-            placeholder="Comprimento do Cabo"
-            value={updatedProduct.distancia}
-            onChange={(e) => setUpdatedProduct({...updatedProduct, distancia: e.target.value})}
+            placeholder="48V / 12 VDC (P4)"
+            value={updatedProduct.tensao}
+            onChange={(e) => setUpdatedProduct({...updatedProduct, tensao: e.target.value})}
+          />
+
+          <label>Versão do connectiFi</label>
+          <input
+            type="text"
+            placeholder="2.9.17"
+            value={updatedProduct.connectiVersion}
+            onChange={(e) => setUpdatedProduct({...updatedProduct, connectiVersion: e.target.value})}
           />
 
           <label>Possui Handover</label>
@@ -213,6 +165,22 @@ function AP_Modal() {
             <option value="N/A">N/A</option>
           </select>
 
+          <label>Potência de TX 2G</label>
+          <input
+            type="text"
+            placeholder="28 dBm (630mW)"
+            value={updatedProduct.potencia2G}
+            onChange={(e) => setUpdatedProduct({...updatedProduct, potencia2G: e.target.value})}
+          />
+
+          <label>Potência de TX 5G </label>
+          <input
+            type="text"
+            placeholder="27 dBm (501mW)"
+            value={updatedProduct.potencia5G}
+            onChange={(e) => setUpdatedProduct({...updatedProduct, potencia5G: e.target.value})}
+          />
+
           <label>Tempo da Garantia</label>
           <select
             type="text"
@@ -234,34 +202,11 @@ function AP_Modal() {
           <label>URL da Página</label>
           <input
             type="text"
-            placeholder="URL da Página"
+            placeholder="https://www.intelbras.com/pt-br/access-point-dual-band-ac-de-alta-potencia-ap-1250-ac-max"
             value={updatedProduct.pagina}
             onChange={(e) => setUpdatedProduct({...updatedProduct, pagina: e.target.value})}
           />
 
-          <label>URL do Datasheet</label>
-          <input
-            type="text"
-            placeholder="URL do Datasheet"
-            value={updatedProduct.datasheet}
-            onChange={(e) => setUpdatedProduct({...updatedProduct, datasheet: e.target.value})}
-          />
-
-          <label>URL do Guia</label>
-          <input
-            type="text"
-            placeholder="URL do Guia"
-            value={updatedProduct.guia}
-            onChange={(e) => setUpdatedProduct({...updatedProduct, guia: e.target.value})}
-          />
-
-          <label>URL do Manual</label>
-          <input
-            type="text"
-            placeholder="URL do Manual"
-            value={updatedProduct.manual}
-            onChange={(e) => setUpdatedProduct({...updatedProduct, manual: e.target.value})}
-          />
           <div className={style.btnModalActions}>
             <button type="submit" className={style.btn_addUpd}>
               {updatedProduct.id ? "Atualizar Access Point" : "Adicionar Access Point"}

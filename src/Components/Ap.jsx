@@ -23,19 +23,13 @@ export default function Ap() {
   const [connectiVersion, setConnectiVersion] = useState("");
   const [throughputWireless24, setThroughputWireless24] = useState("");
   const [throughputWireless50, setThroughputWireless50] = useState("");
-  const [ganho, setGanho] = useState("");
   const [potencia2G, setPotencia2G] = useState("");
   const [potencia5G, setPotencia5G] = useState("");
   const [tensao, setTensao] = useState("");
   const [poe, setPoe] = useState("");
-  const [distancia, setDistancia] = useState("");
-  const [consumo, setConsumo] = useState("");
   const [wisefi, setWisefi] = useState("");
   const [handover, setHandover] = useState("");
   const [pagina, setPagina] = useState("");
-  const [datasheet, setDatasheet] = useState("");
-  const [guia, setGuia] = useState("");
-  const [manual, setManual] = useState("");
 
   const [accessPoint, setAccessPoint] = useState([]);
 
@@ -191,6 +185,7 @@ export default function Ap() {
                 <td className={ap.wisefi === "-" ? style.NaoPossui : style.Possui}></td>
                 <td>{ap.potencia2G}</td>
                 <td className={ap.potencia5G === "-" && style.NaoPossui}>{ap.potencia5G !== "-" && ap.potencia5G}</td>
+                <td>{ap.garantia}</td>
                 <td>
                   <a target="_blank" rel="noopener noreferrer" href={ap.pagina}>
                     <span className={style.paginalink}>Ir para Página</span>

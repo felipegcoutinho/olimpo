@@ -15,13 +15,14 @@ export default function AP() {
         <th>Datarate Máx. 2G</th>
         <th>Datarate Máx. 5G</th>
         <th>Qtde Portas</th>
-        <th>PoE Ativo</th>
-        <th>PoE Passivo</th>
+        <th>Tipo PoE</th>
+        <th>Tensão</th>
         <th>ConnectFi</th>
         <th>Handover</th>
         <th>WiseFi</th>
         <th>Potência TX 2G</th>
         <th>Potência TX 5G</th>
+        <th>Garantia</th>
         <th>Página</th>
         {admin && <th>Ações</th>}
       </tr>

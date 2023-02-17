@@ -65,43 +65,37 @@ function RoteadoresModal() {
             onChange={(e) => setUpdatedProduct({...updatedProduct, usuarioMax: e.target.value})}
           />
 
+          <label>Plano recomendado</label>
+          <input
+            type="text"
+            placeholder="Plano recomendado"
+            value={updatedProduct.planoRecomendado}
+            onChange={(e) => setUpdatedProduct({...updatedProduct, planoRecomendado: e.target.value})}
+          />
+
           <label>Qtde Portas</label>
           <input
             type="text"
             placeholder="Qtde Portas"
-            value={updatedProduct.QtdePortas}
+            value={updatedProduct.qtdePortas}
             onChange={(e) => setUpdatedProduct({...updatedProduct, qtdePortas: e.target.value})}
           />
 
           <label>Datarate Máx. 2G</label>
-          <select
+          <input
             type="text"
+            placeholder="Datarate Máx. 2G"
             value={updatedProduct.datarateMax2G}
-            onChange={(e) => setUpdatedProduct({...updatedProduct, datarateMax2G: e.target.value})}>
-            {!updatedProduct.id && (
-              <option selected disabled>
-                Escolha
-              </option>
-            )}
-            <option value="150 Mbps">150 Mbps</option>
-            <option value="300 Mbps">300 Mbps</option>
-            <option value="N/A">N/A</option>
-          </select>
+            onChange={(e) => setUpdatedProduct({...updatedProduct, datarateMax2G: e.target.value})}
+          />
 
           <label>Datarate Máx. 5G</label>
-          <select
+          <input
             type="text"
+            placeholder="Datarate Máx. 5G"
             value={updatedProduct.datarateMax5G}
-            onChange={(e) => setUpdatedProduct({...updatedProduct, datarateMax5G: e.target.value})}>
-            {!updatedProduct.id && (
-              <option selected disabled>
-                Escolha
-              </option>
-            )}
-            <option value="867 Mbps">867 Mbps</option>
-            <option value="1200 Mbps">1200 Mbps</option>
-            <option value="N/A">N/A</option>
-          </select>
+            onChange={(e) => setUpdatedProduct({...updatedProduct, datarateMax5G: e.target.value})}
+          />
 
           <label>IPv6</label>
           <select type="text" value={updatedProduct.ipv6} onChange={(e) => setUpdatedProduct({...updatedProduct, ipv6: e.target.value})}>

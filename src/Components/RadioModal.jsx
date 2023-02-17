@@ -22,10 +22,26 @@ function RadioModal() {
           <input
             required
             type="text"
-            placeholder="Modelo do produto"
+            placeholder="Wom 5A-23"
             value={updatedProduct.modelo}
             onChange={(e) => setUpdatedProduct({...updatedProduct, modelo: e.target.value})}
           />
+
+          <label>Status do suporte</label>
+          <select
+            type="text"
+            value={updatedProduct.status}
+            onChange={(e) => setUpdatedProduct({...updatedProduct, status: e.target.value})}>
+            {!updatedProduct.id && (
+              <option selected disabled>
+                Escolha
+              </option>
+            )}
+            <option value="Suporte">Suporte</option>
+            <option value="Phaseout">Phaseout</option>
+            <option value="N/A">N/A</option>
+          </select>
+
           <label>Indicado</label>
           <select
             placeholder="Indicado"
@@ -61,7 +77,7 @@ function RadioModal() {
           <label>Ganho de Antena (Em dBi)</label>
           <input
             type="text"
-            placeholder="Ganho"
+            placeholder="23 dBi"
             value={updatedProduct.ganho}
             onChange={(e) => setUpdatedProduct({...updatedProduct, ganho: e.target.value})}
           />
@@ -69,7 +85,7 @@ function RadioModal() {
           <label>Potência (Em dBm - mW)</label>
           <input
             type="text"
-            placeholder="Potência"
+            placeholder="25 dBm - 316 mW"
             value={updatedProduct.potencia}
             onChange={(e) => setUpdatedProduct({...updatedProduct, potencia: e.target.value})}
           />
@@ -77,7 +93,7 @@ function RadioModal() {
           <label>Encaminhamento de Pacotes</label>
           <input
             type="text"
-            placeholder="Encaminhamento de Pacotes"
+            placeholder="60.000 Pps"
             value={updatedProduct.pps}
             onChange={(e) => setUpdatedProduct({...updatedProduct, pps: e.target.value})}
           />
@@ -85,7 +101,7 @@ function RadioModal() {
           <label>Throughput Efetivo (Em Mbps)</label>
           <input
             type="text"
-            placeholder="Throughput Efetivo"
+            placeholder="160 Mbps"
             value={updatedProduct.throughputEfetivo}
             onChange={(e) => setUpdatedProduct({...updatedProduct, throughputEfetivo: e.target.value})}
           />
@@ -93,7 +109,7 @@ function RadioModal() {
           <label>Throughput Nominal (Em Mbps)</label>
           <input
             type="text"
-            placeholder="Throughput Nominal"
+            placeholder="300 Mbps"
             value={updatedProduct.throughputNominal}
             onChange={(e) => setUpdatedProduct({...updatedProduct, throughputNominal: e.target.value})}
           />
@@ -101,7 +117,7 @@ function RadioModal() {
           <label>Abertura (Horinzontal | Vertical)</label>
           <input
             type="text"
-            placeholder="Abertura Horinzontal/Vertical"
+            placeholder="H-9° | V-9°"
             value={updatedProduct.aberturaHorVer}
             onChange={(e) => setUpdatedProduct({...updatedProduct, aberturaHorVer: e.target.value})}
           />
@@ -109,17 +125,9 @@ function RadioModal() {
           <label>Distância do Enlace</label>
           <input
             type="text"
-            placeholder="Distância do Enlace"
+            placeholder="10 Km"
             value={updatedProduct.distancia}
             onChange={(e) => setUpdatedProduct({...updatedProduct, distancia: e.target.value})}
-          />
-
-          <label>Alimentação</label>
-          <input
-            type="text"
-            placeholder="Alimentação"
-            value={updatedProduct.alimentaçao}
-            onChange={(e) => setUpdatedProduct({...updatedProduct, alimentaçao: e.target.value})}
           />
 
           <label>Wireless</label>
@@ -136,6 +144,14 @@ function RadioModal() {
             <option value="SiSo 1x1">SiSo 1x1</option>
             <option value="N/A">N/A</option>
           </select>
+
+          <label>Alimentação</label>
+          <input
+            type="text"
+            placeholder="12V - 24V"
+            value={updatedProduct.alimentaçao}
+            onChange={(e) => setUpdatedProduct({...updatedProduct, alimentaçao: e.target.value})}
+          />
 
           <label>Garantia</label>
           <select
@@ -156,51 +172,12 @@ function RadioModal() {
             <option value="N/A">N/A</option>
           </select>
 
-          <label>Status do suporte</label>
-          <select
-            type="text"
-            value={updatedProduct.status}
-            onChange={(e) => setUpdatedProduct({...updatedProduct, status: e.target.value})}>
-            {!updatedProduct.id && (
-              <option selected disabled>
-                Escolha
-              </option>
-            )}
-            <option value="Suporte">Suporte</option>
-            <option value="Phaseout">Phaseout</option>
-            <option value="N/A">N/A</option>
-          </select>
-
           <label>URL da Página</label>
           <input
             type="text"
-            placeholder="URL da Página"
+            placeholder="https://www.intelbras.com/pt-br/cpeptp-com-antena-dish-de-23-dbi-mimo-2x2-wom-5a-23"
             value={updatedProduct.pagina}
             onChange={(e) => setUpdatedProduct({...updatedProduct, pagina: e.target.value})}
-          />
-
-          <label>URL do Datasheet</label>
-          <input
-            type="text"
-            placeholder="URL do Datasheet"
-            value={updatedProduct.datasheet}
-            onChange={(e) => setUpdatedProduct({...updatedProduct, datasheet: e.target.value})}
-          />
-
-          <label>URL do Guia</label>
-          <input
-            type="text"
-            placeholder="URL do Guia"
-            value={updatedProduct.guia}
-            onChange={(e) => setUpdatedProduct({...updatedProduct, guia: e.target.value})}
-          />
-
-          <label>URL do Manual</label>
-          <input
-            type="text"
-            placeholder="URL do Manual"
-            value={updatedProduct.manual}
-            onChange={(e) => setUpdatedProduct({...updatedProduct, manual: e.target.value})}
           />
 
           <div className={style.btnModalActions}>
