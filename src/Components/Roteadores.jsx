@@ -2,12 +2,14 @@ import React from "react";
 import {useEffect, useState, useContext, createContext} from "react";
 import style from "../css/App.module.css";
 import {Roteador_Thead} from "/src/TableHead";
-import Modal from "react-modal";
 import {AdminContext} from "../App";
 import Swal from "sweetalert2";
+import Modal from "react-modal";
 import RoteadoresModal from "./RoteadoresModal";
 import TableBar from "./TableBar";
 import {Paginacao} from "./Pagination";
+import {getDatabase, get, set, ref, push, remove} from "firebase/database";
+import {app, db} from "../database/firebase";
 
 export const HOContext = createContext();
 
@@ -22,12 +24,7 @@ export default function Roteador() {
   const [datarateMax2G, SetDatarateMax2G] = useState("");
   const [datarateMax5G, SetDatarateMax5G] = useState("");
   const [ipv6, SetIpv6] = useState("");
-  const [wps, SetWps] = useState("");
-  const [antenas, SetAntenas] = useState("");
-  const [ganho, SetGanho] = useState("");
-  const [potenciaMax, SetPotenciaMax] = useState("");
   const [tensao, SetTensao] = useState("");
-  const [consumo, SetConsumo] = useState("");
   const [repetidor, SetRepetidor] = useState("");
   const [roteador, SetRoteador] = useState("");
   const [cliente, SetCliente] = useState("");
@@ -35,27 +32,23 @@ export default function Roteador() {
   const [garantia, SetGarantia] = useState("");
   const [status, SetStatus] = useState("");
   const [pagina, SetPagina] = useState("");
-  const [datasheet, SetDatasheet] = useState("");
-  const [guia, SetGuia] = useState("");
-  const [manual, SetManual] = useState("");
-
-  const [roteadorHO, setRoteadorHO] = useState([]);
-
-  const {admin, HideHO, setHideHO, updatedProduct, setUpdatedProduct, urlJsonServer} = useContext(AdminContext);
   const [queryHO, setQueryHO] = React.useState("");
+  const [roteadorHO, setRoteadorHO] = useState([]);
+  const [modalIsOpen, setIsOpen] = useState(false);
+
+  const {admin, HideHO, setHideHO, updatedProduct, setUpdatedProduct} = useContext(AdminContext);
 
   const handleHideHO = () => setHideHO(!HideHO);
-
   const handleSearchChangeHO = (e) => {
     setQueryHO(e.target.value);
   };
 
   /* Configs Modal */
   Modal.setAppElement("#root");
-  const [modalIsOpen, setIsOpen] = React.useState(false);
   function openModal() {
     setIsOpen(true);
   }
+
   function closeModal() {
     setIsOpen(false);
     setUpdatedProduct(false);
@@ -63,8 +56,17 @@ export default function Roteador() {
 
   /* Buscar Produto */
   const fetchProducts = async () => {
-    const response = await fetch(`${urlJsonServer}/roteadorHO`);
-    const data = await response.json();
+    const db = getDatabase(app);
+    const dbRef = ref(db, "roteadorHO");
+    const snapshot = await get(dbRef);
+    const data = [];
+    snapshot.forEach((childSnapshot) => {
+      const childData = childSnapshot.val();
+      data.push({
+        id: childSnapshot.key,
+        ...childData,
+      });
+    });
     setRoteadorHO(data);
   };
 
@@ -75,13 +77,9 @@ export default function Roteador() {
   /* Adicionar Produto */
   const addProduto = async (e) => {
     e.preventDefault();
-    await fetch(`${urlJsonServer}/roteadorHO`, {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify(updatedProduct),
-    });
+    const dbRef = ref(db, "roteadorHO");
+    const newdbRef = push(dbRef);
+    await set(newdbRef, updatedProduct);
     Swal.fire({
       title: "Adicionado!",
       confirmButtonColor: "#006e39",
@@ -93,9 +91,9 @@ export default function Roteador() {
 
   /* Deletar Produto */
   const deleteProduct = async (id) => {
-    await fetch(`${urlJsonServer}/roteadorHO/${id}`, {
-      method: "DELETE",
-    });
+    const db = getDatabase(app);
+    const dbRef = ref(db, `roteadorHO/${id}`);
+
     Swal.fire({
       title: "Você tem certeza?",
       icon: "warning",
@@ -105,7 +103,8 @@ export default function Roteador() {
       confirmButtonText: "Sim, deletar",
     }).then((result) => {
       if (result.isConfirmed) {
-        Swal.fire("Equipamento deletado!");
+        remove(dbRef);
+        Swal.fire("Access Point deletado!");
         fetchProducts();
       }
     });
@@ -118,18 +117,12 @@ export default function Roteador() {
   };
   const updateProduct = async (e) => {
     e.preventDefault();
-    await fetch(`${urlJsonServer}/roteadorHO/${updatedProduct.id}`, {
-      method: "PUT",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify(updatedProduct),
-    });
+    const dbRef = ref(db, `roteadorHO/${updatedProduct.id}`);
+    await set(dbRef, updatedProduct);
     Swal.fire({
       title: "Atualizado!",
       confirmButtonColor: "#006e39",
     });
-
     setUpdatedProduct({});
     fetchProducts();
     closeModal();
@@ -194,7 +187,7 @@ export default function Roteador() {
                 <td className={roteador.datarateMax5G === "-" ? style.NaoPossui : null}>
                   {roteador.datarateMax5G === "-" ? null : roteador.datarateMax5G}
                 </td>
-                <td>{roteador.ganho}</td>
+                <td>{roteador.tensao}</td>
                 <td className={roteador.ipv6 === "-" ? style.NaoPossui : style.Possui}></td>
                 <td>
                   {roteador.repetidor === "-" && <span className={style.NaoPossui}></span>}

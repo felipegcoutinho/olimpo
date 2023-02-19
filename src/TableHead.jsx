@@ -69,7 +69,7 @@ export function Roteador_Thead() {
         <th>Qtde Portas</th>
         <th>Datarate Máx. 2G</th>
         <th>Datarate Máx. 5G</th>
-        <th>Ganho da antena</th>
+        <th>Tensão</th>
         <th>IPV6</th>
         <th>Repetidor</th>
         <th>Roteador AP</th>
@@ -121,6 +121,8 @@ export function Conversor_Thead() {
         <th>Tipo da Fibra</th>
         <th>Potência Sinal Max | Min</th>
         <th>Sensibilidade Max | Min</th>
+        <th>Comprimento Sinal RX</th>
+        <th>Comprimento Sinal TX</th>
         <th>Garantia</th>
         <th>Página</th>
         {admin && <th>Ações</th>}
@@ -143,6 +145,8 @@ export function Sfp_Thead() {
         <th>Fibra</th>
         <th>Potência Sinal Max | Min</th>
         <th>Sensibilidade Max | Min</th>
+        <th>Comprimento Sinal RX</th>
+        <th>Comprimento Sinal TX</th>
         <th>Garantia</th>
         <th>Página</th>
         {admin && <th>Ações</th>}

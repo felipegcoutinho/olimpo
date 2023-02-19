@@ -2,12 +2,13 @@ import React from "react";
 import {useEffect, useState, useContext, createContext} from "react";
 import style from "../css/App.module.css";
 import {Radio_Thead} from "/src/TableHead";
-import Modal from "react-modal";
 import RadioModal from "./RadioModal";
 import {AdminContext} from "../App";
 import Swal from "sweetalert2";
 import {Paginacao} from "./Pagination";
 import TableBar from "./TableBar";
+import {getDatabase, get, set, ref, push, remove} from "firebase/database";
+import {app, db} from "../database/firebase";
 
 export const RadioContext = createContext();
 
@@ -27,31 +28,30 @@ export default function Radios() {
   const [wireless, setWireless] = useState("");
   const [status, setStatus] = useState("");
   const [pagina, setPagina] = useState("");
-
+  const [queryRADIO, setQueryRADIO] = useState("");
   const [RadiosOutdoor, setRadiosOutdoor] = useState([]);
 
-  const {admin, HideRADIO, setHideRADIO, updatedProduct, setUpdatedProduct, urlJsonServer} = useContext(AdminContext);
-  const [queryRADIO, setQueryRADIO] = useState("");
+  const {admin, HideRADIO, setHideRADIO, updatedProduct, setUpdatedProduct, modalIsOpen, setIsOpen, openModal, closeModal} =
+    useContext(AdminContext);
+
   const handleHideRADIO = () => setHideRADIO(!HideRADIO);
   const handleSearchChangeRADIO = (e) => {
     setQueryRADIO(e.target.value);
   };
 
-  /* Configs Modal */
-  Modal.setAppElement("#root");
-  const [modalIsOpen, setIsOpen] = React.useState(false);
-  function openModal() {
-    setIsOpen(true);
-  }
-  function closeModal() {
-    setIsOpen(false);
-    setUpdatedProduct(false);
-  }
-
   /* Buscar Produto */
   const fetchProducts = async () => {
-    const response = await fetch(`${urlJsonServer}/radios`);
-    const data = await response.json();
+    const db = getDatabase(app);
+    const dbRef = ref(db, "radios");
+    const snapshot = await get(dbRef);
+    const data = [];
+    snapshot.forEach((childSnapshot) => {
+      const childData = childSnapshot.val();
+      data.push({
+        id: childSnapshot.key,
+        ...childData,
+      });
+    });
     setRadiosOutdoor(data);
   };
 
@@ -62,13 +62,10 @@ export default function Radios() {
   /* Adicionar Produto */
   const addProduto = async (e) => {
     e.preventDefault();
-    await fetch(`${urlJsonServer}/radios`, {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify(updatedProduct),
-    });
+
+    const dbRef = ref(db, "radios");
+    const newdbRef = push(dbRef);
+    await set(newdbRef, updatedProduct);
     Swal.fire({
       title: "Adicionado!",
       confirmButtonColor: "#006e39",
@@ -80,9 +77,8 @@ export default function Radios() {
 
   /* Deletar Produto */
   const deleteProduct = async (id) => {
-    await fetch(`${urlJsonServer}/radios/${id}`, {
-      method: "DELETE",
-    });
+    const db = getDatabase(app);
+    const dbRef = ref(db, `radios/${id}`);
     Swal.fire({
       title: "Você tem certeza?",
       icon: "warning",
@@ -92,7 +88,8 @@ export default function Radios() {
       confirmButtonText: "Sim, deletar",
     }).then((result) => {
       if (result.isConfirmed) {
-        Swal.fire("Rádio deletado!");
+        remove(dbRef);
+        Swal.fire("Access Point deletado!");
         fetchProducts();
       }
     });
@@ -105,13 +102,8 @@ export default function Radios() {
   };
   const updateProduct = async (e) => {
     e.preventDefault();
-    await fetch(`${urlJsonServer}/radios/${updatedProduct.id}`, {
-      method: "PUT",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify(updatedProduct),
-    });
+    const dbRef = ref(db, `radios/${updatedProduct.id}`);
+    await set(dbRef, updatedProduct);
     Swal.fire({
       title: "Atualizado!",
       confirmButtonColor: "#006e39",

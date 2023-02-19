@@ -10,34 +10,34 @@ function OnuModal() {
   return (
     <Modal isOpen={modalIsOpen} onRequestClose={closeModal} className={style.modal} overlayClassName={style.modal_overlay}>
       {updatedProduct.id ? <h1>Atualizar {updatedProduct.modelo}</h1> : <h1>Adicionar Onu/Ont</h1>}
-      <h4>Caso o produto não possua a função, preencha o campo com "x".</h4>
-      <h4>E caso a informação do produto não for encontrada, preencha o campo com "N/A".</h4>
+      <div className={style.formLegenda}>
+        <h4>Caso o produto não possua a função, preencha o campo com "-".</h4>
+        <h4>Se a informação do produto não houver sido encontrada, preencha o campo com "N/A".</h4>
+      </div>
+
       <form onSubmit={updatedProduct.id ? updateProduct : addProduto}>
         <div className={style.formContainer}>
           <label>Modelo</label>
           <input
             required
             type="text"
-            placeholder="Modelo do produto"
+            placeholder="WiFiber 121 AC"
             value={updatedProduct.modelo}
             onChange={(e) => setUpdatedProduct({...updatedProduct, modelo: e.target.value})}
           />
 
-          <label>Qtde RJ45</label>
+          <label>Status do suporte</label>
           <select
             type="text"
-            value={updatedProduct.qtdeportas}
-            onChange={(e) => setUpdatedProduct({...updatedProduct, qtdeportas: e.target.value})}>
+            value={updatedProduct.status}
+            onChange={(e) => setUpdatedProduct({...updatedProduct, status: e.target.value})}>
             {!updatedProduct.id && (
               <option selected disabled>
                 Escolha
               </option>
             )}
-            <option value="1 porta">1 porta</option>
-            <option value="2 porta">2 porta</option>
-            <option value="3 porta">3 porta</option>
-            <option value="4 porta">4 porta</option>
-            <option value="5 porta">5 porta</option>
+            <option value="Suporte">Suporte</option>
+            <option value="Phaseout">Phaseout</option>
             <option value="N/A">N/A</option>
           </select>
 
@@ -54,7 +54,7 @@ function OnuModal() {
             )}
             <option value="Giga">Giga</option>
             <option value="Fast">Fast</option>
-            <option value="Fast">Giga/Fast</option>
+            <option value="Giga/Fast">Giga/Fast</option>
             <option value="N/A">N/A</option>
           </select>
 
@@ -70,8 +70,27 @@ function OnuModal() {
               </option>
             )}
             <option value="1 porta">1 porta</option>
-            <option value="2 porta">2 porta</option>
-            <option value="3 porta">3 porta</option>
+            <option value="2 portas">2 portas</option>
+            <option value="3 portas">3 portas</option>
+            <option value="-">Não Possui</option>
+            <option value="N/A">N/A</option>
+          </select>
+
+          <label>Qtde RJ45</label>
+          <select
+            type="text"
+            value={updatedProduct.qtdeportas}
+            onChange={(e) => setUpdatedProduct({...updatedProduct, qtdeportas: e.target.value})}>
+            {!updatedProduct.id && (
+              <option selected disabled>
+                Escolha
+              </option>
+            )}
+            <option value="1 porta">1 porta</option>
+            <option value="2 portas">2 portas</option>
+            <option value="3 portas">3 portas</option>
+            <option value="4 portas">4 portas</option>
+            <option value="5 portas">5 portas</option>
             <option value="N/A">N/A</option>
           </select>
 
@@ -91,53 +110,55 @@ function OnuModal() {
             <option value="N/A">N/A</option>
           </select>
 
-          <label>Datarate Máx. 2G</label>
-          <select
+          <label>Sensibilidade de sinal</label>
+          <input
             type="text"
-            value={updatedProduct.transmissao2ghz}
-            onChange={(e) => setUpdatedProduct({...updatedProduct, transmissao2ghz: e.target.value})}>
-            {!updatedProduct.id && (
-              <option selected disabled>
-                Escolha
-              </option>
-            )}
-            <option value="300 Mbps">300 Mbps</option>
-            <option value="570 Mbps">570 Mbps</option>
-            <option value="N/A">N/A</option>
-          </select>
-
-          <label>Datarate Máx. 5G</label>
-          <select
-            type="text"
-            value={updatedProduct.transmissao5ghz}
-            onChange={(e) => setUpdatedProduct({...updatedProduct, transmissao5ghz: e.target.value})}>
-            {!updatedProduct.id && (
-              <option selected disabled>
-                Escolha
-              </option>
-            )}
-            <option value="867 Mbps">867 Mbps</option>
-            <option value="1200 Mbps">1200 Mbps</option>
-            <option value="N/A">N/A</option>
-          </select>
+            placeholder="-7 dBm | -27 dBm"
+            value={updatedProduct.sensibilidade}
+            onChange={(e) => setUpdatedProduct({...updatedProduct, sensibilidade: e.target.value})}
+          />
 
           <label>Área de cobertura</label>
           <input
             type="text"
-            placeholder="Área de cobertura"
+            placeholder="120 m²"
             value={updatedProduct.cobertura}
             onChange={(e) => setUpdatedProduct({...updatedProduct, cobertura: e.target.value})}
           />
 
+          <label>Usuários simultâneos</label>
+          <input
+            type="text"
+            placeholder="64 usuários"
+            value={updatedProduct.clientesSimultaneos}
+            onChange={(e) => setUpdatedProduct({...updatedProduct, clientesSimultaneos: e.target.value})}
+          />
+
+          <label>Datarate Máx. 2G</label>
+          <input
+            type="text"
+            placeholder="300 Mbps"
+            value={updatedProduct.transmissao2ghz}
+            onChange={(e) => setUpdatedProduct({...updatedProduct, transmissao2ghz: e.target.value})}
+          />
+
+          <label>Datarate Máx. 5G</label>
+          <input
+            type="text"
+            placeholder="867 Mbps"
+            value={updatedProduct.transmissao5ghz}
+            onChange={(e) => setUpdatedProduct({...updatedProduct, transmissao5ghz: e.target.value})}
+          />
+
           <label>Qtde SSIDs</label>
           <input
-            type="number"
-            placeholder="Qtde SSIDs"
+            type="text"
+            placeholder="8 SSIDs"
             value={updatedProduct.ssid}
             onChange={(e) => setUpdatedProduct({...updatedProduct, ssid: e.target.value})}
           />
 
-          <label>TR069</label>
+          <label>Compatível com TR069</label>
           <select type="text" value={updatedProduct.tr069} onChange={(e) => setUpdatedProduct({...updatedProduct, tr069: e.target.value})}>
             {!updatedProduct.id && (
               <option selected disabled>
@@ -145,11 +166,11 @@ function OnuModal() {
               </option>
             )}
             <option value="Sim">Sim</option>
-            <option value="x">Não</option>
+            <option value="-">Não</option>
             <option value="N/A">N/A</option>
           </select>
 
-          <label>Customize</label>
+          <label>Compatível com Customize</label>
           <select
             type="text"
             value={updatedProduct.customize}
@@ -160,11 +181,11 @@ function OnuModal() {
               </option>
             )}
             <option value="Sim">Sim</option>
-            <option value="x">Não</option>
+            <option value="-">Não</option>
             <option value="N/A">N/A</option>
           </select>
 
-          <label>Remotize</label>
+          <label>Compatível com Remotize</label>
           <select
             type="text"
             value={updatedProduct.remotize}
@@ -175,33 +196,9 @@ function OnuModal() {
               </option>
             )}
             <option value="Sim">Sim</option>
-            <option value="x">Não</option>
+            <option value="-">Não</option>
             <option value="N/A">N/A</option>
           </select>
-
-          <label>Qtde Antenas</label>
-          <input
-            type="text"
-            placeholder="Qtde Antenas"
-            value={updatedProduct.antenas}
-            onChange={(e) => setUpdatedProduct({...updatedProduct, antenas: e.target.value})}
-          />
-
-          <label>Usuários simultâneos</label>
-          <input
-            type="text"
-            placeholder="Usuários simultâneos"
-            value={updatedProduct.clientesSimultaneos}
-            onChange={(e) => setUpdatedProduct({...updatedProduct, clientesSimultaneos: e.target.value})}
-          />
-
-          <label>Sensibilidade de sinal</label>
-          <input
-            type="text"
-            placeholder="Sensibilidade de sinal"
-            value={updatedProduct.sensibilidade}
-            onChange={(e) => setUpdatedProduct({...updatedProduct, sensibilidade: e.target.value})}
-          />
 
           <label>Tempo da Garantia</label>
           <select
@@ -221,56 +218,17 @@ function OnuModal() {
             <option value="N/A">N/A</option>
           </select>
 
-          <label>Status do suporte</label>
-          <select
-            type="text"
-            value={updatedProduct.status}
-            onChange={(e) => setUpdatedProduct({...updatedProduct, status: e.target.value})}>
-            {!updatedProduct.id && (
-              <option selected disabled>
-                Escolha
-              </option>
-            )}
-            <option value="Suporte">Suporte</option>
-            <option value="Phaseout">Phaseout</option>
-            <option value="N/A">N/A</option>
-          </select>
-
-          <label>Link da Página</label>
+          <label>URL da Página</label>
           <input
             type="text"
-            placeholder="Link da Página"
+            placeholder="https://www.intelbras.com/pt-br/modem-optico-pon-lan-2p-fxs-1p-wi-fi-ac-wifiber-121-ac"
             value={updatedProduct.pagina}
             onChange={(e) => setUpdatedProduct({...updatedProduct, pagina: e.target.value})}
           />
 
-          <label>Link do Datasheet</label>
-          <input
-            type="text"
-            placeholder="Link do Datasheet"
-            value={updatedProduct.datasheet}
-            onChange={(e) => setUpdatedProduct({...updatedProduct, datasheet: e.target.value})}
-          />
-
-          <label>Link do Guia</label>
-          <input
-            type="text"
-            placeholder="Link do Guia"
-            value={updatedProduct.guia}
-            onChange={(e) => setUpdatedProduct({...updatedProduct, guia: e.target.value})}
-          />
-
-          <label>Link do Manual</label>
-          <input
-            type="text"
-            placeholder="Link do Manual"
-            value={updatedProduct.manual}
-            onChange={(e) => setUpdatedProduct({...updatedProduct, manual: e.target.value})}
-          />
-
           <div className={style.btnModalActions}>
             <button type="submit" className={style.btn_addUpd}>
-              {updatedProduct.id ? "Atualizar Onu/Ont" : "Adicionar Onu/Ont"}
+              {updatedProduct.id ? "Atualizar Equipamento" : "Adicionar Equipamento"}
             </button>
             <button className={style.btn_addUpdCancel} onClick={closeModal}>
               Cancelar

@@ -20,10 +20,25 @@ function ConversorModal() {
           <input
             required
             type="text"
-            placeholder="Modelo do produto"
+            placeholder="KGSD 1120 A/B"
             value={updatedProduct.modelo}
             onChange={(e) => setUpdatedProduct({...updatedProduct, modelo: e.target.value})}
           />
+
+          <label>Status do suporte</label>
+          <select
+            type="text"
+            value={updatedProduct.status}
+            onChange={(e) => setUpdatedProduct({...updatedProduct, status: e.target.value})}>
+            {!updatedProduct.id && (
+              <option selected disabled>
+                Escolha
+              </option>
+            )}
+            <option value="Suporte">Suporte</option>
+            <option value="Phaseout">Phaseout</option>
+            <option value="N/A">N/A</option>
+          </select>
 
           <label>Modulação</label>
           <select
@@ -63,14 +78,14 @@ function ConversorModal() {
               </option>
             )}
             <option value="Sim">Sim</option>
-            <option value="x">Não</option>
+            <option value="-">Não</option>
             <option value="N/A">N/A</option>
           </select>
 
           <label>Distância</label>
           <input
             type="text"
-            placeholder="Distância"
+            placeholder="20 Km"
             value={updatedProduct.distancia}
             onChange={(e) => setUpdatedProduct({...updatedProduct, distancia: e.target.value})}
           />
@@ -90,7 +105,7 @@ function ConversorModal() {
           <label>Potência de Sinal</label>
           <input
             type="text"
-            placeholder="Potência de Sinal"
+            placeholder="-3 dBm | -8 dBm"
             value={updatedProduct.potencia}
             onChange={(e) => setUpdatedProduct({...updatedProduct, potencia: e.target.value})}
           />
@@ -98,7 +113,7 @@ function ConversorModal() {
           <label>Sensibilidade de Sinal</label>
           <input
             type="text"
-            placeholder="Sensibilidade de Sinal"
+            placeholder="-3 dBm | -23 dBm"
             value={updatedProduct.sensibilidade}
             onChange={(e) => setUpdatedProduct({...updatedProduct, sensibilidade: e.target.value})}
           />
@@ -106,7 +121,7 @@ function ConversorModal() {
           <label>Comprimento Sinal RX</label>
           <input
             type="text"
-            placeholder="Comprimento Sinal RX"
+            placeholder="A - 1310 nm/ B – 1550 nm"
             value={updatedProduct.CompRX}
             onChange={(e) => setUpdatedProduct({...updatedProduct, CompRX: e.target.value})}
           />
@@ -114,60 +129,39 @@ function ConversorModal() {
           <label>Comprimento Sinal TX</label>
           <input
             type="text"
-            placeholder="Comprimento Sinal TX"
+            placeholder="A - 1550 nm / B - 1310 nm"
             value={updatedProduct.CompTX}
             onChange={(e) => setUpdatedProduct({...updatedProduct, CompTX: e.target.value})}
           />
 
-          <label>Status do suporte</label>
+          <label>Tempo da Garantia</label>
           <select
             type="text"
-            value={updatedProduct.status}
-            onChange={(e) => setUpdatedProduct({...updatedProduct, status: e.target.value})}>
+            value={updatedProduct.garantia}
+            onChange={(e) => setUpdatedProduct({...updatedProduct, garantia: e.target.value})}>
             {!updatedProduct.id && (
               <option selected disabled>
                 Escolha
               </option>
             )}
-            <option value="Suporte">Suporte</option>
-            <option value="Phaseout">Phaseout</option>
+            <option value="1 ano">1 ano</option>
+            <option value="2 anos">2 anos</option>
+            <option value="3 anos">3 anos</option>
+            <option value="4 anos">4 anos</option>
+            <option value="5 anos">5 anos</option>
             <option value="N/A">N/A</option>
           </select>
 
-          <label>Link da Página</label>
+          <label>URL da Página</label>
           <input
             type="text"
-            placeholder="Link da Página"
+            placeholder="https://www.intelbras.com/pt-br/conversor-de-midia-gigabit-ethernet-monomodo-20-km-kgsd-1120-b"
             value={updatedProduct.pagina}
             onChange={(e) => setUpdatedProduct({...updatedProduct, pagina: e.target.value})}
           />
-
-          <label>Link do Datasheet</label>
-          <input
-            type="text"
-            placeholder="Link do Datasheet"
-            value={updatedProduct.datasheet}
-            onChange={(e) => setUpdatedProduct({...updatedProduct, datasheet: e.target.value})}
-          />
-
-          <label>Link do Guia</label>
-          <input
-            type="text"
-            placeholder="Link do Guia"
-            value={updatedProduct.guia}
-            onChange={(e) => setUpdatedProduct({...updatedProduct, guia: e.target.value})}
-          />
-
-          <label>Link do Manual</label>
-          <input
-            type="text"
-            placeholder="Link do Manual"
-            value={updatedProduct.manual}
-            onChange={(e) => setUpdatedProduct({...updatedProduct, manual: e.target.value})}
-          />
           <div className={style.btnModalActions}>
             <button type="submit" className={style.btn_addUpd}>
-              {updatedProduct.id ? "Atualizar Conversor" : "Adicionar Conversor"}
+              {updatedProduct.id ? "Atualizar Equipamento" : "Adicionar Equipamento"}
             </button>
             <button className={style.btn_addUpdCancel} onClick={closeModal}>
               Cancelar

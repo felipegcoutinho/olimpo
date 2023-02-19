@@ -2,12 +2,14 @@ import React from "react";
 import {useEffect, useState, useContext, createContext} from "react";
 import style from "../css/App.module.css";
 import {Conversor_Thead} from "/src/TableHead";
-import Modal from "react-modal";
 import {AdminContext} from "../App";
 import Swal from "sweetalert2";
+import Modal from "react-modal";
 import ConversorModal from "./ConversorModal";
 import TableBar from "./TableBar";
 import {Paginacao} from "./Pagination";
+import {getDatabase, get, set, ref, push, remove} from "firebase/database";
+import {app, db} from "../database/firebase";
 
 export const ConversorContext = createContext();
 
@@ -25,25 +27,19 @@ export default function Ap() {
   const [status, setstatus] = useState("");
   const [garantia, setgarantia] = useState("");
   const [pagina, setpagina] = useState("");
-  const [datasheet, setdatasheet] = useState("");
-  const [guia, setguia] = useState("");
-  const [manual, setmanual] = useState("");
-
-  const [conversor, setConversor] = useState([]);
-
-  const {admin, HideConversor, setHideConversor, updatedProduct, setUpdatedProduct, urlJsonServer} = useContext(AdminContext);
-  const handleHideConversor = () => setHideConversor(!HideConversor);
-
   const [queryCONVERSOR, setQueryCONVERSOR] = React.useState("");
+  const [conversor, setConversor] = useState([]);
+  const [modalIsOpen, setIsOpen] = useState(false);
 
+  const {admin, HideConversor, setHideConversor, updatedProduct, setUpdatedProduct} = useContext(AdminContext);
+
+  const handleHideConversor = () => setHideConversor(!HideConversor);
   const handleSearchChangeCONVERSOR = (e) => {
     setQueryCONVERSOR(e.target.value);
   };
 
   /* Configs Modal */
   Modal.setAppElement("#root");
-  const [modalIsOpen, setIsOpen] = React.useState(false);
-
   function openModal() {
     setIsOpen(true);
   }
@@ -55,8 +51,17 @@ export default function Ap() {
 
   /* Buscar Produto */
   const fetchProducts = async () => {
-    const response = await fetch(`${urlJsonServer}/conversores`);
-    const data = await response.json();
+    const db = getDatabase(app);
+    const dbRef = ref(db, "conversores");
+    const snapshot = await get(dbRef);
+    const data = [];
+    snapshot.forEach((childSnapshot) => {
+      const childData = childSnapshot.val();
+      data.push({
+        id: childSnapshot.key,
+        ...childData,
+      });
+    });
     setConversor(data);
   };
 
@@ -67,13 +72,9 @@ export default function Ap() {
   /* Adicionar Produto */
   const addProduto = async (e) => {
     e.preventDefault();
-    await fetch(`${urlJsonServer}/conversores`, {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify(updatedProduct),
-    });
+    const dbRef = ref(db, "conversores");
+    const newdbRef = push(dbRef);
+    await set(newdbRef, updatedProduct);
     Swal.fire({
       title: "Adicionado!",
       confirmButtonColor: "#006e39",
@@ -85,9 +86,8 @@ export default function Ap() {
 
   /* Deletar Produto */
   const deleteProduct = async (id) => {
-    await fetch(`${urlJsonServer}/conversores/${id}`, {
-      method: "DELETE",
-    });
+    const db = getDatabase(app);
+    const dbRef = ref(db, `conversores/${id}`);
     Swal.fire({
       title: "Você tem certeza?",
       icon: "warning",
@@ -97,7 +97,8 @@ export default function Ap() {
       confirmButtonText: "Sim, deletar",
     }).then((result) => {
       if (result.isConfirmed) {
-        Swal.fire("Conversor deletado!");
+        remove(dbRef);
+        Swal.fire("Access Point deletado!");
         fetchProducts();
       }
     });
@@ -110,18 +111,12 @@ export default function Ap() {
   };
   const updateProduct = async (e) => {
     e.preventDefault();
-    await fetch(`${urlJsonServer}/conversores/${updatedProduct.id}`, {
-      method: "PUT",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify(updatedProduct),
-    });
+    const dbRef = ref(db, `conversores/${updatedProduct.id}`);
+    await set(dbRef, updatedProduct);
     Swal.fire({
       title: "Atualizado!",
       confirmButtonColor: "#006e39",
     });
-
     setUpdatedProduct({});
     fetchProducts();
     closeModal();
@@ -178,6 +173,8 @@ export default function Ap() {
                 <td>{conversor.fibra}</td>
                 <td>{conversor.potencia}</td>
                 <td>{conversor.sensibilidade}</td>
+                <td>{conversor.CompRX}</td>
+                <td>{conversor.CompTX}</td>
                 <td>{conversor.garantia}</td>
                 <td>
                   <a target="_blank" rel="noopener noreferrer" href={conversor.pagina}>

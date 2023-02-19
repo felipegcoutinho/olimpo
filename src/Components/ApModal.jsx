@@ -135,7 +135,7 @@ function AP_Modal() {
             onChange={(e) => setUpdatedProduct({...updatedProduct, connectiVersion: e.target.value})}
           />
 
-          <label>Possui Handover</label>
+          <label>Compatível com Handover</label>
           <select
             type="text"
             value={updatedProduct.handover}
@@ -150,7 +150,7 @@ function AP_Modal() {
             <option value="N/A">N/A</option>
           </select>
 
-          <label>Possui WiseFi</label>
+          <label>Compatível com WiseFi</label>
           <select
             type="text"
             value={updatedProduct.wisefi}
@@ -209,7 +209,7 @@ function AP_Modal() {
 
           <div className={style.btnModalActions}>
             <button type="submit" className={style.btn_addUpd}>
-              {updatedProduct.id ? "Atualizar Access Point" : "Adicionar Access Point"}
+              {updatedProduct.id ? "Atualizar Equipamento" : "Adicionar Equipamento"}
             </button>
             <button className={style.btn_addUpdCancel} onClick={closeModal}>
               Cancelar

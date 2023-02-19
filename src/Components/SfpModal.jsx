@@ -20,102 +20,9 @@ function SfpModal() {
           <input
             required
             type="text"
-            placeholder="Modelo do produto"
+            placeholder="KPSD 1120 E"
             value={updatedProduct.modelo}
             onChange={(e) => setUpdatedProduct({...updatedProduct, modelo: e.target.value})}
-          />
-
-          <label>Tipo do Conector</label>
-          <select
-            type="text"
-            value={updatedProduct.conector}
-            onChange={(e) => setUpdatedProduct({...updatedProduct, conector: e.target.value})}>
-            <option selected>Escolha</option>
-            <option value="SC/UPC (Duplo)">SC/UPC (Duplo)</option>
-            <option value="SC/UPC (Única)">SC/UPC (Única)</option>
-            <option value="N/A">N/A</option>
-          </select>
-
-          <label>Modulação</label>
-          <select
-            required
-            type="text"
-            value={updatedProduct.modulação}
-            onChange={(e) => setUpdatedProduct({...updatedProduct, modulação: e.target.value})}>
-            <option selected>Escolha</option>
-            <option value="Giga">Giga</option>
-            <option value="Fast">Fast</option>
-            <option value="N/A">N/A</option>
-          </select>
-
-          <label>WDM</label>
-          <select type="text" value={updatedProduct.wdm} onChange={(e) => setUpdatedProduct({...updatedProduct, wdm: e.target.value})}>
-            <option selected>Escolha</option>
-            <option value="Sim">Sim</option>
-            <option value="x">Não</option>
-            <option value="N/A">N/A</option>
-          </select>
-
-          <label>Tipo do Módulo</label>
-          <select
-            type="text"
-            value={updatedProduct.modulo}
-            onChange={(e) => setUpdatedProduct({...updatedProduct, modulo: e.target.value})}>
-            <option selected>Escolha</option>
-            <option value="SFP">SFP</option>
-            <option value="EPON">EPON</option>
-            <option value="GPON">GPON</option>
-            <option value="XFP">XFP</option>
-            <option value="SFP+">SFP+</option>
-            <option value="N/A">N/A</option>
-          </select>
-
-          <label>Distância</label>
-          <input
-            type="text"
-            placeholder="Distância"
-            value={updatedProduct.distancia}
-            onChange={(e) => setUpdatedProduct({...updatedProduct, distancia: e.target.value})}
-          />
-
-          <label>Tipo da Fibra</label>
-          <select type="text" value={updatedProduct.fibra} onChange={(e) => setUpdatedProduct({...updatedProduct, fibra: e.target.value})}>
-            <option selected>Escolha</option>
-            <option value="Monomodo">Monomodo</option>
-            <option value="Multimodo">Multimodo</option>
-            <option value="N/A">N/A</option>
-          </select>
-
-          <label>Potência de Sinal</label>
-          <input
-            type="text"
-            placeholder="Potência de Sinal"
-            value={updatedProduct.potencia}
-            onChange={(e) => setUpdatedProduct({...updatedProduct, potencia: e.target.value})}
-          />
-
-          <label>Sensibilidade de Sinal</label>
-          <input
-            type="text"
-            placeholder="Sensibilidade de Sinal"
-            value={updatedProduct.sensibilidade}
-            onChange={(e) => setUpdatedProduct({...updatedProduct, sensibilidade: e.target.value})}
-          />
-
-          <label>Comprimento Sinal RX</label>
-          <input
-            type="text"
-            placeholder="Comprimento Sinal RX"
-            value={updatedProduct.CompRX}
-            onChange={(e) => setUpdatedProduct({...updatedProduct, CompRX: e.target.value})}
-          />
-
-          <label>Comprimento Sinal TX</label>
-          <input
-            type="text"
-            placeholder="Comprimento Sinal TX"
-            value={updatedProduct.CompTX}
-            onChange={(e) => setUpdatedProduct({...updatedProduct, CompTX: e.target.value})}
           />
 
           <label>Status do suporte</label>
@@ -128,40 +35,148 @@ function SfpModal() {
             <option value="N/A">N/A</option>
           </select>
 
-          <label>Link da Página</label>
+          <label>Modulação</label>
+          <select
+            required
+            type="text"
+            value={updatedProduct.modulação}
+            onChange={(e) => setUpdatedProduct({...updatedProduct, modulação: e.target.value})}>
+            {!updatedProduct.id && (
+              <option selected disabled>
+                Escolha
+              </option>
+            )}
+            <option value="Giga">Giga</option>
+            <option value="Fast">Fast</option>
+            <option value="N/A">N/A</option>
+          </select>
+
+          <label>Tipo do Conector</label>
+          <select
+            type="text"
+            value={updatedProduct.conector}
+            onChange={(e) => setUpdatedProduct({...updatedProduct, conector: e.target.value})}>
+            {!updatedProduct.id && (
+              <option selected disabled>
+                Escolha
+              </option>
+            )}
+            <option value="SC/UPC (Duplo)">SC/UPC (Duplo)</option>
+            <option value="SC/UPC (Única)">SC/UPC (Única)</option>
+            <option value="N/A">N/A</option>
+          </select>
+
+          <label>Tipo do Módulo</label>
+          <select
+            type="text"
+            value={updatedProduct.modulo}
+            onChange={(e) => setUpdatedProduct({...updatedProduct, modulo: e.target.value})}>
+            {!updatedProduct.id && (
+              <option selected disabled>
+                Escolha
+              </option>
+            )}
+            <option value="SFP">SFP</option>
+            <option value="EPON">EPON</option>
+            <option value="GPON">GPON</option>
+            <option value="XFP">XFP</option>
+            <option value="SFP+">SFP+</option>
+            <option value="N/A">N/A</option>
+          </select>
+
+          <label>WDM</label>
+          <select type="text" value={updatedProduct.wdm} onChange={(e) => setUpdatedProduct({...updatedProduct, wdm: e.target.value})}>
+            {!updatedProduct.id && (
+              <option selected disabled>
+                Escolha
+              </option>
+            )}
+            <option value="Sim">Sim</option>
+            <option value="-">Não</option>
+            <option value="N/A">N/A</option>
+          </select>
+
+          <label>Distância</label>
           <input
             type="text"
-            placeholder="Link da Página"
+            placeholder="20 Km"
+            value={updatedProduct.distancia}
+            onChange={(e) => setUpdatedProduct({...updatedProduct, distancia: e.target.value})}
+          />
+
+          <label>Tipo da Fibra</label>
+          <select type="text" value={updatedProduct.fibra} onChange={(e) => setUpdatedProduct({...updatedProduct, fibra: e.target.value})}>
+            {!updatedProduct.id && (
+              <option selected disabled>
+                Escolha
+              </option>
+            )}
+            <option value="Monomodo">Monomodo</option>
+            <option value="Multimodo">Multimodo</option>
+            <option value="N/A">N/A</option>
+          </select>
+
+          <label>Potência de Sinal</label>
+          <input
+            type="text"
+            placeholder="2,5 dBm | 7 dBm"
+            value={updatedProduct.potencia}
+            onChange={(e) => setUpdatedProduct({...updatedProduct, potencia: e.target.value})}
+          />
+
+          <label>Sensibilidade de Sinal</label>
+          <input
+            type="text"
+            placeholder="-8 dBm | -30 dbm"
+            value={updatedProduct.sensibilidade}
+            onChange={(e) => setUpdatedProduct({...updatedProduct, sensibilidade: e.target.value})}
+          />
+
+          <label>Comprimento Sinal RX</label>
+          <input
+            type="text"
+            placeholder="1310 nm"
+            value={updatedProduct.CompRX}
+            onChange={(e) => setUpdatedProduct({...updatedProduct, CompRX: e.target.value})}
+          />
+
+          <label>Comprimento Sinal TX</label>
+          <input
+            type="text"
+            placeholder="1490 nm"
+            value={updatedProduct.CompTX}
+            onChange={(e) => setUpdatedProduct({...updatedProduct, CompTX: e.target.value})}
+          />
+
+          <label>Tempo da Garantia</label>
+          <select
+            type="text"
+            value={updatedProduct.garantia}
+            onChange={(e) => setUpdatedProduct({...updatedProduct, garantia: e.target.value})}>
+            {!updatedProduct.id && (
+              <option selected disabled>
+                Escolha
+              </option>
+            )}
+            <option value="1 ano">1 ano</option>
+            <option value="2 anos">2 anos</option>
+            <option value="3 anos">3 anos</option>
+            <option value="4 anos">4 anos</option>
+            <option value="5 anos">5 anos</option>
+            <option value="N/A">N/A</option>
+          </select>
+
+          <label>URL da Página</label>
+          <input
+            type="text"
+            placeholder="https://www.intelbras.com/pt-br/modulo-sfp-epon-kpsd-1120-e"
             value={updatedProduct.pagina}
             onChange={(e) => setUpdatedProduct({...updatedProduct, pagina: e.target.value})}
           />
 
-          <label>Link do Datasheet</label>
-          <input
-            type="text"
-            placeholder="Link do Datasheet"
-            value={updatedProduct.datasheet}
-            onChange={(e) => setUpdatedProduct({...updatedProduct, datasheet: e.target.value})}
-          />
-
-          <label>Link do Guia</label>
-          <input
-            type="text"
-            placeholder="Link do Guia"
-            value={updatedProduct.guia}
-            onChange={(e) => setUpdatedProduct({...updatedProduct, guia: e.target.value})}
-          />
-
-          <label>Link do Manual</label>
-          <input
-            type="text"
-            placeholder="Link do Manual"
-            value={updatedProduct.manual}
-            onChange={(e) => setUpdatedProduct({...updatedProduct, manual: e.target.value})}
-          />
           <div className={style.btnModalActions}>
             <button type="submit" className={style.btn_addUpd}>
-              {updatedProduct.id ? "Atualizar Conversor" : "Adicionar Conversor"}
+              {updatedProduct.id ? "Atualizar Equipamento" : "Adicionar Equipamento"}
             </button>
             <button className={style.btn_addUpdCancel} onClick={closeModal}>
               Cancelar

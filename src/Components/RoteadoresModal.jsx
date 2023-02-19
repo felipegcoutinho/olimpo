@@ -20,10 +20,26 @@ function RoteadoresModal() {
           <input
             required
             type="text"
-            placeholder="Modelo do produto"
+            placeholder="TWIBI GIGA+"
             value={updatedProduct.modelo}
             onChange={(e) => setUpdatedProduct({...updatedProduct, modelo: e.target.value})}
           />
+
+          <label>Status do suporte</label>
+          <select
+            required
+            type="text"
+            value={updatedProduct.status}
+            onChange={(e) => setUpdatedProduct({...updatedProduct, status: e.target.value})}>
+            {!updatedProduct.id && (
+              <option selected disabled>
+                Escolha
+              </option>
+            )}
+            <option value="Suporte">Suporte</option>
+            <option value="Phaseout">Phaseout</option>
+            <option value="N/A">N/A</option>
+          </select>
 
           <label>Modulação</label>
           <select
@@ -44,7 +60,7 @@ function RoteadoresModal() {
           <label>Área de cobertura (Em m²)</label>
           <input
             type="text"
-            placeholder="Área de cobertura"
+            placeholder="180 m²"
             value={updatedProduct.cobertura}
             onChange={(e) => setUpdatedProduct({...updatedProduct, cobertura: e.target.value})}
           />
@@ -52,15 +68,15 @@ function RoteadoresModal() {
           <label>Raio (Em m)</label>
           <input
             type="text"
-            placeholder="Raio"
+            placeholder="7,56 m"
             value={updatedProduct.raio}
             onChange={(e) => setUpdatedProduct({...updatedProduct, raio: e.target.value})}
           />
 
-          <label>Usuários simultâneos</label>
+          <label>Usuários Máximos</label>
           <input
             type="text"
-            placeholder="Usuários simultâneos"
+            placeholder="60 usuários"
             value={updatedProduct.usuarioMax}
             onChange={(e) => setUpdatedProduct({...updatedProduct, usuarioMax: e.target.value})}
           />
@@ -68,7 +84,7 @@ function RoteadoresModal() {
           <label>Plano recomendado</label>
           <input
             type="text"
-            placeholder="Plano recomendado"
+            placeholder="Até 400Mbps"
             value={updatedProduct.planoRecomendado}
             onChange={(e) => setUpdatedProduct({...updatedProduct, planoRecomendado: e.target.value})}
           />
@@ -76,7 +92,7 @@ function RoteadoresModal() {
           <label>Qtde Portas</label>
           <input
             type="text"
-            placeholder="Qtde Portas"
+            placeholder="1(LAN) + 1(W / L)"
             value={updatedProduct.qtdePortas}
             onChange={(e) => setUpdatedProduct({...updatedProduct, qtdePortas: e.target.value})}
           />
@@ -84,7 +100,7 @@ function RoteadoresModal() {
           <label>Datarate Máx. 2G</label>
           <input
             type="text"
-            placeholder="Datarate Máx. 2G"
+            placeholder="300 Mbps"
             value={updatedProduct.datarateMax2G}
             onChange={(e) => setUpdatedProduct({...updatedProduct, datarateMax2G: e.target.value})}
           />
@@ -92,7 +108,7 @@ function RoteadoresModal() {
           <label>Datarate Máx. 5G</label>
           <input
             type="text"
-            placeholder="Datarate Máx. 5G"
+            placeholder="867 Mbps"
             value={updatedProduct.datarateMax5G}
             onChange={(e) => setUpdatedProduct({...updatedProduct, datarateMax5G: e.target.value})}
           />
@@ -109,56 +125,12 @@ function RoteadoresModal() {
             <option value="N/A">N/A</option>
           </select>
 
-          <label>WPS</label>
-          <select type="text" value={updatedProduct.wps} onChange={(e) => setUpdatedProduct({...updatedProduct, wps: e.target.value})}>
-            {!updatedProduct.id && (
-              <option selected disabled>
-                Escolha
-              </option>
-            )}
-            <option value="Sim">Sim</option>
-            <option value="-">Não</option>
-            <option value="N/A">N/A</option>
-          </select>
-
-          <label>Qtde de Antenas</label>
-          <input
-            type="text"
-            placeholder="Qtde de Antenas"
-            value={updatedProduct.antenas}
-            onChange={(e) => setUpdatedProduct({...updatedProduct, antenas: e.target.value})}
-          />
-
-          <label>Ganho de Antena (2.4ghz | 5ghz)</label>
-          <input
-            type="text"
-            placeholder="Ganho de Antena"
-            value={updatedProduct.ganho}
-            onChange={(e) => setUpdatedProduct({...updatedProduct, ganho: e.target.value})}
-          />
-
-          <label>Potência Máx.</label>
-          <input
-            type="text"
-            placeholder="Potência Máx."
-            value={updatedProduct.potenciaMax}
-            onChange={(e) => setUpdatedProduct({...updatedProduct, potenciaMax: e.target.value})}
-          />
-
           <label>Tensão</label>
           <input
             type="text"
-            placeholder="Tensão"
+            placeholder="12V (1A)"
             value={updatedProduct.tensao}
             onChange={(e) => setUpdatedProduct({...updatedProduct, tensao: e.target.value})}
-          />
-
-          <label>Consumo</label>
-          <input
-            type="text"
-            placeholder="Consumo"
-            value={updatedProduct.consumo}
-            onChange={(e) => setUpdatedProduct({...updatedProduct, consumo: e.target.value})}
           />
 
           <label>Modo Repetidor</label>
@@ -212,7 +184,7 @@ function RoteadoresModal() {
               <option selected disabled>
                 Escolha
               </option>
-            )}{" "}
+            )}
             <option value="Sim">Sim</option>
             <option value="-">Não</option>
             <option value="N/A">N/A</option>
@@ -227,7 +199,7 @@ function RoteadoresModal() {
               <option selected disabled>
                 Escolha
               </option>
-            )}{" "}
+            )}
             <option value="1 ano">1 ano</option>
             <option value="2 anos">2 anos</option>
             <option value="3 anos">3 anos</option>
@@ -236,41 +208,17 @@ function RoteadoresModal() {
             <option value="N/A">N/A</option>
           </select>
 
-          <label>Link da Página</label>
+          <label>URL da Página</label>
           <input
             type="text"
-            placeholder="Link da Página"
+            placeholder="https://www.intelbras.com/pt-br/roteador-wi-fi-5-mesh-ac-1200-twibi-giga"
             value={updatedProduct.pagina}
             onChange={(e) => setUpdatedProduct({...updatedProduct, pagina: e.target.value})}
           />
 
-          <label>Link do Datasheet</label>
-          <input
-            type="text"
-            placeholder="Link do Datasheet"
-            value={updatedProduct.datasheet}
-            onChange={(e) => setUpdatedProduct({...updatedProduct, datasheet: e.target.value})}
-          />
-
-          <label>Link do Guia</label>
-          <input
-            type="text"
-            placeholder="Link do Guia"
-            value={updatedProduct.guia}
-            onChange={(e) => setUpdatedProduct({...updatedProduct, guia: e.target.value})}
-          />
-
-          <label>Link do Manual</label>
-          <input
-            type="text"
-            placeholder="Link do Manual"
-            value={updatedProduct.manual}
-            onChange={(e) => setUpdatedProduct({...updatedProduct, manual: e.target.value})}
-          />
-
           <div className={style.btnModalActions}>
             <button type="submit" className={style.btn_addUpd}>
-              {updatedProduct.id ? "Atualizar Access Point" : "Adicionar Access Point"}
+              {updatedProduct.id ? "Atualizar Equipamento" : "Adicionar Equipamento"}
             </button>
             <button className={style.btn_addUpdCancel} onClick={closeModal}>
               Cancelar

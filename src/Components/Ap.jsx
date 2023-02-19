@@ -8,6 +8,8 @@ import Swal from "sweetalert2";
 import Modal from "react-modal";
 import {Paginacao} from "./Pagination";
 import TableBar from "./TableBar";
+import {getDatabase, get, set, ref, push, remove} from "firebase/database";
+import {app, db} from "../database/firebase";
 
 export const APContext = createContext();
 
@@ -30,11 +32,11 @@ export default function Ap() {
   const [wisefi, setWisefi] = useState("");
   const [handover, setHandover] = useState("");
   const [pagina, setPagina] = useState("");
-
+  const [queryAP, setQueryAP] = useState("");
   const [accessPoint, setAccessPoint] = useState([]);
+  const [modalIsOpen, setIsOpen] = useState(false);
 
-  const {admin, HideAP, setHideAP, updatedProduct, setUpdatedProduct, urlJsonServer} = useContext(AdminContext);
-  const [queryAP, setQueryAP] = React.useState("");
+  const {admin, HideAP, setHideAP, updatedProduct, setUpdatedProduct} = useContext(AdminContext);
 
   const handleHideAP = () => setHideAP(!HideAP);
   const handleSearchChangeAP = (e) => {
@@ -43,8 +45,6 @@ export default function Ap() {
 
   /* Configs Modal */
   Modal.setAppElement("#root");
-  const [modalIsOpen, setIsOpen] = React.useState(false);
-
   function openModal() {
     setIsOpen(true);
   }
@@ -56,8 +56,17 @@ export default function Ap() {
 
   /* Buscar Produto */
   const fetchProducts = async () => {
-    const response = await fetch(`${urlJsonServer}/aps`);
-    const data = await response.json();
+    const db = getDatabase(app);
+    const apRef = ref(db, "aps");
+    const snapshot = await get(apRef);
+    const data = [];
+    snapshot.forEach((childSnapshot) => {
+      const childData = childSnapshot.val();
+      data.push({
+        id: childSnapshot.key,
+        ...childData,
+      });
+    });
     setAccessPoint(data);
   };
 
@@ -68,13 +77,9 @@ export default function Ap() {
   /* Adicionar Produto */
   const addProduto = async (e) => {
     e.preventDefault();
-    await fetch(`${urlJsonServer}/aps`, {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify(updatedProduct),
-    });
+    const apRef = ref(db, "aps");
+    const newAPRef = push(apRef);
+    await set(newAPRef, updatedProduct);
     Swal.fire({
       title: "Adicionado!",
       confirmButtonColor: "#006e39",
@@ -86,9 +91,8 @@ export default function Ap() {
 
   /* Deletar Produto */
   const deleteProduct = async (id) => {
-    await fetch(`${urlJsonServer}/aps/${id}`, {
-      method: "DELETE",
-    });
+    const db = getDatabase(app);
+    const apRef = ref(db, `aps/${id}`);
     Swal.fire({
       title: "Você tem certeza?",
       icon: "warning",
@@ -98,6 +102,7 @@ export default function Ap() {
       confirmButtonText: "Sim, deletar",
     }).then((result) => {
       if (result.isConfirmed) {
+        remove(apRef);
         Swal.fire("Access Point deletado!");
         fetchProducts();
       }
@@ -111,18 +116,12 @@ export default function Ap() {
   };
   const updateProduct = async (e) => {
     e.preventDefault();
-    await fetch(`${urlJsonServer}/aps/${updatedProduct.id}`, {
-      method: "PUT",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify(updatedProduct),
-    });
+    const apRef = ref(db, `aps/${updatedProduct.id}`);
+    await set(apRef, updatedProduct);
     Swal.fire({
       title: "Atualizado!",
       confirmButtonColor: "#006e39",
     });
-
     setUpdatedProduct({});
     fetchProducts();
     closeModal();

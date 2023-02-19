@@ -2,12 +2,14 @@ import React from "react";
 import {useEffect, useState, useContext, createContext} from "react";
 import style from "../css/App.module.css";
 import {Switch_Thead} from "/src/TableHead";
-import Modal from "react-modal";
 import {AdminContext} from "../App";
 import Swal from "sweetalert2";
+import Modal from "react-modal";
 import SwModal from "./SwModal";
 import {Paginacao} from "./Pagination";
 import TableBar from "./TableBar";
+import {getDatabase, get, set, ref, push, remove} from "firebase/database";
+import {app, db} from "../database/firebase";
 
 export const SwContext = createContext();
 
@@ -19,7 +21,6 @@ export default function Ap() {
   const [sfp, Setsfp] = useState("");
   const [pps, SetPps] = useState("");
   const [backplane, Setbackplane] = useState("");
-  const [pdAlive, SetpdAlive] = useState("");
   const [qos, SetqosSet] = useState("");
   const [poe, Setpoe] = useState("");
   const [poeExtender, SetpoeExtender] = useState("");
@@ -28,26 +29,23 @@ export default function Ap() {
   const [status, Setstatus] = useState("");
   const [garantia, Setgarantia] = useState("");
   const [pagina, Setpagina] = useState("");
-  const [datasheet, Setdatasheet] = useState("");
-  const [guia, Setguia] = useState("");
-  const [manual, Setmanual] = useState("");
-
-  const [switches, setSwitches] = useState([]);
-
-  const {admin, HideSwitch, setHideSwitch, updatedProduct, setUpdatedProduct, urlJsonServer} = useContext(AdminContext);
   const [querySWITCH, setQuerySWITCH] = React.useState("");
-  const handleHideSwitch = () => setHideSwitch(!HideSwitch);
+  const [switches, setSwitches] = useState([]);
+  const [modalIsOpen, setIsOpen] = useState(false);
 
+  const {admin, HideSwitch, setHideSwitch, updatedProduct, setUpdatedProduct} = useContext(AdminContext);
+
+  const handleHideSwitch = () => setHideSwitch(!HideSwitch);
   const handleSearchChangeSWITCH = (e) => {
     setQuerySWITCH(e.target.value);
   };
 
   /* Configs Modal */
   Modal.setAppElement("#root");
-  const [modalIsOpen, setIsOpen] = React.useState(false);
   function openModal() {
     setIsOpen(true);
   }
+
   function closeModal() {
     setIsOpen(false);
     setUpdatedProduct(false);
@@ -55,8 +53,17 @@ export default function Ap() {
 
   /* Buscar Produto */
   const fetchProducts = async () => {
-    const response = await fetch(`${urlJsonServer}/switches`);
-    const data = await response.json();
+    const db = getDatabase(app);
+    const dbRef = ref(db, "switches");
+    const snapshot = await get(dbRef);
+    const data = [];
+    snapshot.forEach((childSnapshot) => {
+      const childData = childSnapshot.val();
+      data.push({
+        id: childSnapshot.key,
+        ...childData,
+      });
+    });
     setSwitches(data);
   };
 
@@ -67,13 +74,9 @@ export default function Ap() {
   /* Adicionar Produto */
   const addProduto = async (e) => {
     e.preventDefault();
-    await fetch(`${urlJsonServer}/switches`, {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify(updatedProduct),
-    });
+    const dbRef = ref(db, "switches");
+    const newdbRef = push(dbRef);
+    await set(newdbRef, updatedProduct);
     Swal.fire({
       title: "Adicionado!",
       confirmButtonColor: "#006e39",
@@ -85,9 +88,8 @@ export default function Ap() {
 
   /* Deletar Produto */
   const deleteProduct = async (id) => {
-    await fetch(`${urlJsonServer}/switches/${id}`, {
-      method: "DELETE",
-    });
+    const db = getDatabase(app);
+    const dbRef = ref(db, `switches/${id}`);
     Swal.fire({
       title: "Você tem certeza?",
       icon: "warning",
@@ -97,7 +99,8 @@ export default function Ap() {
       confirmButtonText: "Sim, deletar",
     }).then((result) => {
       if (result.isConfirmed) {
-        Swal.fire("Switch deletado!");
+        remove(dbRef);
+        Swal.fire("Access Point deletado!");
         fetchProducts();
       }
     });
@@ -110,18 +113,12 @@ export default function Ap() {
   };
   const updateProduct = async (e) => {
     e.preventDefault();
-    await fetch(`${urlJsonServer}/switches/${updatedProduct.id}`, {
-      method: "PUT",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify(updatedProduct),
-    });
+    const dbRef = ref(db, `switches/${updatedProduct.id}`);
+    await set(dbRef, updatedProduct);
     Swal.fire({
       title: "Atualizado!",
       confirmButtonColor: "#006e39",
     });
-
     setUpdatedProduct({});
     fetchProducts();
     closeModal();

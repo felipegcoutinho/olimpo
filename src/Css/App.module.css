@@ -647,7 +647,8 @@ td:first-child {
   text-align: left;
 }
 
-th:first-child {
+th:first-child,
+td:first-child {
   left: 0;
   position: sticky;
 }

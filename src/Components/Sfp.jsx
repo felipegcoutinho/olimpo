@@ -2,12 +2,14 @@ import React from "react";
 import {useEffect, useState, useContext, createContext} from "react";
 import style from "../css/App.module.css";
 import {Sfp_Thead} from "/src/TableHead";
-import Modal from "react-modal";
 import {AdminContext} from "../App";
 import Swal from "sweetalert2";
+import Modal from "react-modal";
 import SfpModal from "./SfpModal";
 import TableBar from "./TableBar";
 import {Paginacao} from "./Pagination";
+import {getDatabase, get, set, ref, push, remove} from "firebase/database";
+import {app, db} from "../database/firebase";
 
 export const SfpContext = createContext();
 
@@ -26,25 +28,23 @@ export default function Ap() {
   const [status, setstatus] = useState("");
   const [garantia, setgarantia] = useState("");
   const [pagina, setpagina] = useState("");
-  const [datasheet, setdatasheet] = useState("");
-  const [guia, setguia] = useState("");
-  const [sfp, setSfp] = useState([]);
-
-  const {admin, HideSFP, setHideSFP, updatedProduct, setUpdatedProduct, urlJsonServer} = useContext(AdminContext);
-
   const [querySfp, setQuerySfp] = React.useState("");
+  const [sfp, setSfp] = useState([]);
+  const [modalIsOpen, setIsOpen] = useState(false);
+
+  const {admin, HideSFP, setHideSFP, updatedProduct, setUpdatedProduct} = useContext(AdminContext);
+
+  const handleHideSFP = () => setHideSFP(!HideSFP);
   const handleSearchChangeSfp = (e) => {
     setQuerySfp(e.target.value);
   };
 
-  const handleHideSFP = () => setHideSFP(!HideSFP);
-
   /* Configs Modal */
   Modal.setAppElement("#root");
-  const [modalIsOpen, setIsOpen] = React.useState(false);
   function openModal() {
     setIsOpen(true);
   }
+
   function closeModal() {
     setIsOpen(false);
     setUpdatedProduct(false);
@@ -52,8 +52,17 @@ export default function Ap() {
 
   /* Buscar Produto */
   const fetchProducts = async () => {
-    const response = await fetch(`${urlJsonServer}/sfp`);
-    const data = await response.json();
+    const db = getDatabase(app);
+    const dbRef = ref(db, "sfp");
+    const snapshot = await get(dbRef);
+    const data = [];
+    snapshot.forEach((childSnapshot) => {
+      const childData = childSnapshot.val();
+      data.push({
+        id: childSnapshot.key,
+        ...childData,
+      });
+    });
     setSfp(data);
   };
 
@@ -64,13 +73,9 @@ export default function Ap() {
   /* Adicionar Produto */
   const addProduto = async (e) => {
     e.preventDefault();
-    await fetch(`${urlJsonServer}/sfp`, {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify(updatedProduct),
-    });
+    const dbRef = ref(db, "sfp");
+    const newdbRef = push(dbRef);
+    await set(newdbRef, updatedProduct);
     Swal.fire({
       title: "Adicionado!",
       confirmButtonColor: "#006e39",
@@ -82,9 +87,8 @@ export default function Ap() {
 
   /* Deletar Produto */
   const deleteProduct = async (id) => {
-    await fetch(`${urlJsonServer}/sfp/${id}`, {
-      method: "DELETE",
-    });
+    const db = getDatabase(app);
+    const dbRef = ref(db, `sfp/${id}`);
     Swal.fire({
       title: "Você tem certeza?",
       icon: "warning",
@@ -94,7 +98,8 @@ export default function Ap() {
       confirmButtonText: "Sim, deletar",
     }).then((result) => {
       if (result.isConfirmed) {
-        Swal.fire("Módulo SFP deletado!");
+        remove(dbRef);
+        Swal.fire("Access Point deletado!");
         fetchProducts();
       }
     });
@@ -107,18 +112,12 @@ export default function Ap() {
   };
   const updateProduct = async (e) => {
     e.preventDefault();
-    await fetch(`${urlJsonServer}/sfp/${updatedProduct.id}`, {
-      method: "PUT",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify(updatedProduct),
-    });
+    const dbRef = ref(db, `sfp/${updatedProduct.id}`);
+    await set(dbRef, updatedProduct);
     Swal.fire({
       title: "Atualizado!",
       confirmButtonColor: "#006e39",
     });
-
     setUpdatedProduct({});
     fetchProducts();
     closeModal();
@@ -187,6 +186,8 @@ export default function Ap() {
                 <td>{sfp.fibra}</td>
                 <td>{sfp.potencia}</td>
                 <td>{sfp.sensibilidade}</td>
+                <td>{sfp.CompRX}</td>
+                <td>{sfp.CompTX}</td>
                 <td>{sfp.garantia}</td>
                 <td>
                   <a target="_blank" rel="noopener noreferrer" href={sfp.pagina}>

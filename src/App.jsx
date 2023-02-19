@@ -1,4 +1,5 @@
 import React from "react";
+import {createContext, useState} from "react";
 import style from "../src/css/App.module.css";
 import Header from "./components/Header.jsx";
 import AccessPoints from "./components/Ap.jsx";
@@ -8,7 +9,6 @@ import Switches from "./components/Switches.jsx";
 import Conversores from "./components/Conversores.jsx";
 import Sfp from "./components/Sfp.jsx";
 import Onu from "./components/Onu.jsx";
-import {createContext, useState} from "react";
 
 export const AdminContext = createContext();
 
@@ -24,8 +24,6 @@ function App() {
   const [updatedProduct, setUpdatedProduct] = useState("");
 
   const [ShowHide, setShowHide] = useState(true);
-
-  const urlJsonServer = `http://localhost:3000`;
 
   const alternarMostrarOcultar = () => {
     setShowHide(!ShowHide);
@@ -43,8 +41,8 @@ function App() {
       <div className={style.box_container}>
         <AdminContext.Provider
           value={{
-            setAdmin,
             admin,
+            setAdmin,
             HideAP,
             setHideAP,
             HideRADIO,
@@ -61,7 +59,6 @@ function App() {
             setHideONU,
             updatedProduct,
             setUpdatedProduct,
-            urlJsonServer,
           }}>
           <Header />
 
@@ -74,27 +71,20 @@ function App() {
               Mostrar Tudo
             </button>
           )}
-
           {/* APs */}
-          {/* <AccessPoints /> */}
-
+          <AccessPoints />
           {/* Rádios */}
-          {/* <RadiosOutdoor /> */}
-
+          <RadiosOutdoor />
           {/* Roteadores HO */}
           <RoteadoresHO />
-
           {/* SWITCHES */}
-          {/* <Switches /> */}
-
+          <Switches />
           {/* CONVERSORES */}
-          {/* <Conversores /> */}
-
+          <Conversores />
           {/* SFPs */}
-          {/* <Sfp /> */}
-
+          <Sfp />
           {/* ONUs */}
-          {/* <Onu /> */}
+          <Onu />
         </AdminContext.Provider>
       </div>
     </div>

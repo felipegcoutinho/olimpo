@@ -3,11 +3,13 @@ import {useEffect, useState, useContext, createContext} from "react";
 import style from "../css/App.module.css";
 import {Onu_Thead} from "/src/TableHead";
 import {AdminContext} from "../App";
-import Modal from "react-modal";
 import Swal from "sweetalert2";
+import Modal from "react-modal";
 import OnuModal from "./OnuModal";
 import {Paginacao} from "./Pagination";
 import TableBar from "./TableBar";
+import {getDatabase, get, set, ref, push, remove} from "firebase/database";
+import {app, db} from "../database/firebase";
 
 export const OnuContext = createContext();
 
@@ -23,34 +25,29 @@ export default function Onu() {
   const [remotize, setremotize] = useState("");
   const [transmissao2ghz, settransmissao2ghz] = useState("");
   const [transmissao5ghz, settransmissao5ghz] = useState("");
-  const [transmissaoUPDown, settransmissaoUPDown] = useState("");
   const [cobertura, setcobertura] = useState("");
-  const [antenas, setantenas] = useState("");
   const [clientesSimultaneos, setclientesSimultaneos] = useState("");
   const [sensibilidade, setsensibilidade] = useState("");
   const [status, setstatus] = useState("");
   const [garantia, setgarantia] = useState("");
   const [pagina, setpagina] = useState("");
-  const [datasheet, setdatasheet] = useState("");
-  const [guia, setguia] = useState("");
-
-  const [onu, setOnu] = React.useState([]);
-
-  const {admin, HideONU, setHideONU, updatedProduct, setUpdatedProduct, urlJsonServer} = useContext(AdminContext);
-
   const [queryOnu, setQueryOnu] = React.useState("");
+  const [onu, setOnu] = React.useState([]);
+  const [modalIsOpen, setIsOpen] = useState(false);
+
+  const {admin, HideONU, setHideONU, updatedProduct, setUpdatedProduct} = useContext(AdminContext);
+
+  const handleHideONU = () => setHideONU(!HideONU);
   const handleSearchChangeOnu = (e) => {
     setQueryOnu(e.target.value);
   };
 
-  const handleHideONU = () => setHideONU(!HideONU);
-
   /* Configs Modal */
   Modal.setAppElement("#root");
-  const [modalIsOpen, setIsOpen] = React.useState(false);
   function openModal() {
     setIsOpen(true);
   }
+
   function closeModal() {
     setIsOpen(false);
     setUpdatedProduct(false);
@@ -58,8 +55,17 @@ export default function Onu() {
 
   /* Buscar Produto */
   const fetchProducts = async () => {
-    const response = await fetch(`${urlJsonServer}/onu`);
-    const data = await response.json();
+    const db = getDatabase(app);
+    const dbRef = ref(db, "onu");
+    const snapshot = await get(dbRef);
+    const data = [];
+    snapshot.forEach((childSnapshot) => {
+      const childData = childSnapshot.val();
+      data.push({
+        id: childSnapshot.key,
+        ...childData,
+      });
+    });
     setOnu(data);
   };
 
@@ -70,13 +76,10 @@ export default function Onu() {
   /* Adicionar Produto */
   const addProduto = async (e) => {
     e.preventDefault();
-    await fetch(`${urlJsonServer}/onu`, {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify(updatedProduct),
-    });
+
+    const dbRef = ref(db, "onu");
+    const newdbRef = push(dbRef);
+    await set(newdbRef, updatedProduct);
     Swal.fire({
       title: "Adicionado!",
       confirmButtonColor: "#006e39",
@@ -88,9 +91,8 @@ export default function Onu() {
 
   /* Deletar Produto */
   const deleteProduct = async (id) => {
-    await fetch(`${urlJsonServer}/onu/${id}`, {
-      method: "DELETE",
-    });
+    const db = getDatabase(app);
+    const dbRef = ref(db, `onu/${id}`);
     Swal.fire({
       title: "Você tem certeza?",
       icon: "warning",
@@ -100,7 +102,8 @@ export default function Onu() {
       confirmButtonText: "Sim, deletar",
     }).then((result) => {
       if (result.isConfirmed) {
-        Swal.fire("Onu/Ont deletada!");
+        remove(dbRef);
+        Swal.fire("Access Point deletado!");
         fetchProducts();
       }
     });
@@ -113,18 +116,12 @@ export default function Onu() {
   };
   const updateProduct = async (e) => {
     e.preventDefault();
-    await fetch(`${urlJsonServer}/onu/${updatedProduct.id}`, {
-      method: "PUT",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify(updatedProduct),
-    });
+    const dbRef = ref(db, `onu/${updatedProduct.id}`);
+    await set(dbRef, updatedProduct);
     Swal.fire({
       title: "Atualizado!",
       confirmButtonColor: "#006e39",
     });
-
     setUpdatedProduct({});
     fetchProducts();
     closeModal();
