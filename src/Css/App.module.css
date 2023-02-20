@@ -151,6 +151,34 @@ input {
   content: " \f023\ ";
 }
 
+.modal,
+.modalLogin {
+  background: #ffffff;
+  border: 1px solid #cccccc;
+  border-radius: 4px;
+  height: 85%;
+  inset: 50% auto auto 50%;
+  margin-right: -50%;
+  outline: none;
+  overflow: auto;
+  padding: 30px 30px 0px;
+  position: absolute;
+  transform: translate(-50%, -50%);
+  width: 30%;
+}
+
+.modalLogin {
+  height: 360px;
+}
+
+.modoAdmin {
+  background-color: red;
+  color: white;
+  text-align: center;
+  font-weight: bold;
+  padding: 5px;
+}
+
 .categoryContainer {
   margin: 40px 0;
 }
@@ -396,34 +424,6 @@ option {
   color: #404f61;
 }
 
-.modal,
-.modalLogin {
-  background: #ffffff;
-  border: 1px solid #cccccc;
-  border-radius: 4px;
-  height: 85%;
-  inset: 50% auto auto 50%;
-  margin-right: -50%;
-  outline: none;
-  overflow: auto;
-  padding: 30px 30px 0px;
-  position: absolute;
-  transform: translate(-50%, -50%);
-  width: 30%;
-}
-
-.modalLogin {
-  height: 360px;
-}
-
-.modoAdmin {
-  background-color: red;
-  color: white;
-  text-align: center;
-  font-weight: bold;
-  padding: 5px;
-}
-
 .modal_overlay {
   background-color: #ffffffbd;
   bottom: 0;
@@ -501,26 +501,11 @@ option {
   padding: 0;
 }
 
-.pdfbtn,
-.paginalink,
-.pdfbtn_NA {
+.paginalink {
   border-radius: 3px;
   font-size: 0.8rem;
   padding: 3px 6px;
-}
-
-.pdfbtn {
-  background-color: #5b657a;
-  color: white;
-}
-
-.paginalink {
   background-color: #268946;
-  color: white;
-}
-
-.pdfbtn_NA {
-  background-color: #d15b5b;
   color: white;
 }
 
