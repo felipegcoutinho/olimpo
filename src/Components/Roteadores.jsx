@@ -171,15 +171,15 @@ export default function Roteador() {
                 </td>
                 <td>
                   {roteador.cobertura}
-                  {roteador.cobertura === "N/A" ? null : " m²"}
+                  {roteador.cobertura === "N/A" && null}
                 </td>
                 <td>
                   {roteador.raio}
-                  {roteador.raio === "N/A" ? null : "m"}
+                  {roteador.raio === "N/A" && null}
                 </td>
                 <td>
                   {roteador.usuarioMax}
-                  {roteador.usuarioMax === "N/A" ? null : " usuários"}
+                  {roteador.usuarioMax === "N/A" && null}
                 </td>
                 <td>{roteador.planoRecomendado}</td>
                 <td>{roteador.qtdePortas}</td>

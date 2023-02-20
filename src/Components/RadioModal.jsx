@@ -11,10 +11,8 @@ function RadioModal() {
     <Modal isOpen={modalIsOpen} onRequestClose={closeModal} className={style.modal} overlayClassName={style.modal_overlay}>
       {updatedProduct.id ? <h1>Atualizar {updatedProduct.modelo}</h1> : <h1>Adicionar Radio</h1>}
       <div className={style.formLegenda}>
-        <div className={style.formLegenda}>
-          <h4>Caso o produto não possua a função, preencha o campo com "-".</h4>
-          <h4>Se a informação do produto não houver sido encontrada, preencha o campo com "N/A".</h4>
-        </div>
+        <h4>Caso o produto não possua a função, preencha o campo com "-".</h4>
+        <h4>Se a informação do produto não houver sido encontrada, preencha o campo com "N/A".</h4>
       </div>
       <form onSubmit={updatedProduct.id ? updateProduct : addProduto}>
         <div className={style.formContainer}>
@@ -182,7 +180,7 @@ function RadioModal() {
 
           <div className={style.btnModalActions}>
             <button type="submit" className={style.btn_addUpd}>
-              {updatedProduct.id ? "Atualizar Radio" : "Adicionar Radio"}
+              {updatedProduct.id ? "Atualizar Equipamento" : "Adicionar Equipamento"}
             </button>
             <button className={style.btn_addUpdCancel} onClick={closeModal}>
               Cancelar

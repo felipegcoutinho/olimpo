@@ -3,7 +3,7 @@ import style from "../css/App.module.css";
 
 export function Paginacao({dados, mapFunction, Tablehead, query}) {
   const [paginaAtual, setPaginaAtual] = useState(0);
-  const [itensPorPagina, setItensPorPagina] = useState(30);
+  const [itensPorPagina, setItensPorPagina] = useState(50);
 
   const indiceInicial = paginaAtual * itensPorPagina;
   const indiceFinal = indiceInicial + itensPorPagina;
@@ -32,8 +32,8 @@ export function Paginacao({dados, mapFunction, Tablehead, query}) {
           <option value="5">5</option>
           <option value="10">10</option>
           <option value="15">15</option>
-          <option value="20">20</option>
-          <option defaultValue="30">30</option>
+          <option value="25">25</option>
+          <option defaultValue="50">50</option>
         </select>
         <table className={style.devicesTable}>
           {Tablehead}

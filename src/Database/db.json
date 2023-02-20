@@ -275,7 +275,7 @@
   ],
   "radios": [
     {
-      "id": "3",
+      "id": "0",
       "modelo": "APC 5A-20",
       "indicado": "PTP",
       "garantia": "2 anos",
@@ -293,7 +293,7 @@
       "pagina": "https://www.intelbras.com/pt-br/cpeptp-5-ghz-com-20-dbi-mimo-2x2-apc-5a-20"
     },
     {
-      "id": "10",
+      "id": "1",
       "modelo": "APC 5A-90",
       "indicado": "BASE",
       "garantia": "2 anos",
@@ -311,7 +311,7 @@
       "pagina": "https://www.intelbras.com/pt-br/ajuda-download/faq/basestation-5-ghz-com-antena-setorial-integrada-apc-5a-90"
     },
     {
-      "id": "9",
+      "id": "2",
       "modelo": "APC 5A-90 V3",
       "indicado": "BASE",
       "garantia": "2 anos",
@@ -329,7 +329,7 @@
       "pagina": "https://www.intelbras.com/pt-br/basestation-5-ghz-com-antena-setorial-de-90o-integrada-apc-5a-90-giga-v3"
     },
     {
-      "id": "8",
+      "id": "3",
       "modelo": "APC 5A/Giga",
       "indicado": "BASE/PTP",
       "garantia": "2 anos",
@@ -347,7 +347,7 @@
       "pagina": "https://www.intelbras.com/pt-br/radio-gigabit-ptpptmp-5-ghz-conectorizado-mimo-apc-5a-giga"
     },
     {
-      "id": "6",
+      "id": "4",
       "modelo": "KIT WOM 5A MIMO",
       "indicado": "PTP",
       "garantia": "1 ano",
@@ -365,7 +365,7 @@
       "pagina": "https://www.intelbras.com/pt-br/kit-conexao-sem-fio-para-cftv-ip-wom-5a-mimo-kit-conexao-wom-5a-mimo"
     },
     {
-      "id": "4",
+      "id": "5",
       "modelo": "WOM 5A",
       "indicado": "PTP",
       "garantia": "1 ano",
@@ -383,7 +383,7 @@
       "pagina": "https://www.intelbras.com/pt-br/cpe-5-ghz-com-antena-de-16-dbi-siso-1x1-wom-5a"
     },
     {
-      "id": "5",
+      "id": "6",
       "modelo": "WOM 5A MIMO",
       "indicado": "PTP",
       "garantia": "1 ano",
@@ -419,7 +419,7 @@
       "pagina": "https://www.intelbras.com/pt-br/cpeptp-com-antena-dish-de-23-dbi-mimo-2x2-wom-5a-23"
     },
     {
-      "id": "24",
+      "id": "8",
       "modelo": "WOM AC",
       "indicado": "PTP",
       "garantia": "1 ano",
@@ -431,14 +431,13 @@
       "throughputNominal": "867 Mbps",
       "aberturaHorVer": "H-40° | V-20°",
       "distancia": "5Km",
-      "comprimentoCabo": "N/A",
       "alimentaçao": "12V - 24V",
       "wireless": "MiMo 2x2",
       "status": "Suporte",
       "pagina": "https://www.intelbras.com/pt-br/cpe-5-ghz-com-antena-de-16-dbi-mimo-2x2-wom-ac"
     },
     {
-      "id": "25",
+      "id": "9",
       "modelo": "WOM AC MAX",
       "indicado": "PTP",
       "garantia": "1 ano",
@@ -450,14 +449,13 @@
       "throughputNominal": "867 Mbps",
       "aberturaHorVer": "H-16° | V-16°",
       "distancia": "15Km",
-      "comprimentoCabo": "N/A",
       "alimentaçao": "12V - 24V",
       "wireless": "MiMo 2x2",
       "status": "Suporte",
       "pagina": "https://www.intelbras.com/pt-br/cpe-5-ghz-com-antena-de-20-dbi-mimo-2x2-wom-ac-max"
     },
     {
-      "id": "23",
+      "id": "10",
       "modelo": "APC 2M-14",
       "indicado": "PTP",
       "garantia": "N/A",
@@ -475,7 +473,7 @@
       "pagina": "https://www.intelbras.com/pt-br/ajuda-download/faq/cpeptp-24-ghz-14-dbi-mimo-2x2-apc-2m-14"
     },
     {
-      "id": "16",
+      "id": "11",
       "modelo": "APC 2M-90",
       "indicado": "BASE",
       "garantia": "2 anos",
@@ -493,7 +491,7 @@
       "pagina": "https://www.intelbras.com/pt-br/ajuda-download/faq/basestation-24-ghz-16-dbi-mimo-2x2-apc-2m-90"
     },
     {
-      "id": "21",
+      "id": "12",
       "modelo": "APC 5M",
       "indicado": "BASE/PTP",
       "garantia": "N/A",
@@ -511,7 +509,7 @@
       "pagina": "https://www.intelbras.com/pt-br/ajuda-download/faq/ptpptmp-2n-5-ghz-mimo-2x2-ptp-apc-5m"
     },
     {
-      "id": "17",
+      "id": "13",
       "modelo": "APC 5M+",
       "indicado": "BASE/PTP",
       "garantia": "2 anos",
@@ -529,7 +527,7 @@
       "pagina": "https://www.intelbras.com/pt-br/ajuda-download/faq/ptpptmp-2n-5-ghz-mimo-2x2-apc-5m"
     },
     {
-      "id": "15",
+      "id": "14",
       "modelo": "APC 5M-18+",
       "indicado": "PTP",
       "garantia": "2 anos",
@@ -547,7 +545,7 @@
       "pagina": "https://www.intelbras.com/pt-br/ajuda-download/faq/cpeptp-5-ghz-18-dbi-mimo-2x2-apc-5m-18"
     },
     {
-      "id": "19",
+      "id": "15",
       "modelo": "APC 5M-90",
       "indicado": "BASE",
       "garantia": "N/A",
@@ -565,7 +563,7 @@
       "pagina": "https://www.intelbras.com/pt-br/ajuda-download/faq/basestation-5-ghz-18-dbi-mimo-2x2-basestation-apc-5m-90"
     },
     {
-      "id": "18",
+      "id": "16",
       "modelo": "APC 5M-90+",
       "indicado": "BASE",
       "garantia": "2 anos",
@@ -583,7 +581,7 @@
       "pagina": "https://www.intelbras.com/pt-br/ajuda-download/faq/basestation-5-ghz-18-dbi-mimo-2x2-apc-5m-90"
     },
     {
-      "id": "20",
+      "id": "17",
       "modelo": "APC Mach 5",
       "indicado": "PTP",
       "garantia": "N/A",
@@ -601,7 +599,7 @@
       "pagina": "https://www.intelbras.com/pt-br/ajuda-download/faq/ptp-5-ghz-23-dbi-mimo-2x2-apc-mach-5"
     },
     {
-      "id": "22",
+      "id": "18",
       "modelo": "PTP 5-23",
       "indicado": "PTP",
       "garantia": "N/A",
@@ -619,7 +617,7 @@
       "pagina": "https://www.intelbras.com/pt-br/ajuda-download/faq/ptp-5-ghz-23-dbi-mimo-2x2-ptp-5-23-mimo-pro"
     },
     {
-      "id": "11",
+      "id": "19",
       "modelo": "PTP 5-N MiMo Pro",
       "indicado": "PTP",
       "garantia": "1 ano",
@@ -637,7 +635,7 @@
       "pagina": "https://www.intelbras.com/pt-br/ajuda-download/faq/ptp-5-ghz-2n-mimo-2x2-ptp-5-n-mimo-pro"
     },
     {
-      "id": "1",
+      "id": "20",
       "modelo": "WOG 212",
       "indicado": "PTP",
       "garantia": "1 ano",
@@ -649,14 +647,13 @@
       "throughputNominal": "150 Mbps",
       "aberturaHorVer": "H-60°| V-30°",
       "distancia": "1-2Km",
-      "comprimentoCabo": "60m",
       "alimentaçao": "12V",
       "wireless": "SiSo 1x1",
       "status": "Phaseout",
       "pagina": "https://www.intelbras.com/pt-br/ajuda-download/faq/cpe-24-ghz-12-dbi-wog-212"
     },
     {
-      "id": "12",
+      "id": "21",
       "modelo": "WOM 5000",
       "indicado": "PTP",
       "garantia": "1 ano",
@@ -674,7 +671,7 @@
       "pagina": "https://www.intelbras.com/pt-br/ajuda-download/faq/cpe-5-ghz-12-dbi-com-sma-wom-5000"
     },
     {
-      "id": "14",
+      "id": "22",
       "modelo": "WOM 5000 MiMo",
       "indicado": "PTP",
       "garantia": "1 ano",
@@ -692,7 +689,7 @@
       "pagina": "https://www.intelbras.com/pt-br/cpe-5-ghz-mimo-2x2-wom-5000-mimo"
     },
     {
-      "id": "13",
+      "id": "23",
       "modelo": "WOM 5000i",
       "indicado": "PTP",
       "garantia": "1 ano",
@@ -712,7 +709,7 @@
   ],
   "roteadorHO": [
     {
-      "id": "11",
+      "id": "0",
       "modelo": "ACTION A 1200",
       "cobertura": "N/A",
       "raio": "N/A",
@@ -733,11 +730,11 @@
       "pagina": "https://www.intelbras.com/pt-br/adaptador-usb-wireless-dual-band-action-a1200"
     },
     {
-      "id": "3",
+      "id": "1",
       "modelo": "ACTION RF 1200",
-      "cobertura": "80",
-      "raio": "5.04",
-      "usuarioMax": "20",
+      "cobertura": "80 m²",
+      "raio": "5,04 m",
+      "usuarioMax": "20 usuários",
       "planoRecomendado": "Até 100Mbps",
       "qtdePortas": "3 (LAN) + 1 (WAN)",
       "modulação": "Fast",
@@ -754,11 +751,11 @@
       "pagina": "https://www.intelbras.com/pt-br/roteador-wireless-smart-dual-band-action-rf-1200"
     },
     {
-      "id": "6",
+      "id": "2",
       "modelo": "ACTION RG 1200",
-      "cobertura": "120",
-      "raio": "6.18",
-      "usuarioMax": "40",
+      "cobertura": "120 m²",
+      "raio": "6,18 m",
+      "usuarioMax": "40 usuários",
       "planoRecomendado": "Acima de 100Mbps",
       "qtdePortas": "3 (LAN) + 1 (WAN)",
       "modulação": "Giga",
@@ -775,11 +772,11 @@
       "pagina": "https://www.intelbras.com/pt-br/roteador-wireless-smart-dual-band-gigabit-action-rg-1200"
     },
     {
-      "id": "7",
+      "id": "3",
       "modelo": "GF 1200",
-      "cobertura": "100",
-      "raio": "5.64",
-      "usuarioMax": "30",
+      "cobertura": "100 m²",
+      "raio": "5,64 m",
+      "usuarioMax": "30 usuários",
       "planoRecomendado": "Acima de 100Mbps",
       "qtdePortas": "3 (LAN) + 1 (WAN)",
       "modulação": "Giga WAN | Fast LAN",
@@ -796,10 +793,10 @@
       "pagina": "https://www.intelbras.com/pt-br/roteador-wi-fi-5-ac-1200-com-porta-internet-giga-e-lan-fast-wi-force-gf-1200"
     },
     {
-      "id": "12",
+      "id": "4",
       "modelo": "IWA 3001",
-      "cobertura": "N/A",
-      "raio": "N/A",
+      "cobertura": "N/A m²",
+      "raio": "N/A m",
       "usuarioMax": "N/A",
       "planoRecomendado": "Até 40Mbps",
       "qtdePortas": "1 (USB)",
@@ -817,11 +814,11 @@
       "pagina": "https://www.intelbras.com/pt-br/adaptador-usb-wireless-com-antena-externa-iwa-3001"
     },
     {
-      "id": "1",
+      "id": "5",
       "modelo": "RF 301K",
-      "cobertura": "70",
-      "raio": "4.72",
-      "usuarioMax": "10",
+      "cobertura": "70 m²",
+      "raio": "4,72 m",
+      "usuarioMax": "10 usuários",
       "planoRecomendado": "Até 40Mbps",
       "qtdePortas": "3 (LAN) + 1 (WAN)",
       "modulação": "Fast",
@@ -838,11 +835,11 @@
       "pagina": "https://www.intelbras.com/pt-br/roteador-wi-fi-n-300-mpbs-rf-301k"
     },
     {
-      "id": "5",
+      "id": "6",
       "modelo": "TWIBI FAST",
-      "cobertura": "100",
-      "raio": "5.64",
-      "usuarioMax": "40",
+      "cobertura": "100 m²",
+      "raio": "5,64 m",
+      "usuarioMax": "40 usuários",
       "planoRecomendado": "Até 100Mbps",
       "qtdePortas": "1(LAN) + 1(W / L)",
       "modulação": "Fast",
@@ -859,11 +856,11 @@
       "pagina": "https://www.intelbras.com/pt-br/roteador-wi-fi-5-mesh-twibi-fast"
     },
     {
-      "id": "9",
+      "id": "7",
       "modelo": "TWIBI GIGA",
-      "cobertura": "180",
-      "raio": "7.56",
-      "usuarioMax": "60",
+      "cobertura": "180 m²",
+      "raio": "7,56 m",
+      "usuarioMax": "60 usuários",
       "planoRecomendado": "Até 400Mbps",
       "qtdePortas": "1(LAN) + 1(W / L)",
       "modulação": "Giga",
@@ -880,11 +877,11 @@
       "pagina": "https://www.intelbras.com/pt-br/roteador-wireless-mesh-twibi-giga"
     },
     {
-      "id": "10",
+      "id": "8",
       "modelo": "TWIBI GIGA+",
-      "cobertura": "180",
-      "raio": "7.56",
-      "usuarioMax": "60",
+      "cobertura": "180 m²",
+      "raio": "7,56 m",
+      "usuarioMax": "60 usuários",
       "planoRecomendado": "Até 400Mbps",
       "qtdePortas": "1(LAN) + 1(W / L)",
       "modulação": "Giga",
@@ -901,11 +898,11 @@
       "pagina": "https://www.intelbras.com/pt-br/roteador-wi-fi-5-mesh-ac-1200-twibi-giga"
     },
     {
-      "id": "2",
+      "id": "9",
       "modelo": "W4 300F",
-      "cobertura": "70",
-      "raio": "4.72",
-      "usuarioMax": "10",
+      "cobertura": "70 m²",
+      "raio": "4,72 m",
+      "usuarioMax": "10 usuários",
       "planoRecomendado": "Até 70Mbps",
       "qtdePortas": "3 (LAN) + 1 (WAN)",
       "modulação": "Fast",
@@ -922,11 +919,11 @@
       "pagina": "https://www.intelbras.com/pt-br/roteador-wi-fi-4-wi-force-w4-300f"
     },
     {
-      "id": "4",
+      "id": "10",
       "modelo": "W5 1200F",
-      "cobertura": "80",
-      "raio": "5.04",
-      "usuarioMax": "20",
+      "cobertura": "80 m²",
+      "raio": "5,04 m",
+      "usuarioMax": "20 usuários",
       "planoRecomendado": "Até 100Mbps",
       "qtdePortas": "3 (LAN) + 1 (WAN)",
       "modulação": "Fast",
@@ -943,11 +940,11 @@
       "pagina": "https://www.intelbras.com/pt-br/roteador-wi-fi-5-dual-band-ac-1200-wi-force-w5-1200f"
     },
     {
-      "id": "8",
+      "id": "11",
       "modelo": "W5 1200G",
-      "cobertura": "120",
-      "raio": "6.18",
-      "usuarioMax": "40",
+      "cobertura": "120 m²",
+      "raio": "6,18 m",
+      "usuarioMax": "40 usuários",
       "planoRecomendado": "Acima de 100Mbps",
       "qtdePortas": "3 (LAN) + 1 (WAN)",
       "modulação": "Giga",
@@ -964,11 +961,11 @@
       "pagina": "https://www.intelbras.com/pt-br/roteador-wi-fi-5-wi-force-w5-1200g"
     },
     {
-      "id": "14",
+      "id": "12",
       "modelo": "ACTION R 1200",
-      "cobertura": "80",
-      "raio": "5.04",
-      "usuarioMax": "10",
+      "cobertura": "80 m²",
+      "raio": "5,04 m",
+      "usuarioMax": "10 usuários",
       "planoRecomendado": "N/A",
       "qtdePortas": "3 (LAN) + 1 (WAN)",
       "modulação": "Fast",
@@ -985,11 +982,11 @@
       "pagina": "https://www.intelbras.com/pt-br/roteador-wireless-smart-dual-band-action-r1200"
     },
     {
-      "id": "16",
+      "id": "13",
       "modelo": "IWE 3001",
-      "cobertura": "40",
-      "raio": "3.56",
-      "usuarioMax": "5",
+      "cobertura": "40 m²",
+      "raio": "3,56 m",
+      "usuarioMax": "5 usuários",
       "planoRecomendado": "N/A",
       "qtdePortas": "N/A",
       "modulação": "Fast",
@@ -1006,11 +1003,11 @@
       "pagina": "https://www.intelbras.com/pt-br/repetidor-wi-fi-n300-mbps-iwe-3001"
     },
     {
-      "id": "17",
+      "id": "14",
       "modelo": "IWR 1000N",
-      "cobertura": "80",
-      "raio": "5.04",
-      "usuarioMax": "10",
+      "cobertura": "80 m²",
+      "raio": "5,04 m",
+      "usuarioMax": "10 usuários",
       "planoRecomendado": "N/A",
       "qtdePortas": "4 (LAN) + 1 (WAN)",
       "modulação": "Fast",
@@ -1027,11 +1024,11 @@
       "pagina": "https://www.intelbras.com/pt-br/ajuda-download/faq/roteador-wireless-com-ipv6-iwr-1000n"
     },
     {
-      "id": "18",
+      "id": "15",
       "modelo": "IWR 3000N",
-      "cobertura": "70",
-      "raio": "4.72",
-      "usuarioMax": "10",
+      "cobertura": "70 m²",
+      "raio": "4,72 m",
+      "usuarioMax": "10 usuários",
       "planoRecomendado": "Até 40Mbps",
       "qtdePortas": "4 (LAN) + 1 (WAN)",
       "modulação": "Fast",
@@ -1048,11 +1045,11 @@
       "pagina": "https://www.intelbras.com/pt-br/roteador-wireless-com-ipv6-iwr-3000n"
     },
     {
-      "id": "XQCTjNr",
+      "id": "16",
       "modelo": "W5 2100G",
-      "cobertura": "180",
-      "raio": "7.5",
-      "usuarioMax": "60",
+      "cobertura": "180 m²",
+      "raio": "7,5 m",
+      "usuarioMax": "60 usuários",
       "planoRecomendado": "Até 500 Mbps",
       "qtdePortas": "3 (LAN) + 1 (WAN)",
       "modulação": "Giga",
@@ -1063,7 +1060,7 @@
   ],
   "switches": [
     {
-      "id": "17",
+      "id": "0",
       "modelo": "S3028G-B",
       "qtdePortas": "24 Portas",
       "modulação": "Giga",
@@ -1081,7 +1078,7 @@
       "pagina": "https://www.intelbras.com/pt-br/switch-gerenciavel-l3-de-24-portas-gigabit-e-4-sfp-s3028g-b"
     },
     {
-      "id": "19",
+      "id": "1",
       "modelo": "S3028G-PB Max",
       "qtdePortas": "24 Portas",
       "modulação": "Giga",
@@ -1099,7 +1096,7 @@
       "pagina": "https://www.intelbras.com/pt-br/switch-gerenciavel-l3-de-24-portas-gigabit-poe-e-4-sfp-s3028g-pb-max"
     },
     {
-      "id": "18",
+      "id": "2",
       "modelo": "S3054G-B",
       "qtdePortas": "48 Portas",
       "modulação": "Giga",
@@ -1117,7 +1114,7 @@
       "pagina": "https://www.intelbras.com/pt-br/switch-gerenciavel-l3-de-48-portas-gigabit-e-6-sfp-s3054g-b"
     },
     {
-      "id": "10",
+      "id": "3",
       "modelo": "SF 1600 Q+",
       "qtdePortas": "16 Portas",
       "modulação": "Fast",
@@ -1135,7 +1132,7 @@
       "pagina": "https://www.intelbras.com/pt-br/switch-16-portas-fast-ethernet-sf-1600-q"
     },
     {
-      "id": "11",
+      "id": "4",
       "modelo": "SF 1811 PoE",
       "qtdePortas": "16 Portas",
       "modulação": "Giga (Uplink)",
@@ -1153,7 +1150,7 @@
       "pagina": "https://www.intelbras.com/pt-br/switch-16p-fast-poe-com-1p-gigabit-sf-1811-poe"
     },
     {
-      "id": "12",
+      "id": "5",
       "modelo": "SF 1821 PoE",
       "qtdePortas": "16 Portas",
       "modulação": "Giga (Uplink)",
@@ -1171,7 +1168,7 @@
       "pagina": "https://www.intelbras.com/pt-br/switch-16-portas-fast-ethernet-poe-sf-1821-poe"
     },
     {
-      "id": "13",
+      "id": "6",
       "modelo": "SF 1822 Hi-PoE",
       "qtdePortas": "16 Portas",
       "modulação": "Giga (Uplink)",
@@ -1189,7 +1186,7 @@
       "pagina": "https://www.intelbras.com/pt-br/switch-16-portas-fast-ethernet-poe-sf-1822-hi-poe"
     },
     {
-      "id": "14",
+      "id": "7",
       "modelo": "SF 2400 QR+",
       "qtdePortas": "24 Portas",
       "modulação": "Fast",
@@ -1207,7 +1204,7 @@
       "pagina": "https://www.intelbras.com/pt-br/switch-24-portas-fast-ethernet-sf-2400-qr"
     },
     {
-      "id": "19",
+      "id": "8",
       "modelo": "SF 2622 MR L2",
       "qtdePortas": "24 Portas",
       "modulação": "Fast",
@@ -1225,7 +1222,7 @@
       "pagina": "https://www.intelbras.com/pt-br/switch-gerenciavel-com-24-portas-fast-ethernet-2-portas-mini-gbic-sf-2622-mr-l2"
     },
     {
-      "id": "2",
+      "id": "9",
       "modelo": "SF 500 Hi-PoE",
       "qtdePortas": "5 Portas",
       "modulação": "Fast",
@@ -1243,7 +1240,7 @@
       "pagina": "https://www.intelbras.com/pt-br/switch-5-portas-fast-ethernet-com-4-portas-poe-sf-500-hi-poe"
     },
     {
-      "id": "1",
+      "id": "10",
       "modelo": "SF 500 PoE",
       "qtdePortas": "5 Portas",
       "modulação": "Fast",
@@ -1261,7 +1258,7 @@
       "pagina": "https://www.intelbras.com/pt-br/switch-5-portas-fast-ethernet-com-4-portas-poe-sf-500-poe"
     },
     {
-      "id": "3",
+      "id": "11",
       "modelo": "SF 800 Q+",
       "qtdePortas": "8 Portas",
       "modulação": "Fast",
@@ -1279,7 +1276,7 @@
       "pagina": "https://www.intelbras.com/pt-br/switch-8-portas-fast-ethernet-sf-800-q"
     },
     {
-      "id": "4",
+      "id": "12",
       "modelo": "SF 800 Q+ ULTRA",
       "qtdePortas": "8 Portas",
       "modulação": "Fast",
@@ -1297,7 +1294,7 @@
       "pagina": "https://www.intelbras.com/pt-br/switch-8-portas-fast-ethernet-com-protecao-antissurto-sf-800-q-ultra"
     },
     {
-      "id": "5",
+      "id": "13",
       "modelo": "SF 800 VLAN",
       "qtdePortas": "8 Portas",
       "modulação": "Fast",
@@ -1315,7 +1312,7 @@
       "pagina": "https://www.intelbras.com/pt-br/switch-8-portas-fast-ethernet-com-vlan-fixa-sf-800-vlan"
     },
     {
-      "id": "6",
+      "id": "14",
       "modelo": "SF 800 VLAN ULTRA",
       "qtdePortas": "8 Portas",
       "modulação": "Fast",
@@ -1333,7 +1330,7 @@
       "pagina": "https://www.intelbras.com/pt-br/switch-8-portas-fast-ethernet-com-vlan-fixa-sf-800-vlan-ultra"
     },
     {
-      "id": "8",
+      "id": "15",
       "modelo": "SF 900 Hi-PoE",
       "qtdePortas": "9 Portas",
       "modulação": "Fast",
@@ -1351,7 +1348,7 @@
       "pagina": "https://www.intelbras.com/pt-br/switch-9-portas-fast-ethernet-8-portas-poe-sf-900-hi-poe"
     },
     {
-      "id": "7",
+      "id": "16",
       "modelo": "SF 900 PoE",
       "qtdePortas": "9 Portas",
       "modulação": "Fast",
@@ -1369,7 +1366,7 @@
       "pagina": "https://www.intelbras.com/pt-br/switch-9-portas-fast-ethernet-com-8-portas-poe-sf-900-poe"
     },
     {
-      "id": "21",
+      "id": "17",
       "modelo": "SG 1002 MR",
       "qtdePortas": "8 Portas",
       "modulação": "Giga",
@@ -1387,7 +1384,7 @@
       "pagina": "https://www.intelbras.com/pt-br/switch-gerenciavel-8-portas-gigabit-ethernet-sg-1002-mr"
     },
     {
-      "id": "20",
+      "id": "18",
       "modelo": "SG 1002 MR L2+",
       "qtdePortas": "8 Portas",
       "modulação": "Giga",
@@ -1405,7 +1402,7 @@
       "pagina": "https://www.intelbras.com/pt-br/switch-gerenciavel-com-8-portas-giga-2-portas-mini-gbic-sg-1002-mr-l2"
     },
     {
-      "id": "18",
+      "id": "19",
       "modelo": "SG 2400 QR",
       "qtdePortas": "24 Portas",
       "modulação": "Giga",
@@ -1423,7 +1420,7 @@
       "pagina": "https://www.intelbras.com/pt-br/switch-24-portas-gigabit-ethernet-sg-2400-qr"
     },
     {
-      "id": "17",
+      "id": "20",
       "modelo": "SG 2400 QR+",
       "qtdePortas": "24 Portas",
       "modulação": "Giga",
@@ -1441,7 +1438,7 @@
       "pagina": "https://www.intelbras.com/pt-br/switch-24-portas-gigabit-ethernet-sg-2400-qr-0"
     },
     {
-      "id": "22",
+      "id": "21",
       "modelo": "SG 2404 MR",
       "qtdePortas": "24 Portas",
       "modulação": "Giga",
@@ -1459,7 +1456,7 @@
       "pagina": "https://www.intelbras.com/pt-br/switch-gerenciavel-24-portas-gigabit-ethernet-sg-2404-mr"
     },
     {
-      "id": "23",
+      "id": "22",
       "modelo": "SG 2404 MR L2+",
       "qtdePortas": "24 Portas",
       "modulação": "Giga",
@@ -1477,7 +1474,7 @@
       "pagina": "https://www.intelbras.com/pt-br/switch-gerenciavel-24p-giga-4p-gbic-sg-2404-mr-l2"
     },
     {
-      "id": "24",
+      "id": "23",
       "modelo": "SG 2404 PoE",
       "qtdePortas": "24 Portas",
       "modulação": "Giga",
@@ -1495,7 +1492,7 @@
       "pagina": "https://www.intelbras.com/pt-br/switch-gerenciavel-24-portas-poe-gigabit-ethernet-sg-2404-poe"
     },
     {
-      "id": "25",
+      "id": "24",
       "modelo": "SG 2404 PoE L2+",
       "qtdePortas": "24 Portas",
       "modulação": "Giga",
@@ -1513,7 +1510,7 @@
       "pagina": "https://www.intelbras.com/pt-br/sg-2404-poe-l2-switch-gerenciavel-24-portas-poe-gigabit-ethernet-sg-2404-poe-l2"
     },
     {
-      "id": "27",
+      "id": "25",
       "modelo": "SG 2404D MR L2+",
       "qtdePortas": "24 Portas",
       "modulação": "Giga",
@@ -1549,7 +1546,7 @@
       "pagina": "https://www.intelbras.com/pt-br/switch-gerenciavel-24-portas-gigabit-4-mini-gbic-sg-2404d-poe-max"
     },
     {
-      "id": "28",
+      "id": "27",
       "modelo": "SG 5200 MR",
       "qtdePortas": "48 Portas",
       "modulação": "Giga",
@@ -1567,7 +1564,7 @@
       "pagina": "https://www.intelbras.com/pt-br/switch-gerenciavel-48-portas-gigabit-ethernet-sg-5200-mr"
     },
     {
-      "id": "29",
+      "id": "28",
       "modelo": "SG 5204 MR L2+",
       "qtdePortas": "48 Portas",
       "modulação": "Giga",
@@ -1585,7 +1582,7 @@
       "pagina": "https://www.intelbras.com/pt-br/switch-gerenciavel-48p-giga-sg-5204-mr-l2"
     },
     {
-      "id": "15",
+      "id": "29",
       "modelo": "SG 800 Q+",
       "qtdePortas": "8 Portas",
       "modulação": "Giga",
@@ -1603,7 +1600,7 @@
       "pagina": "https://www.intelbras.com/pt-br/switch-com-8-portas-gigabit-ethernet-sg-800-q"
     },
     {
-      "id": "16",
+      "id": "30",
       "modelo": "SG 800 VLAN",
       "qtdePortas": "8 Portas",
       "modulação": "Giga",
@@ -1621,7 +1618,7 @@
       "pagina": "https://www.intelbras.com/pt-br/switch-com-8-portas-gigabit-ethernet-com-vlan-fixa-sg-800-vlan"
     },
     {
-      "id": "9",
+      "id": "31",
       "modelo": "SF 910 PAC",
       "qtdePortas": "9 Portas",
       "modulação": "Fast",
@@ -1641,7 +1638,7 @@
   ],
   "conversores": [
     {
-      "id": "3",
+      "id": "0",
       "modelo": "KFM 112",
       "conector": "SC/UPC (Duplo)",
       "wdm": "-",
@@ -1657,7 +1654,7 @@
       "pagina": "https://www.intelbras.com/pt-br/conversor-de-midia-fast-ethernet-multimodo-kfm-112"
     },
     {
-      "id": "4",
+      "id": "1",
       "modelo": "KFS 1120",
       "conector": "SC/UPC (Duplo)",
       "wdm": "-",
@@ -1673,7 +1670,7 @@
       "pagina": "https://www.intelbras.com/pt-br/conversor-de-midia-fast-ethernet-monomodo-kfs-1120"
     },
     {
-      "id": "1",
+      "id": "2",
       "modelo": "KFSD 1120 A /B",
       "conector": "SC/UPC (Única)",
       "wdm": "Sim",
@@ -1689,7 +1686,7 @@
       "pagina": "https://www.intelbras.com/pt-br/conversor-de-midia-fast-ethernet-monomodo-20-km-kfsd-1120-b"
     },
     {
-      "id": "5",
+      "id": "3",
       "modelo": "KGM 1105",
       "conector": "SC/UPC (Duplo)",
       "wdm": "-",
@@ -1705,7 +1702,7 @@
       "pagina": "https://www.intelbras.com/pt-br/conversor-de-midia-gigabit-ethernet-multimodo-05-km-kgm-1105"
     },
     {
-      "id": "6",
+      "id": "4",
       "modelo": "KGS 1120",
       "conector": "SC/UPC (Duplo)",
       "wdm": "-",
@@ -1721,7 +1718,7 @@
       "pagina": "https://www.intelbras.com/pt-br/conversor-de-midia-gigabit-ethernet-monomodo-20-km-kgs-1120"
     },
     {
-      "id": "2",
+      "id": "5",
       "modelo": "KGSD 1120 A/B",
       "conector": "SC/UPC (Única)",
       "wdm": "Sim",
@@ -1739,7 +1736,7 @@
   ],
   "sfp": [
     {
-      "id": "8",
+      "id": "0",
       "modelo": "KGM 2105 ",
       "tipoConector": "LC/UPC (Dupla)",
       "modulo": "SFP",
@@ -1758,7 +1755,7 @@
       "guia": "https://backend.intelbras.com/sites/default/files/2022-06/Guia_de_instalacao_KGM_2105_KGS_2110_KGSD_2110_A_B_A4_01-22.pdf"
     },
     {
-      "id": "7",
+      "id": "1",
       "modelo": "KGS 2110",
       "tipoConector": "LC/UPC (Dupla)",
       "modulo": "SFP",
@@ -1777,7 +1774,7 @@
       "guia": "https://backend.intelbras.com/sites/default/files/2022-06/Guia_de_instalacao_KGM_2105_KGS_2110_KGSD_2110_A_B_A4_01-22.pdf"
     },
     {
-      "id": "6",
+      "id": "2",
       "modelo": "KGSD 2110 A/B",
       "tipoConector": "LC/UPC (Único)",
       "modulo": "SFP",
@@ -1796,7 +1793,7 @@
       "guia": "https://backend.intelbras.com/sites/default/files/2022-06/Guia_de_instalacao_KGM_2105_KGS_2110_KGSD_2110_A_B_A4_01-22.pdf"
     },
     {
-      "id": "5",
+      "id": "3",
       "modelo": "KPSD 1120 E",
       "tipoConector": "SC/UPC (Única)",
       "modulo": "Epon",
@@ -1834,7 +1831,7 @@
       "guia": "https://backend.intelbras.com/sites/default/files/2022-06/Guia_de_instalacao_KPSD_1120G_01-22.pdf"
     },
     {
-      "id": "3",
+      "id": "5",
       "modelo": "KPSD 1120 G C+",
       "tipoConector": "SC/UPC (Única)",
       "modulo": "Gpon",
@@ -1853,7 +1850,7 @@
       "guia": "https://backend.intelbras.com/sites/default/files/2022-06/Guia_de_instalacao_KPSD_1120GC%2B_01-22.pdf"
     },
     {
-      "id": "1",
+      "id": "6",
       "modelo": "KTS 2110",
       "tipoConector": "LC/PC (Dupla)",
       "modulo": "XFP",
@@ -1872,7 +1869,7 @@
       "guia": "https://backend.intelbras.com/sites/default/files/2022-06/Guia_de_instalacao_KTS_2110%2B_01-22_.pdf"
     },
     {
-      "id": "2",
+      "id": "7",
       "modelo": "KTS 2110+",
       "tipoConector": "LC/PC (Dupla)",
       "modulo": "SFP+",
@@ -1893,7 +1890,7 @@
   ],
   "onu": [
     {
-      "id": "5",
+      "id": "0",
       "modelo": "121W",
       "qtdeportas": "2 portas",
       "modulação": "Giga/Fast",
@@ -1914,7 +1911,7 @@
       "pagina": "https://www.intelbras.com/pt-br/conversor-de-sinal-gponepon-em-sinal-ethernet-ou-wi-fi-ont-121-w"
     },
     {
-      "id": "7",
+      "id": "1",
       "modelo": "R1",
       "qtdeportas": "1 porta",
       "modulação": "Giga",
@@ -1935,7 +1932,7 @@
       "pagina": "https://www.intelbras.com/pt-br/modem-optico-pon-lan-1p-onu-r1"
     },
     {
-      "id": "3",
+      "id": "2",
       "modelo": "WiFiber 1200R",
       "qtdeportas": "2 portas",
       "modulação": "Giga",
@@ -1956,7 +1953,7 @@
       "pagina": "https://www.intelbras.com/pt-br/modem-optico-pon-lan-2p-wi-fi-ac-ont-wifiber-1200r"
     },
     {
-      "id": "1",
+      "id": "3",
       "modelo": "WiFiber 120 AC",
       "qtdeportas": "2 portas",
       "modulação": "Giga",
@@ -1977,7 +1974,7 @@
       "pagina": "https://www.intelbras.com/pt-br/modem-optico-pon-lan-2p-wi-fi-ac-wifiber-120-ac"
     },
     {
-      "id": "2",
+      "id": "4",
       "modelo": "WiFiber 121 AC",
       "qtdeportas": "2 portas",
       "modulação": "Giga",
@@ -1998,7 +1995,7 @@
       "pagina": "https://www.intelbras.com/pt-br/modem-optico-pon-lan-2p-fxs-1p-wi-fi-ac-wifiber-121-ac"
     },
     {
-      "id": "11",
+      "id": "5",
       "modelo": "WiFiber AX 1800",
       "qtdeportas": "4 portas",
       "modulação": "Giga",
@@ -2019,7 +2016,7 @@
       "pagina": "https://www.intelbras.com/pt-br/modem-optico-pon-lan-4p-wi-fi-6-wifiber-ax-1800"
     },
     {
-      "id": "12",
+      "id": "6",
       "modelo": "WiFiber AX 1800V",
       "qtdeportas": "4 portas",
       "modulação": "Giga",
@@ -2040,7 +2037,7 @@
       "pagina": "https://www.intelbras.com/pt-br/modem-optico-pon-lan-4p-fxs-1p-usb-1p-wi-fi-6-wifiber-ax-1800v"
     },
     {
-      "id": "8",
+      "id": "7",
       "modelo": "110B",
       "qtdeportas": "1 porta",
       "modulação": "Giga",
@@ -2061,7 +2058,7 @@
       "pagina": "https://www.intelbras.com/pt-br/conversor-de-sinal-pon-para-sinal-ethernet-onu-110-b"
     },
     {
-      "id": "4",
+      "id": "8",
       "modelo": "142NW",
       "qtdeportas": "4 portas",
       "modulação": "Giga",
@@ -2082,7 +2079,7 @@
       "pagina": "https://www.intelbras.com/pt-br/conversor-de-sinal-gponepon-em-sinal-ethernet-ou-wi-fi-ont-142n-w"
     },
     {
-      "id": "10",
+      "id": "9",
       "modelo": "110",
       "qtdeportas": "1 porta",
       "modulação": "Giga",
@@ -2103,7 +2100,7 @@
       "pagina": "https://www.intelbras.com/pt-br/1-porta-gigabit-ethernet-onu-110"
     },
     {
-      "id": "6",
+      "id": "10",
       "modelo": "142NG",
       "qtdeportas": "4 portas",
       "modulação": "Giga",
