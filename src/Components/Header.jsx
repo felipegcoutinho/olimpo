@@ -5,9 +5,8 @@ import style from "../css/App.module.css";
 import LoginModal from "./LoginModal";
 
 export default function Header() {
-  const {openModal} = useContext(AdminContext);
+  const {openModal, admin} = useContext(AdminContext);
   const [urlValue, setUrlValue] = React.useState("");
-  // const isPwd = urlValue.startsWith("@");
   const urlSearch = `https://www.intelbras.com/pt-br/busca/?q=${urlValue}&tipo_busca=pagina-resultado`;
 
   const handleSearch = (e) => {
@@ -20,23 +19,13 @@ export default function Header() {
     }
   };
 
-  // const EnableAdmin = () => {
-  //   setAdmin(!admin);
-  //   {
-  //     admin
-  //       ? Swal.fire({
-  //           title: "Modo admin desativado!",
-  //           icon: "error",
-  //         })
-  //       : Swal.fire({
-  //           title: "Modo admin ativado!",
-  //           icon: "success",
-  //         });
-  //   }
-  // };
-
   return (
     <div>
+      {admin && (
+        <div className={style.modoAdmin} id="home">
+          Conta Admin
+        </div>
+      )}
       <div className={style.aviso} id="home">
         <b>Aviso!</b> Este é um material para facilitar o acesso a informações dos principais equipamentos.
         <b> Sempre consulte a documentação oficial.</b> :)
@@ -45,10 +34,8 @@ export default function Header() {
         <div className={style.logo}>
           Olimpo!<span className={style.version}>v1.1</span>
         </div>
-
         <div className={style.searchbarContainer}>
           <input
-            // type={isPwd ? "password" : "text"}
             type="text"
             className={style.mainsearchbar}
             value={urlValue}
@@ -60,10 +47,8 @@ export default function Header() {
             {urlValue !== "" && <button className={style.mainSearchBtn}></button>}
           </a>
           {urlValue !== "" && <button className={style.searchBtnClean} onClick={() => setUrlValue("")}></button>}
-          {/* {urlValue === "@crvg!" && (
-            <button className={admin ? style.adminBtnDisable : style.adminBtnEnable} onClick={EnableAdmin}></button>
-          )} */}
-          <button className={style.loginBtn} onClick={openModal}></button>
+
+          <button className={admin ? style.adminBtnEnable : style.adminBtnDisable} onClick={openModal}></button>
           <LoginModal />
         </div>
 

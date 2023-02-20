@@ -47,28 +47,44 @@ function LoginModal() {
 
   return (
     <Modal isOpen={modalIsOpen} onRequestClose={closeModal} className={style.modalLogin} overlayClassName={style.modal_overlay}>
-      <h1 className={style.h1Login}>Login</h1>
+      <div className={style.h1Login}>
+        <h1>Login</h1>
+      </div>
+
       <div className={style.formContainer}>
         <form className={style.formContainer}>
-          <label htmlFor="email">E-mail</label>
-          <input type="text" name="email" id="email" placeholder="altair@olimpo.com" onChange={(e) => setEmail(e.target.value)} required />
-
-          <label htmlFor="password">Senha</label>
-          <input
-            type="password"
-            name="password"
-            id="password"
-            placeholder="********"
-            onChange={(e) => setPassword(e.target.value)}
-            required
-          />
-
-          <button className={style.btnLogar} onClick={handleSignIn}>
-            {loading ? "Entrando..." : "Entrar"}
-          </button>
-          <button className={style.btn_addUpdCancel} onClick={closeModal}>
-            Cancelar
-          </button>
+          {admin ? (
+            <div className={style.h1Login}>
+              <h4>Logado como {email}</h4>
+            </div>
+          ) : (
+            <>
+              <label htmlFor="email">E-mail</label>
+              <input
+                type="text"
+                name="email"
+                id="email"
+                placeholder="altair@olimpo.com"
+                onChange={(e) => setEmail(e.target.value)}
+                required
+              />
+              <label htmlFor="password">Senha</label>
+              <input
+                type="password"
+                name="password"
+                id="password"
+                placeholder="********"
+                onChange={(e) => setPassword(e.target.value)}
+                required
+              />
+              <button className={style.btnLogar} onClick={handleSignIn}>
+                {loading ? "Entrando..." : "Entrar"}
+              </button>
+              <button className={style.btn_addUpdCancel} onClick={closeModal}>
+                Cancelar
+              </button>
+            </>
+          )}
         </form>
       </div>
     </Modal>

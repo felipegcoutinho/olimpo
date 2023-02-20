@@ -105,8 +105,7 @@ input {
 .mainSearchBtn,
 .adminBtnDisable,
 .adminBtnEnable,
-.searchBtnClean,
-.loginBtn {
+.searchBtnClean {
   border: none;
   border-radius: 3px;
   color: white;
@@ -114,12 +113,6 @@ input {
   height: 50px;
   margin-left: 10px;
   padding: 15px 25px;
-}
-
-.loginBtn {
-  width: max-content;
-  cursor: pointer;
-  font-weight: bold;
 }
 
 .mainSearchBtn {
@@ -130,22 +123,16 @@ input {
 }
 
 .adminBtnDisable,
-.adminBtnEnable,
-.loginBtn {
+.adminBtnEnable {
   background-color: black;
 }
 
 .mainSearchBtn:after,
 .searchBtnClean::after,
 .adminBtnDisable::after,
-.adminBtnEnable::after,
-.loginBtn::after {
+.adminBtnEnable::after {
   font-family: FontAwesome;
   font-size: 1.2rem;
-}
-
-.loginBtn::after {
-  content: " \f007\ ";
 }
 
 .mainSearchBtn:after {
@@ -156,11 +143,11 @@ input {
   content: " \f00d\ ";
 }
 
-.adminBtnDisable::after {
+.adminBtnEnable::after {
   content: " \f3c1\ ";
 }
 
-.adminBtnEnable::after {
+.adminBtnDisable::after {
   content: " \f023\ ";
 }
 
@@ -427,6 +414,14 @@ option {
 
 .modalLogin {
   height: 360px;
+}
+
+.modoAdmin {
+  background-color: red;
+  color: white;
+  text-align: center;
+  font-weight: bold;
+  padding: 5px;
 }
 
 .modal_overlay {
