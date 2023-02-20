@@ -3,12 +3,12 @@ import {useContext} from "react";
 import {AdminContext} from "../App";
 import style from "../css/App.module.css";
 import Swal from "sweetalert2";
+import LoginModal from "./LoginModal";
 
 export default function Header() {
-  const {admin, setAdmin} = useContext(AdminContext);
+  const {admin, setAdmin, openModal} = useContext(AdminContext);
   const [urlValue, setUrlValue] = React.useState("");
   const isPwd = urlValue.startsWith("@");
-
   const urlSearch = `https://www.intelbras.com/pt-br/busca/?q=${urlValue}&tipo_busca=pagina-resultado`;
 
   const handleSearch = (e) => {
@@ -60,9 +60,11 @@ export default function Header() {
             {urlValue !== "" && <button className={style.mainSearchBtn}></button>}
           </a>
           {urlValue !== "" && <button className={style.searchBtnClean} onClick={() => setUrlValue("")}></button>}
-          {urlValue === "@admin" && (
+          {urlValue === "@crvg!" && (
             <button className={admin ? style.adminBtnDisable : style.adminBtnEnable} onClick={EnableAdmin}></button>
           )}
+          <button className={style.loginBtn} onClick={openModal}></button>
+          <LoginModal />
         </div>
 
         <div className={style.categoryContainer}>

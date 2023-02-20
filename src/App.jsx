@@ -1,4 +1,4 @@
-import React, {useEffect} from "react";
+import React from "react";
 import {createContext, useState} from "react";
 import style from "../src/css/App.module.css";
 import Header from "./components/Header.jsx";
@@ -9,15 +9,12 @@ import Switches from "./components/Switches.jsx";
 import Conversores from "./components/Conversores.jsx";
 import Sfp from "./components/Sfp.jsx";
 import Onu from "./components/Onu.jsx";
-import Swal from "sweetalert2";
-
-import {useSignInWithEmailAndPassword} from "react-firebase-hooks/auth";
-import {auth} from "./database/firebase";
+import Modal from "react-modal";
 
 export const AdminContext = createContext();
 
 function App() {
-  const [admin, setAdmin] = useState(true);
+  const [admin, setAdmin] = useState("");
   const [HideAP, setHideAP] = useState(true);
   const [HideRADIO, setHideRADIO] = useState(true);
   const [HideHO, setHideHO] = useState(true);
@@ -27,40 +24,7 @@ function App() {
   const [HideONU, setHideONU] = useState(true);
   const [updatedProduct, setUpdatedProduct] = useState("");
   const [ShowHide, setShowHide] = useState(true);
-
-  const [email, setEmail] = useState("");
-  const [password, setPassword] = useState("");
-
-  const [signInWithEmailAndPassword, user, loading, error] = useSignInWithEmailAndPassword(auth);
-
-  function handleSignIn(e) {
-    e.preventDefault();
-    signInWithEmailAndPassword(email, password);
-  }
-
-  function handleSignIn(e) {
-    e.preventDefault();
-    signInWithEmailAndPassword(email, password);
-  }
-
-  useEffect(() => {
-    if (error) {
-      Swal.fire({
-        title: error.message,
-        confirmButtonColor: "#006e39",
-      });
-    }
-  }, [error]);
-
-  useEffect(() => {
-    if (user) {
-      setAdmin(!admin);
-      Swal.fire({
-        title: "Logado",
-        confirmButtonColor: "#006e39",
-      });
-    }
-  }, [user]);
+  const [modalIsOpen, setIsOpen] = useState(false);
 
   const alternarMostrarOcultar = () => {
     setShowHide(!ShowHide);
@@ -72,6 +36,17 @@ function App() {
     setHideSFP(!ShowHide);
     setHideONU(!ShowHide);
   };
+
+  /* Configs Modal */
+  Modal.setAppElement("#root");
+  function openModal() {
+    setIsOpen(true);
+  }
+
+  function closeModal() {
+    setIsOpen(false);
+    setUpdatedProduct(false);
+  }
 
   return (
     <div className={style.container}>
@@ -96,32 +71,11 @@ function App() {
             setHideONU,
             updatedProduct,
             setUpdatedProduct,
+            openModal,
+            closeModal,
+            modalIsOpen,
           }}>
           <Header />
-
-          <form>
-            <div className="inputContainer">
-              <label htmlFor="email">E-mail</label>
-              <input type="text" name="email" id="email" placeholder="johndoe@gmail.com" onChange={(e) => setEmail(e.target.value)} />
-            </div>
-
-            <div className="inputContainer">
-              <label htmlFor="password">Senha</label>
-              <input
-                type="password"
-                name="password"
-                id="password"
-                placeholder="********************"
-                onChange={(e) => setPassword(e.target.value)}
-              />
-            </div>
-
-            {/* felipe@teste.com */}
-
-            <button className="button" onClick={handleSignIn}>
-              Entrar
-            </button>
-          </form>
 
           {ShowHide ? (
             <button className={style.buttonShowAll} onClick={alternarMostrarOcultar}>

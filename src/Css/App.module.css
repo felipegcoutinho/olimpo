@@ -105,7 +105,8 @@ input {
 .mainSearchBtn,
 .adminBtnDisable,
 .adminBtnEnable,
-.searchBtnClean {
+.searchBtnClean,
+.loginBtn {
   border: none;
   border-radius: 3px;
   color: white;
@@ -113,7 +114,12 @@ input {
   height: 50px;
   margin-left: 10px;
   padding: 15px 25px;
-  width: 70px;
+}
+
+.loginBtn {
+  width: max-content;
+  cursor: pointer;
+  font-weight: bold;
 }
 
 .mainSearchBtn {
@@ -124,16 +130,22 @@ input {
 }
 
 .adminBtnDisable,
-.adminBtnEnable {
+.adminBtnEnable,
+.loginBtn {
   background-color: black;
 }
 
 .mainSearchBtn:after,
 .searchBtnClean::after,
 .adminBtnDisable::after,
-.adminBtnEnable::after {
+.adminBtnEnable::after,
+.loginBtn::after {
   font-family: FontAwesome;
   font-size: 1.2rem;
+}
+
+.loginBtn::after {
+  content: " \f007\ ";
 }
 
 .mainSearchBtn:after {
@@ -334,6 +346,10 @@ label {
   padding: 10px;
 }
 
+.h1Login {
+  margin-bottom: 20px;
+}
+
 .formContainer {
   display: flex;
   flex-direction: column;
@@ -367,7 +383,8 @@ option {
 }
 
 .btn_addUpd,
-.btn_addUpdCancel {
+.btn_addUpdCancel,
+.btnLogar {
   border: none;
   cursor: pointer;
   font-size: 0.75rem;
@@ -377,9 +394,14 @@ option {
   text-transform: uppercase;
 }
 
-.btn_addUpd {
+.btn_addUpd,
+.btnLogar {
   background-color: #129552;
   color: white;
+}
+
+.btnLogar {
+  margin-top: 20px;
 }
 
 .btn_addUpdCancel {
@@ -387,7 +409,8 @@ option {
   color: #404f61;
 }
 
-.modal {
+.modal,
+.modalLogin {
   background: #ffffff;
   border: 1px solid #cccccc;
   border-radius: 4px;
@@ -400,6 +423,10 @@ option {
   position: absolute;
   transform: translate(-50%, -50%);
   width: 30%;
+}
+
+.modalLogin {
+  height: 380px;
 }
 
 .modal_overlay {

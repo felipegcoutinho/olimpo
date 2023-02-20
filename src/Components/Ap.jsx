@@ -103,7 +103,7 @@ export default function Ap() {
     }).then((result) => {
       if (result.isConfirmed) {
         remove(apRef);
-        Swal.fire("Access Point deletado!");
+        Swal.fire("Equipamento deletado!");
         fetchProducts();
       }
     });
@@ -168,9 +168,9 @@ export default function Ap() {
                 <td>
                   <span className={ap.modulação === "Fast" ? style.fast : style.giga}>{ap.modulação}</span>
                 </td>
-                <td>{ap.cobertura} m²</td>
-                <td>{ap.raio} m</td>
-                <td>{ap.usuarioMax} usuários</td>
+                <td>{ap.cobertura}</td>
+                <td>{ap.raio}</td>
+                <td>{ap.usuarioMax}</td>
                 <td>{ap.throughputWireless24}</td>
 
                 <td className={ap.throughputWireless50 === "-" && style.NaoPossui}>

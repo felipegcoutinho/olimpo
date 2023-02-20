@@ -99,7 +99,7 @@ export default function Ap() {
     }).then((result) => {
       if (result.isConfirmed) {
         remove(dbRef);
-        Swal.fire("Access Point deletado!");
+        Swal.fire("Equipamento deletado!");
         fetchProducts();
       }
     });

@@ -5,6 +5,7 @@ import {Radio_Thead} from "/src/TableHead";
 import RadioModal from "./RadioModal";
 import {AdminContext} from "../App";
 import Swal from "sweetalert2";
+import Modal from "react-modal";
 import {Paginacao} from "./Pagination";
 import TableBar from "./TableBar";
 import {getDatabase, get, set, ref, push, remove} from "firebase/database";
@@ -30,14 +31,25 @@ export default function Radios() {
   const [pagina, setPagina] = useState("");
   const [queryRADIO, setQueryRADIO] = useState("");
   const [RadiosOutdoor, setRadiosOutdoor] = useState([]);
+  const [modalIsOpen, setIsOpen] = useState(false);
 
-  const {admin, HideRADIO, setHideRADIO, updatedProduct, setUpdatedProduct, modalIsOpen, setIsOpen, openModal, closeModal} =
-    useContext(AdminContext);
+  const {admin, HideRADIO, setHideRADIO, updatedProduct, setUpdatedProduct} = useContext(AdminContext);
 
   const handleHideRADIO = () => setHideRADIO(!HideRADIO);
   const handleSearchChangeRADIO = (e) => {
     setQueryRADIO(e.target.value);
   };
+
+  /* Configs Modal */
+  Modal.setAppElement("#root");
+  function openModal() {
+    setIsOpen(true);
+  }
+
+  function closeModal() {
+    setIsOpen(false);
+    setUpdatedProduct(false);
+  }
 
   /* Buscar Produto */
   const fetchProducts = async () => {
@@ -89,7 +101,7 @@ export default function Radios() {
     }).then((result) => {
       if (result.isConfirmed) {
         remove(dbRef);
-        Swal.fire("Access Point deletado!");
+        Swal.fire("Equipamento deletado!");
         fetchProducts();
       }
     });
