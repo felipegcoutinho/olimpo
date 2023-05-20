@@ -21,7 +21,44 @@ export function Paginacao({dados, mapFunction, Tablehead, query}) {
 
   function handleItensPorPaginaChange(event) {
     setItensPorPagina(parseInt(event.target.value, 10));
-    setPaginaAtual(0); // Volta para a primeira página quando o número de itens por página é alterado
+    setPaginaAtual(0);
+  }
+
+  function compareStatus(a, b) {
+    if (a.status === "Suporte" && b.status !== "Suporte") {
+      return -1;
+    } else if (a.status !== "Suporte" && b.status === "Suporte") {
+      return 1;
+    } else if (a.status === "Phaseout" && b.status !== "Phaseout") {
+      return 1;
+    } else if (a.status !== "Phaseout" && b.status === "Phaseout") {
+      return -1;
+    } else {
+      if (a.modelo < b.modelo) {
+        return -1;
+      } else if (a.modelo > b.modelo) {
+        return 1;
+      }
+      return 0;
+    }
+  }
+
+  dadosPaginados.sort(compareStatus);
+
+  const dadosFiltrados = dadosPaginados.filter((item) => {
+    if (item.modelo.toLowerCase().includes(query.toLowerCase())) {
+      return true;
+    } else if (item.modulação.toLowerCase().includes(query.toLowerCase())) {
+      return true;
+    }
+    return false;
+  });
+
+  let conteudo;
+  if (dadosFiltrados.length === 0) {
+    conteudo = <p>Nenhum equipamento correspondente encontrado.</p>;
+  } else {
+    conteudo = dadosFiltrados.map(mapFunction);
   }
 
   return (
@@ -37,20 +74,10 @@ export function Paginacao({dados, mapFunction, Tablehead, query}) {
         </select>
         <table className={style.devicesTable}>
           {Tablehead}
-
-          {dadosPaginados
-            .filter((item) => {
-              if (item.modelo.toLowerCase().includes(query.toLowerCase())) {
-                return item;
-              } else if (item.modulação.toLowerCase().includes(query.toLowerCase())) {
-                return item;
-              }
-            })
-            .map(mapFunction)}
+          {conteudo}
         </table>
       </div>
 
-      {/* Renderiza os botões de navegação */}
       <button className={style.buttonAnterior} onClick={paginaAnterior} disabled={paginaAtual === 0}>
         Anterior
       </button>

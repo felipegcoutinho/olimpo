@@ -21,11 +21,6 @@ export default function Header() {
 
   return (
     <div>
-      {admin && (
-        <div className={style.modoAdmin} id="home">
-          Conta Admin
-        </div>
-      )}
       <div className={style.aviso} id="home">
         <b>Aviso!</b> Este é um material para facilitar o acesso a informações dos principais equipamentos.
         <b> Sempre consulte a documentação oficial.</b> :)

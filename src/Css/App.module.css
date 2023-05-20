@@ -171,14 +171,6 @@ input {
   height: 360px;
 }
 
-.modoAdmin {
-  background-color: red;
-  color: white;
-  text-align: center;
-  font-weight: bold;
-  padding: 5px;
-}
-
 .categoryContainer {
   margin: 40px 0;
 }

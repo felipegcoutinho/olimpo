@@ -14,24 +14,6 @@ import {app, db} from "../database/firebase";
 export const APContext = createContext();
 
 export default function Ap() {
-  const [modelo, setModelo] = useState("");
-  const [garantia, setGarantia] = useState("");
-  const [cobertura, setCobertura] = useState("");
-  const [raio, setRaio] = useState("");
-  const [usuarioMax, setUsuarioMax] = useState("");
-  const [qtdePortas, setQtdePortas] = useState("");
-  const [status, setStatus] = useState("");
-  const [modulação, setModulação] = useState("");
-  const [connectiVersion, setConnectiVersion] = useState("");
-  const [throughputWireless24, setThroughputWireless24] = useState("");
-  const [throughputWireless50, setThroughputWireless50] = useState("");
-  const [potencia2G, setPotencia2G] = useState("");
-  const [potencia5G, setPotencia5G] = useState("");
-  const [tensao, setTensao] = useState("");
-  const [poe, setPoe] = useState("");
-  const [wisefi, setWisefi] = useState("");
-  const [handover, setHandover] = useState("");
-  const [pagina, setPagina] = useState("");
   const [queryAP, setQueryAP] = useState("");
   const [accessPoint, setAccessPoint] = useState([]);
   const [modalIsOpen, setIsOpen] = useState(false);
@@ -172,14 +154,13 @@ export default function Ap() {
                 <td>{ap.raio}</td>
                 <td>{ap.usuarioMax}</td>
                 <td>{ap.throughputWireless24}</td>
-
                 <td className={ap.throughputWireless50 === "-" && style.NaoPossui}>
                   {ap.throughputWireless50 !== "-" && ap.throughputWireless50}
                 </td>
                 <td>{ap.qtdePortas}</td>
                 <td className={ap.poe === "-" && style.NaoPossui}>{ap.poe !== "-" && ap.poe}</td>
                 <td>{ap.tensao}</td>
-                <td>{ap.connectiVersion}</td>
+                <td className={ap.connectiVersion === "-" && style.NaoPossui}>{ap.connectiVersion !== "-" && ap.connectiVersion}</td>
                 <td className={ap.handover === "-" ? style.NaoPossui : style.Possui}></td>
                 <td className={ap.wisefi === "-" ? style.NaoPossui : style.Possui}></td>
                 <td>{ap.potencia2G}</td>
