@@ -55,10 +55,15 @@ export function Paginacao({dados, mapFunction, Tablehead, query}) {
   });
 
   let conteudo;
-  if (dadosFiltrados.length === 0) {
-    conteudo = <p>Nenhum equipamento correspondente encontrado.</p>;
+  if (dadosFiltrados.length > 0) {
+    conteudo = (
+      <>
+        {Tablehead}
+        {dadosFiltrados.map(mapFunction)}
+      </>
+    );
   } else {
-    conteudo = dadosFiltrados.map(mapFunction);
+    conteudo = <p>Nenhum equipamento correspondente encontrado.</p>;
   }
 
   return (
@@ -72,10 +77,7 @@ export function Paginacao({dados, mapFunction, Tablehead, query}) {
           <option value="25">25</option>
           <option defaultValue="50">50</option>
         </select>
-        <table className={style.devicesTable}>
-          {Tablehead}
-          {conteudo}
-        </table>
+        <table className={style.devicesTable}>{conteudo}</table>
       </div>
 
       <button className={style.buttonAnterior} onClick={paginaAnterior} disabled={paginaAtual === 0}>

@@ -1,3 +1,5 @@
+@import url("https://fonts.googleapis.com/css2?family=Fira+Sans:wght@400&display=swap");
+
 @font-face {
   font-family: "Inter";
   src: local("Inter"), url(../webfonts/Inter-Regular.ttf) format("truetype");
@@ -20,7 +22,8 @@ html {
 
 body {
   background-color: #dfe9e6;
-  font-family: "Inter", segoe UI, arial, Helvetica;
+  font-family: "Fira Sans", "Inter", segoe UI, arial, Helvetica;
+  font-size: 18px;
 }
 
 a {
@@ -33,7 +36,7 @@ button,
 option,
 select,
 input {
-  font-family: "Inter", segoe UI, arial, Helvetica;
+  font-family: "Fira Sans", "Inter", segoe UI, arial, Helvetica;
   transition: 0.5s;
 }
 
@@ -194,12 +197,11 @@ input {
   color: white;
 }
 
-.categoryButton:after {
-  color: #ff8c1f;
-  content: " \f054\ ";
+/* .categoryButton:after {
+  content: " \f0d7\ ";
   font-family: FontAwesome;
   font-size: 0.8rem;
-}
+} */
 
 .aviso {
   color: white;
@@ -644,6 +646,10 @@ td:first-child {
   padding-left: 5px;
   position: sticky;
   text-align: left;
+}
+
+th:first-child {
+  background-color: black;
 }
 
 th:first-child,
