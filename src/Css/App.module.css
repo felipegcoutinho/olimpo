@@ -591,6 +591,10 @@ option {
   width: 100%;
 }
 
+.OcultarTd {
+  display: none;
+}
+
 .devicesTable td,
 .devicesTable th {
   border: 0px solid transparent;

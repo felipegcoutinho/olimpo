@@ -10,6 +10,7 @@ import {Paginacao} from "./Pagination";
 import TableBar from "./TableBar";
 import {getDatabase, get, set, ref, push, remove} from "firebase/database";
 import {app, db} from "../database/firebase";
+import DataTable from "react-data-table-component";
 
 export const APContext = createContext();
 
@@ -109,6 +110,39 @@ export default function Ap() {
     closeModal();
   };
 
+  const columns = [
+    {
+      name: "Title",
+      selector: (row) => row.title,
+      sortable: true,
+    },
+    {
+      name: "Director",
+      selector: (row) => row.director,
+      sortable: true,
+    },
+    {
+      name: "Year",
+      selector: (row) => row.year,
+      sortable: true,
+    },
+  ];
+
+  const data = [
+    {
+      id: 1,
+      title: "Beetlejuice",
+      director: "Tim Burton",
+      year: "1988",
+    },
+    {
+      id: 2,
+      title: "Ghostbusters",
+      director: "Ivan Reitman",
+      year: "1984",
+    },
+  ];
+
   return (
     <div className={style.box_content}>
       <TableBar
@@ -144,41 +178,44 @@ export default function Ap() {
           Tablehead={<AP_Thead />}
           query={queryAP}
           mapFunction={(ap, index) => (
-            <tbody>
-              <tr key={index}>
-                <td className={ap.status === "Phaseout" ? style.status_phaseout : style.status_suporte}>{ap.modelo}</td>
-                <td>
-                  <span className={ap.modulação === "Fast" ? style.fast : style.giga}>{ap.modulação}</span>
-                </td>
-                <td>{ap.cobertura}</td>
-                <td>{ap.raio}</td>
-                <td>{ap.usuarioMax}</td>
-                <td>{ap.throughputWireless24}</td>
-                <td className={ap.throughputWireless50 === "-" && style.NaoPossui}>
-                  {ap.throughputWireless50 !== "-" && ap.throughputWireless50}
-                </td>
-                <td>{ap.qtdePortas}</td>
-                <td className={ap.poe === "-" && style.NaoPossui}>{ap.poe !== "-" && ap.poe}</td>
-                <td>{ap.tensao}</td>
-                <td className={ap.connectiVersion === "-" && style.NaoPossui}>{ap.connectiVersion !== "-" && ap.connectiVersion}</td>
-                <td className={ap.handover === "-" ? style.NaoPossui : style.Possui}></td>
-                <td className={ap.wisefi === "-" ? style.NaoPossui : style.Possui}></td>
-                <td>{ap.potencia2G}</td>
-                <td className={ap.potencia5G === "-" && style.NaoPossui}>{ap.potencia5G !== "-" && ap.potencia5G}</td>
-                <td>{ap.garantia}</td>
-                <td>
-                  <a target="_blank" rel="noopener noreferrer" href={ap.pagina}>
-                    <span className={style.paginalink}>Ir para Página</span>
-                  </a>
-                </td>
-                {admin && (
+            <>
+              <DataTable columns={columns} data={data} />
+              {/* <tbody>
+                <tr key={index} className={ap.ocultar === "Sim" && style.OcultarTd}>
+                  <td className={ap.status === "Phaseout" ? style.status_phaseout : style.status_suporte}>{ap.modelo}</td>
                   <td>
-                    <button className={style.btn_alterar} onClick={() => openUpdateModal(ap)}></button>
-                    <button className={style.btn_excluir} onClick={() => deleteProduct(ap.id)}></button>
+                    <span className={ap.modulação === "Fast" ? style.fast : style.giga}>{ap.modulação}</span>
                   </td>
-                )}
-              </tr>
-            </tbody>
+                  <td>{ap.cobertura}</td>
+                  <td>{ap.raio}</td>
+                  <td>{ap.usuarioMax}</td>
+                  <td>{ap.throughputWireless24}</td>
+                  <td className={ap.throughputWireless50 === "-" && style.NaoPossui}>
+                    {ap.throughputWireless50 !== "-" && ap.throughputWireless50}
+                  </td>
+                  <td>{ap.qtdePortas}</td>
+                  <td className={ap.poe === "-" && style.NaoPossui}>{ap.poe !== "-" && ap.poe}</td>
+                  <td>{ap.tensao}</td>
+                  <td className={ap.connectiVersion === "-" && style.NaoPossui}>{ap.connectiVersion !== "-" && ap.connectiVersion}</td>
+                  <td className={ap.handover === "-" ? style.NaoPossui : style.Possui}></td>
+                  <td className={ap.wisefi === "-" ? style.NaoPossui : style.Possui}></td>
+                  <td>{ap.potencia2G}</td>
+                  <td className={ap.potencia5G === "-" && style.NaoPossui}>{ap.potencia5G !== "-" && ap.potencia5G}</td>
+                  <td>{ap.garantia}</td>
+                  <td>
+                    <a target="_blank" rel="noopener noreferrer" href={ap.pagina}>
+                      <span className={style.paginalink}>Ir para Página</span>
+                    </a>
+                  </td>
+                  {admin && (
+                    <td>
+                      <button className={style.btn_alterar} onClick={() => openUpdateModal(ap)}></button>
+                      <button className={style.btn_excluir} onClick={() => deleteProduct(ap.id)}></button>
+                    </td>
+                  )}
+                </tr>
+              </tbody> */}
+            </>
           )}
         />
       )}
