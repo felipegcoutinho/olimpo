@@ -6,6 +6,7 @@ import style from "../css/App.module.css";
 import {useSignInWithEmailAndPassword} from "react-firebase-hooks/auth";
 import {auth} from "../database/firebase";
 import Swal from "sweetalert2";
+import {Button, TextInput} from "flowbite-react";
 
 function LoginModal() {
   const {modalIsOpen, closeModal, setAdmin, admin} = useContext(AdminContext);
@@ -60,7 +61,7 @@ function LoginModal() {
           ) : (
             <>
               <label htmlFor="email">E-mail</label>
-              <input
+              <TextInput
                 type="text"
                 name="email"
                 id="email"
@@ -69,7 +70,7 @@ function LoginModal() {
                 required
               />
               <label htmlFor="password">Senha</label>
-              <input
+              <TextInput
                 type="password"
                 name="password"
                 id="password"
@@ -77,12 +78,12 @@ function LoginModal() {
                 onChange={(e) => setPassword(e.target.value)}
                 required
               />
-              <button className={style.btnLogar} onClick={handleSignIn}>
+              <Button color="success" className={style.btnLogar} onClick={handleSignIn}>
                 {loading ? "Entrando..." : "Entrar"}
-              </button>
-              <button className={style.btn_addUpdCancel} onClick={closeModal}>
+              </Button>
+              <Button color="light" className={style.btn_addUpdCancel} onClick={closeModal}>
                 Cancelar
-              </button>
+              </Button>
             </>
           )}
         </form>

@@ -1,31 +1,31 @@
 import React, {useContext} from "react";
 import style from "./css/App.module.css";
 import {AdminContext} from "./App";
+import {Table} from "flowbite-react";
+import {TableRow} from "flowbite-react/lib/esm/components/Table/TableRow";
 
 export default function AP() {
   const {admin} = useContext(AdminContext);
   return (
     <thead>
-      <tr id={style.AP}>
-        <th>Modelo</th>
-        <th>Modulação</th>
-        <th>Cobertura</th>
-        <th>Raio</th>
-        <th>Usuários simultâneos</th>
-        <th>Datarate Máx. 2G</th>
-        <th>Datarate Máx. 5G</th>
-        <th>Qtde Portas</th>
-        <th>Tipo PoE</th>
-        <th>Tensão</th>
-        <th>ConnectFi</th>
-        <th>Handover</th>
-        <th>WiseFi</th>
-        <th>Potência TX 2G</th>
-        <th>Potência TX 5G</th>
-        <th>Garantia</th>
-        <th>Página</th>
-        {admin && <th>Ações</th>}
-      </tr>
+      <th>Modelo</th>
+      <th>Modulação</th>
+      <th>Cobertura</th>
+      <th>Raio</th>
+      <th>Usuários simultâneos</th>
+      <th>Datarate Máx. 2G</th>
+      <th>Datarate Máx. 5G</th>
+      <th>Qtde Portas</th>
+      <th>Tipo PoE</th>
+      <th>Tensão</th>
+      <th>ConnectFi</th>
+      <th>Handover</th>
+      <th>WiseFi</th>
+      <th>Potência TX 2G</th>
+      <th>Potência TX 5G</th>
+      <th>Garantia</th>
+      <th>Página</th>
+      {admin && <th>Ações</th>}
     </thead>
   );
 }

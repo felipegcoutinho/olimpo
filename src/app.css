@@ -1,0 +1,35 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@import url("https://fonts.googleapis.com/css2?family=Pacifico&display=swap");
+
+.btnCategory {
+  @apply bg-green-900 border-none rounded-md shadow-md text-white cursor-pointer text-base font-semibold h-20 w-40 m-3;
+}
+
+td {
+  @apply border-none text-center;
+}
+
+th {
+  @apply border-none text-center border-4 border-white px-4;
+}
+
+th:nth-child(1) {
+  @apply w-max;
+}
+
+thead {
+  @apply bg-zinc-800 text-white h-10;
+}
+
+td:not(:first-child) {
+  @apply text-xs font-bold;
+}
+
+th:first-child,
+td:first-child {
+  left: 0;
+  position: sticky;
+}

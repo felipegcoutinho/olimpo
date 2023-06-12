@@ -1,16 +1,19 @@
 import React from "react";
 import {useEffect, useState, useContext, createContext} from "react";
 import style from "../css/App.module.css";
-import AP_Thead from "../TableHead";
+import AP_Thead from "../TableHeads";
 import Ap_Modal from "./ApModal";
 import {AdminContext} from "../App";
 import Swal from "sweetalert2";
 import Modal from "react-modal";
-import {Paginacao} from "./Pagination";
 import TableBar from "./TableBar";
 import {getDatabase, get, set, ref, push, remove} from "firebase/database";
 import {app, db} from "../database/firebase";
-import DataTable from "react-data-table-component";
+import Content from "../UI Components/Content";
+import {Pagination} from "./Pagination";
+import TableTeste from "../UI Components/Table";
+import {Badge} from "flowbite-react";
+import {HiArrowTopRightOnSquare} from "react-icons/hi2";
 
 export const APContext = createContext();
 
@@ -110,41 +113,8 @@ export default function Ap() {
     closeModal();
   };
 
-  const columns = [
-    {
-      name: "Title",
-      selector: (row) => row.title,
-      sortable: true,
-    },
-    {
-      name: "Director",
-      selector: (row) => row.director,
-      sortable: true,
-    },
-    {
-      name: "Year",
-      selector: (row) => row.year,
-      sortable: true,
-    },
-  ];
-
-  const data = [
-    {
-      id: 1,
-      title: "Beetlejuice",
-      director: "Tim Burton",
-      year: "1988",
-    },
-    {
-      id: 2,
-      title: "Ghostbusters",
-      director: "Ivan Reitman",
-      year: "1984",
-    },
-  ];
-
   return (
-    <div className={style.box_content}>
+    <Content>
       <TableBar
         id="ap"
         Hide={HideAP}
@@ -156,7 +126,6 @@ export default function Ap() {
         query={queryAP}
         newButton="Novo Access Point"
       />
-
       <APContext.Provider
         value={{
           updateProduct,
@@ -173,18 +142,19 @@ export default function Ap() {
       </APContext.Provider>
 
       {HideAP && (
-        <Paginacao
+        <Pagination
           dados={accessPoint}
           Tablehead={<AP_Thead />}
           query={queryAP}
           mapFunction={(ap, index) => (
             <>
-              <DataTable columns={columns} data={data} />
-              {/* <tbody>
-                <tr key={index} className={ap.ocultar === "Sim" && style.OcultarTd}>
-                  <td className={ap.status === "Phaseout" ? style.status_phaseout : style.status_suporte}>{ap.modelo}</td>
+              <tbody>
+                <tr key={index} className={ap.ocultar === "Sim" && !admin ? style.OcultarTd : ""}>
+                  <td className={ap.status === "Phaseout" ? "bg-red-100 text-red-800" : "bg-green-100 text-green-800"}>
+                    {ap.ocultar === "Sim" ? `${ap.modelo} | Oculto` : ap.modelo}
+                  </td>
                   <td>
-                    <span className={ap.modulação === "Fast" ? style.fast : style.giga}>{ap.modulação}</span>
+                    <span className={ap.modulação === "Fast" ? style.fast : style.giga}>{ap.modulação}</span>{" "}
                   </td>
                   <td>{ap.cobertura}</td>
                   <td>{ap.raio}</td>
@@ -204,7 +174,9 @@ export default function Ap() {
                   <td>{ap.garantia}</td>
                   <td>
                     <a target="_blank" rel="noopener noreferrer" href={ap.pagina}>
-                      <span className={style.paginalink}>Ir para Página</span>
+                      <Badge size="xs" icon={HiArrowTopRightOnSquare} className="bg-green-500 text-white">
+                        Página
+                      </Badge>
                     </a>
                   </td>
                   {admin && (
@@ -214,11 +186,11 @@ export default function Ap() {
                     </td>
                   )}
                 </tr>
-              </tbody> */}
+              </tbody>
             </>
           )}
         />
       )}
-    </div>
+    </Content>
   );
 }

@@ -1,7 +1,8 @@
 import {useState} from "react";
 import style from "../css/App.module.css";
+import {Label, Select} from "flowbite-react";
 
-export function Paginacao({dados, mapFunction, Tablehead, query}) {
+export function Pagination({dados, mapFunction, Tablehead, query}) {
   const [paginaAtual, setPaginaAtual] = useState(0);
   const [itensPorPagina, setItensPorPagina] = useState(50);
 
@@ -68,16 +69,19 @@ export function Paginacao({dados, mapFunction, Tablehead, query}) {
 
   return (
     <>
-      <div style={{overflowX: "auto"}}>
-        <label htmlFor="itensPorPagina">Itens por página:</label>
-        <select id="itensPorPagina" value={itensPorPagina} onChange={handleItensPorPaginaChange}>
-          <option value="5">5</option>
-          <option value="10">10</option>
-          <option value="15">15</option>
-          <option value="25">25</option>
-          <option defaultValue="50">50</option>
-        </select>
-        <table className={style.devicesTable}>{conteudo}</table>
+      <div className="overflow-x-auto">
+        <div className="flex items-center mb-2">
+          <Label htmlFor="itensPorPagina">Itens por página</Label>
+          <Select className="w-20 ml-2" id="itensPorPagina" value={itensPorPagina} onChange={handleItensPorPaginaChange}>
+            <option value="5">5</option>
+            <option value="10">10</option>
+            <option value="15">15</option>
+            <option value="25">25</option>
+            <option defaultValue="50">50</option>
+          </Select>
+        </div>
+
+        <table className="whitespace-nowrap leading-relaxed text-gray-600 text-xs">{conteudo}</table>
       </div>
 
       <button className={style.buttonAnterior} onClick={paginaAnterior} disabled={paginaAtual === 0}>

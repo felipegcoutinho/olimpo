@@ -1,33 +1,20 @@
 import React from "react";
 import {useEffect, useState, useContext, createContext} from "react";
 import style from "../css/App.module.css";
-import {Sfp_Thead} from "/src/TableHead";
+import {Sfp_Thead} from "/src/TableHeads";
 import {AdminContext} from "../App";
 import Swal from "sweetalert2";
 import Modal from "react-modal";
 import SfpModal from "./SfpModal";
 import TableBar from "./TableBar";
-import {Paginacao} from "./Pagination";
+import {Pagination} from "./Pagination";
 import {getDatabase, get, set, ref, push, remove} from "firebase/database";
 import {app, db} from "../database/firebase";
+import Content from "../UI Components/Content";
 
 export const SfpContext = createContext();
 
 export default function Ap() {
-  const [modelo, setmodelo] = useState("");
-  const [conector, setconector] = useState("");
-  const [modulo, setmodulo] = useState("");
-  const [wdm, setwdm] = useState("");
-  const [distancia, setdistancia] = useState("");
-  const [modulação, setmodulação] = useState("");
-  const [fibra, setfibra] = useState("");
-  const [potencia, setpotencia] = useState("");
-  const [sensibilidade, setsensibilidade] = useState("");
-  const [CompTX, setCompTX] = useState("");
-  const [CompRX, setCompRX] = useState("");
-  const [status, setstatus] = useState("");
-  const [garantia, setgarantia] = useState("");
-  const [pagina, setpagina] = useState("");
   const [querySfp, setQuerySfp] = React.useState("");
   const [sfp, setSfp] = useState([]);
   const [modalIsOpen, setIsOpen] = useState(false);
@@ -124,7 +111,7 @@ export default function Ap() {
   };
 
   return (
-    <div className={style.box_content}>
+    <Content>
       <TableBar
         id="sfp"
         Hide={HideSFP}
@@ -153,13 +140,13 @@ export default function Ap() {
       </SfpContext.Provider>
 
       {HideSFP && (
-        <Paginacao
+        <Pagination
           dados={sfp}
           Tablehead={<Sfp_Thead />}
           query={querySfp}
           mapFunction={(sfp, index) => (
             <tbody>
-              <tr key={index}>
+              <tr key={index} className={sfp.ocultar === "Sim" && !admin ? style.OcultarTd : ""}>
                 <td className={sfp.status === "Phaseout" ? style.status_phaseout : style.status_suporte}>{sfp.modelo}</td>
                 <td>
                   <span className={sfp.modulação === "Fast" ? style.fast : style.giga}>{sfp.modulação}</span>
@@ -205,6 +192,6 @@ export default function Ap() {
           )}
         />
       )}
-    </div>
+    </Content>
   );
 }

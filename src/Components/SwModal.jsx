@@ -1,23 +1,25 @@
 import React from "react";
 import {useContext} from "react";
 import {SwContext} from "./Switches";
-import Modal from "react-modal";
 import style from "../css/App.module.css";
+import ModalComponent from "../UI Components/Modal";
+import OlimpoTextInput from "../UI Components/OlimpoTextInput";
+import OlimpoSelect from "../UI Components/OlimpoSelect";
 
 function SwModal() {
   const {addProduto, updateProduct, updatedProduct, setUpdatedProduct, modalIsOpen, closeModal} = useContext(SwContext);
 
   return (
-    <Modal isOpen={modalIsOpen} onRequestClose={closeModal} className={style.modal} overlayClassName={style.modal_overlay}>
-      {updatedProduct.id ? <h1>Atualizar {updatedProduct.modelo}</h1> : <h1>Adicionar Switch</h1>}
-      <div className={style.formLegenda}>
-        <h4>Caso o produto não possua a função, preencha o campo com "-".</h4>
-        <h4>Se a informação do produto não houver sido encontrada, preencha o campo com "N/A".</h4>
-      </div>
+    <ModalComponent
+      modalIsOpen={modalIsOpen}
+      closeModal={closeModal}
+      updatedProductId={updatedProduct.id}
+      updatedProductModelo={updatedProduct.modelo}
+      setor="Switch">
       <form onSubmit={updatedProduct.id ? updateProduct : addProduto}>
         <div className={style.formContainer}>
           <label>Modelo</label>
-          <input
+          <OlimpoTextInput
             required
             type="text"
             placeholder="SG 1002 MR L2+"
@@ -26,7 +28,7 @@ function SwModal() {
           />
 
           <label>Status do suporte</label>
-          <select
+          <OlimpoSelect
             type="text"
             placeholder="Status do suporte"
             value={updatedProduct.status}
@@ -39,10 +41,10 @@ function SwModal() {
             <option value="Suporte">Suporte</option>
             <option value="Phaseout">Phaseout</option>
             <option value="N/A">N/A</option>
-          </select>
+          </OlimpoSelect>
 
           <label>Modulação</label>
-          <select
+          <OlimpoSelect
             type="text"
             value={updatedProduct.modulação}
             onChange={(e) => setUpdatedProduct({...updatedProduct, modulação: e.target.value})}>
@@ -55,10 +57,10 @@ function SwModal() {
             <option value="Fast">Fast</option>
             <option value="Giga (Uplink)">Giga (Uplink)</option>
             <option value="N/A">N/A</option>
-          </select>
+          </OlimpoSelect>
 
           <label>Qtde Portas RJ45</label>
-          <input
+          <OlimpoTextInput
             type="text"
             placeholder="8 Portas"
             value={updatedProduct.qtdePortas}
@@ -66,7 +68,7 @@ function SwModal() {
           />
 
           <label>Gerenciável</label>
-          <select
+          <OlimpoSelect
             type="text"
             value={updatedProduct.gerenciavel}
             onChange={(e) => setUpdatedProduct({...updatedProduct, gerenciavel: e.target.value})}>
@@ -78,10 +80,13 @@ function SwModal() {
             <option value="Sim">Sim</option>
             <option value="-">Não</option>
             <option value="N/A">N/A</option>
-          </select>
+          </OlimpoSelect>
 
           <label>Alimenta via PoE</label>
-          <select type="text" value={updatedProduct.poe} onChange={(e) => setUpdatedProduct({...updatedProduct, poe: e.target.value})}>
+          <OlimpoSelect
+            type="text"
+            value={updatedProduct.poe}
+            onChange={(e) => setUpdatedProduct({...updatedProduct, poe: e.target.value})}>
             {!updatedProduct.id && (
               <option selected disabled>
                 Escolha
@@ -91,10 +96,10 @@ function SwModal() {
             <option value="802.3af/B - 802.3at">802.3af/B - 802.3at</option>
             <option value="-">Não</option>
             <option value="N/A">N/A</option>
-          </select>
+          </OlimpoSelect>
 
           <label>Encaminhamento de Pacotes</label>
-          <input
+          <OlimpoTextInput
             type="text"
             placeholder="15 Mpps"
             value={updatedProduct.pps}
@@ -102,7 +107,7 @@ function SwModal() {
           />
 
           <label>Backplane</label>
-          <input
+          <OlimpoTextInput
             type="text"
             placeholder="20 Gbps"
             value={updatedProduct.backplane}
@@ -110,7 +115,7 @@ function SwModal() {
           />
 
           <label>Qtde Interface SFP</label>
-          <input
+          <OlimpoTextInput
             type="text"
             placeholder="2 Independentes"
             value={updatedProduct.sfp}
@@ -118,7 +123,7 @@ function SwModal() {
           />
 
           <label>PoE Extender</label>
-          <select
+          <OlimpoSelect
             type="text"
             value={updatedProduct.poeExtender}
             onChange={(e) => setUpdatedProduct({...updatedProduct, poeExtender: e.target.value})}>
@@ -130,10 +135,10 @@ function SwModal() {
             <option value="Sim">Sim</option>
             <option value="-">Não</option>
             <option value="N/A">N/A</option>
-          </select>
+          </OlimpoSelect>
 
           <label>PoE p/ Porta</label>
-          <input
+          <OlimpoTextInput
             type="text"
             placeholder="30 W"
             value={updatedProduct.poePorta}
@@ -141,7 +146,7 @@ function SwModal() {
           />
 
           <label>PoE Total</label>
-          <input
+          <OlimpoTextInput
             type="text"
             placeholder="97 W"
             value={updatedProduct.poeTotal}
@@ -149,7 +154,10 @@ function SwModal() {
           />
 
           <label>Qos</label>
-          <select type="text" value={updatedProduct.qos} onChange={(e) => setUpdatedProduct({...updatedProduct, qos: e.target.value})}>
+          <OlimpoSelect
+            type="text"
+            value={updatedProduct.qos}
+            onChange={(e) => setUpdatedProduct({...updatedProduct, qos: e.target.value})}>
             {!updatedProduct.id && (
               <option selected disabled>
                 Escolha
@@ -158,10 +166,10 @@ function SwModal() {
             <option value="Sim">Sim</option>
             <option value="-">Não</option>
             <option value="N/A">N/A</option>
-          </select>
+          </OlimpoSelect>
 
           <label>Tempo da Garantia</label>
-          <select
+          <OlimpoSelect
             type="text"
             value={updatedProduct.garantia}
             onChange={(e) => setUpdatedProduct({...updatedProduct, garantia: e.target.value})}>
@@ -176,27 +184,33 @@ function SwModal() {
             <option value="4 anos">4 anos</option>
             <option value="5 anos">5 anos</option>
             <option value="N/A">N/A</option>
-          </select>
+          </OlimpoSelect>
 
           <label>URL da Página</label>
-          <input
+          <OlimpoTextInput
             type="text"
             placeholder="https://www.intelbras.com/pt-br/switch-gerenciavel-com-8-portas-giga-2-portas-mini-gbic-sg-1002-mr-l2"
             value={updatedProduct.pagina}
             onChange={(e) => setUpdatedProduct({...updatedProduct, pagina: e.target.value})}
           />
 
-          <div className={style.btnModalActions}>
-            <button type="submit" className={style.btn_addUpd}>
-              {updatedProduct.id ? "Atualizar Equipamento" : "Adicionar Equipamento"}
-            </button>
-            <button className={style.btn_addUpdCancel} onClick={closeModal}>
-              Cancelar
-            </button>
-          </div>
+          <label>Ocultar</label>
+          <OlimpoSelect
+            required
+            type="text"
+            value={updatedProduct.ocultar}
+            onChange={(e) => setUpdatedProduct({...updatedProduct, ocultar: e.target.value})}>
+            {!updatedProduct.id && (
+              <option selected disabled>
+                Escolha
+              </option>
+            )}
+            <option value="Não">Não</option>
+            <option value="Sim">Sim</option>
+          </OlimpoSelect>
         </div>
       </form>
-    </Modal>
+    </ModalComponent>
   );
 }
 

@@ -1,34 +1,20 @@
 import React from "react";
 import {useEffect, useState, useContext, createContext} from "react";
 import style from "../css/App.module.css";
-import {Switch_Thead} from "/src/TableHead";
+import {Switch_Thead} from "/src/TableHeads";
 import {AdminContext} from "../App";
 import Swal from "sweetalert2";
 import Modal from "react-modal";
 import SwModal from "./SwModal";
-import {Paginacao} from "./Pagination";
+import {Pagination} from "./Pagination";
 import TableBar from "./TableBar";
 import {getDatabase, get, set, ref, push, remove} from "firebase/database";
 import {app, db} from "../database/firebase";
+import Content from "../UI Components/Content";
 
 export const SwContext = createContext();
 
 export default function Ap() {
-  const [modelo, Setmodelo] = useState("");
-  const [qtdePortas, SetqtdePortas] = useState("");
-  const [modulação, Setmodulação] = useState("");
-  const [gerenciavel, Setgerenciavel] = useState("");
-  const [sfp, Setsfp] = useState("");
-  const [pps, SetPps] = useState("");
-  const [backplane, Setbackplane] = useState("");
-  const [qos, SetqosSet] = useState("");
-  const [poe, Setpoe] = useState("");
-  const [poeExtender, SetpoeExtender] = useState("");
-  const [poePorta, SetpoePorta] = useState("");
-  const [poeTotal, SetpoeTotal] = useState("");
-  const [status, Setstatus] = useState("");
-  const [garantia, Setgarantia] = useState("");
-  const [pagina, Setpagina] = useState("");
   const [querySWITCH, setQuerySWITCH] = React.useState("");
   const [switches, setSwitches] = useState([]);
   const [modalIsOpen, setIsOpen] = useState(false);
@@ -125,7 +111,7 @@ export default function Ap() {
   };
 
   return (
-    <div className={style.box_content}>
+    <Content>
       <TableBar
         id="switch"
         Hide={HideSwitch}
@@ -154,16 +140,16 @@ export default function Ap() {
       </SwContext.Provider>
 
       {HideSwitch && (
-        <Paginacao
+        <Pagination
           dados={switches}
           Tablehead={<Switch_Thead />}
           query={querySWITCH}
           mapFunction={(swicth, index) => (
             <tbody>
-              <tr key={index}>
+              <tr key={index} className={swicth.ocultar === "Sim" && !admin ? style.OcultarTd : ""}>
                 <td className={swicth.status === "Phaseout" ? style.status_phaseout : style.status_suporte}>
                   <span className={style.tooltip}>
-                    {swicth.modelo}
+                    {swicth.ocultar === "Sim" ? `${swicth.modelo} | Oculto` : swicth.modelo}
                     {swicth.modelo === "SG 2404 PoE L2+" && <i className="fa-regular fa-circle-question"></i>}
                     {swicth.modelo === "SG 2404 PoE L2+" && <span className={style.tooltiptext}>SG 2404 PoE L2+ (4760062)</span>}
                   </span>
@@ -219,6 +205,6 @@ export default function Ap() {
           )}
         />
       )}
-    </div>
+    </Content>
   );
 }

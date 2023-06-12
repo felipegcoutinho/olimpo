@@ -1,34 +1,20 @@
 import React from "react";
 import {useEffect, useState, useContext, createContext} from "react";
 import style from "../css/App.module.css";
-import {Radio_Thead} from "/src/TableHead";
+import {Radio_Thead} from "/src/TableHeads";
 import RadioModal from "./RadioModal";
 import {AdminContext} from "../App";
 import Swal from "sweetalert2";
 import Modal from "react-modal";
-import {Paginacao} from "./Pagination";
+import {Pagination} from "./Pagination";
 import TableBar from "./TableBar";
 import {getDatabase, get, set, ref, push, remove} from "firebase/database";
 import {app, db} from "../database/firebase";
+import Content from "../UI Components/Content";
 
 export const RadioContext = createContext();
 
 export default function Radios() {
-  const [modelo, setModelo] = useState("");
-  const [indicado, setIndicado] = useState("");
-  const [garantia, setGarantia] = useState("");
-  const [ganho, setGanho] = useState("");
-  const [potencia, setPotencia] = useState("");
-  const [modulação, setModulação] = useState("");
-  const [pps, setPps] = useState("");
-  const [throughputEfetivo, setThroughputEfetivo] = useState("");
-  const [throughputNominal, setThroughputNominal] = useState("");
-  const [aberturaHorVer, setAberturaHorVer] = useState("");
-  const [distancia, setDistancia] = useState("");
-  const [alimentaçao, setAlimentaçao] = useState("");
-  const [wireless, setWireless] = useState("");
-  const [status, setStatus] = useState("");
-  const [pagina, setPagina] = useState("");
   const [queryRADIO, setQueryRADIO] = useState("");
   const [RadiosOutdoor, setRadiosOutdoor] = useState([]);
   const [modalIsOpen, setIsOpen] = useState(false);
@@ -126,7 +112,7 @@ export default function Radios() {
   };
 
   return (
-    <div className={style.box_content}>
+    <Content>
       <TableBar
         id="radio"
         Hide={HideRADIO}
@@ -155,13 +141,13 @@ export default function Radios() {
       </RadioContext.Provider>
 
       {HideRADIO && (
-        <Paginacao
+        <Pagination
           dados={RadiosOutdoor}
           Tablehead={<Radio_Thead />}
           query={queryRADIO}
           mapFunction={(radio, index) => (
             <tbody>
-              <tr key={index}>
+              <tr key={index} className={radio.ocultar === "Sim" && !admin ? style.OcultarTd : ""}>
                 <td className={radio.status === "Phaseout" ? style.status_phaseout : style.status_suporte}>{radio.modelo}</td>
                 <td>{radio.indicado}</td>
                 <td>
@@ -202,6 +188,6 @@ export default function Radios() {
           )}
         />
       )}
-    </div>
+    </Content>
   );
 }

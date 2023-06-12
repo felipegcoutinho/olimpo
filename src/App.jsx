@@ -1,6 +1,5 @@
 import React from "react";
 import {createContext, useState} from "react";
-import style from "../src/css/App.module.css";
 import Header from "./components/Header.jsx";
 import AccessPoints from "./components/Ap.jsx";
 import RadiosOutdoor from "./components/Radio.jsx";
@@ -10,6 +9,7 @@ import Conversores from "./components/Conversores.jsx";
 import Sfp from "./components/Sfp.jsx";
 import Onu from "./components/Onu.jsx";
 import Modal from "react-modal";
+import {Button} from "flowbite-react";
 
 export const AdminContext = createContext();
 
@@ -49,8 +49,8 @@ function App() {
   }
 
   return (
-    <div className={style.container}>
-      <div className={style.box_container}>
+    <div className="flex flex-col">
+      <div className="w-[90%] self-center bg-white">
         <AdminContext.Provider
           value={{
             admin,
@@ -77,15 +77,9 @@ function App() {
           }}>
           <Header />
 
-          {ShowHide ? (
-            <button className={style.buttonShowAll} onClick={alternarMostrarOcultar}>
-              Ocultar Tudo
-            </button>
-          ) : (
-            <button className={style.buttonHideAll} onClick={alternarMostrarOcultar}>
-              Mostrar Tudo
-            </button>
-          )}
+          {/* <Button color="dark" className="mb-4" onClick={alternarMostrarOcultar}>
+            {ShowHide ? "Ocultar Tudo" : "Mostrar Tudo"}
+          </Button> */}
 
           {/* APs */}
           <AccessPoints />

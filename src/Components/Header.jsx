@@ -1,8 +1,10 @@
 import React, {useState} from "react";
 import {useContext} from "react";
 import {AdminContext} from "../App";
-import style from "../css/App.module.css";
 import LoginModal from "./LoginModal";
+import {Button, TextInput} from "flowbite-react";
+import {HiLockClosed, HiLockOpen, HiXMark, HiMagnifyingGlass} from "react-icons/hi2";
+import {HiAdjustments, HiCloudDownload, HiUserCircle} from "react-icons/hi";
 
 export default function Header() {
   const {openModal, admin} = useContext(AdminContext);
@@ -21,59 +23,100 @@ export default function Header() {
 
   return (
     <div>
-      <div className={style.aviso} id="home">
+      {/* <div className="bg-white" id="home">
         <b>Aviso!</b> Este é um material para facilitar o acesso a informações dos principais equipamentos.
-        <b> Sempre consulte a documentação oficial.</b> :)
-      </div>
-      <div className={style.header_content}>
-        <div className={style.logo}>
-          Olimpo!<span className={style.version}>v1.1</span>
+        <b> Sempre consulte a documentação oficial.</b>
+      </div> */}
+      <div className="items-center flex flex-col" id="home">
+        <div className="mt-20">
+          <p className="text-green-500 text-5xl font-[pacifico]">Olimpo!</p>
         </div>
-        <div className={style.searchbarContainer}>
-          <input
+
+        <div className="flex mt-10 items-center">
+          <TextInput
+            sizing="lg"
             type="text"
-            className={style.mainsearchbar}
+            className="rounded-sm text-black text-lg font-bold text-center w-96 focus:ring-red-500"
             value={urlValue}
             placeholder="Pesquise em intelbras.com.br"
             onChange={handleSearch}
             onKeyDown={handleKeyPress}
           />
-          <a target="_blank" rel="noopener noreferrer" href={urlSearch}>
-            {urlValue !== "" && <button className={style.mainSearchBtn}></button>}
-          </a>
-          {urlValue !== "" && <button className={style.searchBtnClean} onClick={() => setUrlValue("")}></button>}
 
-          <button className={admin ? style.adminBtnEnable : style.adminBtnDisable} onClick={openModal}></button>
+          <a target="_blank" rel="noopener noreferrer" href={urlSearch}>
+            {/* {urlValue !== "" && ( */}
+            <Button size="lg" color="success" className="p-1 m-1">
+              <HiMagnifyingGlass className="mr-1" /> Buscar
+            </Button>
+          </a>
+
+          {urlValue !== "" && (
+            <Button size="lg" color="light" className="p-1 m-1" onClick={() => setUrlValue("")}>
+              <HiXMark className="mr-1" /> Limpar
+            </Button>
+          )}
+
+          <Button size="lg" color="dark" className="p-1 m-1" onClick={openModal}>
+            {admin ? <HiLockOpen className="mr-1" /> : <HiLockClosed className="mr-1" />}
+            Logar
+          </Button>
+
           <LoginModal />
         </div>
-
-        <div className={style.categoryContainer}>
-          <a href="#ap">
-            <button className={style.categoryButton}>Access Point</button>
+        <div className="m-10">
+          <Button.Group>
+            <Button size="xl" color="gray" className="py-6">
+              <HiUserCircle className="mr-3 h-4 w-4" />
+              <p>Access Point</p>
+            </Button>
+            <Button size="xl" color="gray" className="py-6">
+              <HiAdjustments className="mr-3 h-4 w-4" />
+              <p>Radio Outdoor</p>
+            </Button>
+            <Button size="xl" color="gray" className="py-6">
+              <HiCloudDownload className="mr-3 h-4 w-4" />
+              <p>Home Office</p>
+            </Button>
+            <Button size="xl" color="gray" className="py-6">
+              <HiUserCircle className="mr-3 h-4 w-4" />
+              <p>Switch</p>
+            </Button>
+            <Button size="xl" color="gray" className="py-6">
+              <HiAdjustments className="mr-3 h-4 w-4" />
+              <p>Conversor de Mídia</p>
+            </Button>
+            <Button size="xl" color="gray" className="py-6">
+              <HiCloudDownload className="mr-3 h-4 w-4" />
+              <p>Módulo SFP</p>
+            </Button>
+            <Button size="xl" color="gray" className="py-6">
+              <HiCloudDownload className="mr-3 h-4 w-4" />
+              <p>Onu/Ont</p>
+            </Button>
+          </Button.Group>
+          {/* <a href="#ap">
+            <button className="btnCategory">Access Point</button>
           </a>
           <a href="#radio">
-            <button className={style.categoryButton}>Radio Outdoor</button>
+            <button className="btnCategory">Radio Outdoor</button>
           </a>
           <a href="#homeOffice">
-            <button className={style.categoryButton}>Home Office</button>
+            <button className="btnCategory">Home Office</button>
           </a>
           <a href="#switch">
-            <button className={style.categoryButton}>Switch</button>
+            <button className="btnCategory">Switch</button>
           </a>
           <a href="#conversor">
-            <button className={style.categoryButton}>Conversor de Mídia</button>
+            <button className="btnCategory">Conversor de Mídia</button>
           </a>
           <a href="#sfp">
-            <button className={style.categoryButton}>Módulo SFP</button>
+            <button className="btnCategory">Módulo SFP</button>
           </a>
           <a href="#onu">
-            <button className={style.categoryButton}>Onu/Ont</button>
-          </a>
+            <button className="btnCategory">Onu/Ont</button>
+          </a> */}
         </div>
       </div>
-      <a href="#home">
-        <span className={style.top}></span>
-      </a>
     </div>
   );
 }

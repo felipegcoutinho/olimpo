@@ -1,20 +1,24 @@
 import React from "react";
-import style from "../css/App.module.css";
+import {Button, TextInput} from "flowbite-react";
+import {HiChevronDown, HiChevronUp} from "react-icons/hi2";
 
 function TableBar({id, Hide, handleHide, tableName, admin, openModal, newButton, query, handleSearchChange}) {
   return (
-    <div className={style.header_box_content}>
-      <button id={id} className={Hide ? style.arrowHide : style.arrowShow} onClick={handleHide}>
-        <span className={style.title}>{tableName}</span>
+    <div className="flex p-2 justify-between bg-slate-100">
+      <button id={id} onClick={handleHide}>
+        <div className="flex items-center gap-2">
+          {Hide ? <HiChevronUp /> : <HiChevronDown />}
+          <p className="text-2xl mr-2 font-bold">{tableName}</p>
+        </div>
       </button>
 
       {admin && (
-        <button className={style.btn_add} onClick={openModal}>
+        <Button className="mr-auto bg-green-500 hover:bg-green-700" onClick={openModal}>
           {newButton}
-        </button>
+        </Button>
       )}
 
-      <input className={style.searchBarDevices} placeholder="Pesquise por um equipamento" value={query} onChange={handleSearchChange} />
+      <TextInput className="w-60" placeholder="Pesquise por um equipamento" value={query} onChange={handleSearchChange} />
     </div>
   );
 }

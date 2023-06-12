@@ -1,37 +1,20 @@
 import React from "react";
 import {useEffect, useState, useContext, createContext} from "react";
 import style from "../css/App.module.css";
-import {Roteador_Thead} from "/src/TableHead";
+import {Roteador_Thead} from "/src/TableHeads";
 import {AdminContext} from "../App";
 import Swal from "sweetalert2";
 import Modal from "react-modal";
 import RoteadoresModal from "./RoteadoresModal";
 import TableBar from "./TableBar";
-import {Paginacao} from "./Pagination";
+import {Pagination} from "./Pagination";
 import {getDatabase, get, set, ref, push, remove} from "firebase/database";
 import {app, db} from "../database/firebase";
+import Content from "../UI Components/Content";
 
 export const HOContext = createContext();
 
 export default function Roteador() {
-  const [modelo, SetModelo] = useState("");
-  const [cobertura, SetCobertura] = useState("");
-  const [raio, SetRaio] = useState("");
-  const [usuarioMax, SetUsuarioMax] = useState("");
-  const [planoRecomendado, SetPlanoRecomendado] = useState("");
-  const [qtdePortas, SetQtdePortas] = useState("");
-  const [modulação, SetModulação] = useState("");
-  const [datarateMax2G, SetDatarateMax2G] = useState("");
-  const [datarateMax5G, SetDatarateMax5G] = useState("");
-  const [ipv6, SetIpv6] = useState("");
-  const [tensao, SetTensao] = useState("");
-  const [repetidor, SetRepetidor] = useState("");
-  const [roteador, SetRoteador] = useState("");
-  const [cliente, SetCliente] = useState("");
-  const [ap, SetAp] = useState("");
-  const [garantia, SetGarantia] = useState("");
-  const [status, SetStatus] = useState("");
-  const [pagina, SetPagina] = useState("");
   const [queryHO, setQueryHO] = React.useState("");
   const [roteadorHO, setRoteadorHO] = useState([]);
   const [modalIsOpen, setIsOpen] = useState(false);
@@ -129,7 +112,7 @@ export default function Roteador() {
   };
 
   return (
-    <div className={style.box_content}>
+    <Content>
       <TableBar
         id="homeOffice"
         Hide={HideHO}
@@ -158,13 +141,13 @@ export default function Roteador() {
       </HOContext.Provider>
 
       {HideHO && (
-        <Paginacao
+        <Pagination
           dados={roteadorHO}
           Tablehead={<Roteador_Thead />}
           query={queryHO}
           mapFunction={(roteador, index) => (
             <tbody>
-              <tr key={index}>
+              <tr key={index} className={roteador.ocultar === "Sim" && !admin ? style.OcultarTd : ""}>
                 <td className={roteador.status === "Phaseout" ? style.status_phaseout : style.status_suporte}>{roteador.modelo}</td>
                 <td>
                   <span className={roteador.modulação === "Fast" ? style.fast : style.giga}>{roteador.modulação}</span>
@@ -226,6 +209,6 @@ export default function Roteador() {
           )}
         />
       )}
-    </div>
+    </Content>
   );
 }

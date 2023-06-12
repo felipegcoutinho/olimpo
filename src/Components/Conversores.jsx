@@ -1,32 +1,20 @@
 import React from "react";
 import {useEffect, useState, useContext, createContext} from "react";
 import style from "../css/App.module.css";
-import {Conversor_Thead} from "/src/TableHead";
+import {Conversor_Thead} from "/src/TableHeads";
 import {AdminContext} from "../App";
 import Swal from "sweetalert2";
 import Modal from "react-modal";
 import ConversorModal from "./ConversorModal";
 import TableBar from "./TableBar";
-import {Paginacao} from "./Pagination";
+import {Pagination} from "./Pagination";
 import {getDatabase, get, set, ref, push, remove} from "firebase/database";
 import {app, db} from "../database/firebase";
+import Content from "../UI Components/Content";
 
 export const ConversorContext = createContext();
 
 export default function Ap() {
-  const [modelo, setmodelo] = useState("");
-  const [conector, setconector] = useState("");
-  const [wdm, setwdm] = useState("");
-  const [distancia, setdistancia] = useState("");
-  const [modulação, setmodulação] = useState("");
-  const [fibra, setfibra] = useState("");
-  const [potencia, setpotencia] = useState("");
-  const [sensibilidade, setsensibilidade] = useState("");
-  const [CompTX, setCompTX] = useState("");
-  const [CompRX, setCompRX] = useState("");
-  const [status, setstatus] = useState("");
-  const [garantia, setgarantia] = useState("");
-  const [pagina, setpagina] = useState("");
   const [queryCONVERSOR, setQueryCONVERSOR] = React.useState("");
   const [conversor, setConversor] = useState([]);
   const [modalIsOpen, setIsOpen] = useState(false);
@@ -123,7 +111,7 @@ export default function Ap() {
   };
 
   return (
-    <div className={style.box_content}>
+    <Content>
       <TableBar
         id="conversor"
         Hide={HideConversor}
@@ -152,14 +140,16 @@ export default function Ap() {
       </ConversorContext.Provider>
 
       {HideConversor && (
-        <Paginacao
+        <Pagination
           dados={conversor}
           Tablehead={<Conversor_Thead />}
           query={queryCONVERSOR}
           mapFunction={(conversor, index) => (
             <tbody>
-              <tr key={index}>
-                <td className={conversor.status === "Phaseout" ? style.status_phaseout : style.status_suporte}>{conversor.modelo}</td>
+              <tr key={index} className={conversor.ocultar === "Sim" && !admin ? style.OcultarTd : ""}>
+                <td className={conversor.status === "Phaseout" ? style.status_phaseout : style.status_suporte}>
+                  {conversor.ocultar === "Sim" ? `${conversor.modelo} | Oculto` : conversor.modelo}
+                </td>
                 <td>
                   <span className={conversor.modulação === "Fast" ? style.fast : style.giga}>{conversor.modulação}</span>
                 </td>
@@ -169,7 +159,6 @@ export default function Ap() {
                   {conversor.wdm !== "-" && <span className={style.Possui}></span>}
                 </td>
                 <td>{conversor.distancia}</td>
-
                 <td>{conversor.fibra}</td>
                 <td>{conversor.potencia}</td>
                 <td>{conversor.sensibilidade}</td>
@@ -192,6 +181,6 @@ export default function Ap() {
           )}
         />
       )}
-    </div>
+    </Content>
   );
 }

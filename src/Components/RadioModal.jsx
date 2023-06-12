@@ -1,32 +1,32 @@
 import React from "react";
 import {useContext} from "react";
 import {RadioContext} from "./Radio";
-import Modal from "react-modal";
-import style from "../css/App.module.css";
+import ModalComponent from "../UI Components/Modal";
+import OlimpoTextInput from "../UI Components/OlimpoTextInput";
+import OlimpoSelect from "../UI Components/OlimpoSelect";
 
 function RadioModal() {
   const {addProduto, updateProduct, updatedProduct, setUpdatedProduct, modalIsOpen, closeModal} = useContext(RadioContext);
 
   return (
-    <Modal isOpen={modalIsOpen} onRequestClose={closeModal} className={style.modal} overlayClassName={style.modal_overlay}>
-      {updatedProduct.id ? <h1>Atualizar {updatedProduct.modelo}</h1> : <h1>Adicionar Radio</h1>}
-      <div className={style.formLegenda}>
-        <h4>Caso o produto não possua a função, preencha o campo com "-".</h4>
-        <h4>Se a informação do produto não houver sido encontrada, preencha o campo com "N/A".</h4>
-      </div>
+    <ModalComponent
+      modalIsOpen={modalIsOpen}
+      closeModal={closeModal}
+      updatedProductId={updatedProduct.id}
+      updatedProductModelo={updatedProduct.modelo}
+      setor="Rádio">
       <form onSubmit={updatedProduct.id ? updateProduct : addProduto}>
-        <div className={style.formContainer}>
+        <div className="flex flex-col">
           <label>Modelo</label>
-          <input
+          <OlimpoTextInput
             required
             type="text"
             placeholder="Wom 5A-23"
             value={updatedProduct.modelo}
             onChange={(e) => setUpdatedProduct({...updatedProduct, modelo: e.target.value})}
           />
-
           <label>Status do suporte</label>
-          <select
+          <OlimpoSelect
             type="text"
             value={updatedProduct.status}
             onChange={(e) => setUpdatedProduct({...updatedProduct, status: e.target.value})}>
@@ -38,10 +38,9 @@ function RadioModal() {
             <option value="Suporte">Suporte</option>
             <option value="Phaseout">Phaseout</option>
             <option value="N/A">N/A</option>
-          </select>
-
+          </OlimpoSelect>
           <label>Indicado</label>
-          <select
+          <OlimpoSelect
             placeholder="Indicado"
             value={updatedProduct.indicado}
             onChange={(e) => setUpdatedProduct({...updatedProduct, indicado: e.target.value})}>
@@ -53,10 +52,9 @@ function RadioModal() {
             <option value="PTP">PTP</option>
             <option value="BASE">BASE</option>
             <option value="BASE/PTP">BASE/PTP</option>
-          </select>
-
+          </OlimpoSelect>
           <label>Modulação</label>
-          <select
+          <OlimpoSelect
             required
             type="text"
             placeholder="Modulação"
@@ -70,66 +68,58 @@ function RadioModal() {
             <option value="Giga">Giga</option>
             <option value="Fast">Fast</option>
             <option value="N/A">N/A</option>
-          </select>
-
+          </OlimpoSelect>
           <label>Ganho de Antena (Em dBi)</label>
-          <input
+          <OlimpoTextInput
             type="text"
             placeholder="23 dBi"
             value={updatedProduct.ganho}
             onChange={(e) => setUpdatedProduct({...updatedProduct, ganho: e.target.value})}
           />
-
           <label>Potência (Em dBm - mW)</label>
-          <input
+          <OlimpoTextInput
             type="text"
             placeholder="25 dBm - 316 mW"
             value={updatedProduct.potencia}
             onChange={(e) => setUpdatedProduct({...updatedProduct, potencia: e.target.value})}
           />
-
           <label>Encaminhamento de Pacotes</label>
-          <input
+          <OlimpoTextInput
             type="text"
             placeholder="60.000 Pps"
             value={updatedProduct.pps}
             onChange={(e) => setUpdatedProduct({...updatedProduct, pps: e.target.value})}
           />
-
           <label>Throughput Efetivo (Em Mbps)</label>
-          <input
+          <OlimpoTextInput
             type="text"
             placeholder="160 Mbps"
             value={updatedProduct.throughputEfetivo}
             onChange={(e) => setUpdatedProduct({...updatedProduct, throughputEfetivo: e.target.value})}
           />
-
           <label>Throughput Nominal (Em Mbps)</label>
-          <input
+          <OlimpoTextInput
             type="text"
             placeholder="300 Mbps"
             value={updatedProduct.throughputNominal}
             onChange={(e) => setUpdatedProduct({...updatedProduct, throughputNominal: e.target.value})}
           />
-
           <label>Abertura (Horinzontal | Vertical)</label>
-          <input
+          <OlimpoTextInput
             type="text"
             placeholder="H-9° | V-9°"
             value={updatedProduct.aberturaHorVer}
             onChange={(e) => setUpdatedProduct({...updatedProduct, aberturaHorVer: e.target.value})}
           />
-
           <label>Distância do Enlace</label>
-          <input
+          <OlimpoTextInput
             type="text"
             placeholder="10 Km"
             value={updatedProduct.distancia}
             onChange={(e) => setUpdatedProduct({...updatedProduct, distancia: e.target.value})}
           />
-
           <label>Wireless</label>
-          <select
+          <OlimpoSelect
             type="text"
             value={updatedProduct.wireless}
             onChange={(e) => setUpdatedProduct({...updatedProduct, wireless: e.target.value})}>
@@ -141,18 +131,16 @@ function RadioModal() {
             <option value="MiMo 2x2">MiMo 2x2</option>
             <option value="SiSo 1x1">SiSo 1x1</option>
             <option value="N/A">N/A</option>
-          </select>
-
+          </OlimpoSelect>
           <label>Alimentação</label>
-          <input
+          <OlimpoTextInput
             type="text"
             placeholder="12V - 24V"
             value={updatedProduct.alimentaçao}
             onChange={(e) => setUpdatedProduct({...updatedProduct, alimentaçao: e.target.value})}
           />
-
           <label>Garantia</label>
-          <select
+          <OlimpoSelect
             type="text"
             placeholder="Status do suporte"
             value={updatedProduct.garantia}
@@ -168,27 +156,39 @@ function RadioModal() {
             <option value="4 anos">4 anos</option>
             <option value="5 anos">5 anos</option>
             <option value="N/A">N/A</option>
-          </select>
-
+          </OlimpoSelect>
           <label>URL da Página</label>
-          <input
+          <OlimpoTextInput
             type="text"
             placeholder="https://www.intelbras.com/pt-br/cpeptp-com-antena-dish-de-23-dbi-mimo-2x2-wom-5a-23"
             value={updatedProduct.pagina}
             onChange={(e) => setUpdatedProduct({...updatedProduct, pagina: e.target.value})}
           />
-
-          <div className={style.btnModalActions}>
-            <button type="submit" className={style.btn_addUpd}>
+          <label>Ocultar</label>
+          <OlimpoSelect
+            required
+            type="text"
+            value={updatedProduct.ocultar}
+            onChange={(e) => setUpdatedProduct({...updatedProduct, ocultar: e.target.value})}>
+            {!updatedProduct.id && (
+              <option selected disabled>
+                Escolha
+              </option>
+            )}
+            <option value="Não">Não</option>
+            <option value="Sim">Sim</option>
+          </OlimpoSelect>
+          {/* <div className="bg-white bottom-0 flex flex-col sticky gap-1 mt-1">
+            <Button type="submit" color="success" className="">
               {updatedProduct.id ? "Atualizar Equipamento" : "Adicionar Equipamento"}
-            </button>
-            <button className={style.btn_addUpdCancel} onClick={closeModal}>
+            </Button>
+            <Button color="light" className="" onClick={closeModal}>
               Cancelar
-            </button>
-          </div>
+            </Button>
+          </div> */}
         </div>
       </form>
-    </Modal>
+    </ModalComponent>
   );
 }
 

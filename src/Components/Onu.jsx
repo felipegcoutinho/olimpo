@@ -1,36 +1,20 @@
 import React from "react";
 import {useEffect, useState, useContext, createContext} from "react";
 import style from "../css/App.module.css";
-import {Onu_Thead} from "/src/TableHead";
+import {Onu_Thead} from "/src/TableHeads";
 import {AdminContext} from "../App";
 import Swal from "sweetalert2";
 import Modal from "react-modal";
 import OnuModal from "./OnuModal";
-import {Paginacao} from "./Pagination";
+import {Pagination} from "./Pagination";
 import TableBar from "./TableBar";
 import {getDatabase, get, set, ref, push, remove} from "firebase/database";
 import {app, db} from "../database/firebase";
+import Content from "../UI Components/Content";
 
 export const OnuContext = createContext();
 
 export default function Onu() {
-  const [modelo, setmodelo] = useState("");
-  const [qtdeportas, setqtdeportas] = useState("");
-  const [modulação, setmodulação] = useState("");
-  const [fxs, setfxs] = useState("");
-  const [tecnologiaPON, settecnologiaPON] = useState("");
-  const [ssid, setssid] = useState("");
-  const [tr069, settr069] = useState("");
-  const [customize, setcustomize] = useState("");
-  const [remotize, setremotize] = useState("");
-  const [transmissao2ghz, settransmissao2ghz] = useState("");
-  const [transmissao5ghz, settransmissao5ghz] = useState("");
-  const [cobertura, setcobertura] = useState("");
-  const [clientesSimultaneos, setclientesSimultaneos] = useState("");
-  const [sensibilidade, setsensibilidade] = useState("");
-  const [status, setstatus] = useState("");
-  const [garantia, setgarantia] = useState("");
-  const [pagina, setpagina] = useState("");
   const [queryOnu, setQueryOnu] = React.useState("");
   const [onu, setOnu] = React.useState([]);
   const [modalIsOpen, setIsOpen] = useState(false);
@@ -128,7 +112,7 @@ export default function Onu() {
   };
 
   return (
-    <div className={style.box_content}>
+    <Content>
       <TableBar
         id="onu"
         Hide={HideONU}
@@ -157,13 +141,13 @@ export default function Onu() {
       </OnuContext.Provider>
 
       {HideONU && (
-        <Paginacao
+        <Pagination
           dados={onu}
           Tablehead={<Onu_Thead />}
           query={queryOnu}
           mapFunction={(onu, index) => (
             <tbody>
-              <tr key={index}>
+              <tr key={index} className={onu.ocultar === "Sim" && !admin ? style.OcultarTd : ""}>
                 <td className={onu.status === "Phaseout" ? style.status_phaseout : style.status_suporte}>{onu.modelo}</td>
                 <td>
                   <span className={onu.modulação === "Fast" ? style.fast : style.giga}>{onu.modulação}</span>
@@ -228,6 +212,6 @@ export default function Onu() {
           )}
         />
       )}
-    </div>
+    </Content>
   );
 }

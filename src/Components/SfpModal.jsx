@@ -174,6 +174,21 @@ function SfpModal() {
             onChange={(e) => setUpdatedProduct({...updatedProduct, pagina: e.target.value})}
           />
 
+          <label>Ocultar</label>
+          <select
+            required
+            type="text"
+            value={updatedProduct.ocultar}
+            onChange={(e) => setUpdatedProduct({...updatedProduct, ocultar: e.target.value})}>
+            {!updatedProduct.id && (
+              <option selected disabled>
+                Escolha
+              </option>
+            )}
+            <option value="Não">Não</option>
+            <option value="Sim">Sim</option>
+          </select>
+
           <div className={style.btnModalActions}>
             <button type="submit" className={style.btn_addUpd}>
               {updatedProduct.id ? "Atualizar Equipamento" : "Adicionar Equipamento"}
