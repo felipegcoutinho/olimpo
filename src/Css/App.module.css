@@ -572,7 +572,7 @@ option {
   padding: 0 50px;
 } */
 
-#RADIO th:nth-child(5) {
+/* #RADIO th:nth-child(5) {
   padding: 0 30px;
 }
 
@@ -582,9 +582,9 @@ option {
 
 #ONU th:nth-child(3) {
   padding: 0 25px;
-}
+} */
 
-.devicesTable thead {
+/* .devicesTable thead {
   background-color: black;
   color: white;
 }
@@ -595,13 +595,7 @@ option {
   padding: 1px;
 }
 
-td:first-child {
-  font-size: 0.9rem;
-  font-weight: bold;
-  padding-left: 5px;
-  position: sticky;
-  text-align: left;
-}
+
 
 /* th:first-child {
   background-color: black;
@@ -611,16 +605,24 @@ td:first-child {
 td:first-child {
   left: 0;
   position: sticky;
+}
+
+td:first-child {
+  font-size: 0.9rem;
+  font-weight: bold;
+  padding-left: 5px;
+  position: sticky;
+  text-align: left;
 } */
 
-tbody tr:hover {
+/* tbody tr:hover {
   background: #fae1bc;
-  /* box-shadow: 0px 0px 0px 1px #d48d53 inset; */
+  /* box-shadow: 0px 0px 0px 1px #d48d53 inset;
 }
 
 tbody:nth-child(even) {
   background-color: #f4f6fa;
-}
+} */
 
 .tooltip {
   display: inline-block;

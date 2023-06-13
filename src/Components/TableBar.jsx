@@ -4,7 +4,7 @@ import {HiChevronDown, HiChevronUp} from "react-icons/hi2";
 
 function TableBar({id, Hide, handleHide, tableName, admin, openModal, newButton, query, handleSearchChange}) {
   return (
-    <div className="flex p-2 justify-between bg-slate-100">
+    <div className="flex p-2 justify-between ">
       <button id={id} onClick={handleHide}>
         <div className="flex items-center gap-2">
           {Hide ? <HiChevronUp /> : <HiChevronDown />}

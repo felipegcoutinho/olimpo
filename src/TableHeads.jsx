@@ -1,13 +1,11 @@
 import React, {useContext} from "react";
 import style from "./css/App.module.css";
 import {AdminContext} from "./App";
-import {Table} from "flowbite-react";
-import {TableRow} from "flowbite-react/lib/esm/components/Table/TableRow";
 
-export default function AP() {
+export default function AP_Thead() {
   const {admin} = useContext(AdminContext);
   return (
-    <thead>
+    <thead class="text-xs text-white text-center uppercase bg-slate-900 h-10">
       <th>Modelo</th>
       <th>Modulação</th>
       <th>Cobertura</th>
@@ -33,7 +31,7 @@ export default function AP() {
 export function Radio_Thead() {
   const {admin} = useContext(AdminContext);
   return (
-    <thead>
+    <thead class="text-xs text-white text-center uppercase bg-slate-900 h-10">
       <tr id={style.RADIO}>
         <th>Modelo</th>
         <th>Indicado</th>

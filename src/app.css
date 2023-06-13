@@ -8,28 +8,27 @@
   @apply bg-green-900 border-none rounded-md shadow-md text-white cursor-pointer text-base font-semibold h-20 w-40 m-3;
 }
 
-td {
+#AP td {
   @apply border-none text-center;
 }
 
-th {
-  @apply border-none text-center border-4 border-white px-4;
+#AP th {
+  @apply border-none text-center border-white px-1;
 }
 
-th:nth-child(1) {
+#AP th:nth-child(1) {
   @apply w-max;
 }
 
-thead {
-  @apply bg-zinc-800 text-white h-10;
+#AP td:not(:first-child) {
+  @apply text-xs;
 }
 
-td:not(:first-child) {
-  @apply text-xs font-bold;
-}
-
-th:first-child,
+#AP th:first-child,
 td:first-child {
-  left: 0;
-  position: sticky;
+  @apply sticky left-0;
+}
+
+#AP td:first-child {
+  @apply p-1 text-sm font-bold sticky text-left;
 }

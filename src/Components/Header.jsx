@@ -5,6 +5,7 @@ import LoginModal from "./LoginModal";
 import {Button, TextInput} from "flowbite-react";
 import {HiLockClosed, HiLockOpen, HiXMark, HiMagnifyingGlass} from "react-icons/hi2";
 import {HiAdjustments, HiCloudDownload, HiUserCircle} from "react-icons/hi";
+import TableTeste from "../UI Components/Table";
 
 export default function Header() {
   const {openModal, admin} = useContext(AdminContext);
@@ -46,7 +47,7 @@ export default function Header() {
           <a target="_blank" rel="noopener noreferrer" href={urlSearch}>
             {/* {urlValue !== "" && ( */}
             <Button size="lg" color="success" className="p-1 m-1">
-              <HiMagnifyingGlass className="mr-1" /> Buscar
+              <HiMagnifyingGlass className="mr-1 text-2xl" />
             </Button>
           </a>
 
@@ -56,13 +57,14 @@ export default function Header() {
             </Button>
           )}
 
-          <Button size="lg" color="dark" className="p-1 m-1" onClick={openModal}>
+          {/* <Button size="lg" color="dark" className="p-1 m-1" onClick={openModal}>
             {admin ? <HiLockOpen className="mr-1" /> : <HiLockClosed className="mr-1" />}
             Logar
-          </Button>
+          </Button> */}
 
           <LoginModal />
         </div>
+
         <div className="m-10">
           <Button.Group>
             <Button size="xl" color="gray" className="py-6">

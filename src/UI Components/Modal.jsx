@@ -3,7 +3,7 @@ import Modal from "react-modal";
 import InfoModal from "./InfoModal";
 import {Button} from "flowbite-react";
 
-function ModalComponent({children, modalIsOpen, closeModal, setor, updatedProductId, updatedProductModelo}) {
+function ModalComponent({children, modalIsOpen, closeModal, setor, updatedProductId, updatedProductModelo, id}) {
   return (
     <Modal
       isOpen={modalIsOpen}
@@ -13,15 +13,6 @@ function ModalComponent({children, modalIsOpen, closeModal, setor, updatedProduc
       <h1 className="text-2xl">{updatedProductId ? `Atualizar ${updatedProductModelo}` : `Adicionar ${setor}`}</h1>
       <InfoModal />
       {children}
-
-      <div className="bg-white bottom-0 flex flex-col sticky gap-1 mt-1">
-        <Button type="submit" color="success" className="">
-          {updatedProductId ? "Atualizar Equipamento" : "Adicionar Equipamento"}
-        </Button>
-        <Button color="light" className="" onClick={closeModal}>
-          Cancelar
-        </Button>
-      </div>
     </Modal>
   );
 }

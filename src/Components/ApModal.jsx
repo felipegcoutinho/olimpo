@@ -224,14 +224,14 @@ function AP_Modal() {
           <option value="Sim">Sim</option>
         </OlimpoSelect>
 
-        {/* <div className="bg-white bottom-0 flex flex-col sticky gap-1 mt-1">
-            <Button type="submit" color="success" className="">
-              {updatedProduct.id ? "Atualizar Equipamento" : "Adicionar Equipamento"}
-            </Button>
-            <Button color="light" className="" onClick={closeModal}>
-              Cancelar
-            </Button>
-          </div> */}
+        <div className="bg-white bottom-0 flex flex-col sticky gap-1 mt-1">
+          <Button type="submit" color="success">
+            {updatedProduct.id ? "Atualizar Equipamento" : "Adicionar Equipamento"}
+          </Button>
+          <Button color="light" className="" onClick={closeModal}>
+            Cancelar
+          </Button>
+        </div>
       </form>
     </ModalComponent>
   );
