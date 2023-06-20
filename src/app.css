@@ -2,12 +2,33 @@
 @tailwind components;
 @tailwind utilities;
 
+@import url("https://fonts.googleapis.com/css2?family=Fira+Sans:wght@400&display=swap");
 @import url("https://fonts.googleapis.com/css2?family=Pacifico&display=swap");
+@font-face {
+  font-family: "Pacifico";
+  src: local("Pacifico"), url(./webfonts/Pacifico-Regular.ttf) format("truetype");
+}
+
+body {
+  background-color: #eeeeee;
+  font-family: "Fira Sans", "Inter", segoe UI, arial;
+  font-size: 18px;
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  scroll-behavior: smooth;
+}
 
 .btnCategory {
   @apply bg-green-900 border-none rounded-md shadow-md text-white cursor-pointer text-base font-semibold h-20 w-40 m-3;
 }
-
+/* 
 #AP td {
   @apply border-none text-center;
 }
@@ -31,4 +52,4 @@ td:first-child {
 
 #AP td:first-child {
   @apply p-1 text-sm font-bold sticky text-left;
-}
+} */

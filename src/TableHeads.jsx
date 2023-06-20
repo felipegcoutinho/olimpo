@@ -5,25 +5,69 @@ import {AdminContext} from "./App";
 export default function AP_Thead() {
   const {admin} = useContext(AdminContext);
   return (
-    <thead class="text-xs text-white text-center uppercase bg-slate-900 h-10">
-      <th>Modelo</th>
-      <th>Modulação</th>
-      <th>Cobertura</th>
-      <th>Raio</th>
-      <th>Usuários simultâneos</th>
-      <th>Datarate Máx. 2G</th>
-      <th>Datarate Máx. 5G</th>
-      <th>Qtde Portas</th>
-      <th>Tipo PoE</th>
-      <th>Tensão</th>
-      <th>ConnectFi</th>
-      <th>Handover</th>
-      <th>WiseFi</th>
-      <th>Potência TX 2G</th>
-      <th>Potência TX 5G</th>
-      <th>Garantia</th>
-      <th>Página</th>
-      {admin && <th>Ações</th>}
+    <thead className="text-xs text-gray-200 uppercase bg-black">
+      <tr className="">
+        <th scope="col"></th>
+        <th scope="col" className="px-4 py-2 text-center">
+          Modelo
+        </th>
+        <th scope="col" className="px-2 py-2">
+          Modulação
+        </th>
+        <th scope="col" className="px-2 py-2">
+          Cobertura
+        </th>
+        <th scope="col" className="px-4 py-2">
+          Raio
+        </th>
+        <th scope="col" className="px-4 py-2">
+          Usuários simultâneos
+        </th>
+        <th scope="col" className="px-4 py-2">
+          Datarate Máx. 2G
+        </th>
+        <th scope="col" className="px-4 py-2">
+          Datarate Máx. 5G
+        </th>
+        <th scope="col" className="px-4 py-2">
+          Qtde Portas
+        </th>
+        <th scope="col" className="px-4 py-2">
+          Tensão
+        </th>
+        <th scope="col" className="px-4 py-2 whitespace-nowrap">
+          Tipo PoE
+        </th>
+        <th scope="col" className="px-4 py-2">
+          ConnectFi
+        </th>
+        <th scope="col" className="px-4 py-2">
+          Handover
+        </th>
+        <th scope="col" className="px-4 py-2">
+          WiseFi
+        </th>
+        <th scope="col" className="px-4 py-2">
+          Inmaster
+        </th>
+        <th scope="col" className="px-4 py-2">
+          Potência TX 2G
+        </th>
+        <th scope="col" className="px-4 py-2">
+          Potência TX 5G
+        </th>
+        <th scope="col" className="px-4 py-2">
+          Garantia
+        </th>
+        <th scope="col" className="px-4 py-2">
+          Página
+        </th>
+        {admin && (
+          <th scope="col" className="px-4 py-2">
+            Ações
+          </th>
+        )}
+      </tr>
     </thead>
   );
 }

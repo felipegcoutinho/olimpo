@@ -12,13 +12,13 @@ function TableBar({id, Hide, handleHide, tableName, admin, openModal, newButton,
         </div>
       </button>
 
-      {admin && (
+      {/* {admin && (
         <Button className="mr-auto bg-green-500 hover:bg-green-700" onClick={openModal}>
           {newButton}
         </Button>
       )}
 
-      <TextInput className="w-60" placeholder="Pesquise por um equipamento" value={query} onChange={handleSearchChange} />
+      <TextInput className="w-60" placeholder="Pesquise por um equipamento" value={query} onChange={handleSearchChange} /> */}
     </div>
   );
 }

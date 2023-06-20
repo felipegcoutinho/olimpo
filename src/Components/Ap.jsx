@@ -5,13 +5,13 @@ import Ap_Modal from "./ApModal";
 import {AdminContext} from "../App";
 import Swal from "sweetalert2";
 import Modal from "react-modal";
-import TableBar from "./TableBar";
 import {getDatabase, get, set, ref, push, remove} from "firebase/database";
 import {app, db} from "../database/firebase";
 import Content from "../UI Components/Content";
 import {Badge} from "flowbite-react";
-import {HiArrowTopRightOnSquare} from "react-icons/hi2";
+import {HiArrowTopRightOnSquare, HiCheckCircle, HiXCircle} from "react-icons/hi2";
 import AP_Thead from "../TableHeads";
+import OlimpoTable from "../UI Components/Table";
 
 export const APContext = createContext();
 
@@ -130,19 +130,30 @@ export default function Ap() {
     }
   }
 
+  const [openRow, setOpenRow] = useState(null);
+
+  const handleClick = (i) => {
+    if (openRow === i) {
+      setOpenRow(null);
+    } else {
+      setOpenRow(i);
+    }
+  };
+
+  const NaoPossui = (
+    <div className="flex justify-center items-center">
+      <HiXCircle className="text-red-400 text-center text-2xl" />
+    </div>
+  );
+
+  const Possui = (
+    <div className="flex justify-center items-center">
+      <HiCheckCircle className="text-green-400 text-center text-2xl" />
+    </div>
+  );
+
   return (
     <Content>
-      <TableBar
-        id="ap"
-        Hide={HideAP}
-        handleHide={handleHideAP}
-        tableName="Access Points"
-        openModal={openModal}
-        admin={admin}
-        handleSearchChange={handleSearchChangeAP}
-        query={queryAP}
-        newButton="Novo Access Point"
-      />
       <APContext.Provider
         value={{
           updateProduct,
@@ -158,9 +169,100 @@ export default function Ap() {
         <Ap_Modal />
       </APContext.Provider>
 
-      {HideAP && (
+      <div className="overflow-x-auto">
+        <OlimpoTable
+          Hide={HideAP}
+          handleHide={handleHideAP}
+          openModal={openModal}
+          query={queryAP}
+          handleSearchChange={handleSearchChangeAP}
+          admin={admin}
+          newButton="Novo Access Point"
+          thead={<AP_Thead />}
+          tbody={accessPoint
+            .sort(compareStatus)
+            .filter((ap) => {
+              if (ap.modelo.toLowerCase().includes(queryAP.toLowerCase())) {
+                return ap;
+              } else if (ap.modulação.toLowerCase().includes(queryAP.toLowerCase())) {
+                return ap;
+              } else {
+              }
+            })
+            .map((ap, index) => {
+              return (
+                <tbody className="text-black">
+                  {/* <tr className="border-b hover:bg-orange-50 text-xs text-center whitespace-nowrap" onClick={() => handleClick(index)}> */}
+                  <tr className="border-b hover:bg-orange-50 text-xs text-center whitespace-nowrap">
+                    <td>
+                      <div
+                        className={`${ap.status === "Suporte" ? "bg-green-500" : "bg-red-600"} inline-block
+                        w-4
+                        h-4
+                        mr-2
+                        rounded-full`}></div>
+                    </td>
+                    <th scope="row" className="flex items-center px-2 w-max py-1 font-bold text-gray-900 ">
+                      <img
+                        src="https://backend.intelbras.com/sites/default/files/styles/medium/public/integration/ap_1210_front.png"
+                        className="w-auto h-8 mr-1"
+                      />
+                      <td className="font-bold text-base">{ap.ocultar === "Sim" ? `${ap.modelo} | Oculto` : ap.modelo}</td>
+                    </th>
+                    <td className="">
+                      <span
+                        className={`${
+                          ap.modulação === "Fast" ? "bg-blue-200 text-blue-800" : "bg-amber-200 text-yellow-800"
+                        } px-2 py-1 text-white rounded-md`}>
+                        {ap.modulação}
+                      </span>
+                    </td>
+                    <td>{ap.cobertura}</td>
+                    <td>{ap.raio}</td>
+                    <td>{ap.usuarioMax}</td>
+                    <td className="px-4">{ap.throughputWireless24}</td>
+                    <td>{ap.throughputWireless50 === "-" ? NaoPossui : ap.throughputWireless50}</td>
+                    <td>{ap.qtdePortas}</td>
+                    <td className="text-left px-4">{ap.tensao}</td>
+                    <td>{ap.poe === "-" ? NaoPossui : ap.poe}</td>
+                    <td>{ap.connectiVersion === "-" ? NaoPossui : ap.connectiVersion}</td>
+                    <td>{ap.handover === "-" ? NaoPossui : Possui}</td>
+                    <td>{ap.wisefi === "-" ? NaoPossui : Possui}</td>
+                    <td>{ap.inmaster === "-" ? NaoPossui : Possui}</td>
+                    <td className="px-4">{ap.potencia2G}</td>
+                    <td>{ap.potencia5G === "-" ? NaoPossui : ap.potencia5G}</td>
+                    <td>{ap.garantia}</td>
+                    <td>
+                      <a target="_blank" rel="noopener noreferrer" href={ap.pagina}>
+                        <Badge size="xs" icon={HiArrowTopRightOnSquare} className="bg-green-500 text-white px-2">
+                          Página
+                        </Badge>
+                      </a>
+                    </td>
+                    {admin && (
+                      <td>
+                        <button className={style.btn_alterar} onClick={() => openUpdateModal(ap)}></button>
+                        <button className={style.btn_excluir} onClick={() => deleteProduct(ap.id)}></button>
+                      </td>
+                    )}
+                  </tr>
+                  {openRow === index && (
+                    <tr className="bg-zinc-100 ">
+                      <td colSpan="20" className="py-8 px-2">
+                        {ap.potencia2G}
+                        {ap.potencia5G}
+                      </td>
+                    </tr>
+                  )}
+                </tbody>
+              );
+            })}
+        />
+      </div>
+
+      {/* {HideAP && (
         <div className="overflow-x-auto">
-          <table class="w-full text-base text-left text-gray-500">
+          <table className="w-full text-base text-left text-gray-500">
             <AP_Thead />
             {accessPoint
               .sort(compareStatus)
@@ -174,8 +276,9 @@ export default function Ap() {
               })
               .map((ap, index) => {
                 return (
-                  <tbody className="whitespace-nowrap text-left">
-                    <tr id="AP" key={index} class="bg-slate-50 border-zinc-200 p-4">
+                  <tbody className="whitespace-nowrap">
+                    <tr id="AP" className="bg-slate-50 border-zinc-200 p-4" onClick={() => handleClick(index)}>
+                      {" "}
                       <td className={ap.status === "Phaseout" ? "bg-red-100 text-red-800" : "bg-green-100 text-green-800"}>
                         {ap.ocultar === "Sim" ? `${ap.modelo} | Oculto` : ap.modelo}
                       </td>
@@ -191,13 +294,11 @@ export default function Ap() {
                       </td>
                       <td>{ap.qtdePortas}</td>
                       <td className={ap.poe === "-" && style.NaoPossui}>{ap.poe !== "-" && ap.poe}</td>
-                      <td>{ap.tensao}</td>
                       <td className={ap.connectiVersion === "-" && style.NaoPossui}>{ap.connectiVersion !== "-" && ap.connectiVersion}</td>
                       <td className={ap.handover === "-" ? style.NaoPossui : style.Possui}></td>
                       <td className={ap.wisefi === "-" ? style.NaoPossui : style.Possui}></td>
-                      <td>{ap.potencia2G}</td>
+                      <td className={ap.inmaster === "-" ? style.NaoPossui : style.Possui}></td>
                       <td className={ap.potencia5G === "-" && style.NaoPossui}>{ap.potencia5G !== "-" && ap.potencia5G}</td>
-                      <td>{ap.garantia}</td>
                       <td>
                         <a target="_blank" rel="noopener noreferrer" href={ap.pagina}>
                           <Badge size="xs" icon={HiArrowTopRightOnSquare} className="bg-green-500 text-white">
@@ -212,12 +313,19 @@ export default function Ap() {
                         </td>
                       )}
                     </tr>
+                    {openRow === index && (
+                      <>
+                        {ap.tensao}
+                        {ap.potencia2G}
+                        {ap.garantia}
+                      </>
+                    )}
                   </tbody>
                 );
               })}
           </table>
         </div>
-      )}
+      )} */}
     </Content>
   );
 }
