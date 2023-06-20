@@ -167,6 +167,21 @@ function AP_Modal() {
           <option value="N/A">N/A</option>
         </OlimpoSelect>
 
+        <label>Compatível com InMaster</label>
+        <OlimpoSelect
+          type="text"
+          value={updatedProduct.inmaster}
+          onChange={(e) => setUpdatedProduct({...updatedProduct, inmaster: e.target.value})}>
+          {!updatedProduct.id && (
+            <option selected disabled>
+              Escolha
+            </option>
+          )}
+          <option value="Sim">Sim</option>
+          <option value="-">Não</option>
+          <option value="N/A">N/A</option>
+        </OlimpoSelect>
+
         <label>Potência de TX 2G</label>
         <OlimpoTextInput
           type="text"
@@ -207,6 +222,14 @@ function AP_Modal() {
           placeholder="https://www.intelbras.com/pt-br/access-point-dual-band-ac-de-alta-potencia-ap-1250-ac-max"
           value={updatedProduct.pagina}
           onChange={(e) => setUpdatedProduct({...updatedProduct, pagina: e.target.value})}
+        />
+
+        <label>URL do Icone</label>
+        <OlimpoTextInput
+          type="text"
+          placeholder=".png"
+          value={updatedProduct.img}
+          onChange={(e) => setUpdatedProduct({...updatedProduct, img: e.target.value})}
         />
 
         <label>Ocultar</label>

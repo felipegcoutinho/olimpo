@@ -8,7 +8,7 @@ import Modal from "react-modal";
 import {getDatabase, get, set, ref, push, remove} from "firebase/database";
 import {app, db} from "../database/firebase";
 import Content from "../UI Components/Content";
-import {Badge} from "flowbite-react";
+import {Badge, Button} from "flowbite-react";
 import {HiArrowTopRightOnSquare, HiCheckCircle, HiXCircle} from "react-icons/hi2";
 import AP_Thead from "../TableHeads";
 import OlimpoTable from "../UI Components/Table";
@@ -152,6 +152,27 @@ export default function Ap() {
     </div>
   );
 
+  const [isOnline, setIsOnline] = useState(false);
+
+  function pingAddress() {
+    const address = "http://10.1.31.39"; // Endereço que você deseja pingar
+
+    fetch(address, {method: "HEAD"})
+      .then((response) => {
+        setIsOnline(response.ok);
+        console.log("response:", response);
+      })
+      .catch((error) => {
+        setIsOnline(false);
+        console.log("Erro ao pingar o endereço:", error);
+      });
+  }
+
+  // Chamando a função para pingar o endereço quando o componente for montado
+  useEffect(() => {
+    pingAddress();
+  }, []);
+
   return (
     <Content>
       <APContext.Provider
@@ -168,6 +189,8 @@ export default function Ap() {
         }}>
         <Ap_Modal />
       </APContext.Provider>
+
+      <div>{isOnline ? "Online" : "Offline"}</div>
 
       <div className="overflow-x-auto">
         <OlimpoTable
@@ -192,8 +215,10 @@ export default function Ap() {
             .map((ap, index) => {
               return (
                 <tbody className="text-black">
-                  {/* <tr className="border-b hover:bg-orange-50 text-xs text-center whitespace-nowrap" onClick={() => handleClick(index)}> */}
-                  <tr className="border-b hover:bg-orange-50 text-xs text-center whitespace-nowrap">
+                  <tr
+                    className="border-b hover:bg-orange-50 text-xs font-semibold text-center whitespace-nowrap"
+                    onClick={() => handleClick(index)}>
+                    {/* <tr className="border-b hover:bg-orange-50 text-xs text-center whitespace-nowrap"> */}
                     <td>
                       <div
                         className={`${ap.status === "Suporte" ? "bg-green-500" : "bg-red-600"} inline-block
@@ -203,10 +228,7 @@ export default function Ap() {
                         rounded-full`}></div>
                     </td>
                     <th scope="row" className="flex items-center px-2 w-max py-1 font-bold text-gray-900 ">
-                      <img
-                        src="https://backend.intelbras.com/sites/default/files/styles/medium/public/integration/ap_1210_front.png"
-                        className="w-auto h-8 mr-1"
-                      />
+                      <img src={ap.img} className="w-auto h-8 mr-1" />
                       <td className="font-bold text-base">{ap.ocultar === "Sim" ? `${ap.modelo} | Oculto` : ap.modelo}</td>
                     </th>
                     <td className="">
@@ -241,13 +263,13 @@ export default function Ap() {
                     </td>
                     {admin && (
                       <td>
-                        <button className={style.btn_alterar} onClick={() => openUpdateModal(ap)}></button>
-                        <button className={style.btn_excluir} onClick={() => deleteProduct(ap.id)}></button>
+                        <button onClick={() => openUpdateModal(ap)}>editar</button>
+                        <button onClick={() => deleteProduct(ap.id)}>deletar</button>
                       </td>
                     )}
                   </tr>
                   {openRow === index && (
-                    <tr className="bg-zinc-100 ">
+                    <tr className="bg-zinc-100">
                       <td colSpan="20" className="py-8 px-2">
                         {ap.potencia2G}
                         {ap.potencia5G}
