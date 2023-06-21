@@ -117,7 +117,7 @@ function AP_Modal() {
           <option value="802.3at">802.3at</option>
           <option value="802.3af/A">802.3af/A</option>
           <option value="802.3af">802.3af</option>
-          <option value="-">Não Possui</option>
+          <option value="Passivo">Passivo</option>
           <option value="N/A">N/A</option>
         </OlimpoSelect>
 

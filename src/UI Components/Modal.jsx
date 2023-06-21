@@ -1,7 +1,6 @@
 import React from "react";
 import Modal from "react-modal";
 import InfoModal from "./InfoModal";
-import {Button} from "flowbite-react";
 
 function ModalComponent({children, modalIsOpen, closeModal, setor, updatedProductId, updatedProductModelo, id}) {
   return (

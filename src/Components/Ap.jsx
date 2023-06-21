@@ -1,6 +1,5 @@
 import React from "react";
 import {useEffect, useState, useContext, createContext} from "react";
-import style from "../css/App.module.css";
 import Ap_Modal from "./ApModal";
 import {AdminContext} from "../App";
 import Swal from "sweetalert2";
@@ -8,7 +7,7 @@ import Modal from "react-modal";
 import {getDatabase, get, set, ref, push, remove} from "firebase/database";
 import {app, db} from "../database/firebase";
 import Content from "../UI Components/Content";
-import {Badge, Button} from "flowbite-react";
+import {Badge} from "flowbite-react";
 import {HiArrowTopRightOnSquare, HiCheckCircle, HiXCircle} from "react-icons/hi2";
 import AP_Thead from "../TableHeads";
 import OlimpoTable from "../UI Components/Table";
@@ -152,27 +151,6 @@ export default function Ap() {
     </div>
   );
 
-  const [isOnline, setIsOnline] = useState(false);
-
-  function pingAddress() {
-    const address = "http://10.1.31.39"; // Endereço que você deseja pingar
-
-    fetch(address, {method: "HEAD"})
-      .then((response) => {
-        setIsOnline(response.ok);
-        console.log("response:", response);
-      })
-      .catch((error) => {
-        setIsOnline(false);
-        console.log("Erro ao pingar o endereço:", error);
-      });
-  }
-
-  // Chamando a função para pingar o endereço quando o componente for montado
-  useEffect(() => {
-    pingAddress();
-  }, []);
-
   return (
     <Content>
       <APContext.Provider
@@ -189,8 +167,6 @@ export default function Ap() {
         }}>
         <Ap_Modal />
       </APContext.Provider>
-
-      <div>{isOnline ? "Online" : "Offline"}</div>
 
       <div className="overflow-x-auto">
         <OlimpoTable
@@ -215,10 +191,10 @@ export default function Ap() {
             .map((ap, index) => {
               return (
                 <tbody className="text-black">
-                  <tr
-                    className="border-b hover:bg-orange-50 text-xs font-semibold text-center whitespace-nowrap"
-                    onClick={() => handleClick(index)}>
-                    {/* <tr className="border-b hover:bg-orange-50 text-xs text-center whitespace-nowrap"> */}
+                  {/* <tr
+                    className="border-b border-slate-100 hover:bg-green-100 text-xs font-semibold text-center whitespace-nowrap"
+                    onClick={() => handleClick(index)}> */}
+                  <tr className="border-b border-slate-100 hover:bg-slate-200 text-xs font-semibold text-center whitespace-nowrap">
                     <td>
                       <div
                         className={`${ap.status === "Suporte" ? "bg-green-500" : "bg-red-600"} inline-block
@@ -231,11 +207,11 @@ export default function Ap() {
                       <img src={ap.img} className="w-auto h-8 mr-1" />
                       <td className="font-bold text-base">{ap.ocultar === "Sim" ? `${ap.modelo} | Oculto` : ap.modelo}</td>
                     </th>
-                    <td className="">
+                    <td>
                       <span
                         className={`${
-                          ap.modulação === "Fast" ? "bg-blue-200 text-blue-800" : "bg-amber-200 text-yellow-800"
-                        } px-2 py-1 text-white rounded-md`}>
+                          ap.modulação === "Fast" ? "bg-[#cedde8] text-blue-950" : "bg-amber-200 text-yellow-800"
+                        } px-2 text-white rounded-md uppercase font-bold`}>
                         {ap.modulação}
                       </span>
                     </td>
@@ -246,17 +222,15 @@ export default function Ap() {
                     <td>{ap.throughputWireless50 === "-" ? NaoPossui : ap.throughputWireless50}</td>
                     <td>{ap.qtdePortas}</td>
                     <td className="text-left px-4">{ap.tensao}</td>
-                    <td>{ap.poe === "-" ? NaoPossui : ap.poe}</td>
-                    <td>{ap.connectiVersion === "-" ? NaoPossui : ap.connectiVersion}</td>
+                    <td>{ap.poe}</td>
                     <td>{ap.handover === "-" ? NaoPossui : Possui}</td>
-                    <td>{ap.wisefi === "-" ? NaoPossui : Possui}</td>
                     <td>{ap.inmaster === "-" ? NaoPossui : Possui}</td>
                     <td className="px-4">{ap.potencia2G}</td>
                     <td>{ap.potencia5G === "-" ? NaoPossui : ap.potencia5G}</td>
                     <td>{ap.garantia}</td>
                     <td>
                       <a target="_blank" rel="noopener noreferrer" href={ap.pagina}>
-                        <Badge size="xs" icon={HiArrowTopRightOnSquare} className="bg-green-500 text-white px-2">
+                        <Badge size="xs" className="bg-green-500 text-white">
                           Página
                         </Badge>
                       </a>

@@ -5,7 +5,7 @@ import {AdminContext} from "./App";
 export default function AP_Thead() {
   const {admin} = useContext(AdminContext);
   return (
-    <thead className="text-xs text-gray-200 uppercase bg-black">
+    <thead className="text-xs text-gray-800 uppercase bg-slate-200 whitespace-nowrap ">
       <tr className="">
         <th scope="col"></th>
         <th scope="col" className="px-4 py-2 text-center">
@@ -20,8 +20,8 @@ export default function AP_Thead() {
         <th scope="col" className="px-4 py-2">
           Raio
         </th>
-        <th scope="col" className="px-4 py-2">
-          Usuários simultâneos
+        <th scope="col" className="px-2 py-2">
+          Usuários Máx.
         </th>
         <th scope="col" className="px-4 py-2">
           Datarate Máx. 2G
@@ -39,13 +39,7 @@ export default function AP_Thead() {
           Tipo PoE
         </th>
         <th scope="col" className="px-4 py-2">
-          ConnectFi
-        </th>
-        <th scope="col" className="px-4 py-2">
           Handover
-        </th>
-        <th scope="col" className="px-4 py-2">
-          WiseFi
         </th>
         <th scope="col" className="px-4 py-2">
           Inmaster
