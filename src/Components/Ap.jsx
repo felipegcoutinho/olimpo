@@ -151,6 +151,24 @@ export default function Ap() {
     </div>
   );
 
+  const [selectedProducts, setSelectedProducts] = useState([]);
+
+  // Essa função será chamada quando um produto for selecionado
+  const handleProductSelect = (productId) => {
+    if (selectedProducts.includes(productId)) {
+      setSelectedProducts(selectedProducts.filter((id) => id !== productId));
+    } else {
+      setSelectedProducts([...selectedProducts, productId]);
+    }
+  };
+
+  const [comparisonProducts, setComparisonProducts] = useState([]);
+
+  const handleCompareClick = () => {
+    const productsToCompare = accessPoint.filter((product) => selectedProducts.includes(product.id));
+    setComparisonProducts(productsToCompare);
+  };
+
   return (
     <Content>
       <APContext.Provider
@@ -167,6 +185,29 @@ export default function Ap() {
         }}>
         <Ap_Modal />
       </APContext.Provider>
+
+      {selectedProducts.length >= 2 && <button onClick={handleCompareClick}>Compare</button>}
+
+      {comparisonProducts.length > 0 && (
+        <table>
+          <thead>
+            <tr>
+              <th>Modelo</th>
+              <th>Status</th>
+              <th>PoE</th>
+            </tr>
+          </thead>
+          <tbody>
+            {comparisonProducts.map((product) => (
+              <tr>
+                <td>{product.modelo}</td>
+                <td>{product.status}</td>
+                <td>{product.poe}</td>
+              </tr>
+            ))}
+          </tbody>
+        </table>
+      )}
 
       <div className="overflow-x-auto">
         <OlimpoTable
@@ -190,18 +231,26 @@ export default function Ap() {
             })
             .map((ap, index) => {
               return (
-                <tbody className="text-black">
-                  {/* <tr
-                    className="border-b border-slate-100 hover:bg-green-100 text-xs font-semibold text-center whitespace-nowrap"
-                    onClick={() => handleClick(index)}> */}
-                  <tr className="border-b border-slate-100 hover:bg-slate-100 text-xs  text-center whitespace-nowrap">
+                <tbody className="text-slate-600">
+                  <tr className="border-b border-slate-100 hover:bg-slate-100 text-xs text-center whitespace-nowrap">
+                    {/*onClick={() => handleClick(index)}> */}
                     <td>
-                      <div
-                        className={`${ap.status === "Suporte" ? "bg-green-500" : "bg-red-600"} inline-block
+                      <div className="flex gap-2">
+                        <div className="flex items-center">
+                          <input
+                            id="checkbox-table-search-1"
+                            type="checkbox"
+                            className="w-4 h-4 text-green-600 bg-gray-100 border-gray-300 rounded focus:ring-green-500 focus:ring-2 "
+                            onChange={() => handleProductSelect(ap.id)}
+                          />
+                        </div>
+                        <div
+                          className={`${ap.status === "Suporte" ? "bg-green-500" : "bg-red-600"} inline-block
                         w-4 
                         h-4
                         mr-2
                         rounded-full`}></div>
+                      </div>
                     </td>
                     <th scope="row" className="flex items-center px-2 w-max py-1 font-bold text-gray-900 ">
                       {/* <img src={ap.img} className="w-auto h-8 mr-1" /> */}
