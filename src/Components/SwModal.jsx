@@ -2,9 +2,9 @@ import React from "react";
 import {useContext} from "react";
 import {SwContext} from "./Switches";
 import style from "../css/App.module.css";
-import ModalComponent from "../UI Components/Modal";
-import OlimpoTextInput from "../UI Components/OlimpoTextInput";
-import OlimpoSelect from "../UI Components/OlimpoSelect";
+import ModalComponent from "../ui/Modal";
+import OlimpoTextInput from "../ui/OlimpoTextInput";
+import OlimpoSelect from "../ui/OlimpoSelect";
 
 function SwModal() {
   const {addProduto, updateProduct, updatedProduct, setUpdatedProduct, modalIsOpen, closeModal} = useContext(SwContext);

@@ -14,7 +14,7 @@ import {Button} from "flowbite-react";
 export const AdminContext = createContext();
 
 function App() {
-  const [admin, setAdmin] = useState(false);
+  const [admin, setAdmin] = useState(true);
   const [HideAP, setHideAP] = useState(true);
   const [HideRADIO, setHideRADIO] = useState(true);
   const [HideHO, setHideHO] = useState(true);
@@ -81,20 +81,13 @@ function App() {
             {ShowHide ? "Ocultar Tudo" : "Mostrar Tudo"}
           </Button> */}
 
-          {/* APs */}
           <AccessPoints />
-          {/* Rádios */}
-          <RadiosOutdoor />
-          {/* Roteadores HO */}
+          {/* <RadiosOutdoor />
           <RoteadoresHO />
-          {/* SWITCHES */}
           <Switches />
-          {/* CONVERSORES */}
           <Conversores />
-          {/* SFPs */}
           <Sfp />
-          {/* ONUs */}
-          <Onu />
+          <Onu /> */}
         </AdminContext.Provider>
       </div>
     </div>

@@ -2,10 +2,9 @@ import React from "react";
 import {useContext} from "react";
 import {APContext} from "./Ap";
 import {Button} from "flowbite-react";
-import ModalComponent from "../UI Components/Modal";
-import InfoModal from "../UI Components/InfoModal";
-import OlimpoTextInput from "../UI Components/OlimpoTextInput";
-import OlimpoSelect from "../UI Components/OlimpoSelect";
+import ModalComponent from "../ui/Modal";
+import OlimpoTextInput from "../ui/OlimpoTextInput";
+import OlimpoSelect from "../ui/OlimpoSelect";
 
 function AP_Modal() {
   const {addProduto, updateProduct, updatedProduct, setUpdatedProduct, modalIsOpen, closeModal} = useContext(APContext);
@@ -224,7 +223,7 @@ function AP_Modal() {
           onChange={(e) => setUpdatedProduct({...updatedProduct, pagina: e.target.value})}
         />
 
-        <label>URL do Icone</label>
+        <label>URL do Ícone</label>
         <OlimpoTextInput
           type="text"
           placeholder=".png"

@@ -10,7 +10,7 @@ import {Pagination} from "./Pagination";
 import TableBar from "./TableBar";
 import {getDatabase, get, set, ref, push, remove} from "firebase/database";
 import {app, db} from "../database/firebase";
-import Content from "../UI Components/Content";
+import Content from "../ui/Content";
 
 export const RadioContext = createContext();
 

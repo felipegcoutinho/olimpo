@@ -5,7 +5,7 @@ import {AdminContext} from "./App";
 export default function AP_Thead() {
   const {admin} = useContext(AdminContext);
   return (
-    <thead className="text-xs text-gray-800 uppercase bg-slate-200 whitespace-nowrap ">
+    <thead className="text-xs text-gray-800 uppercase bg-slate-200">
       <tr className="">
         <th scope="col"></th>
         <th scope="col" className="px-4 py-2 text-center">

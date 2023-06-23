@@ -1,9 +1,9 @@
 import React from "react";
 import {useContext} from "react";
 import {RadioContext} from "./Radio";
-import ModalComponent from "../UI Components/Modal";
-import OlimpoTextInput from "../UI Components/OlimpoTextInput";
-import OlimpoSelect from "../UI Components/OlimpoSelect";
+import ModalComponent from "../ui/Modal";
+import OlimpoTextInput from "../ui/OlimpoTextInput";
+import OlimpoSelect from "../ui/OlimpoSelect";
 
 function RadioModal() {
   const {addProduto, updateProduct, updatedProduct, setUpdatedProduct, modalIsOpen, closeModal} = useContext(RadioContext);

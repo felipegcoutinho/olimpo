@@ -3,9 +3,9 @@ import Modal from "react-modal";
 import style from "../css/App.module.css";
 import {useContext} from "react";
 import {HOContext} from "./Roteadores";
-import ModalComponent from "../UI Components/Modal";
-import OlimpoTextInput from "../UI Components/OlimpoTextInput";
-import OlimpoSelect from "../UI Components/OlimpoSelect";
+import ModalComponent from "../ui/Modal";
+import OlimpoTextInput from "../ui/OlimpoTextInput";
+import OlimpoSelect from "../ui/OlimpoSelect";
 
 function RoteadoresModal() {
   const {addProduto, updateProduct, updatedProduct, setUpdatedProduct, modalIsOpen, closeModal} = useContext(HOContext);

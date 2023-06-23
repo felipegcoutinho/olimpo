@@ -6,11 +6,11 @@ import Swal from "sweetalert2";
 import Modal from "react-modal";
 import {getDatabase, get, set, ref, push, remove} from "firebase/database";
 import {app, db} from "../database/firebase";
-import Content from "../UI Components/Content";
-import {Badge} from "flowbite-react";
-import {HiArrowTopRightOnSquare, HiCheckCircle, HiXCircle} from "react-icons/hi2";
+import Content from "../ui/Content";
+import {Badge, Button} from "flowbite-react";
+import {HiArrowTopRightOnSquare, HiCheckCircle, HiXCircle, HiPencil, HiXMark} from "react-icons/hi2";
 import AP_Thead from "../TableHeads";
-import OlimpoTable from "../UI Components/Table";
+import OlimpoTable from "../ui/Table";
 
 export const APContext = createContext();
 
@@ -194,24 +194,24 @@ export default function Ap() {
                   {/* <tr
                     className="border-b border-slate-100 hover:bg-green-100 text-xs font-semibold text-center whitespace-nowrap"
                     onClick={() => handleClick(index)}> */}
-                  <tr className="border-b border-slate-100 hover:bg-slate-200 text-xs font-semibold text-center whitespace-nowrap">
+                  <tr className="border-b border-slate-100 hover:bg-slate-100 text-xs  text-center whitespace-nowrap">
                     <td>
                       <div
                         className={`${ap.status === "Suporte" ? "bg-green-500" : "bg-red-600"} inline-block
-                        w-4
+                        w-4 
                         h-4
                         mr-2
                         rounded-full`}></div>
                     </td>
                     <th scope="row" className="flex items-center px-2 w-max py-1 font-bold text-gray-900 ">
-                      <img src={ap.img} className="w-auto h-8 mr-1" />
-                      <td className="font-bold text-base">{ap.ocultar === "Sim" ? `${ap.modelo} | Oculto` : ap.modelo}</td>
+                      {/* <img src={ap.img} className="w-auto h-8 mr-1" /> */}
+                      <td className="font-bold text-sm">{ap.ocultar === "Sim" ? `${ap.modelo} | Oculto` : ap.modelo}</td>
                     </th>
                     <td>
                       <span
                         className={`${
-                          ap.modulação === "Fast" ? "bg-[#cedde8] text-blue-950" : "bg-amber-200 text-yellow-800"
-                        } px-2 text-white rounded-md uppercase font-bold`}>
+                          ap.modulação === "Fast" ? "bg-[#cedde8] text-blue-900" : "bg-amber-200 text-yellow-800"
+                        } px-2 py-1 text-white rounded-md uppercase font-bold`}>
                         {ap.modulação}
                       </span>
                     </td>
@@ -230,15 +230,19 @@ export default function Ap() {
                     <td>{ap.garantia}</td>
                     <td>
                       <a target="_blank" rel="noopener noreferrer" href={ap.pagina}>
-                        <Badge size="xs" className="bg-green-500 text-white">
+                        <Badge size="xs" className="bg-green-500 text-white flex justify-center items-center">
                           Página
                         </Badge>
                       </a>
                     </td>
                     {admin && (
                       <td>
-                        <button onClick={() => openUpdateModal(ap)}>editar</button>
-                        <button onClick={() => deleteProduct(ap.id)}>deletar</button>
+                        <button className="bg-yellow-400 p-1 rounded-md text-white" onClick={() => openUpdateModal(ap)}>
+                          <HiPencil />
+                        </button>
+                        <button className="bg-red-700 p-1 rounded-md text-white ml-2" onClick={() => deleteProduct(ap.id)}>
+                          <HiXMark />
+                        </button>
                       </td>
                     )}
                   </tr>
