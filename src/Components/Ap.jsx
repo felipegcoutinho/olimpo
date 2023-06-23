@@ -151,9 +151,11 @@ export default function Ap() {
     </div>
   );
 
-  const [selectedProducts, setSelectedProducts] = useState([]);
+  // Esse trecho vai gerenciar os produtos selecionados
 
-  // Essa função será chamada quando um produto for selecionado
+  const [selectedProducts, setSelectedProducts] = useState([]);
+  const [comparisonProducts, setComparisonProducts] = useState([]);
+
   const handleProductSelect = (productId) => {
     if (selectedProducts.includes(productId)) {
       setSelectedProducts(selectedProducts.filter((id) => id !== productId));
@@ -161,8 +163,6 @@ export default function Ap() {
       setSelectedProducts([...selectedProducts, productId]);
     }
   };
-
-  const [comparisonProducts, setComparisonProducts] = useState([]);
 
   const handleCompareClick = () => {
     const productsToCompare = accessPoint.filter((product) => selectedProducts.includes(product.id));
@@ -248,23 +248,23 @@ export default function Ap() {
                           className={`${ap.status === "Suporte" ? "bg-green-500" : "bg-red-600"} inline-block
                         w-4 
                         h-4
-                        mr-2
+                        mr-2                      
                         rounded-full`}></div>
                       </div>
                     </td>
                     <th scope="row" className="flex items-center px-2 w-max py-1 font-bold text-gray-900 ">
-                      {/* <img src={ap.img} className="w-auto h-8 mr-1" /> */}
+                      <img src={ap.img} className="w-auto h-7 mr-1" />
                       <td className="font-bold text-sm">{ap.ocultar === "Sim" ? `${ap.modelo} | Oculto` : ap.modelo}</td>
                     </th>
                     <td>
                       <span
                         className={`${
-                          ap.modulação === "Fast" ? "bg-[#cedde8] text-blue-900" : "bg-amber-200 text-yellow-800"
-                        } px-2 py-1 text-white rounded-md uppercase font-bold`}>
+                          ap.modulação === "Fast" ? "bg-orange-400" : "bg-green-400"
+                        } px-2 rounded-md uppercase font-bold text-white`}>
                         {ap.modulação}
                       </span>
                     </td>
-                    <td>{ap.cobertura}</td>
+                    <td className="font-bold">{ap.cobertura}</td>
                     <td>{ap.raio}</td>
                     <td>{ap.usuarioMax}</td>
                     <td className="px-4">{ap.throughputWireless24}</td>

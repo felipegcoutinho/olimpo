@@ -11,6 +11,9 @@ export default function OlimpoTable({tbody, thead, admin, openModal, newButton, 
             <div className="flex items-center gap-2">{Hide ? <HiChevronUp /> : <HiChevronDown />}</div>
           </button>
           <div class="flex items-center flex-1 space-x-4 text-3xl">Access Points</div>
+          <Button className="bg-blue-500 hover:bg-blue-700">APs Giga</Button>
+          <Button className="bg-blue-500 hover:bg-blue-700">APs Fast</Button>
+
           <div class="flex flex-col flex-shrink-0 space-y-3 md:flex-row md:items-center lg:justify-end md:space-y-0 md:space-x-3">
             {admin && (
               <Button className="mr-auto bg-green-500 hover:bg-green-700" onClick={openModal}>

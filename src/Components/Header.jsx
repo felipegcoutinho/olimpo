@@ -29,9 +29,9 @@ export default function Header() {
         <b> Sempre consulte a documentação oficial.</b>
       </div> */}
       <div className="items-center flex flex-col" id="home">
-        <div className="mt-20">
+        {/* <div className="mt-20">
           <p className="text-green-500 text-5xl font-[pacifico]">Olimpo!</p>
-        </div>
+        </div> */}
 
         <div className="flex mt-10 items-center">
           <TextInput
