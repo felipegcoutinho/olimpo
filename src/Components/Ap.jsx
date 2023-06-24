@@ -11,6 +11,7 @@ import {Badge, Button} from "flowbite-react";
 import {HiArrowTopRightOnSquare, HiCheckCircle, HiXCircle, HiPencil, HiXMark} from "react-icons/hi2";
 import AP_Thead from "../TableHeads";
 import OlimpoTable from "../ui/Table";
+import crud from "../Database/crud";
 
 export const APContext = createContext();
 
@@ -18,8 +19,8 @@ export default function Ap() {
   const [queryAP, setQueryAP] = useState("");
   const [accessPoint, setAccessPoint] = useState([]);
   const [modalIsOpen, setIsOpen] = useState(false);
-
   const {admin, HideAP, setHideAP, updatedProduct, setUpdatedProduct} = useContext(AdminContext);
+  const {fetchDevices, addDevices, deleteDevices, updateDevices} = crud();
 
   const handleHideAP = () => setHideAP(!HideAP);
   const handleSearchChangeAP = (e) => {
@@ -37,59 +38,19 @@ export default function Ap() {
     setUpdatedProduct(false);
   }
 
-  /* Buscar Produto */
-  const fetchProducts = async () => {
-    const db = getDatabase(app);
-    const apRef = ref(db, "aps");
-    const snapshot = await get(apRef);
-    const data = [];
-    snapshot.forEach((childSnapshot) => {
-      const childData = childSnapshot.val();
-      data.push({
-        id: childSnapshot.key,
-        ...childData,
-      });
-    });
-    setAccessPoint(data);
-  };
-
+  //Busca os produtos no banco de dados
   useEffect(() => {
-    fetchProducts();
+    fetchDevices("aps", setAccessPoint);
   }, []);
 
-  /* Adicionar Produto */
-  const addProduto = async (e) => {
-    e.preventDefault();
-    const apRef = ref(db, "aps");
-    const newAPRef = push(apRef);
-    await set(newAPRef, updatedProduct);
-    Swal.fire({
-      title: "Adicionado!",
-      confirmButtonColor: "#006e39",
-    });
-    setUpdatedProduct({});
-    fetchProducts();
-    closeModal();
+  //Deleta os produtos no banco de dados
+  const deleteDevice = (id) => {
+    deleteDevices(id, "aps", fetchDevices);
   };
 
-  /* Deletar Produto */
-  const deleteProduct = async (id) => {
-    const db = getDatabase(app);
-    const apRef = ref(db, `aps/${id}`);
-    Swal.fire({
-      title: "Você tem certeza?",
-      icon: "warning",
-      showCancelButton: true,
-      confirmButtonColor: "#006e39",
-      cancelButtonColor: "#d33",
-      confirmButtonText: "Sim, deletar",
-    }).then((result) => {
-      if (result.isConfirmed) {
-        remove(apRef);
-        Swal.fire("Equipamento deletado!");
-        fetchProducts();
-      }
-    });
+  //Adiciona os produtos no banco de dados
+  const addDevice = (e) => {
+    addDevices(e, "aps", closeModal, setUpdatedProduct, updatedProduct, fetchDevices);
   };
 
   /* Atualizar  Produto */
@@ -97,6 +58,7 @@ export default function Ap() {
     setUpdatedProduct(updatedProduct);
     setIsOpen(true);
   };
+
   const updateProduct = async (e) => {
     e.preventDefault();
     const apRef = ref(db, `aps/${updatedProduct.id}`);
@@ -152,7 +114,6 @@ export default function Ap() {
   );
 
   // Esse trecho vai gerenciar os produtos selecionados
-
   const [selectedProducts, setSelectedProducts] = useState([]);
   const [comparisonProducts, setComparisonProducts] = useState([]);
 
@@ -180,7 +141,7 @@ export default function Ap() {
           setIsOpen,
           openModal,
           closeModal,
-          addProduto,
+          addDevice,
           admin,
         }}>
         <Ap_Modal />
@@ -289,7 +250,7 @@ export default function Ap() {
                         <button className="bg-yellow-400 p-1 rounded-md text-white" onClick={() => openUpdateModal(ap)}>
                           <HiPencil />
                         </button>
-                        <button className="bg-red-700 p-1 rounded-md text-white ml-2" onClick={() => deleteProduct(ap.id)}>
+                        <button className="bg-red-700 p-1 rounded-md text-white ml-2" onClick={() => deleteDevice(ap.id)}>
                           <HiXMark />
                         </button>
                       </td>
