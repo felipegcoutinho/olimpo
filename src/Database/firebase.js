@@ -3,14 +3,14 @@ import {getDatabase} from "firebase/database";
 import {getAuth} from "firebase/auth";
 
 const firebaseConfig = {
-  apiKey: "AIzaSyCVR0Fsh-M-DRt4foegO890hO46iExve10",
-  authDomain: "olimpo-v2.firebaseapp.com",
-  databaseURL: "https://olimpo-v2-default-rtdb.firebaseio.com",
-  projectId: "olimpo-v2",
-  storageBucket: "olimpo-v2.appspot.com",
-  messagingSenderId: "956720428518",
-  appId: "1:956720428518:web:ac3fdc4b1e1d55a2731227",
-  measurementId: "G-3P54DG2KKR",
+  apiKey: "AIzaSyDUlAKicsC8oK_APyIAxkdFx-aBba-RT-U",
+  authDomain: "projeto-olimpo-b44f3.firebaseapp.com",
+  databaseURL: "https://projeto-olimpo-b44f3-default-rtdb.firebaseio.com",
+  projectId: "projeto-olimpo-b44f3",
+  storageBucket: "projeto-olimpo-b44f3.appspot.com",
+  messagingSenderId: "91467325419",
+  appId: "1:91467325419:web:9e090b87b915ca8c9a83ae",
+  measurementId: "G-PX78YMDM1T",
 };
 
 const app = initializeApp(firebaseConfig);

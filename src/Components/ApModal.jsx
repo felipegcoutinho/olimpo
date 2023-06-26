@@ -1,13 +1,14 @@
 import React from "react";
 import {useContext} from "react";
-import {APContext} from "./Ap";
 import {Button} from "flowbite-react";
 import ModalComponent from "../ui/Modal";
 import OlimpoTextInput from "../ui/OlimpoTextInput";
 import OlimpoSelect from "../ui/OlimpoSelect";
+import {APContext} from "./Ap";
+import {AdminContext} from "../App";
 
 function AP_Modal() {
-  const {addDevice, updateProduct, updatedProduct, setUpdatedProduct, modalIsOpen, closeModal} = useContext(APContext);
+  const {addDevice, updateDevice, updatedProduct, setUpdatedProduct, closeModal, modalIsOpen} = useContext(APContext);
 
   return (
     <ModalComponent
@@ -16,7 +17,7 @@ function AP_Modal() {
       updatedProductId={updatedProduct.id}
       updatedProductModelo={updatedProduct.modelo}
       setor="Access Point">
-      <form onSubmit={updatedProduct.id ? updateProduct : addDevice}>
+      <form onSubmit={updatedProduct.id ? updateDevice : addDevice}>
         <label>Modelo</label>
         <OlimpoTextInput
           required

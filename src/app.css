@@ -2,14 +2,6 @@
 @tailwind components;
 @tailwind utilities;
 
-@import url("https://fonts.googleapis.com/css2?family=Pacifico&display=swap");
-@import url("https://fonts.googleapis.com/css2?family=MuseoModerno:wght@400;700&display=swap");
-
-@font-face {
-  font-family: "Pacifico";
-  src: local("Pacifico"), url(./webfonts/Pacifico-Regular.ttf) format("truetype");
-}
-
 body {
   background-color: #eeeeee;
   font-family: "Fira Sans", segoe UI, arial;

@@ -2,7 +2,7 @@ import {getDatabase, get, set, ref, push, remove} from "firebase/database";
 import {app, db} from "../database/firebase";
 import Swal from "sweetalert2";
 
-export function crud() {
+export function CrudFirebase() {
   /* Buscar Produto */
   const fetchDevices = async (path, setDevices) => {
     const db = getDatabase(app);
@@ -20,8 +20,7 @@ export function crud() {
   };
 
   /* Adicionar Produto */
-  const addDevices = async (e, path, fetchDevices, closeModal, setUpdatedProduct, updatedProduct) => {
-    e.preventDefault();
+  const addDevices = async (path, fetchDevices, closeModal, setUpdatedProduct, updatedProduct) => {
     const apRef = ref(db, path);
     const newAPRef = push(apRef);
     await set(newAPRef, updatedProduct);
@@ -55,12 +54,7 @@ export function crud() {
   };
 
   /* Atualizar  Produto */
-  const openUpdateModal = (updatedProduct, setUpdatedProduct) => {
-    setUpdatedProduct(updatedProduct);
-    setIsOpen(true);
-  };
-  const updateDevices = async (e, path, setUpdatedProduct) => {
-    e.preventDefault();
+  const updateDevices = async (path, setUpdatedProduct, updatedProduct, fetchDevices, closeModal) => {
     const apRef = ref(db, `${path}/${updatedProduct.id}`);
     await set(apRef, updatedProduct);
     Swal.fire({
@@ -72,7 +66,7 @@ export function crud() {
     closeModal();
   };
 
-  return {fetchDevices, addDevices, deleteDevices, openUpdateModal, updateDevices};
+  return {fetchDevices, addDevices, deleteDevices, updateDevices};
 }
 
-export default crud;
+export default CrudFirebase;

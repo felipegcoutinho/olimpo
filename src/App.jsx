@@ -1,13 +1,13 @@
 import React from "react";
 import {createContext, useState} from "react";
-import Header from "./components/Header.jsx";
-import AccessPoints from "./components/Ap.jsx";
-import RadiosOutdoor from "./components/Radio.jsx";
-import RoteadoresHO from "./components/Roteadores.jsx";
-import Switches from "./components/Switches.jsx";
-import Conversores from "./components/Conversores.jsx";
-import Sfp from "./components/Sfp.jsx";
-import Onu from "./components/Onu.jsx";
+import Header from "./Components/Header.jsx";
+import AccessPoints from "./Components/Ap.jsx";
+import RadiosOutdoor from "./Components/Radio.jsx";
+import RoteadoresHO from "./Components/Roteadores.jsx";
+import Switches from "./Components/Switches.jsx";
+import Conversores from "./Components/Conversores.jsx";
+import Sfp from "./Components/Sfp.jsx";
+import Onu from "./Components/Onu.jsx";
 import Modal from "react-modal";
 import {Button} from "flowbite-react";
 
@@ -37,8 +37,7 @@ function App() {
     setHideONU(!ShowHide);
   };
 
-  /* Configs Modal */
-  Modal.setAppElement("#root");
+  /* Modal */
   function openModal() {
     setIsOpen(true);
   }
@@ -74,6 +73,7 @@ function App() {
             openModal,
             closeModal,
             modalIsOpen,
+            setIsOpen,
           }}>
           <Header />
 
@@ -82,8 +82,8 @@ function App() {
           </Button> */}
 
           <AccessPoints />
-          {/* <RadiosOutdoor />
-          <RoteadoresHO />
+          <RadiosOutdoor />
+          {/*<RoteadoresHO />
           <Switches />
           <Conversores />
           <Sfp />

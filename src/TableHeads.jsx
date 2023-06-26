@@ -5,62 +5,24 @@ import {AdminContext} from "./App";
 export default function AP_Thead() {
   const {admin} = useContext(AdminContext);
   return (
-    <thead className="text-xs text-gray-800 uppercase bg-slate-200">
-      <tr className="">
-        <th scope="col"></th>
-        <th scope="col" className="px-4 py-2 text-center">
-          Modelo
-        </th>
-        <th scope="col" className="px-2 py-2">
-          Modulação
-        </th>
-        <th scope="col" className="px-2 py-2">
-          Cobertura
-        </th>
-        <th scope="col" className="px-4 py-2">
-          Raio
-        </th>
-        <th scope="col" className="px-2 py-2">
-          Usuários Máx.
-        </th>
-        <th scope="col" className="px-4 py-2">
-          Datarate Máx. 2G
-        </th>
-        <th scope="col" className="px-4 py-2">
-          Datarate Máx. 5G
-        </th>
-        <th scope="col" className="px-4 py-2">
-          Qtde Portas
-        </th>
-        <th scope="col" className="px-4 py-2">
-          Tensão
-        </th>
-        <th scope="col" className="px-4 py-2 whitespace-nowrap">
-          Tipo PoE
-        </th>
-        <th scope="col" className="px-4 py-2">
-          Handover
-        </th>
-        <th scope="col" className="px-4 py-2">
-          Inmaster
-        </th>
-        <th scope="col" className="px-4 py-2">
-          Potência TX 2G
-        </th>
-        <th scope="col" className="px-4 py-2">
-          Potência TX 5G
-        </th>
-        <th scope="col" className="px-4 py-2">
-          Garantia
-        </th>
-        <th scope="col" className="px-4 py-2">
-          Página
-        </th>
-        {admin && (
-          <th scope="col" className="px-4 py-2">
-            Ações
-          </th>
-        )}
+    <thead className="text-xs text-gray-800 uppercase whitespace-nowrap border-b border-[#E6ECEE] bg-slate-200">
+      <tr>
+        <th></th>
+        <th className="px-4 py-4">Modelo</th>
+        <th className="px-2 py-2">Modulação</th>
+        <th className="px-2 py-2">Cobertura</th>
+        <th className="px-4 py-2">Raio</th>
+        <th className="px-2 py-2">Usuários Máx.</th>
+        <th className="px-4 py-2">Datarate Máx. 2G</th>
+        <th className="px-4 py-2">Datarate Máx. 5G</th>
+        <th className="px-4 py-2">Qtde Portas</th>
+        <th className="px-4 py-2">Tensão</th>
+        <th className="px-4 py-2">Tipo PoE</th>
+        <th className="px-4 py-2">Handover</th>
+        <th className="px-4 py-2">Inmaster</th>
+        <th className="px-4 py-2">Garantia</th>
+        <th className="px-4 py-2">Página</th>
+        {admin && <th className="px-4 py-2">Ações</th>}
       </tr>
     </thead>
   );
@@ -69,8 +31,9 @@ export default function AP_Thead() {
 export function Radio_Thead() {
   const {admin} = useContext(AdminContext);
   return (
-    <thead class="text-xs text-white text-center uppercase bg-slate-900 h-10">
-      <tr id={style.RADIO}>
+    <thead className="text-xs text-gray-800 uppercase whitespace-nowrap border-b border-[#E6ECEE] bg-slate-200">
+      <tr>
+        <th></th>
         <th>Modelo</th>
         <th>Indicado</th>
         <th>Modulação</th>
@@ -85,7 +48,7 @@ export function Radio_Thead() {
         <th>Alimentação</th>
         <th>Garantia</th>
         <th>Página</th>
-        {admin && <th>Ações</th>}
+        {admin && <th className="px-4 py-2">Ações</th>}
       </tr>
     </thead>
   );

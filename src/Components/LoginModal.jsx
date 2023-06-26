@@ -10,10 +10,8 @@ import {Button, TextInput} from "flowbite-react";
 
 function LoginModal() {
   const {modalIsOpen, closeModal, setAdmin, admin} = useContext(AdminContext);
-
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
-
   const [signInWithEmailAndPassword, user, loading, error] = useSignInWithEmailAndPassword(auth);
 
   function handleSignIn(e) {
