@@ -160,20 +160,17 @@ export default function Ap() {
                 <tbody className="text-slate-600">
                   <tr className="border-b border-[#E6ECEE] hover:bg-slate-100 text-xs text-center whitespace-nowrap">
                     <td>
-                      <div className="flex gap-2">
-                        <div className="flex items-center">
-                          <input
-                            id="checkbox-table-search-1"
-                            type="checkbox"
-                            className="w-4 h-4 ml-1 text-green-600 bg-gray-100 border-gray-300 rounded focus:ring-green-500 "
-                            onChange={() => handleProductSelect(ap.id)}
-                          />
-                        </div>
-                        <div
-                          className={`${ap.status === "Suporte" ? "bg-green-500" : "bg-red-600"} inline-block w-4 h-4 rounded-full`}></div>
+                      <div className="flex items-center gap-2">
+                        <input
+                          id="checkbox-table-search-1"
+                          type="checkbox"
+                          className="w-4 h-4 ml-1 text-green-600 bg-gray-100 border-gray-300 rounded-full focus:ring-green-500 "
+                          onChange={() => handleProductSelect(ap.id)}
+                        />
+                        <div className={`${ap.status === "Suporte" ? "bg-green-500" : "bg-red-600"} w-3 h-3 rounded-full`}></div>
                       </div>
                     </td>
-                    <th className="flex items-center px-2 w-max py-1 font-bold text-gray-900 ">
+                    <th className="flex items-center w-max py-1 font-bold text-gray-900 ">
                       {/* <img src={ap.img} className="w-7 h-7 mr-1" /> */}
                       <td className="font-bold text-sm">{ap.ocultar === "Sim" ? `${ap.modelo} | Oculto` : ap.modelo}</td>
                     </th>

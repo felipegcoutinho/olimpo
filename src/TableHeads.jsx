@@ -8,7 +8,7 @@ export default function AP_Thead() {
     <thead className="text-xs text-gray-800 uppercase whitespace-nowrap border-b border-[#E6ECEE] bg-slate-200">
       <tr>
         <th></th>
-        <th className="px-4 py-4">Modelo</th>
+        <th className="px-4 py-3">Modelo</th>
         <th className="px-2 py-2">Modulação</th>
         <th className="px-2 py-2">Cobertura</th>
         <th className="px-4 py-2">Raio</th>
@@ -34,7 +34,7 @@ export function Radio_Thead() {
     <thead className="text-xs text-gray-800 uppercase whitespace-nowrap border-b border-[#E6ECEE] bg-slate-200">
       <tr>
         <th></th>
-        <th>Modelo</th>
+        <th className="px-4 py-3">Modelo</th>
         <th>Indicado</th>
         <th>Modulação</th>
         <th>Ganho</th>

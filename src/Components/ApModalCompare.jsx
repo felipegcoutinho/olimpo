@@ -53,9 +53,11 @@ function AP_ModalCompare() {
           <div className={`grid ${gridCols} p-4 text-sm font-medium text-gray-900 bg-gray-100 `}>
             <div className="flex items-center"></div>
             {comparisonDevices.map((ap) => (
-              <div className="flex justify-center flex-col items-start">
+              <div className="flex justify-center flex-col items-start py-5">
                 {/* <img className="h-40 w-40" src={ap.img}></img> */}
-                <p className="font-bold text-lg">{ap.modelo}</p>
+                <div className="rounded-lg border-black px-4 py-2 border-2">
+                  <p className="font-bold text-xl">{ap.modelo}</p>
+                </div>
               </div>
             ))}
           </div>

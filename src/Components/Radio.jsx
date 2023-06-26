@@ -150,25 +150,20 @@ export default function Radios() {
                 <tbody>
                   <tr className="border-b border-[#E6ECEE] hover:bg-slate-100 text-xs  whitespace-nowrap">
                     <td>
-                      <div className="flex gap-2">
-                        <div className="flex items-center">
-                          <input
-                            id="checkbox-table-search-1"
-                            type="checkbox"
-                            className="w-4 h-4 ml-1 text-green-600 bg-gray-100 border-gray-300 rounded focus:ring-green-500 "
-                            onChange={() => handleProductSelect(radio.id)}
-                          />
-                        </div>
-                        <div
-                          className={`${
-                            radio.status === "Suporte" ? "bg-green-500" : "bg-red-600"
-                          } inline-block w-4 h-4 rounded-full`}></div>
+                      <div className="flex items-center gap-2">
+                        <input
+                          id="checkbox-table-search-1"
+                          type="checkbox"
+                          className="w-4 h-4 ml-1 text-green-600 bg-gray-100 border-gray-300 rounded-full focus:ring-green-500 "
+                          onChange={() => handleProductSelect(radio.id)}
+                        />
+                        <div className={`${radio.status === "Suporte" ? "bg-green-500" : "bg-red-600"} w-3 h-3 rounded-full`}></div>
                       </div>
                     </td>
-                    <th className="flex items-center px-2 w-max py-1 font-bold text-gray-900 ">
+                    <th className="flex items-center w-max py-1 font-bold text-gray-900 ">
+                      {/* <img src={radio.img} className="w-7 h-7 mr-1" /> */}
                       <td className="font-bold text-sm">{radio.ocultar === "Sim" ? `${radio.modelo} | Oculto` : radio.modelo}</td>
                     </th>
-                    <td>{radio.indicado}</td>
                     <td>
                       <span
                         className={`${
@@ -177,6 +172,7 @@ export default function Radios() {
                         {radio.modulação}
                       </span>
                     </td>
+                    <td>{radio.indicado}</td>
                     <td>
                       <span className={style.tooltip}>
                         {radio.ganho}
