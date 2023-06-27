@@ -9,7 +9,7 @@ import TableTeste from "../ui/Table";
 
 export default function Header() {
   const {openModal, admin} = useContext(AdminContext);
-  const [urlValue, setUrlValue] = React.useState("");
+  const [urlValue, setUrlValue] = useState("");
   const urlSearch = `https://www.intelbras.com/pt-br/busca/?q=${urlValue}&tipo_busca=pagina-resultado`;
 
   const handleSearch = (e) => {
