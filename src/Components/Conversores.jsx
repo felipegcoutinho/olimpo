@@ -15,11 +15,10 @@ import Content from "../ui/Content";
 export const ConversorContext = createContext();
 
 export default function Ap() {
+  const {admin, HideConversor, setHideConversor, updatedProduct, setUpdatedProduct} = useContext(AdminContext);
   const [queryCONVERSOR, setQueryCONVERSOR] = React.useState("");
   const [conversor, setConversor] = useState([]);
   const [modalIsOpen, setIsOpen] = useState(false);
-
-  const {admin, HideConversor, setHideConversor, updatedProduct, setUpdatedProduct} = useContext(AdminContext);
 
   const handleHideConversor = () => setHideConversor(!HideConversor);
   const handleSearchChangeCONVERSOR = (e) => {
@@ -129,10 +128,12 @@ export default function Ap() {
           updateProduct,
           updatedProduct,
           setUpdatedProduct,
+
           modalIsOpen,
           setIsOpen,
           openModal,
           closeModal,
+
           addProduto,
           admin,
         }}>

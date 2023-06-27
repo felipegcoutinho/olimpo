@@ -23,7 +23,7 @@ export default function OlimpoTable({
           <button onClick={handleHide}>
             <div className="flex items-center gap-2">{Hide ? <HiChevronUp /> : <HiChevronDown />}</div>
           </button>
-          <div className="flex items-center flex-1 space-x-4 text-3xl">{Device}</div>
+          <div className="flex items-center flex-1 text-2xl font-bold">{Device}</div>
 
           <div className="flex flex-col flex-shrink-0 space-y-3 md:flex-row md:items-center lg:justify-end md:space-y-0 md:space-x-3">
             {Hide && (

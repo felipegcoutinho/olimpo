@@ -17,12 +17,22 @@ import OlimpoTable from "../ui/Table";
 export const RadioContext = createContext();
 
 export default function Radios() {
-  const {admin, HideRADIO, setHideRADIO, updatedProduct, setUpdatedProduct, openModal, closeModal, modalIsOpen, setIsOpen} =
-    useContext(AdminContext);
+  const {admin, HideRADIO, setHideRADIO, updatedProduct, setUpdatedProduct} = useContext(AdminContext);
   const [RadiosOutdoor, setRadiosOutdoor] = useState([]);
   const [queryRADIO, setQueryRADIO] = useState("");
-
+  const [modalIsOpen, setIsOpen] = useState(false);
   const {fetchDevices, addDevices, deleteDevices, updateDevices} = CrudFirebase();
+
+  /* Configs Modal */
+  Modal.setAppElement("#root");
+  function openModal() {
+    setIsOpen(true);
+  }
+
+  function closeModal() {
+    setIsOpen(false);
+    setUpdatedProduct(false);
+  }
 
   const handleHideRADIO = () => setHideRADIO(!HideRADIO);
   const handleSearchChangeRADIO = (e) => {
@@ -148,22 +158,20 @@ export default function Radios() {
             .map((radio) => {
               return (
                 <tbody>
-                  <tr className="border-b border-[#E6ECEE] hover:bg-slate-100 text-xs  whitespace-nowrap">
+                  <tr className="border-b border-[#E6ECEE] hover:bg-slate-100 text-xs  whitespace-nowrap h-9">
                     <td>
                       <div className="flex items-center gap-2">
                         <input
-                          id="checkbox-table-search-1"
                           type="checkbox"
-                          className="w-4 h-4 ml-1 text-green-600 bg-gray-100 border-gray-300 rounded-full focus:ring-green-500 "
+                          className="w-4 h-4 ml-1 text-green-600 bg-gray-100 border-gray-300 rounded focus:ring-green-500 "
                           onChange={() => handleProductSelect(radio.id)}
                         />
                         <div className={`${radio.status === "Suporte" ? "bg-green-500" : "bg-red-600"} w-3 h-3 rounded-full`}></div>
                       </div>
                     </td>
-                    <th className="flex items-center w-max py-1 font-bold text-gray-900 ">
-                      {/* <img src={radio.img} className="w-7 h-7 mr-1" /> */}
-                      <td className="font-bold text-sm">{radio.ocultar === "Sim" ? `${radio.modelo} | Oculto` : radio.modelo}</td>
-                    </th>
+                    <td className="font-bold text-sm text-left text-black pl-2">
+                      {radio.ocultar === "Sim" ? `${radio.modelo} | Oculto` : radio.modelo}
+                    </td>
                     <td>
                       <span
                         className={`${

@@ -9,16 +9,27 @@ import AP_Thead from "../TableHeads";
 import OlimpoTable from "../ui/Table";
 import CrudFirebase from "../Database/crud";
 import AP_ModalCompare from "./ApModalCompare";
+import Modal from "react-modal";
 
 export const APContext = createContext();
 
 export default function Ap() {
-  const {admin, HideAP, setHideAP, updatedProduct, setUpdatedProduct, openModal, closeModal, modalIsOpen, setIsOpen} =
-    useContext(AdminContext);
+  const {admin, HideAP, setHideAP, updatedProduct, setUpdatedProduct} = useContext(AdminContext);
   const [accessPoint, setAccessPoint] = useState([]);
   const [queryAP, setQueryAP] = useState("");
-
+  const [modalIsOpen, setIsOpen] = useState(false);
   const {fetchDevices, addDevices, deleteDevices, updateDevices} = CrudFirebase();
+
+  /* Configs Modal */
+  Modal.setAppElement("#root");
+  function openModal() {
+    setIsOpen(true);
+  }
+
+  function closeModal() {
+    setIsOpen(false);
+    setUpdatedProduct(false);
+  }
 
   const handleHideAP = () => setHideAP(!HideAP);
   const handleSearchChangeAP = (e) => {
@@ -91,6 +102,7 @@ export default function Ap() {
 
   function closeModalCompare() {
     setIsOpenCompare(false);
+    setSelectedDevices([]);
   }
 
   const [selectedDevices, setSelectedDevices] = useState([]);
@@ -158,22 +170,21 @@ export default function Ap() {
             .map((ap) => {
               return (
                 <tbody className="text-slate-600">
-                  <tr className="border-b border-[#E6ECEE] hover:bg-slate-100 text-xs text-center whitespace-nowrap">
+                  <tr className="border-b border-[#E6ECEE] hover:bg-slate-100 text-xs text-center whitespace-nowrap h-9">
                     <td>
                       <div className="flex items-center gap-2">
                         <input
-                          id="checkbox-table-search-1"
                           type="checkbox"
-                          className="w-4 h-4 ml-1 text-green-600 bg-gray-100 border-gray-300 rounded-full focus:ring-green-500 "
+                          className="w-4 h-4 ml-1 text-green-600 bg-gray-100 border-gray-300 rounded focus:ring-green-500"
                           onChange={() => handleProductSelect(ap.id)}
+                          checked={selectedDevices.includes(ap.id)}
                         />
                         <div className={`${ap.status === "Suporte" ? "bg-green-500" : "bg-red-600"} w-3 h-3 rounded-full`}></div>
                       </div>
                     </td>
-                    <th className="flex items-center w-max py-1 font-bold text-gray-900 ">
-                      {/* <img src={ap.img} className="w-7 h-7 mr-1" /> */}
-                      <td className="font-bold text-sm">{ap.ocultar === "Sim" ? `${ap.modelo} | Oculto` : ap.modelo}</td>
-                    </th>
+                    <td className="font-bold text-sm text-left text-black pl-2">
+                      {ap.ocultar === "Sim" ? `${ap.modelo} | Oculto` : ap.modelo}
+                    </td>
                     <td>
                       <span
                         className={`${
