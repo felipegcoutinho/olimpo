@@ -57,10 +57,10 @@ export default function Header() {
             </Button>
           )}
 
-          {/* <Button size="lg" color="dark" className="p-1 m-1" onClick={openModal}>
+          <Button size="lg" color="dark" className="p-1 m-1" onClick={openModal}>
             {admin ? <HiLockOpen className="mr-1" /> : <HiLockClosed className="mr-1" />}
             Logar
-          </Button> */}
+          </Button>
 
           <LoginModal />
         </div>

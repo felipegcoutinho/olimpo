@@ -4,7 +4,7 @@ import Ap_Modal from "./ApModal";
 import {AdminContext} from "../App";
 import Content from "../ui/Content";
 import {Badge} from "flowbite-react";
-import {HiCheckCircle, HiXCircle, HiPencil, HiXMark} from "react-icons/hi2";
+import {HiCheckCircle, HiXCircle, HiPencil, HiXMark, HiArrowsPointingOut} from "react-icons/hi2";
 import AP_Thead from "../TableHeads";
 import OlimpoTable from "../ui/Table";
 import CrudFirebase from "../Database/crud";
@@ -122,6 +122,11 @@ export default function Ap() {
     openModalCompare();
   };
 
+  const handleSingleClick = (ap) => {
+    setComparisonDevices([ap]);
+    openModalCompare();
+  };
+
   return (
     <Content>
       <APContext.Provider
@@ -182,8 +187,10 @@ export default function Ap() {
                         <div className={`${ap.status === "Suporte" ? "bg-green-500" : "bg-red-600"} w-3 h-3 rounded-full`}></div>
                       </div>
                     </td>
-                    <td className="font-bold text-sm text-left text-black pl-2">
-                      {ap.ocultar === "Sim" ? `${ap.modelo} | Oculto` : ap.modelo}
+                    <td className="font-bold text-sm text-left text-black pl-2" onClick={() => handleSingleClick(ap)}>
+                      <span className="underline cursor-pointer flex items-center gap-1">
+                        {ap.ocultar === "Sim" ? `${ap.modelo} | Oculto` : ap.modelo}
+                      </span>
                     </td>
                     <td>
                       <span

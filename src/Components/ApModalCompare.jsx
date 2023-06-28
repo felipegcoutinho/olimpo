@@ -1,5 +1,4 @@
-import React from "react";
-import {useContext} from "react";
+import React, {useContext} from "react";
 import {APContext} from "./Ap";
 import ModalComponentCompare from "./ModalCompare";
 import {HiWifi, HiInformationCircle, HiComputerDesktop} from "react-icons/hi2";
@@ -44,7 +43,10 @@ function AP_ModalCompare() {
   let gridCols = "";
   let width = "";
 
-  if (comparisonDevices.length === 2) {
+  if (comparisonDevices.length === 1) {
+    gridCols = "grid-cols-2";
+    width = "w-1/2";
+  } else if (comparisonDevices.length === 2) {
     gridCols = "grid-cols-3";
     width = "w-1/2";
   } else if (comparisonDevices.length === 3) {
@@ -59,12 +61,13 @@ function AP_ModalCompare() {
     <ModalComponentCompare modalIsOpen={modalIsOpenCompare} closeModal={closeModalCompare} width={width}>
       <div className="w-full overflow-x-auto">
         <div className="overflow-hidden min-w-max">
-          <div className={`grid ${gridCols} p-4 text-sm font-medium text-gray-900 bg-gray-100`}>
-            <div className="flex items-center"></div>
+          <div className={`grid ${gridCols} py-4 text-sm font-medium text-gray-100 bg-slate-900 rounded-md border border-black`}>
+            <div className="flex items-center px-4">Modelo</div>
             {comparisonDevices.map((ap) => (
-              <div className="flex justify-center flex-col items-start py-5">
-                <div className="rounded-lg border-black px-4 py-2 border-2">
-                  <p className="font-bold text-xl">{ap.modelo}</p>
+              <div key={ap.id} className="flex items-center py-4">
+                <div className={`${ap.status === "Suporte" ? "bg-green-500" : "bg-red-600"} w-3 h-3 rounded-full`}></div>
+                <div className="rounded-lg p-2 w-full">
+                  <div className="font-bold text-2xl underline">{ap.modelo}</div>
                 </div>
               </div>
             ))}
@@ -74,17 +77,19 @@ function AP_ModalCompare() {
             const Icon = groupIcons[group];
 
             return (
-              <div key={group} className="mb-4">
+              <div key={group}>
                 <div className={`${Icon} py-2 flex items-center text-xl gap-2 text-black font-bold border-b`}>
                   {Icon && <Icon />}
                   {group}
                 </div>
                 {properties.map(({property, label}) => (
-                  <div className={`grid ${gridCols} py-2 text-sm text-gray-700 border-b border-gray-200 hover:bg-slate-200`} key={property}>
+                  <div
+                    key={`${group}-${property}`}
+                    className={`grid ${gridCols} py-2 text-sm text-gray-700 border-b border-slate-200 hover:bg-slate-200`}>
                     <div className="text-gray-500 px-2">{label}</div>
                     {comparisonDevices.map((ap) => (
                       <div key={ap.id}>
-                        <p className="font-bold px-4">{ap[property]}</p>
+                        <p className="font-bold ">{ap[property]}</p>
                       </div>
                     ))}
                   </div>
