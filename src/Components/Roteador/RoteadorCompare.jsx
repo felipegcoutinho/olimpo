@@ -1,11 +1,11 @@
 import React, {useContext} from "react";
-import {APContext} from "./Ap";
-import ModalComponentCompare from "./ModalCompare";
+import ModalComponentCompare from "../ModalCompare";
 import {HiWifi, HiInformationCircle, HiComputerDesktop} from "react-icons/hi2";
 import {FaPlug} from "react-icons/fa";
+import {HOContext} from "./Roteador";
 
-function AP_ModalCompare() {
-  const {comparisonDevices, modalIsOpenCompare, closeModalCompare} = useContext(APContext);
+function RoteadorCompare() {
+  const {comparisonDevices, modalIsOpenCompare, closeModalCompare} = useContext(HOContext);
 
   const groupIcons = {
     Wireless: HiWifi,
@@ -40,22 +40,15 @@ function AP_ModalCompare() {
     groupedProperties[group].push({property, label});
   });
 
-  let gridCols = "";
-  let width = "";
+  const gridSizeMapping = {
+    1: {gridCols: "grid-cols-2", width: "w-1/2"},
+    2: {gridCols: "grid-cols-3", width: "w-1/2"},
+    3: {gridCols: "grid-cols-4", width: "w-2/3"},
+    4: {gridCols: "grid-cols-5", width: "w-3/4"},
+  };
 
-  if (comparisonDevices.length === 1) {
-    gridCols = "grid-cols-2";
-    width = "w-1/2";
-  } else if (comparisonDevices.length === 2) {
-    gridCols = "grid-cols-3";
-    width = "w-1/2";
-  } else if (comparisonDevices.length === 3) {
-    gridCols = "grid-cols-4";
-    width = "w-2/3";
-  } else if (comparisonDevices.length === 4) {
-    gridCols = "grid-cols-5";
-    width = "w-3/4";
-  }
+  const comparisonDevicesLength = comparisonDevices.length;
+  const {gridCols, width} = gridSizeMapping[comparisonDevicesLength] || {};
 
   return (
     <ModalComponentCompare modalIsOpen={modalIsOpenCompare} closeModal={closeModalCompare} width={width}>
@@ -63,11 +56,11 @@ function AP_ModalCompare() {
         <div className="overflow-hidden min-w-max">
           <div className={`grid ${gridCols} py-4 text-sm font-medium text-gray-100 bg-slate-900 rounded-md border border-black`}>
             <div className="flex items-center px-4">Modelo</div>
-            {comparisonDevices.map((ap) => (
-              <div key={ap.id} className="flex items-center py-4">
-                <div className={`${ap.status === "Suporte" ? "bg-green-500" : "bg-red-600"} w-3 h-3 rounded-full`}></div>
+            {comparisonDevices.map((roteador) => (
+              <div key={roteador.id} className="flex items-center py-4">
+                <div className={`${roteador.status === "Suporte" ? "bg-green-500" : "bg-red-600"} w-3 h-3 rounded-full`}></div>
                 <div className="rounded-lg p-2 w-full">
-                  <div className="font-bold text-2xl underline">{ap.modelo}</div>
+                  <div className="font-bold text-2xl underline">{roteador.modelo}</div>
                 </div>
               </div>
             ))}
@@ -87,9 +80,9 @@ function AP_ModalCompare() {
                     key={`${group}-${property}`}
                     className={`grid ${gridCols} py-2 text-sm text-gray-700 border-b border-slate-200 hover:bg-slate-200`}>
                     <div className="text-gray-500 px-2">{label}</div>
-                    {comparisonDevices.map((ap) => (
-                      <div key={ap.id}>
-                        <p className="font-bold ">{ap[property]}</p>
+                    {comparisonDevices.map((roteador) => (
+                      <div key={roteador.id}>
+                        <p className="font-bold ">{roteador[property]}</p>
                       </div>
                     ))}
                   </div>
@@ -103,4 +96,4 @@ function AP_ModalCompare() {
   );
 }
 
-export default AP_ModalCompare;
+export default RoteadorCompare;

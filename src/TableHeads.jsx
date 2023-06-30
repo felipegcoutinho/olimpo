@@ -5,7 +5,7 @@ import {AdminContext} from "./App";
 export default function AP_Thead() {
   const {admin} = useContext(AdminContext);
   return (
-    <thead className="text-xs text-gray-800 uppercase whitespace-nowrap border-b border-[#E6ECEE] bg-slate-200">
+    <thead className="text-xs text-gray-800 uppercase whitespace-nowrap  border-[#E6ECEE] bg-slate-200 rounded-lg">
       <tr>
         <th></th>
         <th className="px-4 py-3">Modelo</th>
@@ -57,9 +57,10 @@ export function Radio_Thead() {
 export function Roteador_Thead() {
   const {admin} = useContext(AdminContext);
   return (
-    <thead>
-      <tr id={style.ROTEADOR}>
-        <th>Modelo</th>
+    <thead className="text-xs text-gray-800 uppercase whitespace-nowrap border-[#E6ECEE] bg-slate-200 rounded-lg">
+      <tr>
+        <th></th>
+        <th className="px-4 py-3">Modelo</th>
         <th>Modulação</th>
         <th>Cobertura</th>
         <th>Raio</th>
@@ -85,9 +86,10 @@ export function Roteador_Thead() {
 export function Switch_Thead() {
   const {admin} = useContext(AdminContext);
   return (
-    <thead>
-      <tr id={style.SWITCH}>
-        <th>Modelo</th>
+    <thead className="text-xs text-gray-800 uppercase whitespace-nowrap border-b border-[#E6ECEE] bg-slate-200">
+      <tr>
+        <th></th>
+        <th className="px-4 py-3">Modelo</th>
         <th>Modulação</th>
         <th>Qtde Portas</th>
         <th>Gerenciável</th>
@@ -110,9 +112,10 @@ export function Switch_Thead() {
 export function Conversor_Thead() {
   const {admin} = useContext(AdminContext);
   return (
-    <thead>
-      <tr id={style.CONVERSOR}>
-        <th>Modelo</th>
+    <thead className="text-xs text-gray-800 uppercase whitespace-nowrap border-[#E6ECEE] bg-slate-200 rounded-lg">
+      <tr>
+        <th></th>
+        <th className="px-4 py-3">Modelo</th>
         <th>Modulação</th>
         <th>Conector</th>
         <th>WDM</th>

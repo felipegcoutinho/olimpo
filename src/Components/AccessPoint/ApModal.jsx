@@ -1,11 +1,10 @@
 import React from "react";
 import {useContext} from "react";
 import {Button} from "flowbite-react";
-import ModalComponent from "../ui/Modal";
-import OlimpoTextInput from "../ui/OlimpoTextInput";
-import OlimpoSelect from "../ui/OlimpoSelect";
+import ModalComponent from "../../ui/Modal";
+import OlimpoTextInput from "../../ui/OlimpoTextInput";
+import OlimpoSelect from "../../ui/OlimpoSelect";
 import {APContext} from "./Ap";
-import {AdminContext} from "../App";
 
 function AP_Modal() {
   const {addDevice, updateDevice, updatedProduct, setUpdatedProduct, closeModal, modalIsOpen} = useContext(APContext);

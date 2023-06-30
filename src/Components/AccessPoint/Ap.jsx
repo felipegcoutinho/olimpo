@@ -1,15 +1,17 @@
 import React, {useEffect} from "react";
 import {useState, useContext, createContext} from "react";
 import Ap_Modal from "./ApModal";
-import {AdminContext} from "../App";
-import Content from "../ui/Content";
+import {AdminContext} from "../../App";
+import Content from "../../ui/Content";
 import {Badge} from "flowbite-react";
-import {HiCheckCircle, HiXCircle, HiPencil, HiXMark, HiArrowsPointingOut} from "react-icons/hi2";
-import AP_Thead from "../TableHeads";
-import OlimpoTable from "../ui/Table";
-import CrudFirebase from "../Database/crud";
-import AP_ModalCompare from "./ApModalCompare";
+import {HiPencil, HiXMark} from "react-icons/hi2";
+import AP_Thead from "../../TableHeads";
+import OlimpoTable from "../../ui/Table";
+import CrudFirebase from "../../Database/crud";
+import AP_ModalCompare from "./ApCompare";
 import Modal from "react-modal";
+import UseAux from "../../Hooks/UseAux";
+import DeviceImg from "../../assets/ap.png";
 
 export const APContext = createContext();
 
@@ -19,6 +21,7 @@ export default function Ap() {
   const [queryAP, setQueryAP] = useState("");
   const [modalIsOpen, setIsOpen] = useState(false);
   const {fetchDevices, addDevices, deleteDevices, updateDevices} = CrudFirebase();
+  const {compareStatus, Possui, NaoPossui, ModulacaoStyle} = UseAux();
 
   /* Configs Modal */
   Modal.setAppElement("#root");
@@ -61,37 +64,6 @@ export default function Ap() {
   const updateDevice = async () => {
     await updateDevices("aps", setUpdatedProduct, updatedProduct, fetchDevices, closeModal);
   };
-
-  function compareStatus(a, b) {
-    if (a.status === "Suporte" && b.status !== "Suporte") {
-      return -1;
-    } else if (a.status !== "Suporte" && b.status === "Suporte") {
-      return 1;
-    } else if (a.status === "Phaseout" && b.status !== "Phaseout") {
-      return 1;
-    } else if (a.status !== "Phaseout" && b.status === "Phaseout") {
-      return -1;
-    } else {
-      if (a.modelo < b.modelo) {
-        return -1;
-      } else if (a.modelo > b.modelo) {
-        return 1;
-      }
-      return 0;
-    }
-  }
-
-  const NaoPossui = (
-    <div className="flex justify-center items-center">
-      <HiXCircle className="text-red-400 text-center text-2xl" />
-    </div>
-  );
-
-  const Possui = (
-    <div className="flex justify-center items-center">
-      <HiCheckCircle className="text-green-400 text-center text-2xl" />
-    </div>
-  );
 
   // Esse trecho vai gerenciar os produtos selecionados
   const [modalIsOpenCompare, setIsOpenCompare] = useState(false);
@@ -153,6 +125,8 @@ export default function Ap() {
         <OlimpoTable
           Hide={HideAP}
           Device={"Access Points"}
+          DeviceImg={DeviceImg}
+          DeviceText={"Wi-Fi de alta performance para ambientes profissionais e diversas necessidades."}
           selectedDevices={selectedDevices.length >= 2 && selectedDevices}
           handleCompareClick={handleCompareClick}
           handleHide={handleHideAP}
@@ -184,7 +158,7 @@ export default function Ap() {
                           onChange={() => handleProductSelect(ap.id)}
                           checked={selectedDevices.includes(ap.id)}
                         />
-                        <div className={`${ap.status === "Suporte" ? "bg-green-500" : "bg-red-600"} w-3 h-3 rounded-full`}></div>
+                        <div className={`${ap.status === "Suporte" ? "bg-green-500" : "bg-red-500"} w-3 h-3 rounded-full`}></div>
                       </div>
                     </td>
                     <td className="font-bold text-sm text-left text-black pl-2" onClick={() => handleSingleClick(ap)}>
@@ -193,12 +167,7 @@ export default function Ap() {
                       </span>
                     </td>
                     <td>
-                      <span
-                        className={`${
-                          ap.modulação === "Fast" ? "bg-orange-400" : "bg-green-400"
-                        } px-2 py-1 rounded-md uppercase font-bold text-white`}>
-                        {ap.modulação}
-                      </span>
+                      <span className={ModulacaoStyle(ap)}>{ap.modulação}</span>
                     </td>
                     <td className="font-bold">{ap.cobertura}</td>
                     <td>{ap.raio}</td>
@@ -220,10 +189,10 @@ export default function Ap() {
                     </td>
                     {admin && (
                       <td>
-                        <button className="bg-yellow-400 p-1 rounded-md text-white" onClick={() => openUpdateModal(ap)}>
+                        <button className="bg-yellow-300 p-1 rounded text-white" onClick={() => openUpdateModal(ap)}>
                           <HiPencil />
                         </button>
-                        <button className="bg-red-700 p-1 rounded-md text-white ml-2" onClick={() => deleteDevice(ap.id)}>
+                        <button className="bg-red-600 p-1 rounded text-white ml-2" onClick={() => deleteDevice(ap.id)}>
                           <HiXMark />
                         </button>
                       </td>

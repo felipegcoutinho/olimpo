@@ -1,18 +1,17 @@
 import React from "react";
 import {useEffect, useState, useContext, createContext} from "react";
-import style from "../css/App.module.css";
 import {Radio_Thead} from "/src/TableHeads";
 import RadioModal from "./RadioModal";
-import {AdminContext} from "../App";
-import Swal from "sweetalert2";
+import {AdminContext} from "../../App";
 import Modal from "react-modal";
-import {Pagination} from "./Pagination";
-import TableBar from "./TableBar";
-import {getDatabase, get, set, ref, push, remove} from "firebase/database";
-import {app, db} from "../database/firebase";
-import Content from "../ui/Content";
-import CrudFirebase from "../Database/crud";
-import OlimpoTable from "../ui/Table";
+import Content from "../../ui/Content";
+import CrudFirebase from "../../Database/crud";
+import OlimpoTable from "../../ui/Table";
+import UseAux from "../../Hooks/UseAux";
+import RadioModalCompare from "./RadioCompare";
+import {Badge} from "flowbite-react";
+import {HiPencil, HiXMark} from "react-icons/hi2";
+import DeviceImg from "../../assets/radio.png";
 
 export const RadioContext = createContext();
 
@@ -22,6 +21,7 @@ export default function Radios() {
   const [queryRADIO, setQueryRADIO] = useState("");
   const [modalIsOpen, setIsOpen] = useState(false);
   const {fetchDevices, addDevices, deleteDevices, updateDevices} = CrudFirebase();
+  const {compareStatus, ModulacaoStyle} = UseAux();
 
   /* Configs Modal */
   Modal.setAppElement("#root");
@@ -65,25 +65,6 @@ export default function Radios() {
     await updateDevices("radios", setUpdatedProduct, updatedProduct, fetchDevices, closeModal);
   };
 
-  function compareStatus(a, b) {
-    if (a.status === "Suporte" && b.status !== "Suporte") {
-      return -1;
-    } else if (a.status !== "Suporte" && b.status === "Suporte") {
-      return 1;
-    } else if (a.status === "Phaseout" && b.status !== "Phaseout") {
-      return 1;
-    } else if (a.status !== "Phaseout" && b.status === "Phaseout") {
-      return -1;
-    } else {
-      if (a.modelo < b.modelo) {
-        return -1;
-      } else if (a.modelo > b.modelo) {
-        return 1;
-      }
-      return 0;
-    }
-  }
-
   // Esse trecho vai gerenciar os produtos selecionados
   const [modalIsOpenCompare, setIsOpenCompare] = useState(false);
 
@@ -93,6 +74,7 @@ export default function Radios() {
 
   function closeModalCompare() {
     setIsOpenCompare(false);
+    setSelectedDevices([]);
   }
 
   const [selectedDevices, setSelectedDevices] = useState([]);
@@ -107,8 +89,13 @@ export default function Radios() {
   };
 
   const handleCompareClick = () => {
-    const productsToCompare = accessPoint.filter((product) => selectedDevices.includes(product.id));
+    const productsToCompare = RadiosOutdoor.filter((product) => selectedDevices.includes(product.id));
     setComparisonDevices(productsToCompare);
+    openModalCompare();
+  };
+
+  const handleSingleClick = (radio) => {
+    setComparisonDevices([radio]);
     openModalCompare();
   };
 
@@ -131,12 +118,15 @@ export default function Radios() {
           modalIsOpenCompare,
         }}>
         <RadioModal />
+        <RadioModalCompare />
       </RadioContext.Provider>
 
       <div className="overflow-x-auto">
         <OlimpoTable
           Hide={HideRADIO}
-          Device={"Rádio Outdoor"}
+          Device={"Rádios Outdoor"}
+          DeviceImg={DeviceImg}
+          DeviceText={"Equipamentos para conexões sem fio profisionais"}
           selectedDevices={selectedDevices.length >= 2 && selectedDevices}
           handleCompareClick={handleCompareClick}
           handleHide={handleHideRADIO}
@@ -158,62 +148,52 @@ export default function Radios() {
             .map((radio) => {
               return (
                 <tbody>
-                  <tr className="border-b border-[#E6ECEE] hover:bg-slate-100 text-xs  whitespace-nowrap h-9">
+                  <tr className="border-b border-[#E6ECEE] hover:bg-slate-100 text-xs text-center whitespace-nowrap h-9">
                     <td>
                       <div className="flex items-center gap-2">
                         <input
                           type="checkbox"
-                          className="w-4 h-4 ml-1 text-green-600 bg-gray-100 border-gray-300 rounded focus:ring-green-500 "
+                          className="w-4 h-4 ml-1 text-green-600 bg-gray-100 border-gray-300 rounded focus:ring-green-500"
                           onChange={() => handleProductSelect(radio.id)}
+                          checked={selectedDevices.includes(radio.id)}
                         />
                         <div className={`${radio.status === "Suporte" ? "bg-green-500" : "bg-red-600"} w-3 h-3 rounded-full`}></div>
                       </div>
                     </td>
-                    <td className="font-bold text-sm text-left text-black pl-2">
-                      {radio.ocultar === "Sim" ? `${radio.modelo} | Oculto` : radio.modelo}
+                    <td className="font-bold text-sm text-left text-black pl-2" onClick={() => handleSingleClick(radio)}>
+                      <span className="underline cursor-pointer flex items-center gap-1">
+                        {radio.ocultar === "Sim" ? `${radio.modelo} | Oculto` : radio.modelo}
+                      </span>
                     </td>
                     <td>
-                      <span
-                        className={`${
-                          radio.modulação === "Fast" ? "bg-orange-400" : "bg-green-400"
-                        } px-2 py-1 rounded-md uppercase font-bold text-white`}>
-                        {radio.modulação}
-                      </span>
+                      <span className={ModulacaoStyle(radio)}>{radio.modulação}</span>
                     </td>
                     <td>{radio.indicado}</td>
-                    <td>
-                      <span className={style.tooltip}>
-                        {radio.ganho}
-                        {/* {radio.ganho === "SEM ANTENA" && <i className="fa-regular fa-circle-question"></i>}
-                        {radio.ganho === "SEM ANTENA" && (
-                          <span className={style.tooltiptext}>
-                            Antena adquirida separadamente, indicar parceria <a href="http://www.algcom.com.br">ALGCOM</a>
-                          </span>
-                        )} */}
-                      </span>
-                    </td>
+                    <td>{radio.ganho}</td>
                     <td>{radio.potencia}</td>
                     <td>{radio.pps}</td>
                     <td>{radio.throughputEfetivo}</td>
                     <td>{radio.throughputNominal}</td>
-                    <td className={radio.aberturaHorVer === "-" && style.NaoPossui}>
-                      {radio.aberturaHorVer !== "-" && radio.aberturaHorVer}
-                    </td>
-                    <td className={radio.distancia === "-" && style.NaoPossui}>{radio.distancia !== "-" && radio.distancia}</td>
+                    <td>{radio.aberturaHorVer}</td>
+                    <td>{radio.distancia}</td>
                     <td>{radio.wireless}</td>
                     <td>{radio.alimentaçao}</td>
                     <td>{radio.garantia}</td>
                     <td>
                       <a target="_blank" rel="noopener noreferrer" href={radio.pagina}>
-                        <span className={style.paginalink}>Página</span>
+                        <Badge size="xs" className="bg-green-500 text-white flex justify-center items-center">
+                          Página
+                        </Badge>
                       </a>
                     </td>
                     {admin && (
                       <td>
-                        <button className={style.btn_alterar} onClick={() => openUpdateModal(radio)}>
-                          editar
+                        <button className="bg-yellow-300 p-1 rounded text-white" onClick={() => openUpdateModal(radio)}>
+                          <HiPencil />
                         </button>
-                        <button className={style.btn_excluir} onClick={() => deleteDevice(radio.id)}></button>
+                        <button className="bg-red-600 p-1 rounded text-white ml-2" onClick={() => deleteDevice(radio.id)}>
+                          <HiXMark />
+                        </button>
                       </td>
                     )}
                   </tr>

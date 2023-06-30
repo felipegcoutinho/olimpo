@@ -10,11 +10,6 @@
     "host": "vite --host"
   },
   "dependencies": {
-    "@emotion/react": "^11.11.1",
-    "@emotion/styled": "^11.11.0",
-    "@mui/icons-material": "^5.11.16",
-    "@mui/joy": "^5.0.0-alpha.84",
-    "@mui/material": "^5.13.5",
     "autoprefixer": "^10.4.14",
     "firebase": "^9.17.1",
     "flowbite": "^1.6.5",

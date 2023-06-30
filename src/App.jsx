@@ -1,11 +1,11 @@
 import React from "react";
 import {createContext, useState} from "react";
 import Header from "./Components/Header.jsx";
-import AccessPoints from "./Components/Ap.jsx";
-import RadiosOutdoor from "./Components/Radio.jsx";
-import RoteadoresHO from "./Components/Roteadores.jsx";
-import Switches from "./Components/Switches.jsx";
-import Conversores from "./Components/Conversores.jsx";
+import AccessPoints from "./Components/AccessPoint/Ap.jsx";
+import RadiosOutdoor from "./Components/Radio/Radio.jsx";
+import RoteadoresHO from "./Components/Roteador/Roteador.jsx";
+import Switches from "./Components/Switch/Switch.jsx";
+import Conversores from "./Components/Conversor/Conversor.jsx";
 import Sfp from "./Components/Sfp.jsx";
 import Onu from "./Components/Onu.jsx";
 import Modal from "react-modal";
@@ -83,11 +83,11 @@ function App() {
 
           <AccessPoints />
           <RadiosOutdoor />
-          {/*<RoteadoresHO />
+          <RoteadoresHO />
           <Switches />
           <Conversores />
           <Sfp />
-          <Onu /> */}
+          <Onu />
         </AdminContext.Provider>
       </div>
     </div>

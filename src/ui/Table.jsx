@@ -15,23 +15,33 @@ export default function OlimpoTable({
   selectedDevices,
   handleCompareClick,
   Device,
+  DeviceImg,
+  DeviceText,
 }) {
   return (
     <section className="px-1 mx-auto lg:px-">
       <div className="relative overflow-hidden bg-white sm:rounded-lg">
-        <div className="flex flex-col px-4 py-3 space-y-3 lg:flex-row lg:items-center lg:justify-between lg:space-y-0 lg:space-x-4">
-          <button onClick={handleHide}>
-            <div className="flex items-center gap-2">{Hide ? <HiChevronUp /> : <HiChevronDown />}</div>
-          </button>
-          <div className="flex items-center flex-1 text-2xl font-bold">{Device}</div>
+        <div className="flex flex-col pt-4 pr-4 py-3 space-y-3 lg:flex-row lg:items-center lg:justify-between lg:space-y-0 lg:space-x-4">
+          <div className="flex flex-1 items-center">
+            <img src={DeviceImg} alt="Olimpo" className="w-20 h-20" />
+            <div className="flex flex-col flex-1">
+              <p className="text-2xl font-bold">
+                {Device}
+                <button onClick={handleHide}>
+                  <div className="flex items-center ml-2">{Hide ? <HiChevronUp /> : <HiChevronDown />}</div>
+                </button>
+              </p>
+              <p className="text-zinc-600 text-sm">{DeviceText}</p>
+            </div>
+          </div>
 
           <div className="flex flex-col flex-shrink-0 space-y-3 md:flex-row md:items-center lg:justify-end md:space-y-0 md:space-x-3">
             {Hide && (
               <>
                 {admin && (
-                  <Button className="mr-auto bg-green-500 hover:bg-green-700" onClick={openModal}>
+                  <button className="mr-auto bg-[#00A335] hover:bg-[#2a8a4a] rounded-full px-4 py-3 text-white text-sm" onClick={openModal}>
                     {createButton}
-                  </Button>
+                  </button>
                 )}
 
                 {selectedDevices.length <= 4 && (

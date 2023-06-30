@@ -30,7 +30,7 @@ export default function Header() {
       </div> */}
       <div className="items-center flex flex-col" id="home">
         {/* <div className="mt-20">
-          <p className="text-green-500 text-5xl font-[pacifico]">Olimpo!</p>
+          <p className="text-[#00A335] text-4xl">Olimpo!</p>
         </div> */}
 
         <div className="flex mt-10 items-center">
@@ -59,14 +59,14 @@ export default function Header() {
 
           <Button size="lg" color="dark" className="p-1 m-1" onClick={openModal}>
             {admin ? <HiLockOpen className="mr-1" /> : <HiLockClosed className="mr-1" />}
-            Logar
+            Login
           </Button>
 
           <LoginModal />
         </div>
 
         <div className="m-10">
-          <Button.Group>
+          {/* <Button.Group>
             <Button size="xl" color="gray" className="py-6">
               <HiUserCircle className="mr-3 h-4 w-4" />
               <p>Access Point</p>
@@ -95,7 +95,7 @@ export default function Header() {
               <HiCloudDownload className="mr-3 h-4 w-4" />
               <p>Onu/Ont</p>
             </Button>
-          </Button.Group>
+          </Button.Group> */}
           {/* <a href="#ap">
             <button className="btnCategory">Access Point</button>
           </a>

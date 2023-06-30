@@ -1,14 +1,13 @@
 import React from "react";
-import Modal from "react-modal";
-import style from "../css/App.module.css";
 import {useContext} from "react";
-import {HOContext} from "./Roteadores";
-import ModalComponent from "../ui/Modal";
-import OlimpoTextInput from "../ui/OlimpoTextInput";
-import OlimpoSelect from "../ui/OlimpoSelect";
+import {SwContext} from "./Switch";
+import ModalComponent from "../../ui/Modal";
+import OlimpoTextInput from "../../ui/OlimpoTextInput";
+import OlimpoSelect from "../../ui/OlimpoSelect";
+import {Button} from "flowbite-react";
 
-function RoteadoresModal() {
-  const {addProduto, updateProduct, updatedProduct, setUpdatedProduct, modalIsOpen, closeModal} = useContext(HOContext);
+function SwModal() {
+  const {addDevice, updateDevice, updatedProduct, setUpdatedProduct, closeModal, modalIsOpen} = useContext(SwContext);
 
   return (
     <ModalComponent
@@ -16,21 +15,21 @@ function RoteadoresModal() {
       closeModal={closeModal}
       updatedProductId={updatedProduct.id}
       updatedProductModelo={updatedProduct.modelo}
-      setor="Roteador">
-      <form onSubmit={updatedProduct.id ? updateProduct : addProduto}>
+      setor="Switch">
+      <form onSubmit={updatedProduct.id ? updateDevice : addDevice}>
         <label>Modelo</label>
         <OlimpoTextInput
           required
           type="text"
-          placeholder="TWIBI GIGA+"
+          placeholder="SG 1002 MR L2+"
           value={updatedProduct.modelo}
           onChange={(e) => setUpdatedProduct({...updatedProduct, modelo: e.target.value})}
         />
 
         <label>Status do suporte</label>
         <OlimpoSelect
-          required
           type="text"
+          placeholder="Status do suporte"
           value={updatedProduct.status}
           onChange={(e) => setUpdatedProduct({...updatedProduct, status: e.target.value})}>
           {!updatedProduct.id && (
@@ -55,94 +54,75 @@ function RoteadoresModal() {
           )}
           <option value="Giga">Giga</option>
           <option value="Fast">Fast</option>
-          <option value="Giga WAN | Fast LAN">Giga WAN | Fast LAN</option>
+          <option value="Giga (Uplink)">Giga (Uplink)</option>
           <option value="N/A">N/A</option>
         </OlimpoSelect>
 
-        <label>Área de cobertura (Em m²)</label>
+        <label>Qtde Portas RJ45</label>
         <OlimpoTextInput
           type="text"
-          placeholder="180 m²"
-          value={updatedProduct.cobertura}
-          onChange={(e) => setUpdatedProduct({...updatedProduct, cobertura: e.target.value})}
-        />
-
-        <label>Raio (Em m)</label>
-        <OlimpoTextInput
-          type="text"
-          placeholder="7,56 m"
-          value={updatedProduct.raio}
-          onChange={(e) => setUpdatedProduct({...updatedProduct, raio: e.target.value})}
-        />
-
-        <label>Usuários Máximos</label>
-        <OlimpoTextInput
-          type="text"
-          placeholder="60 usuários"
-          value={updatedProduct.usuarioMax}
-          onChange={(e) => setUpdatedProduct({...updatedProduct, usuarioMax: e.target.value})}
-        />
-
-        <label>Plano recomendado</label>
-        <OlimpoTextInput
-          type="text"
-          placeholder="Até 400Mbps"
-          value={updatedProduct.planoRecomendado}
-          onChange={(e) => setUpdatedProduct({...updatedProduct, planoRecomendado: e.target.value})}
-        />
-
-        <label>Qtde Portas</label>
-        <OlimpoTextInput
-          type="text"
-          placeholder="1(LAN) + 1(W / L)"
+          placeholder="8 Portas"
           value={updatedProduct.qtdePortas}
           onChange={(e) => setUpdatedProduct({...updatedProduct, qtdePortas: e.target.value})}
         />
 
-        <label>Datarate Máx. 2G</label>
+        <label>Gerenciável</label>
+        <OlimpoSelect
+          type="text"
+          value={updatedProduct.gerenciavel}
+          onChange={(e) => setUpdatedProduct({...updatedProduct, gerenciavel: e.target.value})}>
+          {!updatedProduct.id && (
+            <option selected disabled>
+              Escolha
+            </option>
+          )}
+          <option value="Sim">Sim</option>
+          <option value="-">Não</option>
+          <option value="N/A">N/A</option>
+        </OlimpoSelect>
+
+        <label>Alimenta via PoE</label>
+        <OlimpoSelect type="text" value={updatedProduct.poe} onChange={(e) => setUpdatedProduct({...updatedProduct, poe: e.target.value})}>
+          {!updatedProduct.id && (
+            <option selected disabled>
+              Escolha
+            </option>
+          )}
+          <option value="802.3af - 802.3at">802.3af - 802.3at</option>
+          <option value="802.3af/B - 802.3at">802.3af/B - 802.3at</option>
+          <option value="-">Não</option>
+          <option value="N/A">N/A</option>
+        </OlimpoSelect>
+
+        <label>Encaminhamento de Pacotes</label>
         <OlimpoTextInput
           type="text"
-          placeholder="300 Mbps"
-          value={updatedProduct.datarateMax2G}
-          onChange={(e) => setUpdatedProduct({...updatedProduct, datarateMax2G: e.target.value})}
+          placeholder="15 Mpps"
+          value={updatedProduct.pps}
+          onChange={(e) => setUpdatedProduct({...updatedProduct, pps: e.target.value})}
         />
 
-        <label>Datarate Máx. 5G</label>
+        <label>Backplane</label>
         <OlimpoTextInput
           type="text"
-          placeholder="867 Mbps"
-          value={updatedProduct.datarateMax5G}
-          onChange={(e) => setUpdatedProduct({...updatedProduct, datarateMax5G: e.target.value})}
+          placeholder="20 Gbps"
+          value={updatedProduct.backplane}
+          onChange={(e) => setUpdatedProduct({...updatedProduct, backplane: e.target.value})}
         />
 
-        <label>IPv6</label>
-        <OlimpoSelect
-          type="text"
-          value={updatedProduct.ipv6}
-          onChange={(e) => setUpdatedProduct({...updatedProduct, ipv6: e.target.value})}>
-          {!updatedProduct.id && (
-            <option selected disabled>
-              Escolha
-            </option>
-          )}
-          <option value="Sim">Sim</option>
-          <option value="-">Não</option>
-          <option value="N/A">N/A</option>
-        </OlimpoSelect>
-
-        <label>Tensão</label>
+        <label>Qtde Interface SFP</label>
         <OlimpoTextInput
           type="text"
-          placeholder="12V (1A)"
-          value={updatedProduct.tensao}
-          onChange={(e) => setUpdatedProduct({...updatedProduct, tensao: e.target.value})}
+          placeholder="2 Independentes"
+          value={updatedProduct.sfp}
+          onChange={(e) => setUpdatedProduct({...updatedProduct, sfp: e.target.value})}
         />
 
-        <label>Modo Repetidor</label>
+        <label>PoE Extender</label>
         <OlimpoSelect
           type="text"
-          value={updatedProduct.repetidor}
-          onChange={(e) => setUpdatedProduct({...updatedProduct, repetidor: e.target.value})}>
+          value={updatedProduct.poeExtender}
+          onChange={(e) => setUpdatedProduct({...updatedProduct, poeExtender: e.target.value})}>
           {!updatedProduct.id && (
             <option selected disabled>
               Escolha
@@ -153,26 +133,24 @@ function RoteadoresModal() {
           <option value="N/A">N/A</option>
         </OlimpoSelect>
 
-        <label>Modo Roteador</label>
-        <OlimpoSelect
+        <label>PoE p/ Porta</label>
+        <OlimpoTextInput
           type="text"
-          value={updatedProduct.roteador}
-          onChange={(e) => setUpdatedProduct({...updatedProduct, roteador: e.target.value})}>
-          {!updatedProduct.id && (
-            <option selected disabled>
-              Escolha
-            </option>
-          )}
-          <option value="Sim">Sim</option>
-          <option value="-">Não</option>
-          <option value="N/A">N/A</option>
-        </OlimpoSelect>
+          placeholder="30 W"
+          value={updatedProduct.poePorta}
+          onChange={(e) => setUpdatedProduct({...updatedProduct, poePorta: e.target.value})}
+        />
 
-        <label>Cliente Wireless</label>
-        <OlimpoSelect
+        <label>PoE Total</label>
+        <OlimpoTextInput
           type="text"
-          value={updatedProduct.cliente}
-          onChange={(e) => setUpdatedProduct({...updatedProduct, cliente: e.target.value})}>
+          placeholder="97 W"
+          value={updatedProduct.poeTotal}
+          onChange={(e) => setUpdatedProduct({...updatedProduct, poeTotal: e.target.value})}
+        />
+
+        <label>Qos</label>
+        <OlimpoSelect type="text" value={updatedProduct.qos} onChange={(e) => setUpdatedProduct({...updatedProduct, qos: e.target.value})}>
           {!updatedProduct.id && (
             <option selected disabled>
               Escolha
@@ -183,19 +161,7 @@ function RoteadoresModal() {
           <option value="N/A">N/A</option>
         </OlimpoSelect>
 
-        <label>Modo AP</label>
-        <OlimpoSelect type="text" value={updatedProduct.ap} onChange={(e) => setUpdatedProduct({...updatedProduct, ap: e.target.value})}>
-          {!updatedProduct.id && (
-            <option selected disabled>
-              Escolha
-            </option>
-          )}
-          <option value="Sim">Sim</option>
-          <option value="-">Não</option>
-          <option value="N/A">N/A</option>
-        </OlimpoSelect>
-
-        <label>Garantia</label>
+        <label>Tempo da Garantia</label>
         <OlimpoSelect
           type="text"
           value={updatedProduct.garantia}
@@ -216,7 +182,7 @@ function RoteadoresModal() {
         <label>URL da Página</label>
         <OlimpoTextInput
           type="text"
-          placeholder="https://www.intelbras.com/pt-br/roteador-wi-fi-5-mesh-ac-1200-twibi-giga"
+          placeholder="https://www.intelbras.com/pt-br/switch-gerenciavel-com-8-portas-giga-2-portas-mini-gbic-sg-1002-mr-l2"
           value={updatedProduct.pagina}
           onChange={(e) => setUpdatedProduct({...updatedProduct, pagina: e.target.value})}
         />
@@ -235,9 +201,17 @@ function RoteadoresModal() {
           <option value="Não">Não</option>
           <option value="Sim">Sim</option>
         </OlimpoSelect>
+        <div className="bg-white bottom-0 flex flex-col sticky gap-1 mt-1">
+          <Button type="submit" color="success">
+            {updatedProduct.id ? "Atualizar Equipamento" : "Adicionar Equipamento"}
+          </Button>
+          <Button color="light" className="" onClick={closeModal}>
+            Cancelar
+          </Button>
+        </div>
       </form>
     </ModalComponent>
   );
 }
 
-export default RoteadoresModal;
+export default SwModal;
