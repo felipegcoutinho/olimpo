@@ -82,8 +82,8 @@ function App() {
           </Button>
 
           <AccessPoints />
-          {/* <RadiosOutdoor />
-          <RoteadoresHO />
+          <RadiosOutdoor />
+          {/* <RoteadoresHO />
           <Switches />
           <Conversores />
           <Sfp />

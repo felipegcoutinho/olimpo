@@ -8,10 +8,10 @@ import {HiPencil, HiXMark} from "react-icons/hi2";
 import AP_Thead from "../../TableHeads";
 import OlimpoTable from "../../ui/Table";
 import CrudFirebase from "../../Database/crud";
-import AP_ModalCompare from "./ApCompare";
 import Modal from "react-modal";
 import UseAux from "../../Hooks/UseAux";
 import DeviceImg from "../../assets/ap.png";
+import ApCompare from "./ApCompare";
 
 export const APContext = createContext();
 
@@ -118,7 +118,7 @@ export default function Ap() {
           modalIsOpenCompare,
         }}>
         <Ap_Modal />
-        <AP_ModalCompare />
+        <ApCompare />
       </APContext.Provider>
 
       <div className="overflow-x-auto">

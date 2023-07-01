@@ -1,5 +1,5 @@
 import React, {useContext} from "react";
-import ModalComponentCompare from "../ModalCompare";
+import ModalComponentCompare from "../ModalComponentCompare";
 import {HiWifi, HiInformationCircle} from "react-icons/hi2";
 import {FaPlug} from "react-icons/fa";
 import {SwContext} from "./Switch";
