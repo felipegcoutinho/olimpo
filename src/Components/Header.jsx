@@ -5,7 +5,6 @@ import LoginModal from "./LoginModal";
 import {Button, TextInput} from "flowbite-react";
 import {HiLockClosed, HiLockOpen, HiXMark, HiMagnifyingGlass} from "react-icons/hi2";
 import {HiAdjustments, HiCloudDownload, HiUserCircle} from "react-icons/hi";
-import TableTeste from "../ui/Table";
 
 export default function Header() {
   const {openModal, admin} = useContext(AdminContext);

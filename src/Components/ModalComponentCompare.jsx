@@ -50,11 +50,11 @@ function ModalComponentCompare({comparisonDevices, modalIsOpenCompare, closeModa
               <div className="overflow-hidden min-w-max">
                 <div className={`grid ${gridCols} py-4 text-sm font-medium text-gray-100 bg-slate-900 rounded-md border border-black`}>
                   <div className="flex items-center px-4">Modelo</div>
-                  {comparisonDevices.map((ap) => (
-                    <div key={ap.id} className="flex items-center py-4">
-                      <div className={`${ap.status === "Suporte" ? "bg-green-500" : "bg-red-600"} w-3 h-3 rounded-full`}></div>
+                  {comparisonDevices.map((device) => (
+                    <div key={device.id} className="flex items-center py-4">
+                      <div className={`${device.status === "Suporte" ? "bg-green-500" : "bg-red-600"} w-3 h-3 rounded-full`}></div>
                       <div className="rounded-lg p-2 w-full">
-                        <div className="font-bold text-2xl underline">{ap.modelo}</div>
+                        <div className="font-bold text-2xl underline">{device.modelo}</div>
                       </div>
                     </div>
                   ))}
@@ -74,9 +74,9 @@ function ModalComponentCompare({comparisonDevices, modalIsOpenCompare, closeModa
                           key={`${group}-${property}`}
                           className={`grid ${gridCols} py-2 text-sm text-gray-700 border-b border-slate-200 hover:bg-slate-200`}>
                           <div className="text-gray-500 px-2">{label}</div>
-                          {comparisonDevices.map((ap) => (
-                            <div key={ap.id}>
-                              <p className="font-bold ">{ap[property]}</p>
+                          {comparisonDevices.map((device) => (
+                            <div key={device.id}>
+                              <p className="font-bold ">{device[property]}</p>
                             </div>
                           ))}
                         </div>
