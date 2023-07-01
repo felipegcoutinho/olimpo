@@ -1,23 +1,25 @@
 import React from "react";
 import {useContext} from "react";
 import {SfpContext} from "./Sfp";
-import Modal from "react-modal";
-import style from "../css/App.module.css";
+import ModalComponent from "../../ui/Modal";
+import OlimpoTextInput from "../../ui/OlimpoTextInput";
+import OlimpoSelect from "../../ui/OlimpoSelect";
+import {Button} from "flowbite-react";
 
 function SfpModal() {
-  const {addProduto, updateProduct, updatedProduct, setUpdatedProduct, modalIsOpen, closeModal} = useContext(SfpContext);
+  const {addDevice, updateDevice, updatedProduct, setUpdatedProduct, closeModal, modalIsOpen} = useContext(SfpContext);
 
   return (
-    <Modal isOpen={modalIsOpen} onRequestClose={closeModal} className={style.modal} overlayClassName={style.modal_overlay}>
-      {updatedProduct.id ? <h1>Atualizar {updatedProduct.modelo}</h1> : <h1>Adicionar Conversor</h1>}
-      <div className={style.formLegenda}>
-        <h4>Caso o produto não possua a função, preencha o campo com "-".</h4>
-        <h4>Se a informação do produto não houver sido encontrada, preencha o campo com "N/A".</h4>
-      </div>
-      <form onSubmit={updatedProduct.id ? updateProduct : addProduto}>
-        <div className={style.formContainer}>
+    <ModalComponent
+      modalIsOpen={modalIsOpen}
+      closeModal={closeModal}
+      updatedProductId={updatedProduct.id}
+      updatedProductModelo={updatedProduct.modelo}
+      setor="Módulo SFP">
+      <form onSubmit={updatedProduct.id ? updateDevice : addDevice}>
+        <div>
           <label>Modelo</label>
-          <input
+          <OlimpoTextInput
             required
             type="text"
             placeholder="KPSD 1120 E"
@@ -26,17 +28,17 @@ function SfpModal() {
           />
 
           <label>Status do suporte</label>
-          <select
+          <OlimpoSelect
             type="text"
             value={updatedProduct.status}
             onChange={(e) => setUpdatedProduct({...updatedProduct, status: e.target.value})}>
             <option value="Suporte">Suporte</option>
             <option value="Phaseout">Phaseout</option>
             <option value="N/A">N/A</option>
-          </select>
+          </OlimpoSelect>
 
           <label>Modulação</label>
-          <select
+          <OlimpoSelect
             required
             type="text"
             value={updatedProduct.modulação}
@@ -49,10 +51,10 @@ function SfpModal() {
             <option value="Giga">Giga</option>
             <option value="Fast">Fast</option>
             <option value="N/A">N/A</option>
-          </select>
+          </OlimpoSelect>
 
           <label>Tipo do Conector</label>
-          <select
+          <OlimpoSelect
             type="text"
             value={updatedProduct.conector}
             onChange={(e) => setUpdatedProduct({...updatedProduct, conector: e.target.value})}>
@@ -64,10 +66,10 @@ function SfpModal() {
             <option value="SC/UPC (Duplo)">SC/UPC (Duplo)</option>
             <option value="SC/UPC (Única)">SC/UPC (Única)</option>
             <option value="N/A">N/A</option>
-          </select>
+          </OlimpoSelect>
 
           <label>Tipo do Módulo</label>
-          <select
+          <OlimpoSelect
             type="text"
             value={updatedProduct.modulo}
             onChange={(e) => setUpdatedProduct({...updatedProduct, modulo: e.target.value})}>
@@ -82,10 +84,13 @@ function SfpModal() {
             <option value="XFP">XFP</option>
             <option value="SFP+">SFP+</option>
             <option value="N/A">N/A</option>
-          </select>
+          </OlimpoSelect>
 
           <label>WDM</label>
-          <select type="text" value={updatedProduct.wdm} onChange={(e) => setUpdatedProduct({...updatedProduct, wdm: e.target.value})}>
+          <OlimpoSelect
+            type="text"
+            value={updatedProduct.wdm}
+            onChange={(e) => setUpdatedProduct({...updatedProduct, wdm: e.target.value})}>
             {!updatedProduct.id && (
               <option selected disabled>
                 Escolha
@@ -94,10 +99,10 @@ function SfpModal() {
             <option value="Sim">Sim</option>
             <option value="-">Não</option>
             <option value="N/A">N/A</option>
-          </select>
+          </OlimpoSelect>
 
           <label>Distância</label>
-          <input
+          <OlimpoTextInput
             type="text"
             placeholder="20 Km"
             value={updatedProduct.distancia}
@@ -105,7 +110,10 @@ function SfpModal() {
           />
 
           <label>Tipo da Fibra</label>
-          <select type="text" value={updatedProduct.fibra} onChange={(e) => setUpdatedProduct({...updatedProduct, fibra: e.target.value})}>
+          <OlimpoSelect
+            type="text"
+            value={updatedProduct.fibra}
+            onChange={(e) => setUpdatedProduct({...updatedProduct, fibra: e.target.value})}>
             {!updatedProduct.id && (
               <option selected disabled>
                 Escolha
@@ -114,10 +122,10 @@ function SfpModal() {
             <option value="Monomodo">Monomodo</option>
             <option value="Multimodo">Multimodo</option>
             <option value="N/A">N/A</option>
-          </select>
+          </OlimpoSelect>
 
           <label>Potência de Sinal</label>
-          <input
+          <OlimpoTextInput
             type="text"
             placeholder="2,5 dBm | 7 dBm"
             value={updatedProduct.potencia}
@@ -125,7 +133,7 @@ function SfpModal() {
           />
 
           <label>Sensibilidade de Sinal</label>
-          <input
+          <OlimpoTextInput
             type="text"
             placeholder="-8 dBm | -30 dbm"
             value={updatedProduct.sensibilidade}
@@ -133,7 +141,7 @@ function SfpModal() {
           />
 
           <label>Comprimento Sinal RX</label>
-          <input
+          <OlimpoTextInput
             type="text"
             placeholder="1310 nm"
             value={updatedProduct.CompRX}
@@ -141,7 +149,7 @@ function SfpModal() {
           />
 
           <label>Comprimento Sinal TX</label>
-          <input
+          <OlimpoTextInput
             type="text"
             placeholder="1490 nm"
             value={updatedProduct.CompTX}
@@ -149,7 +157,7 @@ function SfpModal() {
           />
 
           <label>Tempo da Garantia</label>
-          <select
+          <OlimpoSelect
             type="text"
             value={updatedProduct.garantia}
             onChange={(e) => setUpdatedProduct({...updatedProduct, garantia: e.target.value})}>
@@ -164,10 +172,10 @@ function SfpModal() {
             <option value="4 anos">4 anos</option>
             <option value="5 anos">5 anos</option>
             <option value="N/A">N/A</option>
-          </select>
+          </OlimpoSelect>
 
           <label>URL da Página</label>
-          <input
+          <OlimpoTextInput
             type="text"
             placeholder="https://www.intelbras.com/pt-br/modulo-sfp-epon-kpsd-1120-e"
             value={updatedProduct.pagina}
@@ -175,7 +183,7 @@ function SfpModal() {
           />
 
           <label>Ocultar</label>
-          <select
+          <OlimpoSelect
             required
             type="text"
             value={updatedProduct.ocultar}
@@ -187,19 +195,19 @@ function SfpModal() {
             )}
             <option value="Não">Não</option>
             <option value="Sim">Sim</option>
-          </select>
+          </OlimpoSelect>
 
-          <div className={style.btnModalActions}>
-            <button type="submit" className={style.btn_addUpd}>
+          <div className="bg-white bottom-0 flex flex-col sticky gap-1 mt-1">
+            <Button type="submit" color="success">
               {updatedProduct.id ? "Atualizar Equipamento" : "Adicionar Equipamento"}
-            </button>
-            <button className={style.btn_addUpdCancel} onClick={closeModal}>
+            </Button>
+            <Button color="light" className="" onClick={closeModal}>
               Cancelar
-            </button>
+            </Button>
           </div>
         </div>
       </form>
-    </Modal>
+    </ModalComponent>
   );
 }
 

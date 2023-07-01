@@ -12,7 +12,7 @@ const modalVariants = {
     opacity: 1,
     y: 0,
     transition: {
-      duration: 0.8, // Reduzi a duração da animação para 0.4 segundos
+      duration: 0.4, // Reduzi a duração da animação para 0.4 segundos
     },
   },
 };
@@ -27,7 +27,7 @@ function ModalComponent({children, modalIsOpen, closeModal, setor, updatedProduc
       overlayClassName="bg-zinc-400 bg-opacity-75 fixed inset-0">
       <AnimatePresence>
         {modalIsOpen && (
-          <motion.div className="modal" variants={modalVariants} initial="hidden" animate="visible" exit="hidden" onClick={closeModal}>
+          <motion.div className="modal" variants={modalVariants} initial="hidden" animate="visible" exit="hidden">
             <h1 className="text-2xl">{updatedProductId ? `Atualizar ${updatedProductModelo}` : `Adicionar ${setor}`}</h1>
             <InfoModal />
             {children}

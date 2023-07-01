@@ -6,8 +6,8 @@ import RadiosOutdoor from "./Components/Radio/Radio.jsx";
 import RoteadoresHO from "./Components/Roteador/Roteador.jsx";
 import Switches from "./Components/Switch/Switch.jsx";
 import Conversores from "./Components/Conversor/Conversor.jsx";
-import Sfp from "./Components/Sfp.jsx";
-import Onu from "./Components/Onu.jsx";
+import Sfp from "./Components/Sfp/Sfp.jsx";
+import Onu from "./Components/Onu/Onu.jsx";
 import Modal from "react-modal";
 import {Button} from "flowbite-react";
 
@@ -77,17 +77,17 @@ function App() {
           }}>
           <Header />
 
-          {/* <Button color="dark" className="mb-4" onClick={alternarMostrarOcultar}>
+          <Button color="dark" className="mb-4" onClick={alternarMostrarOcultar}>
             {ShowHide ? "Ocultar Tudo" : "Mostrar Tudo"}
-          </Button> */}
+          </Button>
 
           <AccessPoints />
-          <RadiosOutdoor />
+          {/* <RadiosOutdoor />
           <RoteadoresHO />
           <Switches />
           <Conversores />
           <Sfp />
-          <Onu />
+          <Onu /> */}
         </AdminContext.Provider>
       </div>
     </div>

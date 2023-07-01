@@ -5,7 +5,7 @@ import {AdminContext} from "./App";
 export default function AP_Thead() {
   const {admin} = useContext(AdminContext);
   return (
-    <thead className="text-xs text-gray-800 uppercase whitespace-nowrap  border-[#E6ECEE] bg-slate-200 rounded-lg">
+    <thead className="text-xs text-gray-800 uppercase whitespace-nowrap  border-[#E6ECEE] bg-slate-200">
       <tr>
         <th></th>
         <th className="px-4 py-3">Modelo</th>
@@ -136,9 +136,10 @@ export function Conversor_Thead() {
 export function Sfp_Thead() {
   const {admin} = useContext(AdminContext);
   return (
-    <thead>
-      <tr id={style.GBIC}>
-        <th>Modelo</th>
+    <thead className="text-xs text-gray-800 uppercase whitespace-nowrap border-b border-[#E6ECEE] bg-slate-200">
+      <tr>
+        <th></th>
+        <th className="px-4 py-3">Modelo</th>
         <th>Modulação</th>
         <th>Conector</th>
         <th>Tipo do Módulo</th>
@@ -160,9 +161,10 @@ export function Sfp_Thead() {
 export function Onu_Thead() {
   const {admin} = useContext(AdminContext);
   return (
-    <thead>
-      <tr id={style.ONU}>
-        <th>Modelo</th>
+    <thead className="text-xs text-gray-800 uppercase whitespace-nowrap border-b border-[#E6ECEE] bg-slate-200">
+      <tr>
+        <th></th>
+        <th className="px-4 py-3">Modelo</th>
         <th>Modulação</th>
         <th>Qtde FXS</th>
         <th>Qtde RJ45</th>

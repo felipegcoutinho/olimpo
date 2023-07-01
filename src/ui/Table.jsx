@@ -19,7 +19,7 @@ export default function OlimpoTable({
   DeviceText,
 }) {
   return (
-    <section className="px-1 mx-auto lg:px-">
+    <section className="px-1 mx-auto ">
       <div className="relative overflow-hidden bg-white sm:rounded-lg">
         <div className="flex flex-col pt-4 pr-4 py-3 space-y-3 lg:flex-row lg:items-center lg:justify-between lg:space-y-0 lg:space-x-4">
           <div className="flex flex-1 items-center">
