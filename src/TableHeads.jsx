@@ -7,21 +7,21 @@ export default function AP_Thead() {
   return (
     <thead className="text-xs text-gray-800 uppercase whitespace-nowrap  border-[#E6ECEE] bg-slate-200">
       <tr>
-        <th></th>
-        <th className="px-4 py-3">Modelo</th>
-        <th className="px-2 py-2">Modulação</th>
-        <th className="px-2 py-2">Cobertura</th>
-        <th className="px-4 py-2">Raio</th>
-        <th className="px-2 py-2">Usuários Máx.</th>
-        <th className="px-4 py-2">Datarate Máx. 2G</th>
-        <th className="px-4 py-2">Datarate Máx. 5G</th>
-        <th className="px-4 py-2">Qtde Portas</th>
-        <th className="px-4 py-2">Tensão</th>
-        <th className="px-4 py-2">Tipo PoE</th>
-        <th className="px-4 py-2">Handover</th>
-        <th className="px-4 py-2">Inmaster</th>
-        <th className="px-4 py-2">Garantia</th>
-        <th className="px-4 py-2">Página</th>
+        <th className="py-6"></th>
+        <th className="px-4">Modelo</th>
+        <th className="px-2">Modulação</th>
+        <th className="px-2">Cobertura</th>
+        <th className="px-4">Raio</th>
+        <th className="px-2">Usuários Máx.</th>
+        <th className="px-4">Datarate Máx. 2G</th>
+        <th className="px-4">Datarate Máx. 5G</th>
+        <th className="px-4">Qtde Portas</th>
+        <th className="px-4">Tensão</th>
+        <th className="px-4">Tipo PoE</th>
+        <th className="px-4">Handover</th>
+        <th className="px-4">Inmaster</th>
+        <th className="px-4">Garantia</th>
+        <th className="px-4">Página</th>
         {admin && <th className="px-4 py-2">Ações</th>}
       </tr>
     </thead>
@@ -31,10 +31,10 @@ export default function AP_Thead() {
 export function Radio_Thead() {
   const {admin} = useContext(AdminContext);
   return (
-    <thead className="text-xs text-gray-800 uppercase whitespace-nowrap border-b border-[#E6ECEE] bg-slate-200">
+    <thead className="text-xs text-gray-800 uppercase whitespace-nowrap border-b border-[#E6ECEE] bg-slate-200 text-center">
       <tr>
-        <th></th>
-        <th className="px-4 py-3">Modelo</th>
+        <th className="py-6"></th>
+        <th className="px-4 text-left">Modelo</th>
         <th>Indicado</th>
         <th>Modulação</th>
         <th>Ganho</th>
@@ -48,7 +48,7 @@ export function Radio_Thead() {
         <th>Alimentação</th>
         <th>Garantia</th>
         <th>Página</th>
-        {admin && <th className="px-4 py-2">Ações</th>}
+        {admin && <th className="px-4">Ações</th>}
       </tr>
     </thead>
   );
@@ -57,24 +57,23 @@ export function Radio_Thead() {
 export function Roteador_Thead() {
   const {admin} = useContext(AdminContext);
   return (
-    <thead className="text-xs text-gray-800 uppercase whitespace-nowrap border-[#E6ECEE] bg-slate-200 rounded-lg">
+    <thead className="text-xs text-gray-800 uppercase whitespace-nowrap border-[#E6ECEE] bg-slate-200 text-center">
       <tr>
-        <th></th>
-        <th className="px-4 py-3">Modelo</th>
-        <th>Modulação</th>
-        <th>Cobertura</th>
-        <th>Raio</th>
-        <th>Usuários Máximos</th>
-        <th>Plano Recomendado</th>
-        <th>Qtde Portas</th>
-        <th>Datarate Máx. 2G</th>
-        <th>Datarate Máx. 5G</th>
-        <th>Tensão</th>
-        <th>IPV6</th>
-        <th>Repetidor</th>
-        <th>Roteador AP</th>
-        <th>Cliente Wireless</th>
-        <th>Modo AP</th>
+        <th className="py-6"></th>
+        <th className="text-left px-10">Modelo</th>
+        <th className="">Modulação</th>
+        <th className="px-4">Cobertura</th>
+        <th className="">Raio</th>
+        <th className="">Usuários Máx.</th>
+        <th className="">Plano Recomendado</th>
+        <th className="">Qtde Portas</th>
+        <th className="">Datarate Máx. 2G</th>
+        <th className="">Datarate Máx. 5G</th>
+        <th className="">Tensão</th>
+        <th className="">Repetidor</th>
+        <th className="">Roteador AP</th>
+        <th className="">Cliente Wireless</th>
+        <th className="">Modo AP</th>
         <th>Garantia</th>
         <th>Página</th>
         {admin && <th>Ações</th>}
@@ -86,11 +85,11 @@ export function Roteador_Thead() {
 export function Switch_Thead() {
   const {admin} = useContext(AdminContext);
   return (
-    <thead className="text-xs text-gray-800 uppercase whitespace-nowrap border-b border-[#E6ECEE] bg-slate-200">
+    <thead className="text-xs text-gray-800 uppercase whitespace-nowrap border-b border-[#E6ECEE] bg-slate-200 text-center">
       <tr>
-        <th></th>
-        <th className="px-4 py-3">Modelo</th>
-        <th>Modulação</th>
+        <th className="py-6"></th>
+        <th className="text-left px-4">Modelo</th>
+        <th className="text-left">Modulação</th>
         <th>Qtde Portas</th>
         <th>Gerenciável</th>
         <th>Alimenta via PoE</th>
@@ -112,10 +111,11 @@ export function Switch_Thead() {
 export function Conversor_Thead() {
   const {admin} = useContext(AdminContext);
   return (
-    <thead className="text-xs text-gray-800 uppercase whitespace-nowrap border-[#E6ECEE] bg-slate-200 rounded-lg">
+    <thead className="text-xs text-gray-800 uppercase whitespace-nowrap border-[#E6ECEE] bg-slate-200 text-center">
       <tr>
-        <th></th>
-        <th className="px-4 py-3">Modelo</th>
+        <th className="py-6"></th>
+
+        <th className="px-4">Modelo</th>
         <th>Modulação</th>
         <th>Conector</th>
         <th>WDM</th>
@@ -138,7 +138,8 @@ export function Sfp_Thead() {
   return (
     <thead className="text-xs text-gray-800 uppercase whitespace-nowrap border-b border-[#E6ECEE] bg-slate-200">
       <tr>
-        <th></th>
+        <th className="py-6"></th>
+
         <th className="px-4 py-3">Modelo</th>
         <th>Modulação</th>
         <th>Conector</th>
@@ -163,7 +164,8 @@ export function Onu_Thead() {
   return (
     <thead className="text-xs text-gray-800 uppercase whitespace-nowrap border-b border-[#E6ECEE] bg-slate-200">
       <tr>
-        <th></th>
+        <th className="py-6"></th>
+
         <th className="px-4 py-3">Modelo</th>
         <th>Modulação</th>
         <th>Qtde FXS</th>

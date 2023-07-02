@@ -148,13 +148,21 @@ export default function Ap() {
             })
             .map((ap) => {
               return (
-                <tbody className="text-slate-600">
-                  <tr className="border-b border-[#E6ECEE] hover:bg-slate-100 text-xs text-center whitespace-nowrap h-9">
+                <tbody className="text-slate-700">
+                  <tr
+                    className={`border-b border-[#E6ECEE] hover:bg-slate-100 text-xs text-center whitespace-nowrap h-9 ${
+                      selectedDevices.includes(ap.id) && "bg-orange-200"
+                    }`}>
                     <td>
                       <div className="flex items-center gap-2">
                         <input
+                          disabled={selectedDevices.length >= 4 && !selectedDevices.includes(ap.id)}
                           type="checkbox"
-                          className="w-4 h-4 ml-1 text-green-600 bg-gray-100 border-gray-300 rounded focus:ring-green-500"
+                          className={`w-4 h-4 ml-1 text-[#00A335] focus:ring-0 rounded-sm ${
+                            selectedDevices.length >= 4 && !selectedDevices.includes(ap.id)
+                              ? "border-gray-100 bg-gray-100 cursor-not-allowed"
+                              : "border-gray-300"
+                          }`}
                           onChange={() => handleProductSelect(ap.id)}
                           checked={selectedDevices.includes(ap.id)}
                         />

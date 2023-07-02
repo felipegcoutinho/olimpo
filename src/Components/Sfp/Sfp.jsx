@@ -168,7 +168,7 @@ export default function Sfp() {
                         {sfp.ocultar === "Sim" ? `${sfp.modelo} | Oculto` : sfp.modelo}
                       </span>
                     </td>
-                    <td>
+                    <td className="text-left">
                       <span className={ModulacaoStyle(sfp)}>{sfp.modulação}</span>
                     </td>
                     <td className="font-bold">{sfp.tipoConector}</td>

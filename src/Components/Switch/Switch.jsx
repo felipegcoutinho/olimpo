@@ -150,7 +150,7 @@ export default function Switches() {
             .map((sw) => {
               return (
                 <tbody className="text-slate-600">
-                  <tr className="border-b border-[#E6ECEE] hover:bg-slate-100 text-xs text-center whitespace-nowrap h-9">
+                  <tr className="border border-[#E6ECEE] hover:bg-slate-100 text-xs whitespace-nowrap h-9 text-center">
                     <td>
                       <div className="flex items-center gap-2">
                         <input
@@ -167,12 +167,12 @@ export default function Switches() {
                         {sw.ocultar === "Sim" ? `${sw.modelo} | Oculto` : sw.modelo}
                       </span>
                     </td>
-                    <td>
+                    <td className="text-left">
                       <span className={ModulacaoStyle(sw)}>{sw.modulação}</span>
                     </td>
                     <td className="font-bold">{sw.qtdePortas}</td>
                     <td>{sw.gerenciavel}</td>
-                    <td>{sw.poe}</td>
+                    <td className="">{sw.poe}</td>
                     <td>{sw.pps}</td>
                     <td>{sw.backplane}</td>
                     <td>{sw.sfp}</td>

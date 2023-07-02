@@ -17,8 +17,8 @@ function AP_Modal() {
       updatedProductModelo={updatedProduct.modelo}
       setor="Access Point">
       <form onSubmit={updatedProduct.id ? updateDevice : addDevice}>
-        <label>Modelo</label>
         <OlimpoTextInput
+          label="Modelo"
           required
           type="text"
           placeholder="AP 1250 AC MAX"
@@ -26,8 +26,8 @@ function AP_Modal() {
           onChange={(e) => setUpdatedProduct({...updatedProduct, modelo: e.target.value})}
         />
 
-        <label>Status do suporte</label>
         <OlimpoSelect
+          label="Status do suporte"
           required
           type="text"
           value={updatedProduct.status}
@@ -128,34 +128,11 @@ function AP_Modal() {
           onChange={(e) => setUpdatedProduct({...updatedProduct, tensao: e.target.value})}
         />
 
-        <label>Versão do connectiFi</label>
-        <OlimpoTextInput
-          type="text"
-          placeholder="2.9.17"
-          value={updatedProduct.connectiVersion}
-          onChange={(e) => setUpdatedProduct({...updatedProduct, connectiVersion: e.target.value})}
-        />
-
         <label>Compatível com Handover</label>
         <OlimpoSelect
           type="text"
           value={updatedProduct.handover}
           onChange={(e) => setUpdatedProduct({...updatedProduct, handover: e.target.value})}>
-          {!updatedProduct.id && (
-            <option selected disabled>
-              Escolha
-            </option>
-          )}
-          <option value="Sim">Sim</option>
-          <option value="-">Não</option>
-          <option value="N/A">N/A</option>
-        </OlimpoSelect>
-
-        <label>Compatível com WiseFi</label>
-        <OlimpoSelect
-          type="text"
-          value={updatedProduct.wisefi}
-          onChange={(e) => setUpdatedProduct({...updatedProduct, wisefi: e.target.value})}>
           {!updatedProduct.id && (
             <option selected disabled>
               Escolha
@@ -221,14 +198,6 @@ function AP_Modal() {
           placeholder="https://www.intelbras.com/pt-br/access-point-dual-band-ac-de-alta-potencia-ap-1250-ac-max"
           value={updatedProduct.pagina}
           onChange={(e) => setUpdatedProduct({...updatedProduct, pagina: e.target.value})}
-        />
-
-        <label>URL do Ícone</label>
-        <OlimpoTextInput
-          type="text"
-          placeholder=".png"
-          value={updatedProduct.img}
-          onChange={(e) => setUpdatedProduct({...updatedProduct, img: e.target.value})}
         />
 
         <label>Ocultar</label>

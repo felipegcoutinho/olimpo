@@ -4,6 +4,7 @@ import {HOContext} from "./Roteador";
 import ModalComponent from "../../ui/Modal";
 import OlimpoTextInput from "../../ui/OlimpoTextInput";
 import OlimpoSelect from "../../ui/OlimpoSelect";
+import {Button} from "flowbite-react";
 
 function RoteadoresModal() {
   const {addDevice, updateDevice, updatedProduct, setUpdatedProduct, closeModal, modalIsOpen} = useContext(HOContext);
@@ -53,7 +54,7 @@ function RoteadoresModal() {
           )}
           <option value="Giga">Giga</option>
           <option value="Fast">Fast</option>
-          <option value="Giga WAN | Fast LAN">Giga WAN | Fast LAN</option>
+          <option value="Giga | Fast">Giga | Fast</option>
           <option value="N/A">N/A</option>
         </OlimpoSelect>
 
@@ -233,6 +234,15 @@ function RoteadoresModal() {
           <option value="Não">Não</option>
           <option value="Sim">Sim</option>
         </OlimpoSelect>
+
+        <div className="bg-white bottom-0 flex flex-col sticky gap-1 mt-1">
+          <Button type="submit" color="success">
+            {updatedProduct.id ? "Atualizar Equipamento" : "Adicionar Equipamento"}
+          </Button>
+          <Button color="light" className="" onClick={closeModal}>
+            Cancelar
+          </Button>
+        </div>
       </form>
     </ModalComponent>
   );

@@ -126,7 +126,7 @@ export default function Radios() {
           Hide={HideRADIO}
           Device={"Rádios Outdoor"}
           DeviceImg={DeviceImg}
-          DeviceText={"Equipamentos para conexões sem fio profisionais"}
+          DeviceText={"Equipamentos para conexões sem fio profissionais"}
           selectedDevices={selectedDevices.length >= 2 && selectedDevices}
           handleCompareClick={handleCompareClick}
           handleHide={handleHideRADIO}
@@ -168,7 +168,7 @@ export default function Radios() {
                     <td>
                       <span className={ModulacaoStyle(radio)}>{radio.modulação}</span>
                     </td>
-                    <td>{radio.indicado}</td>
+                    <td className="font-bold">{radio.indicado}</td>
                     <td>{radio.ganho}</td>
                     <td>{radio.potencia}</td>
                     <td>{radio.pps}</td>

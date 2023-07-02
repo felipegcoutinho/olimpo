@@ -124,7 +124,7 @@ export default function Ap() {
       <div className="overflow-x-auto">
         <OlimpoTable
           Hide={HideHO}
-          Device={"Roteadores Home Office"}
+          Device={"Roteadores"}
           DeviceImg={DeviceImg}
           DeviceText={"Wi-Fi para deixar todo o mundo conectado"}
           selectedDevices={selectedDevices.length >= 2 && selectedDevices}
@@ -134,7 +134,7 @@ export default function Ap() {
           query={queryHO}
           handleSearchChange={handleSearchChangeHO}
           admin={admin}
-          createButton="Novo Access Point"
+          createButton="Novo Roteador"
           thead={<Roteador_Thead />}
           tbody={roteadorHO
             .sort(compareStatus)
@@ -149,12 +149,18 @@ export default function Ap() {
             .map((roteador) => {
               return (
                 <tbody className="text-slate-600">
-                  <tr className="border-b border-[#E6ECEE] hover:bg-slate-100 text-xs text-center whitespace-nowrap h-9">
+                  <tr
+                    className={`border-b border-[#E6ECEE] hover:bg-slate-100 text-xs text-center whitespace-nowrap h-9 ${
+                      selectedDevices.includes(roteador.id) && "bg-orange-100"
+                    }`}>
                     <td>
                       <div className="flex items-center gap-2">
                         <input
+                          disabled={selectedDevices.length >= 4 && !selectedDevices.includes(roteador.id)}
                           type="checkbox"
-                          className="w-4 h-4 ml-1 text-green-600 bg-gray-100 border-gray-300 rounded focus:ring-green-500"
+                          className={`w-4 h-4 ml-1 text-green-600 bg-gray-100 rounded focus:ring-green-500 ${
+                            selectedDevices.length >= 4 && !selectedDevices.includes(roteador.id) ? "border-gray-100" : "border-gray-300"
+                          }`}
                           onChange={() => handleProductSelect(roteador.id)}
                           checked={selectedDevices.includes(roteador.id)}
                         />
@@ -166,16 +172,16 @@ export default function Ap() {
                         {roteador.ocultar === "Sim" ? `${roteador.modelo} | Oculto` : roteador.modelo}
                       </span>
                     </td>
-                    <td>
+                    <td className="text-left">
                       <span className={ModulacaoStyle(roteador)}>{roteador.modulação}</span>
                     </td>
                     <td className="font-bold">{roteador.cobertura}</td>
                     <td>{roteador.raio}</td>
                     <td>{roteador.usuarioMax}</td>
                     <td>{roteador.planoRecomendado}</td>
+                    <td>{roteador.qtdePortas}</td>
                     <td>{roteador.datarateMax2G}</td>
                     <td>{roteador.datarateMax5G}</td>
-                    <td>{roteador.qtdePortas}</td>
                     <td>{roteador.tensao}</td>
                     <td>{roteador.repetidor}</td>
                     <td>{roteador.roteador}</td>

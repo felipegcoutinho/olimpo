@@ -83,11 +83,11 @@ function App() {
 
           <AccessPoints />
           <RadiosOutdoor />
-          {/* <RoteadoresHO />
           <Switches />
+          <RoteadoresHO />
           <Conversores />
           <Sfp />
-          <Onu /> */}
+          <Onu />
         </AdminContext.Provider>
       </div>
     </div>

@@ -48,7 +48,8 @@ function SfpModal() {
                 Escolha
               </option>
             )}
-            <option value="Giga">Giga</option>
+            <option value="1 Giga">1 Giga</option>
+            <option value="10 Gigas">10 Gigas</option>
             <option value="Fast">Fast</option>
             <option value="N/A">N/A</option>
           </OlimpoSelect>

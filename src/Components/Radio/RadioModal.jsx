@@ -4,9 +4,10 @@ import {RadioContext} from "./Radio";
 import ModalComponent from "../../ui/Modal";
 import OlimpoTextInput from "../../ui/OlimpoTextInput";
 import OlimpoSelect from "../../ui/OlimpoSelect";
+import {Button} from "flowbite-react";
 
 function RadioModal() {
-  const {addProduto, updateProduct, updatedProduct, setUpdatedProduct, modalIsOpen, closeModal} = useContext(RadioContext);
+  const {addDevice, updateDevice, updatedProduct, setUpdatedProduct, modalIsOpen, closeModal} = useContext(RadioContext);
 
   return (
     <ModalComponent
@@ -15,7 +16,7 @@ function RadioModal() {
       updatedProductId={updatedProduct.id}
       updatedProductModelo={updatedProduct.modelo}
       setor="Rádio">
-      <form onSubmit={updatedProduct.id ? updateProduct : addProduto}>
+      <form onSubmit={updatedProduct.id ? updateDevice : addDevice}>
         <div className="flex flex-col">
           <label>Modelo</label>
           <OlimpoTextInput
@@ -178,14 +179,14 @@ function RadioModal() {
             <option value="Não">Não</option>
             <option value="Sim">Sim</option>
           </OlimpoSelect>
-          {/* <div className="bg-white bottom-0 flex flex-col sticky gap-1 mt-1">
+          <div className="bg-white bottom-0 flex flex-col sticky gap-1 mt-1">
             <Button type="submit" color="success" className="">
-              {updatedProduct.id ? "Atualizar Equipamento" : "Adicionar Equipamento"}
+              {updateDevice.id ? "Atualizar Equipamento" : "Adicionar Equipamento"}
             </Button>
             <Button color="light" className="" onClick={closeModal}>
               Cancelar
             </Button>
-          </div> */}
+          </div>
         </div>
       </form>
     </ModalComponent>

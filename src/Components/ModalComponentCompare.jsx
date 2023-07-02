@@ -48,13 +48,13 @@ function ModalComponentCompare({comparisonDevices, modalIsOpenCompare, closeModa
           <motion.div className="modal" variants={modalVariants} initial="hidden" animate="visible" exit="hidden">
             <div className="w-full overflow-x-auto">
               <div className="overflow-hidden min-w-max">
-                <div className={`grid ${gridCols} py-4 text-sm font-medium text-gray-100 bg-slate-900 rounded-md border border-black`}>
-                  <div className="flex items-center px-4">Modelo</div>
+                <div className={`grid ${gridCols} py-4 text-sm font-medium text-gray-800 bg-[#E4F2E7] rounded-sm`}>
+                  <div className="flex items-center px-4"></div>
                   {comparisonDevices.map((device) => (
-                    <div key={device.id} className="flex items-center py-4">
+                    <div key={device.id} className={`flex items-center py-4`}>
                       <div className={`${device.status === "Suporte" ? "bg-green-500" : "bg-red-600"} w-3 h-3 rounded-full`}></div>
                       <div className="rounded-lg p-2 w-full">
-                        <div className="font-bold text-2xl underline">{device.modelo}</div>
+                        <div className="font-bold text-2xl">{device.modelo}</div>
                       </div>
                     </div>
                   ))}
@@ -76,7 +76,7 @@ function ModalComponentCompare({comparisonDevices, modalIsOpenCompare, closeModa
                           <div className="text-gray-500 px-2">{label}</div>
                           {comparisonDevices.map((device) => (
                             <div key={device.id}>
-                              <p className="font-bold ">{device[property]}</p>
+                              <p className={`font-bold`}>{device[property]}</p>
                             </div>
                           ))}
                         </div>

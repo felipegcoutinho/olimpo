@@ -20,8 +20,8 @@ export default function OlimpoTable({
 }) {
   return (
     <section className="px-1 mx-auto ">
-      <div className="relative overflow-hidden bg-white sm:rounded-lg">
-        <div className="flex flex-col pt-4 pr-4 py-3 space-y-3 lg:flex-row lg:items-center lg:justify-between lg:space-y-0 lg:space-x-4">
+      <div className="relative overflow-hidden bg-white">
+        <div className="flex flex-col pt-4 pr-4 space-y-3 lg:flex-row lg:items-center lg:justify-between lg:space-y-0 lg:space-x-4">
           <div className="flex flex-1 items-center">
             <img src={DeviceImg} alt="Olimpo" className="w-20 h-20" />
             <div className="flex flex-col flex-1">
@@ -45,9 +45,11 @@ export default function OlimpoTable({
                 )}
 
                 {selectedDevices.length <= 4 && (
-                  <Button className="mr-auto bg-slate-500 hover:bg-slate-600" onClick={handleCompareClick}>
+                  <button
+                    className="mr-auto bg-slate-500 hover:bg-slate-600 rounded-full px-4 py-3 text-white text-sm"
+                    onClick={handleCompareClick}>
                     Comparar
-                  </Button>
+                  </button>
                 )}
 
                 <div className="relative">
