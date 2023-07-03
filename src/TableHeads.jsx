@@ -1,11 +1,10 @@
 import React, {useContext} from "react";
-import style from "./css/App.module.css";
 import {AdminContext} from "./App";
 
 export default function AP_Thead() {
   const {admin} = useContext(AdminContext);
   return (
-    <thead className="text-xs text-gray-800 uppercase whitespace-nowrap  border-[#E6ECEE] bg-slate-200">
+    <thead className="text-xs text-slate-800 uppercase whitespace-nowrap border border-slate-100 bg-slate-200">
       <tr>
         <th className="py-6"></th>
         <th className="px-4">Modelo</th>

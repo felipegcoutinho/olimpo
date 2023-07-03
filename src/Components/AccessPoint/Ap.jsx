@@ -150,18 +150,18 @@ export default function Ap() {
               return (
                 <tbody className="text-slate-700">
                   <tr
-                    className={`border-b border-[#E6ECEE] hover:bg-slate-100 text-xs text-center whitespace-nowrap h-9 ${
-                      selectedDevices.includes(ap.id) && "bg-orange-200"
-                    }`}>
+                    className={`border border-slate-100 hover:bg-slate-100 text-xs text-center whitespace-nowrap h-9 ${
+                      selectedDevices.includes(ap.id) && "bg-orange-200 hover:bg-orange-300"
+                    } ${ap.ocultar === "Sim" && !admin ? "hidden" : ""}`}>
                     <td>
                       <div className="flex items-center gap-2">
                         <input
                           disabled={selectedDevices.length >= 4 && !selectedDevices.includes(ap.id)}
                           type="checkbox"
-                          className={`w-4 h-4 ml-1 text-[#00A335] focus:ring-0 rounded-sm ${
+                          className={`w-4 h-4 ml-1 text-[#00A335] focus:ring-green-500 rounded-sm ${
                             selectedDevices.length >= 4 && !selectedDevices.includes(ap.id)
-                              ? "border-gray-100 bg-gray-100 cursor-not-allowed"
-                              : "border-gray-300"
+                              ? "border-slate-100 bg-slate-100 cursor-not-allowed"
+                              : "border-slate-300"
                           }`}
                           onChange={() => handleProductSelect(ap.id)}
                           checked={selectedDevices.includes(ap.id)}
@@ -169,11 +169,17 @@ export default function Ap() {
                         <div className={`${ap.status === "Suporte" ? "bg-green-500" : "bg-red-500"} w-3 h-3 rounded-full`}></div>
                       </div>
                     </td>
-                    <td className="font-bold text-sm text-left text-black pl-2" onClick={() => handleSingleClick(ap)}>
-                      <span className="underline cursor-pointer flex items-center gap-1">
-                        {ap.ocultar === "Sim" ? `${ap.modelo} | Oculto` : ap.modelo}
-                      </span>
+                    <td className="font-bold text-sm text-left text-black pl-2">
+                      <div className="flex items-center gap-1">
+                        <span className="underline cursor-pointer" onClick={() => handleSingleClick(ap)}>
+                          {ap.modelo}
+                        </span>
+                        <span>
+                          {ap.ocultar === "Sim" && <span className="uppercase border rounded border-black px-1 text-xs">Oculto</span>}
+                        </span>
+                      </div>
                     </td>
+
                     <td>
                       <span className={ModulacaoStyle(ap)}>{ap.modulação}</span>
                     </td>
@@ -200,9 +206,9 @@ export default function Ap() {
                         <button className="bg-yellow-300 p-1 rounded text-white" onClick={() => openUpdateModal(ap)}>
                           <HiPencil />
                         </button>
-                        <button className="bg-red-600 p-1 rounded text-white ml-2" onClick={() => deleteDevice(ap.id)}>
+                        {/* <button className="bg-red-600 p-1 rounded text-white ml-2" onClick={() => deleteDevice(ap.id)}>
                           <HiXMark />
-                        </button>
+                        </button> */}
                       </td>
                     )}
                   </tr>

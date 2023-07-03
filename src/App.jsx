@@ -77,9 +77,9 @@ function App() {
           }}>
           <Header />
 
-          <Button color="dark" className="mb-4" onClick={alternarMostrarOcultar}>
+          {/* <Button color="dark" className="mb-4" onClick={alternarMostrarOcultar}>
             {ShowHide ? "Ocultar Tudo" : "Mostrar Tudo"}
-          </Button>
+          </Button> */}
 
           <AccessPoints />
           <RadiosOutdoor />
