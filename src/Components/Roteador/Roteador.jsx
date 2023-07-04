@@ -150,16 +150,18 @@ export default function Ap() {
               return (
                 <tbody className="text-slate-600">
                   <tr
-                    className={`border-b border-[#E6ECEE] hover:bg-slate-100 text-xs text-center whitespace-nowrap h-9 ${
-                      selectedDevices.includes(roteador.id) && "bg-orange-100"
-                    }`}>
+                    className={`border border-slate-100 hover:bg-slate-100 text-xs text-center whitespace-nowrap h-9 ${
+                      selectedDevices.includes(roteador.id) && "bg-orange-200 hover:bg-orange-300"
+                    } ${roteador.ocultar === "Sim" && !admin ? "hidden" : ""}`}>
                     <td>
                       <div className="flex items-center gap-2">
                         <input
                           disabled={selectedDevices.length >= 4 && !selectedDevices.includes(roteador.id)}
                           type="checkbox"
-                          className={`w-4 h-4 ml-1 text-green-600 bg-gray-100 rounded focus:ring-green-500 ${
-                            selectedDevices.length >= 4 && !selectedDevices.includes(roteador.id) ? "border-gray-100" : "border-gray-300"
+                          className={`w-4 h-4 ml-1 text-[#00A335] focus:ring-green-500 rounded-sm ${
+                            selectedDevices.length >= 4 && !selectedDevices.includes(roteador.id)
+                              ? "border-slate-100 bg-slate-100 cursor-not-allowed"
+                              : "border-slate-300"
                           }`}
                           onChange={() => handleProductSelect(roteador.id)}
                           checked={selectedDevices.includes(roteador.id)}
@@ -167,10 +169,15 @@ export default function Ap() {
                         <div className={`${roteador.status === "Suporte" ? "bg-green-500" : "bg-red-500"} w-3 h-3 rounded-full`}></div>
                       </div>
                     </td>
-                    <td className="font-bold text-sm text-left text-black pl-2" onClick={() => handleSingleClick(roteador)}>
-                      <span className="underline cursor-pointer flex items-center gap-1">
-                        {roteador.ocultar === "Sim" ? `${roteador.modelo} | Oculto` : roteador.modelo}
-                      </span>
+                    <td className="font-bold text-sm text-left text-black pl-2">
+                      <div className="flex items-center gap-1">
+                        <span className="underline cursor-pointer" onClick={() => handleSingleClick(roteador)}>
+                          {roteador.modelo}
+                        </span>
+                        <span>
+                          {roteador.ocultar === "Sim" && <span className="uppercase border rounded border-black px-1 text-xs">Oculto</span>}
+                        </span>
+                      </div>
                     </td>
                     <td className="text-left">
                       <span className={ModulacaoStyle(roteador)}>{roteador.modulação}</span>

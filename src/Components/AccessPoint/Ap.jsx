@@ -179,7 +179,6 @@ export default function Ap() {
                         </span>
                       </div>
                     </td>
-
                     <td>
                       <span className={ModulacaoStyle(ap)}>{ap.modulação}</span>
                     </td>

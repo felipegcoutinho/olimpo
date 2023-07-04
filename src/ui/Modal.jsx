@@ -2,6 +2,7 @@ import React from "react";
 import Modal from "react-modal";
 import InfoModal from "./InfoModal";
 import {motion, AnimatePresence} from "framer-motion";
+import {Button, Label, ToggleSwitch} from "flowbite-react";
 
 const modalVariants = {
   hidden: {
@@ -17,7 +18,15 @@ const modalVariants = {
   },
 };
 
-function ModalComponent({children, modalIsOpen, closeModal, setor, updatedProductId, updatedProductModelo}) {
+function ModalComponent({
+  children,
+  modalIsOpen,
+  closeModal,
+  setor,
+  updatedProductId,
+
+  updatedProductModelo,
+}) {
   return (
     <Modal
       isOpen={modalIsOpen}
@@ -28,7 +37,10 @@ function ModalComponent({children, modalIsOpen, closeModal, setor, updatedProduc
       <AnimatePresence>
         {modalIsOpen && (
           <motion.div className="modal" variants={modalVariants} initial="hidden" animate="visible" exit="hidden">
-            <h1 className="text-2xl">{updatedProductId ? `Atualizar ${updatedProductModelo}` : `Adicionar ${setor}`}</h1>
+            <div className="flex justify-between">
+              <h1 className="text-2xl">{updatedProductId ? `Atualizar ${updatedProductModelo}` : `Adicionar ${setor}`}</h1>
+            </div>
+
             <InfoModal />
             {children}
           </motion.div>

@@ -1,6 +1,6 @@
 import React from "react";
 import {useContext} from "react";
-import {Button} from "flowbite-react";
+import {Button, RangeSlider} from "flowbite-react";
 import ModalComponent from "../../ui/Modal";
 import OlimpoTextInput from "../../ui/OlimpoTextInput";
 import OlimpoSelect from "../../ui/OlimpoSelect";
@@ -42,8 +42,8 @@ function AP_Modal() {
           <option value="N/A">N/A</option>
         </OlimpoSelect>
 
-        <label>Modulação</label>
         <OlimpoSelect
+          label="Modulação"
           required
           type="text"
           value={updatedProduct.modulação}
@@ -58,56 +58,59 @@ function AP_Modal() {
           <option value="N/A">N/A</option>
         </OlimpoSelect>
 
-        <label>Área de cobertura (em m²)</label>
         <OlimpoTextInput
+          label="Área de cobertura"
           type="text"
-          placeholder="400 m²"
+          placeholder="400"
           value={updatedProduct.cobertura}
           onChange={(e) => setUpdatedProduct({...updatedProduct, cobertura: e.target.value})}
         />
 
-        <label>Raio (em m)</label>
         <OlimpoTextInput
+          label="Raio"
           type="text"
-          placeholder="11,2 m"
+          placeholder="11,2"
           value={updatedProduct.raio}
           onChange={(e) => setUpdatedProduct({...updatedProduct, raio: e.target.value})}
         />
 
-        <label>Usuários simultâneos</label>
         <OlimpoTextInput
+          label="Usuários simultâneos"
           type="text"
           placeholder="100 usuários"
           value={updatedProduct.usuarioMax}
           onChange={(e) => setUpdatedProduct({...updatedProduct, usuarioMax: e.target.value})}
         />
 
-        <label>Datarate Máx. 2G</label>
         <OlimpoTextInput
+          label="Datarate Máx. 2G"
           type="text"
-          placeholder="300 Mbps (2x2)"
+          placeholder="300 Mbps"
           value={updatedProduct.throughputWireless24}
           onChange={(e) => setUpdatedProduct({...updatedProduct, throughputWireless24: e.target.value})}
         />
 
-        <label>Datarate Máx. 5G</label>
         <OlimpoTextInput
+          label="Datarate Máx. 5G"
           type="text"
-          placeholder="866 Mbps (2x2)"
+          placeholder="866 Mbps"
           value={updatedProduct.throughputWireless50}
           onChange={(e) => setUpdatedProduct({...updatedProduct, throughputWireless50: e.target.value})}
         />
 
-        <label>Qtde Portas</label>
         <OlimpoTextInput
+          label="Qtde Portas"
           type="text"
           placeholder="1 Porta"
           value={updatedProduct.qtdePortas}
           onChange={(e) => setUpdatedProduct({...updatedProduct, qtdePortas: e.target.value})}
         />
 
-        <label>Tipo PoE</label>
-        <OlimpoSelect type="text" value={updatedProduct.poe} onChange={(e) => setUpdatedProduct({...updatedProduct, poe: e.target.value})}>
+        <OlimpoSelect
+          label="Tipo PoE"
+          type="text"
+          value={updatedProduct.poe}
+          onChange={(e) => setUpdatedProduct({...updatedProduct, poe: e.target.value})}>
           {!updatedProduct.id && (
             <option selected disabled>
               Escolha
@@ -120,16 +123,16 @@ function AP_Modal() {
           <option value="N/A">N/A</option>
         </OlimpoSelect>
 
-        <label>Tensão</label>
         <OlimpoTextInput
+          label="Tensão"
           type="text"
           placeholder="48V / 12 VDC (P4)"
           value={updatedProduct.tensao}
           onChange={(e) => setUpdatedProduct({...updatedProduct, tensao: e.target.value})}
         />
 
-        <label>Compatível com Handover</label>
         <OlimpoSelect
+          label="Compatível com Handover"
           type="text"
           value={updatedProduct.handover}
           onChange={(e) => setUpdatedProduct({...updatedProduct, handover: e.target.value})}>
@@ -143,8 +146,8 @@ function AP_Modal() {
           <option value="N/A">N/A</option>
         </OlimpoSelect>
 
-        <label>Compatível com InMaster</label>
         <OlimpoSelect
+          label="Compatível com InMaster"
           type="text"
           value={updatedProduct.inmaster}
           onChange={(e) => setUpdatedProduct({...updatedProduct, inmaster: e.target.value})}>
@@ -158,24 +161,24 @@ function AP_Modal() {
           <option value="N/A">N/A</option>
         </OlimpoSelect>
 
-        <label>Potência de TX 2G</label>
         <OlimpoTextInput
+          label="Potência de TX 2G"
           type="text"
           placeholder="28 dBm (630mW)"
           value={updatedProduct.potencia2G}
           onChange={(e) => setUpdatedProduct({...updatedProduct, potencia2G: e.target.value})}
         />
 
-        <label>Potência de TX 5G </label>
         <OlimpoTextInput
+          label="Potência de TX 5G"
           type="text"
           placeholder="27 dBm (501mW)"
           value={updatedProduct.potencia5G}
           onChange={(e) => setUpdatedProduct({...updatedProduct, potencia5G: e.target.value})}
         />
 
-        <label>Tempo da Garantia</label>
         <OlimpoSelect
+          label="Tempo da Garantia"
           type="text"
           value={updatedProduct.garantia}
           onChange={(e) => setUpdatedProduct({...updatedProduct, garantia: e.target.value})}>
@@ -192,16 +195,16 @@ function AP_Modal() {
           <option value="N/A">N/A</option>
         </OlimpoSelect>
 
-        <label>URL da Página</label>
         <OlimpoTextInput
+          label="Url da Página"
           type="text"
           placeholder="https://www.intelbras.com/pt-br/access-point-dual-band-ac-de-alta-potencia-ap-1250-ac-max"
           value={updatedProduct.pagina}
           onChange={(e) => setUpdatedProduct({...updatedProduct, pagina: e.target.value})}
         />
 
-        <label>Ocultar</label>
         <OlimpoSelect
+          label="Ocultar"
           required
           type="text"
           value={updatedProduct.ocultar}

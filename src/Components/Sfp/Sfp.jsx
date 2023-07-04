@@ -151,22 +151,35 @@ export default function Sfp() {
             .map((sfp) => {
               return (
                 <tbody className="text-slate-600">
-                  <tr className="border-b border-[#E6ECEE] hover:bg-slate-100 text-xs text-center whitespace-nowrap h-9">
+                  <tr
+                    className={`border border-slate-100 hover:bg-slate-100 text-xs text-center whitespace-nowrap h-9 ${
+                      selectedDevices.includes(sfp.id) && "bg-orange-200 hover:bg-orange-300"
+                    } ${sfp.ocultar === "Sim" && !admin ? "hidden" : ""}`}>
                     <td>
                       <div className="flex items-center gap-2">
                         <input
+                          disabled={selectedDevices.length >= 4 && !selectedDevices.includes(sfp.id)}
                           type="checkbox"
-                          className="w-4 h-4 ml-1 text-green-600 bg-gray-100 border-gray-300 rounded focus:ring-green-500"
+                          className={`w-4 h-4 ml-1 text-[#00A335] focus:ring-green-500 rounded-sm ${
+                            selectedDevices.length >= 4 && !selectedDevices.includes(sfp.id)
+                              ? "border-slate-100 bg-slate-100 cursor-not-allowed"
+                              : "border-slate-300"
+                          }`}
                           onChange={() => handleProductSelect(sfp.id)}
                           checked={selectedDevices.includes(sfp.id)}
                         />
                         <div className={`${sfp.status === "Suporte" ? "bg-green-500" : "bg-red-500"} w-3 h-3 rounded-full`}></div>
                       </div>
                     </td>
-                    <td className="font-bold text-sm text-left text-black pl-2" onClick={() => handleSingleClick(sfp)}>
-                      <span className="underline cursor-pointer flex items-center gap-1">
-                        {sfp.ocultar === "Sim" ? `${sfp.modelo} | Oculto` : sfp.modelo}
-                      </span>
+                    <td className="font-bold text-sm text-left text-black pl-2">
+                      <div className="flex items-center gap-1">
+                        <span className="underline cursor-pointer" onClick={() => handleSingleClick(sfp)}>
+                          {sfp.modelo}
+                        </span>
+                        <span>
+                          {sfp.ocultar === "Sim" && <span className="uppercase border rounded border-black px-1 text-xs">Oculto</span>}
+                        </span>
+                      </div>
                     </td>
                     <td className="text-left">
                       <span className={ModulacaoStyle(sfp)}>{sfp.modulação}</span>
