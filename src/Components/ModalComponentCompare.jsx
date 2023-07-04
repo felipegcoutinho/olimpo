@@ -1,6 +1,7 @@
 import React from "react";
 import {motion, AnimatePresence} from "framer-motion";
 import Modal from "react-modal";
+import headerImg from "../assets/headerCompare.png";
 
 function ModalComponentCompare({comparisonDevices, modalIsOpenCompare, closeModalCompare, groupIcons, propertyMappings}) {
   const groupedProperties = {};
@@ -48,13 +49,15 @@ function ModalComponentCompare({comparisonDevices, modalIsOpenCompare, closeModa
           <motion.div className="modal" variants={modalVariants} initial="hidden" animate="visible" exit="hidden">
             <div className="w-full overflow-x-auto">
               <div className="overflow-hidden min-w-max">
-                <div className={`grid ${gridCols} py-4 text-sm font-medium text-gray-800 bg-[#E4F2E7] rounded-sm`}>
-                  <div className="flex items-center px-4"></div>
+                <div
+                  className={`grid ${gridCols} py-8 text-sm font-medium text-white rounded-sm`}
+                  style={{backgroundImage: `url(${headerImg})`}}>
+                  <div className="flex items-center"></div>
                   {comparisonDevices.map((device) => (
-                    <div key={device.id} className={`flex items-center py-4`}>
+                    <div key={device.id} className={`flex items-center`}>
                       <div className={`${device.status === "Suporte" ? "bg-green-500" : "bg-red-600"} w-3 h-3 rounded-full`}></div>
                       <div className="rounded-lg p-2 w-full">
-                        <div className="font-bold text-2xl">{device.modelo}</div>
+                        <div className="font-bold text-xl">{device.modelo}</div>
                       </div>
                     </div>
                   ))}
@@ -65,14 +68,14 @@ function ModalComponentCompare({comparisonDevices, modalIsOpenCompare, closeModa
 
                   return (
                     <div key={group}>
-                      <div className={`${Icon} py-2 flex items-center text-xl gap-2 text-black font-bold border-b`}>
+                      <div className={`${Icon} py-2 flex items-center text-xl gap-2 text-green-500 font-bold border-b`}>
                         {Icon && <Icon />}
                         {group}
                       </div>
                       {properties.map(({property, label}) => (
                         <div
                           key={`${group}-${property}`}
-                          className={`grid ${gridCols} py-2 text-sm text-gray-700 border-b border-slate-200 hover:bg-slate-200`}>
+                          className={`grid ${gridCols} py-2 text-sm text-gray-700 border-b border-slate-100 hover:bg-slate-200`}>
                           <div className="text-gray-500 px-2">{label}</div>
                           {comparisonDevices.map((device) => (
                             <div key={device.id}>
