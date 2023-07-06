@@ -68,7 +68,7 @@ function ModalComponentCompare({comparisonDevices, modalIsOpenCompare, closeModa
 
                   return (
                     <div key={group}>
-                      <div className={`${Icon} py-2 flex items-center text-xl gap-2 text-green-500 font-bold border-b`}>
+                      <div className={`${Icon} py-2 flex items-center text-xl gap-2 text-green-500 font-bold bg-green-50`}>
                         {Icon && <Icon />}
                         {group}
                       </div>

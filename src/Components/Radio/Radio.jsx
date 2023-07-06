@@ -147,7 +147,7 @@ export default function Radios() {
             })
             .map((radio) => {
               return (
-                <tbody>
+                <tbody className="text-slate-700">
                   <tr
                     className={`border border-slate-100 hover:bg-slate-100 text-xs text-center whitespace-nowrap h-9 ${
                       selectedDevices.includes(radio.id) && "bg-orange-200 hover:bg-orange-300"
@@ -168,7 +168,7 @@ export default function Radios() {
                         <div className={`${radio.status === "Suporte" ? "bg-green-500" : "bg-red-500"} w-3 h-3 rounded-full`}></div>
                       </div>
                     </td>
-                    <td className="font-bold text-sm text-left text-black pl-2">
+                    <td className="font-bold text-sm text-left text-black">
                       <div className="flex items-center gap-1">
                         <span className="underline cursor-pointer" onClick={() => handleSingleClick(radio)}>
                           {radio.modelo}

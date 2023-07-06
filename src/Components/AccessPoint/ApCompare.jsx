@@ -18,7 +18,7 @@ function ApCompare() {
     modulação: {label: "Modulação", group: "Informações Gerais"},
     usuarioMax: {label: "Usuários simultâneos", group: "Informações Gerais"},
     qtdePortas: {label: "Quantidade de portas", group: "Informações Gerais"},
-    handover: {label: "Handover", group: "Informações Gerais"},
+    handover: {label: "Handover", group: "Wireless"},
     garantia: {label: "Garantia", group: "Informações Gerais"},
     cobertura: {label: "Cobertura", group: "Wireless"},
     raio: {label: "Raio", group: "Wireless"},
@@ -29,6 +29,7 @@ function ApCompare() {
     inmaster: {label: "InMaster", group: "Software de Gerenciamento"},
     poe: {label: "PoE", group: "Alimentação"},
     tensao: {label: "Tensão", group: "Alimentação"},
+    padrao: {label: "Padrão WiFi", group: "Wireless"},
   };
 
   return (

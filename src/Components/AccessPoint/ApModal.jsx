@@ -1,6 +1,6 @@
 import React from "react";
 import {useContext} from "react";
-import {Button, RangeSlider} from "flowbite-react";
+import {Button} from "flowbite-react";
 import ModalComponent from "../../ui/Modal";
 import OlimpoTextInput from "../../ui/OlimpoTextInput";
 import OlimpoSelect from "../../ui/OlimpoSelect";
@@ -9,6 +9,11 @@ import {APContext} from "./Ap";
 function AP_Modal() {
   const {addDevice, updateDevice, updatedProduct, setUpdatedProduct, closeModal, modalIsOpen} = useContext(APContext);
 
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    updatedProduct.id ? updateDevice() : addDevice();
+  };
+
   return (
     <ModalComponent
       modalIsOpen={modalIsOpen}
@@ -16,7 +21,7 @@ function AP_Modal() {
       updatedProductId={updatedProduct.id}
       updatedProductModelo={updatedProduct.modelo}
       setor="Access Point">
-      <form onSubmit={updatedProduct.id ? updateDevice : addDevice}>
+      <form onSubmit={handleSubmit}>
         <OlimpoTextInput
           label="Modelo"
           required
@@ -41,6 +46,15 @@ function AP_Modal() {
           <option value="Phaseout">Phaseout</option>
           <option value="N/A">N/A</option>
         </OlimpoSelect>
+
+        <OlimpoTextInput
+          label="Data de lançamento"
+          required
+          type="date"
+          placeholder="AP 1250 AC MAX"
+          value={updatedProduct.date}
+          onChange={(e) => setUpdatedProduct({...updatedProduct, date: e.target.value})}
+        />
 
         <OlimpoSelect
           label="Modulação"
@@ -98,6 +112,22 @@ function AP_Modal() {
           onChange={(e) => setUpdatedProduct({...updatedProduct, throughputWireless50: e.target.value})}
         />
 
+        <OlimpoSelect
+          label="Padrão WiFi"
+          type="text"
+          value={updatedProduct.padrao}
+          onChange={(e) => setUpdatedProduct({...updatedProduct, padrao: e.target.value})}>
+          {!updatedProduct.id && (
+            <option selected disabled>
+              Escolha
+            </option>
+          )}
+          <option value="802.11 b/g/n">b/g/n</option>
+          <option value="802.11 b/g/n/ac">b/g/n/ac</option>
+          <option value="802.11 b/g/n/ac/ax">b/g/n/ac/ax</option>
+          <option value="N/A">N/A</option>
+        </OlimpoSelect>
+
         <OlimpoTextInput
           label="Qtde Portas"
           type="text"
@@ -142,7 +172,7 @@ function AP_Modal() {
             </option>
           )}
           <option value="Sim">Sim</option>
-          <option value="-">Não</option>
+          <option value="Não">Não</option>
           <option value="N/A">N/A</option>
         </OlimpoSelect>
 
@@ -157,14 +187,14 @@ function AP_Modal() {
             </option>
           )}
           <option value="Sim">Sim</option>
-          <option value="-">Não</option>
+          <option value="Não">Não</option>
           <option value="N/A">N/A</option>
         </OlimpoSelect>
 
         <OlimpoTextInput
           label="Potência de TX 2G"
           type="text"
-          placeholder="28 dBm (630mW)"
+          placeholder="28 dBm"
           value={updatedProduct.potencia2G}
           onChange={(e) => setUpdatedProduct({...updatedProduct, potencia2G: e.target.value})}
         />
@@ -172,7 +202,7 @@ function AP_Modal() {
         <OlimpoTextInput
           label="Potência de TX 5G"
           type="text"
-          placeholder="27 dBm (501mW)"
+          placeholder="27 dBm"
           value={updatedProduct.potencia5G}
           onChange={(e) => setUpdatedProduct({...updatedProduct, potencia5G: e.target.value})}
         />
@@ -204,7 +234,7 @@ function AP_Modal() {
         />
 
         <OlimpoSelect
-          label="Ocultar"
+          label="Desativar equipamento"
           required
           type="text"
           value={updatedProduct.ocultar}
@@ -217,6 +247,13 @@ function AP_Modal() {
           <option value="Não">Não</option>
           <option value="Sim">Sim</option>
         </OlimpoSelect>
+
+        <OlimpoTextInput
+          className="hidden"
+          type="text"
+          value={updatedProduct.date}
+          onChange={(e) => setUpdatedProduct({...updatedProduct, date: currentDate})}
+        />
 
         <div className="bg-white bottom-0 flex flex-col sticky gap-1 mt-1">
           <Button type="submit" color="success">

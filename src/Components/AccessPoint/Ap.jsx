@@ -12,6 +12,7 @@ import Modal from "react-modal";
 import UseAux from "../../Hooks/UseAux";
 import DeviceImg from "../../assets/ap.png";
 import ApCompare from "./ApCompare";
+import TableStart from "../../ui/TableStart";
 
 export const APContext = createContext();
 
@@ -99,6 +100,21 @@ export default function Ap() {
     openModalCompare();
   };
 
+  function calculateDateDifference(startDate, endDate) {
+    const oneDay = 24 * 60 * 60 * 1000; // Number of milliseconds in a day
+
+    // Convert the date strings to Date objects
+    const start = new Date(startDate);
+    const end = new Date(endDate);
+
+    // Calculate the difference in days
+    const diffInDays = Math.round(Math.abs((start - end) / oneDay));
+
+    return diffInDays;
+  }
+
+  const currentDate = new Date().toLocaleDateString("en-US");
+
   return (
     <Content>
       <APContext.Provider
@@ -151,34 +167,18 @@ export default function Ap() {
                 <tbody className="text-slate-700">
                   <tr
                     className={`border border-slate-100 hover:bg-slate-100 text-xs text-center whitespace-nowrap h-9 ${
-                      selectedDevices.includes(ap.id) && "bg-orange-200 hover:bg-orange-300"
+                      selectedDevices.includes(ap.id) && "bg-orange-200 hover:bg-orange-400"
                     } ${ap.ocultar === "Sim" && !admin ? "hidden" : ""}`}>
-                    <td>
-                      <div className="flex items-center gap-2">
-                        <input
-                          disabled={selectedDevices.length >= 4 && !selectedDevices.includes(ap.id)}
-                          type="checkbox"
-                          className={`w-4 h-4 ml-1 text-[#00A335] focus:ring-green-500 rounded-sm ${
-                            selectedDevices.length >= 4 && !selectedDevices.includes(ap.id)
-                              ? "border-slate-100 bg-slate-100 cursor-not-allowed"
-                              : "border-slate-300"
-                          }`}
-                          onChange={() => handleProductSelect(ap.id)}
-                          checked={selectedDevices.includes(ap.id)}
-                        />
-                        <div className={`${ap.status === "Suporte" ? "bg-green-500" : "bg-red-500"} w-3 h-3 rounded-full`}></div>
-                      </div>
-                    </td>
-                    <td className="font-bold text-sm text-left text-black pl-2">
-                      <div className="flex items-center gap-1">
-                        <span className="underline cursor-pointer" onClick={() => handleSingleClick(ap)}>
-                          {ap.modelo}
-                        </span>
-                        <span>
-                          {ap.ocultar === "Sim" && <span className="uppercase border rounded border-black px-1 text-xs">Oculto</span>}
-                        </span>
-                      </div>
-                    </td>
+                    <TableStart
+                      handleProductSelect={() => handleProductSelect(ap.id)}
+                      selectedDevicesLength={selectedDevices.length}
+                      selectedDevicesIncludes={selectedDevices.includes(ap.id)}
+                      status={ap.status}
+                      modelo={ap.modelo}
+                      ocultar={ap.ocultar}
+                      calculateDateDifference={calculateDateDifference(ap.date, currentDate)}
+                      handleSingleClick={() => handleSingleClick(ap)}
+                    />
                     <td>
                       <span className={ModulacaoStyle(ap)}>{ap.modulação}</span>
                     </td>
@@ -191,7 +191,7 @@ export default function Ap() {
                     <td>{ap.tensao}</td>
                     <td>{ap.poe}</td>
                     <td>{ap.handover === "-" ? NaoPossui : Possui}</td>
-                    <td>{ap.inmaster === "-" ? NaoPossui : Possui}</td>
+                    <td>{ap.inmaster === "Não" ? NaoPossui : Possui}</td>
                     <td>{ap.garantia}</td>
                     <td>
                       <a target="_blank" rel="noopener noreferrer" href={ap.pagina}>
@@ -205,9 +205,9 @@ export default function Ap() {
                         <button className="bg-yellow-300 p-1 rounded text-white" onClick={() => openUpdateModal(ap)}>
                           <HiPencil />
                         </button>
-                        {/* <button className="bg-red-600 p-1 rounded text-white ml-2" onClick={() => deleteDevice(ap.id)}>
+                        <button className="bg-red-600 p-1 rounded text-white ml-2" onClick={() => deleteDevice(ap.id)}>
                           <HiXMark />
-                        </button> */}
+                        </button>
                       </td>
                     )}
                   </tr>
