@@ -12,6 +12,7 @@ import RadioModalCompare from "./RadioCompare";
 import {Badge} from "flowbite-react";
 import {HiPencil, HiXMark} from "react-icons/hi2";
 import DeviceImg from "../../assets/radio.png";
+import TableStart from "../../ui/TableStart";
 
 export const RadioContext = createContext();
 
@@ -21,7 +22,7 @@ export default function Radios() {
   const [queryRADIO, setQueryRADIO] = useState("");
   const [modalIsOpen, setIsOpen] = useState(false);
   const {fetchDevices, addDevices, deleteDevices, updateDevices} = CrudFirebase();
-  const {compareStatus, ModulacaoStyle} = UseAux();
+  const {compareStatus, ModulacaoStyle, calculateDateDifference, currentDate} = UseAux();
 
   /* Configs Modal */
   Modal.setAppElement("#root");
@@ -150,34 +151,18 @@ export default function Radios() {
                 <tbody className="text-slate-700">
                   <tr
                     className={`border border-slate-100 hover:bg-slate-100 text-xs text-center whitespace-nowrap h-9 ${
-                      selectedDevices.includes(radio.id) && "bg-orange-200 hover:bg-orange-300"
+                      selectedDevices.includes(radio.id) && "bg-orange-200"
                     } ${radio.ocultar === "Sim" && !admin ? "hidden" : ""}`}>
-                    <td>
-                      <div className="flex items-center gap-2">
-                        <input
-                          disabled={selectedDevices.length >= 4 && !selectedDevices.includes(radio.id)}
-                          type="checkbox"
-                          className={`w-4 h-4 ml-1 text-[#00A335] focus:ring-green-500 rounded-sm ${
-                            selectedDevices.length >= 4 && !selectedDevices.includes(radio.id)
-                              ? "border-slate-100 bg-slate-100 cursor-not-allowed"
-                              : "border-slate-300"
-                          }`}
-                          onChange={() => handleProductSelect(radio.id)}
-                          checked={selectedDevices.includes(radio.id)}
-                        />
-                        <div className={`${radio.status === "Suporte" ? "bg-green-500" : "bg-red-500"} w-3 h-3 rounded-full`}></div>
-                      </div>
-                    </td>
-                    <td className="font-bold text-sm text-left text-black">
-                      <div className="flex items-center gap-1">
-                        <span className="underline cursor-pointer" onClick={() => handleSingleClick(radio)}>
-                          {radio.modelo}
-                        </span>
-                        <span>
-                          {radio.ocultar === "Sim" && <span className="uppercase border rounded border-black px-1 text-xs">Oculto</span>}
-                        </span>
-                      </div>
-                    </td>
+                    <TableStart
+                      handleProductSelect={() => handleProductSelect(radio.id)}
+                      selectedDevicesLength={selectedDevices.length}
+                      selectedDevicesIncludes={selectedDevices.includes(radio.id)}
+                      status={radio.status}
+                      modelo={radio.modelo}
+                      ocultar={radio.ocultar}
+                      calculateDateDifference={calculateDateDifference(radio.date, currentDate)}
+                      handleSingleClick={() => handleSingleClick(radio)}
+                    />
                     <td>
                       <span className={ModulacaoStyle(radio)}>{radio.modulação}</span>
                     </td>

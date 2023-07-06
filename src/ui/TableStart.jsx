@@ -34,7 +34,7 @@ function TableStart({
             {modelo}
           </span>
           <span>{ocultar === "Sim" && <span className="uppercase border rounded border-black px-1 text-xs">Oculto</span>}</span>
-          {calculateDateDifference <= 30 && <span className="rounded bg-red-600 text-white px-2 text-xs">Novo</span>}
+          {calculateDateDifference <= 30 && <span className="rounded border border-green-500 text-green-500 px-2 text-xs">Novo</span>}
         </div>
       </td>
     </>

@@ -12,6 +12,7 @@ import {Conversor_Thead} from "../../TableHeads";
 import {AdminContext} from "../../App";
 import ConversorCompare from "./ConversorCompare";
 import DeviceImg from "../../assets/conversor.png";
+import TableStart from "../../ui/TableStart";
 
 export const ConversorContext = createContext();
 
@@ -21,7 +22,7 @@ export default function Conversor() {
   const [queryCONVERSOR, setQueryConversor] = useState("");
   const [modalIsOpen, setIsOpen] = useState(false);
   const {fetchDevices, addDevices, deleteDevices, updateDevices} = CrudFirebase();
-  const {compareStatus, ModulacaoStyle} = UseAux();
+  const {compareStatus, ModulacaoStyle, calculateDateDifference, currentDate} = UseAux();
 
   /* Configs Modal */
   Modal.setAppElement("#root");
@@ -153,34 +154,17 @@ export default function Conversor() {
                     className={`border border-slate-100 hover:bg-slate-100 text-xs text-center whitespace-nowrap h-9 ${
                       selectedDevices.includes(conversor.id) && "bg-orange-200 hover:bg-orange-300"
                     } ${conversor.ocultar === "Sim" && !admin ? "hidden" : ""}`}>
-                    <td>
-                      <div className="flex items-center gap-2">
-                        <input
-                          disabled={selectedDevices.length >= 4 && !selectedDevices.includes(conversor.id)}
-                          type="checkbox"
-                          className={`w-4 h-4 ml-1 text-[#00A335] focus:ring-green-500 rounded-sm ${
-                            selectedDevices.length >= 4 && !selectedDevices.includes(conversor.id)
-                              ? "border-slate-100 bg-slate-100 cursor-not-allowed"
-                              : "border-slate-300"
-                          }`}
-                          onChange={() => handleProductSelect(conversor.id)}
-                          checked={selectedDevices.includes(conversor.id)}
-                        />
-                        <div className={`${conversor.status === "Suporte" ? "bg-green-500" : "bg-red-500"} w-3 h-3 rounded-full`}></div>
-                      </div>
-                    </td>
-                    <td className="font-bold text-sm text-left text-black">
-                      <div className="flex items-center gap-1">
-                        <span className="underline cursor-pointer" onClick={() => handleSingleClick(conversor)}>
-                          {conversor.modelo}
-                        </span>
-                        <span>
-                          {conversor.ocultar === "Sim" && (
-                            <span className="uppercase border rounded border-black px-1 text-xs">Oculto</span>
-                          )}
-                        </span>
-                      </div>
-                    </td>
+                    <TableStart
+                      handleProductSelect={() => handleProductSelect(conversor.id)}
+                      selectedDevicesLength={selectedDevices.length}
+                      selectedDevicesIncludes={selectedDevices.includes(conversor.id)}
+                      status={conversor.status}
+                      modelo={conversor.modelo}
+                      ocultar={conversor.ocultar}
+                      calculateDateDifference={calculateDateDifference(conversor.date, currentDate)}
+                      handleSingleClick={() => handleSingleClick(conversor)}
+                    />
+
                     <td>
                       <span className={ModulacaoStyle(conversor)}>{conversor.modulação}</span>
                     </td>

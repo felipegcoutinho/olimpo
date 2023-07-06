@@ -37,7 +37,22 @@ function UseAux() {
     return `${modulacaoClass} px-2 py-1 rounded-md uppercase font-bold text-white`;
   }
 
-  return {compareStatus, NaoPossui, Possui, ModulacaoStyle};
+  function calculateDateDifference(startDate, endDate) {
+    const oneDay = 24 * 60 * 60 * 1000; // Number of milliseconds in a day
+
+    // Convert the date strings to Date objects
+    const start = new Date(startDate);
+    const end = new Date(endDate);
+
+    // Calculate the difference in days
+    const diffInDays = Math.round(Math.abs((start - end) / oneDay));
+
+    return diffInDays;
+  }
+
+  const currentDate = new Date().toLocaleDateString("en-US");
+
+  return {compareStatus, NaoPossui, Possui, ModulacaoStyle, calculateDateDifference, currentDate};
 }
 
 export default UseAux;

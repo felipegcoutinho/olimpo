@@ -22,7 +22,7 @@ export default function Ap() {
   const [queryAP, setQueryAP] = useState("");
   const [modalIsOpen, setIsOpen] = useState(false);
   const {fetchDevices, addDevices, deleteDevices, updateDevices} = CrudFirebase();
-  const {compareStatus, Possui, NaoPossui, ModulacaoStyle} = UseAux();
+  const {compareStatus, Possui, NaoPossui, ModulacaoStyle, calculateDateDifference, currentDate} = UseAux();
 
   /* Configs Modal */
   Modal.setAppElement("#root");
@@ -100,21 +100,6 @@ export default function Ap() {
     openModalCompare();
   };
 
-  function calculateDateDifference(startDate, endDate) {
-    const oneDay = 24 * 60 * 60 * 1000; // Number of milliseconds in a day
-
-    // Convert the date strings to Date objects
-    const start = new Date(startDate);
-    const end = new Date(endDate);
-
-    // Calculate the difference in days
-    const diffInDays = Math.round(Math.abs((start - end) / oneDay));
-
-    return diffInDays;
-  }
-
-  const currentDate = new Date().toLocaleDateString("en-US");
-
   return (
     <Content>
       <APContext.Provider
@@ -168,7 +153,7 @@ export default function Ap() {
                   <tr
                     className={`border border-slate-100 hover:bg-slate-100 text-xs text-center whitespace-nowrap h-9 ${
                       selectedDevices.includes(ap.id) && "bg-orange-200 hover:bg-orange-400"
-                    } ${ap.ocultar === "Sim" && !admin ? "hidden" : ""}`}>
+                    } ${ap.ocultar === "Sim" && !admin && "hidden"}`}>
                     <TableStart
                       handleProductSelect={() => handleProductSelect(ap.id)}
                       selectedDevicesLength={selectedDevices.length}

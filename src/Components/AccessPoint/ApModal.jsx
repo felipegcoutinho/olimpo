@@ -49,7 +49,6 @@ function AP_Modal() {
 
         <OlimpoTextInput
           label="Data de lançamento"
-          required
           type="date"
           placeholder="AP 1250 AC MAX"
           value={updatedProduct.date}

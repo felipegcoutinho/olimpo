@@ -2,7 +2,6 @@ import React from "react";
 import Modal from "react-modal";
 import InfoModal from "./InfoModal";
 import {motion, AnimatePresence} from "framer-motion";
-import {Button, Label, ToggleSwitch} from "flowbite-react";
 
 const modalVariants = {
   hidden: {
