@@ -151,7 +151,7 @@ export default function Ap() {
               return (
                 <tbody className="text-slate-700">
                   <tr
-                    className={`border border-slate-100 hover:bg-slate-100 text-xs text-center whitespace-nowrap h-9 ${
+                    className={`border border-slate-100 hover:bg-slate-100 text-xs whitespace-nowrap h-9 ${
                       selectedDevices.includes(roteador.id) && "bg-orange-200 hover:bg-orange-300"
                     } ${roteador.ocultar === "Sim" && !admin && "hidden"}`}>
                     <TableStart
@@ -169,17 +169,17 @@ export default function Ap() {
                     </td>
                     <td className="font-bold">{roteador.cobertura}</td>
                     <td>{roteador.raio}</td>
-                    <td>{roteador.usuarioMax}</td>
+                    <td className="font-bold">{roteador.usuarioMax}</td>
                     <td>{roteador.planoRecomendado}</td>
-                    <td>{roteador.qtdePortas}</td>
+                    <td className="font-bold">{roteador.qtdePortas}</td>
                     <td>{roteador.datarateMax2G}</td>
-                    <td>{roteador.datarateMax5G}</td>
+                    <td className="font-bold">{roteador.datarateMax5G === "-" ? NaoPossui : roteador.datarateMax5G}</td>
                     <td>{roteador.tensao}</td>
-                    <td>{roteador.repetidor}</td>
-                    <td>{roteador.roteador}</td>
-                    <td>{roteador.cliente}</td>
-                    <td>{roteador.ap}</td>
-                    <td>{roteador.garantia}</td>
+                    <td className="font-bold">{roteador.repetidor === "-" ? NaoPossui : roteador.repetidor}</td>
+                    <td>{roteador.roteador === "-" ? NaoPossui : roteador.roteador}</td>
+                    <td className="font-bold">{roteador.cliente === "-" ? NaoPossui : roteador.cliente}</td>
+                    <td>{roteador.ap === "-" ? NaoPossui : roteador.ap}</td>
+                    <td className="text-center font-bold">{roteador.garantia}</td>
                     <td>
                       <a target="_blank" rel="noopener noreferrer" href={roteador.pagina}>
                         <Badge size="xs" className="bg-green-500 text-white flex justify-center items-center">
@@ -188,7 +188,7 @@ export default function Ap() {
                       </a>
                     </td>
                     {admin && (
-                      <td>
+                      <td className="text-center">
                         <button className="bg-yellow-300 p-1 rounded text-white" onClick={() => openUpdateModal(roteador)}>
                           <HiPencil />
                         </button>

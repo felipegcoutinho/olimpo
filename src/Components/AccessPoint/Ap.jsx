@@ -125,7 +125,7 @@ export default function Ap() {
       <div className="overflow-x-auto">
         <OlimpoTable
           Hide={HideAP}
-          Device={"Access Points"}
+          Device={"WiFi Empresarial"}
           DeviceImg={DeviceImg}
           DeviceText={"Wi-Fi de alta performance para ambientes profissionais e diversas necessidades."}
           selectedDevices={selectedDevices.length >= 2 && selectedDevices}

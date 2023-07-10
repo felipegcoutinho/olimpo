@@ -69,37 +69,10 @@ export function Radio_Thead() {
   );
 }
 
-export function Roteador_Thead() {
-  const {admin} = useContext(AdminContext);
-  return (
-    <thead className="text-xs text-gray-800 uppercase whitespace-nowrap border-[#E6ECEE] bg-slate-200 text-center">
-      <tr>
-        <th className="py-4 px-16">Modelo</th>
-        <th>Interface</th>
-        <th className="px-4">Cobertura</th>
-        <th>Raio</th>
-        <th>Usuários Máx.</th>
-        <th>Plano Recomendado</th>
-        <th>Qtde Portas</th>
-        <th>Datarate Máx. 2G</th>
-        <th>Datarate Máx. 5G</th>
-        <th>Tensão</th>
-        <th>Repetidor</th>
-        <th>Roteador AP</th>
-        <th>Cliente Wireless</th>
-        <th>Modo AP</th>
-        <th>Garantia</th>
-        <th className="text-center">Página</th>
-        {admin && <th className="text-center">Ações</th>}
-      </tr>
-    </thead>
-  );
-}
-
 export function Switch_Thead() {
   const {admin} = useContext(AdminContext);
   return (
-    <thead className="text-xs text-gray-800 uppercase whitespace-nowrap border-b border-[#E6ECEE] bg-slate-200">
+    <thead className="text-xs text-gray-800 uppercase whitespace-nowrap  border-[#E6ECEE] bg-slate-200">
       <tr>
         <th className="py-4 px-4">Modelo</th>
         <th className="text-left">Interface</th>
@@ -114,10 +87,51 @@ export function Switch_Thead() {
         <th>Backplane</th>
         <th>Possui SFP</th>
         <th>PoE Extender</th>
-        <th>PoE/Porta</th>
-        <th>PoE/Total</th>
+        <th>PoE Por Porta</th>
+        <th>PoE Total</th>
         <th>Qos</th>
-        <th>Garantia</th>
+        <th className="text-center">Garantia</th>
+        <th className="text-center">Página</th>
+        {admin && <th className="text-center">Ações</th>}
+      </tr>
+    </thead>
+  );
+}
+
+export function Roteador_Thead() {
+  const {admin} = useContext(AdminContext);
+  return (
+    <thead className="text-xs text-gray-800 uppercase whitespace-nowrap border-[#E6ECEE] bg-slate-200">
+      <tr>
+        <th className="py-4 px-16">Modelo</th>
+        <th>Interface</th>
+        <th>Cobertura</th>
+        <th className="pr-6">Raio</th>
+        <th className="pr-6">
+          Usuários <br></br> Máx.
+        </th>
+        <th>
+          Plano <br></br> Recomendado
+        </th>
+        <th>Qtde Portas</th>
+        <th>
+          Datarate <br></br>Máx. 2G
+        </th>
+        <th>
+          Datarate <br></br>Máx. 5G
+        </th>
+        <th>Alimentação</th>
+        <th>
+          Modo <br></br> Repetidor
+        </th>
+        <th>
+          Modo <br></br> Roteador AP
+        </th>
+        <th>
+          Cliente <br></br> Wireless
+        </th>
+        <th>Modo AP</th>
+        <th className="text-center">Garantia</th>
         <th className="text-center">Página</th>
         {admin && <th className="text-center">Ações</th>}
       </tr>

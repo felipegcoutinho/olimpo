@@ -21,13 +21,13 @@ function UseAux() {
   }
 
   const NaoPossui = (
-    <div className="flex px-4 items-center">
+    <div className="flex items-center">
       <HiXCircle className="text-red-400 text-2xl" />
     </div>
   );
 
   const Possui = (
-    <div className="flex px-4 items-center">
+    <div className="flex items-center">
       <HiCheckCircle className="text-green-400 text-2xl" />
     </div>
   );

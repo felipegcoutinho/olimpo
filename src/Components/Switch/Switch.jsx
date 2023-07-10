@@ -169,17 +169,16 @@ export default function Switches() {
                       <span className={ModulacaoStyle(sw)}>{sw.modulação}</span>
                     </td>
                     <td className="font-bold">{sw.qtdePortas}</td>
-
                     <td>{sw.gerenciavel === "-" ? NaoPossui : Possui}</td>
                     <td>{sw.poe === "-" ? NaoPossui : Possui}</td>
-                    <td>{sw.pps}</td>
+                    <td className="font-bold">{sw.pps}</td>
                     <td>{sw.backplane}</td>
-                    <td>{sw.sfp === "-" ? NaoPossui : sw.sfp}</td>
+                    <td className="font-bold">{sw.sfp === "-" ? NaoPossui : sw.sfp}</td>
                     <td>{sw.poeExtender === "-" ? NaoPossui : Possui}</td>
-                    <td>{sw.poePorta === "-" ? NaoPossui : sw.poePorta}</td>
-                    <td>{sw.poeTotal === "-" ? NaoPossui : sw.poeTotalossui}</td>
+                    <td className="font-bold">{sw.poePorta === "-" ? NaoPossui : sw.poePorta}</td>
+                    <td>{sw.poeTotal === "-" ? NaoPossui : sw.poeTotal}</td>
                     <td>{sw.qos === "-" ? NaoPossui : Possui}</td>
-                    <td>{sw.garantia}</td>
+                    <td className="font-bold text-center">{sw.garantia}</td>
                     <td>
                       <a target="_blank" rel="noopener noreferrer" href={sw.pagina}>
                         <Badge size="xs" className="bg-green-500 text-white flex justify-center items-center">
@@ -188,7 +187,7 @@ export default function Switches() {
                       </a>
                     </td>
                     {admin && (
-                      <td>
+                      <td className="text-center">
                         <button className="bg-yellow-300 p-1 rounded text-white" onClick={() => openUpdateModal(sw)}>
                           <HiPencil />
                         </button>
