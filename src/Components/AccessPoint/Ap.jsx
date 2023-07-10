@@ -151,8 +151,8 @@ export default function Ap() {
               return (
                 <tbody className="text-slate-700">
                   <tr
-                    className={`border border-slate-100 hover:bg-slate-100 text-xs text-center whitespace-nowrap h-9 ${
-                      selectedDevices.includes(ap.id) && "bg-orange-200 hover:bg-orange-400"
+                    className={`border border-slate-100 hover:bg-slate-100 text-xs whitespace-nowrap h-9 ${
+                      selectedDevices.includes(ap.id) && "bg-orange-200"
                     } ${ap.ocultar === "Sim" && !admin && "hidden"}`}>
                     <TableStart
                       handleProductSelect={() => handleProductSelect(ap.id)}
@@ -169,15 +169,16 @@ export default function Ap() {
                     </td>
                     <td className="font-bold">{ap.cobertura}</td>
                     <td>{ap.raio}</td>
-                    <td>{ap.usuarioMax}</td>
+                    <td className="font-bold">{ap.usuarioMax}</td>
                     <td>{ap.throughputWireless24}</td>
-                    <td>{ap.throughputWireless50 === "-" ? NaoPossui : ap.throughputWireless50}</td>
+                    <td className="font-bold">{ap.throughputWireless50 === "-" ? NaoPossui : ap.throughputWireless50}</td>
+                    <td>{ap.padrao}</td>
                     <td>{ap.qtdePortas}</td>
-                    <td>{ap.tensao}</td>
+                    <td className="font-bold">{ap.tensao}</td>
                     <td>{ap.poe}</td>
-                    <td>{ap.handover === "-" ? NaoPossui : Possui}</td>
+                    <td className="font-bold">{ap.handover === "-" ? NaoPossui : Possui}</td>
                     <td>{ap.inmaster === "Não" ? NaoPossui : Possui}</td>
-                    <td>{ap.garantia}</td>
+                    <td className="font-bold">{ap.garantia}</td>
                     <td>
                       <a target="_blank" rel="noopener noreferrer" href={ap.pagina}>
                         <Badge size="xs" className="bg-green-500 text-white flex justify-center items-center">
@@ -186,7 +187,7 @@ export default function Ap() {
                       </a>
                     </td>
                     {admin && (
-                      <td>
+                      <td className="text-center">
                         <button className="bg-yellow-300 p-1 rounded text-white" onClick={() => openUpdateModal(ap)}>
                           <HiPencil />
                         </button>

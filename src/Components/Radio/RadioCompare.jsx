@@ -14,13 +14,12 @@ function RadioCompare() {
   };
 
   const propertyMappings = {
-    modulação: {label: "Modulação", group: "Informações Gerais"},
+    modulação: {label: "Interface", group: "Informações Gerais"},
     indicado: {label: "Indicado", group: "Informações Gerais"},
     ganho: {label: "Ganho", group: "Informações Gerais"},
-    potencia: {label: "Potencia", group: "Informações Gerais"},
+    potencia: {label: "Potência de Transmissão", group: "Informações Gerais"},
     pps: {label: "PPS", group: "Informações Gerais"},
-    throughputEfetivo: {label: "Throughput Efetivo", group: "Wireless"},
-    throughputNominal: {label: "Throughput Nominal", group: "Wireless"},
+    throughputEfetivoNominal: {label: "Throughput Efetivo e Nominal", group: "Wireless"},
     aberturaHorVer: {label: "Throughput 2.4GHz", group: "Wireless"},
     distancia: {label: "Distancia", group: "Wireless"},
     wireless: {label: "Wireless", group: "Wireless"},

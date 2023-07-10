@@ -4,30 +4,28 @@ import {AdminContext} from "./App";
 function TableHead() {
   const {admin} = useContext(AdminContext);
 
-  function APThead() {
-    return (
-      <thead className="text-xs text-slate-800 uppercase whitespace-nowrap border border-slate-100 bg-slate-200">
-        <tr>
-          <th className="py-6"></th>
-          <th className="px-4">Modelo</th>
-          <th className="px-2">Modulação</th>
-          <th className="px-2">Cobertura</th>
-          <th className="px-4">Raio</th>
-          <th className="px-2">Usuários Máx.</th>
-          <th className="px-4">Datarate Máx. 2G</th>
-          <th className="px-4">Datarate Máx. 5G</th>
-          <th className="px-4">Qtde Portas</th>
-          <th className="px-4">Tensão</th>
-          <th className="px-4">Tipo PoE</th>
-          <th className="px-4">Handover</th>
-          <th className="px-4">Inmaster</th>
-          <th className="px-4">Garantia</th>
-          <th className="px-4">Página</th>
-          {admin && <th className="px-4 py-2">Ações</th>}
-        </tr>
-      </thead>
-    );
-  }
+  const APThead = (
+    <thead className="text-xs text-slate-800 uppercase whitespace-nowrap border border-slate-100 bg-slate-200">
+      <tr>
+        <th className="py-6"></th>
+        <th className="px-4">Modelo</th>
+        <th className="px-2">Modulação</th>
+        <th className="px-2">Cobertura</th>
+        <th className="px-4">Raio</th>
+        <th className="px-2">Usuários Máx.</th>
+        <th className="px-4">Datarate Máx. 2G</th>
+        <th className="px-4">Datarate Máx. 5G</th>
+        <th className="px-4">Qtde Portas</th>
+        <th className="px-4">Tensão</th>
+        <th className="px-4">Tipo PoE</th>
+        <th className="px-4">Handover</th>
+        <th className="px-4">Inmaster</th>
+        <th className="px-4">Garantia</th>
+        <th className="px-4">Página</th>
+        {admin && <th className="px-4 py-2">Ações</th>}
+      </tr>
+    </thead>
+  );
 
   function Radio_Thead() {
     return (

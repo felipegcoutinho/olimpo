@@ -13,6 +13,7 @@ import {Switch_Thead} from "../../TableHeads";
 import Swal from "sweetalert2";
 import SwitchModalCompare from "./SwitchCompare";
 import DeviceImg from "../../assets/sw.png";
+import TableStart from "../../ui/TableStart";
 
 export const SwContext = createContext();
 
@@ -22,7 +23,7 @@ export default function Switches() {
   const [querySWITCH, setQuerySWITCH] = useState("");
   const [modalIsOpen, setIsOpen] = useState(false);
   const {fetchDevices, addDevices, deleteDevices, updateDevices} = CrudFirebase();
-  const {compareStatus, ModulacaoStyle} = UseAux();
+  const {compareStatus, ModulacaoStyle, Possui, NaoPossui, calculateDateDifference, currentDate} = UseAux();
 
   /* Configs Modal */
   Modal.setAppElement("#root");
@@ -151,48 +152,33 @@ export default function Switches() {
               return (
                 <tbody className="text-slate-700">
                   <tr
-                    className={`border border-slate-100 hover:bg-slate-100 text-xs text-center whitespace-nowrap h-9 ${
-                      selectedDevices.includes(sw.id) && "bg-orange-200 hover:bg-orange-300"
-                    } ${sw.ocultar === "Sim" && !admin ? "hidden" : ""}`}>
-                    <td>
-                      <div className="flex items-center gap-2">
-                        <input
-                          disabled={selectedDevices.length >= 4 && !selectedDevices.includes(sw.id)}
-                          type="checkbox"
-                          className={`w-4 h-4 ml-1 text-[#00A335] focus:ring-green-500 rounded-sm ${
-                            selectedDevices.length >= 4 && !selectedDevices.includes(sw.id)
-                              ? "border-slate-100 bg-slate-100 cursor-not-allowed"
-                              : "border-slate-300"
-                          }`}
-                          onChange={() => handleProductSelect(sw.id)}
-                          checked={selectedDevices.includes(sw.id)}
-                        />
-                        <div className={`${sw.status === "Suporte" ? "bg-green-500" : "bg-red-500"} w-3 h-3 rounded-full`}></div>
-                      </div>
-                    </td>
-                    <td className="font-bold text-sm text-left text-black">
-                      <div className="flex items-center gap-1">
-                        <span className="underline cursor-pointer" onClick={() => handleSingleClick(sw)}>
-                          {sw.modelo}
-                        </span>
-                        <span>
-                          {sw.ocultar === "Sim" && <span className="uppercase border rounded border-black px-1 text-xs">Oculto</span>}
-                        </span>
-                      </div>
-                    </td>
+                    className={`border border-slate-100 hover:bg-slate-100 text-xs whitespace-nowrap h-9 ${
+                      selectedDevices.includes(sw.id) && "bg-orange-200"
+                    } ${sw.ocultar === "Sim" && !admin && "hidden"}`}>
+                    <TableStart
+                      handleProductSelect={() => handleProductSelect(sw.id)}
+                      selectedDevicesLength={selectedDevices.length}
+                      selectedDevicesIncludes={selectedDevices.includes(sw.id)}
+                      status={sw.status}
+                      modelo={sw.modelo}
+                      ocultar={sw.ocultar}
+                      calculateDateDifference={calculateDateDifference(sw.date, currentDate)}
+                      handleSingleClick={() => handleSingleClick(sw)}
+                    />
                     <td className="text-left">
                       <span className={ModulacaoStyle(sw)}>{sw.modulação}</span>
                     </td>
                     <td className="font-bold">{sw.qtdePortas}</td>
-                    <td>{sw.gerenciavel}</td>
-                    <td className="">{sw.poe}</td>
+
+                    <td>{sw.gerenciavel === "-" ? NaoPossui : Possui}</td>
+                    <td>{sw.poe === "-" ? NaoPossui : Possui}</td>
                     <td>{sw.pps}</td>
                     <td>{sw.backplane}</td>
-                    <td>{sw.sfp}</td>
-                    <td>{sw.poeExtender}</td>
-                    <td>{sw.poePorta}</td>
-                    <td>{sw.poeTotal}</td>
-                    <td>{sw.qos}</td>
+                    <td>{sw.sfp === "-" ? NaoPossui : sw.sfp}</td>
+                    <td>{sw.poeExtender === "-" ? NaoPossui : Possui}</td>
+                    <td>{sw.poePorta === "-" ? NaoPossui : sw.poePorta}</td>
+                    <td>{sw.poeTotal === "-" ? NaoPossui : sw.poeTotalossui}</td>
+                    <td>{sw.qos === "-" ? NaoPossui : Possui}</td>
                     <td>{sw.garantia}</td>
                     <td>
                       <a target="_blank" rel="noopener noreferrer" href={sw.pagina}>

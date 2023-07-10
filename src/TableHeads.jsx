@@ -4,24 +4,30 @@ import {AdminContext} from "./App";
 export default function AP_Thead() {
   const {admin} = useContext(AdminContext);
   return (
-    <thead className="text-xs text-slate-800 uppercase whitespace-nowrap border border-slate-100 bg-slate-200 text-center">
+    <thead className="text-xs text-slate-800 uppercase whitespace-nowrap border border-slate-100 bg-slate-200">
       <tr>
-        <th className="py-6"></th>
-        <th className="px-4">Modelo</th>
-        <th className="px-2">Modulação</th>
-        <th className="px-2">Cobertura</th>
-        <th className="px-4">Raio</th>
-        <th className="px-2">Usuários Máx.</th>
-        <th className="px-4">Datarate Máx. 2G</th>
-        <th className="px-4">Datarate Máx. 5G</th>
-        <th className="px-4">Qtde Portas</th>
-        <th className="px-4">Tensão</th>
-        <th className="px-4">Tipo PoE</th>
-        <th className="px-4">Handover</th>
-        <th className="px-4">Inmaster</th>
-        <th className="px-4">Garantia</th>
-        <th className="px-4">Página</th>
-        {admin && <th className="px-4 py-2">Ações</th>}
+        <th className="py-4 text-center">Modelo</th>
+        <th>Interface</th>
+        <th>Cobertura</th>
+        <th className="pr-6">Raio</th>
+        <th>
+          Usuários <br></br> Máx.
+        </th>
+        <th className="pr-2">
+          Datarate <br></br>Máx. 2G
+        </th>
+        <th className="pr-2">
+          Datarate <br></br>Máx. 5G
+        </th>
+        <th>Padrão</th>
+        <th>Qtde Portas</th>
+        <th>Tensão</th>
+        <th>Tipo PoE</th>
+        <th>Handover</th>
+        <th>Inmaster</th>
+        <th>Garantia</th>
+        <th className="text-center">Página</th>
+        {admin && <th className="text-center">Ações</th>}
       </tr>
     </thead>
   );
@@ -30,24 +36,34 @@ export default function AP_Thead() {
 export function Radio_Thead() {
   const {admin} = useContext(AdminContext);
   return (
-    <thead className="text-xs text-gray-800 uppercase whitespace-nowrap border-b border-[#E6ECEE] bg-slate-200 text-center">
+    <thead className="text-xs text-gray-800 uppercase border-b border-[#E6ECEE] bg-slate-200">
       <tr>
-        <th className="py-6"></th>
-        <th className="px-4 text-left">Modelo</th>
+        <th className="py-4 px-4 text-center">Modelo</th>
+        <th>Interface</th>
         <th>Indicado</th>
-        <th>Modulação</th>
-        <th>Ganho</th>
-        <th>Potência de TX</th>
-        <th>Encam. de Pacotes</th>
-        <th>Throughput Efetivo</th>
-        <th>Throughput Nominal</th>
+        <th>
+          Ganho de <br></br> Antena
+        </th>
+        <th>
+          Potência <br></br>de Transmissão
+        </th>
+        <th>
+          Taxa de Encam. <br></br>de Pacotes
+        </th>
+        <th>
+          Throughput <br></br> Efetivo | Nominal
+        </th>
+
         <th>Abertura</th>
-        <th>Distância Máx</th>
+        <th>
+          Distância Máx. <br></br> Recomendada
+        </th>
         <th>Wireless</th>
         <th>Alimentação</th>
+
         <th>Garantia</th>
-        <th>Página</th>
-        {admin && <th className="px-4">Ações</th>}
+        <th className="text-center">Página</th>
+        {admin && <th className="text-center">Ações</th>}
       </tr>
     </thead>
   );
@@ -58,24 +74,23 @@ export function Roteador_Thead() {
   return (
     <thead className="text-xs text-gray-800 uppercase whitespace-nowrap border-[#E6ECEE] bg-slate-200 text-center">
       <tr>
-        <th className="py-6"></th>
-        <th className="text-left px-10">Modelo</th>
-        <th className="">Modulação</th>
+        <th className="py-4 px-16">Modelo</th>
+        <th>Interface</th>
         <th className="px-4">Cobertura</th>
-        <th className="">Raio</th>
-        <th className="">Usuários Máx.</th>
-        <th className="">Plano Recomendado</th>
-        <th className="">Qtde Portas</th>
-        <th className="">Datarate Máx. 2G</th>
-        <th className="">Datarate Máx. 5G</th>
-        <th className="">Tensão</th>
-        <th className="">Repetidor</th>
-        <th className="">Roteador AP</th>
-        <th className="">Cliente Wireless</th>
-        <th className="">Modo AP</th>
+        <th>Raio</th>
+        <th>Usuários Máx.</th>
+        <th>Plano Recomendado</th>
+        <th>Qtde Portas</th>
+        <th>Datarate Máx. 2G</th>
+        <th>Datarate Máx. 5G</th>
+        <th>Tensão</th>
+        <th>Repetidor</th>
+        <th>Roteador AP</th>
+        <th>Cliente Wireless</th>
+        <th>Modo AP</th>
         <th>Garantia</th>
-        <th>Página</th>
-        {admin && <th>Ações</th>}
+        <th className="text-center">Página</th>
+        {admin && <th className="text-center">Ações</th>}
       </tr>
     </thead>
   );
@@ -84,15 +99,18 @@ export function Roteador_Thead() {
 export function Switch_Thead() {
   const {admin} = useContext(AdminContext);
   return (
-    <thead className="text-xs text-gray-800 uppercase whitespace-nowrap border-b border-[#E6ECEE] bg-slate-200 text-center">
+    <thead className="text-xs text-gray-800 uppercase whitespace-nowrap border-b border-[#E6ECEE] bg-slate-200">
       <tr>
-        <th className="py-6"></th>
-        <th className="text-left px-4">Modelo</th>
-        <th className="text-left">Modulação</th>
+        <th className="py-4 px-4">Modelo</th>
+        <th className="text-left">Interface</th>
         <th>Qtde Portas</th>
         <th>Gerenciável</th>
-        <th>Alimenta via PoE</th>
-        <th>Encam. de Pacotes</th>
+        <th>
+          Alimenta via <br></br> PoE Ativo
+        </th>
+        <th>
+          Taxa de Encam. <br></br> de Pacotes
+        </th>
         <th>Backplane</th>
         <th>Possui SFP</th>
         <th>PoE Extender</th>
@@ -100,8 +118,8 @@ export function Switch_Thead() {
         <th>PoE/Total</th>
         <th>Qos</th>
         <th>Garantia</th>
-        <th>Página</th>
-        {admin && <th>Ações</th>}
+        <th className="text-center">Página</th>
+        {admin && <th className="text-center">Ações</th>}
       </tr>
     </thead>
   );
@@ -112,10 +130,8 @@ export function Conversor_Thead() {
   return (
     <thead className="text-xs text-gray-800 uppercase whitespace-nowrap border-[#E6ECEE] bg-slate-200 text-center">
       <tr>
-        <th className="py-6"></th>
-
-        <th className="px-4">Modelo</th>
-        <th>Modulação</th>
+        <th className="py-4 px-4">Modelo</th>
+        <th>Interface</th>
         <th>Conector</th>
         <th>WDM</th>
         <th>Distância</th>
@@ -125,8 +141,8 @@ export function Conversor_Thead() {
         <th>Comprimento Sinal RX</th>
         <th>Comprimento Sinal TX</th>
         <th>Garantia</th>
-        <th>Página</th>
-        {admin && <th>Ações</th>}
+        <th className="text-center">Página</th>
+        {admin && <th className="text-center">Ações</th>}
       </tr>
     </thead>
   );
@@ -137,10 +153,8 @@ export function Sfp_Thead() {
   return (
     <thead className="text-xs text-gray-800 uppercase whitespace-nowrap border-b border-[#E6ECEE] bg-slate-200">
       <tr>
-        <th className="py-6"></th>
-
-        <th className="px-4 py-3">Modelo</th>
-        <th>Modulação</th>
+        <th className="py-4 px-4">Modelo</th>
+        <th>Interface</th>
         <th>Conector</th>
         <th>Tipo do Módulo</th>
         <th>WDM</th>
@@ -151,8 +165,8 @@ export function Sfp_Thead() {
         <th>Comprimento Sinal RX</th>
         <th>Comprimento Sinal TX</th>
         <th>Garantia</th>
-        <th>Página</th>
-        {admin && <th>Ações</th>}
+        <th className="text-center">Página</th>
+        {admin && <th className="text-center">Ações</th>}
       </tr>
     </thead>
   );
@@ -163,10 +177,8 @@ export function Onu_Thead() {
   return (
     <thead className="text-xs text-gray-800 uppercase whitespace-nowrap border-b border-[#E6ECEE] bg-slate-200">
       <tr>
-        <th className="py-6"></th>
-
-        <th className="px-4 py-3">Modelo</th>
-        <th>Modulação</th>
+        <th className="py-4 px-4">Modelo</th>
+        <th>Interface</th>
         <th>Qtde FXS</th>
         <th>Qtde RJ45</th>
         <th>Tipo</th>
@@ -180,8 +192,8 @@ export function Onu_Thead() {
         <th>Customize</th>
         <th>Remotize</th>
         <th>Garantia</th>
-        <th>Página</th>
-        {admin && <th>Ações</th>}
+        <th className="text-center">Página</th>
+        {admin && <th className="text-center">Ações</th>}
       </tr>
     </thead>
   );

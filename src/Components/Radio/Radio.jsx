@@ -150,9 +150,9 @@ export default function Radios() {
               return (
                 <tbody className="text-slate-700">
                   <tr
-                    className={`border border-slate-100 hover:bg-slate-100 text-xs text-center whitespace-nowrap h-9 ${
+                    className={`border border-slate-100 hover:bg-slate-100 text-xs text-left whitespace-nowrap h-9 ${
                       selectedDevices.includes(radio.id) && "bg-orange-200"
-                    } ${radio.ocultar === "Sim" && !admin ? "hidden" : ""}`}>
+                    } ${radio.ocultar === "Sim" && !admin && "hidden"}`}>
                     <TableStart
                       handleProductSelect={() => handleProductSelect(radio.id)}
                       selectedDevicesLength={selectedDevices.length}
@@ -168,16 +168,15 @@ export default function Radios() {
                     </td>
                     <td className="font-bold">{radio.indicado}</td>
                     <td>{radio.ganho}</td>
-                    <td>{radio.potencia}</td>
+                    <td className="font-bold">{radio.potencia}</td>
                     <td>{radio.pps}</td>
-                    <td>{radio.throughputEfetivo}</td>
-                    <td>{radio.throughputNominal}</td>
+                    <td className="font-bold">{radio.throughputEfetivoNominal}</td>
                     <td>{radio.aberturaHorVer}</td>
-                    <td>{radio.distancia}</td>
+                    <td className="font-bold">{radio.distancia}</td>
                     <td>{radio.wireless}</td>
-                    <td>{radio.alimentaçao}</td>
+                    <td className="font-bold">{radio.alimentaçao}</td>
                     <td>{radio.garantia}</td>
-                    <td>
+                    <td className="font-bold">
                       <a target="_blank" rel="noopener noreferrer" href={radio.pagina}>
                         <Badge size="xs" className="bg-green-500 text-white flex justify-center items-center">
                           Página
@@ -185,7 +184,7 @@ export default function Radios() {
                       </a>
                     </td>
                     {admin && (
-                      <td>
+                      <td className="text-center">
                         <button className="bg-yellow-300 p-1 rounded text-white" onClick={() => openUpdateModal(radio)}>
                           <HiPencil />
                         </button>

@@ -12,6 +12,7 @@ import DeviceImg from "../../assets/sfp.png";
 import {AdminContext} from "../../App";
 import SfpModal from "./SfpModal";
 import SfpCompare from "./SfpCompare";
+import TableStart from "../../ui/TableStart";
 
 export const SfpContext = createContext();
 
@@ -21,7 +22,7 @@ export default function Sfp() {
   const [querySfp, setQuerySfp] = useState("");
   const [modalIsOpen, setIsOpen] = useState(false);
   const {fetchDevices, addDevices, deleteDevices, updateDevices} = CrudFirebase();
-  const {compareStatus, Possui, NaoPossui, ModulacaoStyle} = UseAux();
+  const {compareStatus, Possui, NaoPossui, ModulacaoStyle, calculateDateDifference, currentDate} = UseAux();
 
   /* Configs Modal */
   Modal.setAppElement("#root");
@@ -154,33 +155,17 @@ export default function Sfp() {
                   <tr
                     className={`border border-slate-100 hover:bg-slate-100 text-xs text-center whitespace-nowrap h-9 ${
                       selectedDevices.includes(sfp.id) && "bg-orange-200 hover:bg-orange-300"
-                    } ${sfp.ocultar === "Sim" && !admin ? "hidden" : ""}`}>
-                    <td>
-                      <div className="flex items-center gap-2">
-                        <input
-                          disabled={selectedDevices.length >= 4 && !selectedDevices.includes(sfp.id)}
-                          type="checkbox"
-                          className={`w-4 h-4 ml-1 text-[#00A335] focus:ring-green-500 rounded-sm ${
-                            selectedDevices.length >= 4 && !selectedDevices.includes(sfp.id)
-                              ? "border-slate-100 bg-slate-100 cursor-not-allowed"
-                              : "border-slate-300"
-                          }`}
-                          onChange={() => handleProductSelect(sfp.id)}
-                          checked={selectedDevices.includes(sfp.id)}
-                        />
-                        <div className={`${sfp.status === "Suporte" ? "bg-green-500" : "bg-red-500"} w-3 h-3 rounded-full`}></div>
-                      </div>
-                    </td>
-                    <td className="font-bold text-sm text-left text-black">
-                      <div className="flex items-center gap-1">
-                        <span className="underline cursor-pointer" onClick={() => handleSingleClick(sfp)}>
-                          {sfp.modelo}
-                        </span>
-                        <span>
-                          {sfp.ocultar === "Sim" && <span className="uppercase border rounded border-black px-1 text-xs">Oculto</span>}
-                        </span>
-                      </div>
-                    </td>
+                    } ${sfp.ocultar === "Sim" && !admin && "hidden"}`}>
+                    <TableStart
+                      handleProductSelect={() => handleProductSelect(sfp.id)}
+                      selectedDevicesLength={selectedDevices.length}
+                      selectedDevicesIncludes={selectedDevices.includes(sfp.id)}
+                      status={sfp.status}
+                      modelo={sfp.modelo}
+                      ocultar={sfp.ocultar}
+                      calculateDateDifference={calculateDateDifference(sfp.date, currentDate)}
+                      handleSingleClick={() => handleSingleClick(sfp)}
+                    />
                     <td className="text-left">
                       <span className={ModulacaoStyle(sfp)}>{sfp.modulação}</span>
                     </td>

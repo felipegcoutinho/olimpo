@@ -11,9 +11,9 @@ function TableStart({
   handleSingleClick,
 }) {
   return (
-    <>
-      <td>
-        <div className="flex items-center gap-2">
+    <td>
+      <div className="flex gap-2 items-center font-bold text-sm text-black">
+        <div>
           <input
             disabled={selectedDevicesLength >= 4 && !selectedDevicesIncludes}
             type="checkbox"
@@ -25,19 +25,17 @@ function TableStart({
             onChange={handleProductSelect}
             checked={selectedDevicesIncludes}
           />
-          <div className={`${status === "Suporte" ? "bg-green-500" : "bg-red-500"} w-3 h-3 rounded-full`}></div>
         </div>
-      </td>
-      <td className="font-bold text-sm text-left text-black">
-        <div className="flex items-center gap-1">
-          <span className="underline cursor-pointer" onClick={handleSingleClick}>
+        <div className={`${status === "Suporte" ? "bg-green-500" : "bg-red-500"} w-3.5 h-3.5 rounded-full`}></div>
+        <div className="flex items-center">
+          <p className="underline cursor-pointer" onClick={handleSingleClick}>
             {modelo}
-          </span>
-          <span>{ocultar === "Sim" && <span className="uppercase border rounded border-black px-1 text-xs">Oculto</span>}</span>
-          {calculateDateDifference <= 30 && <span className="rounded border border-green-500 text-green-500 px-2 text-xs">Novo</span>}
+          </p>
+          <p>{ocultar === "Sim" && <span className=" ml-1 uppercase border rounded border-black px-1 text-xs">Oculto</span>}</p>
+          {calculateDateDifference <= 30 && <p className="ml-1 uppercase rounded border border-red-500 text-red-500 px-1 text-xs">Novo</p>}
         </div>
-      </td>
-    </>
+      </div>
+    </td>
   );
 }
 

@@ -12,6 +12,7 @@ import UseAux from "../../Hooks/UseAux";
 import RoteadoresModal from "./RoteadorModal";
 import RoteadorCompare from "./RoteadorCompare";
 import DeviceImg from "../../assets/ho.png";
+import TableStart from "../../ui/TableStart";
 
 export const HOContext = createContext();
 
@@ -21,7 +22,7 @@ export default function Ap() {
   const [queryHO, setQueryHO] = useState("");
   const [modalIsOpen, setIsOpen] = useState(false);
   const {fetchDevices, addDevices, deleteDevices, updateDevices} = CrudFirebase();
-  const {compareStatus, Possui, NaoPossui, ModulacaoStyle} = UseAux();
+  const {compareStatus, Possui, NaoPossui, ModulacaoStyle, calculateDateDifference, currentDate} = UseAux();
 
   /* Configs Modal */
   Modal.setAppElement("#root");
@@ -152,33 +153,17 @@ export default function Ap() {
                   <tr
                     className={`border border-slate-100 hover:bg-slate-100 text-xs text-center whitespace-nowrap h-9 ${
                       selectedDevices.includes(roteador.id) && "bg-orange-200 hover:bg-orange-300"
-                    } ${roteador.ocultar === "Sim" && !admin ? "hidden" : ""}`}>
-                    <td>
-                      <div className="flex items-center gap-2">
-                        <input
-                          disabled={selectedDevices.length >= 4 && !selectedDevices.includes(roteador.id)}
-                          type="checkbox"
-                          className={`w-4 h-4 ml-1 text-[#00A335] focus:ring-green-500 rounded-sm ${
-                            selectedDevices.length >= 4 && !selectedDevices.includes(roteador.id)
-                              ? "border-slate-100 bg-slate-100 cursor-not-allowed"
-                              : "border-slate-300"
-                          }`}
-                          onChange={() => handleProductSelect(roteador.id)}
-                          checked={selectedDevices.includes(roteador.id)}
-                        />
-                        <div className={`${roteador.status === "Suporte" ? "bg-green-500" : "bg-red-500"} w-3 h-3 rounded-full`}></div>
-                      </div>
-                    </td>
-                    <td className="font-bold text-sm text-left text-black">
-                      <div className="flex items-center gap-1">
-                        <span className="underline cursor-pointer" onClick={() => handleSingleClick(roteador)}>
-                          {roteador.modelo}
-                        </span>
-                        <span>
-                          {roteador.ocultar === "Sim" && <span className="uppercase border rounded border-black px-1 text-xs">Oculto</span>}
-                        </span>
-                      </div>
-                    </td>
+                    } ${roteador.ocultar === "Sim" && !admin && "hidden"}`}>
+                    <TableStart
+                      handleProductSelect={() => handleProductSelect(roteador.id)}
+                      selectedDevicesLength={selectedDevices.length}
+                      selectedDevicesIncludes={selectedDevices.includes(roteador.id)}
+                      status={roteador.status}
+                      modelo={roteador.modelo}
+                      ocultar={roteador.ocultar}
+                      calculateDateDifference={calculateDateDifference(roteador.date, currentDate)}
+                      handleSingleClick={() => handleSingleClick(roteador)}
+                    />
                     <td className="text-left">
                       <span className={ModulacaoStyle(roteador)}>{roteador.modulação}</span>
                     </td>

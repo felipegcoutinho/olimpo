@@ -77,10 +77,10 @@ function RadioModal() {
             value={updatedProduct.ganho}
             onChange={(e) => setUpdatedProduct({...updatedProduct, ganho: e.target.value})}
           />
-          <label>Potência (Em dBm - mW)</label>
+          <label>Potência (Em dBm)</label>
           <OlimpoTextInput
             type="text"
-            placeholder="25 dBm - 316 mW"
+            placeholder="25 dBm"
             value={updatedProduct.potencia}
             onChange={(e) => setUpdatedProduct({...updatedProduct, potencia: e.target.value})}
           />
@@ -91,20 +91,14 @@ function RadioModal() {
             value={updatedProduct.pps}
             onChange={(e) => setUpdatedProduct({...updatedProduct, pps: e.target.value})}
           />
-          <label>Throughput Efetivo (Em Mbps)</label>
+          <label>Throughput Efetivo e Nominal (Em Mbps)</label>
           <OlimpoTextInput
             type="text"
             placeholder="160 Mbps"
-            value={updatedProduct.throughputEfetivo}
-            onChange={(e) => setUpdatedProduct({...updatedProduct, throughputEfetivo: e.target.value})}
+            value={updatedProduct.throughputEfetivoNominal}
+            onChange={(e) => setUpdatedProduct({...updatedProduct, throughputEfetivoNominal: e.target.value})}
           />
-          <label>Throughput Nominal (Em Mbps)</label>
-          <OlimpoTextInput
-            type="text"
-            placeholder="300 Mbps"
-            value={updatedProduct.throughputNominal}
-            onChange={(e) => setUpdatedProduct({...updatedProduct, throughputNominal: e.target.value})}
-          />
+
           <label>Abertura (Horinzontal | Vertical)</label>
           <OlimpoTextInput
             type="text"
