@@ -17,8 +17,8 @@ function OnuModal() {
       updatedProductModelo={updatedProduct.modelo}
       setor="Onts">
       <form onSubmit={updatedProduct.id ? updateDevice : addDevice}>
-        <label>Modelo</label>
         <OlimpoTextInput
+          label="Modelo"
           required
           type="text"
           placeholder="WiFiber 121 AC"
@@ -26,8 +26,8 @@ function OnuModal() {
           onChange={(e) => setUpdatedProduct({...updatedProduct, modelo: e.target.value})}
         />
 
-        <label>Status do suporte</label>
         <OlimpoSelect
+          label="Status do suporte"
           type="text"
           value={updatedProduct.status}
           onChange={(e) => setUpdatedProduct({...updatedProduct, status: e.target.value})}>
@@ -41,8 +41,8 @@ function OnuModal() {
           <option value="N/A">N/A</option>
         </OlimpoSelect>
 
-        <label>Modulação</label>
         <OlimpoSelect
+          label="Modulação"
           required
           type="text"
           value={updatedProduct.modulação}
@@ -58,8 +58,8 @@ function OnuModal() {
           <option value="N/A">N/A</option>
         </OlimpoSelect>
 
-        <label>Qtde FXS</label>
         <OlimpoSelect
+          label="Qtde FXS"
           required
           type="text"
           value={updatedProduct.fxs}
@@ -76,8 +76,8 @@ function OnuModal() {
           <option value="N/A">N/A</option>
         </OlimpoSelect>
 
-        <label>Qtde RJ45</label>
         <OlimpoSelect
+          label="Qtde RJ45"
           type="text"
           value={updatedProduct.qtdeportas}
           onChange={(e) => setUpdatedProduct({...updatedProduct, qtdeportas: e.target.value})}>
@@ -94,8 +94,8 @@ function OnuModal() {
           <option value="N/A">N/A</option>
         </OlimpoSelect>
 
-        <label>Tecnologia PON</label>
         <OlimpoSelect
+          label="Tecnologia PON"
           required
           type="text"
           value={updatedProduct.tipo}
@@ -110,56 +110,56 @@ function OnuModal() {
           <option value="N/A">N/A</option>
         </OlimpoSelect>
 
-        <label>Sensibilidade de sinal</label>
         <OlimpoTextInput
+          label="Sensibilidade de sinal"
           type="text"
           placeholder="-7 dBm | -27 dBm"
           value={updatedProduct.sensibilidade}
           onChange={(e) => setUpdatedProduct({...updatedProduct, sensibilidade: e.target.value})}
         />
 
-        <label>Área de cobertura</label>
         <OlimpoTextInput
+          label="Área de cobertura"
           type="text"
           placeholder="120 m²"
           value={updatedProduct.cobertura}
           onChange={(e) => setUpdatedProduct({...updatedProduct, cobertura: e.target.value})}
         />
 
-        <label>Usuários simultâneos</label>
         <OlimpoTextInput
+          label="Usuários simultâneos"
           type="text"
           placeholder="64 usuários"
           value={updatedProduct.clientesSimultaneos}
           onChange={(e) => setUpdatedProduct({...updatedProduct, clientesSimultaneos: e.target.value})}
         />
 
-        <label>Datarate Máx. 2G</label>
         <OlimpoTextInput
+          label="Datarate Máx. 2G"
           type="text"
           placeholder="300 Mbps"
           value={updatedProduct.transmissao2ghz}
           onChange={(e) => setUpdatedProduct({...updatedProduct, transmissao2ghz: e.target.value})}
         />
 
-        <label>Datarate Máx. 5G</label>
         <OlimpoTextInput
+          label="Datarate Máx. 5G"
           type="text"
           placeholder="867 Mbps"
           value={updatedProduct.transmissao5ghz}
           onChange={(e) => setUpdatedProduct({...updatedProduct, transmissao5ghz: e.target.value})}
         />
 
-        <label>Qtde SSIDs</label>
         <OlimpoTextInput
+          label="Qtde SSIDs"
           type="text"
           placeholder="8 SSIDs"
           value={updatedProduct.ssid}
           onChange={(e) => setUpdatedProduct({...updatedProduct, ssid: e.target.value})}
         />
 
-        <label>Compatível com TR069</label>
         <OlimpoSelect
+          label="Compatível com TR069"
           type="text"
           value={updatedProduct.tr069}
           onChange={(e) => setUpdatedProduct({...updatedProduct, tr069: e.target.value})}>
@@ -173,8 +173,8 @@ function OnuModal() {
           <option value="N/A">N/A</option>
         </OlimpoSelect>
 
-        <label>Compatível com Customize</label>
         <OlimpoSelect
+          label="Compatível com Customize"
           type="text"
           value={updatedProduct.customize}
           onChange={(e) => setUpdatedProduct({...updatedProduct, customize: e.target.value})}>
@@ -188,8 +188,8 @@ function OnuModal() {
           <option value="N/A">N/A</option>
         </OlimpoSelect>
 
-        <label>Compatível com Remotize</label>
         <OlimpoSelect
+          label="Compatível com Remotize"
           type="text"
           value={updatedProduct.remotize}
           onChange={(e) => setUpdatedProduct({...updatedProduct, remotize: e.target.value})}>
@@ -203,8 +203,8 @@ function OnuModal() {
           <option value="N/A">N/A</option>
         </OlimpoSelect>
 
-        <label>Tempo da Garantia</label>
         <OlimpoSelect
+          label="Tempo da Garantia"
           type="text"
           value={updatedProduct.garantia}
           onChange={(e) => setUpdatedProduct({...updatedProduct, garantia: e.target.value})}>
@@ -221,16 +221,16 @@ function OnuModal() {
           <option value="N/A">N/A</option>
         </OlimpoSelect>
 
-        <label>URL da Página</label>
         <OlimpoTextInput
+          label="URL da Página"
           type="text"
           placeholder="https://www.intelbras.com/pt-br/modem-optico-pon-lan-2p-fxs-1p-wi-fi-ac-wifiber-121-ac"
           value={updatedProduct.pagina}
           onChange={(e) => setUpdatedProduct({...updatedProduct, pagina: e.target.value})}
         />
 
-        <label>Ocultar</label>
         <OlimpoSelect
+          label="Desabilitar produto"
           required
           type="text"
           value={updatedProduct.ocultar}
@@ -248,7 +248,7 @@ function OnuModal() {
           <Button type="submit" color="success">
             {updatedProduct.id ? "Atualizar Equipamento" : "Adicionar Equipamento"}
           </Button>
-          <Button color="light" className="" onClick={closeModal}>
+          <Button color="light" onClick={closeModal}>
             Cancelar
           </Button>
         </div>

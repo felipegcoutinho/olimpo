@@ -17,8 +17,8 @@ function ConversorModal() {
       updatedProductModelo={updatedProduct.modelo}
       setor="Access Point">
       <form onSubmit={updatedProduct.id ? updateDevice : addDevice}>
-        <label>Modelo</label>
         <OlimpoTextInput
+          label="Modelo"
           required
           type="text"
           placeholder="KGSD 1120 A/B"
@@ -26,8 +26,8 @@ function ConversorModal() {
           onChange={(e) => setUpdatedProduct({...updatedProduct, modelo: e.target.value})}
         />
 
-        <label>Status do suporte</label>
         <OlimpoSelect
+          label="Status do suporte"
           type="text"
           value={updatedProduct.status}
           onChange={(e) => setUpdatedProduct({...updatedProduct, status: e.target.value})}>
@@ -41,8 +41,8 @@ function ConversorModal() {
           <option value="N/A">N/A</option>
         </OlimpoSelect>
 
-        <label>Modulação</label>
         <OlimpoSelect
+          label="Modulação"
           type="text"
           value={updatedProduct.modulação}
           onChange={(e) => setUpdatedProduct({...updatedProduct, modulação: e.target.value})}>
@@ -56,8 +56,8 @@ function ConversorModal() {
           <option value="N/A">N/A</option>
         </OlimpoSelect>
 
-        <label>Tipo do Conector</label>
         <OlimpoSelect
+          label="Tipo do Conector"
           type="text"
           value={updatedProduct.conector}
           onChange={(e) => setUpdatedProduct({...updatedProduct, conector: e.target.value})}>
@@ -66,13 +66,16 @@ function ConversorModal() {
               Escolha
             </option>
           )}
-          <option value="SC/UPC (Duplo)">SC/UPC (Duplo)</option>
-          <option value="SC/UPC (Única)">SC/UPC (Única)</option>
+          <option value="SC/UPC">SC/UPC</option>
+          <option value="SC/UPC">SC/UPC</option>
           <option value="N/A">N/A</option>
         </OlimpoSelect>
 
-        <label>WDM</label>
-        <OlimpoSelect type="text" value={updatedProduct.wdm} onChange={(e) => setUpdatedProduct({...updatedProduct, wdm: e.target.value})}>
+        <OlimpoSelect
+          label="WDM"
+          type="text"
+          value={updatedProduct.wdm}
+          onChange={(e) => setUpdatedProduct({...updatedProduct, wdm: e.target.value})}>
           {!updatedProduct.id && (
             <option selected disabled>
               Escolha
@@ -83,16 +86,16 @@ function ConversorModal() {
           <option value="N/A">N/A</option>
         </OlimpoSelect>
 
-        <label>Distância</label>
         <OlimpoTextInput
+          label="Distância"
           type="text"
           placeholder="20 Km"
           value={updatedProduct.distancia}
           onChange={(e) => setUpdatedProduct({...updatedProduct, distancia: e.target.value})}
         />
 
-        <label>Tipo da Fibra</label>
         <OlimpoSelect
+          label="Tipo da Fibra"
           type="text"
           value={updatedProduct.fibra}
           onChange={(e) => setUpdatedProduct({...updatedProduct, fibra: e.target.value})}>
@@ -106,40 +109,40 @@ function ConversorModal() {
           <option value="N/A">N/A</option>
         </OlimpoSelect>
 
-        <label>Potência de Sinal</label>
         <OlimpoTextInput
+          label="Potência de Sinal"
           type="text"
           placeholder="-3 dBm | -8 dBm"
           value={updatedProduct.potencia}
           onChange={(e) => setUpdatedProduct({...updatedProduct, potencia: e.target.value})}
         />
 
-        <label>Sensibilidade de Sinal</label>
         <OlimpoTextInput
+          label="Sensibilidade de Sinal"
           type="text"
           placeholder="-3 dBm | -23 dBm"
           value={updatedProduct.sensibilidade}
           onChange={(e) => setUpdatedProduct({...updatedProduct, sensibilidade: e.target.value})}
         />
 
-        <label>Comprimento Sinal RX</label>
         <OlimpoTextInput
+          label="Comprimento Sinal RX"
           type="text"
           placeholder="A - 1310 nm/ B – 1550 nm"
           value={updatedProduct.CompRX}
           onChange={(e) => setUpdatedProduct({...updatedProduct, CompRX: e.target.value})}
         />
 
-        <label>Comprimento Sinal TX</label>
         <OlimpoTextInput
+          label="Comprimento Sinal TX"
           type="text"
           placeholder="A - 1550 nm / B - 1310 nm"
           value={updatedProduct.CompTX}
           onChange={(e) => setUpdatedProduct({...updatedProduct, CompTX: e.target.value})}
         />
 
-        <label>Tempo da Garantia</label>
         <OlimpoSelect
+          label="Tempo da Garantia"
           type="text"
           value={updatedProduct.garantia}
           onChange={(e) => setUpdatedProduct({...updatedProduct, garantia: e.target.value})}>
@@ -156,16 +159,16 @@ function ConversorModal() {
           <option value="N/A">N/A</option>
         </OlimpoSelect>
 
-        <label>URL da Página</label>
         <OlimpoTextInput
+          label="URL da Página"
           type="text"
           placeholder="https://www.intelbras.com/pt-br/conversor-de-midia-gigabit-ethernet-monomodo-20-km-kgsd-1120-b"
           value={updatedProduct.pagina}
           onChange={(e) => setUpdatedProduct({...updatedProduct, pagina: e.target.value})}
         />
 
-        <label>Ocultar</label>
         <OlimpoSelect
+          label="Desabilitar Equipamento"
           required
           type="text"
           value={updatedProduct.ocultar}
@@ -183,7 +186,7 @@ function ConversorModal() {
           <Button type="submit" color="success">
             {updatedProduct.id ? "Atualizar Equipamento" : "Adicionar Equipamento"}
           </Button>
-          <Button color="light" className="" onClick={closeModal}>
+          <Button color="light" onClick={closeModal}>
             Cancelar
           </Button>
         </div>

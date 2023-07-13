@@ -1,18 +1,18 @@
-import React, {useEffect} from "react";
-import {useState, useContext, createContext} from "react";
-import Content from "../../ui/Content";
-import {Badge} from "flowbite-react";
-import {HiPencil, HiXMark} from "react-icons/hi2";
-import {Sfp_Thead} from "../../TableHeads";
-import OlimpoTable from "../../ui/Table";
-import CrudFirebase from "../../Database/crud";
-import Modal from "react-modal";
-import UseAux from "../../Hooks/UseAux";
-import DeviceImg from "../../assets/sfp.png";
 import {AdminContext} from "../../App";
-import SfpModal from "./SfpModal";
-import SfpCompare from "./SfpCompare";
+import CrudFirebase from "../../Database/crud";
+import UseAux from "../../Hooks/UseAux";
+import TableHead from "../../TableHead";
+import DeviceImg from "../../assets/sfp.png";
+import Content from "../../ui/Content";
+import {OlimpoPageBtn} from "../../ui/OlimpoTextInput";
+import OlimpoTable from "../../ui/Table";
 import TableStart from "../../ui/TableStart";
+import SfpCompare from "./SfpCompare";
+import SfpModal from "./SfpModal";
+import {Badge} from "flowbite-react";
+import {React, useState, useEffect, useContext, createContext} from "react";
+import {HiPencil, HiXMark} from "react-icons/hi2";
+import Modal from "react-modal";
 
 export const SfpContext = createContext();
 
@@ -23,6 +23,7 @@ export default function Sfp() {
   const [modalIsOpen, setIsOpen] = useState(false);
   const {fetchDevices, addDevices, deleteDevices, updateDevices} = CrudFirebase();
   const {compareStatus, Possui, NaoPossui, ModulacaoStyle, calculateDateDifference, currentDate} = UseAux();
+  const {Sfp_Header} = TableHead();
 
   /* Configs Modal */
   Modal.setAppElement("#root");
@@ -138,7 +139,7 @@ export default function Sfp() {
           handleSearchChange={handleSearchChangeSfp}
           admin={admin}
           createButton="Novo Módulo SFP"
-          thead={<Sfp_Thead />}
+          thead={Sfp_Header}
           tbody={sfp
             .sort(compareStatus)
             .filter((sfp) => {
@@ -151,53 +152,51 @@ export default function Sfp() {
             })
             .map((sfp) => {
               return (
-                <tbody className="text-slate-700">
-                  <tr
-                    className={`border border-slate-100 hover:bg-slate-100 text-xs text-center whitespace-nowrap h-9 ${
-                      selectedDevices.includes(sfp.id) && "bg-orange-200 hover:bg-orange-300"
-                    } ${sfp.ocultar === "Sim" && !admin && "hidden"}`}>
-                    <TableStart
-                      handleProductSelect={() => handleProductSelect(sfp.id)}
-                      selectedDevicesLength={selectedDevices.length}
-                      selectedDevicesIncludes={selectedDevices.includes(sfp.id)}
-                      status={sfp.status}
-                      modelo={sfp.modelo}
-                      ocultar={sfp.ocultar}
-                      calculateDateDifference={calculateDateDifference(sfp.date, currentDate)}
-                      handleSingleClick={() => handleSingleClick(sfp)}
-                    />
-                    <td className="text-left">
-                      <span className={ModulacaoStyle(sfp)}>{sfp.modulação}</span>
-                    </td>
-                    <td className="font-bold">{sfp.tipoConector}</td>
-                    <td>{sfp.modulo}</td>
-                    <td>{sfp.wdm}</td>
-                    <td>{sfp.distancia}</td>
-                    <td>{sfp.fibra}</td>
-                    <td>{sfp.potencia}</td>
-                    <td>{sfp.sensibilidade}</td>
-                    <td>{sfp.CompRX}</td>
-                    <td>{sfp.CompTX}</td>
-                    <td>{sfp.garantia}</td>
+                <TableStart
+                  handleProductSelect={() => handleProductSelect(sfp.id)}
+                  selectedDevicesLength={selectedDevices.length}
+                  selectedDevicesIncludes={selectedDevices.includes(sfp.id)}
+                  status={sfp.status}
+                  modelo={sfp.modelo}
+                  ocultar={sfp.ocultar}
+                  admin={admin}
+                  calculateDateDifference={calculateDateDifference(sfp.date, currentDate)}
+                  handleSingleClick={() => handleSingleClick(sfp)}>
+                  <td className="text-left px-2">
+                    <span className={ModulacaoStyle(sfp)}>{sfp.modulação}</span>
+                  </td>
+                  <td className="font-bold">{sfp.tipoConector}</td>
+                  <td className="px-4">{sfp.wdm === "-" ? NaoPossui : Possui}</td>
+                  <td>
+                    {sfp.modulo === "SFP" && <Badge className="bg-teal-100 text-teal-800 text-xs w-14 justify-center">SFP</Badge>}
+                    {sfp.modulo === "SFP+" && <Badge className="bg-blue-100 text-blue-800 text-xs w-14 justify-center">SFP+</Badge>}
+                    {sfp.modulo === "Epon" && <Badge className="bg-rose-100 text-rose-800 text-xs w-14 justify-center">EPON</Badge>}
+                    {sfp.modulo === "Gpon" && <Badge className="bg-fuchsia-100 text-fuchsia-800 text-xs w-14 justify-center">GPON</Badge>}
+                    {sfp.modulo === "XFP" && <Badge className="bg-orange-100 text-orange-800 text-xs w-14 justify-center">XFP</Badge>}
+                  </td>
+                  <td className="font-bold">{sfp.distancia}</td>
+                  <td>{sfp.fibra}</td>
+                  <td className="font-bold">{sfp.potencia}</td>
+                  <td>{sfp.sensibilidade}</td>
+                  <td className="font-bold">{sfp.CompRX}</td>
+                  <td>{sfp.CompTX}</td>
+                  <td className="font-bold">{sfp.garantia}</td>
+                  <td>
+                    <a target="_blank" rel="noopener noreferrer" href={sfp.pagina}>
+                      <OlimpoPageBtn />
+                    </a>
+                  </td>
+                  {admin && (
                     <td>
-                      <a target="_blank" rel="noopener noreferrer" href={sfp.pagina}>
-                        <Badge size="xs" className="bg-green-500 text-white flex justify-center items-center">
-                          Página
-                        </Badge>
-                      </a>
+                      <button className="bg-yellow-300 p-1 rounded text-white" onClick={() => openUpdateModal(sfp)}>
+                        <HiPencil />
+                      </button>
+                      <button className="bg-red-600 p-1 rounded text-white ml-2" onClick={() => deleteDevice(sfp.id)}>
+                        <HiXMark />
+                      </button>
                     </td>
-                    {admin && (
-                      <td>
-                        <button className="bg-yellow-300 p-1 rounded text-white" onClick={() => openUpdateModal(sfp)}>
-                          <HiPencil />
-                        </button>
-                        <button className="bg-red-600 p-1 rounded text-white ml-2" onClick={() => deleteDevice(sfp.id)}>
-                          <HiXMark />
-                        </button>
-                      </td>
-                    )}
-                  </tr>
-                </tbody>
+                  )}
+                </TableStart>
               );
             })}
         />

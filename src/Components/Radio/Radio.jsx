@@ -1,18 +1,17 @@
-import React from "react";
-import {useEffect, useState, useContext, createContext} from "react";
-import {Radio_Thead} from "/src/TableHeads";
-import RadioModal from "./RadioModal";
 import {AdminContext} from "../../App";
-import Modal from "react-modal";
-import Content from "../../ui/Content";
 import CrudFirebase from "../../Database/crud";
-import OlimpoTable from "../../ui/Table";
 import UseAux from "../../Hooks/UseAux";
-import RadioModalCompare from "./RadioCompare";
-import {Badge} from "flowbite-react";
-import {HiPencil, HiXMark} from "react-icons/hi2";
+import TableHead from "../../TableHead";
 import DeviceImg from "../../assets/radio.png";
+import Content from "../../ui/Content";
+import {OlimpoPageBtn} from "../../ui/OlimpoTextInput";
+import OlimpoTable from "../../ui/Table";
 import TableStart from "../../ui/TableStart";
+import RadioModalCompare from "./RadioCompare";
+import RadioModal from "./RadioModal";
+import {React, useState, useEffect, useContext, createContext} from "react";
+import {HiPencil, HiXMark} from "react-icons/hi2";
+import Modal from "react-modal";
 
 export const RadioContext = createContext();
 
@@ -23,6 +22,7 @@ export default function Radios() {
   const [modalIsOpen, setIsOpen] = useState(false);
   const {fetchDevices, addDevices, deleteDevices, updateDevices} = CrudFirebase();
   const {compareStatus, ModulacaoStyle, calculateDateDifference, currentDate} = UseAux();
+  const {Radio_Header} = TableHead();
 
   /* Configs Modal */
   Modal.setAppElement("#root");
@@ -136,7 +136,7 @@ export default function Radios() {
           handleSearchChange={handleSearchChangeRADIO}
           admin={admin}
           createButton="Novo Rádio Outdoor"
-          thead={<Radio_Thead />}
+          thead={Radio_Header}
           tbody={RadiosOutdoor.sort(compareStatus)
             .filter((radio) => {
               if (radio.modelo.toLowerCase().includes(queryRADIO.toLowerCase())) {
@@ -148,53 +148,45 @@ export default function Radios() {
             })
             .map((radio) => {
               return (
-                <tbody className="text-slate-700">
-                  <tr
-                    className={`border border-slate-100 hover:bg-slate-100 text-xs text-left whitespace-nowrap h-9 ${
-                      selectedDevices.includes(radio.id) && "bg-orange-200"
-                    } ${radio.ocultar === "Sim" && !admin && "hidden"}`}>
-                    <TableStart
-                      handleProductSelect={() => handleProductSelect(radio.id)}
-                      selectedDevicesLength={selectedDevices.length}
-                      selectedDevicesIncludes={selectedDevices.includes(radio.id)}
-                      status={radio.status}
-                      modelo={radio.modelo}
-                      ocultar={radio.ocultar}
-                      calculateDateDifference={calculateDateDifference(radio.date, currentDate)}
-                      handleSingleClick={() => handleSingleClick(radio)}
-                    />
-                    <td>
-                      <span className={ModulacaoStyle(radio)}>{radio.modulação}</span>
+                <TableStart
+                  handleProductSelect={() => handleProductSelect(radio.id)}
+                  selectedDevicesLength={selectedDevices.length}
+                  selectedDevicesIncludes={selectedDevices.includes(radio.id)}
+                  status={radio.status}
+                  modelo={radio.modelo}
+                  ocultar={radio.ocultar}
+                  admin={admin}
+                  calculateDateDifference={calculateDateDifference(radio.date, currentDate)}
+                  handleSingleClick={() => handleSingleClick(radio)}>
+                  <td>
+                    <span className={ModulacaoStyle(radio)}>{radio.modulação}</span>
+                  </td>
+                  <td className="font-bold">{radio.indicado}</td>
+                  <td>{radio.ganho}</td>
+                  <td className="font-bold">{radio.potencia}</td>
+                  <td>{radio.pps}</td>
+                  <td className="font-bold">{radio.throughputEfetivoNominal}</td>
+                  <td>{radio.aberturaHorVer}</td>
+                  <td className="font-bold">{radio.distancia}</td>
+                  <td>{radio.wireless}</td>
+                  <td className="font-bold">{radio.alimentaçao}</td>
+                  <td>{radio.garantia}</td>
+                  <td>
+                    <a target="_blank" rel="noopener noreferrer" href={radio.pagina}>
+                      <OlimpoPageBtn />
+                    </a>
+                  </td>
+                  {admin && (
+                    <td className="text-center">
+                      <button className="bg-yellow-300 p-1 rounded text-white" onClick={() => openUpdateModal(radio)}>
+                        <HiPencil />
+                      </button>
+                      <button className="bg-red-600 p-1 rounded text-white ml-2" onClick={() => deleteDevice(radio.id)}>
+                        <HiXMark />
+                      </button>
                     </td>
-                    <td className="font-bold">{radio.indicado}</td>
-                    <td>{radio.ganho}</td>
-                    <td className="font-bold">{radio.potencia}</td>
-                    <td>{radio.pps}</td>
-                    <td className="font-bold">{radio.throughputEfetivoNominal}</td>
-                    <td>{radio.aberturaHorVer}</td>
-                    <td className="font-bold">{radio.distancia}</td>
-                    <td>{radio.wireless}</td>
-                    <td className="font-bold">{radio.alimentaçao}</td>
-                    <td>{radio.garantia}</td>
-                    <td className="font-bold">
-                      <a target="_blank" rel="noopener noreferrer" href={radio.pagina}>
-                        <Badge size="xs" className="bg-green-500 text-white flex justify-center items-center">
-                          Página
-                        </Badge>
-                      </a>
-                    </td>
-                    {admin && (
-                      <td className="text-center">
-                        <button className="bg-yellow-300 p-1 rounded text-white" onClick={() => openUpdateModal(radio)}>
-                          <HiPencil />
-                        </button>
-                        <button className="bg-red-600 p-1 rounded text-white ml-2" onClick={() => deleteDevice(radio.id)}>
-                          <HiXMark />
-                        </button>
-                      </td>
-                    )}
-                  </tr>
-                </tbody>
+                  )}
+                </TableStart>
               );
             })}
         />

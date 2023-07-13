@@ -1,19 +1,17 @@
-import React, {useEffect} from "react";
-import {useState, useContext, createContext} from "react";
-import SwModal from "./SwModal";
 import {AdminContext} from "../../App";
-import Content from "../../ui/Content";
-import {Badge} from "flowbite-react";
-import {HiPencil, HiXMark} from "react-icons/hi2";
-import OlimpoTable from "../../ui/Table";
 import CrudFirebase from "../../Database/crud";
-import Modal from "react-modal";
 import UseAux from "../../Hooks/UseAux";
-import {Switch_Thead} from "../../TableHeads";
-import Swal from "sweetalert2";
-import SwitchModalCompare from "./SwitchCompare";
+import TableHead from "../../TableHead";
 import DeviceImg from "../../assets/sw.png";
+import Content from "../../ui/Content";
+import {OlimpoPageBtn} from "../../ui/OlimpoTextInput";
+import OlimpoTable from "../../ui/Table";
 import TableStart from "../../ui/TableStart";
+import SwModal from "./SwModal";
+import SwitchModalCompare from "./SwitchCompare";
+import {React, useState, useEffect, useContext, createContext} from "react";
+import {HiPencil, HiXMark} from "react-icons/hi2";
+import Modal from "react-modal";
 
 export const SwContext = createContext();
 
@@ -24,6 +22,7 @@ export default function Switches() {
   const [modalIsOpen, setIsOpen] = useState(false);
   const {fetchDevices, addDevices, deleteDevices, updateDevices} = CrudFirebase();
   const {compareStatus, ModulacaoStyle, Possui, NaoPossui, calculateDateDifference, currentDate} = UseAux();
+  const {Switch_Header} = TableHead();
 
   /* Configs Modal */
   Modal.setAppElement("#root");
@@ -137,7 +136,7 @@ export default function Switches() {
           handleSearchChange={handleSearchChangeSwitch}
           admin={admin}
           createButton="Novo Switch"
-          thead={<Switch_Thead />}
+          thead={Switch_Header}
           tbody={switches
             .sort(compareStatus)
             .filter((sw) => {
@@ -150,54 +149,46 @@ export default function Switches() {
             })
             .map((sw) => {
               return (
-                <tbody className="text-slate-700">
-                  <tr
-                    className={`border border-slate-100 hover:bg-slate-100 text-xs whitespace-nowrap h-9 ${
-                      selectedDevices.includes(sw.id) && "bg-orange-200"
-                    } ${sw.ocultar === "Sim" && !admin && "hidden"}`}>
-                    <TableStart
-                      handleProductSelect={() => handleProductSelect(sw.id)}
-                      selectedDevicesLength={selectedDevices.length}
-                      selectedDevicesIncludes={selectedDevices.includes(sw.id)}
-                      status={sw.status}
-                      modelo={sw.modelo}
-                      ocultar={sw.ocultar}
-                      calculateDateDifference={calculateDateDifference(sw.date, currentDate)}
-                      handleSingleClick={() => handleSingleClick(sw)}
-                    />
-                    <td className="text-left">
-                      <span className={ModulacaoStyle(sw)}>{sw.modulação}</span>
+                <TableStart
+                  handleProductSelect={() => handleProductSelect(sw.id)}
+                  selectedDevicesLength={selectedDevices.length}
+                  selectedDevicesIncludes={selectedDevices.includes(sw.id)}
+                  status={sw.status}
+                  modelo={sw.modelo}
+                  ocultar={sw.ocultar}
+                  admin={admin}
+                  calculateDateDifference={calculateDateDifference(sw.date, currentDate)}
+                  handleSingleClick={() => handleSingleClick(sw)}>
+                  <td className="text-left">
+                    <span className={ModulacaoStyle(sw)}>{sw.modulação}</span>
+                  </td>
+                  <td className="font-bold">{sw.qtdePortas}</td>
+                  <td>{sw.gerenciavel === "-" ? NaoPossui : Possui}</td>
+                  <td>{sw.poe === "-" ? NaoPossui : Possui}</td>
+                  <td className="font-bold">{sw.pps}</td>
+                  <td>{sw.backplane}</td>
+                  <td className="font-bold">{sw.sfp === "-" ? NaoPossui : sw.sfp}</td>
+                  <td>{sw.poeExtender === "-" ? NaoPossui : Possui}</td>
+                  <td className="font-bold">{sw.poePorta === "-" ? NaoPossui : sw.poePorta}</td>
+                  <td>{sw.poeTotal === "-" ? NaoPossui : sw.poeTotal}</td>
+                  <td>{sw.qos === "-" ? NaoPossui : Possui}</td>
+                  <td className="font-bold text-center">{sw.garantia}</td>
+                  <td>
+                    <a target="_blank" rel="noopener noreferrer" href={sw.pagina}>
+                      <OlimpoPageBtn />
+                    </a>
+                  </td>
+                  {admin && (
+                    <td className="text-center">
+                      <button className="bg-yellow-300 p-1 rounded text-white" onClick={() => openUpdateModal(sw)}>
+                        <HiPencil />
+                      </button>
+                      <button className="bg-red-600 p-1 rounded text-white ml-2" onClick={() => deleteDevice(sw.id)}>
+                        <HiXMark />
+                      </button>
                     </td>
-                    <td className="font-bold">{sw.qtdePortas}</td>
-                    <td>{sw.gerenciavel === "-" ? NaoPossui : Possui}</td>
-                    <td>{sw.poe === "-" ? NaoPossui : Possui}</td>
-                    <td className="font-bold">{sw.pps}</td>
-                    <td>{sw.backplane}</td>
-                    <td className="font-bold">{sw.sfp === "-" ? NaoPossui : sw.sfp}</td>
-                    <td>{sw.poeExtender === "-" ? NaoPossui : Possui}</td>
-                    <td className="font-bold">{sw.poePorta === "-" ? NaoPossui : sw.poePorta}</td>
-                    <td>{sw.poeTotal === "-" ? NaoPossui : sw.poeTotal}</td>
-                    <td>{sw.qos === "-" ? NaoPossui : Possui}</td>
-                    <td className="font-bold text-center">{sw.garantia}</td>
-                    <td>
-                      <a target="_blank" rel="noopener noreferrer" href={sw.pagina}>
-                        <Badge size="xs" className="bg-green-500 text-white flex justify-center items-center">
-                          Página
-                        </Badge>
-                      </a>
-                    </td>
-                    {admin && (
-                      <td className="text-center">
-                        <button className="bg-yellow-300 p-1 rounded text-white" onClick={() => openUpdateModal(sw)}>
-                          <HiPencil />
-                        </button>
-                        <button className="bg-red-600 p-1 rounded text-white ml-2" onClick={() => deleteDevice(sw.id)}>
-                          <HiXMark />
-                        </button>
-                      </td>
-                    )}
-                  </tr>
-                </tbody>
+                  )}
+                </TableStart>
               );
             })}
         />

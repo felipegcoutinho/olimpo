@@ -17,8 +17,8 @@ function SwModal() {
       updatedProductModelo={updatedProduct.modelo}
       setor="Switch">
       <form onSubmit={updatedProduct.id ? updateDevice : addDevice}>
-        <label>Modelo</label>
         <OlimpoTextInput
+          label="Modelo"
           required
           type="text"
           placeholder="SG 1002 MR L2+"
@@ -26,8 +26,8 @@ function SwModal() {
           onChange={(e) => setUpdatedProduct({...updatedProduct, modelo: e.target.value})}
         />
 
-        <label>Status do suporte</label>
         <OlimpoSelect
+          label="Status do suporte"
           type="text"
           placeholder="Status do suporte"
           value={updatedProduct.status}
@@ -42,8 +42,8 @@ function SwModal() {
           <option value="N/A">N/A</option>
         </OlimpoSelect>
 
-        <label>Modulação</label>
         <OlimpoSelect
+          label="Modulação"
           type="text"
           value={updatedProduct.modulação}
           onChange={(e) => setUpdatedProduct({...updatedProduct, modulação: e.target.value})}>
@@ -58,16 +58,8 @@ function SwModal() {
           <option value="N/A">N/A</option>
         </OlimpoSelect>
 
-        <label>Qtde Portas RJ45</label>
-        <OlimpoTextInput
-          type="text"
-          placeholder="8 Portas"
-          value={updatedProduct.qtdePortas}
-          onChange={(e) => setUpdatedProduct({...updatedProduct, qtdePortas: e.target.value})}
-        />
-
-        <label>Gerenciável</label>
         <OlimpoSelect
+          label="Gerenciável"
           type="text"
           value={updatedProduct.gerenciavel}
           onChange={(e) => setUpdatedProduct({...updatedProduct, gerenciavel: e.target.value})}>
@@ -81,8 +73,11 @@ function SwModal() {
           <option value="N/A">N/A</option>
         </OlimpoSelect>
 
-        <label>Alimenta via PoE</label>
-        <OlimpoSelect type="text" value={updatedProduct.poe} onChange={(e) => setUpdatedProduct({...updatedProduct, poe: e.target.value})}>
+        <OlimpoSelect
+          label="Alimenta via PoE"
+          type="text"
+          value={updatedProduct.poe}
+          onChange={(e) => setUpdatedProduct({...updatedProduct, poe: e.target.value})}>
           {!updatedProduct.id && (
             <option selected disabled>
               Escolha
@@ -94,32 +89,40 @@ function SwModal() {
           <option value="N/A">N/A</option>
         </OlimpoSelect>
 
-        <label>Encaminhamento de Pacotes</label>
         <OlimpoTextInput
+          label="Encaminhamento de Pacotes"
           type="text"
           placeholder="15 Mpps"
           value={updatedProduct.pps}
           onChange={(e) => setUpdatedProduct({...updatedProduct, pps: e.target.value})}
         />
 
-        <label>Backplane</label>
         <OlimpoTextInput
+          label="Backplane"
           type="text"
           placeholder="20 Gbps"
           value={updatedProduct.backplane}
           onChange={(e) => setUpdatedProduct({...updatedProduct, backplane: e.target.value})}
         />
 
-        <label>Qtde Interface SFP</label>
         <OlimpoTextInput
+          label="Qtde Portas RJ45"
+          type="text"
+          placeholder="8 Portas"
+          value={updatedProduct.qtdePortas}
+          onChange={(e) => setUpdatedProduct({...updatedProduct, qtdePortas: e.target.value})}
+        />
+
+        <OlimpoTextInput
+          label="Qtde Interface SFP"
           type="text"
           placeholder="2 Independentes"
           value={updatedProduct.sfp}
           onChange={(e) => setUpdatedProduct({...updatedProduct, sfp: e.target.value})}
         />
 
-        <label>PoE Extender</label>
         <OlimpoSelect
+          label="PoE Extender"
           type="text"
           value={updatedProduct.poeExtender}
           onChange={(e) => setUpdatedProduct({...updatedProduct, poeExtender: e.target.value})}>
@@ -133,24 +136,27 @@ function SwModal() {
           <option value="N/A">N/A</option>
         </OlimpoSelect>
 
-        <label>PoE p/ Porta</label>
         <OlimpoTextInput
+          label="PoE p/ Porta"
           type="text"
           placeholder="30 W"
           value={updatedProduct.poePorta}
           onChange={(e) => setUpdatedProduct({...updatedProduct, poePorta: e.target.value})}
         />
 
-        <label>PoE Total</label>
         <OlimpoTextInput
+          label="PoE Total"
           type="text"
           placeholder="97 W"
           value={updatedProduct.poeTotal}
           onChange={(e) => setUpdatedProduct({...updatedProduct, poeTotal: e.target.value})}
         />
 
-        <label>Qos</label>
-        <OlimpoSelect type="text" value={updatedProduct.qos} onChange={(e) => setUpdatedProduct({...updatedProduct, qos: e.target.value})}>
+        <OlimpoSelect
+          label="QoS"
+          type="text"
+          value={updatedProduct.qos}
+          onChange={(e) => setUpdatedProduct({...updatedProduct, qos: e.target.value})}>
           {!updatedProduct.id && (
             <option selected disabled>
               Escolha
@@ -161,8 +167,8 @@ function SwModal() {
           <option value="N/A">N/A</option>
         </OlimpoSelect>
 
-        <label>Tempo da Garantia</label>
         <OlimpoSelect
+          label="Tempo da Garantia"
           type="text"
           value={updatedProduct.garantia}
           onChange={(e) => setUpdatedProduct({...updatedProduct, garantia: e.target.value})}>
@@ -179,16 +185,16 @@ function SwModal() {
           <option value="N/A">N/A</option>
         </OlimpoSelect>
 
-        <label>URL da Página</label>
         <OlimpoTextInput
+          label="URL da Página"
           type="text"
           placeholder="https://www.intelbras.com/pt-br/switch-gerenciavel-com-8-portas-giga-2-portas-mini-gbic-sg-1002-mr-l2"
           value={updatedProduct.pagina}
           onChange={(e) => setUpdatedProduct({...updatedProduct, pagina: e.target.value})}
         />
 
-        <label>Ocultar</label>
         <OlimpoSelect
+          label="Desabilitar equipamento"
           required
           type="text"
           value={updatedProduct.ocultar}
@@ -201,11 +207,12 @@ function SwModal() {
           <option value="Não">Não</option>
           <option value="Sim">Sim</option>
         </OlimpoSelect>
+
         <div className="bg-white bottom-0 flex flex-col sticky gap-1 mt-1">
           <Button type="submit" color="success">
             {updatedProduct.id ? "Atualizar Equipamento" : "Adicionar Equipamento"}
           </Button>
-          <Button color="light" className="" onClick={closeModal}>
+          <Button color="light" onClick={closeModal}>
             Cancelar
           </Button>
         </div>

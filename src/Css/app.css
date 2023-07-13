@@ -1,0 +1,27 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+* {
+  @apply box-border m-0 p-0;
+}
+
+html {
+  @apply scroll-smooth;
+}
+
+body {
+  font-family: "Fira Sans", segoe UI, arial;
+  @apply bg-neutral-200 dark:bg-[#0a1213];
+}
+
+.btnCategory {
+  @apply bg-green-900 border-none rounded-md shadow-md text-white cursor-pointer text-base font-semibold h-20 w-40 m-3;
+}
+
+tbody:nth-child(odd) {
+  @apply bg-slate-50 dark:bg-[#0F1D1E];
+}
+tbody:nth-child(even) {
+  @apply bg-slate-100 dark:bg-[#0a1415];
+}

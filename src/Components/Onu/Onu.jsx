@@ -1,18 +1,17 @@
-import React, {useEffect} from "react";
-import {useState, useContext, createContext} from "react";
 import {AdminContext} from "../../App";
-import Content from "../../ui/Content";
-import {Badge} from "flowbite-react";
-import {HiPencil, HiXMark} from "react-icons/hi2";
-import {Onu_Thead} from "../../TableHeads";
-import OlimpoTable from "../../ui/Table";
 import CrudFirebase from "../../Database/crud";
-import Modal from "react-modal";
 import UseAux from "../../Hooks/UseAux";
+import TableHead from "../../TableHead";
 import DeviceImg from "../../assets/ont.png";
-import OnuModal from "./OnuModal";
-import OnuCompare from "./OnuCompare";
+import Content from "../../ui/Content";
+import {OlimpoPageBtn} from "../../ui/OlimpoTextInput";
+import OlimpoTable from "../../ui/Table";
 import TableStart from "../../ui/TableStart";
+import OnuCompare from "./OnuCompare";
+import OnuModal from "./OnuModal";
+import {React, useState, useEffect, useContext, createContext} from "react";
+import {HiPencil, HiXMark} from "react-icons/hi2";
+import Modal from "react-modal";
 
 export const OnuContext = createContext();
 
@@ -23,6 +22,7 @@ export default function onu() {
   const [modalIsOpen, setIsOpen] = useState(false);
   const {fetchDevices, addDevices, deleteDevices, updateDevices} = CrudFirebase();
   const {compareStatus, Possui, NaoPossui, ModulacaoStyle, calculateDateDifference, currentDate} = UseAux();
+  const {Onu_Header} = TableHead();
 
   /* Configs Modal */
   Modal.setAppElement("#root");
@@ -136,7 +136,7 @@ export default function onu() {
           handleSearchChange={handleSearchChangeOnu}
           admin={admin}
           createButton="Nova Onu/Ont"
-          thead={<Onu_Thead />}
+          thead={Onu_Header}
           tbody={onu
             .sort(compareStatus)
             .filter((onu) => {
@@ -149,56 +149,48 @@ export default function onu() {
             })
             .map((onu) => {
               return (
-                <tbody className="text-slate-700">
-                  <tr
-                    className={`border border-slate-100 hover:bg-slate-100 text-xs text-center whitespace-nowrap h-9 ${
-                      selectedDevices.includes(onu.id) && "bg-orange-200 hover:bg-orange-300"
-                    } ${onu.ocultar === "Sim" && !admin && "hidden"}`}>
-                    <TableStart
-                      handleProductSelect={() => handleProductSelect(onu.id)}
-                      selectedDevicesLength={selectedDevices.length}
-                      selectedDevicesIncludes={selectedDevices.includes(onu.id)}
-                      status={onu.status}
-                      modelo={onu.modelo}
-                      ocultar={onu.ocultar}
-                      calculateDateDifference={calculateDateDifference(onu.date, currentDate)}
-                      handleSingleClick={() => handleSingleClick(onu)}
-                    />
-                    <td className="text-left">
-                      <span className={ModulacaoStyle(onu)}>{onu.modulação}</span>
+                <TableStart
+                  handleProductSelect={() => handleProductSelect(onu.id)}
+                  selectedDevicesLength={selectedDevices.length}
+                  selectedDevicesIncludes={selectedDevices.includes(onu.id)}
+                  status={onu.status}
+                  modelo={onu.modelo}
+                  ocultar={onu.ocultar}
+                  admin={admin}
+                  calculateDateDifference={calculateDateDifference(onu.date, currentDate)}
+                  handleSingleClick={() => handleSingleClick(onu)}>
+                  <td className="text-left">
+                    <span className={ModulacaoStyle(onu)}>{onu.modulação}</span>
+                  </td>
+                  <td>{onu.fxs === "-" ? NaoPossui : onu.fxs}</td>
+                  <td>{onu.qtdeportas}</td>
+                  <td>{onu.tipo}</td>
+                  <td>{onu.sensibilidade}</td>
+                  <td>{onu.cobertura === "-" ? NaoPossui : onu.cobertura}</td>
+                  <td>{onu.clientesSimultaneos === "-" ? NaoPossui : onu.clientesSimultaneos}</td>
+                  <td>{onu.transmissao2ghz === "-" ? NaoPossui : onu.transmissao2ghz}</td>
+                  <td>{onu.transmissao5ghz === "-" ? NaoPossui : onu.transmissao5ghz}</td>
+                  <td className="px-4">{onu.ssid === "-" ? NaoPossui : onu.ssid}</td>
+                  <td className="px-4">{onu.tr069 === "-" ? NaoPossui : Possui}</td>
+                  <td>{onu.customize === "-" ? NaoPossui : Possui}</td>
+                  <td>{onu.remotize === "-" ? NaoPossui : Possui}</td>
+                  <td>{onu.garantia}</td>
+                  <td>
+                    <a target="_blank" rel="noopener noreferrer" href={onu.pagina}>
+                      <OlimpoPageBtn />
+                    </a>
+                  </td>
+                  {admin && (
+                    <td className="text-center">
+                      <button className="bg-yellow-300 p-1 rounded text-white" onClick={() => openUpdateModal(onu)}>
+                        <HiPencil />
+                      </button>
+                      <button className="bg-red-600 p-1 rounded text-white ml-2" onClick={() => deleteDevice(onu.id)}>
+                        <HiXMark />
+                      </button>
                     </td>
-                    <td className="font-bold">{onu.fxs}</td>
-                    <td>{onu.qtdeportas}</td>
-                    <td>{onu.tipo}</td>
-                    <td>{onu.sensibilidade}</td>
-                    <td>{onu.cobertura}</td>
-                    <td>{onu.clientesSimultaneos === "-" ? NaoPossui : onu.throughputWireless50}</td>
-                    <td>{onu.transmissao2ghz}</td>
-                    <td>{onu.transmissao5ghz}</td>
-                    <td>{onu.ssid}</td>
-                    <td>{onu.tr069}</td>
-                    <td>{onu.customize}</td>
-                    <td>{onu.remotize}</td>
-                    <td>{onu.garantia}</td>
-                    <td>
-                      <a target="_blank" rel="noopener noreferrer" href={onu.pagina}>
-                        <Badge size="xs" className="bg-green-500 text-white flex justify-center items-center">
-                          Página
-                        </Badge>
-                      </a>
-                    </td>
-                    {admin && (
-                      <td>
-                        <button className="bg-yellow-300 p-1 rounded text-white" onClick={() => openUpdateModal(onu)}>
-                          <HiPencil />
-                        </button>
-                        <button className="bg-red-600 p-1 rounded text-white ml-2" onClick={() => deleteDevice(onu.id)}>
-                          <HiXMark />
-                        </button>
-                      </td>
-                    )}
-                  </tr>
-                </tbody>
+                  )}
+                </TableStart>
               );
             })}
         />

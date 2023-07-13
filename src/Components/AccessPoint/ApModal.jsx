@@ -121,9 +121,9 @@ function AP_Modal() {
               Escolha
             </option>
           )}
-          <option value="802.11 b/g/n">b/g/n</option>
-          <option value="802.11 b/g/n/ac">b/g/n/ac</option>
-          <option value="802.11 b/g/n/ac/ax">b/g/n/ac/ax</option>
+          <option value="11b/g/n">b/g/n</option>
+          <option value="11b/g/n/ac">b/g/n/ac</option>
+          <option value="11b/g/n/ac/ax">b/g/n/ac/ax</option>
           <option value="N/A">N/A</option>
         </OlimpoSelect>
 
@@ -233,7 +233,7 @@ function AP_Modal() {
         />
 
         <OlimpoSelect
-          label="Desativar equipamento"
+          label="Desabilitar equipamento"
           required
           type="text"
           value={updatedProduct.ocultar}
@@ -247,18 +247,11 @@ function AP_Modal() {
           <option value="Sim">Sim</option>
         </OlimpoSelect>
 
-        <OlimpoTextInput
-          className="hidden"
-          type="text"
-          value={updatedProduct.date}
-          onChange={(e) => setUpdatedProduct({...updatedProduct, date: currentDate})}
-        />
-
         <div className="bg-white bottom-0 flex flex-col sticky gap-1 mt-1">
           <Button type="submit" color="success">
             {updatedProduct.id ? "Atualizar Equipamento" : "Adicionar Equipamento"}
           </Button>
-          <Button color="light" className="" onClick={closeModal}>
+          <Button color="light" onClick={closeModal}>
             Cancelar
           </Button>
         </div>

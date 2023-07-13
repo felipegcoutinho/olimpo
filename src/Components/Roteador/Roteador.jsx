@@ -1,18 +1,17 @@
-import React, {useEffect} from "react";
-import {useState, useContext, createContext} from "react";
 import {AdminContext} from "../../App";
-import Content from "../../ui/Content";
-import {Badge} from "flowbite-react";
-import {HiPencil, HiXMark} from "react-icons/hi2";
-import AP_Thead, {Roteador_Thead} from "../../TableHeads";
-import OlimpoTable from "../../ui/Table";
 import CrudFirebase from "../../Database/crud";
-import Modal from "react-modal";
 import UseAux from "../../Hooks/UseAux";
-import RoteadoresModal from "./RoteadorModal";
-import RoteadorCompare from "./RoteadorCompare";
+import TableHead from "../../TableHead";
 import DeviceImg from "../../assets/ho.png";
+import Content from "../../ui/Content";
+import {OlimpoPageBtn} from "../../ui/OlimpoTextInput";
+import OlimpoTable from "../../ui/Table";
 import TableStart from "../../ui/TableStart";
+import RoteadorCompare from "./RoteadorCompare";
+import RoteadoresModal from "./RoteadorModal";
+import {React, useState, useEffect, useContext, createContext} from "react";
+import {HiPencil, HiXMark} from "react-icons/hi2";
+import Modal from "react-modal";
 
 export const HOContext = createContext();
 
@@ -23,6 +22,7 @@ export default function Ap() {
   const [modalIsOpen, setIsOpen] = useState(false);
   const {fetchDevices, addDevices, deleteDevices, updateDevices} = CrudFirebase();
   const {compareStatus, Possui, NaoPossui, ModulacaoStyle, calculateDateDifference, currentDate} = UseAux();
+  const {Roteador_Header} = TableHead();
 
   /* Configs Modal */
   Modal.setAppElement("#root");
@@ -136,7 +136,7 @@ export default function Ap() {
           handleSearchChange={handleSearchChangeHO}
           admin={admin}
           createButton="Novo Roteador"
-          thead={<Roteador_Thead />}
+          thead={Roteador_Header}
           tbody={roteadorHO
             .sort(compareStatus)
             .filter((roteador) => {
@@ -149,56 +149,47 @@ export default function Ap() {
             })
             .map((roteador) => {
               return (
-                <tbody className="text-slate-700">
-                  <tr
-                    className={`border border-slate-100 hover:bg-slate-100 text-xs whitespace-nowrap h-9 ${
-                      selectedDevices.includes(roteador.id) && "bg-orange-200 hover:bg-orange-300"
-                    } ${roteador.ocultar === "Sim" && !admin && "hidden"}`}>
-                    <TableStart
-                      handleProductSelect={() => handleProductSelect(roteador.id)}
-                      selectedDevicesLength={selectedDevices.length}
-                      selectedDevicesIncludes={selectedDevices.includes(roteador.id)}
-                      status={roteador.status}
-                      modelo={roteador.modelo}
-                      ocultar={roteador.ocultar}
-                      calculateDateDifference={calculateDateDifference(roteador.date, currentDate)}
-                      handleSingleClick={() => handleSingleClick(roteador)}
-                    />
-                    <td className="text-left">
-                      <span className={ModulacaoStyle(roteador)}>{roteador.modulação}</span>
+                <TableStart
+                  handleProductSelect={() => handleProductSelect(roteador.id)}
+                  selectedDevicesLength={selectedDevices.length}
+                  selectedDevicesIncludes={selectedDevices.includes(roteador.id)}
+                  status={roteador.status}
+                  modelo={roteador.modelo}
+                  ocultar={roteador.ocultar}
+                  admin={admin}
+                  calculateDateDifference={calculateDateDifference(roteador.date, currentDate)}
+                  handleSingleClick={() => handleSingleClick(roteador)}>
+                  <td className="text-left">
+                    <span className={ModulacaoStyle(roteador)}>{roteador.modulação}</span>
+                  </td>
+                  <td className="font-bold">{roteador.cobertura}</td>
+                  <td>{roteador.raio}</td>
+                  <td className="font-bold">{roteador.usuarioMax}</td>
+                  <td>{roteador.planoRecomendado}</td>
+                  <td className="font-bold">{roteador.datarateMax2G}</td>
+                  <td>{roteador.datarateMax5G === "-" ? NaoPossui : roteador.datarateMax5G}</td>
+                  <td className="font-bold">{roteador.tensao}</td>
+                  <td>{roteador.repetidor === "-" ? NaoPossui : roteador.repetidor}</td>
+                  <td className="font-bold">{roteador.roteador === "-" ? NaoPossui : roteador.roteador}</td>
+                  <td>{roteador.cliente === "-" ? NaoPossui : roteador.cliente}</td>
+                  <td className="font-bold">{roteador.ap === "-" ? NaoPossui : roteador.ap}</td>
+                  <td className="text-center">{roteador.garantia}</td>
+                  <td>
+                    <a target="_blank" rel="noopener noreferrer" href={roteador.pagina}>
+                      <OlimpoPageBtn />
+                    </a>
+                  </td>
+                  {admin && (
+                    <td className="text-center">
+                      <button className="bg-yellow-300 p-1 rounded text-white" onClick={() => openUpdateModal(roteador)}>
+                        <HiPencil />
+                      </button>
+                      <button className="bg-red-600 p-1 rounded text-white ml-2" onClick={() => deleteDevice(roteador.id)}>
+                        <HiXMark />
+                      </button>
                     </td>
-                    <td className="font-bold">{roteador.cobertura}</td>
-                    <td>{roteador.raio}</td>
-                    <td className="font-bold">{roteador.usuarioMax}</td>
-                    <td>{roteador.planoRecomendado}</td>
-                    <td className="font-bold">{roteador.qtdePortas}</td>
-                    <td>{roteador.datarateMax2G}</td>
-                    <td className="font-bold">{roteador.datarateMax5G === "-" ? NaoPossui : roteador.datarateMax5G}</td>
-                    <td>{roteador.tensao}</td>
-                    <td className="font-bold">{roteador.repetidor === "-" ? NaoPossui : roteador.repetidor}</td>
-                    <td>{roteador.roteador === "-" ? NaoPossui : roteador.roteador}</td>
-                    <td className="font-bold">{roteador.cliente === "-" ? NaoPossui : roteador.cliente}</td>
-                    <td>{roteador.ap === "-" ? NaoPossui : roteador.ap}</td>
-                    <td className="text-center font-bold">{roteador.garantia}</td>
-                    <td>
-                      <a target="_blank" rel="noopener noreferrer" href={roteador.pagina}>
-                        <Badge size="xs" className="bg-green-500 text-white flex justify-center items-center">
-                          Página
-                        </Badge>
-                      </a>
-                    </td>
-                    {admin && (
-                      <td className="text-center">
-                        <button className="bg-yellow-300 p-1 rounded text-white" onClick={() => openUpdateModal(roteador)}>
-                          <HiPencil />
-                        </button>
-                        <button className="bg-red-600 p-1 rounded text-white ml-2" onClick={() => deleteDevice(roteador.id)}>
-                          <HiXMark />
-                        </button>
-                      </td>
-                    )}
-                  </tr>
-                </tbody>
+                  )}
+                </TableStart>
               );
             })}
         />

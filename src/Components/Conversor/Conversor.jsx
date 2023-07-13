@@ -1,18 +1,17 @@
-import React, {useEffect} from "react";
-import {useState, useContext, createContext} from "react";
-import Content from "../../ui/Content";
-import {Badge} from "flowbite-react";
-import {HiPencil, HiXMark} from "react-icons/hi2";
-import OlimpoTable from "../../ui/Table";
-import CrudFirebase from "../../Database/crud";
-import Modal from "react-modal";
-import UseAux from "../../Hooks/UseAux";
-import ConversorModal from "./ConversorModal";
-import {Conversor_Thead} from "../../TableHeads";
 import {AdminContext} from "../../App";
-import ConversorCompare from "./ConversorCompare";
+import CrudFirebase from "../../Database/crud";
+import UseAux from "../../Hooks/UseAux";
+import TableHead from "../../TableHead";
 import DeviceImg from "../../assets/conversor.png";
+import Content from "../../ui/Content";
+import {OlimpoPageBtn} from "../../ui/OlimpoTextInput";
+import OlimpoTable from "../../ui/Table";
 import TableStart from "../../ui/TableStart";
+import ConversorCompare from "./ConversorCompare";
+import ConversorModal from "./ConversorModal";
+import {React, useState, useEffect, useContext, createContext} from "react";
+import {HiPencil, HiXMark} from "react-icons/hi2";
+import Modal from "react-modal";
 
 export const ConversorContext = createContext();
 
@@ -22,7 +21,8 @@ export default function Conversor() {
   const [queryCONVERSOR, setQueryConversor] = useState("");
   const [modalIsOpen, setIsOpen] = useState(false);
   const {fetchDevices, addDevices, deleteDevices, updateDevices} = CrudFirebase();
-  const {compareStatus, ModulacaoStyle, calculateDateDifference, currentDate} = UseAux();
+  const {compareStatus, ModulacaoStyle, Possui, NaoPossui, calculateDateDifference, currentDate} = UseAux();
+  const {Conversor_Header} = TableHead();
 
   /* Configs Modal */
   Modal.setAppElement("#root");
@@ -136,7 +136,7 @@ export default function Conversor() {
           handleSearchChange={handleSearchChangeConversor}
           admin={admin}
           createButton="Novo Conversor de Mídia"
-          thead={<Conversor_Thead />}
+          thead={Conversor_Header}
           tbody={conversor
             .sort(compareStatus)
             .filter((conversor) => {
@@ -149,53 +149,44 @@ export default function Conversor() {
             })
             .map((conversor) => {
               return (
-                <tbody className="text-slate-700">
-                  <tr
-                    className={`border border-slate-100 hover:bg-slate-100 text-xs text-center whitespace-nowrap h-9 ${
-                      selectedDevices.includes(conversor.id) && "bg-orange-200 hover:bg-orange-300"
-                    } ${conversor.ocultar === "Sim" && !admin ? "hidden" : ""}`}>
-                    <TableStart
-                      handleProductSelect={() => handleProductSelect(conversor.id)}
-                      selectedDevicesLength={selectedDevices.length}
-                      selectedDevicesIncludes={selectedDevices.includes(conversor.id)}
-                      status={conversor.status}
-                      modelo={conversor.modelo}
-                      ocultar={conversor.ocultar}
-                      calculateDateDifference={calculateDateDifference(conversor.date, currentDate)}
-                      handleSingleClick={() => handleSingleClick(conversor)}
-                    />
-
+                <TableStart
+                  handleProductSelect={() => handleProductSelect(conversor.id)}
+                  selectedDevicesLength={selectedDevices.length}
+                  selectedDevicesIncludes={selectedDevices.includes(conversor.id)}
+                  status={conversor.status}
+                  modelo={conversor.modelo}
+                  ocultar={conversor.ocultar}
+                  admin={admin}
+                  calculateDateDifference={calculateDateDifference(conversor.date, currentDate)}
+                  handleSingleClick={() => handleSingleClick(conversor)}>
+                  <td>
+                    <span className={ModulacaoStyle(conversor)}>{conversor.modulação}</span>
+                  </td>
+                  <td className="px-2 font-bold">{conversor.conector}</td>
+                  <td className="px-4">{conversor.wdm === "-" ? NaoPossui : Possui}</td>
+                  <td className="font-bold">{conversor.distancia}</td>
+                  <td>{conversor.fibra}</td>
+                  <td className="font-bold">{conversor.potencia}</td>
+                  <td>{conversor.sensibilidade}</td>
+                  <td className="font-bold">{conversor.CompRX}</td>
+                  <td>{conversor.CompTX}</td>
+                  <td className="font-bold">{conversor.garantia}</td>
+                  <td>
+                    <a target="_blank" rel="noopener noreferrer" href={conversor.pagina}>
+                      <OlimpoPageBtn />
+                    </a>
+                  </td>
+                  {admin && (
                     <td>
-                      <span className={ModulacaoStyle(conversor)}>{conversor.modulação}</span>
+                      <button className="bg-yellow-300 p-1 rounded text-white" onClick={() => openUpdateModal(conversor)}>
+                        <HiPencil />
+                      </button>
+                      <button className="bg-red-600 p-1 rounded text-white ml-2" onClick={() => deleteDevice(conversor.id)}>
+                        <HiXMark />
+                      </button>
                     </td>
-                    <td>{conversor.conector}</td>
-                    <td>{conversor.wdm}</td>
-                    <td>{conversor.distancia}</td>
-                    <td>{conversor.fibra}</td>
-                    <td>{conversor.potencia}</td>
-                    <td>{conversor.sensibilidade}</td>
-                    <td>{conversor.CompRX}</td>
-                    <td>{conversor.CompTX}</td>
-                    <td>{conversor.garantia}</td>
-                    <td>
-                      <a target="_blank" rel="noopener noreferrer" href={conversor.pagina}>
-                        <Badge size="xs" className="bg-green-500 text-white flex justify-center items-center">
-                          Página
-                        </Badge>
-                      </a>
-                    </td>
-                    {admin && (
-                      <td>
-                        <button className="bg-yellow-300 p-1 rounded text-white" onClick={() => openUpdateModal(conversor)}>
-                          <HiPencil />
-                        </button>
-                        <button className="bg-red-600 p-1 rounded text-white ml-2" onClick={() => deleteDevice(conversor.id)}>
-                          <HiXMark />
-                        </button>
-                      </td>
-                    )}
-                  </tr>
-                </tbody>
+                  )}
+                </TableStart>
               );
             })}
         />

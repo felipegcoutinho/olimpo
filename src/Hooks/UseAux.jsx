@@ -33,8 +33,8 @@ function UseAux() {
   );
 
   function ModulacaoStyle(device) {
-    const modulacaoClass = device.modulação === "Fast" ? "bg-orange-400" : "bg-green-400";
-    return `${modulacaoClass} px-2 py-1 rounded-md uppercase font-bold text-white`;
+    const modulacaoClass = device.modulação === "Fast" ? "bg-orange-500 shadow-orange-500/50" : "bg-green-500 shadow-green-500/50";
+    return `${modulacaoClass} px-3 py-1 rounded-2xl font-bold text-white shadow-sm`;
   }
 
   function calculateDateDifference(startDate, endDate) {

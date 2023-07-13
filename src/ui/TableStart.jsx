@@ -1,4 +1,5 @@
 import React from "react";
+import {HiChevronUp} from "react-icons/hi2";
 
 function TableStart({
   handleProductSelect,
@@ -9,33 +10,53 @@ function TableStart({
   ocultar,
   calculateDateDifference,
   handleSingleClick,
+  children,
+  admin,
 }) {
   return (
-    <td>
-      <div className="flex gap-2 items-center font-bold text-sm text-black">
-        <div>
-          <input
-            disabled={selectedDevicesLength >= 4 && !selectedDevicesIncludes}
-            type="checkbox"
-            className={`w-4 h-4 ml-1 text-[#00A335] focus:ring-green-500 rounded-sm ${
-              selectedDevicesLength >= 4 && !selectedDevicesIncludes
-                ? "border-slate-100 bg-slate-100 cursor-not-allowed"
-                : "border-slate-300"
-            }`}
-            onChange={handleProductSelect}
-            checked={selectedDevicesIncludes}
-          />
-        </div>
-        <div className={`${status === "Suporte" ? "bg-green-500" : "bg-red-500"} w-3.5 h-3.5 rounded-full`}></div>
-        <div className="flex items-center">
-          <p className="underline cursor-pointer" onClick={handleSingleClick}>
-            {modelo}
-          </p>
-          <p>{ocultar === "Sim" && <span className=" ml-1 uppercase border rounded border-black px-1 text-xs">Oculto</span>}</p>
-          {calculateDateDifference <= 30 && <p className="ml-1 uppercase rounded border border-red-500 text-red-500 px-1 text-xs">Novo</p>}
-        </div>
-      </div>
-    </td>
+    <tbody className="text-slate-700 dark:text-slate-200">
+      <tr
+        className={`border border-slate-100 dark:border-slate-800 border-t-0 hover:bg-slate-300 dark:hover:bg-[#0c1617] text-xs whitespace-nowrap h-9 ${
+          selectedDevicesIncludes && "bg-orange-200 dark:bg-orange-500"
+        } ${ocultar === "Sim" && !admin && "hidden"}`}>
+        <td>
+          <div className="flex gap-2 items-center font-bold text-sm text-black dark:text-white">
+            <div>
+              <input
+                disabled={selectedDevicesLength >= 4 && !selectedDevicesIncludes}
+                type="checkbox"
+                className={`w-4 h-4 ml-1 text-[#00A335] focus:ring-green-500 rounded-sm ${
+                  selectedDevicesLength >= 4 && !selectedDevicesIncludes
+                    ? "border-slate-100 bg-slate-100 dark:bg-slate-800 cursor-not-allowed"
+                    : "border-slate-300 dark:bg-slate-800"
+                }`}
+                onChange={handleProductSelect}
+                checked={selectedDevicesIncludes}
+              />
+            </div>
+            <div
+              className={`${
+                status === "Suporte"
+                  ? "bg-green-500 shadow-green-400/50"
+                  : status === "Phaseout"
+                  ? "bg-red-500 shadow-red-400/50"
+                  : "bg-amber-300 shadow-amber-400/50"
+              } w-3 h-3 rounded-full shadow-sm`}></div>
+            <div className="flex items-center">
+              <p className="underline cursor-pointer flex items-center gap-1" onClick={handleSingleClick}>
+                {modelo}
+                <HiChevronUp className="text-zinc-600" />
+              </p>
+              <p>{ocultar === "Sim" && <span className=" ml-1 uppercase border rounded border-black px-1 text-xs">Oculto</span>}</p>
+              {calculateDateDifference <= 30 && (
+                <p className="ml-1 uppercase rounded border border-red-500 text-red-500 px-1 text-xs">Novo</p>
+              )}
+            </div>
+          </div>
+        </td>
+        {children}
+      </tr>
+    </tbody>
   );
 }
 

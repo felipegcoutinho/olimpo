@@ -17,8 +17,8 @@ function RoteadoresModal() {
       updatedProductModelo={updatedProduct.modelo}
       setor="Roteador">
       <form onSubmit={updatedProduct.id ? updateDevice : addDevice}>
-        <label>Modelo</label>
         <OlimpoTextInput
+          label="Modelo"
           required
           type="text"
           placeholder="TWIBI GIGA+"
@@ -26,8 +26,8 @@ function RoteadoresModal() {
           onChange={(e) => setUpdatedProduct({...updatedProduct, modelo: e.target.value})}
         />
 
-        <label>Status do suporte</label>
         <OlimpoSelect
+          label="Status do suporte"
           required
           type="text"
           value={updatedProduct.status}
@@ -42,8 +42,8 @@ function RoteadoresModal() {
           <option value="N/A">N/A</option>
         </OlimpoSelect>
 
-        <label>Modulação</label>
         <OlimpoSelect
+          label="Modulação"
           type="text"
           value={updatedProduct.modulação}
           onChange={(e) => setUpdatedProduct({...updatedProduct, modulação: e.target.value})}>
@@ -58,64 +58,64 @@ function RoteadoresModal() {
           <option value="N/A">N/A</option>
         </OlimpoSelect>
 
-        <label>Área de cobertura (Em m²)</label>
         <OlimpoTextInput
+          label="Área de cobertura (Em m²)"
           type="text"
           placeholder="180 m²"
           value={updatedProduct.cobertura}
           onChange={(e) => setUpdatedProduct({...updatedProduct, cobertura: e.target.value})}
         />
 
-        <label>Raio (Em m)</label>
         <OlimpoTextInput
+          label="Raio (Em m)"
           type="text"
           placeholder="7,56 m"
           value={updatedProduct.raio}
           onChange={(e) => setUpdatedProduct({...updatedProduct, raio: e.target.value})}
         />
 
-        <label>Usuários Máximos</label>
         <OlimpoTextInput
+          label="Usuários Máximos"
           type="text"
           placeholder="60 usuários"
           value={updatedProduct.usuarioMax}
           onChange={(e) => setUpdatedProduct({...updatedProduct, usuarioMax: e.target.value})}
         />
 
-        <label>Plano recomendado</label>
         <OlimpoTextInput
+          label="Plano recomendado"
           type="text"
           placeholder="Até 400Mbps"
           value={updatedProduct.planoRecomendado}
           onChange={(e) => setUpdatedProduct({...updatedProduct, planoRecomendado: e.target.value})}
         />
 
-        <label>Qtde Portas</label>
         <OlimpoTextInput
+          label="Qtde Portas"
           type="text"
           placeholder="1(LAN) + 1(W / L)"
           value={updatedProduct.qtdePortas}
           onChange={(e) => setUpdatedProduct({...updatedProduct, qtdePortas: e.target.value})}
         />
 
-        <label>Datarate Máx. 2G</label>
         <OlimpoTextInput
+          label="Datarate Máx. 2G"
           type="text"
           placeholder="300 Mbps"
           value={updatedProduct.datarateMax2G}
           onChange={(e) => setUpdatedProduct({...updatedProduct, datarateMax2G: e.target.value})}
         />
 
-        <label>Datarate Máx. 5G</label>
         <OlimpoTextInput
+          label="Datarate Máx. 5G"
           type="text"
           placeholder="867 Mbps"
           value={updatedProduct.datarateMax5G}
           onChange={(e) => setUpdatedProduct({...updatedProduct, datarateMax5G: e.target.value})}
         />
 
-        <label>IPv6</label>
         <OlimpoSelect
+          label="IPv6"
           type="text"
           value={updatedProduct.ipv6}
           onChange={(e) => setUpdatedProduct({...updatedProduct, ipv6: e.target.value})}>
@@ -129,16 +129,16 @@ function RoteadoresModal() {
           <option value="N/A">N/A</option>
         </OlimpoSelect>
 
-        <label>Tensão</label>
         <OlimpoTextInput
+          label="Tensão"
           type="text"
           placeholder="12V (1A)"
           value={updatedProduct.tensao}
           onChange={(e) => setUpdatedProduct({...updatedProduct, tensao: e.target.value})}
         />
 
-        <label>Modo Repetidor</label>
         <OlimpoSelect
+          label="Modo Repetidor"
           type="text"
           value={updatedProduct.repetidor}
           onChange={(e) => setUpdatedProduct({...updatedProduct, repetidor: e.target.value})}>
@@ -152,8 +152,8 @@ function RoteadoresModal() {
           <option value="N/A">N/A</option>
         </OlimpoSelect>
 
-        <label>Modo Roteador</label>
         <OlimpoSelect
+          label="Modo Roteador"
           type="text"
           value={updatedProduct.roteador}
           onChange={(e) => setUpdatedProduct({...updatedProduct, roteador: e.target.value})}>
@@ -167,8 +167,8 @@ function RoteadoresModal() {
           <option value="N/A">N/A</option>
         </OlimpoSelect>
 
-        <label>Cliente Wireless</label>
         <OlimpoSelect
+          label="Cliente Wireless"
           type="text"
           value={updatedProduct.cliente}
           onChange={(e) => setUpdatedProduct({...updatedProduct, cliente: e.target.value})}>
@@ -182,8 +182,11 @@ function RoteadoresModal() {
           <option value="N/A">N/A</option>
         </OlimpoSelect>
 
-        <label>Modo AP</label>
-        <OlimpoSelect type="text" value={updatedProduct.ap} onChange={(e) => setUpdatedProduct({...updatedProduct, ap: e.target.value})}>
+        <OlimpoSelect
+          label="Modo AP"
+          type="text"
+          value={updatedProduct.ap}
+          onChange={(e) => setUpdatedProduct({...updatedProduct, ap: e.target.value})}>
           {!updatedProduct.id && (
             <option selected disabled>
               Escolha
@@ -194,8 +197,8 @@ function RoteadoresModal() {
           <option value="N/A">N/A</option>
         </OlimpoSelect>
 
-        <label>Garantia</label>
         <OlimpoSelect
+          label="Garantia"
           type="text"
           value={updatedProduct.garantia}
           onChange={(e) => setUpdatedProduct({...updatedProduct, garantia: e.target.value})}>
@@ -212,16 +215,16 @@ function RoteadoresModal() {
           <option value="N/A">N/A</option>
         </OlimpoSelect>
 
-        <label>URL da Página</label>
         <OlimpoTextInput
+          label="URL da Página"
           type="text"
           placeholder="https://www.intelbras.com/pt-br/roteador-wi-fi-5-mesh-ac-1200-twibi-giga"
           value={updatedProduct.pagina}
           onChange={(e) => setUpdatedProduct({...updatedProduct, pagina: e.target.value})}
         />
 
-        <label>Ocultar</label>
         <OlimpoSelect
+          label="Desabilitar equipamento"
           required
           type="text"
           value={updatedProduct.ocultar}
@@ -239,7 +242,7 @@ function RoteadoresModal() {
           <Button type="submit" color="success">
             {updatedProduct.id ? "Atualizar Equipamento" : "Adicionar Equipamento"}
           </Button>
-          <Button color="light" className="" onClick={closeModal}>
+          <Button color="light" onClick={closeModal}>
             Cancelar
           </Button>
         </div>

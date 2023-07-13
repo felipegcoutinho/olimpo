@@ -1,15 +1,15 @@
-import React from "react";
-import {createContext, useState} from "react";
-import Header from "./Components/Header.jsx";
 import AccessPoints from "./Components/AccessPoint/Ap.jsx";
+import Conversores from "./Components/Conversor/Conversor.jsx";
+import Header from "./Components/Header.jsx";
+import Onu from "./Components/Onu/Onu.jsx";
 import RadiosOutdoor from "./Components/Radio/Radio.jsx";
 import RoteadoresHO from "./Components/Roteador/Roteador.jsx";
-import Switches from "./Components/Switch/Switch.jsx";
-import Conversores from "./Components/Conversor/Conversor.jsx";
 import Sfp from "./Components/Sfp/Sfp.jsx";
-import Onu from "./Components/Onu/Onu.jsx";
-import Modal from "react-modal";
+import Switches from "./Components/Switch/Switch.jsx";
 import {Button} from "flowbite-react";
+import React from "react";
+import {createContext, useState} from "react";
+import Modal from "react-modal";
 
 export const AdminContext = createContext();
 
@@ -49,7 +49,7 @@ function App() {
 
   return (
     <div className="flex flex-col">
-      <div className="w-[90%] self-center bg-white">
+      <div className="w-[85%] self-center bg-white dark:bg-[#0F1D1E]">
         <AdminContext.Provider
           value={{
             admin,

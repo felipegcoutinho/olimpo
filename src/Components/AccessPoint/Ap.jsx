@@ -1,18 +1,17 @@
-import React, {useEffect} from "react";
-import {useState, useContext, createContext} from "react";
-import Ap_Modal from "./ApModal";
 import {AdminContext} from "../../App";
-import Content from "../../ui/Content";
-import {Badge} from "flowbite-react";
-import {HiPencil, HiXMark} from "react-icons/hi2";
-import AP_Thead from "../../TableHeads";
-import OlimpoTable from "../../ui/Table";
 import CrudFirebase from "../../Database/crud";
-import Modal from "react-modal";
 import UseAux from "../../Hooks/UseAux";
+import TableHead from "../../TableHead";
 import DeviceImg from "../../assets/ap.png";
-import ApCompare from "./ApCompare";
+import Content from "../../ui/Content";
+import {OlimpoPageBtn} from "../../ui/OlimpoTextInput";
+import OlimpoTable from "../../ui/Table";
 import TableStart from "../../ui/TableStart";
+import ApCompare from "./ApCompare";
+import Ap_Modal from "./ApModal";
+import {React, useState, useEffect, useContext, createContext} from "react";
+import {HiPencil, HiXMark} from "react-icons/hi2";
+import Modal from "react-modal";
 
 export const APContext = createContext();
 
@@ -23,6 +22,7 @@ export default function Ap() {
   const [modalIsOpen, setIsOpen] = useState(false);
   const {fetchDevices, addDevices, deleteDevices, updateDevices} = CrudFirebase();
   const {compareStatus, Possui, NaoPossui, ModulacaoStyle, calculateDateDifference, currentDate} = UseAux();
+  const {AP_Header} = TableHead();
 
   /* Configs Modal */
   Modal.setAppElement("#root");
@@ -125,7 +125,7 @@ export default function Ap() {
       <div className="overflow-x-auto">
         <OlimpoTable
           Hide={HideAP}
-          Device={"WiFi Empresarial"}
+          Device={"Wi-Fi Empresarial"}
           DeviceImg={DeviceImg}
           DeviceText={"Wi-Fi de alta performance para ambientes profissionais e diversas necessidades."}
           selectedDevices={selectedDevices.length >= 2 && selectedDevices}
@@ -136,7 +136,7 @@ export default function Ap() {
           handleSearchChange={handleSearchChangeAP}
           admin={admin}
           createButton="Novo Access Point"
-          thead={<AP_Thead />}
+          thead={AP_Header}
           tbody={accessPoint
             .sort(compareStatus)
             .filter((ap) => {
@@ -149,55 +149,47 @@ export default function Ap() {
             })
             .map((ap) => {
               return (
-                <tbody className="text-slate-700">
-                  <tr
-                    className={`border border-slate-100 hover:bg-slate-100 text-xs whitespace-nowrap h-9 ${
-                      selectedDevices.includes(ap.id) && "bg-orange-200"
-                    } ${ap.ocultar === "Sim" && !admin && "hidden"}`}>
-                    <TableStart
-                      handleProductSelect={() => handleProductSelect(ap.id)}
-                      selectedDevicesLength={selectedDevices.length}
-                      selectedDevicesIncludes={selectedDevices.includes(ap.id)}
-                      status={ap.status}
-                      modelo={ap.modelo}
-                      ocultar={ap.ocultar}
-                      calculateDateDifference={calculateDateDifference(ap.date, currentDate)}
-                      handleSingleClick={() => handleSingleClick(ap)}
-                    />
-                    <td>
-                      <span className={ModulacaoStyle(ap)}>{ap.modulação}</span>
+                <TableStart
+                  handleProductSelect={() => handleProductSelect(ap.id)}
+                  selectedDevicesLength={selectedDevices.length}
+                  selectedDevicesIncludes={selectedDevices.includes(ap.id)}
+                  status={ap.status}
+                  modelo={ap.modelo}
+                  ocultar={ap.ocultar}
+                  admin={admin}
+                  calculateDateDifference={calculateDateDifference(ap.date, currentDate)}
+                  handleSingleClick={() => handleSingleClick(ap)}>
+                  <td>
+                    <span className={ModulacaoStyle(ap)}>{ap.modulação}</span>
+                  </td>
+                  <td className="font-bold">{ap.cobertura}</td>
+                  <td>{ap.raio}</td>
+                  <td className="font-bold">{ap.usuarioMax}</td>
+                  <td>{ap.throughputWireless24}</td>
+                  <td className="font-bold">{ap.throughputWireless50 === "-" ? NaoPossui : ap.throughputWireless50}</td>
+                  <td>{ap.padrao}</td>
+                  <td>{ap.qtdePortas}</td>
+                  <td className="font-bold">{ap.tensao}</td>
+                  <td>{ap.poe}</td>
+                  <td className="font-bold">{ap.handover === "-" ? NaoPossui : Possui}</td>
+                  <td>{ap.inmaster === "Não" ? NaoPossui : Possui}</td>
+                  <td className="font-bold">{ap.garantia}</td>
+                  <td>
+                    <a target="_blank" rel="noopener noreferrer" href={ap.pagina}>
+                      <OlimpoPageBtn />
+                    </a>
+                  </td>
+                  {admin && (
+                    <td className="text-center">
+                      <button className="bg-yellow-300 p-1 rounded text-white" onClick={() => openUpdateModal(ap)}>
+                        <HiPencil />
+                      </button>
+                      <button className="bg-red-600 p-1 rounded text-white ml-2" onClick={() => deleteDevice(ap.id)}>
+                        <HiXMark />
+                      </button>
                     </td>
-                    <td className="font-bold">{ap.cobertura}</td>
-                    <td>{ap.raio}</td>
-                    <td className="font-bold">{ap.usuarioMax}</td>
-                    <td>{ap.throughputWireless24}</td>
-                    <td className="font-bold">{ap.throughputWireless50 === "-" ? NaoPossui : ap.throughputWireless50}</td>
-                    <td>{ap.padrao}</td>
-                    <td>{ap.qtdePortas}</td>
-                    <td className="font-bold">{ap.tensao}</td>
-                    <td>{ap.poe}</td>
-                    <td className="font-bold">{ap.handover === "-" ? NaoPossui : Possui}</td>
-                    <td>{ap.inmaster === "Não" ? NaoPossui : Possui}</td>
-                    <td className="font-bold">{ap.garantia}</td>
-                    <td>
-                      <a target="_blank" rel="noopener noreferrer" href={ap.pagina}>
-                        <Badge size="xs" className="bg-green-500 text-white flex justify-center items-center">
-                          Página
-                        </Badge>
-                      </a>
-                    </td>
-                    {admin && (
-                      <td className="text-center">
-                        <button className="bg-yellow-300 p-1 rounded text-white" onClick={() => openUpdateModal(ap)}>
-                          <HiPencil />
-                        </button>
-                        <button className="bg-red-600 p-1 rounded text-white ml-2" onClick={() => deleteDevice(ap.id)}>
-                          <HiXMark />
-                        </button>
-                      </td>
-                    )}
-                  </tr>
-                </tbody>
+                  )}
+                </TableStart>
               );
             })}
         />

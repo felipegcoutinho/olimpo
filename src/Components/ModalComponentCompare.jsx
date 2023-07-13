@@ -55,7 +55,10 @@ function ModalComponentCompare({comparisonDevices, modalIsOpenCompare, closeModa
                   <div className="flex items-center"></div>
                   {comparisonDevices.map((device) => (
                     <div key={device.id} className={`flex items-center`}>
-                      <div className={`${device.status === "Suporte" ? "bg-green-500" : "bg-red-600"} w-3 h-3 rounded-full`}></div>
+                      <div
+                        className={`${
+                          device.status === "Suporte" ? "bg-green-500" : device.status === "Phaseout" ? "bg-red-500" : "bg-amber-300"
+                        } w-3 h-3 rounded-full`}></div>
                       <div className="rounded-lg p-2 w-full">
                         <div className="font-bold text-xl">{device.modelo}</div>
                       </div>
