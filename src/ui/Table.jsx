@@ -22,7 +22,7 @@ export default function OlimpoTable({
       <div className="relative overflow-hidden">
         <div className="flex flex-col pt-4 pr-4 space-y-3 lg:flex-row lg:items-center lg:justify-between lg:space-y-0 lg:space-x-4">
           <div className="flex flex-1 items-center">
-            <img src={DeviceImg} alt="Olimpo" className="w-20 h-20" />
+            <img src={DeviceImg} alt={Device} className="w-20 h-20" />
             <div className="flex flex-col flex-1">
               <p className="text-2xl font-bold dark:text-white">
                 {Device}

@@ -11,7 +11,10 @@ html {
 }
 
 body {
-  font-family: "Fira Sans", segoe UI, arial;
+  font-family:
+    "Fira Sans",
+    segoe UI,
+    arial;
   @apply bg-neutral-200 dark:bg-[#0a1213];
 }
 

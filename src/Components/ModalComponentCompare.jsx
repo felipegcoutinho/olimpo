@@ -42,16 +42,15 @@ function ModalComponentCompare({comparisonDevices, modalIsOpenCompare, closeModa
       isOpen={modalIsOpenCompare}
       ariaHideApp={false}
       onRequestClose={closeModalCompare}
-      className={`bg-white rounded-lg h-[90%] ${width} inset-1/2 outline-none overflow-auto p-2 absolute -translate-x-1/2 -translate-y-1/2`}
-      overlayClassName="bg-zinc-400 bg-opacity-75 fixed inset-0">
+      className={`bg-white dark:bg-[#0a1213] rounded-lg h-[90%] ${width} inset-1/2 outline-none overflow-auto p-2 absolute -translate-x-1/2 -translate-y-1/2`}
+      overlayClassName="bg-slate-500 dark:bg-slate-800 bg-opacity-60 dark:bg-opacity-40 fixed inset-0 backdrop-blur-sm">
       <AnimatePresence>
         {modalIsOpenCompare && (
           <motion.div className="modal" variants={modalVariants} initial="hidden" animate="visible" exit="hidden">
             <div className="w-full overflow-x-auto">
               <div className="overflow-hidden min-w-max">
                 <div
-                  className={`grid ${gridCols} py-8 text-sm font-medium text-white rounded-sm`}
-                  style={{backgroundImage: `url(${headerImg})`}}>
+                  className={`grid ${gridCols} py-8 text-sm font-medium border-b border-itbs-default text-black dark:text-white rounded-sm bg-[url('../assets/ttten.svg')] dark:dark:bg-[url('../assets/dark_ttten.svg')]`}>
                   <div className="flex items-center"></div>
                   {comparisonDevices.map((device) => (
                     <div key={device.id} className={`flex items-center`}>
@@ -68,21 +67,20 @@ function ModalComponentCompare({comparisonDevices, modalIsOpenCompare, closeModa
 
                 {Object.entries(groupedProperties).map(([group, properties]) => {
                   const Icon = groupIcons[group];
-
                   return (
                     <div key={group}>
-                      <div className={`${Icon} py-2 flex items-center text-xl gap-2 text-green-500 font-bold bg-green-50`}>
+                      <div className={`${Icon} py-2 flex items-center text-xl gap-2 text-itbs-default font-bold`}>
                         {Icon && <Icon />}
                         {group}
                       </div>
                       {properties.map(({property, label}) => (
                         <div
                           key={`${group}-${property}`}
-                          className={`grid ${gridCols} py-2 text-sm text-gray-700 border-b border-slate-100 hover:bg-slate-200`}>
-                          <div className="text-gray-500 px-2">{label}</div>
+                          className={`grid ${gridCols} py-2 text-sm border-b border-slate-100 dark:border-slate-800 hover:bg-slate-100 dark:hover:bg-slate-800`}>
+                          <div className="text-slate-600 dark:text-slate-300 px-2">{label}</div>
                           {comparisonDevices.map((device) => (
                             <div key={device.id}>
-                              <p className={`font-bold`}>{device[property]}</p>
+                              <p className={`font-bold dark:text-slate-100`}>{device[property]}</p>
                             </div>
                           ))}
                         </div>
