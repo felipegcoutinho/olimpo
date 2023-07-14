@@ -16,12 +16,14 @@ import Modal from "react-modal";
 export const ConversorContext = createContext();
 
 export default function Conversor() {
-  const {admin, HideConversor, setHideConversor, updatedProduct, setUpdatedProduct} = useContext(AdminContext);
+  const {admin, HideConversor, setHideConversor, updatedProduct, setUpdatedProduct} =
+    useContext(AdminContext);
   const [conversor, setConversor] = useState([]);
   const [queryCONVERSOR, setQueryConversor] = useState("");
   const [modalIsOpen, setIsOpen] = useState(false);
   const {fetchDevices, addDevices, deleteDevices, updateDevices} = CrudFirebase();
-  const {compareStatus, ModulacaoStyle, Possui, NaoPossui, calculateDateDifference, currentDate} = UseAux();
+  const {compareStatus, ModulacaoStyle, Possui, NaoPossui, calculateDateDifference, currentDate} =
+    UseAux();
   const {Conversor_Header} = TableHead();
 
   /* Configs Modal */
@@ -122,12 +124,14 @@ export default function Conversor() {
         <ConversorCompare />
       </ConversorContext.Provider>
 
-      <div className="overflow-x-auto">
+      <div id="conversor" className="overflow-x-auto">
         <OlimpoTable
           Hide={HideConversor}
           Device={"Conversor de Mídia"}
           DeviceImg={DeviceImg}
-          DeviceText={"Amplia em até 20 km o alcance da rede com muito mais velocidade e qualidade."}
+          DeviceText={
+            "Amplia em até 20 km o alcance da rede com muito mais velocidade e qualidade."
+          }
           selectedDevices={selectedDevices.length >= 2 && selectedDevices}
           handleCompareClick={handleCompareClick}
           handleHide={handleHideConversor}
@@ -178,10 +182,14 @@ export default function Conversor() {
                   </td>
                   {admin && (
                     <td>
-                      <button className="bg-yellow-300 p-1 rounded text-white" onClick={() => openUpdateModal(conversor)}>
+                      <button
+                        className="bg-yellow-300 p-1 rounded text-white"
+                        onClick={() => openUpdateModal(conversor)}>
                         <HiPencil />
                       </button>
-                      <button className="bg-red-600 p-1 rounded text-white ml-2" onClick={() => deleteDevice(conversor.id)}>
+                      <button
+                        className="bg-red-600 p-1 rounded text-white ml-2"
+                        onClick={() => deleteDevice(conversor.id)}>
                         <HiXMark />
                       </button>
                     </td>

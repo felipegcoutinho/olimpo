@@ -22,7 +22,8 @@ export default function Sfp() {
   const [querySfp, setQuerySfp] = useState("");
   const [modalIsOpen, setIsOpen] = useState(false);
   const {fetchDevices, addDevices, deleteDevices, updateDevices} = CrudFirebase();
-  const {compareStatus, Possui, NaoPossui, ModulacaoStyle, calculateDateDifference, currentDate} = UseAux();
+  const {compareStatus, Possui, NaoPossui, ModulacaoStyle, calculateDateDifference, currentDate} =
+    UseAux();
   const {Sfp_Header} = TableHead();
 
   /* Configs Modal */
@@ -123,7 +124,7 @@ export default function Sfp() {
         <SfpCompare />
       </SfpContext.Provider>
 
-      <div className="overflow-x-auto">
+      <div id="modulo-sfp" className="overflow-x-auto">
         <OlimpoTable
           Hide={HideSFP}
           Device={"Módulo SFP"}
@@ -168,11 +169,31 @@ export default function Sfp() {
                   <td className="font-bold">{sfp.tipoConector}</td>
                   <td className="px-4">{sfp.wdm === "-" ? NaoPossui : Possui}</td>
                   <td>
-                    {sfp.modulo === "SFP" && <Badge className="bg-teal-100 text-teal-800 text-xs w-14 justify-center">SFP</Badge>}
-                    {sfp.modulo === "SFP+" && <Badge className="bg-blue-100 text-blue-800 text-xs w-14 justify-center">SFP+</Badge>}
-                    {sfp.modulo === "Epon" && <Badge className="bg-rose-100 text-rose-800 text-xs w-14 justify-center">EPON</Badge>}
-                    {sfp.modulo === "Gpon" && <Badge className="bg-fuchsia-100 text-fuchsia-800 text-xs w-14 justify-center">GPON</Badge>}
-                    {sfp.modulo === "XFP" && <Badge className="bg-orange-100 text-orange-800 text-xs w-14 justify-center">XFP</Badge>}
+                    {sfp.modulo === "SFP" && (
+                      <Badge className="bg-teal-100 text-teal-800 text-xs w-14 justify-center">
+                        SFP
+                      </Badge>
+                    )}
+                    {sfp.modulo === "SFP+" && (
+                      <Badge className="bg-blue-100 text-blue-800 text-xs w-14 justify-center">
+                        SFP+
+                      </Badge>
+                    )}
+                    {sfp.modulo === "Epon" && (
+                      <Badge className="bg-rose-100 text-rose-800 text-xs w-14 justify-center">
+                        EPON
+                      </Badge>
+                    )}
+                    {sfp.modulo === "Gpon" && (
+                      <Badge className="bg-fuchsia-100 text-fuchsia-800 text-xs w-14 justify-center">
+                        GPON
+                      </Badge>
+                    )}
+                    {sfp.modulo === "XFP" && (
+                      <Badge className="bg-orange-100 text-orange-800 text-xs w-14 justify-center">
+                        XFP
+                      </Badge>
+                    )}
                   </td>
                   <td className="font-bold">{sfp.distancia}</td>
                   <td>{sfp.fibra}</td>
@@ -188,10 +209,14 @@ export default function Sfp() {
                   </td>
                   {admin && (
                     <td>
-                      <button className="bg-yellow-300 p-1 rounded text-white" onClick={() => openUpdateModal(sfp)}>
+                      <button
+                        className="bg-yellow-300 p-1 rounded text-white"
+                        onClick={() => openUpdateModal(sfp)}>
                         <HiPencil />
                       </button>
-                      <button className="bg-red-600 p-1 rounded text-white ml-2" onClick={() => deleteDevice(sfp.id)}>
+                      <button
+                        className="bg-red-600 p-1 rounded text-white ml-2"
+                        onClick={() => deleteDevice(sfp.id)}>
                         <HiXMark />
                       </button>
                     </td>

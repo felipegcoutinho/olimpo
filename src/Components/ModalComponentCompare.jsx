@@ -1,9 +1,15 @@
-import React from "react";
 import {motion, AnimatePresence} from "framer-motion";
+import React from "react";
 import Modal from "react-modal";
-import headerImg from "../assets/headerCompare.png";
 
-function ModalComponentCompare({comparisonDevices, modalIsOpenCompare, closeModalCompare, groupIcons, propertyMappings}) {
+function ModalComponentCompare({
+  comparisonDevices,
+  modalIsOpenCompare,
+  closeModalCompare,
+  groupIcons,
+  propertyMappings,
+  sector,
+}) {
   const groupedProperties = {};
 
   Object.entries(propertyMappings).forEach(([property, {label, group}]) => {
@@ -42,21 +48,30 @@ function ModalComponentCompare({comparisonDevices, modalIsOpenCompare, closeModa
       isOpen={modalIsOpenCompare}
       ariaHideApp={false}
       onRequestClose={closeModalCompare}
-      className={`bg-white dark:bg-[#0a1213] rounded-lg h-[90%] ${width} inset-1/2 outline-none overflow-auto p-2 absolute -translate-x-1/2 -translate-y-1/2`}
+      className={`bg-white dark:bg-itbs-modern-200 rounded-lg h-[90%] ${width} inset-1/2 outline-none overflow-auto p-2 absolute -translate-x-1/2 -translate-y-1/2`}
       overlayClassName="bg-slate-500 dark:bg-slate-800 bg-opacity-60 dark:bg-opacity-40 fixed inset-0 backdrop-blur-sm">
       <AnimatePresence>
         {modalIsOpenCompare && (
-          <motion.div className="modal" variants={modalVariants} initial="hidden" animate="visible" exit="hidden">
+          <motion.div
+            className="modal"
+            variants={modalVariants}
+            initial="hidden"
+            animate="visible"
+            exit="hidden">
             <div className="w-full overflow-x-auto">
               <div className="overflow-hidden min-w-max">
                 <div
                   className={`grid ${gridCols} py-8 text-sm font-medium border-b border-itbs-default text-black dark:text-white rounded-sm bg-[url('../assets/ttten.svg')] dark:dark:bg-[url('../assets/dark_ttten.svg')]`}>
-                  <div className="flex items-center"></div>
+                  <div className="flex items-center font-bold text-md px-2 w-max">{sector}</div>
                   {comparisonDevices.map((device) => (
                     <div key={device.id} className={`flex items-center`}>
                       <div
                         className={`${
-                          device.status === "Suporte" ? "bg-green-500" : device.status === "Phaseout" ? "bg-red-500" : "bg-amber-300"
+                          device.status === "Suporte"
+                            ? "bg-green-500"
+                            : device.status === "Phaseout"
+                            ? "bg-red-500"
+                            : "bg-amber-300"
                         } w-3 h-3 rounded-full`}></div>
                       <div className="rounded-lg p-2 w-full">
                         <div className="font-bold text-xl">{device.modelo}</div>
@@ -69,7 +84,8 @@ function ModalComponentCompare({comparisonDevices, modalIsOpenCompare, closeModa
                   const Icon = groupIcons[group];
                   return (
                     <div key={group}>
-                      <div className={`${Icon} py-2 flex items-center text-xl gap-2 text-itbs-default font-bold`}>
+                      <div
+                        className={`${Icon} py-2 flex items-center text-xl gap-2 text-itbs-default font-bold`}>
                         {Icon && <Icon />}
                         {group}
                       </div>

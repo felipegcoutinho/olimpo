@@ -21,7 +21,8 @@ export default function Ap() {
   const [queryAP, setQueryAP] = useState("");
   const [modalIsOpen, setIsOpen] = useState(false);
   const {fetchDevices, addDevices, deleteDevices, updateDevices} = CrudFirebase();
-  const {compareStatus, Possui, NaoPossui, ModulacaoStyle, calculateDateDifference, currentDate} = UseAux();
+  const {compareStatus, Possui, NaoPossui, ModulacaoStyle, calculateDateDifference, currentDate} =
+    UseAux();
   const {AP_Header} = TableHead();
 
   /* Configs Modal */
@@ -122,12 +123,14 @@ export default function Ap() {
         <ApCompare />
       </APContext.Provider>
 
-      <div className="overflow-x-auto">
+      <div id="wifi-empresarial" className="overflow-x-auto">
         <OlimpoTable
           Hide={HideAP}
           Device={"Wi-Fi Empresarial"}
           DeviceImg={DeviceImg}
-          DeviceText={"Wi-Fi de alta performance para ambientes profissionais e diversas necessidades."}
+          DeviceText={
+            "Wi-Fi de alta performance para ambientes profissionais e diversas necessidades."
+          }
           selectedDevices={selectedDevices.length >= 2 && selectedDevices}
           handleCompareClick={handleCompareClick}
           handleHide={handleHideAP}
@@ -166,7 +169,9 @@ export default function Ap() {
                   <td>{ap.raio}</td>
                   <td className="font-bold">{ap.usuarioMax}</td>
                   <td>{ap.throughputWireless24}</td>
-                  <td className="font-bold">{ap.throughputWireless50 === "-" ? NaoPossui : ap.throughputWireless50}</td>
+                  <td className="font-bold">
+                    {ap.throughputWireless50 === "-" ? NaoPossui : ap.throughputWireless50}
+                  </td>
                   <td>{ap.padrao}</td>
                   <td>{ap.qtdePortas}</td>
                   <td className="font-bold">{ap.tensao}</td>
@@ -181,10 +186,14 @@ export default function Ap() {
                   </td>
                   {admin && (
                     <td className="text-center">
-                      <button className="bg-yellow-300 p-1 rounded text-white" onClick={() => openUpdateModal(ap)}>
+                      <button
+                        className="bg-yellow-300 p-1 rounded text-white"
+                        onClick={() => openUpdateModal(ap)}>
                         <HiPencil />
                       </button>
-                      <button className="bg-red-600 p-1 rounded text-white ml-2" onClick={() => deleteDevice(ap.id)}>
+                      <button
+                        className="bg-red-600 p-1 rounded text-white ml-2"
+                        onClick={() => deleteDevice(ap.id)}>
                         <HiXMark />
                       </button>
                     </td>

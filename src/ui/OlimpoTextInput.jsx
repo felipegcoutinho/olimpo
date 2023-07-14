@@ -1,5 +1,6 @@
 import {Badge, Button, Label} from "flowbite-react";
 import React from "react";
+import {HiArrowSmRight} from "react-icons/hi";
 import {HiArrowTopRightOnSquare} from "react-icons/hi2";
 
 function OlimpoTextInput({label, ...rest}) {
@@ -16,21 +17,6 @@ function OlimpoTextInput({label, ...rest}) {
   );
 }
 
-// export function OlimpoTextInputType({label, tipo, ...rest}) {
-//   return (
-//     <>
-//       <Label className="text-zinc-500 text-sm">{label}</Label>
-//       <div className="flex">
-//         <input
-//           className="block w-full border rounded-s border-gray-300 text-gray-900 focus:border-green-500 focus:ring-green-500 p-2 text-sm"
-//           {...rest}
-//         />
-//         <input className="text-sm text-gray-600 text-center border-l-0 border rounded-e" value={tipo} disabled />
-//       </div>
-//     </>
-//   );
-// }
-
 export function OlimpoPageBtn() {
   return (
     <div className="flex justify-center">
@@ -40,6 +26,14 @@ export function OlimpoPageBtn() {
         </span>
       </button>
     </div>
+  );
+}
+
+export function OlimpoBtnCateg({setor}) {
+  return (
+    <button className="text-xs flex whitespace-nowrap p-2 items-center border border-itbs-default text-itbs-default hover:text-white hover:bg-itbs-default rounded-full">
+      {setor} <HiArrowSmRight />
+    </button>
   );
 }
 

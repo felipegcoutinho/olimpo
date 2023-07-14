@@ -1,8 +1,8 @@
-import React, {useContext} from "react";
-import {HiWifi, HiInformationCircle, HiComputerDesktop} from "react-icons/hi2";
-import {FaPlug} from "react-icons/fa";
 import ModalComponentCompare from "../ModalComponentCompare";
 import {SfpContext} from "./Sfp";
+import React, {useContext} from "react";
+import {FaPlug} from "react-icons/fa";
+import {HiWifi, HiInformationCircle, HiComputerDesktop} from "react-icons/hi2";
 
 function SfpCompare() {
   const {comparisonDevices, modalIsOpenCompare, closeModalCompare} = useContext(SfpContext);
@@ -38,6 +38,7 @@ function SfpCompare() {
       closeModalCompare={closeModalCompare}
       groupIcons={groupIcons}
       propertyMappings={propertyMappings}
+      sector="SFP"
     />
   );
 }

@@ -3,7 +3,7 @@
 @tailwind utilities;
 
 * {
-  @apply box-border m-0 p-0;
+  @apply m-0 box-border p-0;
 }
 
 html {
@@ -11,20 +11,13 @@ html {
 }
 
 body {
-  font-family:
-    "Fira Sans",
-    segoe UI,
-    arial;
-  @apply bg-neutral-200 dark:bg-[#0a1213];
-}
-
-.btnCategory {
-  @apply bg-green-900 border-none rounded-md shadow-md text-white cursor-pointer text-base font-semibold h-20 w-40 m-3;
+  font-family: "Fira Sans", segoe UI, arial;
+  @apply bg-neutral-200 dark:bg-itbs-modern-300;
 }
 
 tbody:nth-child(odd) {
-  @apply bg-slate-50 dark:bg-[#0F1D1E];
+  @apply bg-slate-50 dark:bg-itbs-modern-100;
 }
 tbody:nth-child(even) {
-  @apply bg-slate-100 dark:bg-[#0a1415];
+  @apply bg-slate-100 dark:bg-itbs-modern-300;
 }

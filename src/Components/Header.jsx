@@ -1,17 +1,21 @@
 import {AdminContext} from "../App";
 import DarkModeToggle from "../Hooks/DarkModeToggle";
+import ImgAp from "../assets/ap.png";
+import ImgConv from "../assets/conversor.png";
+import ImgHo from "../assets/ho.png";
+import ImgOnt from "../assets/ont.png";
+import ImgRadio from "../assets/radio.png";
+import ImgSfp from "../assets/sfp.png";
+import ImgSw from "../assets/sw.png";
+import Tiles from "../ui/Tiles";
 import LoginModal from "./LoginModal";
-import {Button, TextInput} from "flowbite-react";
+import {Button} from "flowbite-react";
 import React, {useState} from "react";
 import {useContext} from "react";
-import {HiAdjustments, HiCloudDownload, HiUserCircle} from "react-icons/hi";
-import {HiLockClosed, HiLockOpen, HiXMark, HiMagnifyingGlass} from "react-icons/hi2";
-import bgHeader from "../assets/ttten.svg";
-import Tiles from "../ui/Tiles";
-import DeviceImg from "../assets/ap.png";
+import {HiXMark, HiMagnifyingGlass} from "react-icons/hi2";
 
 export default function Header() {
-  const {openModal, admin} = useContext(AdminContext);
+  const {openModal, admin, email} = useContext(AdminContext);
   const [urlValue, setUrlValue] = useState("");
   const urlSearch = `https://www.intelbras.com/pt-br/busca/?q=${urlValue}&tipo_busca=pagina-resultado`;
 
@@ -25,27 +29,23 @@ export default function Header() {
     }
   };
   const setorTiles = {
-    1: {sector: "Wi-Fi Empresarial", link: "Informações Gerais"},
-    2: {sector: "Radio Outdoor", link: "Informações Gerais"},
-    3: {sector: "Switches", link: "Informações Gerais"},
-    4: {sector: "Roteadores", link: "Wireless"},
-    5: {sector: "Conversor de Midia", link: "Informações Gerais"},
-    6: {sector: "Módulo SFP", link: "Wireless"},
-    7: {sector: "Onu/Ont", link: "Wireless"},
+    1: {sector: "Wi-Fi Empresarial", link: "#wifi-empresarial", img: ImgAp},
+    2: {sector: "Radio Outdoor", link: "#radio-outdoor", img: ImgRadio},
+    3: {sector: "Switches", link: "#switch", img: ImgSw},
+    4: {sector: "Roteadores", link: "#roteador", img: ImgHo},
+    5: {sector: "Conversor de Midia", link: "#conversor", img: ImgConv},
+    6: {sector: "Módulo SFP", link: "#modulo-sfp", img: ImgSfp},
+    7: {sector: "Onu/Ont", link: "#onu-ont", img: ImgOnt},
   };
 
   return (
     <div className="bg-[url('../assets/ttten.svg')] dark:bg-[url('../assets/dark_ttten.svg')]">
-      <div className="flex justify-between px-2 text-slate-600 dark:text-white">
-        <div className="flex justify-start">
-          {/* <p className="text-sm">
-            <b>Aviso!</b> Este é um material para facilitar o acesso a informações dos principais equipamentos.
-            <b> Sempre consulte a documentação oficial.</b>
-          </p> */}
-        </div>
-
+      <div className="flex justify-end px-2 text-slate-600 dark:text-white">
         <div className="text-sm flex gap-4 items-center">
-          <p>Login</p>
+          <p className="cursor-pointer" onClick={openModal}>
+            {admin ? `Logado como ${email}` : "Login"}
+          </p>
+          <LoginModal />
           <p>
             <DarkModeToggle />
           </p>
@@ -68,28 +68,22 @@ export default function Header() {
             onKeyDown={handleKeyPress}
           />
 
-          <a target="_blank" rel="noopener noreferrer" href={urlSearch}>
-            <button className="flex m-1 bg-itbs-default p-4 rounded text-white h-14">
-              <HiMagnifyingGlass className="mr-1 text-2xl" /> Buscar
-            </button>
-          </a>
-
           {urlValue !== "" && (
             <Button size="lg" color="light" className="p-1 m-1" onClick={() => setUrlValue("")}>
-              <HiXMark className="mr-1" /> Limpar
+              <HiXMark className="mr-1" />
             </Button>
           )}
 
-          {/* <Button size="lg" color="dark" className="p-1 m-1" onClick={openModal}>
-            {admin ? <HiLockOpen className="mr-1" /> : <HiLockClosed className="mr-1" />}
-            Login
-          </Button>
-          <LoginModal /> */}
+          <a target="_blank" rel="noopener noreferrer" href={urlSearch}>
+            <button className="flex m-1 bg-itbs-default hover:bg-itbs-hover p-4 rounded text-white h-14">
+              <HiMagnifyingGlass className="mr-1 text-2xl" /> Buscar
+            </button>
+          </a>
         </div>
 
         <div className="flex gap-2 mt-10">
           {Object.values(setorTiles).map((tiles) => (
-            <Tiles img={DeviceImg} setor={tiles.sector} link={tiles.link} />
+            <Tiles img={tiles.img} setor={tiles.sector} link={tiles.link} />
           ))}
         </div>
       </div>

@@ -16,12 +16,14 @@ import Modal from "react-modal";
 export const SwContext = createContext();
 
 export default function Switches() {
-  const {admin, HideSwitch, setHideSwitch, updatedProduct, setUpdatedProduct} = useContext(AdminContext);
+  const {admin, HideSwitch, setHideSwitch, updatedProduct, setUpdatedProduct} =
+    useContext(AdminContext);
   const [switches, setSwitches] = useState([]);
   const [querySWITCH, setQuerySWITCH] = useState("");
   const [modalIsOpen, setIsOpen] = useState(false);
   const {fetchDevices, addDevices, deleteDevices, updateDevices} = CrudFirebase();
-  const {compareStatus, ModulacaoStyle, Possui, NaoPossui, calculateDateDifference, currentDate} = UseAux();
+  const {compareStatus, ModulacaoStyle, Possui, NaoPossui, calculateDateDifference, currentDate} =
+    UseAux();
   const {Switch_Header} = TableHead();
 
   /* Configs Modal */
@@ -122,7 +124,7 @@ export default function Switches() {
         <SwitchModalCompare />
       </SwContext.Provider>
 
-      <div className="overflow-x-auto">
+      <div id="switch" className="overflow-x-auto">
         <OlimpoTable
           Hide={HideSwitch}
           Device={"Switches"}
@@ -180,10 +182,14 @@ export default function Switches() {
                   </td>
                   {admin && (
                     <td className="text-center">
-                      <button className="bg-yellow-300 p-1 rounded text-white" onClick={() => openUpdateModal(sw)}>
+                      <button
+                        className="bg-yellow-300 p-1 rounded text-white"
+                        onClick={() => openUpdateModal(sw)}>
                         <HiPencil />
                       </button>
-                      <button className="bg-red-600 p-1 rounded text-white ml-2" onClick={() => deleteDevice(sw.id)}>
+                      <button
+                        className="bg-red-600 p-1 rounded text-white ml-2"
+                        onClick={() => deleteDevice(sw.id)}>
                         <HiXMark />
                       </button>
                     </td>

@@ -14,7 +14,7 @@ import Modal from "react-modal";
 export const AdminContext = createContext();
 
 function App() {
-  const [admin, setAdmin] = useState(false);
+  const [admin, setAdmin] = useState(true);
   const [HideAP, setHideAP] = useState(true);
   const [HideRADIO, setHideRADIO] = useState(true);
   const [HideHO, setHideHO] = useState(true);
@@ -25,6 +25,7 @@ function App() {
   const [updatedProduct, setUpdatedProduct] = useState("");
   const [ShowHide, setShowHide] = useState(true);
   const [modalIsOpen, setIsOpen] = useState(false);
+  const [email, setEmail] = useState("");
 
   const alternarMostrarOcultar = () => {
     setShowHide(!ShowHide);
@@ -49,7 +50,7 @@ function App() {
 
   return (
     <div className="flex flex-col">
-      <div className="w-[85%] self-center bg-white dark:bg-[#0F1D1E]">
+      <div className="w-[85%] self-center bg-white dark:bg-itbs-modern-100">
         <AdminContext.Provider
           value={{
             admin,
@@ -74,6 +75,8 @@ function App() {
             closeModal,
             modalIsOpen,
             setIsOpen,
+            email,
+            setEmail,
           }}>
           <Header />
 

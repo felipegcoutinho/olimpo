@@ -16,7 +16,8 @@ import Modal from "react-modal";
 export const RadioContext = createContext();
 
 export default function Radios() {
-  const {admin, HideRADIO, setHideRADIO, updatedProduct, setUpdatedProduct} = useContext(AdminContext);
+  const {admin, HideRADIO, setHideRADIO, updatedProduct, setUpdatedProduct} =
+    useContext(AdminContext);
   const [RadiosOutdoor, setRadiosOutdoor] = useState([]);
   const [queryRADIO, setQueryRADIO] = useState("");
   const [modalIsOpen, setIsOpen] = useState(false);
@@ -90,7 +91,9 @@ export default function Radios() {
   };
 
   const handleCompareClick = () => {
-    const productsToCompare = RadiosOutdoor.filter((product) => selectedDevices.includes(product.id));
+    const productsToCompare = RadiosOutdoor.filter((product) =>
+      selectedDevices.includes(product.id)
+    );
     setComparisonDevices(productsToCompare);
     openModalCompare();
   };
@@ -122,7 +125,7 @@ export default function Radios() {
         <RadioModalCompare />
       </RadioContext.Provider>
 
-      <div className="overflow-x-auto">
+      <div id="radio-outdoor" className="overflow-x-auto">
         <OlimpoTable
           Hide={HideRADIO}
           Device={"Rádios Outdoor"}
@@ -178,10 +181,14 @@ export default function Radios() {
                   </td>
                   {admin && (
                     <td className="text-center">
-                      <button className="bg-yellow-300 p-1 rounded text-white" onClick={() => openUpdateModal(radio)}>
+                      <button
+                        className="bg-yellow-300 p-1 rounded text-white"
+                        onClick={() => openUpdateModal(radio)}>
                         <HiPencil />
                       </button>
-                      <button className="bg-red-600 p-1 rounded text-white ml-2" onClick={() => deleteDevice(radio.id)}>
+                      <button
+                        className="bg-red-600 p-1 rounded text-white ml-2"
+                        onClick={() => deleteDevice(radio.id)}>
                         <HiXMark />
                       </button>
                     </td>

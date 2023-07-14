@@ -1,8 +1,8 @@
-import React, {useContext} from "react";
-import {HiWifi, HiInformationCircle, HiComputerDesktop} from "react-icons/hi2";
-import {FaPlug} from "react-icons/fa";
 import ModalComponentCompare from "../ModalComponentCompare";
 import {ConversorContext} from "./Conversor";
+import React, {useContext} from "react";
+import {FaPlug} from "react-icons/fa";
+import {HiWifi, HiInformationCircle, HiComputerDesktop} from "react-icons/hi2";
 
 function ConversorCompare() {
   const {comparisonDevices, modalIsOpenCompare, closeModalCompare} = useContext(ConversorContext);
@@ -38,6 +38,7 @@ function ConversorCompare() {
       closeModalCompare={closeModalCompare}
       groupIcons={groupIcons}
       propertyMappings={propertyMappings}
+      sector={"Conversor de Mídia"}
     />
   );
 }

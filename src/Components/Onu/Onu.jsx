@@ -21,7 +21,8 @@ export default function onu() {
   const [queryOnu, setQueryOnu] = useState("");
   const [modalIsOpen, setIsOpen] = useState(false);
   const {fetchDevices, addDevices, deleteDevices, updateDevices} = CrudFirebase();
-  const {compareStatus, Possui, NaoPossui, ModulacaoStyle, calculateDateDifference, currentDate} = UseAux();
+  const {compareStatus, Possui, NaoPossui, ModulacaoStyle, calculateDateDifference, currentDate} =
+    UseAux();
   const {Onu_Header} = TableHead();
 
   /* Configs Modal */
@@ -122,12 +123,14 @@ export default function onu() {
         <OnuCompare />
       </OnuContext.Provider>
 
-      <div className="overflow-x-auto">
+      <div id="onu-ont" className="overflow-x-auto">
         <OlimpoTable
           Hide={HideONU}
           Device={"Onu/Ont"}
           DeviceImg={DeviceImg}
-          DeviceText={"Wi-Fi de alta performance com qualidade de fibra óptica e porta Gigabit Ethernet."}
+          DeviceText={
+            "Wi-Fi de alta performance com qualidade de fibra óptica e porta Gigabit Ethernet."
+          }
           selectedDevices={selectedDevices.length >= 2 && selectedDevices}
           handleCompareClick={handleCompareClick}
           handleHide={handleHideONU}
@@ -182,10 +185,14 @@ export default function onu() {
                   </td>
                   {admin && (
                     <td className="text-center">
-                      <button className="bg-yellow-300 p-1 rounded text-white" onClick={() => openUpdateModal(onu)}>
+                      <button
+                        className="bg-yellow-300 p-1 rounded text-white"
+                        onClick={() => openUpdateModal(onu)}>
                         <HiPencil />
                       </button>
-                      <button className="bg-red-600 p-1 rounded text-white ml-2" onClick={() => deleteDevice(onu.id)}>
+                      <button
+                        className="bg-red-600 p-1 rounded text-white ml-2"
+                        onClick={() => deleteDevice(onu.id)}>
                         <HiXMark />
                       </button>
                     </td>

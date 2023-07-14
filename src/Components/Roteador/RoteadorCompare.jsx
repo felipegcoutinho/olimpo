@@ -1,8 +1,8 @@
-import React, {useContext} from "react";
-import {HiWifi, HiInformationCircle, HiComputerDesktop} from "react-icons/hi2";
-import {FaPlug} from "react-icons/fa";
 import ModalComponentCompare from "../ModalComponentCompare";
 import {HOContext} from "./Roteador";
+import React, {useContext} from "react";
+import {FaPlug} from "react-icons/fa";
+import {HiWifi, HiInformationCircle, HiComputerDesktop} from "react-icons/hi2";
 
 function RoteadorCompare() {
   const {comparisonDevices, modalIsOpenCompare, closeModalCompare} = useContext(HOContext);
@@ -38,6 +38,7 @@ function RoteadorCompare() {
       closeModalCompare={closeModalCompare}
       groupIcons={groupIcons}
       propertyMappings={propertyMappings}
+      sector="Roteadores"
     />
   );
 }

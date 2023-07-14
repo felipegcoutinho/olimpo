@@ -1,8 +1,8 @@
-import React, {useContext} from "react";
 import ModalComponentCompare from "../ModalComponentCompare";
-import {HiWifi, HiInformationCircle} from "react-icons/hi2";
-import {FaPlug} from "react-icons/fa";
 import {RadioContext} from "./Radio";
+import React, {useContext} from "react";
+import {FaPlug} from "react-icons/fa";
+import {HiWifi, HiInformationCircle} from "react-icons/hi2";
 
 function RadioCompare() {
   const {comparisonDevices, modalIsOpenCompare, closeModalCompare} = useContext(RadioContext);
@@ -34,6 +34,7 @@ function RadioCompare() {
       closeModalCompare={closeModalCompare}
       groupIcons={groupIcons}
       propertyMappings={propertyMappings}
+      sector={"Rádio Outdoor"}
     />
   );
 }

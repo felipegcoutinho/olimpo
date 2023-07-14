@@ -21,7 +21,8 @@ export default function Ap() {
   const [queryHO, setQueryHO] = useState("");
   const [modalIsOpen, setIsOpen] = useState(false);
   const {fetchDevices, addDevices, deleteDevices, updateDevices} = CrudFirebase();
-  const {compareStatus, Possui, NaoPossui, ModulacaoStyle, calculateDateDifference, currentDate} = UseAux();
+  const {compareStatus, Possui, NaoPossui, ModulacaoStyle, calculateDateDifference, currentDate} =
+    UseAux();
   const {Roteador_Header} = TableHead();
 
   /* Configs Modal */
@@ -122,7 +123,7 @@ export default function Ap() {
         <RoteadorCompare />
       </HOContext.Provider>
 
-      <div className="overflow-x-auto">
+      <div id="roteador" className="overflow-x-auto">
         <OlimpoTable
           Hide={HideHO}
           Device={"Roteadores"}
@@ -170,7 +171,9 @@ export default function Ap() {
                   <td>{roteador.datarateMax5G === "-" ? NaoPossui : roteador.datarateMax5G}</td>
                   <td className="font-bold">{roteador.tensao}</td>
                   <td>{roteador.repetidor === "-" ? NaoPossui : roteador.repetidor}</td>
-                  <td className="font-bold">{roteador.roteador === "-" ? NaoPossui : roteador.roteador}</td>
+                  <td className="font-bold">
+                    {roteador.roteador === "-" ? NaoPossui : roteador.roteador}
+                  </td>
                   <td>{roteador.cliente === "-" ? NaoPossui : roteador.cliente}</td>
                   <td className="font-bold">{roteador.ap === "-" ? NaoPossui : roteador.ap}</td>
                   <td className="text-center">{roteador.garantia}</td>
@@ -181,10 +184,14 @@ export default function Ap() {
                   </td>
                   {admin && (
                     <td className="text-center">
-                      <button className="bg-yellow-300 p-1 rounded text-white" onClick={() => openUpdateModal(roteador)}>
+                      <button
+                        className="bg-yellow-300 p-1 rounded text-white"
+                        onClick={() => openUpdateModal(roteador)}>
                         <HiPencil />
                       </button>
-                      <button className="bg-red-600 p-1 rounded text-white ml-2" onClick={() => deleteDevice(roteador.id)}>
+                      <button
+                        className="bg-red-600 p-1 rounded text-white ml-2"
+                        onClick={() => deleteDevice(roteador.id)}>
                         <HiXMark />
                       </button>
                     </td>

@@ -1,8 +1,8 @@
-import React, {useContext} from "react";
-import {HiWifi, HiInformationCircle, HiComputerDesktop} from "react-icons/hi2";
-import {FaPlug} from "react-icons/fa";
 import ModalComponentCompare from "../ModalComponentCompare";
 import {OnuContext} from "./Onu";
+import React, {useContext} from "react";
+import {FaPlug} from "react-icons/fa";
+import {HiWifi, HiInformationCircle, HiComputerDesktop} from "react-icons/hi2";
 
 function OnuCompare() {
   const {comparisonDevices, modalIsOpenCompare, closeModalCompare} = useContext(OnuContext);
@@ -38,6 +38,7 @@ function OnuCompare() {
       closeModalCompare={closeModalCompare}
       groupIcons={groupIcons}
       propertyMappings={propertyMappings}
+      sector="Onu/Ont"
     />
   );
 }
