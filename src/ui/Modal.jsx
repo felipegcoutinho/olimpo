@@ -33,9 +33,8 @@ function ModalComponent({
       onRequestClose={closeModal}
       className="bg-white dark:bg-itbs-modern-200 rounded-lg h-5/6 inset-1/2 outline-none overflow-auto p-4 pb-1 absolute -translate-x-1/2 -translate-y-1/2 w-1/3 "
       overlayClassName="bg-zinc-400 bg-opacity-75 fixed inset-0 backdrop-blur-sm">
-      <AnimatePresence>
         {modalIsOpen && (
-          <motion.div
+          <div
             className="modal"
             variants={modalVariants}
             initial="hidden"
@@ -46,12 +45,11 @@ function ModalComponent({
                 {updatedProductId ? `Atualizar ${updatedProductModelo}` : `Adicionar ${setor}`}
               </h1>
             </div>
-
             <InfoModal />
             {children}
-          </motion.div>
+          </div>
         )}
-      </AnimatePresence>
+      
     </Modal>
   );
 }

@@ -50,9 +50,8 @@ function ModalComponentCompare({
       onRequestClose={closeModalCompare}
       className={`bg-white dark:bg-itbs-modern-200 rounded-lg h-[90%] ${width} inset-1/2 outline-none overflow-auto p-2 absolute -translate-x-1/2 -translate-y-1/2`}
       overlayClassName="bg-slate-500 dark:bg-slate-800 bg-opacity-60 dark:bg-opacity-40 fixed inset-0 backdrop-blur-sm">
-      <AnimatePresence>
         {modalIsOpenCompare && (
-          <motion.div
+          <div
             className="modal"
             variants={modalVariants}
             initial="hidden"
@@ -106,9 +105,8 @@ function ModalComponentCompare({
                 })}
               </div>
             </div>
-          </motion.div>
+          </div>
         )}
-      </AnimatePresence>
     </Modal>
   );
 }
