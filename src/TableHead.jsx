@@ -3,7 +3,7 @@ import React, {useContext} from "react";
 
 function Header({children}) {
   return (
-    <thead className="text-xs text-slate-700  bg-slate-200 h-14  dark:bg-slate-800 dark:text-slate-200">
+    <thead className="text-xs text-slate-700 bg-slate-200 h-14 dark:bg-slate-800 dark:text-slate-200">
       <tr>{children}</tr>
     </thead>
   );
@@ -138,7 +138,10 @@ function TableHead() {
       <th className="text-center">Modelo</th>
       <th>Interface</th>
       <th className="px-2 underline">
-        <a target="_blank" rel="noopener noreferrer" href="https://www.intelbras.com/pt-br/redes/passivos-opticos/conector-de-campo">
+        <a
+          target="_blank"
+          rel="noopener noreferrer"
+          href="https://www.intelbras.com/pt-br/redes/passivos-opticos/conector-de-campo">
           Conector
         </a>
       </th>
@@ -234,7 +237,15 @@ function TableHead() {
     </Header>
   );
 
-  return {AP_Header, Radio_Header, Roteador_Header, Switch_Header, Conversor_Header, Sfp_Header, Onu_Header};
+  return {
+    AP_Header,
+    Radio_Header,
+    Roteador_Header,
+    Switch_Header,
+    Conversor_Header,
+    Sfp_Header,
+    Onu_Header,
+  };
 }
 
 export default TableHead;

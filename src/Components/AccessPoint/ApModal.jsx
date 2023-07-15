@@ -1,13 +1,14 @@
+import ModalComponent from "../../ui/Modal";
+import OlimpoSelect from "../../ui/OlimpoSelect";
+import OlimpoTextInput from "../../ui/OlimpoTextInput";
+import {APContext} from "./Ap";
+import {Button} from "flowbite-react";
 import React from "react";
 import {useContext} from "react";
-import {Button} from "flowbite-react";
-import ModalComponent from "../../ui/Modal";
-import OlimpoTextInput from "../../ui/OlimpoTextInput";
-import OlimpoSelect from "../../ui/OlimpoSelect";
-import {APContext} from "./Ap";
 
 function AP_Modal() {
-  const {addDevice, updateDevice, updatedProduct, setUpdatedProduct, closeModal, modalIsOpen} = useContext(APContext);
+  const {addDevice, updateDevice, updatedProduct, setUpdatedProduct, closeModal, modalIsOpen} =
+    useContext(APContext);
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -100,7 +101,9 @@ function AP_Modal() {
           type="text"
           placeholder="300 Mbps"
           value={updatedProduct.throughputWireless24}
-          onChange={(e) => setUpdatedProduct({...updatedProduct, throughputWireless24: e.target.value})}
+          onChange={(e) =>
+            setUpdatedProduct({...updatedProduct, throughputWireless24: e.target.value})
+          }
         />
 
         <OlimpoTextInput
@@ -108,7 +111,9 @@ function AP_Modal() {
           type="text"
           placeholder="866 Mbps"
           value={updatedProduct.throughputWireless50}
-          onChange={(e) => setUpdatedProduct({...updatedProduct, throughputWireless50: e.target.value})}
+          onChange={(e) =>
+            setUpdatedProduct({...updatedProduct, throughputWireless50: e.target.value})
+          }
         />
 
         <OlimpoSelect
@@ -247,7 +252,7 @@ function AP_Modal() {
           <option value="Sim">Sim</option>
         </OlimpoSelect>
 
-        <div className="bg-white bottom-0 flex flex-col sticky gap-1 mt-1">
+        <div className="bg-white dark:bg-transparent bottom-0 flex flex-col sticky gap-1 mt-1">
           <Button type="submit" color="success">
             {updatedProduct.id ? "Atualizar Equipamento" : "Adicionar Equipamento"}
           </Button>

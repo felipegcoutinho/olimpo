@@ -1,5 +1,5 @@
 import * as React from "react";
-import {HiEye, HiEyeSlash, HiMagnifyingGlass} from "react-icons/hi2";
+import {HiEye, HiEyeSlash, HiMagnifyingGlass, HiTableCells} from "react-icons/hi2";
 
 export default function OlimpoTable({
   tbody,
@@ -70,12 +70,18 @@ export default function OlimpoTable({
           </div>
         </div>
 
-        {Hide && (
+        {Hide ? (
           <div className="overflow-x-auto">
             <table className="w-full text-sm text-left text-gray-500">
               {thead}
               {tbody}
             </table>
+          </div>
+        ) : (
+          <div className="flex justify-center items-center h-28 bg-slate-200 dark:bg-slate-800">
+            <div className="flex text-slate-700 dark:text-slate-200 font-bold items-center gap-1">
+              <HiTableCells /> Dados Ocultos
+            </div>
           </div>
         )}
       </div>

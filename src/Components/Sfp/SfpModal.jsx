@@ -1,13 +1,14 @@
+import ModalComponent from "../../ui/Modal";
+import OlimpoSelect from "../../ui/OlimpoSelect";
+import OlimpoTextInput from "../../ui/OlimpoTextInput";
+import {SfpContext} from "./Sfp";
+import {Button} from "flowbite-react";
 import React from "react";
 import {useContext} from "react";
-import {SfpContext} from "./Sfp";
-import ModalComponent from "../../ui/Modal";
-import OlimpoTextInput from "../../ui/OlimpoTextInput";
-import OlimpoSelect from "../../ui/OlimpoSelect";
-import {Button} from "flowbite-react";
 
 function SfpModal() {
-  const {addDevice, updateDevice, updatedProduct, setUpdatedProduct, closeModal, modalIsOpen} = useContext(SfpContext);
+  const {addDevice, updateDevice, updatedProduct, setUpdatedProduct, closeModal, modalIsOpen} =
+    useContext(SfpContext);
 
   return (
     <ModalComponent
@@ -198,7 +199,7 @@ function SfpModal() {
             <option value="Sim">Sim</option>
           </OlimpoSelect>
 
-          <div className="bg-white bottom-0 flex flex-col sticky gap-1 mt-1">
+          <div className="bg-white dark:bg-transparent bottom-0 flex flex-col sticky gap-1 mt-1">
             <Button type="submit" color="success">
               {updatedProduct.id ? "Atualizar Equipamento" : "Adicionar Equipamento"}
             </Button>

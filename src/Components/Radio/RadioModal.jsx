@@ -1,13 +1,14 @@
+import ModalComponent from "../../ui/Modal";
+import OlimpoSelect from "../../ui/OlimpoSelect";
+import OlimpoTextInput from "../../ui/OlimpoTextInput";
+import {RadioContext} from "./Radio";
+import {Button} from "flowbite-react";
 import React from "react";
 import {useContext} from "react";
-import {RadioContext} from "./Radio";
-import ModalComponent from "../../ui/Modal";
-import OlimpoTextInput from "../../ui/OlimpoTextInput";
-import OlimpoSelect from "../../ui/OlimpoSelect";
-import {Button} from "flowbite-react";
 
 function RadioModal() {
-  const {addDevice, updateDevice, updatedProduct, setUpdatedProduct, modalIsOpen, closeModal} = useContext(RadioContext);
+  const {addDevice, updateDevice, updatedProduct, setUpdatedProduct, modalIsOpen, closeModal} =
+    useContext(RadioContext);
 
   return (
     <ModalComponent
@@ -103,7 +104,9 @@ function RadioModal() {
             type="text"
             placeholder="160 Mbps"
             value={updatedProduct.throughputEfetivoNominal}
-            onChange={(e) => setUpdatedProduct({...updatedProduct, throughputEfetivoNominal: e.target.value})}
+            onChange={(e) =>
+              setUpdatedProduct({...updatedProduct, throughputEfetivoNominal: e.target.value})
+            }
           />
 
           <OlimpoTextInput
@@ -186,7 +189,7 @@ function RadioModal() {
             <option value="Sim">Sim</option>
           </OlimpoSelect>
 
-          <div className="bg-white bottom-0 flex flex-col sticky gap-1 mt-1">
+          <div className="bg-white dark:bg-transparent bottom-0 flex flex-col sticky gap-1 mt-1">
             <Button type="submit" color="success" className="">
               {updateDevice.id ? "Atualizar Equipamento" : "Adicionar Equipamento"}
             </Button>

@@ -1,8 +1,7 @@
 import {AdminContext} from "../App";
-import style from "../css/App.module.css";
 import {auth} from "../database/firebase";
 import OlimpoTextInput from "../ui/OlimpoTextInput";
-import {Button, TextInput} from "flowbite-react";
+import {Button} from "flowbite-react";
 import React, {useEffect, useState} from "react";
 import {useContext} from "react";
 import {useSignInWithEmailAndPassword} from "react-firebase-hooks/auth";
@@ -79,10 +78,10 @@ function LoginModal() {
               onChange={(e) => setPassword(e.target.value)}
               required
             />
-            <Button color="success" className={style.btnLogar} onClick={handleSignIn}>
+            <Button color="success" onClick={handleSignIn}>
               {loading ? "Entrando..." : "Entrar"}
             </Button>
-            <Button color="light" className={style.btn_addUpdCancel} onClick={closeModal}>
+            <Button color="light" onClick={closeModal}>
               Cancelar
             </Button>
           </>

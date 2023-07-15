@@ -1,13 +1,14 @@
+import ModalComponent from "../../ui/Modal";
+import OlimpoSelect from "../../ui/OlimpoSelect";
+import OlimpoTextInput from "../../ui/OlimpoTextInput";
+import {OnuContext} from "./Onu";
+import {Button} from "flowbite-react";
 import React from "react";
 import {useContext} from "react";
-import {Button} from "flowbite-react";
-import ModalComponent from "../../ui/Modal";
-import OlimpoTextInput from "../../ui/OlimpoTextInput";
-import OlimpoSelect from "../../ui/OlimpoSelect";
-import {OnuContext} from "./Onu";
 
 function OnuModal() {
-  const {addDevice, updateDevice, updatedProduct, setUpdatedProduct, closeModal, modalIsOpen} = useContext(OnuContext);
+  const {addDevice, updateDevice, updatedProduct, setUpdatedProduct, closeModal, modalIsOpen} =
+    useContext(OnuContext);
 
   return (
     <ModalComponent
@@ -131,7 +132,9 @@ function OnuModal() {
           type="text"
           placeholder="64 usuários"
           value={updatedProduct.clientesSimultaneos}
-          onChange={(e) => setUpdatedProduct({...updatedProduct, clientesSimultaneos: e.target.value})}
+          onChange={(e) =>
+            setUpdatedProduct({...updatedProduct, clientesSimultaneos: e.target.value})
+          }
         />
 
         <OlimpoTextInput
@@ -244,7 +247,7 @@ function OnuModal() {
           <option value="Sim">Sim</option>
         </OlimpoSelect>
 
-        <div className="bg-white bottom-0 flex flex-col sticky gap-1 mt-1">
+        <div className="bg-white dark:bg-transparent bottom-0 flex flex-col sticky gap-1 mt-1">
           <Button type="submit" color="success">
             {updatedProduct.id ? "Atualizar Equipamento" : "Adicionar Equipamento"}
           </Button>
