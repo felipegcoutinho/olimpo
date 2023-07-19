@@ -22,6 +22,7 @@ function OnuCompare() {
     garantia: {label: "Garantia", group: "Informações Gerais"},
     cobertura: {label: "Cobertura", group: "Wireless"},
     raio: {label: "Raio", group: "Wireless"},
+    remotize: {label: "Remotize", group: "Wireless"},
     throughputWireless24: {label: "Throughput 2.4GHz", group: "Wireless"},
     throughputWireless50: {label: "Throughput 5.0GHz", group: "Wireless"},
     potencia2G: {label: "Potência 2.4GHz", group: "Wireless"},
