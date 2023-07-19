@@ -16,19 +16,17 @@ function SwitchCompare() {
 
   const propertyMappings = {
     modulação: {label: "Modulação", group: "Informações Gerais"},
-    usuarioMax: {label: "Usuários simultâneos", group: "Informações Gerais"},
-    qtdePortas: {label: "Quantidade de portas", group: "Informações Gerais"},
-    handover: {label: "Handover", group: "Informações Gerais"},
+    qtdePortas: {label: "Qtde de portas", group: "Informações Gerais"},
+    gerenciavel: {label: "Gerenciavel", group: "Informações Gerais"},
+    poe : {label: "PoE", group: "Informações Gerais"},
+    pps: {label: "PPS", group: "Informações Gerais"},
+    backplane: {label: "Backplane", group: "Informações Gerais"},
+    sfp: {label: "SFP", group: "Informações Gerais"},
+    poeExtender: {label: "PoE Extender", group: "PoE"},
+    poePorta: {label: "PoE por Porta", group: "PoE"},
+    poeTotal: {label: "PoE Total", group: "PoE"},
+    qos: {label: "QoS", group: "Informações Gerais"},
     garantia: {label: "Garantia", group: "Informações Gerais"},
-    cobertura: {label: "Cobertura", group: "Wireless"},
-    raio: {label: "Raio", group: "Wireless"},
-    throughputWireless24: {label: "Throughput 2.4GHz", group: "Wireless"},
-    throughputWireless50: {label: "Throughput 5.0GHz", group: "Wireless"},
-    potencia2G: {label: "Potência 2.4GHz", group: "Wireless"},
-    potencia5G: {label: "Potência 5.0GHz", group: "Wireless"},
-    inmaster: {label: "InMaster", group: "Software de Gerenciamento"},
-    poe: {label: "PoE", group: "Alimentação"},
-    tensao: {label: "Tensão", group: "Alimentação"},
   };
 
   return (
