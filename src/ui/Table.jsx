@@ -1,5 +1,5 @@
 import * as React from "react";
-import {HiEye, HiEyeSlash, HiMagnifyingGlass, HiTableCells} from "react-icons/hi2";
+import {HiEye, HiEyeSlash, HiMagnifyingGlass} from "react-icons/hi2";
 
 export default function OlimpoTable({
   tbody,
@@ -47,7 +47,7 @@ export default function OlimpoTable({
 
                 {selectedDevices.length <= 4 && (
                   <button
-                    className="mr-auto bg-slate-500 hover:bg-slate-600 rounded-full px-4 py-3 text-white text-sm"
+                    className="mr-auto bg-slate-500 hover:bg-slate-600 rounded-full px-4 py-2 text-white text-sm"
                     onClick={handleCompareClick}>
                     Comparar
                   </button>
@@ -80,7 +80,7 @@ export default function OlimpoTable({
         ) : (
           <div className="flex justify-center items-center h-28 bg-slate-200 dark:bg-slate-800">
             <div className="flex text-slate-700 dark:text-slate-200 font-bold items-center gap-1">
-              <HiTableCells /> Dados Ocultos
+              <HiEyeSlash /> Dados Ocultos
             </div>
           </div>
         )}

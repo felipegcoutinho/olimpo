@@ -1,4 +1,3 @@
-import {motion, AnimatePresence} from "framer-motion";
 import React from "react";
 import Modal from "react-modal";
 
@@ -29,20 +28,6 @@ function ModalComponentCompare({
   const comparisonDevicesLength = comparisonDevices.length;
   const {gridCols, width} = gridSizeMapping[comparisonDevicesLength] || {};
 
-  const modalVariants = {
-    hidden: {
-      opacity: 0,
-      y: 100,
-    },
-    visible: {
-      opacity: 1,
-      y: 0,
-      transition: {
-        duration: 0.3,
-      },
-    },
-  };
-
   return (
     <Modal
       isOpen={modalIsOpenCompare}
@@ -51,12 +36,7 @@ function ModalComponentCompare({
       className={`bg-white dark:bg-itbs-modern-200 rounded-lg h-[90%] ${width} inset-1/2 outline-none overflow-auto p-2 absolute -translate-x-1/2 -translate-y-1/2`}
       overlayClassName="bg-zinc-400 bg-opacity-75 fixed inset-0 backdrop-blur-sm">
       {modalIsOpenCompare && (
-        <div
-          className="modal"
-          variants={modalVariants}
-          initial="hidden"
-          animate="visible"
-          exit="hidden">
+        <div className="modal">
           <div className="w-full overflow-x-auto">
             <div className="overflow-hidden min-w-max">
               <div

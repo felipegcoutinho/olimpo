@@ -8,7 +8,7 @@ function Tiles({setor, img, link}) {
         <img src={img} alt={setor} className="w-24 h-24" />
       </div>
       <a href={link}>
-        <div className="w-full flex justify-center">
+        <div className="w-full flex justify-center backdrop-blur-[2px] bg-transparent">
           <OlimpoBtnCateg setor={setor} />
         </div>
       </a>

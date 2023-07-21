@@ -12,6 +12,7 @@ import Ap_Modal from "./ApModal";
 import {React, useState, useEffect, useContext, createContext} from "react";
 import {HiPencil, HiXMark} from "react-icons/hi2";
 import Modal from "react-modal";
+import Swal from "sweetalert2";
 
 export const APContext = createContext();
 
@@ -44,7 +45,7 @@ export default function Ap() {
   //Busca os produtos no firebase
   useEffect(() => {
     fetchDevices("aps", setAccessPoint);
-  }, []);
+  }, [accessPoint]);
 
   //Deleta os produtos no firebase
   const deleteDevice = (id) => {
@@ -65,6 +66,10 @@ export default function Ap() {
   /* Atualizar Produto */
   const updateDevice = async () => {
     await updateDevices("aps", setUpdatedProduct, updatedProduct, fetchDevices, closeModal);
+    Swal.fire({
+      title: "Atualizado!",
+      confirmButtonColor: "#006e39",
+    });
   };
 
   // Esse trecho vai gerenciar os produtos selecionados

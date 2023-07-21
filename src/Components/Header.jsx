@@ -39,7 +39,7 @@ export default function Header() {
   };
 
   return (
-    <div className="bg-[url('../assets/ttten.svg')] dark:bg-[url('../assets/dark_ttten.svg')]">
+    <div className="bg-[url('../assets/ttten.svg')] ">
       <div className="flex justify-end px-2 text-slate-600 dark:text-white">
         <div className="text-sm flex gap-4 items-center">
           <p className="cursor-pointer" onClick={openModal}>

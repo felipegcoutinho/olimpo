@@ -10,25 +10,25 @@ function RoteadorCompare() {
   const groupIcons = {
     Wireless: HiWifi,
     "Informações Gerais": HiInformationCircle,
-    "Software de Gerenciamento": HiComputerDesktop,
     Alimentação: FaPlug,
+    "Modo de Funcionamento": HiComputerDesktop,
   };
 
   const propertyMappings = {
     modulação: {label: "Modulação", group: "Informações Gerais"},
+    cobertura: {label: "Cobertura", group: "Informações Gerais"},
+    qtdePortas: {label: "Quantidade de Portas", group: "Informações Gerais"},
+    raio: {label: "Raio", group: "Informações Gerais"},
     usuarioMax: {label: "Usuários simultâneos", group: "Informações Gerais"},
-    qtdePortas: {label: "Quantidade de portas", group: "Informações Gerais"},
-    handover: {label: "Handover", group: "Informações Gerais"},
-    garantia: {label: "Garantia", group: "Informações Gerais"},
-    cobertura: {label: "Cobertura", group: "Wireless"},
-    raio: {label: "Raio", group: "Wireless"},
-    throughputWireless24: {label: "Throughput 2.4GHz", group: "Wireless"},
-    throughputWireless50: {label: "Throughput 5.0GHz", group: "Wireless"},
-    potencia2G: {label: "Potência 2.4GHz", group: "Wireless"},
-    potencia5G: {label: "Potência 5.0GHz", group: "Wireless"},
-    inmaster: {label: "InMaster", group: "Software de Gerenciamento"},
-    poe: {label: "PoE", group: "Alimentação"},
+    planoRecomendado: {label: "Plano Recomendado", group: "Informações Gerais"},
+    datarateMax2G: {label: "Datarate Máx. 2.4GHz", group: "Wireless"},
+    datarateMax5G: {label: "Datarate Máx. 5.0GHz", group: "Wireless"},
+    repetidor: {label: "Modo Repetidor", group: "Modo de Funcionamento"},
+    roteador: {label: "Modo Roteador", group: "Modo de Funcionamento"},
+    cliente: {label: "Modo Cliente", group: "Modo de Funcionamento"},
+    ap: {label: "Modo AP", group: "Modo de Funcionamento"},
     tensao: {label: "Tensão", group: "Alimentação"},
+    garantia: {label: "Garantia", group: "Informações Gerais"},
   };
 
   return (

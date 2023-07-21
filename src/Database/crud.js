@@ -1,5 +1,5 @@
-import {getDatabase, get, set, ref, push, remove} from "firebase/database";
 import {app, db} from "../database/firebase";
+import {getDatabase, get, set, ref, push, remove} from "firebase/database";
 import Swal from "sweetalert2";
 
 export function CrudFirebase() {
@@ -54,7 +54,13 @@ export function CrudFirebase() {
   };
 
   /* Atualizar  Produto */
-  const updateDevices = async (path, setUpdatedProduct, updatedProduct, fetchDevices, closeModal) => {
+  const updateDevices = async (
+    path,
+    setUpdatedProduct,
+    updatedProduct,
+    fetchDevices,
+    closeModal
+  ) => {
     const apRef = ref(db, `${path}/${updatedProduct.id}`);
     await set(apRef, updatedProduct);
     Swal.fire({

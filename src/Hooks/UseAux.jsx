@@ -33,7 +33,10 @@ function UseAux() {
   );
 
   function ModulacaoStyle(device) {
-    const modulacaoClass = device.modulação === "Fast" ? "bg-orange-500 shadow-orange-500/50" : "bg-green-500 shadow-green-500/50";
+    const modulacaoClass =
+      device.modulação === "Fast"
+        ? "bg-orange-500 shadow-orange-500/50"
+        : "bg-green-500 shadow-green-500/50";
     return `${modulacaoClass} px-3 py-1 rounded-2xl font-bold text-white shadow-sm`;
   }
 

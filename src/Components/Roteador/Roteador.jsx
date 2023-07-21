@@ -21,7 +21,7 @@ export default function Ap() {
   const [queryHO, setQueryHO] = useState("");
   const [modalIsOpen, setIsOpen] = useState(false);
   const {fetchDevices, addDevices, deleteDevices, updateDevices} = CrudFirebase();
-  const {compareStatus, Possui, NaoPossui, ModulacaoStyle, calculateDateDifference, currentDate} =
+  const {compareStatus, NaoPossui, Possui, ModulacaoStyle, calculateDateDifference, currentDate} =
     UseAux();
   const {Roteador_Header} = TableHead();
 
@@ -170,12 +170,10 @@ export default function Ap() {
                   <td className="font-bold">{roteador.datarateMax2G}</td>
                   <td>{roteador.datarateMax5G === "-" ? NaoPossui : roteador.datarateMax5G}</td>
                   <td className="font-bold">{roteador.tensao}</td>
-                  <td>{roteador.repetidor === "-" ? NaoPossui : roteador.repetidor}</td>
-                  <td className="font-bold">
-                    {roteador.roteador === "-" ? NaoPossui : roteador.roteador}
-                  </td>
-                  <td>{roteador.cliente === "-" ? NaoPossui : roteador.cliente}</td>
-                  <td className="font-bold">{roteador.ap === "-" ? NaoPossui : roteador.ap}</td>
+                  <td>{roteador.repetidor === "-" ? NaoPossui : Possui}</td>
+                  <td className="font-bold">{roteador.roteador === "-" ? NaoPossui : Possui}</td>
+                  <td>{roteador.cliente === "-" ? NaoPossui : Possui}</td>
+                  <td className="font-bold">{roteador.ap === "-" ? NaoPossui : Possui}</td>
                   <td className="text-center">{roteador.garantia}</td>
                   <td>
                     <a target="_blank" rel="noopener noreferrer" href={roteador.pagina}>

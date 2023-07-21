@@ -10,26 +10,25 @@ function OnuCompare() {
   const groupIcons = {
     Wireless: HiWifi,
     "Informações Gerais": HiInformationCircle,
-    "Software de Gerenciamento": HiComputerDesktop,
+    Gerenciamento: HiComputerDesktop,
     Alimentação: FaPlug,
   };
 
   const propertyMappings = {
     modulação: {label: "Modulação", group: "Informações Gerais"},
-    usuarioMax: {label: "Usuários simultâneos", group: "Informações Gerais"},
-    qtdePortas: {label: "Quantidade de portas", group: "Informações Gerais"},
-    handover: {label: "Handover", group: "Informações Gerais"},
-    garantia: {label: "Garantia", group: "Informações Gerais"},
+    fxs: {label: "FXS", group: "Informações Gerais"},
+    qtdeportas: {label: "Quantidade de portas", group: "Informações Gerais"},
+    tipo: {label: "Tipo", group: "Informações Gerais"},
+    sensibilidade: {label: "Sensibilidade", group: "Informações Gerais"},
     cobertura: {label: "Cobertura", group: "Wireless"},
-    raio: {label: "Raio", group: "Wireless"},
-    remotize: {label: "Remotize", group: "Wireless"},
-    throughputWireless24: {label: "Throughput 2.4GHz", group: "Wireless"},
-    throughputWireless50: {label: "Throughput 5.0GHz", group: "Wireless"},
-    potencia2G: {label: "Potência 2.4GHz", group: "Wireless"},
-    potencia5G: {label: "Potência 5.0GHz", group: "Wireless"},
-    inmaster: {label: "InMaster", group: "Software de Gerenciamento"},
-    poe: {label: "PoE", group: "Alimentação"},
-    tensao: {label: "Tensão", group: "Alimentação"},
+    clientesSimultaneos: {label: "Usuários simultâneos", group: "Informações Gerais"},
+    transmissao2ghz: {label: "Transmissão 2.4GHz", group: "Wireless"},
+    transmissao5ghz: {label: "Transmissão 5.0GHz", group: "Wireless"},
+    ssid: {label: "Qtde SSID", group: "Wireless"},
+    tr069: {label: "TR069", group: "Gerenciamento"},
+    customize: {label: "Customize", group: "Gerenciamento"},
+    remotize: {label: "Remotize", group: "Gerenciamento"},
+    garantia: {label: "Garantia", group: "Informações Gerais"},
   };
 
   return (
