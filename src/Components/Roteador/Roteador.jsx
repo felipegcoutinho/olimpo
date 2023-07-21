@@ -44,7 +44,7 @@ export default function Ap() {
   //Busca os produtos no firebase
   useEffect(() => {
     fetchDevices("roteadorHO", setRoteadorHO);
-  }, []);
+  }, [roteadorHO]);
 
   //Deleta os produtos no firebase
   const deleteDevice = (id) => {

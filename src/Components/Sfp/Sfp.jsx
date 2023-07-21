@@ -45,7 +45,7 @@ export default function Sfp() {
   //Busca os produtos no firebase
   useEffect(() => {
     fetchDevices("sfp", setSfp);
-  }, []);
+  }, [sfp]);
 
   //Deleta os produtos no firebase
   const deleteDevice = (id) => {

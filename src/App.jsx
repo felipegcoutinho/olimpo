@@ -9,12 +9,11 @@ import Switches from "./Components/Switch/Switch.jsx";
 import {Button} from "flowbite-react";
 import React from "react";
 import {createContext, useState} from "react";
-import Modal from "react-modal";
 
 export const AdminContext = createContext();
 
 function App() {
-  const [admin, setAdmin] = useState(false);
+  const [admin, setAdmin] = useState(true);
   const [HideAP, setHideAP] = useState(true);
   const [HideRADIO, setHideRADIO] = useState(true);
   const [HideHO, setHideHO] = useState(true);

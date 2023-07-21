@@ -44,7 +44,7 @@ export default function Radios() {
   //Busca os produtos no firebase
   useEffect(() => {
     fetchDevices("radios", setRadiosOutdoor);
-  }, []);
+  }, [RadiosOutdoor]);
 
   //Deleta os produtos no firebase
   const deleteDevice = (id) => {

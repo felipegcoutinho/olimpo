@@ -45,7 +45,7 @@ export default function Conversor() {
   //Busca os produtos no firebase
   useEffect(() => {
     fetchDevices("conversores", setConversor);
-  }, []);
+  }, [conversor]);
 
   //Deleta os produtos no firebase
   const deleteDevice = (id) => {

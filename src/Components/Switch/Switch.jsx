@@ -1,3 +1,4 @@
+import Swal from "sweetalert2";
 import {AdminContext} from "../../App";
 import CrudFirebase from "../../Database/crud";
 import UseAux from "../../Hooks/UseAux";
@@ -45,7 +46,7 @@ export default function Switches() {
   //Busca os produtos no firebase
   useEffect(() => {
     fetchDevices("switches", setSwitches);
-  }, []);
+  }, [switches]);
 
   //Deleta os produtos no firebase
   const deleteDevice = (id) => {
@@ -61,11 +62,15 @@ export default function Switches() {
   const openUpdateModal = (updatedProduct) => {
     setUpdatedProduct(updatedProduct);
     setIsOpen(true);
-  };
+  };    
 
   /* Atualizar Produto */
   const updateDevice = async () => {
-    await updateDevices("switches", setUpdatedProduct, updatedProduct, fetchDevices, closeModal);
+    await updateDevices("switches", setUpdatedProduct, updatedProduct, fetchDevices, closeModal); 
+    Swal.fire({
+      title: "Atualizado!",
+      confirmButtonColor: "#006e39",
+    })
   };
 
   // Esse trecho vai gerenciar os produtos selecionados

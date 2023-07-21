@@ -59,15 +59,13 @@ export function CrudFirebase() {
     setUpdatedProduct,
     updatedProduct,
     fetchDevices,
-    closeModal
+    closeModal,
+    alert
   ) => {
     const apRef = ref(db, `${path}/${updatedProduct.id}`);
     await set(apRef, updatedProduct);
-    Swal.fire({
-      title: "Atualizado!",
-      confirmButtonColor: "#006e39",
-    });
     setUpdatedProduct({});
+    alert;
     fetchDevices();
     closeModal();
   };
