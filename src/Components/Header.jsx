@@ -9,10 +9,9 @@ import ImgSfp from "../assets/sfp.png";
 import ImgSw from "../assets/sw.png";
 import Tiles from "../ui/Tiles";
 import LoginModal from "./LoginModal";
-import {Button} from "flowbite-react";
 import React, {useState} from "react";
 import {useContext} from "react";
-import {HiXMark, HiMagnifyingGlass} from "react-icons/hi2";
+import {HiMagnifyingGlass} from "react-icons/hi2";
 
 export default function Header() {
   const {openModal, admin, email} = useContext(AdminContext);
@@ -40,16 +39,14 @@ export default function Header() {
 
   return (
     <div className="bg-[url('../assets/ttten.svg')] mb-2">
-      <div className="flex justify-end px-2 text-slate-600 dark:text-white">
-        <div className="text-sm flex gap-4 items-center">
+      <div className="flex justify-end px-4 text-slate-600 dark:text-white">
+        <div className="flex gap-6 items-center">
           <p className="cursor-pointer hover:underline" onClick={openModal}>
-            {admin ? `Logado como ${email}` : "Login"}
+            {admin ? `${email}` : "login"}
           </p>
-          <p>Avisos</p>
+          avisos
           <LoginModal />
-          <p>
-            <DarkModeToggle />
-          </p>
+          <DarkModeToggle />
         </div>
       </div>
 
