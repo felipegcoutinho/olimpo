@@ -10,6 +10,11 @@ function OnuModal() {
   const {addDevice, updateDevice, updatedProduct, setUpdatedProduct, closeModal, modalIsOpen} =
     useContext(OnuContext);
 
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    updatedProduct.id ? updateDevice() : addDevice();
+  };
+
   return (
     <ModalComponent
       modalIsOpen={modalIsOpen}
@@ -17,7 +22,7 @@ function OnuModal() {
       updatedProductId={updatedProduct.id}
       updatedProductModelo={updatedProduct.modelo}
       setor="Onts">
-      <form onSubmit={updatedProduct.id ? updateDevice : addDevice}>
+      <form onSubmit={handleSubmit}>
         <OlimpoTextInput
           label="Modelo"
           required

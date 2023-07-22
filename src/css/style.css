@@ -11,13 +11,14 @@ html {
 }
 
 body {
-  font-family: "Fira Sans", segoe UI, arial;
+  font-family: "Roboto", segoe UI, arial;
   @apply bg-neutral-200 dark:bg-itbs-modern-300;
 }
 
 tbody:nth-child(odd) {
   @apply bg-slate-50 dark:bg-itbs-modern-100;
 }
+
 tbody:nth-child(even) {
   @apply bg-slate-100 dark:bg-itbs-modern-300;
 }

@@ -61,7 +61,7 @@ export default function OlimpoTable({
                     type="text"
                     value={query}
                     onChange={handleSearchChange}
-                    className="block p-2 pl-10 text-sm text-gray-900 border border-gray-300 rounded-lg w-60 bg-gray-50 dark:bg-transparent focus:ring-green-500 focus:border-green-500  "
+                    className="block p-2 pl-10 text-sm text-gray-900 border border-gray-300 dark:border-green-900 rounded-lg w-60 bg-gray-50 dark:bg-itbs-modern-400 dark:text-white focus:ring-green-500 focus:border-green-500  "
                     placeholder="Buscar Equipamentos"
                   />
                 </div>
@@ -74,12 +74,18 @@ export default function OlimpoTable({
           <div className="overflow-x-auto">
             <table className="w-full text-sm text-left text-gray-500">
               {thead}
-              {tbody}
+              {tbody.length > 0 ? (
+                tbody
+              ) : (
+                <td colSpan="15" className="text-center py-4 italic">
+                  Nenhum equipamento encontrado :(
+                </td>
+              )}
             </table>
           </div>
         ) : (
           <div className="flex justify-center items-center h-28 bg-slate-200 dark:bg-slate-800">
-            <div className="flex text-slate-700 dark:text-slate-200 font-bold items-center gap-1">
+            <div className="flex text-slate-700 dark:text-slate-200 italic text-sm items-center gap-1">
               <HiEyeSlash /> Dados Ocultos
             </div>
           </div>

@@ -10,6 +10,11 @@ function SfpModal() {
   const {addDevice, updateDevice, updatedProduct, setUpdatedProduct, closeModal, modalIsOpen} =
     useContext(SfpContext);
 
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    updatedProduct.id ? updateDevice() : addDevice();
+  };
+
   return (
     <ModalComponent
       modalIsOpen={modalIsOpen}
@@ -17,7 +22,7 @@ function SfpModal() {
       updatedProductId={updatedProduct.id}
       updatedProductModelo={updatedProduct.modelo}
       setor="Módulo SFP">
-      <form onSubmit={updatedProduct.id ? updateDevice : addDevice}>
+      <form onSubmit={handleSubmit}>
         <div>
           <OlimpoTextInput
             label="Modelo"

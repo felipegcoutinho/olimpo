@@ -10,6 +10,11 @@ function RadioModal() {
   const {addDevice, updateDevice, updatedProduct, setUpdatedProduct, modalIsOpen, closeModal} =
     useContext(RadioContext);
 
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    updatedProduct.id ? updateDevice() : addDevice();
+  };
+
   return (
     <ModalComponent
       modalIsOpen={modalIsOpen}
@@ -17,7 +22,7 @@ function RadioModal() {
       updatedProductId={updatedProduct.id}
       updatedProductModelo={updatedProduct.modelo}
       setor="Rádio">
-      <form onSubmit={updatedProduct.id ? updateDevice : addDevice}>
+      <form onSubmit={handleSubmit}>
         <div className="flex flex-col">
           <OlimpoTextInput
             label="Modelo"
@@ -42,6 +47,14 @@ function RadioModal() {
             <option value="Phaseout">Phaseout</option>
             <option value="N/A">N/A</option>
           </OlimpoSelect>
+
+          <OlimpoTextInput
+            label="Data de lançamento"
+            type="date"
+            placeholder="AP 1250 AC MAX"
+            value={updatedProduct.date}
+            onChange={(e) => setUpdatedProduct({...updatedProduct, date: e.target.value})}
+          />
 
           <OlimpoSelect
             label="Indicado"
@@ -190,8 +203,8 @@ function RadioModal() {
           </OlimpoSelect>
 
           <div className="bg-white dark:bg-transparent bottom-0 flex flex-col sticky gap-1 mt-1">
-            <Button type="submit" color="success" className="">
-              {updateDevice.id ? "Atualizar Equipamento" : "Adicionar Equipamento"}
+            <Button type="submit" color="success">
+              {updatedProduct.id ? "Atualizar Equipamento" : "Adicionar Equipamento"}
             </Button>
             <Button color="light" onClick={closeModal}>
               Cancelar

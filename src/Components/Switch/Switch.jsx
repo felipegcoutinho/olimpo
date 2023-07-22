@@ -1,4 +1,3 @@
-import Swal from "sweetalert2";
 import {AdminContext} from "../../App";
 import CrudFirebase from "../../Database/crud";
 import UseAux from "../../Hooks/UseAux";
@@ -13,6 +12,7 @@ import SwitchModalCompare from "./SwitchCompare";
 import {React, useState, useEffect, useContext, createContext} from "react";
 import {HiPencil, HiXMark} from "react-icons/hi2";
 import Modal from "react-modal";
+import Swal from "sweetalert2";
 
 export const SwContext = createContext();
 
@@ -62,15 +62,11 @@ export default function Switches() {
   const openUpdateModal = (updatedProduct) => {
     setUpdatedProduct(updatedProduct);
     setIsOpen(true);
-  };    
+  };
 
   /* Atualizar Produto */
   const updateDevice = async () => {
-    await updateDevices("switches", setUpdatedProduct, updatedProduct, fetchDevices, closeModal); 
-    Swal.fire({
-      title: "Atualizado!",
-      confirmButtonColor: "#006e39",
-    })
+    await updateDevices("switches", setUpdatedProduct, updatedProduct, fetchDevices, closeModal);
   };
 
   // Esse trecho vai gerenciar os produtos selecionados

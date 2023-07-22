@@ -39,12 +39,13 @@ export default function Header() {
   };
 
   return (
-    <div className="bg-[url('../assets/ttten.svg')] ">
+    <div className="bg-[url('../assets/ttten.svg')] mb-2">
       <div className="flex justify-end px-2 text-slate-600 dark:text-white">
         <div className="text-sm flex gap-4 items-center">
-          <p className="cursor-pointer" onClick={openModal}>
+          <p className="cursor-pointer hover:underline" onClick={openModal}>
             {admin ? `Logado como ${email}` : "Login"}
           </p>
+          <p>Avisos</p>
           <LoginModal />
           <p>
             <DarkModeToggle />
@@ -54,13 +55,13 @@ export default function Header() {
 
       <div className="items-center flex flex-col">
         <div className="mt-20">
-          <p className="text-itbs-default text-5xl">Olimpo!</p>
+          <p className="text-itbs-default text-5xl font-[MuseoModerno] italic">Olimpo</p>
         </div>
 
         <div className="flex mt-10 items-center">
           <input
             type="text"
-            className="rounded-lg backdrop-blur-[2px] bg-transparent text-black dark:text-white focus:ring-itbs-default focus:border-itbs-default border dark:border-itbs-default 
+            className="rounded-lg backdrop-blur-[3px] bg-transparent text-black dark:text-white focus:ring-itbs-default focus:border-itbs-default border dark:border-itbs-default 
             text-center w-96 h-14"
             value={urlValue}
             placeholder="Pesquise em intelbras.com.br"
@@ -68,15 +69,9 @@ export default function Header() {
             onKeyDown={handleKeyPress}
           />
 
-          {urlValue !== "" && (
-            <Button size="lg" color="light" className="p-1 m-1" onClick={() => setUrlValue("")}>
-              <HiXMark className="mr-1" />
-            </Button>
-          )}
-
           <a target="_blank" rel="noopener noreferrer" href={urlSearch}>
             <button className="flex m-1 bg-itbs-default hover:bg-itbs-hover p-4 rounded text-white h-14">
-              <HiMagnifyingGlass className="mr-1 text-2xl" /> Buscar
+              <HiMagnifyingGlass className="mr-1 text-2xl" />
             </button>
           </a>
         </div>

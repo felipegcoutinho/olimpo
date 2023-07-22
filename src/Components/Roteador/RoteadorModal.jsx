@@ -10,6 +10,11 @@ function RoteadoresModal() {
   const {addDevice, updateDevice, updatedProduct, setUpdatedProduct, closeModal, modalIsOpen} =
     useContext(HOContext);
 
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    updatedProduct.id ? updateDevice() : addDevice();
+  };
+
   return (
     <ModalComponent
       modalIsOpen={modalIsOpen}
@@ -17,7 +22,7 @@ function RoteadoresModal() {
       updatedProductId={updatedProduct.id}
       updatedProductModelo={updatedProduct.modelo}
       setor="Roteador">
-      <form onSubmit={updatedProduct.id ? updateDevice : addDevice}>
+      <form onSubmit={handleSubmit}>
         <OlimpoTextInput
           label="Modelo"
           required

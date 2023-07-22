@@ -28,11 +28,12 @@ export function OlimpoPageBtn() {
     </div>
   );
 }
+// Certifique-se de importar o ícone corretamente.
 
 export function OlimpoBtnCateg({setor}) {
   return (
-    <button className="text-xs flex whitespace-nowrap p-2 items-center border border-itbs-default text-itbs-default hover:text-white hover:bg-itbs-default rounded-full">
-      {setor} <HiArrowSmRight />
+    <button className="text-xs flex items-center font-bold justify-center p-2 w-full border-2 border-itbs-default text-itbs-default hover:text-white hover:bg-itbs-default rounded-full">
+      {setor} <HiArrowSmRight className="ml-1" />
     </button>
   );
 }
