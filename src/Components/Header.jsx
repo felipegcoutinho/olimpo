@@ -28,6 +28,17 @@ export default function Header() {
     }
   };
 
+  const setorTiles = {
+    1: { setor: "Wi-Fi Empresarial", link: "#wifi-empresarial", img: ImgAp },
+    2: { setor: "Radio Outdoor", link: "#radio-outdoor", img: ImgRadio },
+    3: { setor: "Switches", link: "#switch", img: ImgSw },
+    4: { setor: "Roteadores", link: "#roteador", img: ImgHo },
+    5: { setor: "Conversor de Midia", link: "#conversor", img: ImgConv },
+    6: { setor: "Módulo SFP", link: "#modulo-sfp", img: ImgSfp },
+    7: { setor: "Onu/Ont", link: "#onu-ont", img: ImgOnt },
+  };
+
+
   return (
     <div className="bg-[url('../assets/ttten.svg')] mb-2">
       <div className="flex justify-end px-4 text-slate-600 dark:text-white">
@@ -35,7 +46,7 @@ export default function Header() {
           <p className="cursor-pointer hover:underline" onClick={openModal}>
             {admin ? email : "login"}
           </p>
-          avisos
+                  <p>avisos</p>
           <LoginModal />
           <DarkModeToggle />
         </div>
@@ -62,6 +73,12 @@ export default function Header() {
               <HiMagnifyingGlass className="mr-1 text-2xl" />
             </button>
           </a>
+         
+        </div>
+        <div className="flex gap-2 mt-10">
+          {Object.values(setorTiles).map((tiles, index) => (
+            <Tiles key={index} img={tiles.img} setor={tiles.setor} link={tiles.link} />
+          ))}
         </div>
       </div>
     </div>

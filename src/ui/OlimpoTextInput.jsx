@@ -1,4 +1,4 @@
-import {Badge, Button, Label} from "flowbite-react";
+import {Label} from "flowbite-react";
 import React from "react";
 import {HiArrowSmRight} from "react-icons/hi";
 import {HiArrowTopRightOnSquare} from "react-icons/hi2";
