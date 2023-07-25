@@ -10,7 +10,6 @@ export default function OlimpoTable({
   createButton,
   query,
   handleSearchChange,
-  handleHide,
   Hide,
   selectedDevices,
   handleCompareClick,
@@ -25,12 +24,7 @@ export default function OlimpoTable({
           <div className="flex flex-1 items-center">
             <img src={DeviceImg} alt={Device} className="w-20 h-20" />
             <div className="flex flex-col flex-1">
-              <p className="text-2xl font-bold dark:text-white">
-                {Device}
-                <button onClick={handleHide}>
-                  <div className="flex items-center ml-2">{Hide ? <HiEyeSlash /> : <HiEye />}</div>
-                </button>
-              </p>
+              <p className="text-2xl font-bold dark:text-white">{Device}</p>
               <p className="text-zinc-600 text-sm dark:text-white">{DeviceText}</p>
             </div>
           </div>

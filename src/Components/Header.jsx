@@ -1,6 +1,4 @@
-import React, { useState } from "react";
-import { useContext } from "react";
-import { AdminContext } from "../App";
+import {AdminContext} from "../App";
 import DarkModeToggle from "../Hooks/DarkModeToggle";
 import ImgAp from "../assets/ap.png";
 import ImgConv from "../assets/conversor.png";
@@ -11,10 +9,12 @@ import ImgSfp from "../assets/sfp.png";
 import ImgSw from "../assets/sw.png";
 import Tiles from "../ui/Tiles";
 import LoginModal from "./LoginModal";
-import { HiMagnifyingGlass } from "react-icons/hi2";
+import React, {useState} from "react";
+import {useContext} from "react";
+import {HiMagnifyingGlass} from "react-icons/hi2";
 
 export default function Header() {
-  const { openModal, admin, email } = useContext(AdminContext);
+  const {openModal, admin, email} = useContext(AdminContext);
   const [urlValue, setUrlValue] = useState("");
   const urlSearch = `https://www.intelbras.com/pt-br/busca/?q=${urlValue}&tipo_busca=pagina-resultado`;
 
@@ -26,16 +26,6 @@ export default function Header() {
     if (event.key === "Enter") {
       window.open(urlSearch, "_blank");
     }
-  };
-
-  const setorTiles = {
-    1: { sector: "Wi-Fi Empresarial", link: "#wifi-empresarial", img: ImgAp },
-    2: { sector: "Radio Outdoor", link: "#radio-outdoor", img: ImgRadio },
-    3: { sector: "Switches", link: "#switch", img: ImgSw },
-    4: { sector: "Roteadores", link: "#roteador", img: ImgHo },
-    5: { sector: "Conversor de Midia", link: "#conversor", img: ImgConv },
-    6: { sector: "Módulo SFP", link: "#modulo-sfp", img: ImgSfp },
-    7: { sector: "Onu/Ont", link: "#onu-ont", img: ImgOnt },
   };
 
   return (
@@ -69,15 +59,9 @@ export default function Header() {
 
           <a target="_blank" rel="noopener noreferrer" href={urlSearch}>
             <button className="flex m-1 bg-itbs-default hover:bg-itbs-hover p-4 rounded text-white h-14">
-            <HiMagnifyingGlass className="mr-1 text-2xl" />
+              <HiMagnifyingGlass className="mr-1 text-2xl" />
             </button>
           </a>
-        </div>
-
-        <div className="flex gap-2 mt-10">
-          {Object.values(setorTiles).map((tiles, index) => (
-            <Tiles key={index} img={tiles.img} setor={tiles.sector} link={tiles.link} />
-          ))}
         </div>
       </div>
     </div>

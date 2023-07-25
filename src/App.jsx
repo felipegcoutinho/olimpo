@@ -6,10 +6,15 @@ import RadiosOutdoor from "./Components/Radio/Radio.jsx";
 import RoteadoresHO from "./Components/Roteador/Roteador.jsx";
 import Sfp from "./Components/Sfp/Sfp.jsx";
 import Switches from "./Components/Switch/Switch.jsx";
-import {Button} from "flowbite-react";
+import ImgAp from "./assets/ap.png";
+import ImgConv from "./assets/conversor.png";
+import ImgHo from "./assets/ho.png";
+import ImgOnt from "./assets/ont.png";
+import ImgRadio from "./assets/radio.png";
+import ImgSfp from "./assets/sfp.png";
+import ImgSw from "./assets/sw.png";
 import React from "react";
 import {createContext, useState} from "react";
-import {useLocalStorage} from "react-use";
 
 export const AdminContext = createContext();
 
@@ -27,17 +32,6 @@ function App() {
   const [modalIsOpen, setIsOpen] = useState(false);
   const [email, setEmail] = useState("");
 
-  const alternarMostrarOcultar = () => {
-    setShowHide(!ShowHide);
-    setHideAP(!ShowHide);
-    setHideRADIO(!ShowHide);
-    setHideHO(!ShowHide);
-    setHideSwitch(!ShowHide);
-    setHideConversor(!ShowHide);
-    setHideSFP(!ShowHide);
-    setHideONU(!ShowHide);
-  };
-
   /* Modal */
   function openModal() {
     setIsOpen(true);
@@ -47,6 +41,46 @@ function App() {
     setIsOpen(false);
     setUpdatedProduct(false);
   }
+
+  const DeviceTabs = {
+    1: {
+      setor: "Wi-Fi Empresarial",
+      dataTabsTarget: "#empresarial",
+      id: "empresarial",
+      img: ImgAp,
+      content: <AccessPoints />,
+    },
+    2: {
+      setor: "Radio Outdoor",
+      dataTabsTarget: "#outdoor",
+      id: "outdoor",
+      img: ImgRadio,
+      content: <RadiosOutdoor />,
+    },
+    3: {
+      setor: "Switches",
+      dataTabsTarget: "#switch",
+      id: "switch",
+      img: ImgSw,
+      content: <Switches />,
+    },
+    4: {
+      setor: "Roteadores",
+      dataTabsTarget: "#roteador",
+      id: "roteador",
+      img: ImgHo,
+      content: <RoteadoresHO />,
+    },
+    5: {
+      setor: "Conversor de Midia",
+      dataTabsTarget: "#conversor",
+      id: "conversor",
+      img: ImgConv,
+      content: <Conversores />,
+    },
+    6: {setor: "Módulo SFP", dataTabsTarget: "#sfp", id: "sfp", img: ImgSfp, content: <Sfp />},
+    7: {setor: "Onu/Ont", dataTabsTarget: "#onuOnt", id: "onuOnt", img: ImgOnt, content: <Onu />},
+  };
 
   return (
     <div className="flex flex-col">
@@ -80,17 +114,35 @@ function App() {
           }}>
           <Header />
 
-          <Button color="dark" className="mb-4" onClick={alternarMostrarOcultar}>
-            {ShowHide ? "Ocultar Tudo" : "Mostrar Tudo"}
-          </Button>
-
-          <AccessPoints />
-          <RadiosOutdoor />
-          <Switches />
-          <RoteadoresHO />
-          <Conversores />
-          <Sfp />
-          <Onu />
+          <div className="border-b border-gray-200 dark:border-none">
+            <ul
+              className="flex flex-wrap justify-center text-sm font-bold text-center text-itbs-default"
+              id="myTab"
+              data-tabs-toggle="#TabContent"
+              role="tab">
+              {Object.values(DeviceTabs).map((item, index) => (
+                <li key={index} role="presentation">
+                  <button
+                    className="inline-block p-4 border-b-2  hover:border-itbs-default dark:hover:border-itbs-hover"
+                    data-tabs-target={item.dataTabsTarget}
+                    type="button"
+                    role="tab">
+                    <div className="flex flex-col items-center">
+                      <img src={item.img} className="w-20 h-20" />
+                      {item.setor}
+                    </div>
+                  </button>
+                </li>
+              ))}
+            </ul>
+          </div>
+          <div id="TabContent">
+            {Object.values(DeviceTabs).map((item, index) => (
+              <div key={index} className="hidden" id={item.id} role="tab">
+                {item.content}
+              </div>
+            ))}
+          </div>
         </AdminContext.Provider>
       </div>
     </div>
