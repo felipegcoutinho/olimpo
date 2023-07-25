@@ -12,7 +12,6 @@ import SwitchModalCompare from "./SwitchCompare";
 import {React, useState, useEffect, useContext, createContext} from "react";
 import {HiPencil, HiXMark} from "react-icons/hi2";
 import Modal from "react-modal";
-import Swal from "sweetalert2";
 
 export const SwContext = createContext();
 
@@ -46,11 +45,11 @@ export default function Switches() {
   //Busca os produtos no firebase
   useEffect(() => {
     fetchDevices("switches", setSwitches);
-  }, [switches]);
+  }, []);
 
   //Deleta os produtos no firebase
   const deleteDevice = (id) => {
-    deleteDevices(id, "switches", fetchDevices);
+    deleteDevices(id, "switches");
   };
 
   //Adiciona os produtos no firebase
@@ -66,7 +65,8 @@ export default function Switches() {
 
   /* Atualizar Produto */
   const updateDevice = async () => {
-    await updateDevices("switches", setUpdatedProduct, updatedProduct, fetchDevices, closeModal);
+    await updateDevices("switches", setUpdatedProduct, updatedProduct, closeModal);
+    fetchDevices("switches", setSwitches);
   };
 
   // Esse trecho vai gerenciar os produtos selecionados
@@ -102,6 +102,13 @@ export default function Switches() {
     setComparisonDevices([ap]);
     openModalCompare();
   };
+
+  // const [PoE, setPoE] = useState(false);
+
+  // function handlePoE() {
+  //   setPoE(!PoE);
+  //   console.log(PoE);
+  // }
 
   return (
     <Content>
@@ -140,6 +147,7 @@ export default function Switches() {
           admin={admin}
           createButton="Novo Switch"
           thead={Switch_Header}
+          // handlePoE={handlePoE}
           tbody={switches
             .sort(compareStatus)
             .filter((sw) => {

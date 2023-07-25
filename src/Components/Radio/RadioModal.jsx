@@ -51,6 +51,13 @@ function RadioModal() {
           <OlimpoTextInput
             label="Data de lançamento"
             type="date"
+            value={updatedProduct.date}
+            onChange={(e) => setUpdatedProduct({...updatedProduct, date: e.target.value})}
+          />
+
+          <OlimpoTextInput
+            label="Data de lançamento"
+            type="date"
             placeholder="AP 1250 AC MAX"
             value={updatedProduct.date}
             onChange={(e) => setUpdatedProduct({...updatedProduct, date: e.target.value})}

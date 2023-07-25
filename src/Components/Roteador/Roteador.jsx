@@ -44,16 +44,17 @@ export default function Ap() {
   //Busca os produtos no firebase
   useEffect(() => {
     fetchDevices("roteadorHO", setRoteadorHO);
-  }, [roteadorHO]);
+  }, []);
 
   //Deleta os produtos no firebase
   const deleteDevice = (id) => {
-    deleteDevices(id, "roteadorHO", fetchDevices);
+    deleteDevices(id, "roteadorHO");
   };
 
   //Adiciona os produtos no firebase
   const addDevice = async () => {
     await addDevices("roteadorHO", closeModal, fetchDevices, setUpdatedProduct, updatedProduct);
+    fetchDevices("roteadorHO", setRoteadorHO);
   };
 
   /* Abrir modal de atualização */
@@ -64,7 +65,7 @@ export default function Ap() {
 
   /* Atualizar Produto */
   const updateDevice = async () => {
-    await updateDevices("roteadorHO", setUpdatedProduct, updatedProduct, fetchDevices, closeModal);
+    await updateDevices("roteadorHO", setUpdatedProduct, updatedProduct, closeModal);
   };
 
   // Esse trecho vai gerenciar os produtos selecionados

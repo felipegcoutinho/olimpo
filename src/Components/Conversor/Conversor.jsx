@@ -45,11 +45,11 @@ export default function Conversor() {
   //Busca os produtos no firebase
   useEffect(() => {
     fetchDevices("conversores", setConversor);
-  }, [conversor]);
+  }, []);
 
   //Deleta os produtos no firebase
   const deleteDevice = (id) => {
-    deleteDevices(id, "conversores", fetchDevices);
+    deleteDevices(id, "conversores");
   };
 
   //Adiciona os produtos no firebase
@@ -65,7 +65,8 @@ export default function Conversor() {
 
   /* Atualizar Produto */
   const updateDevice = async () => {
-    await updateDevices("conversores", setUpdatedProduct, updatedProduct, fetchDevices, closeModal);
+    await updateDevices("conversores", setUpdatedProduct, updatedProduct, closeModal);
+    fetchDevices("conversores", setConversor);
   };
 
   // Esse trecho vai gerenciar os produtos selecionados

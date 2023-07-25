@@ -34,7 +34,7 @@ export function CrudFirebase() {
   };
 
   /* Deletar Produto */
-  const deleteDevices = async (id, path, fetchDevices) => {
+  const deleteDevices = async (id, path) => {
     const db = getDatabase(app);
     const apRef = ref(db, `${path}/${id}`);
     Swal.fire({
@@ -47,21 +47,14 @@ export function CrudFirebase() {
     }).then((result) => {
       if (result.isConfirmed) {
         remove(apRef);
-        Swal.fire("Equipamento deletado! :(");
-        fetchDevices();
+        Swal.fire("Equipamento deletado!");
+        window.location.reload();
       }
     });
   };
 
   /* Atualizar  Produto */
-  const updateDevices = async (
-    path,
-    setUpdatedProduct,
-    updatedProduct,
-    fetchDevices,
-    closeModal,
-    alert
-  ) => {
+  const updateDevices = async (path, setUpdatedProduct, updatedProduct, closeModal) => {
     const apRef = ref(db, `${path}/${updatedProduct.id}`);
     await set(apRef, updatedProduct);
     setUpdatedProduct({});
@@ -69,7 +62,6 @@ export function CrudFirebase() {
       title: "Atualizado!",
       confirmButtonColor: "#006e39",
     });
-    fetchDevices();
     closeModal();
   };
 

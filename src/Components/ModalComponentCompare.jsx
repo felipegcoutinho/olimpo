@@ -46,9 +46,9 @@ function ModalComponentCompare({
                   <div key={device.id} className={`flex items-center`}>
                     <div
                       className={`${
-                        device.status === "Suporte"
+                        device.status === "Ativo"
                           ? "bg-green-500"
-                          : device.status === "Phaseout"
+                          : device.status === "Descontinuado"
                           ? "bg-red-500"
                           : "bg-amber-300"
                       } w-3 h-3 rounded-full`}></div>

@@ -44,16 +44,17 @@ export default function Ap() {
   //Busca os produtos no firebase
   useEffect(() => {
     fetchDevices("aps", setAccessPoint);
-  }, [accessPoint]);
-
-  //Deleta os produtos no firebase
-  const deleteDevice = (id) => {
-    deleteDevices(id, "aps", fetchDevices);
-  };
+  }, []);
 
   //Adiciona os produtos no firebase
   const addDevice = async () => {
     await addDevices("aps", closeModal, fetchDevices, setUpdatedProduct, updatedProduct);
+    fetchDevices("aps", setAccessPoint);
+  };
+
+  //Deleta os produtos no firebase
+  const deleteDevice = (id) => {
+    deleteDevices(id, "aps");
   };
 
   /* Abrir modal de atualização */
@@ -64,7 +65,8 @@ export default function Ap() {
 
   /* Atualizar Produto */
   const updateDevice = async () => {
-    await updateDevices("aps", setUpdatedProduct, updatedProduct, fetchDevices, closeModal);
+    await updateDevices("aps", setUpdatedProduct, updatedProduct, closeModal);
+    fetchDevices("aps", setAccessPoint);
   };
 
   // Esse trecho vai gerenciar os produtos selecionados
@@ -143,12 +145,11 @@ export default function Ap() {
           tbody={accessPoint
             .sort(compareStatus)
             .filter((ap) => {
-              if (ap.modelo.toLowerCase().includes(queryAP.toLowerCase())) {
-                return ap;
-              } else if (ap.modulação.toLowerCase().includes(queryAP.toLowerCase())) {
-                return ap;
-              } else {
-              }
+              const queryLowerCase = queryAP.toLowerCase();
+              return (
+                ap.modelo.toLowerCase().includes(queryLowerCase) ||
+                ap.modulação.toLowerCase().includes(queryLowerCase)
+              );
             })
             .map((ap) => {
               return (

@@ -9,11 +9,12 @@ import Switches from "./Components/Switch/Switch.jsx";
 import {Button} from "flowbite-react";
 import React from "react";
 import {createContext, useState} from "react";
+import {useLocalStorage} from "react-use";
 
 export const AdminContext = createContext();
 
 function App() {
-  const [admin, setAdmin] = useState(false);
+  const [admin, setAdmin] = useState(true);
   const [HideAP, setHideAP] = useState(true);
   const [HideRADIO, setHideRADIO] = useState(true);
   const [HideHO, setHideHO] = useState(true);
@@ -79,9 +80,9 @@ function App() {
           }}>
           <Header />
 
-          {/* <Button color="dark" className="mb-4" onClick={alternarMostrarOcultar}>
+          <Button color="dark" className="mb-4" onClick={alternarMostrarOcultar}>
             {ShowHide ? "Ocultar Tudo" : "Mostrar Tudo"}
-          </Button> */}
+          </Button>
 
           <AccessPoints />
           <RadiosOutdoor />

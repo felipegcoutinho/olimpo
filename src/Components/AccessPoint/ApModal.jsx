@@ -43,15 +43,15 @@ function AP_Modal() {
               Escolha
             </option>
           )}
-          <option value="Suporte">Suporte</option>
-          <option value="Phaseout">Phaseout</option>
+          <option value="Ativo">Suporte Ativo</option>
+          <option value="Descontinuado">Suporte Descontinuado</option>
+          <option value="Limitado">Suporte Limitado</option>
           <option value="N/A">N/A</option>
         </OlimpoSelect>
 
         <OlimpoTextInput
           label="Data de lançamento"
           type="date"
-          placeholder="AP 1250 AC MAX"
           value={updatedProduct.date}
           onChange={(e) => setUpdatedProduct({...updatedProduct, date: e.target.value})}
         />

@@ -13,6 +13,12 @@ function TableStart({
   children,
   admin,
 }) {
+  const statusStyles = {
+    Ativo: "bg-green-600 shadow-green-400/50",
+    Descontinuado: "bg-red-600 shadow-red-400/50",
+    Limitado: "bg-amber-400 shadow-amber-400/50",
+  };
+
   return (
     <tbody className="text-slate-700 dark:text-slate-200">
       <tr
@@ -34,14 +40,7 @@ function TableStart({
                 checked={selectedDevicesIncludes}
               />
             </div>
-            <div
-              className={`${
-                status === "Suporte"
-                  ? "bg-green-500 shadow-green-400/50"
-                  : status === "Phaseout"
-                  ? "bg-red-500 shadow-red-400/50"
-                  : "bg-amber-300 shadow-amber-400/50"
-              } w-3 h-3 rounded-full shadow-sm`}></div>
+            <div className={`w-3 h-3 rounded-full shadow-sm ${statusStyles[status]}`}></div>
             <div className="flex items-center">
               <p
                 className="underline cursor-pointer flex items-center gap-1"

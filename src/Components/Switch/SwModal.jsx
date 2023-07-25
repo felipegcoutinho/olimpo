@@ -48,6 +48,13 @@ function SwModal() {
           <option value="N/A">N/A</option>
         </OlimpoSelect>
 
+        <OlimpoTextInput
+          label="Data de lançamento"
+          type="date"
+          value={updatedProduct.date}
+          onChange={(e) => setUpdatedProduct({...updatedProduct, date: e.target.value})}
+        />
+
         <OlimpoSelect
           label="Modulação"
           type="text"

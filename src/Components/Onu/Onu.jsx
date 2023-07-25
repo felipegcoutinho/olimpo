@@ -44,11 +44,11 @@ export default function onu() {
   //Busca os produtos no firebase
   useEffect(() => {
     fetchDevices("onu", setOnu);
-  }, [onu]);
+  }, []);
 
   //Deleta os produtos no firebase
   const deleteDevice = (id) => {
-    deleteDevices(id, "onu", fetchDevices);
+    deleteDevices(id, "onu");
   };
 
   //Adiciona os produtos no firebase
@@ -64,7 +64,8 @@ export default function onu() {
 
   /* Atualizar Produto */
   const updateDevice = async () => {
-    await updateDevices("onu", setUpdatedProduct, updatedProduct, fetchDevices, closeModal);
+    await updateDevices("onu", setUpdatedProduct, updatedProduct, closeModal);
+    fetchDevices("onu", setOnu);
   };
 
   // Esse trecho vai gerenciar os produtos selecionados

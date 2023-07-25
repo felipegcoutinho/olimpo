@@ -45,11 +45,11 @@ export default function Sfp() {
   //Busca os produtos no firebase
   useEffect(() => {
     fetchDevices("sfp", setSfp);
-  }, [sfp]);
+  }, []);
 
   //Deleta os produtos no firebase
   const deleteDevice = (id) => {
-    deleteDevices(id, "sfp", fetchDevices);
+    deleteDevices(id, "sfp");
   };
 
   //Adiciona os produtos no firebase
@@ -65,7 +65,8 @@ export default function Sfp() {
 
   /* Atualizar Produto */
   const updateDevice = async () => {
-    await updateDevices("sfp", setUpdatedProduct, updatedProduct, fetchDevices, closeModal);
+    await updateDevices("sfp", setUpdatedProduct, updatedProduct, closeModal);
+    fetchDevices("sfp", setSfp);
   };
 
   // Esse trecho vai gerenciar os produtos selecionados

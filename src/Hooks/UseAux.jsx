@@ -2,13 +2,13 @@ import {HiCheckCircle, HiXCircle} from "react-icons/hi2";
 
 function UseAux() {
   function compareStatus(a, b) {
-    if (a.status === "Suporte" && b.status !== "Suporte") {
+    if (a.status === "Ativo" && b.status !== "Ativo") {
       return -1;
-    } else if (a.status !== "Suporte" && b.status === "Suporte") {
+    } else if (a.status !== "Ativo" && b.status === "Ativo") {
       return 1;
-    } else if (a.status === "Phaseout" && b.status !== "Phaseout") {
+    } else if (a.status === "Descontinuado" && b.status !== "Descontinuado") {
       return 1;
-    } else if (a.status !== "Phaseout" && b.status === "Phaseout") {
+    } else if (a.status !== "Descontinuado" && b.status === "Descontinuado") {
       return -1;
     } else {
       if (a.modelo < b.modelo) {

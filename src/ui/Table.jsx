@@ -1,4 +1,5 @@
 import * as React from "react";
+import {useState} from "react";
 import {HiEye, HiEyeSlash, HiMagnifyingGlass} from "react-icons/hi2";
 
 export default function OlimpoTable({
@@ -70,7 +71,6 @@ export default function OlimpoTable({
           </div>
         </div>
 
-
         {Hide ? (
           <div className="overflow-x-auto">
             <table className="w-full text-sm text-left text-gray-500">
@@ -91,7 +91,6 @@ export default function OlimpoTable({
             </div>
           </div>
         )}
-       
       </div>
     </section>
   );

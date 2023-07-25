@@ -44,11 +44,11 @@ export default function Radios() {
   //Busca os produtos no firebase
   useEffect(() => {
     fetchDevices("radios", setRadiosOutdoor);
-  }, [RadiosOutdoor]);
+  }, []);
 
   //Deleta os produtos no firebase
   const deleteDevice = (id) => {
-    deleteDevices(id, "radios", fetchDevices);
+    deleteDevices(id, "radios");
   };
 
   //Adiciona os produtos no firebase
@@ -64,7 +64,8 @@ export default function Radios() {
 
   /* Atualizar Produto */
   const updateDevice = async () => {
-    await updateDevices("radios", setUpdatedProduct, updatedProduct, fetchDevices, closeModal);
+    await updateDevices("radios", setUpdatedProduct, updatedProduct, closeModal);
+    fetchDevices("radios", setRadiosOutdoor);
   };
 
   // Esse trecho vai gerenciar os produtos selecionados
