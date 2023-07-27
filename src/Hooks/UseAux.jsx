@@ -32,9 +32,9 @@ function UseAux() {
     </div>
   );
 
-  function ModulacaoStyle(device) {
+  function InterfaceStyle(device) {
     const modulacaoClass =
-      device.modulação === "Fast"
+      device.interface === "Fast"
         ? "bg-orange-500 shadow-orange-500/50"
         : "bg-green-500 shadow-green-500/50";
     return `${modulacaoClass} px-3 py-1 rounded-2xl font-bold text-white shadow-sm`;
@@ -55,7 +55,7 @@ function UseAux() {
 
   const currentDate = new Date().toLocaleDateString("en-US");
 
-  return {compareStatus, NaoPossui, Possui, ModulacaoStyle, calculateDateDifference, currentDate};
+  return {compareStatus, NaoPossui, Possui, InterfaceStyle, calculateDateDifference, currentDate};
 }
 
 export default UseAux;

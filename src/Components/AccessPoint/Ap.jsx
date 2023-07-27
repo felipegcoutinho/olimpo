@@ -21,7 +21,7 @@ export default function Ap() {
   const [queryAP, setQueryAP] = useState("");
   const [modalIsOpen, setIsOpen] = useState(false);
   const {fetchDevices, addDevices, deleteDevices, updateDevices} = CrudFirebase();
-  const {compareStatus, Possui, NaoPossui, ModulacaoStyle, calculateDateDifference, currentDate} =
+  const {compareStatus, Possui, NaoPossui, InterfaceStyle, calculateDateDifference, currentDate} =
     UseAux();
   const {AP_Header} = TableHead();
 
@@ -148,7 +148,7 @@ export default function Ap() {
               const queryLowerCase = queryAP.toLowerCase();
               return (
                 ap.modelo.toLowerCase().includes(queryLowerCase) ||
-                ap.modulação.toLowerCase().includes(queryLowerCase)
+                ap.interface.toLowerCase().includes(queryLowerCase)
               );
             })
             .map((ap) => {
@@ -164,22 +164,20 @@ export default function Ap() {
                   calculateDateDifference={calculateDateDifference(ap.date, currentDate)}
                   handleSingleClick={() => handleSingleClick(ap)}>
                   <td>
-                    <span className={ModulacaoStyle(ap)}>{ap.modulação}</span>
+                    <span className={InterfaceStyle(ap)}>{ap.interface}</span>
                   </td>
-                  <td className="font-bold">{ap.cobertura}</td>
+                  <td>{ap.cobertura}</td>
                   <td>{ap.raio}</td>
-                  <td className="font-bold">{ap.usuarioMax}</td>
+                  <td>{ap.usuarioMax}</td>
                   <td>{ap.throughputWireless24}</td>
-                  <td className="font-bold">
-                    {ap.throughputWireless50 === "-" ? NaoPossui : ap.throughputWireless50}
-                  </td>
+                  <td>{ap.throughputWireless50 === "-" ? NaoPossui : ap.throughputWireless50}</td>
                   <td>{ap.padrao}</td>
                   <td>{ap.qtdePortas}</td>
-                  <td className="font-bold">{ap.tensao}</td>
+                  <td>{ap.tensao}</td>
                   <td>{ap.poe}</td>
-                  <td className="font-bold">{ap.handover === "-" ? NaoPossui : Possui}</td>
+                  <td>{ap.handover === "Não" ? NaoPossui : Possui}</td>
                   <td>{ap.inmaster === "Não" ? NaoPossui : Possui}</td>
-                  <td className="font-bold">{ap.garantia}</td>
+                  <td>{ap.garantia}</td>
                   <td>
                     <a target="_blank" rel="noopener noreferrer" href={ap.pagina}>
                       <OlimpoPageBtn />

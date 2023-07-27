@@ -6,13 +6,17 @@
   @apply m-0 box-border p-0;
 }
 
+::selection {
+  @apply bg-itbs-default text-white;
+}
+
 html {
   @apply scroll-smooth;
 }
 
 body {
   font-family: "Roboto", segoe UI, arial;
-  @apply bg-neutral-200 dark:bg-itbs-modern-300;
+  @apply bg-zinc-200 dark:bg-itbs-modern-300;
 }
 
 tbody:nth-child(odd) {

@@ -22,7 +22,7 @@ export default function Switches() {
   const [querySWITCH, setQuerySWITCH] = useState("");
   const [modalIsOpen, setIsOpen] = useState(false);
   const {fetchDevices, addDevices, deleteDevices, updateDevices} = CrudFirebase();
-  const {compareStatus, ModulacaoStyle, Possui, NaoPossui, calculateDateDifference, currentDate} =
+  const {compareStatus, InterfaceStyle, Possui, NaoPossui, calculateDateDifference, currentDate} =
     UseAux();
   const {Switch_Header} = TableHead();
 
@@ -103,13 +103,6 @@ export default function Switches() {
     openModalCompare();
   };
 
-  // const [PoE, setPoE] = useState(false);
-
-  // function handlePoE() {
-  //   setPoE(!PoE);
-  //   console.log(PoE);
-  // }
-
   return (
     <Content>
       <SwContext.Provider
@@ -135,7 +128,7 @@ export default function Switches() {
       <div id="switch" className="overflow-x-auto">
         <OlimpoTable
           Hide={HideSwitch}
-          Device={"Switches"}
+          Device={"Switch"}
           DeviceImg={DeviceImg}
           DeviceText={"Robustez e alta performance para transmissão de dados"}
           selectedDevices={selectedDevices.length >= 2 && selectedDevices}
@@ -153,7 +146,7 @@ export default function Switches() {
             .filter((sw) => {
               if (sw.modelo.toLowerCase().includes(querySWITCH.toLowerCase())) {
                 return sw;
-              } else if (sw.modulação.toLowerCase().includes(querySWITCH.toLowerCase())) {
+              } else if (sw.interface.toLowerCase().includes(querySWITCH.toLowerCase())) {
                 return sw;
               } else {
               }
@@ -171,19 +164,19 @@ export default function Switches() {
                   calculateDateDifference={calculateDateDifference(sw.date, currentDate)}
                   handleSingleClick={() => handleSingleClick(sw)}>
                   <td className="text-left">
-                    <span className={ModulacaoStyle(sw)}>{sw.modulação}</span>
+                    <span className={InterfaceStyle(sw)}>{sw.interface}</span>
                   </td>
-                  <td className="font-bold">{sw.qtdePortas}</td>
+                  <td>{sw.qtdePortas}</td>
                   <td>{sw.gerenciavel === "-" ? NaoPossui : Possui}</td>
                   <td>{sw.poe === "-" ? NaoPossui : Possui}</td>
-                  <td className="font-bold">{sw.pps}</td>
+                  <td>{sw.pps}</td>
                   <td>{sw.backplane}</td>
-                  <td className="font-bold">{sw.sfp === "-" ? NaoPossui : sw.sfp}</td>
+                  <td>{sw.sfp === "-" ? NaoPossui : sw.sfp}</td>
                   <td>{sw.poeExtender === "-" ? NaoPossui : Possui}</td>
-                  <td className="font-bold">{sw.poePorta === "-" ? NaoPossui : sw.poePorta}</td>
+                  <td>{sw.poePorta === "-" ? NaoPossui : sw.poePorta}</td>
                   <td>{sw.poeTotal === "-" ? NaoPossui : sw.poeTotal}</td>
                   <td>{sw.qos === "-" ? NaoPossui : Possui}</td>
-                  <td className="font-bold text-center">{sw.garantia}</td>
+                  <td className="font-normal text-center">{sw.garantia}</td>
                   <td>
                     <a target="_blank" rel="noopener noreferrer" href={sw.pagina}>
                       <OlimpoPageBtn />

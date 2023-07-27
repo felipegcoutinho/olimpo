@@ -38,8 +38,9 @@ function SfpModal() {
             type="text"
             value={updatedProduct.status}
             onChange={(e) => setUpdatedProduct({...updatedProduct, status: e.target.value})}>
-            <option value="Suporte">Suporte</option>
-            <option value="Phaseout">Phaseout</option>
+            <option value="Ativo">Ativo</option>
+            <option value="Descontinuado">Descontinuado</option>
+            <option value="Estendido">Estendido</option>
             <option value="N/A">N/A</option>
           </OlimpoSelect>
 
@@ -54,7 +55,7 @@ function SfpModal() {
             label="Modulação"
             required
             type="text"
-            value={updatedProduct.modulação}
+            value={updatedProduct.interface}
             onChange={(e) => setUpdatedProduct({...updatedProduct, modulação: e.target.value})}>
             {!updatedProduct.id && (
               <option selected disabled>

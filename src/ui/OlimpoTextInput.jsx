@@ -32,7 +32,7 @@ export function OlimpoPageBtn() {
 
 export function OlimpoBtnCateg({setor}) {
   return (
-    <button className="text-xs flex items-center font-bold justify-center p-2 w-full border border-itbs-default text-itbs-default hover:text-white hover:bg-itbs-default rounded-full">
+    <button className="text-xs flex items-center font-normal justify-center p-2 w-full border border-itbs-default text-itbs-default hover:text-white hover:bg-itbs-default rounded-full">
       {setor} <HiArrowSmRight className="ml-1" />
     </button>
   );

@@ -21,7 +21,7 @@ export default function onu() {
   const [queryOnu, setQueryOnu] = useState("");
   const [modalIsOpen, setIsOpen] = useState(false);
   const {fetchDevices, addDevices, deleteDevices, updateDevices} = CrudFirebase();
-  const {compareStatus, Possui, NaoPossui, ModulacaoStyle, calculateDateDifference, currentDate} =
+  const {compareStatus, Possui, NaoPossui, InterfaceStyle, calculateDateDifference, currentDate} =
     UseAux();
   const {Onu_Header} = TableHead();
 
@@ -146,7 +146,7 @@ export default function onu() {
             .filter((onu) => {
               if (onu.modelo.toLowerCase().includes(queryOnu.toLowerCase())) {
                 return onu;
-              } else if (onu.modulação.toLowerCase().includes(queryOnu.toLowerCase())) {
+              } else if (onu.interface.toLowerCase().includes(queryOnu.toLowerCase())) {
                 return onu;
               } else {
               }
@@ -164,11 +164,10 @@ export default function onu() {
                   calculateDateDifference={calculateDateDifference(onu.date, currentDate)}
                   handleSingleClick={() => handleSingleClick(onu)}>
                   <td className="text-left">
-                    <span className={ModulacaoStyle(onu)}>{onu.modulação}</span>
+                    <span className={InterfaceStyle(onu)}>{onu.interface}</span>
                   </td>
                   <td>{onu.fxs === "-" ? NaoPossui : onu.fxs}</td>
                   <td>{onu.qtdeportas}</td>
-                  <td>{onu.tipo}</td>
                   <td>{onu.sensibilidade}</td>
                   <td>{onu.cobertura === "-" ? NaoPossui : onu.cobertura}</td>
                   <td>{onu.clientesSimultaneos === "-" ? NaoPossui : onu.clientesSimultaneos}</td>

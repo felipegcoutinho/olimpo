@@ -22,7 +22,7 @@ export default function Conversor() {
   const [queryCONVERSOR, setQueryConversor] = useState("");
   const [modalIsOpen, setIsOpen] = useState(false);
   const {fetchDevices, addDevices, deleteDevices, updateDevices} = CrudFirebase();
-  const {compareStatus, ModulacaoStyle, Possui, NaoPossui, calculateDateDifference, currentDate} =
+  const {compareStatus, InterfaceStyle, Possui, NaoPossui, calculateDateDifference, currentDate} =
     UseAux();
   const {Conversor_Header} = TableHead();
 
@@ -147,7 +147,7 @@ export default function Conversor() {
             .filter((conversor) => {
               if (conversor.modelo.toLowerCase().includes(queryCONVERSOR.toLowerCase())) {
                 return conversor;
-              } else if (conversor.modulação.toLowerCase().includes(queryCONVERSOR.toLowerCase())) {
+              } else if (conversor.interface.toLowerCase().includes(queryCONVERSOR.toLowerCase())) {
                 return conversor;
               } else {
               }
@@ -165,17 +165,17 @@ export default function Conversor() {
                   calculateDateDifference={calculateDateDifference(conversor.date, currentDate)}
                   handleSingleClick={() => handleSingleClick(conversor)}>
                   <td>
-                    <span className={ModulacaoStyle(conversor)}>{conversor.modulação}</span>
+                    <span className={InterfaceStyle(conversor)}>{conversor.interface}</span>
                   </td>
-                  <td className="px-2 font-bold">{conversor.conector}</td>
+                  <td className="px-2 font-normal">{conversor.conector}</td>
                   <td className="px-4">{conversor.wdm === "-" ? NaoPossui : Possui}</td>
-                  <td className="font-bold">{conversor.distancia}</td>
+                  <td>{conversor.distancia}</td>
                   <td>{conversor.fibra}</td>
-                  <td className="font-bold">{conversor.potencia}</td>
+                  <td>{conversor.potencia}</td>
                   <td>{conversor.sensibilidade}</td>
-                  <td className="font-bold">{conversor.CompRX}</td>
+                  <td>{conversor.CompRX}</td>
                   <td>{conversor.CompTX}</td>
-                  <td className="font-bold">{conversor.garantia}</td>
+                  <td>{conversor.garantia}</td>
                   <td>
                     <a target="_blank" rel="noopener noreferrer" href={conversor.pagina}>
                       <OlimpoPageBtn />

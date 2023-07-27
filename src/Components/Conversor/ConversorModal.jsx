@@ -42,8 +42,9 @@ function ConversorModal() {
               Escolha
             </option>
           )}
-          <option value="Suporte">Suporte</option>
-          <option value="Phaseout">Phaseout</option>
+          <option value="Ativo">Ativo</option>
+          <option value="Descontinuado">Descontinuado</option>
+          <option value="Estendido">Estendido</option>
           <option value="N/A">N/A</option>
         </OlimpoSelect>
 
@@ -57,7 +58,7 @@ function ConversorModal() {
         <OlimpoSelect
           label="Modulação"
           type="text"
-          value={updatedProduct.modulação}
+          value={updatedProduct.interface}
           onChange={(e) => setUpdatedProduct({...updatedProduct, modulação: e.target.value})}>
           {!updatedProduct.id && (
             <option selected disabled>

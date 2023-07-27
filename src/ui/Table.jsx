@@ -1,5 +1,4 @@
 import * as React from "react";
-import {useState} from "react";
 import {HiEye, HiEyeSlash, HiMagnifyingGlass} from "react-icons/hi2";
 
 export default function OlimpoTable({
@@ -16,6 +15,7 @@ export default function OlimpoTable({
   Device,
   DeviceImg,
   DeviceText,
+  handleHide,
 }) {
   return (
     <section className="px-1 mx-auto ">
@@ -24,7 +24,12 @@ export default function OlimpoTable({
           <div className="flex flex-1 items-center">
             <img src={DeviceImg} alt={Device} className="w-20 h-20" />
             <div className="flex flex-col flex-1">
-              <p className="text-2xl font-bold dark:text-white">{Device}</p>
+              <p className="text-2xl font-bold dark:text-white">
+                {Device}
+                <button onClick={handleHide}>
+                  <div className="flex items-center ml-2">{Hide ? <HiEyeSlash /> : <HiEye />}</div>
+                </button>
+              </p>
               <p className="text-zinc-600 text-sm dark:text-white">{DeviceText}</p>
             </div>
           </div>
@@ -37,6 +42,12 @@ export default function OlimpoTable({
                     className="mr-auto bg-itbs-default hover:bg-itbs-hover rounded-full px-4 py-2 text-white text-sm"
                     onClick={openModal}>
                     {createButton}
+                  </button>
+                )}
+
+                {Device === "Switches" && (
+                  <button className="mr-auto bg-slate-500 hover:bg-slate-600 rounded-full px-4 py-2 text-white text-sm">
+                    Gerenciável Com PoE
                   </button>
                 )}
 

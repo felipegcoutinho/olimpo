@@ -1,3 +1,4 @@
+import {Tooltip} from "flowbite-react";
 import React from "react";
 import {HiChevronUp} from "react-icons/hi2";
 
@@ -14,9 +15,9 @@ function TableStart({
   admin,
 }) {
   const statusStyles = {
-    Ativo: "bg-green-600 shadow-green-400/50",
+    Ativo: "bg-lime-600 shadow-green-400/50",
     Descontinuado: "bg-red-600 shadow-red-400/50",
-    Limitado: "bg-amber-400 shadow-amber-400/50",
+    Estendido: "bg-amber-400 shadow-amber-400/50",
   };
 
   return (
@@ -40,10 +41,14 @@ function TableStart({
                 checked={selectedDevicesIncludes}
               />
             </div>
-            <div className={`w-3 h-3 rounded-full shadow-sm ${statusStyles[status]}`}></div>
+            <div className={`w-3 h-3 rounded-full shadow-sm ${statusStyles[status]}`}>
+              <Tooltip content={status} className="bg-black">
+                <div className="w-3 h-3 rounded-full shadow-lg"></div>
+              </Tooltip>
+            </div>
             <div className="flex items-center">
               <p
-                className="underline cursor-pointer flex items-center gap-1"
+                className="underline cursor-pointer flex items-center gap-1 uppercase"
                 onClick={handleSingleClick}>
                 {modelo}
                 <HiChevronUp className="text-slate-600 dark:text-slate-200" />
@@ -56,8 +61,8 @@ function TableStart({
                 )}
               </p>
               {calculateDateDifference <= 30 && (
-                <p className="ml-1 uppercase rounded border border-red-500 text-red-500 px-1 text-xs">
-                  Novo
+                <p className="ml-1 uppercase rounded border border-red-600 text-red-600 px-1 text-xs">
+                  New
                 </p>
               )}
             </div>

@@ -1,4 +1,3 @@
-import { Button } from "flowbite-react";
 import AccessPoints from "./Components/AccessPoint/Ap.jsx";
 import Conversores from "./Components/Conversor/Conversor.jsx";
 import Header from "./Components/Header.jsx";
@@ -14,8 +13,10 @@ import ImgOnt from "./assets/ont.png";
 import ImgRadio from "./assets/radio.png";
 import ImgSfp from "./assets/sfp.png";
 import ImgSw from "./assets/sw.png";
+import {Button} from "flowbite-react";
 import React from "react";
 import {createContext, useState} from "react";
+import {HiArrowLongUp, HiArrowUp} from "react-icons/hi2";
 
 export const AdminContext = createContext();
 
@@ -54,7 +55,7 @@ function App() {
     setUpdatedProduct(false);
   }
 
-    return (
+  return (
     <div className="flex flex-col">
       <div className="w-[85%] self-center bg-white dark:bg-itbs-modern-100">
         <AdminContext.Provider
@@ -86,10 +87,23 @@ function App() {
           }}>
           <Header />
 
-          <Button color="dark" className="mb-4" onClick={alternarMostrarOcultar}>
+          <button
+            className={` ${
+              ShowHide
+                ? "bg-transparent dark:text-white"
+                : "bg-black dark:bg-itbs-default text-white dark:border-transparent"
+            } border border-black dark:border-white px-4 py-1 mt-4 ml-4 font-normal rounded-full text-sm`}
+            onClick={alternarMostrarOcultar}>
             {ShowHide ? "Ocultar Tudo" : "Mostrar Tudo"}
-          </Button>
+          </button>
 
+          <div className="fixed left-5 bottom-5">
+            <a href="#top">
+              <button className="bg-itbs-default rounded-full p-3">
+                <HiArrowUp className="text-white text-lg" />
+              </button>
+            </a>
+          </div>
 
           <AccessPoints />
           <RadiosOutdoor />
@@ -98,39 +112,6 @@ function App() {
           <Conversores />
           <Sfp />
           <Onu />
-
-          {/* <div className="border-b border-gray-200 dark:border-none">
-            <ul
-              className="flex flex-wrap justify-center text-sm font-bold text-center text-itbs-default"
-              id="myTab"
-              data-tabs-toggle="#TabContent"
-              role="tab">
-              {Object.values(DeviceTabs).map((item, index) => (
-                <li key={index} role="presentation">
-                  <button
-                    className="inline-block p-4 border-b-2 hover:border-itbs-default dark:hover:border-itbs-hover"
-                    data-tabs-target={item.dataTabsTarget}
-                    type="button"
-                    aria-selected="false"
-                    role="tab">
-
-                    <div className="flex flex-col items-center">
-                      <img src={item.img} className="w-20 h-20"/>
-                      {item.setor}
-                    </div>
-
-                  </button>
-                </li>
-              ))}
-            </ul>
-          </div>
-          <div id="TabContent">
-            {Object.values(DeviceTabs).map((item, index) => (
-              <div key={index} className="hidden" id={item.id} role="tab">
-                {item.content}
-              </div>
-            ))}
-          </div> */}
         </AdminContext.Provider>
       </div>
     </div>

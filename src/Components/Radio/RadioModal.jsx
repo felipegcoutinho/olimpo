@@ -43,8 +43,9 @@ function RadioModal() {
                 Escolha
               </option>
             )}
-            <option value="Suporte">Suporte</option>
-            <option value="Phaseout">Phaseout</option>
+            <option value="Ativo">Ativo</option>
+            <option value="Descontinuado">Descontinuado</option>
+            <option value="Estendido">Estendido</option>
             <option value="N/A">N/A</option>
           </OlimpoSelect>
 
@@ -83,7 +84,7 @@ function RadioModal() {
             required
             type="text"
             placeholder="Modulação"
-            value={updatedProduct.modulação}
+            value={updatedProduct.interface}
             onChange={(e) => setUpdatedProduct({...updatedProduct, modulação: e.target.value})}>
             {!updatedProduct.id && (
               <option selected disabled>

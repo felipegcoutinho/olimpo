@@ -41,7 +41,7 @@ function ModalComponentCompare({
             <div className="overflow-hidden min-w-max">
               <div
                 className={`grid ${gridCols} py-8 text-sm font-medium border-b border-itbs-default text-black dark:text-white rounded-sm bg-[url('../assets/ttten.svg')] dark:dark:bg-[url('../assets/dark_ttten.svg')]`}>
-                <div className="flex items-center font-bold text-md px-2 w-max">{sector}</div>
+                <div className="flex items-center font-normal text-md px-2 w-max">{sector}</div>
                 {comparisonDevices.map((device) => (
                   <div key={device.id} className={`flex items-center`}>
                     <div
@@ -64,7 +64,7 @@ function ModalComponentCompare({
                 return (
                   <div key={group}>
                     <div
-                      className={`${Icon} py-2 flex items-center text-xl gap-2 text-itbs-default font-bold`}>
+                      className={`${Icon} py-2 flex items-center text-xl gap-2 text-itbs-default font-normal`}>
                       {Icon && <Icon />}
                       {group}
                     </div>
@@ -75,7 +75,7 @@ function ModalComponentCompare({
                         <div className="text-slate-600 dark:text-slate-300 px-2">{label}</div>
                         {comparisonDevices.map((device) => (
                           <div key={device.id}>
-                            <p className={`font-bold dark:text-slate-100`}>{device[property]}</p>
+                            <p className={`font-normal dark:text-slate-100`}>{device[property]}</p>
                           </div>
                         ))}
                       </div>

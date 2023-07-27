@@ -21,7 +21,7 @@ export default function Ap() {
   const [queryHO, setQueryHO] = useState("");
   const [modalIsOpen, setIsOpen] = useState(false);
   const {fetchDevices, addDevices, deleteDevices, updateDevices} = CrudFirebase();
-  const {compareStatus, NaoPossui, Possui, ModulacaoStyle, calculateDateDifference, currentDate} =
+  const {compareStatus, NaoPossui, Possui, InterfaceStyle, calculateDateDifference, currentDate} =
     UseAux();
   const {Roteador_Header} = TableHead();
 
@@ -144,7 +144,7 @@ export default function Ap() {
             .filter((roteador) => {
               if (roteador.modelo.toLowerCase().includes(queryHO.toLowerCase())) {
                 return roteador;
-              } else if (roteador.modulação.toLowerCase().includes(queryHO.toLowerCase())) {
+              } else if (roteador.interface.toLowerCase().includes(queryHO.toLowerCase())) {
                 return roteador;
               } else {
               }
@@ -162,19 +162,19 @@ export default function Ap() {
                   calculateDateDifference={calculateDateDifference(roteador.date, currentDate)}
                   handleSingleClick={() => handleSingleClick(roteador)}>
                   <td className="text-left">
-                    <span className={ModulacaoStyle(roteador)}>{roteador.modulação}</span>
+                    <span className={InterfaceStyle(roteador)}>{roteador.interface}</span>
                   </td>
-                  <td className="font-bold">{roteador.cobertura}</td>
+                  <td>{roteador.cobertura}</td>
                   <td>{roteador.raio}</td>
-                  <td className="font-bold">{roteador.usuarioMax}</td>
+                  <td>{roteador.usuarioMax}</td>
                   <td>{roteador.planoRecomendado}</td>
-                  <td className="font-bold">{roteador.datarateMax2G}</td>
+                  <td>{roteador.datarateMax2G}</td>
                   <td>{roteador.datarateMax5G === "-" ? NaoPossui : roteador.datarateMax5G}</td>
-                  <td className="font-bold">{roteador.tensao}</td>
+                  <td>{roteador.tensao}</td>
                   <td>{roteador.repetidor === "-" ? NaoPossui : Possui}</td>
-                  <td className="font-bold">{roteador.roteador === "-" ? NaoPossui : Possui}</td>
+                  <td>{roteador.roteador === "-" ? NaoPossui : Possui}</td>
                   <td>{roteador.cliente === "-" ? NaoPossui : Possui}</td>
-                  <td className="font-bold">{roteador.ap === "-" ? NaoPossui : Possui}</td>
+                  <td>{roteador.ap === "-" ? NaoPossui : Possui}</td>
                   <td className="text-center">{roteador.garantia}</td>
                   <td>
                     <a target="_blank" rel="noopener noreferrer" href={roteador.pagina}>

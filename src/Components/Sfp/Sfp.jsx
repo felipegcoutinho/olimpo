@@ -22,7 +22,7 @@ export default function Sfp() {
   const [querySfp, setQuerySfp] = useState("");
   const [modalIsOpen, setIsOpen] = useState(false);
   const {fetchDevices, addDevices, deleteDevices, updateDevices} = CrudFirebase();
-  const {compareStatus, Possui, NaoPossui, ModulacaoStyle, calculateDateDifference, currentDate} =
+  const {compareStatus, Possui, NaoPossui, InterfaceStyle, calculateDateDifference, currentDate} =
     UseAux();
   const {Sfp_Header} = TableHead();
 
@@ -103,6 +103,14 @@ export default function Sfp() {
     openModalCompare();
   };
 
+  const statusStyles = {
+    SFP: "bg-orange-500 text-white ",
+    "SFP+": "bg-blue-600 text-white",
+    Epon: "bg-violet-600 text-white text-white",
+    Gpon: "bg-emerald-500 text-white",
+    XFP: "bg-zinc-600 dark:bg-white text-white dark:text-black",
+  };
+
   return (
     <Content>
       <SfpContext.Provider
@@ -147,7 +155,7 @@ export default function Sfp() {
             .filter((sfp) => {
               if (sfp.modelo.toLowerCase().includes(querySfp.toLowerCase())) {
                 return sfp;
-              } else if (sfp.modulação.toLowerCase().includes(querySfp.toLowerCase())) {
+              } else if (sfp.interface.toLowerCase().includes(querySfp.toLowerCase())) {
                 return sfp;
               } else {
               }
@@ -165,44 +173,25 @@ export default function Sfp() {
                   calculateDateDifference={calculateDateDifference(sfp.date, currentDate)}
                   handleSingleClick={() => handleSingleClick(sfp)}>
                   <td className="text-left px-2">
-                    <span className={ModulacaoStyle(sfp)}>{sfp.modulação}</span>
+                    <span className={InterfaceStyle(sfp)}>{sfp.interface}</span>
                   </td>
-                  <td className="font-bold">{sfp.tipoConector}</td>
+                  <td>{sfp.tipoConector}</td>
                   <td className="px-4">{sfp.wdm === "-" ? NaoPossui : Possui}</td>
                   <td>
-                    {sfp.modulo === "SFP" && (
-                      <Badge className="bg-teal-100 text-teal-800 text-xs w-14 justify-center">
-                        SFP
-                      </Badge>
-                    )}
-                    {sfp.modulo === "SFP+" && (
-                      <Badge className="bg-blue-100 text-blue-800 text-xs w-14 justify-center">
-                        SFP+
-                      </Badge>
-                    )}
-                    {sfp.modulo === "Epon" && (
-                      <Badge className="bg-rose-100 text-rose-800 text-xs w-14 justify-center">
-                        EPON
-                      </Badge>
-                    )}
-                    {sfp.modulo === "Gpon" && (
-                      <Badge className="bg-fuchsia-100 text-fuchsia-800 text-xs w-14 justify-center">
-                        GPON
-                      </Badge>
-                    )}
-                    {sfp.modulo === "XFP" && (
-                      <Badge className="bg-orange-100 text-orange-800 text-xs w-14 justify-center">
-                        XFP
-                      </Badge>
-                    )}
+                    <div
+                      className={`flex justify-center w-12 rounded uppercase ${
+                        statusStyles[sfp.modulo]
+                      } `}>
+                      {sfp.modulo}
+                    </div>
                   </td>
-                  <td className="font-bold">{sfp.distancia}</td>
+                  <td>{sfp.distancia}</td>
                   <td>{sfp.fibra}</td>
-                  <td className="font-bold">{sfp.potencia}</td>
+                  <td>{sfp.potencia}</td>
                   <td>{sfp.sensibilidade}</td>
-                  <td className="font-bold">{sfp.CompRX}</td>
+                  <td>{sfp.CompRX}</td>
                   <td>{sfp.CompTX}</td>
-                  <td className="font-bold">{sfp.garantia}</td>
+                  <td>{sfp.garantia}</td>
                   <td>
                     <a target="_blank" rel="noopener noreferrer" href={sfp.pagina}>
                       <OlimpoPageBtn />

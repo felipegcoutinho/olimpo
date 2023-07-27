@@ -22,7 +22,7 @@ export default function Radios() {
   const [queryRADIO, setQueryRADIO] = useState("");
   const [modalIsOpen, setIsOpen] = useState(false);
   const {fetchDevices, addDevices, deleteDevices, updateDevices} = CrudFirebase();
-  const {compareStatus, ModulacaoStyle, calculateDateDifference, currentDate} = UseAux();
+  const {compareStatus, InterfaceStyle, calculateDateDifference, currentDate} = UseAux();
   const {Radio_Header} = TableHead();
 
   /* Configs Modal */
@@ -145,7 +145,7 @@ export default function Radios() {
             .filter((radio) => {
               if (radio.modelo.toLowerCase().includes(queryRADIO.toLowerCase())) {
                 return radio;
-              } else if (radio.modulação.toLowerCase().includes(queryRADIO.toLowerCase())) {
+              } else if (radio.interface.toLowerCase().includes(queryRADIO.toLowerCase())) {
                 return radio;
               } else {
               }
@@ -163,17 +163,17 @@ export default function Radios() {
                   calculateDateDifference={calculateDateDifference(radio.date, currentDate)}
                   handleSingleClick={() => handleSingleClick(radio)}>
                   <td>
-                    <span className={ModulacaoStyle(radio)}>{radio.modulação}</span>
+                    <span className={InterfaceStyle(radio)}>{radio.interface}</span>
                   </td>
-                  <td className="font-bold">{radio.indicado}</td>
+                  <td>{radio.indicado}</td>
                   <td>{radio.ganho}</td>
-                  <td className="font-bold">{radio.potencia}</td>
+                  <td>{radio.potencia}</td>
                   <td>{radio.pps}</td>
-                  <td className="font-bold">{radio.throughputEfetivoNominal}</td>
+                  <td>{radio.throughputEfetivoNominal}</td>
                   <td>{radio.aberturaHorVer}</td>
-                  <td className="font-bold">{radio.distancia}</td>
+                  <td>{radio.distancia}</td>
                   <td>{radio.wireless}</td>
-                  <td className="font-bold">{radio.alimentaçao}</td>
+                  <td>{radio.alimentaçao}</td>
                   <td>{radio.garantia}</td>
                   <td>
                     <a target="_blank" rel="noopener noreferrer" href={radio.pagina}>

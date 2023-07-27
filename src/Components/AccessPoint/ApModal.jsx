@@ -43,9 +43,9 @@ function AP_Modal() {
               Escolha
             </option>
           )}
-          <option value="Ativo">Suporte Ativo</option>
-          <option value="Descontinuado">Suporte Descontinuado</option>
-          <option value="Limitado">Suporte Limitado</option>
+          <option value="Ativo">Ativo</option>
+          <option value="Descontinuado">Descontinuado</option>
+          <option value="Estendido">Estendido</option>
           <option value="N/A">N/A</option>
         </OlimpoSelect>
 
@@ -60,7 +60,7 @@ function AP_Modal() {
           label="Modulação"
           required
           type="text"
-          value={updatedProduct.modulação}
+          value={updatedProduct.interface}
           onChange={(e) => setUpdatedProduct({...updatedProduct, modulação: e.target.value})}>
           {!updatedProduct.id && (
             <option selected disabled>

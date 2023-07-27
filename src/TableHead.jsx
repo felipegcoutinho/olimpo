@@ -207,13 +207,8 @@ function TableHead() {
     <Header>
       <th className="text-center">Modelo</th>
       <th>Interface</th>
-      <th>
-        Qtde <br></br> Porta FXS
-      </th>
-      <th>
-        Qtde <br></br> Porta RJ45
-      </th>
-      <th>Tipo</th>
+      <th>Qtde FXS</th>
+      <th>Qtde RJ45</th>
       <th>
         Sensibilidade <br></br> Max | Min
       </th>

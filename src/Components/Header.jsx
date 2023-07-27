@@ -16,6 +16,7 @@ import {HiMagnifyingGlass} from "react-icons/hi2";
 export default function Header() {
   const {openModal, admin, email} = useContext(AdminContext);
   const [urlValue, setUrlValue] = useState("");
+
   const urlSearch = `https://www.intelbras.com/pt-br/busca/?q=${urlValue}&tipo_busca=pagina-resultado`;
 
   const handleSearch = (e) => {
@@ -29,24 +30,23 @@ export default function Header() {
   };
 
   const setorTiles = {
-    1: { setor: "Wi-Fi Empresarial", link: "#wifi-empresarial", img: ImgAp },
-    2: { setor: "Radio Outdoor", link: "#radio-outdoor", img: ImgRadio },
-    3: { setor: "Switches", link: "#switch", img: ImgSw },
-    4: { setor: "Roteadores", link: "#roteador", img: ImgHo },
-    5: { setor: "Conversor de Midia", link: "#conversor", img: ImgConv },
-    6: { setor: "Módulo SFP", link: "#modulo-sfp", img: ImgSfp },
-    7: { setor: "Onu/Ont", link: "#onu-ont", img: ImgOnt },
+    "Wi-Fi Empresarial": {link: "#wifi-empresarial", img: ImgAp},
+    "Radio Outdoor": {link: "#radio-outdoor", img: ImgRadio},
+    Switch: {link: "#switch", img: ImgSw},
+    Roteador: {link: "#roteador", img: ImgHo},
+    "Conversor de Midia": {link: "#conversor", img: ImgConv},
+    "Módulo SFP": {link: "#modulo-sfp", img: ImgSfp},
+    "Onu/Ont": {link: "#onu-ont", img: ImgOnt},
   };
-
 
   return (
     <div className="bg-[url('../assets/ttten.svg')] mb-2">
-      <div className="flex justify-end px-4 text-slate-600 dark:text-white">
+      <div id="top" className="flex justify-end px-4 text-slate-600 dark:text-white">
         <div className="flex gap-6 items-center">
           <p className="cursor-pointer hover:underline" onClick={openModal}>
             {admin ? email : "login"}
           </p>
-                  <p>avisos</p>
+          <p>avisos</p>
           <LoginModal />
           <DarkModeToggle />
         </div>
@@ -73,11 +73,10 @@ export default function Header() {
               <HiMagnifyingGlass className="mr-1 text-2xl" />
             </button>
           </a>
-         
         </div>
-        <div className="flex gap-2 mt-10">
-          {Object.values(setorTiles).map((tiles, index) => (
-            <Tiles key={index} img={tiles.img} setor={tiles.setor} link={tiles.link} />
+        <div className="flex flex-wrap gap-2 mt-10">
+          {Object.entries(setorTiles).map(([setor, tiles]) => (
+            <Tiles key={setor} img={tiles.img} setor={setor} link={tiles.link} />
           ))}
         </div>
       </div>
