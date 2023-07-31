@@ -1,30 +1,29 @@
-import {AdminContext} from "../../App";
+import { AdminContext } from "../../App";
 import CrudFirebase from "../../Database/crud";
 import UseAux from "../../Hooks/UseAux";
 import TableHead from "../../TableHead";
 import DeviceImg from "../../assets/sfp.png";
 import Content from "../../ui/Content";
-import {OlimpoPageBtn} from "../../ui/OlimpoTextInput";
+import { OlimpoPageBtn } from "../../ui/OlimpoTextInput";
 import OlimpoTable from "../../ui/Table";
 import TableStart from "../../ui/TableStart";
 import SfpCompare from "./SfpCompare";
 import SfpModal from "./SfpModal";
-import {Badge} from "flowbite-react";
-import {React, useState, useEffect, useContext, createContext} from "react";
-import {HiPencil, HiXMark} from "react-icons/hi2";
+import { Badge } from "flowbite-react";
+import { React, useState, useEffect, useContext, createContext } from "react";
+import { HiPencil, HiXMark } from "react-icons/hi2";
 import Modal from "react-modal";
 
 export const SfpContext = createContext();
 
 export default function Sfp() {
-  const {admin, HideSFP, setHideSFP, updatedProduct, setUpdatedProduct} = useContext(AdminContext);
+  const { admin, HideSFP, setHideSFP, updatedProduct, setUpdatedProduct } = useContext(AdminContext);
   const [sfp, setSfp] = useState([]);
   const [querySfp, setQuerySfp] = useState("");
   const [modalIsOpen, setIsOpen] = useState(false);
-  const {fetchDevices, addDevices, deleteDevices, updateDevices} = CrudFirebase();
-  const {compareStatus, Possui, NaoPossui, InterfaceStyle, calculateDateDifference, currentDate} =
-    UseAux();
-  const {Sfp_Header} = TableHead();
+  const { fetchDevices, addDevices, deleteDevices, updateDevices } = CrudFirebase();
+  const { compareStatus, Possui, NaoPossui, InterfaceStyle, calculateDateDifference, currentDate } = UseAux();
+  const { Sfp_Header } = TableHead();
 
   /* Configs Modal */
   Modal.setAppElement("#root");
@@ -128,7 +127,8 @@ export default function Sfp() {
           openModalCompare,
           closeModalCompare,
           modalIsOpenCompare,
-        }}>
+        }}
+      >
         <SfpModal />
         <SfpCompare />
       </SfpContext.Provider>
@@ -138,9 +138,7 @@ export default function Sfp() {
           Hide={HideSFP}
           Device={"Módulo SFP"}
           DeviceImg={DeviceImg}
-          DeviceText={
-            "Permitem ampliar a rede para distâncias de até 10 km, garantindo mais velocidade e segurança na transmissão de dados."
-          }
+          DeviceText={"Permitem ampliar a rede para distâncias de até 10 km, garantindo mais velocidade e segurança na transmissão de dados."}
           selectedDevices={selectedDevices.length >= 2 && selectedDevices}
           handleCompareClick={handleCompareClick}
           handleHide={handleHideSFP}
@@ -171,19 +169,15 @@ export default function Sfp() {
                   ocultar={sfp.ocultar}
                   admin={admin}
                   calculateDateDifference={calculateDateDifference(sfp.date, currentDate)}
-                  handleSingleClick={() => handleSingleClick(sfp)}>
+                  handleSingleClick={() => handleSingleClick(sfp)}
+                >
                   <td className="text-left px-2">
                     <span className={InterfaceStyle(sfp)}>{sfp.interface}</span>
                   </td>
                   <td>{sfp.tipoConector}</td>
                   <td className="px-4">{sfp.wdm === "-" ? NaoPossui : Possui}</td>
                   <td>
-                    <div
-                      className={`flex justify-center w-12 rounded uppercase ${
-                        statusStyles[sfp.modulo]
-                      } `}>
-                      {sfp.modulo}
-                    </div>
+                    <div className={`flex justify-center w-12 rounded uppercase ${statusStyles[sfp.modulo]} `}>{sfp.modulo}</div>
                   </td>
                   <td>{sfp.distancia}</td>
                   <td>{sfp.fibra}</td>
@@ -199,14 +193,10 @@ export default function Sfp() {
                   </td>
                   {admin && (
                     <td>
-                      <button
-                        className="bg-yellow-300 p-1 rounded text-white"
-                        onClick={() => openUpdateModal(sfp)}>
+                      <button className="bg-yellow-300 p-1 rounded text-white" onClick={() => openUpdateModal(sfp)}>
                         <HiPencil />
                       </button>
-                      <button
-                        className="bg-red-600 p-1 rounded text-white ml-2"
-                        onClick={() => deleteDevice(sfp.id)}>
+                      <button className="bg-red-600 p-1 rounded text-white ml-2" onClick={() => deleteDevice(sfp.id)}>
                         <HiXMark />
                       </button>
                     </td>

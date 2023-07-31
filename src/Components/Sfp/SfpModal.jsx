@@ -1,14 +1,13 @@
 import ModalComponent from "../../ui/Modal";
 import OlimpoSelect from "../../ui/OlimpoSelect";
 import OlimpoTextInput from "../../ui/OlimpoTextInput";
-import {SfpContext} from "./Sfp";
-import {Button} from "flowbite-react";
+import { SfpContext } from "./Sfp";
+import { Button } from "flowbite-react";
 import React from "react";
-import {useContext} from "react";
+import { useContext } from "react";
 
 function SfpModal() {
-  const {addDevice, updateDevice, updatedProduct, setUpdatedProduct, closeModal, modalIsOpen} =
-    useContext(SfpContext);
+  const { addDevice, updateDevice, updatedProduct, setUpdatedProduct, closeModal, modalIsOpen } = useContext(SfpContext);
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -21,7 +20,8 @@ function SfpModal() {
       closeModal={closeModal}
       updatedProductId={updatedProduct.id}
       updatedProductModelo={updatedProduct.modelo}
-      setor="Módulo SFP">
+      setor="Módulo SFP"
+    >
       <form onSubmit={handleSubmit}>
         <div>
           <OlimpoTextInput
@@ -30,14 +30,15 @@ function SfpModal() {
             type="text"
             placeholder="KPSD 1120 E"
             value={updatedProduct.modelo}
-            onChange={(e) => setUpdatedProduct({...updatedProduct, modelo: e.target.value})}
+            onChange={(e) => setUpdatedProduct({ ...updatedProduct, modelo: e.target.value })}
           />
 
           <OlimpoSelect
             label="Status do suporte"
             type="text"
             value={updatedProduct.status}
-            onChange={(e) => setUpdatedProduct({...updatedProduct, status: e.target.value})}>
+            onChange={(e) => setUpdatedProduct({ ...updatedProduct, status: e.target.value })}
+          >
             <option value="Ativo">Ativo</option>
             <option value="Descontinuado">Descontinuado</option>
             <option value="Estendido">Estendido</option>
@@ -48,7 +49,7 @@ function SfpModal() {
             label="Data de lançamento"
             type="date"
             value={updatedProduct.date}
-            onChange={(e) => setUpdatedProduct({...updatedProduct, date: e.target.value})}
+            onChange={(e) => setUpdatedProduct({ ...updatedProduct, date: e.target.value })}
           />
 
           <OlimpoSelect
@@ -56,7 +57,8 @@ function SfpModal() {
             required
             type="text"
             value={updatedProduct.interface}
-            onChange={(e) => setUpdatedProduct({...updatedProduct, modulação: e.target.value})}>
+            onChange={(e) => setUpdatedProduct({ ...updatedProduct, modulação: e.target.value })}
+          >
             {!updatedProduct.id && (
               <option selected disabled>
                 Escolha
@@ -72,7 +74,8 @@ function SfpModal() {
             label="Tipo do Conector"
             type="text"
             value={updatedProduct.conector}
-            onChange={(e) => setUpdatedProduct({...updatedProduct, conector: e.target.value})}>
+            onChange={(e) => setUpdatedProduct({ ...updatedProduct, conector: e.target.value })}
+          >
             {!updatedProduct.id && (
               <option selected disabled>
                 Escolha
@@ -87,7 +90,8 @@ function SfpModal() {
             label="Tipo do Módulo"
             type="text"
             value={updatedProduct.modulo}
-            onChange={(e) => setUpdatedProduct({...updatedProduct, modulo: e.target.value})}>
+            onChange={(e) => setUpdatedProduct({ ...updatedProduct, modulo: e.target.value })}
+          >
             {!updatedProduct.id && (
               <option selected disabled>
                 Escolha
@@ -105,7 +109,8 @@ function SfpModal() {
             label="WDM"
             type="text"
             value={updatedProduct.wdm}
-            onChange={(e) => setUpdatedProduct({...updatedProduct, wdm: e.target.value})}>
+            onChange={(e) => setUpdatedProduct({ ...updatedProduct, wdm: e.target.value })}
+          >
             {!updatedProduct.id && (
               <option selected disabled>
                 Escolha
@@ -121,14 +126,15 @@ function SfpModal() {
             type="text"
             placeholder="20 Km"
             value={updatedProduct.distancia}
-            onChange={(e) => setUpdatedProduct({...updatedProduct, distancia: e.target.value})}
+            onChange={(e) => setUpdatedProduct({ ...updatedProduct, distancia: e.target.value })}
           />
 
           <OlimpoSelect
             label="Fibra Recomendada"
             type="text"
             value={updatedProduct.fibra}
-            onChange={(e) => setUpdatedProduct({...updatedProduct, fibra: e.target.value})}>
+            onChange={(e) => setUpdatedProduct({ ...updatedProduct, fibra: e.target.value })}
+          >
             {!updatedProduct.id && (
               <option selected disabled>
                 Escolha
@@ -144,7 +150,7 @@ function SfpModal() {
             type="text"
             placeholder="2,5 dBm | 7 dBm"
             value={updatedProduct.potencia}
-            onChange={(e) => setUpdatedProduct({...updatedProduct, potencia: e.target.value})}
+            onChange={(e) => setUpdatedProduct({ ...updatedProduct, potencia: e.target.value })}
           />
 
           <OlimpoTextInput
@@ -152,7 +158,7 @@ function SfpModal() {
             type="text"
             placeholder="-8 dBm | -30 dbm"
             value={updatedProduct.sensibilidade}
-            onChange={(e) => setUpdatedProduct({...updatedProduct, sensibilidade: e.target.value})}
+            onChange={(e) => setUpdatedProduct({ ...updatedProduct, sensibilidade: e.target.value })}
           />
 
           <OlimpoTextInput
@@ -160,7 +166,7 @@ function SfpModal() {
             type="text"
             placeholder="1310 nm"
             value={updatedProduct.CompRX}
-            onChange={(e) => setUpdatedProduct({...updatedProduct, CompRX: e.target.value})}
+            onChange={(e) => setUpdatedProduct({ ...updatedProduct, CompRX: e.target.value })}
           />
 
           <OlimpoTextInput
@@ -168,14 +174,15 @@ function SfpModal() {
             type="text"
             placeholder="1490 nm"
             value={updatedProduct.CompTX}
-            onChange={(e) => setUpdatedProduct({...updatedProduct, CompTX: e.target.value})}
+            onChange={(e) => setUpdatedProduct({ ...updatedProduct, CompTX: e.target.value })}
           />
 
           <OlimpoSelect
             label="Tempo da Garantia"
             type="text"
             value={updatedProduct.garantia}
-            onChange={(e) => setUpdatedProduct({...updatedProduct, garantia: e.target.value})}>
+            onChange={(e) => setUpdatedProduct({ ...updatedProduct, garantia: e.target.value })}
+          >
             {!updatedProduct.id && (
               <option selected disabled>
                 Escolha
@@ -194,7 +201,7 @@ function SfpModal() {
             type="text"
             placeholder="https://www.intelbras.com/pt-br/modulo-sfp-epon-kpsd-1120-e"
             value={updatedProduct.pagina}
-            onChange={(e) => setUpdatedProduct({...updatedProduct, pagina: e.target.value})}
+            onChange={(e) => setUpdatedProduct({ ...updatedProduct, pagina: e.target.value })}
           />
 
           <OlimpoSelect
@@ -202,7 +209,8 @@ function SfpModal() {
             required
             type="text"
             value={updatedProduct.ocultar}
-            onChange={(e) => setUpdatedProduct({...updatedProduct, ocultar: e.target.value})}>
+            onChange={(e) => setUpdatedProduct({ ...updatedProduct, ocultar: e.target.value })}
+          >
             {!updatedProduct.id && (
               <option selected disabled>
                 Escolha

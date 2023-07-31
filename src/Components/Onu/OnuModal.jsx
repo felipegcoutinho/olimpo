@@ -1,14 +1,13 @@
 import ModalComponent from "../../ui/Modal";
 import OlimpoSelect from "../../ui/OlimpoSelect";
 import OlimpoTextInput from "../../ui/OlimpoTextInput";
-import {OnuContext} from "./Onu";
-import {Button} from "flowbite-react";
+import { OnuContext } from "./Onu";
+import { Button } from "flowbite-react";
 import React from "react";
-import {useContext} from "react";
+import { useContext } from "react";
 
 function OnuModal() {
-  const {addDevice, updateDevice, updatedProduct, setUpdatedProduct, closeModal, modalIsOpen} =
-    useContext(OnuContext);
+  const { addDevice, updateDevice, updatedProduct, setUpdatedProduct, closeModal, modalIsOpen } = useContext(OnuContext);
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -21,7 +20,8 @@ function OnuModal() {
       closeModal={closeModal}
       updatedProductId={updatedProduct.id}
       updatedProductModelo={updatedProduct.modelo}
-      setor="Onts">
+      setor="Onts"
+    >
       <form onSubmit={handleSubmit}>
         <OlimpoTextInput
           label="Modelo"
@@ -29,14 +29,15 @@ function OnuModal() {
           type="text"
           placeholder="WiFiber 121 AC"
           value={updatedProduct.modelo}
-          onChange={(e) => setUpdatedProduct({...updatedProduct, modelo: e.target.value})}
+          onChange={(e) => setUpdatedProduct({ ...updatedProduct, modelo: e.target.value })}
         />
 
         <OlimpoSelect
           label="Status do suporte"
           type="text"
           value={updatedProduct.status}
-          onChange={(e) => setUpdatedProduct({...updatedProduct, status: e.target.value})}>
+          onChange={(e) => setUpdatedProduct({ ...updatedProduct, status: e.target.value })}
+        >
           {!updatedProduct.id && (
             <option selected disabled>
               Escolha
@@ -52,7 +53,7 @@ function OnuModal() {
           label="Data de lançamento"
           type="date"
           value={updatedProduct.date}
-          onChange={(e) => setUpdatedProduct({...updatedProduct, date: e.target.value})}
+          onChange={(e) => setUpdatedProduct({ ...updatedProduct, date: e.target.value })}
         />
 
         <OlimpoSelect
@@ -60,7 +61,8 @@ function OnuModal() {
           required
           type="text"
           value={updatedProduct.interface}
-          onChange={(e) => setUpdatedProduct({...updatedProduct, modulação: e.target.value})}>
+          onChange={(e) => setUpdatedProduct({ ...updatedProduct, modulação: e.target.value })}
+        >
           {!updatedProduct.id && (
             <option selected disabled>
               Escolha
@@ -77,7 +79,8 @@ function OnuModal() {
           required
           type="text"
           value={updatedProduct.fxs}
-          onChange={(e) => setUpdatedProduct({...updatedProduct, fxs: e.target.value})}>
+          onChange={(e) => setUpdatedProduct({ ...updatedProduct, fxs: e.target.value })}
+        >
           {!updatedProduct.id && (
             <option selected disabled>
               Escolha
@@ -94,7 +97,8 @@ function OnuModal() {
           label="Qtde RJ45"
           type="text"
           value={updatedProduct.qtdeportas}
-          onChange={(e) => setUpdatedProduct({...updatedProduct, qtdeportas: e.target.value})}>
+          onChange={(e) => setUpdatedProduct({ ...updatedProduct, qtdeportas: e.target.value })}
+        >
           {!updatedProduct.id && (
             <option selected disabled>
               Escolha
@@ -113,7 +117,8 @@ function OnuModal() {
           required
           type="text"
           value={updatedProduct.tipo}
-          onChange={(e) => setUpdatedProduct({...updatedProduct, tipo: e.target.value})}>
+          onChange={(e) => setUpdatedProduct({ ...updatedProduct, tipo: e.target.value })}
+        >
           {!updatedProduct.id && (
             <option selected disabled>
               Escolha
@@ -129,7 +134,7 @@ function OnuModal() {
           type="text"
           placeholder="-7 dBm | -27 dBm"
           value={updatedProduct.sensibilidade}
-          onChange={(e) => setUpdatedProduct({...updatedProduct, sensibilidade: e.target.value})}
+          onChange={(e) => setUpdatedProduct({ ...updatedProduct, sensibilidade: e.target.value })}
         />
 
         <OlimpoTextInput
@@ -137,7 +142,7 @@ function OnuModal() {
           type="text"
           placeholder="120 m²"
           value={updatedProduct.cobertura}
-          onChange={(e) => setUpdatedProduct({...updatedProduct, cobertura: e.target.value})}
+          onChange={(e) => setUpdatedProduct({ ...updatedProduct, cobertura: e.target.value })}
         />
 
         <OlimpoTextInput
@@ -145,9 +150,7 @@ function OnuModal() {
           type="text"
           placeholder="64 usuários"
           value={updatedProduct.clientesSimultaneos}
-          onChange={(e) =>
-            setUpdatedProduct({...updatedProduct, clientesSimultaneos: e.target.value})
-          }
+          onChange={(e) => setUpdatedProduct({ ...updatedProduct, clientesSimultaneos: e.target.value })}
         />
 
         <OlimpoTextInput
@@ -155,7 +158,7 @@ function OnuModal() {
           type="text"
           placeholder="300 Mbps"
           value={updatedProduct.transmissao2ghz}
-          onChange={(e) => setUpdatedProduct({...updatedProduct, transmissao2ghz: e.target.value})}
+          onChange={(e) => setUpdatedProduct({ ...updatedProduct, transmissao2ghz: e.target.value })}
         />
 
         <OlimpoTextInput
@@ -163,7 +166,7 @@ function OnuModal() {
           type="text"
           placeholder="867 Mbps"
           value={updatedProduct.transmissao5ghz}
-          onChange={(e) => setUpdatedProduct({...updatedProduct, transmissao5ghz: e.target.value})}
+          onChange={(e) => setUpdatedProduct({ ...updatedProduct, transmissao5ghz: e.target.value })}
         />
 
         <OlimpoTextInput
@@ -171,14 +174,15 @@ function OnuModal() {
           type="text"
           placeholder="8 SSIDs"
           value={updatedProduct.ssid}
-          onChange={(e) => setUpdatedProduct({...updatedProduct, ssid: e.target.value})}
+          onChange={(e) => setUpdatedProduct({ ...updatedProduct, ssid: e.target.value })}
         />
 
         <OlimpoSelect
           label="Compatível com TR069"
           type="text"
           value={updatedProduct.tr069}
-          onChange={(e) => setUpdatedProduct({...updatedProduct, tr069: e.target.value})}>
+          onChange={(e) => setUpdatedProduct({ ...updatedProduct, tr069: e.target.value })}
+        >
           {!updatedProduct.id && (
             <option selected disabled>
               Escolha
@@ -193,7 +197,8 @@ function OnuModal() {
           label="Compatível com Customize"
           type="text"
           value={updatedProduct.customize}
-          onChange={(e) => setUpdatedProduct({...updatedProduct, customize: e.target.value})}>
+          onChange={(e) => setUpdatedProduct({ ...updatedProduct, customize: e.target.value })}
+        >
           {!updatedProduct.id && (
             <option selected disabled>
               Escolha
@@ -208,7 +213,8 @@ function OnuModal() {
           label="Compatível com Remotize"
           type="text"
           value={updatedProduct.remotize}
-          onChange={(e) => setUpdatedProduct({...updatedProduct, remotize: e.target.value})}>
+          onChange={(e) => setUpdatedProduct({ ...updatedProduct, remotize: e.target.value })}
+        >
           {!updatedProduct.id && (
             <option selected disabled>
               Escolha
@@ -223,7 +229,8 @@ function OnuModal() {
           label="Tempo da Garantia"
           type="text"
           value={updatedProduct.garantia}
-          onChange={(e) => setUpdatedProduct({...updatedProduct, garantia: e.target.value})}>
+          onChange={(e) => setUpdatedProduct({ ...updatedProduct, garantia: e.target.value })}
+        >
           {!updatedProduct.id && (
             <option selected disabled>
               Escolha
@@ -242,7 +249,7 @@ function OnuModal() {
           type="text"
           placeholder="https://www.intelbras.com/pt-br/modem-optico-pon-lan-2p-fxs-1p-wi-fi-ac-wifiber-121-ac"
           value={updatedProduct.pagina}
-          onChange={(e) => setUpdatedProduct({...updatedProduct, pagina: e.target.value})}
+          onChange={(e) => setUpdatedProduct({ ...updatedProduct, pagina: e.target.value })}
         />
 
         <OlimpoSelect
@@ -250,7 +257,8 @@ function OnuModal() {
           required
           type="text"
           value={updatedProduct.ocultar}
-          onChange={(e) => setUpdatedProduct({...updatedProduct, ocultar: e.target.value})}>
+          onChange={(e) => setUpdatedProduct({ ...updatedProduct, ocultar: e.target.value })}
+        >
           {!updatedProduct.id && (
             <option selected disabled>
               Escolha

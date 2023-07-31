@@ -1,29 +1,28 @@
-import {AdminContext} from "../../App";
+import { AdminContext } from "../../App";
 import CrudFirebase from "../../Database/crud";
 import UseAux from "../../Hooks/UseAux";
 import TableHead from "../../TableHead";
 import DeviceImg from "../../assets/ap.png";
 import Content from "../../ui/Content";
-import {OlimpoPageBtn} from "../../ui/OlimpoTextInput";
+import { OlimpoPageBtn } from "../../ui/OlimpoTextInput";
 import OlimpoTable from "../../ui/Table";
 import TableStart from "../../ui/TableStart";
 import ApCompare from "./ApCompare";
 import Ap_Modal from "./ApModal";
-import {React, useState, useEffect, useContext, createContext} from "react";
-import {HiPencil, HiXMark} from "react-icons/hi2";
+import { React, useState, useEffect, useContext, createContext } from "react";
+import { HiPencil, HiXMark } from "react-icons/hi2";
 import Modal from "react-modal";
 
 export const APContext = createContext();
 
 export default function Ap() {
-  const {admin, HideAP, setHideAP, updatedProduct, setUpdatedProduct} = useContext(AdminContext);
+  const { admin, HideAP, setHideAP, updatedProduct, setUpdatedProduct } = useContext(AdminContext);
   const [accessPoint, setAccessPoint] = useState([]);
   const [queryAP, setQueryAP] = useState("");
   const [modalIsOpen, setIsOpen] = useState(false);
-  const {fetchDevices, addDevices, deleteDevices, updateDevices} = CrudFirebase();
-  const {compareStatus, Possui, NaoPossui, InterfaceStyle, calculateDateDifference, currentDate} =
-    UseAux();
-  const {AP_Header} = TableHead();
+  const { fetchDevices, addDevices, deleteDevices, updateDevices } = CrudFirebase();
+  const { compareStatus, Possui, NaoPossui, InterfaceStyle, calculateDateDifference, currentDate } = UseAux();
+  const { AP_Header } = TableHead();
 
   /* Configs Modal */
   Modal.setAppElement("#root");
@@ -120,7 +119,8 @@ export default function Ap() {
           openModalCompare,
           closeModalCompare,
           modalIsOpenCompare,
-        }}>
+        }}
+      >
         <Ap_Modal />
         <ApCompare />
       </APContext.Provider>
@@ -130,9 +130,7 @@ export default function Ap() {
           Hide={HideAP}
           Device={"Wi-Fi Empresarial"}
           DeviceImg={DeviceImg}
-          DeviceText={
-            "Wi-Fi de alta performance para ambientes profissionais e diversas necessidades."
-          }
+          DeviceText={"Wi-Fi de alta performance para ambientes profissionais e diversas necessidades."}
           selectedDevices={selectedDevices.length >= 2 && selectedDevices}
           handleCompareClick={handleCompareClick}
           handleHide={handleHideAP}
@@ -146,10 +144,7 @@ export default function Ap() {
             .sort(compareStatus)
             .filter((ap) => {
               const queryLowerCase = queryAP.toLowerCase();
-              return (
-                ap.modelo.toLowerCase().includes(queryLowerCase) ||
-                ap.interface.toLowerCase().includes(queryLowerCase)
-              );
+              return ap.modelo.toLowerCase().includes(queryLowerCase) || ap.interface.toLowerCase().includes(queryLowerCase);
             })
             .map((ap) => {
               return (
@@ -162,7 +157,8 @@ export default function Ap() {
                   ocultar={ap.ocultar}
                   admin={admin}
                   calculateDateDifference={calculateDateDifference(ap.date, currentDate)}
-                  handleSingleClick={() => handleSingleClick(ap)}>
+                  handleSingleClick={() => handleSingleClick(ap)}
+                >
                   <td>
                     <span className={InterfaceStyle(ap)}>{ap.interface}</span>
                   </td>
@@ -185,14 +181,10 @@ export default function Ap() {
                   </td>
                   {admin && (
                     <td className="text-center">
-                      <button
-                        className="bg-yellow-300 p-1 rounded text-white"
-                        onClick={() => openUpdateModal(ap)}>
+                      <button className="bg-yellow-300 p-1 rounded text-white" onClick={() => openUpdateModal(ap)}>
                         <HiPencil />
                       </button>
-                      <button
-                        className="bg-red-600 p-1 rounded text-white ml-2"
-                        onClick={() => deleteDevice(ap.id)}>
+                      <button className="bg-red-600 p-1 rounded text-white ml-2" onClick={() => deleteDevice(ap.id)}>
                         <HiXMark />
                       </button>
                     </td>

@@ -1,29 +1,28 @@
-import {AdminContext} from "../../App";
+import { AdminContext } from "../../App";
 import CrudFirebase from "../../Database/crud";
 import UseAux from "../../Hooks/UseAux";
 import TableHead from "../../TableHead";
 import DeviceImg from "../../assets/ho.png";
 import Content from "../../ui/Content";
-import {OlimpoPageBtn} from "../../ui/OlimpoTextInput";
+import { OlimpoPageBtn } from "../../ui/OlimpoTextInput";
 import OlimpoTable from "../../ui/Table";
 import TableStart from "../../ui/TableStart";
 import RoteadorCompare from "./RoteadorCompare";
 import RoteadoresModal from "./RoteadorModal";
-import {React, useState, useEffect, useContext, createContext} from "react";
-import {HiPencil, HiXMark} from "react-icons/hi2";
+import { React, useState, useEffect, useContext, createContext } from "react";
+import { HiPencil, HiXMark } from "react-icons/hi2";
 import Modal from "react-modal";
 
 export const HOContext = createContext();
 
 export default function Ap() {
-  const {admin, HideHO, setHideHO, updatedProduct, setUpdatedProduct} = useContext(AdminContext);
+  const { admin, HideHO, setHideHO, updatedProduct, setUpdatedProduct } = useContext(AdminContext);
   const [roteadorHO, setRoteadorHO] = useState([]);
   const [queryHO, setQueryHO] = useState("");
   const [modalIsOpen, setIsOpen] = useState(false);
-  const {fetchDevices, addDevices, deleteDevices, updateDevices} = CrudFirebase();
-  const {compareStatus, NaoPossui, Possui, InterfaceStyle, calculateDateDifference, currentDate} =
-    UseAux();
-  const {Roteador_Header} = TableHead();
+  const { fetchDevices, addDevices, deleteDevices, updateDevices } = CrudFirebase();
+  const { compareStatus, NaoPossui, Possui, InterfaceStyle, calculateDateDifference, currentDate } = UseAux();
+  const { Roteador_Header } = TableHead();
 
   /* Configs Modal */
   Modal.setAppElement("#root");
@@ -66,6 +65,7 @@ export default function Ap() {
   /* Atualizar Produto */
   const updateDevice = async () => {
     await updateDevices("roteadorHO", setUpdatedProduct, updatedProduct, closeModal);
+    fetchDevices("roteadorHO", setRoteadorHO);
   };
 
   // Esse trecho vai gerenciar os produtos selecionados
@@ -119,7 +119,8 @@ export default function Ap() {
           openModalCompare,
           closeModalCompare,
           modalIsOpenCompare,
-        }}>
+        }}
+      >
         <RoteadoresModal />
         <RoteadorCompare />
       </HOContext.Provider>
@@ -160,7 +161,8 @@ export default function Ap() {
                   ocultar={roteador.ocultar}
                   admin={admin}
                   calculateDateDifference={calculateDateDifference(roteador.date, currentDate)}
-                  handleSingleClick={() => handleSingleClick(roteador)}>
+                  handleSingleClick={() => handleSingleClick(roteador)}
+                >
                   <td className="text-left">
                     <span className={InterfaceStyle(roteador)}>{roteador.interface}</span>
                   </td>
@@ -183,14 +185,10 @@ export default function Ap() {
                   </td>
                   {admin && (
                     <td className="text-center">
-                      <button
-                        className="bg-yellow-300 p-1 rounded text-white"
-                        onClick={() => openUpdateModal(roteador)}>
+                      <button className="bg-yellow-300 p-1 rounded text-white" onClick={() => openUpdateModal(roteador)}>
                         <HiPencil />
                       </button>
-                      <button
-                        className="bg-red-600 p-1 rounded text-white ml-2"
-                        onClick={() => deleteDevice(roteador.id)}>
+                      <button className="bg-red-600 p-1 rounded text-white ml-2" onClick={() => deleteDevice(roteador.id)}>
                         <HiXMark />
                       </button>
                     </td>

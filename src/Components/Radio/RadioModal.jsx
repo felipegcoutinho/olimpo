@@ -1,14 +1,13 @@
 import ModalComponent from "../../ui/Modal";
 import OlimpoSelect from "../../ui/OlimpoSelect";
 import OlimpoTextInput from "../../ui/OlimpoTextInput";
-import {RadioContext} from "./Radio";
-import {Button} from "flowbite-react";
+import { RadioContext } from "./Radio";
+import { Button } from "flowbite-react";
 import React from "react";
-import {useContext} from "react";
+import { useContext } from "react";
 
 function RadioModal() {
-  const {addDevice, updateDevice, updatedProduct, setUpdatedProduct, modalIsOpen, closeModal} =
-    useContext(RadioContext);
+  const { addDevice, updateDevice, updatedProduct, setUpdatedProduct, modalIsOpen, closeModal } = useContext(RadioContext);
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -21,7 +20,8 @@ function RadioModal() {
       closeModal={closeModal}
       updatedProductId={updatedProduct.id}
       updatedProductModelo={updatedProduct.modelo}
-      setor="Rádio">
+      setor="Rádio"
+    >
       <form onSubmit={handleSubmit}>
         <div className="flex flex-col">
           <OlimpoTextInput
@@ -30,14 +30,15 @@ function RadioModal() {
             type="text"
             placeholder="Wom 5A-23"
             value={updatedProduct.modelo}
-            onChange={(e) => setUpdatedProduct({...updatedProduct, modelo: e.target.value})}
+            onChange={(e) => setUpdatedProduct({ ...updatedProduct, modelo: e.target.value })}
           />
 
           <OlimpoSelect
             label="Status do suporte"
             type="text"
             value={updatedProduct.status}
-            onChange={(e) => setUpdatedProduct({...updatedProduct, status: e.target.value})}>
+            onChange={(e) => setUpdatedProduct({ ...updatedProduct, status: e.target.value })}
+          >
             {!updatedProduct.id && (
               <option selected disabled>
                 Escolha
@@ -53,7 +54,7 @@ function RadioModal() {
             label="Data de lançamento"
             type="date"
             value={updatedProduct.date}
-            onChange={(e) => setUpdatedProduct({...updatedProduct, date: e.target.value})}
+            onChange={(e) => setUpdatedProduct({ ...updatedProduct, date: e.target.value })}
           />
 
           <OlimpoTextInput
@@ -61,14 +62,15 @@ function RadioModal() {
             type="date"
             placeholder="AP 1250 AC MAX"
             value={updatedProduct.date}
-            onChange={(e) => setUpdatedProduct({...updatedProduct, date: e.target.value})}
+            onChange={(e) => setUpdatedProduct({ ...updatedProduct, date: e.target.value })}
           />
 
           <OlimpoSelect
             label="Indicado"
             placeholder="Indicado"
             value={updatedProduct.indicado}
-            onChange={(e) => setUpdatedProduct({...updatedProduct, indicado: e.target.value})}>
+            onChange={(e) => setUpdatedProduct({ ...updatedProduct, indicado: e.target.value })}
+          >
             {!updatedProduct.id && (
               <option selected disabled>
                 Escolha
@@ -85,7 +87,13 @@ function RadioModal() {
             type="text"
             placeholder="Modulação"
             value={updatedProduct.interface}
-            onChange={(e) => setUpdatedProduct({...updatedProduct, modulação: e.target.value})}>
+            onChange={(e) =>
+              setUpdatedProduct({
+                ...updatedProduct,
+                modulação: e.target.value,
+              })
+            }
+          >
             {!updatedProduct.id && (
               <option selected disabled>
                 Escolha
@@ -101,7 +109,7 @@ function RadioModal() {
             type="text"
             placeholder="23 dBi"
             value={updatedProduct.ganho}
-            onChange={(e) => setUpdatedProduct({...updatedProduct, ganho: e.target.value})}
+            onChange={(e) => setUpdatedProduct({ ...updatedProduct, ganho: e.target.value })}
           />
 
           <OlimpoTextInput
@@ -109,7 +117,7 @@ function RadioModal() {
             type="text"
             placeholder="25 dBm"
             value={updatedProduct.potencia}
-            onChange={(e) => setUpdatedProduct({...updatedProduct, potencia: e.target.value})}
+            onChange={(e) => setUpdatedProduct({ ...updatedProduct, potencia: e.target.value })}
           />
 
           <OlimpoTextInput
@@ -117,7 +125,7 @@ function RadioModal() {
             type="text"
             placeholder="60.000 Pps"
             value={updatedProduct.pps}
-            onChange={(e) => setUpdatedProduct({...updatedProduct, pps: e.target.value})}
+            onChange={(e) => setUpdatedProduct({ ...updatedProduct, pps: e.target.value })}
           />
 
           <OlimpoTextInput
@@ -126,7 +134,10 @@ function RadioModal() {
             placeholder="160 Mbps"
             value={updatedProduct.throughputEfetivoNominal}
             onChange={(e) =>
-              setUpdatedProduct({...updatedProduct, throughputEfetivoNominal: e.target.value})
+              setUpdatedProduct({
+                ...updatedProduct,
+                throughputEfetivoNominal: e.target.value,
+              })
             }
           />
 
@@ -135,7 +146,12 @@ function RadioModal() {
             type="text"
             placeholder="H-9° | V-9°"
             value={updatedProduct.aberturaHorVer}
-            onChange={(e) => setUpdatedProduct({...updatedProduct, aberturaHorVer: e.target.value})}
+            onChange={(e) =>
+              setUpdatedProduct({
+                ...updatedProduct,
+                aberturaHorVer: e.target.value,
+              })
+            }
           />
 
           <OlimpoTextInput
@@ -143,14 +159,20 @@ function RadioModal() {
             type="text"
             placeholder="10 Km"
             value={updatedProduct.distancia}
-            onChange={(e) => setUpdatedProduct({...updatedProduct, distancia: e.target.value})}
+            onChange={(e) =>
+              setUpdatedProduct({
+                ...updatedProduct,
+                distancia: e.target.value,
+              })
+            }
           />
 
           <OlimpoSelect
             label="Wireless"
             type="text"
             value={updatedProduct.wireless}
-            onChange={(e) => setUpdatedProduct({...updatedProduct, wireless: e.target.value})}>
+            onChange={(e) => setUpdatedProduct({ ...updatedProduct, wireless: e.target.value })}
+          >
             {!updatedProduct.id && (
               <option selected disabled>
                 Escolha
@@ -166,14 +188,20 @@ function RadioModal() {
             type="text"
             placeholder="12V - 24V"
             value={updatedProduct.alimentaçao}
-            onChange={(e) => setUpdatedProduct({...updatedProduct, alimentaçao: e.target.value})}
+            onChange={(e) =>
+              setUpdatedProduct({
+                ...updatedProduct,
+                alimentaçao: e.target.value,
+              })
+            }
           />
           <OlimpoSelect
             label="Garantia"
             type="text"
             placeholder="Status do suporte"
             value={updatedProduct.garantia}
-            onChange={(e) => setUpdatedProduct({...updatedProduct, garantia: e.target.value})}>
+            onChange={(e) => setUpdatedProduct({ ...updatedProduct, garantia: e.target.value })}
+          >
             {!updatedProduct.id && (
               <option selected disabled>
                 Escolha
@@ -192,7 +220,7 @@ function RadioModal() {
             type="text"
             placeholder="https://www.intelbras.com/pt-br/cpeptp-com-antena-dish-de-23-dbi-mimo-2x2-wom-5a-23"
             value={updatedProduct.pagina}
-            onChange={(e) => setUpdatedProduct({...updatedProduct, pagina: e.target.value})}
+            onChange={(e) => setUpdatedProduct({ ...updatedProduct, pagina: e.target.value })}
           />
 
           <OlimpoSelect
@@ -200,7 +228,8 @@ function RadioModal() {
             required
             type="text"
             value={updatedProduct.ocultar}
-            onChange={(e) => setUpdatedProduct({...updatedProduct, ocultar: e.target.value})}>
+            onChange={(e) => setUpdatedProduct({ ...updatedProduct, ocultar: e.target.value })}
+          >
             {!updatedProduct.id && (
               <option selected disabled>
                 Escolha

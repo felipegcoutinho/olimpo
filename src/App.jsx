@@ -6,22 +6,14 @@ import RadiosOutdoor from "./Components/Radio/Radio.jsx";
 import RoteadoresHO from "./Components/Roteador/Roteador.jsx";
 import Sfp from "./Components/Sfp/Sfp.jsx";
 import Switches from "./Components/Switch/Switch.jsx";
-import ImgAp from "./assets/ap.png";
-import ImgConv from "./assets/conversor.png";
-import ImgHo from "./assets/ho.png";
-import ImgOnt from "./assets/ont.png";
-import ImgRadio from "./assets/radio.png";
-import ImgSfp from "./assets/sfp.png";
-import ImgSw from "./assets/sw.png";
-import {Button} from "flowbite-react";
 import React from "react";
-import {createContext, useState} from "react";
-import {HiArrowLongUp, HiArrowUp} from "react-icons/hi2";
+import { createContext, useState } from "react";
+import { HiArrowUp } from "react-icons/hi2";
 
 export const AdminContext = createContext();
 
 function App() {
-  const [admin, setAdmin] = useState(false);
+  const [admin, setAdmin] = useState(true);
   const [HideAP, setHideAP] = useState(true);
   const [HideRADIO, setHideRADIO] = useState(true);
   const [HideHO, setHideHO] = useState(true);
@@ -84,16 +76,16 @@ function App() {
             setIsOpen,
             email,
             setEmail,
-          }}>
+          }}
+        >
           <Header />
 
           <button
             className={` ${
-              ShowHide
-                ? "bg-transparent dark:text-white"
-                : "bg-black dark:bg-itbs-default text-white dark:border-transparent"
+              ShowHide ? "bg-transparent dark:text-white" : "bg-black dark:bg-itbs-default text-white dark:border-transparent"
             } border border-black dark:border-white px-4 py-1 mt-4 ml-4 font-normal rounded-full text-sm`}
-            onClick={alternarMostrarOcultar}>
+            onClick={alternarMostrarOcultar}
+          >
             {ShowHide ? "Ocultar Tudo" : "Mostrar Tudo"}
           </button>
 

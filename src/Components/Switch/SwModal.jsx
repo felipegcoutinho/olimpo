@@ -1,14 +1,13 @@
 import ModalComponent from "../../ui/Modal";
 import OlimpoSelect from "../../ui/OlimpoSelect";
 import OlimpoTextInput from "../../ui/OlimpoTextInput";
-import {SwContext} from "./Switch";
-import {Button} from "flowbite-react";
+import { SwContext } from "./Switch";
+import { Button } from "flowbite-react";
 import React from "react";
-import {useContext} from "react";
+import { useContext } from "react";
 
 function SwModal() {
-  const {addDevice, updateDevice, updatedProduct, setUpdatedProduct, closeModal, modalIsOpen} =
-    useContext(SwContext);
+  const { addDevice, updateDevice, updatedProduct, setUpdatedProduct, closeModal, modalIsOpen } = useContext(SwContext);
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -21,7 +20,8 @@ function SwModal() {
       closeModal={closeModal}
       updatedProductId={updatedProduct.id}
       updatedProductModelo={updatedProduct.modelo}
-      setor="Switch">
+      setor="Switch"
+    >
       <form onSubmit={handleSubmit}>
         <OlimpoTextInput
           label="Modelo"
@@ -29,7 +29,7 @@ function SwModal() {
           type="text"
           placeholder="SG 1002 MR L2+"
           value={updatedProduct.modelo}
-          onChange={(e) => setUpdatedProduct({...updatedProduct, modelo: e.target.value})}
+          onChange={(e) => setUpdatedProduct({ ...updatedProduct, modelo: e.target.value })}
         />
 
         <OlimpoSelect
@@ -37,7 +37,8 @@ function SwModal() {
           type="text"
           placeholder="Status do suporte"
           value={updatedProduct.status}
-          onChange={(e) => setUpdatedProduct({...updatedProduct, status: e.target.value})}>
+          onChange={(e) => setUpdatedProduct({ ...updatedProduct, status: e.target.value })}
+        >
           {!updatedProduct.id && (
             <option selected disabled>
               Escolha
@@ -53,14 +54,15 @@ function SwModal() {
           label="Data de lançamento"
           type="date"
           value={updatedProduct.date}
-          onChange={(e) => setUpdatedProduct({...updatedProduct, date: e.target.value})}
+          onChange={(e) => setUpdatedProduct({ ...updatedProduct, date: e.target.value })}
         />
 
         <OlimpoSelect
           label="Modulação"
           type="text"
           value={updatedProduct.interface}
-          onChange={(e) => setUpdatedProduct({...updatedProduct, modulação: e.target.value})}>
+          onChange={(e) => setUpdatedProduct({ ...updatedProduct, modulação: e.target.value })}
+        >
           {!updatedProduct.id && (
             <option selected disabled>
               Escolha
@@ -76,7 +78,13 @@ function SwModal() {
           label="Gerenciável"
           type="text"
           value={updatedProduct.gerenciavel}
-          onChange={(e) => setUpdatedProduct({...updatedProduct, gerenciavel: e.target.value})}>
+          onChange={(e) =>
+            setUpdatedProduct({
+              ...updatedProduct,
+              gerenciavel: e.target.value,
+            })
+          }
+        >
           {!updatedProduct.id && (
             <option selected disabled>
               Escolha
@@ -91,7 +99,8 @@ function SwModal() {
           label="Alimenta via PoE"
           type="text"
           value={updatedProduct.poe}
-          onChange={(e) => setUpdatedProduct({...updatedProduct, poe: e.target.value})}>
+          onChange={(e) => setUpdatedProduct({ ...updatedProduct, poe: e.target.value })}
+        >
           {!updatedProduct.id && (
             <option selected disabled>
               Escolha
@@ -108,7 +117,7 @@ function SwModal() {
           type="text"
           placeholder="15 Mpps"
           value={updatedProduct.pps}
-          onChange={(e) => setUpdatedProduct({...updatedProduct, pps: e.target.value})}
+          onChange={(e) => setUpdatedProduct({ ...updatedProduct, pps: e.target.value })}
         />
 
         <OlimpoTextInput
@@ -116,7 +125,7 @@ function SwModal() {
           type="text"
           placeholder="20 Gbps"
           value={updatedProduct.backplane}
-          onChange={(e) => setUpdatedProduct({...updatedProduct, backplane: e.target.value})}
+          onChange={(e) => setUpdatedProduct({ ...updatedProduct, backplane: e.target.value })}
         />
 
         <OlimpoTextInput
@@ -124,7 +133,7 @@ function SwModal() {
           type="text"
           placeholder="8 Portas"
           value={updatedProduct.qtdePortas}
-          onChange={(e) => setUpdatedProduct({...updatedProduct, qtdePortas: e.target.value})}
+          onChange={(e) => setUpdatedProduct({ ...updatedProduct, qtdePortas: e.target.value })}
         />
 
         <OlimpoTextInput
@@ -132,14 +141,20 @@ function SwModal() {
           type="text"
           placeholder="2 Independentes"
           value={updatedProduct.sfp}
-          onChange={(e) => setUpdatedProduct({...updatedProduct, sfp: e.target.value})}
+          onChange={(e) => setUpdatedProduct({ ...updatedProduct, sfp: e.target.value })}
         />
 
         <OlimpoSelect
           label="PoE Extender"
           type="text"
           value={updatedProduct.poeExtender}
-          onChange={(e) => setUpdatedProduct({...updatedProduct, poeExtender: e.target.value})}>
+          onChange={(e) =>
+            setUpdatedProduct({
+              ...updatedProduct,
+              poeExtender: e.target.value,
+            })
+          }
+        >
           {!updatedProduct.id && (
             <option selected disabled>
               Escolha
@@ -155,7 +170,7 @@ function SwModal() {
           type="text"
           placeholder="30 W"
           value={updatedProduct.poePorta}
-          onChange={(e) => setUpdatedProduct({...updatedProduct, poePorta: e.target.value})}
+          onChange={(e) => setUpdatedProduct({ ...updatedProduct, poePorta: e.target.value })}
         />
 
         <OlimpoTextInput
@@ -163,14 +178,15 @@ function SwModal() {
           type="text"
           placeholder="97 W"
           value={updatedProduct.poeTotal}
-          onChange={(e) => setUpdatedProduct({...updatedProduct, poeTotal: e.target.value})}
+          onChange={(e) => setUpdatedProduct({ ...updatedProduct, poeTotal: e.target.value })}
         />
 
         <OlimpoSelect
           label="QoS"
           type="text"
           value={updatedProduct.qos}
-          onChange={(e) => setUpdatedProduct({...updatedProduct, qos: e.target.value})}>
+          onChange={(e) => setUpdatedProduct({ ...updatedProduct, qos: e.target.value })}
+        >
           {!updatedProduct.id && (
             <option selected disabled>
               Escolha
@@ -185,7 +201,8 @@ function SwModal() {
           label="Tempo da Garantia"
           type="text"
           value={updatedProduct.garantia}
-          onChange={(e) => setUpdatedProduct({...updatedProduct, garantia: e.target.value})}>
+          onChange={(e) => setUpdatedProduct({ ...updatedProduct, garantia: e.target.value })}
+        >
           {!updatedProduct.id && (
             <option selected disabled>
               Escolha
@@ -204,7 +221,7 @@ function SwModal() {
           type="text"
           placeholder="https://www.intelbras.com/pt-br/switch-gerenciavel-com-8-portas-giga-2-portas-mini-gbic-sg-1002-mr-l2"
           value={updatedProduct.pagina}
-          onChange={(e) => setUpdatedProduct({...updatedProduct, pagina: e.target.value})}
+          onChange={(e) => setUpdatedProduct({ ...updatedProduct, pagina: e.target.value })}
         />
 
         <OlimpoSelect
@@ -212,7 +229,8 @@ function SwModal() {
           required
           type="text"
           value={updatedProduct.ocultar}
-          onChange={(e) => setUpdatedProduct({...updatedProduct, ocultar: e.target.value})}>
+          onChange={(e) => setUpdatedProduct({ ...updatedProduct, ocultar: e.target.value })}
+        >
           {!updatedProduct.id && (
             <option selected disabled>
               Escolha

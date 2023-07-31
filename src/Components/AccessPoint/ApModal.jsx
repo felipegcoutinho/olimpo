@@ -1,14 +1,13 @@
 import ModalComponent from "../../ui/Modal";
 import OlimpoSelect from "../../ui/OlimpoSelect";
 import OlimpoTextInput from "../../ui/OlimpoTextInput";
-import {APContext} from "./Ap";
-import {Button} from "flowbite-react";
+import { APContext } from "./Ap";
+import { Button } from "flowbite-react";
 import React from "react";
-import {useContext} from "react";
+import { useContext } from "react";
 
 function AP_Modal() {
-  const {addDevice, updateDevice, updatedProduct, setUpdatedProduct, closeModal, modalIsOpen} =
-    useContext(APContext);
+  const { addDevice, updateDevice, updatedProduct, setUpdatedProduct, closeModal, modalIsOpen } = useContext(APContext);
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -21,7 +20,8 @@ function AP_Modal() {
       closeModal={closeModal}
       updatedProductId={updatedProduct.id}
       updatedProductModelo={updatedProduct.modelo}
-      setor="Access Point">
+      setor="Access Point"
+    >
       <form onSubmit={handleSubmit}>
         <OlimpoTextInput
           label="Modelo"
@@ -29,7 +29,7 @@ function AP_Modal() {
           type="text"
           placeholder="AP 1250 AC MAX"
           value={updatedProduct.modelo}
-          onChange={(e) => setUpdatedProduct({...updatedProduct, modelo: e.target.value})}
+          onChange={(e) => setUpdatedProduct({ ...updatedProduct, modelo: e.target.value })}
         />
 
         <OlimpoSelect
@@ -37,7 +37,8 @@ function AP_Modal() {
           required
           type="text"
           value={updatedProduct.status}
-          onChange={(e) => setUpdatedProduct({...updatedProduct, status: e.target.value})}>
+          onChange={(e) => setUpdatedProduct({ ...updatedProduct, status: e.target.value })}
+        >
           {!updatedProduct.id && (
             <option selected disabled>
               Escolha
@@ -53,7 +54,7 @@ function AP_Modal() {
           label="Data de lançamento"
           type="date"
           value={updatedProduct.date}
-          onChange={(e) => setUpdatedProduct({...updatedProduct, date: e.target.value})}
+          onChange={(e) => setUpdatedProduct({ ...updatedProduct, date: e.target.value })}
         />
 
         <OlimpoSelect
@@ -61,7 +62,8 @@ function AP_Modal() {
           required
           type="text"
           value={updatedProduct.interface}
-          onChange={(e) => setUpdatedProduct({...updatedProduct, modulação: e.target.value})}>
+          onChange={(e) => setUpdatedProduct({ ...updatedProduct, modulação: e.target.value })}
+        >
           {!updatedProduct.id && (
             <option selected disabled>
               Escolha
@@ -77,7 +79,7 @@ function AP_Modal() {
           type="text"
           placeholder="400"
           value={updatedProduct.cobertura}
-          onChange={(e) => setUpdatedProduct({...updatedProduct, cobertura: e.target.value})}
+          onChange={(e) => setUpdatedProduct({ ...updatedProduct, cobertura: e.target.value })}
         />
 
         <OlimpoTextInput
@@ -85,7 +87,7 @@ function AP_Modal() {
           type="text"
           placeholder="11,2"
           value={updatedProduct.raio}
-          onChange={(e) => setUpdatedProduct({...updatedProduct, raio: e.target.value})}
+          onChange={(e) => setUpdatedProduct({ ...updatedProduct, raio: e.target.value })}
         />
 
         <OlimpoTextInput
@@ -93,7 +95,7 @@ function AP_Modal() {
           type="text"
           placeholder="100 usuários"
           value={updatedProduct.usuarioMax}
-          onChange={(e) => setUpdatedProduct({...updatedProduct, usuarioMax: e.target.value})}
+          onChange={(e) => setUpdatedProduct({ ...updatedProduct, usuarioMax: e.target.value })}
         />
 
         <OlimpoTextInput
@@ -102,7 +104,10 @@ function AP_Modal() {
           placeholder="300 Mbps"
           value={updatedProduct.throughputWireless24}
           onChange={(e) =>
-            setUpdatedProduct({...updatedProduct, throughputWireless24: e.target.value})
+            setUpdatedProduct({
+              ...updatedProduct,
+              throughputWireless24: e.target.value,
+            })
           }
         />
 
@@ -112,7 +117,10 @@ function AP_Modal() {
           placeholder="866 Mbps"
           value={updatedProduct.throughputWireless50}
           onChange={(e) =>
-            setUpdatedProduct({...updatedProduct, throughputWireless50: e.target.value})
+            setUpdatedProduct({
+              ...updatedProduct,
+              throughputWireless50: e.target.value,
+            })
           }
         />
 
@@ -120,7 +128,8 @@ function AP_Modal() {
           label="Padrão WiFi"
           type="text"
           value={updatedProduct.padrao}
-          onChange={(e) => setUpdatedProduct({...updatedProduct, padrao: e.target.value})}>
+          onChange={(e) => setUpdatedProduct({ ...updatedProduct, padrao: e.target.value })}
+        >
           {!updatedProduct.id && (
             <option selected disabled>
               Escolha
@@ -137,14 +146,15 @@ function AP_Modal() {
           type="text"
           placeholder="1 Porta"
           value={updatedProduct.qtdePortas}
-          onChange={(e) => setUpdatedProduct({...updatedProduct, qtdePortas: e.target.value})}
+          onChange={(e) => setUpdatedProduct({ ...updatedProduct, qtdePortas: e.target.value })}
         />
 
         <OlimpoSelect
           label="Tipo PoE"
           type="text"
           value={updatedProduct.poe}
-          onChange={(e) => setUpdatedProduct({...updatedProduct, poe: e.target.value})}>
+          onChange={(e) => setUpdatedProduct({ ...updatedProduct, poe: e.target.value })}
+        >
           {!updatedProduct.id && (
             <option selected disabled>
               Escolha
@@ -162,14 +172,15 @@ function AP_Modal() {
           type="text"
           placeholder="48V / 12 VDC (P4)"
           value={updatedProduct.tensao}
-          onChange={(e) => setUpdatedProduct({...updatedProduct, tensao: e.target.value})}
+          onChange={(e) => setUpdatedProduct({ ...updatedProduct, tensao: e.target.value })}
         />
 
         <OlimpoSelect
           label="Compatível com Handover"
           type="text"
           value={updatedProduct.handover}
-          onChange={(e) => setUpdatedProduct({...updatedProduct, handover: e.target.value})}>
+          onChange={(e) => setUpdatedProduct({ ...updatedProduct, handover: e.target.value })}
+        >
           {!updatedProduct.id && (
             <option selected disabled>
               Escolha
@@ -184,7 +195,8 @@ function AP_Modal() {
           label="Compatível com InMaster"
           type="text"
           value={updatedProduct.inmaster}
-          onChange={(e) => setUpdatedProduct({...updatedProduct, inmaster: e.target.value})}>
+          onChange={(e) => setUpdatedProduct({ ...updatedProduct, inmaster: e.target.value })}
+        >
           {!updatedProduct.id && (
             <option selected disabled>
               Escolha
@@ -200,7 +212,7 @@ function AP_Modal() {
           type="text"
           placeholder="28 dBm"
           value={updatedProduct.potencia2G}
-          onChange={(e) => setUpdatedProduct({...updatedProduct, potencia2G: e.target.value})}
+          onChange={(e) => setUpdatedProduct({ ...updatedProduct, potencia2G: e.target.value })}
         />
 
         <OlimpoTextInput
@@ -208,14 +220,15 @@ function AP_Modal() {
           type="text"
           placeholder="27 dBm"
           value={updatedProduct.potencia5G}
-          onChange={(e) => setUpdatedProduct({...updatedProduct, potencia5G: e.target.value})}
+          onChange={(e) => setUpdatedProduct({ ...updatedProduct, potencia5G: e.target.value })}
         />
 
         <OlimpoSelect
           label="Tempo da Garantia"
           type="text"
           value={updatedProduct.garantia}
-          onChange={(e) => setUpdatedProduct({...updatedProduct, garantia: e.target.value})}>
+          onChange={(e) => setUpdatedProduct({ ...updatedProduct, garantia: e.target.value })}
+        >
           {!updatedProduct.id && (
             <option selected disabled>
               Escolha
@@ -234,7 +247,7 @@ function AP_Modal() {
           type="text"
           placeholder="https://www.intelbras.com/pt-br/access-point-dual-band-ac-de-alta-potencia-ap-1250-ac-max"
           value={updatedProduct.pagina}
-          onChange={(e) => setUpdatedProduct({...updatedProduct, pagina: e.target.value})}
+          onChange={(e) => setUpdatedProduct({ ...updatedProduct, pagina: e.target.value })}
         />
 
         <OlimpoSelect
@@ -242,7 +255,8 @@ function AP_Modal() {
           required
           type="text"
           value={updatedProduct.ocultar}
-          onChange={(e) => setUpdatedProduct({...updatedProduct, ocultar: e.target.value})}>
+          onChange={(e) => setUpdatedProduct({ ...updatedProduct, ocultar: e.target.value })}
+        >
           {!updatedProduct.id && (
             <option selected disabled>
               Escolha

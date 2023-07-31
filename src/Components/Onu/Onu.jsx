@@ -1,29 +1,28 @@
-import {AdminContext} from "../../App";
+import { AdminContext } from "../../App";
 import CrudFirebase from "../../Database/crud";
 import UseAux from "../../Hooks/UseAux";
 import TableHead from "../../TableHead";
 import DeviceImg from "../../assets/ont.png";
 import Content from "../../ui/Content";
-import {OlimpoPageBtn} from "../../ui/OlimpoTextInput";
+import { OlimpoPageBtn } from "../../ui/OlimpoTextInput";
 import OlimpoTable from "../../ui/Table";
 import TableStart from "../../ui/TableStart";
 import OnuCompare from "./OnuCompare";
 import OnuModal from "./OnuModal";
-import {React, useState, useEffect, useContext, createContext} from "react";
-import {HiPencil, HiXMark} from "react-icons/hi2";
+import { React, useState, useEffect, useContext, createContext } from "react";
+import { HiPencil, HiXMark } from "react-icons/hi2";
 import Modal from "react-modal";
 
 export const OnuContext = createContext();
 
 export default function onu() {
-  const {admin, HideONU, setHideONU, updatedProduct, setUpdatedProduct} = useContext(AdminContext);
+  const { admin, HideONU, setHideONU, updatedProduct, setUpdatedProduct } = useContext(AdminContext);
   const [onu, setOnu] = useState([]);
   const [queryOnu, setQueryOnu] = useState("");
   const [modalIsOpen, setIsOpen] = useState(false);
-  const {fetchDevices, addDevices, deleteDevices, updateDevices} = CrudFirebase();
-  const {compareStatus, Possui, NaoPossui, InterfaceStyle, calculateDateDifference, currentDate} =
-    UseAux();
-  const {Onu_Header} = TableHead();
+  const { fetchDevices, addDevices, deleteDevices, updateDevices } = CrudFirebase();
+  const { compareStatus, Possui, NaoPossui, InterfaceStyle, calculateDateDifference, currentDate } = UseAux();
+  const { Onu_Header } = TableHead();
 
   /* Configs Modal */
   Modal.setAppElement("#root");
@@ -119,7 +118,8 @@ export default function onu() {
           openModalCompare,
           closeModalCompare,
           modalIsOpenCompare,
-        }}>
+        }}
+      >
         <OnuModal />
         <OnuCompare />
       </OnuContext.Provider>
@@ -129,9 +129,7 @@ export default function onu() {
           Hide={HideONU}
           Device={"Onu/Ont"}
           DeviceImg={DeviceImg}
-          DeviceText={
-            "Wi-Fi de alta performance com qualidade de fibra óptica e porta Gigabit Ethernet."
-          }
+          DeviceText={"Wi-Fi de alta performance com qualidade de fibra óptica e porta Gigabit Ethernet."}
           selectedDevices={selectedDevices.length >= 2 && selectedDevices}
           handleCompareClick={handleCompareClick}
           handleHide={handleHideONU}
@@ -162,7 +160,8 @@ export default function onu() {
                   ocultar={onu.ocultar}
                   admin={admin}
                   calculateDateDifference={calculateDateDifference(onu.date, currentDate)}
-                  handleSingleClick={() => handleSingleClick(onu)}>
+                  handleSingleClick={() => handleSingleClick(onu)}
+                >
                   <td className="text-left">
                     <span className={InterfaceStyle(onu)}>{onu.interface}</span>
                   </td>
@@ -185,14 +184,10 @@ export default function onu() {
                   </td>
                   {admin && (
                     <td className="text-center">
-                      <button
-                        className="bg-yellow-300 p-1 rounded text-white"
-                        onClick={() => openUpdateModal(onu)}>
+                      <button className="bg-yellow-300 p-1 rounded text-white" onClick={() => openUpdateModal(onu)}>
                         <HiPencil />
                       </button>
-                      <button
-                        className="bg-red-600 p-1 rounded text-white ml-2"
-                        onClick={() => deleteDevice(onu.id)}>
+                      <button className="bg-red-600 p-1 rounded text-white ml-2" onClick={() => deleteDevice(onu.id)}>
                         <HiXMark />
                       </button>
                     </td>

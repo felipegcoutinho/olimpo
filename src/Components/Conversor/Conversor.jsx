@@ -1,30 +1,28 @@
-import {AdminContext} from "../../App";
+import { AdminContext } from "../../App";
 import CrudFirebase from "../../Database/crud";
 import UseAux from "../../Hooks/UseAux";
 import TableHead from "../../TableHead";
 import DeviceImg from "../../assets/conversor.png";
 import Content from "../../ui/Content";
-import {OlimpoPageBtn} from "../../ui/OlimpoTextInput";
+import { OlimpoPageBtn } from "../../ui/OlimpoTextInput";
 import OlimpoTable from "../../ui/Table";
 import TableStart from "../../ui/TableStart";
 import ConversorCompare from "./ConversorCompare";
 import ConversorModal from "./ConversorModal";
-import {React, useState, useEffect, useContext, createContext} from "react";
-import {HiPencil, HiXMark} from "react-icons/hi2";
+import { React, useState, useEffect, useContext, createContext } from "react";
+import { HiPencil, HiXMark } from "react-icons/hi2";
 import Modal from "react-modal";
 
 export const ConversorContext = createContext();
 
 export default function Conversor() {
-  const {admin, HideConversor, setHideConversor, updatedProduct, setUpdatedProduct} =
-    useContext(AdminContext);
+  const { admin, HideConversor, setHideConversor, updatedProduct, setUpdatedProduct } = useContext(AdminContext);
   const [conversor, setConversor] = useState([]);
   const [queryCONVERSOR, setQueryConversor] = useState("");
   const [modalIsOpen, setIsOpen] = useState(false);
-  const {fetchDevices, addDevices, deleteDevices, updateDevices} = CrudFirebase();
-  const {compareStatus, InterfaceStyle, Possui, NaoPossui, calculateDateDifference, currentDate} =
-    UseAux();
-  const {Conversor_Header} = TableHead();
+  const { fetchDevices, addDevices, deleteDevices, updateDevices } = CrudFirebase();
+  const { compareStatus, InterfaceStyle, Possui, NaoPossui, calculateDateDifference, currentDate } = UseAux();
+  const { Conversor_Header } = TableHead();
 
   /* Configs Modal */
   Modal.setAppElement("#root");
@@ -120,7 +118,8 @@ export default function Conversor() {
           openModalCompare,
           closeModalCompare,
           modalIsOpenCompare,
-        }}>
+        }}
+      >
         <ConversorModal />
         <ConversorCompare />
       </ConversorContext.Provider>
@@ -130,9 +129,7 @@ export default function Conversor() {
           Hide={HideConversor}
           Device={"Conversor de Mídia"}
           DeviceImg={DeviceImg}
-          DeviceText={
-            "Amplia em até 20 km o alcance da rede com muito mais velocidade e qualidade."
-          }
+          DeviceText={"Amplia em até 20 km o alcance da rede com muito mais velocidade e qualidade."}
           selectedDevices={selectedDevices.length >= 2 && selectedDevices}
           handleCompareClick={handleCompareClick}
           handleHide={handleHideConversor}
@@ -163,7 +160,8 @@ export default function Conversor() {
                   ocultar={conversor.ocultar}
                   admin={admin}
                   calculateDateDifference={calculateDateDifference(conversor.date, currentDate)}
-                  handleSingleClick={() => handleSingleClick(conversor)}>
+                  handleSingleClick={() => handleSingleClick(conversor)}
+                >
                   <td>
                     <span className={InterfaceStyle(conversor)}>{conversor.interface}</span>
                   </td>
@@ -183,14 +181,10 @@ export default function Conversor() {
                   </td>
                   {admin && (
                     <td>
-                      <button
-                        className="bg-yellow-300 p-1 rounded text-white"
-                        onClick={() => openUpdateModal(conversor)}>
+                      <button className="bg-yellow-300 p-1 rounded text-white" onClick={() => openUpdateModal(conversor)}>
                         <HiPencil />
                       </button>
-                      <button
-                        className="bg-red-600 p-1 rounded text-white ml-2"
-                        onClick={() => deleteDevice(conversor.id)}>
+                      <button className="bg-red-600 p-1 rounded text-white ml-2" onClick={() => deleteDevice(conversor.id)}>
                         <HiXMark />
                       </button>
                     </td>

@@ -1,30 +1,28 @@
-import {AdminContext} from "../../App";
+import { AdminContext } from "../../App";
 import CrudFirebase from "../../Database/crud";
 import UseAux from "../../Hooks/UseAux";
 import TableHead from "../../TableHead";
 import DeviceImg from "../../assets/sw.png";
 import Content from "../../ui/Content";
-import {OlimpoPageBtn} from "../../ui/OlimpoTextInput";
+import { OlimpoPageBtn } from "../../ui/OlimpoTextInput";
 import OlimpoTable from "../../ui/Table";
 import TableStart from "../../ui/TableStart";
 import SwModal from "./SwModal";
 import SwitchModalCompare from "./SwitchCompare";
-import {React, useState, useEffect, useContext, createContext} from "react";
-import {HiPencil, HiXMark} from "react-icons/hi2";
+import { React, useState, useEffect, useContext, createContext } from "react";
+import { HiPencil, HiXMark } from "react-icons/hi2";
 import Modal from "react-modal";
 
 export const SwContext = createContext();
 
 export default function Switches() {
-  const {admin, HideSwitch, setHideSwitch, updatedProduct, setUpdatedProduct} =
-    useContext(AdminContext);
+  const { admin, HideSwitch, setHideSwitch, updatedProduct, setUpdatedProduct } = useContext(AdminContext);
   const [switches, setSwitches] = useState([]);
   const [querySWITCH, setQuerySWITCH] = useState("");
   const [modalIsOpen, setIsOpen] = useState(false);
-  const {fetchDevices, addDevices, deleteDevices, updateDevices} = CrudFirebase();
-  const {compareStatus, InterfaceStyle, Possui, NaoPossui, calculateDateDifference, currentDate} =
-    UseAux();
-  const {Switch_Header} = TableHead();
+  const { fetchDevices, addDevices, deleteDevices, updateDevices } = CrudFirebase();
+  const { compareStatus, InterfaceStyle, Possui, NaoPossui, calculateDateDifference, currentDate } = UseAux();
+  const { Switch_Header } = TableHead();
 
   /* Configs Modal */
   Modal.setAppElement("#root");
@@ -120,7 +118,8 @@ export default function Switches() {
           openModalCompare,
           closeModalCompare,
           modalIsOpenCompare,
-        }}>
+        }}
+      >
         <SwModal />
         <SwitchModalCompare />
       </SwContext.Provider>
@@ -162,7 +161,8 @@ export default function Switches() {
                   ocultar={sw.ocultar}
                   admin={admin}
                   calculateDateDifference={calculateDateDifference(sw.date, currentDate)}
-                  handleSingleClick={() => handleSingleClick(sw)}>
+                  handleSingleClick={() => handleSingleClick(sw)}
+                >
                   <td className="text-left">
                     <span className={InterfaceStyle(sw)}>{sw.interface}</span>
                   </td>
@@ -184,14 +184,10 @@ export default function Switches() {
                   </td>
                   {admin && (
                     <td className="text-center">
-                      <button
-                        className="bg-yellow-300 p-1 rounded text-white"
-                        onClick={() => openUpdateModal(sw)}>
+                      <button className="bg-yellow-300 p-1 rounded text-white" onClick={() => openUpdateModal(sw)}>
                         <HiPencil />
                       </button>
-                      <button
-                        className="bg-red-600 p-1 rounded text-white ml-2"
-                        onClick={() => deleteDevice(sw.id)}>
+                      <button className="bg-red-600 p-1 rounded text-white ml-2" onClick={() => deleteDevice(sw.id)}>
                         <HiXMark />
                       </button>
                     </td>

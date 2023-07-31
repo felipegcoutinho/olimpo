@@ -1,14 +1,13 @@
 import ModalComponent from "../../ui/Modal";
 import OlimpoSelect from "../../ui/OlimpoSelect";
 import OlimpoTextInput from "../../ui/OlimpoTextInput";
-import {ConversorContext} from "./Conversor";
-import {Button} from "flowbite-react";
+import { ConversorContext } from "./Conversor";
+import { Button } from "flowbite-react";
 import React from "react";
-import {useContext} from "react";
+import { useContext } from "react";
 
 function ConversorModal() {
-  const {addDevice, updateDevice, updatedProduct, setUpdatedProduct, closeModal, modalIsOpen} =
-    useContext(ConversorContext);
+  const { addDevice, updateDevice, updatedProduct, setUpdatedProduct, closeModal, modalIsOpen } = useContext(ConversorContext);
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -21,7 +20,8 @@ function ConversorModal() {
       closeModal={closeModal}
       updatedProductId={updatedProduct.id}
       updatedProductModelo={updatedProduct.modelo}
-      setor="Access Point">
+      setor="Conversor de Mídia"
+    >
       <form onSubmit={handleSubmit}>
         <OlimpoTextInput
           label="Modelo"
@@ -29,14 +29,15 @@ function ConversorModal() {
           type="text"
           placeholder="KGSD 1120 A/B"
           value={updatedProduct.modelo}
-          onChange={(e) => setUpdatedProduct({...updatedProduct, modelo: e.target.value})}
+          onChange={(e) => setUpdatedProduct({ ...updatedProduct, modelo: e.target.value })}
         />
 
         <OlimpoSelect
           label="Status do suporte"
           type="text"
           value={updatedProduct.status}
-          onChange={(e) => setUpdatedProduct({...updatedProduct, status: e.target.value})}>
+          onChange={(e) => setUpdatedProduct({ ...updatedProduct, status: e.target.value })}
+        >
           {!updatedProduct.id && (
             <option selected disabled>
               Escolha
@@ -52,14 +53,15 @@ function ConversorModal() {
           label="Data de lançamento"
           type="date"
           value={updatedProduct.date}
-          onChange={(e) => setUpdatedProduct({...updatedProduct, date: e.target.value})}
+          onChange={(e) => setUpdatedProduct({ ...updatedProduct, date: e.target.value })}
         />
 
         <OlimpoSelect
           label="Modulação"
           type="text"
           value={updatedProduct.interface}
-          onChange={(e) => setUpdatedProduct({...updatedProduct, modulação: e.target.value})}>
+          onChange={(e) => setUpdatedProduct({ ...updatedProduct, modulação: e.target.value })}
+        >
           {!updatedProduct.id && (
             <option selected disabled>
               Escolha
@@ -74,7 +76,8 @@ function ConversorModal() {
           label="Tipo do Conector"
           type="text"
           value={updatedProduct.conector}
-          onChange={(e) => setUpdatedProduct({...updatedProduct, conector: e.target.value})}>
+          onChange={(e) => setUpdatedProduct({ ...updatedProduct, conector: e.target.value })}
+        >
           {!updatedProduct.id && (
             <option selected disabled>
               Escolha
@@ -89,7 +92,8 @@ function ConversorModal() {
           label="WDM"
           type="text"
           value={updatedProduct.wdm}
-          onChange={(e) => setUpdatedProduct({...updatedProduct, wdm: e.target.value})}>
+          onChange={(e) => setUpdatedProduct({ ...updatedProduct, wdm: e.target.value })}
+        >
           {!updatedProduct.id && (
             <option selected disabled>
               Escolha
@@ -105,14 +109,15 @@ function ConversorModal() {
           type="text"
           placeholder="20 Km"
           value={updatedProduct.distancia}
-          onChange={(e) => setUpdatedProduct({...updatedProduct, distancia: e.target.value})}
+          onChange={(e) => setUpdatedProduct({ ...updatedProduct, distancia: e.target.value })}
         />
 
         <OlimpoSelect
           label="Tipo da Fibra"
           type="text"
           value={updatedProduct.fibra}
-          onChange={(e) => setUpdatedProduct({...updatedProduct, fibra: e.target.value})}>
+          onChange={(e) => setUpdatedProduct({ ...updatedProduct, fibra: e.target.value })}
+        >
           {!updatedProduct.id && (
             <option selected disabled>
               Escolha
@@ -128,7 +133,7 @@ function ConversorModal() {
           type="text"
           placeholder="-3 dBm | -8 dBm"
           value={updatedProduct.potencia}
-          onChange={(e) => setUpdatedProduct({...updatedProduct, potencia: e.target.value})}
+          onChange={(e) => setUpdatedProduct({ ...updatedProduct, potencia: e.target.value })}
         />
 
         <OlimpoTextInput
@@ -136,7 +141,7 @@ function ConversorModal() {
           type="text"
           placeholder="-3 dBm | -23 dBm"
           value={updatedProduct.sensibilidade}
-          onChange={(e) => setUpdatedProduct({...updatedProduct, sensibilidade: e.target.value})}
+          onChange={(e) => setUpdatedProduct({ ...updatedProduct, sensibilidade: e.target.value })}
         />
 
         <OlimpoTextInput
@@ -144,7 +149,7 @@ function ConversorModal() {
           type="text"
           placeholder="A - 1310 nm/ B – 1550 nm"
           value={updatedProduct.CompRX}
-          onChange={(e) => setUpdatedProduct({...updatedProduct, CompRX: e.target.value})}
+          onChange={(e) => setUpdatedProduct({ ...updatedProduct, CompRX: e.target.value })}
         />
 
         <OlimpoTextInput
@@ -152,14 +157,15 @@ function ConversorModal() {
           type="text"
           placeholder="A - 1550 nm / B - 1310 nm"
           value={updatedProduct.CompTX}
-          onChange={(e) => setUpdatedProduct({...updatedProduct, CompTX: e.target.value})}
+          onChange={(e) => setUpdatedProduct({ ...updatedProduct, CompTX: e.target.value })}
         />
 
         <OlimpoSelect
           label="Tempo da Garantia"
           type="text"
           value={updatedProduct.garantia}
-          onChange={(e) => setUpdatedProduct({...updatedProduct, garantia: e.target.value})}>
+          onChange={(e) => setUpdatedProduct({ ...updatedProduct, garantia: e.target.value })}
+        >
           {!updatedProduct.id && (
             <option selected disabled>
               Escolha
@@ -178,7 +184,7 @@ function ConversorModal() {
           type="text"
           placeholder="https://www.intelbras.com/pt-br/conversor-de-midia-gigabit-ethernet-monomodo-20-km-kgsd-1120-b"
           value={updatedProduct.pagina}
-          onChange={(e) => setUpdatedProduct({...updatedProduct, pagina: e.target.value})}
+          onChange={(e) => setUpdatedProduct({ ...updatedProduct, pagina: e.target.value })}
         />
 
         <OlimpoSelect
@@ -186,7 +192,8 @@ function ConversorModal() {
           required
           type="text"
           value={updatedProduct.ocultar}
-          onChange={(e) => setUpdatedProduct({...updatedProduct, ocultar: e.target.value})}>
+          onChange={(e) => setUpdatedProduct({ ...updatedProduct, ocultar: e.target.value })}
+        >
           {!updatedProduct.id && (
             <option selected disabled>
               Escolha

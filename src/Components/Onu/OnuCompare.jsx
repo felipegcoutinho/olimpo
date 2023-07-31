@@ -1,11 +1,11 @@
 import ModalComponentCompare from "../ModalComponentCompare";
-import {OnuContext} from "./Onu";
-import React, {useContext} from "react";
-import {FaPlug} from "react-icons/fa";
-import {HiWifi, HiInformationCircle, HiComputerDesktop} from "react-icons/hi2";
+import { OnuContext } from "./Onu";
+import React, { useContext } from "react";
+import { FaPlug } from "react-icons/fa";
+import { HiWifi, HiInformationCircle, HiComputerDesktop } from "react-icons/hi2";
 
 function OnuCompare() {
-  const {comparisonDevices, modalIsOpenCompare, closeModalCompare} = useContext(OnuContext);
+  const { comparisonDevices, modalIsOpenCompare, closeModalCompare } = useContext(OnuContext);
 
   const groupIcons = {
     Wireless: HiWifi,
@@ -15,20 +15,20 @@ function OnuCompare() {
   };
 
   const propertyMappings = {
-    modulação: {label: "Modulação", group: "Informações Gerais"},
-    fxs: {label: "FXS", group: "Informações Gerais"},
-    qtdeportas: {label: "Quantidade de portas", group: "Informações Gerais"},
-    tipo: {label: "Tipo", group: "Informações Gerais"},
-    sensibilidade: {label: "Sensibilidade", group: "Informações Gerais"},
-    cobertura: {label: "Cobertura", group: "Wireless"},
-    clientesSimultaneos: {label: "Usuários simultâneos", group: "Informações Gerais"},
-    transmissao2ghz: {label: "Transmissão 2.4GHz", group: "Wireless"},
-    transmissao5ghz: {label: "Transmissão 5.0GHz", group: "Wireless"},
-    ssid: {label: "Qtde SSID", group: "Wireless"},
-    tr069: {label: "TR069", group: "Gerenciamento"},
-    customize: {label: "Customize", group: "Gerenciamento"},
-    remotize: {label: "Remotize", group: "Gerenciamento"},
-    garantia: {label: "Garantia", group: "Informações Gerais"},
+    modulação: { label: "Modulação", group: "Informações Gerais" },
+    fxs: { label: "FXS", group: "Informações Gerais" },
+    qtdeportas: { label: "Quantidade de portas", group: "Informações Gerais" },
+    tipo: { label: "Tipo", group: "Informações Gerais" },
+    sensibilidade: { label: "Sensibilidade", group: "Informações Gerais" },
+    cobertura: { label: "Cobertura", group: "Wireless" },
+    clientesSimultaneos: { label: "Usuários simultâneos", group: "Informações Gerais" },
+    transmissao2ghz: { label: "Transmissão 2.4GHz", group: "Wireless" },
+    transmissao5ghz: { label: "Transmissão 5.0GHz", group: "Wireless" },
+    ssid: { label: "Qtde SSID", group: "Wireless" },
+    tr069: { label: "TR069", group: "Gerenciamento" },
+    customize: { label: "Customize", group: "Gerenciamento" },
+    remotize: { label: "Remotize", group: "Gerenciamento" },
+    garantia: { label: "Garantia", group: "Informações Gerais" },
   };
 
   return (
