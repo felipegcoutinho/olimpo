@@ -34,7 +34,7 @@ function ModalComponentCompare({
       ariaHideApp={false}
       onRequestClose={closeModalCompare}
       className={`bg-white dark:bg-itbs-modern-200 rounded-lg h-[90%] ${width} inset-1/2 outline-none overflow-auto p-2 absolute -translate-x-1/2 -translate-y-1/2`}
-      overlayClassName="bg-zinc-400 bg-opacity-75 fixed inset-0 backdrop-blur-sm">
+      overlayClassName="bg-zinc-400 bg-opacity-75 fixed inset-0">
       {modalIsOpenCompare && (
         <div className="modal">
           <div className="w-full overflow-x-auto">
@@ -72,10 +72,10 @@ function ModalComponentCompare({
                       <div
                         key={`${group}-${property}`}
                         className={`grid ${gridCols} py-2 text-sm border-b border-slate-100 dark:border-slate-800 hover:bg-slate-100 dark:hover:bg-slate-800`}>
-                        <div className="text-slate-600 dark:text-slate-300 px-2">{label}</div>
+                        <div className="text-slate-600 dark:text-slate-300 px-2 ">{label}</div>
                         {comparisonDevices.map((device) => (
                           <div key={device.id}>
-                            <p className={`font-normal dark:text-slate-100`}>{device[property]}</p>
+                            <p className={`font-bold dark:text-slate-100`}>{device[property]}</p>
                           </div>
                         ))}
                       </div>

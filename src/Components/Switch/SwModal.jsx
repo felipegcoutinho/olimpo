@@ -61,7 +61,7 @@ function SwModal() {
           label="Modulação"
           type="text"
           value={updatedProduct.interface}
-          onChange={(e) => setUpdatedProduct({ ...updatedProduct, modulação: e.target.value })}
+          onChange={(e) => setUpdatedProduct({ ...updatedProduct, interface: e.target.value })}
         >
           {!updatedProduct.id && (
             <option selected disabled>

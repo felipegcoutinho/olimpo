@@ -128,7 +128,7 @@ export default function Ap() {
       <div id="roteador" className="overflow-x-auto">
         <OlimpoTable
           Hide={HideHO}
-          Device={"Roteadores"}
+          Device={"Roteadores Residênciais"}
           DeviceImg={DeviceImg}
           DeviceText={"Wi-Fi para deixar todo o mundo conectado"}
           selectedDevices={selectedDevices.length >= 2 && selectedDevices}

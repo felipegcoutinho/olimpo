@@ -16,7 +16,7 @@ function ModalComponent({
       ariaHideApp={false}
       onRequestClose={closeModal}
       className="bg-white dark:bg-itbs-modern-200 rounded-lg h-5/6 inset-1/2 outline-none overflow-auto p-4 pb-1 absolute -translate-x-1/2 -translate-y-1/2 w-1/3 "
-      overlayClassName="bg-zinc-400 bg-opacity-75 fixed inset-0 backdrop-blur-sm">
+      overlayClassName="bg-zinc-400 bg-opacity-75 fixed inset-0 ">
       {modalIsOpen && (
         <div className="modal">
           <div className="flex justify-between">

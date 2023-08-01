@@ -1,4 +1,4 @@
-import {app, db} from "../database/firebase";
+import {app, db} from "../Database/firebase";
 import {getDatabase, get, set, ref, push, remove} from "firebase/database";
 import Swal from "sweetalert2";
 

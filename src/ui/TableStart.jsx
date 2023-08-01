@@ -55,13 +55,13 @@ function TableStart({
               </p>
               <p>
                 {ocultar === "Sim" && (
-                  <span className=" ml-1 uppercase border rounded border-black px-1 text-xs">
+                  <span className="ml-1 uppercase border dark:border-white rounded border-black px-1 text-xs">
                     Oculto
                   </span>
                 )}
               </p>
               {calculateDateDifference <= 30 && (
-                <p className="ml-1 uppercase rounded border border-red-600 text-red-600 px-1 text-xs">
+                <p className="ml-1 uppercase rounded bg-red-600 text-white px-2 text-xs">
                   New
                 </p>
               )}
