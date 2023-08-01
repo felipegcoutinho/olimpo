@@ -1,4 +1,4 @@
-import {AdminContext} from "../App";
+import { AdminContext } from "../App";
 import DarkModeToggle from "../Hooks/DarkModeToggle";
 import ImgAp from "../assets/ap.png";
 import ImgConv from "../assets/conversor.png";
@@ -8,13 +8,14 @@ import ImgRadio from "../assets/radio.png";
 import ImgSfp from "../assets/sfp.png";
 import ImgSw from "../assets/sw.png";
 import Tiles from "../ui/Tiles";
+import AvisoModal from "./AvisoModal";
 import LoginModal from "./LoginModal";
-import React, {useState} from "react";
-import {useContext} from "react";
-import {HiMagnifyingGlass} from "react-icons/hi2";
+import React, { useState } from "react";
+import { useContext } from "react";
+import { HiMagnifyingGlass } from "react-icons/hi2";
 
 export default function Header() {
-  const {openModal, admin, email} = useContext(AdminContext);
+  const { openModal, admin, openModalAviso } = useContext(AdminContext);
   const [urlValue, setUrlValue] = useState("");
 
   const urlSearch = `https://www.intelbras.com/pt-br/busca/?q=${urlValue}&tipo_busca=pagina-resultado`;
@@ -30,24 +31,37 @@ export default function Header() {
   };
 
   const setorTiles = {
-    "Wi-Fi Empresarial": {link: "#wifi-empresarial", img: ImgAp},
-    "Radio Outdoor": {link: "#radio-outdoor", img: ImgRadio},
-    Switch: {link: "#switch", img: ImgSw},
-    Roteador: {link: "#roteador", img: ImgHo},
-    "Conversor de Midia": {link: "#conversor", img: ImgConv},
-    "Módulo SFP": {link: "#modulo-sfp", img: ImgSfp},
-    "Onu/Ont": {link: "#onu-ont", img: ImgOnt},
+    "Wi-Fi Empresarial": { link: "#wifi-empresarial", img: ImgAp },
+    "Radio Outdoor": { link: "#radio-outdoor", img: ImgRadio },
+    Switch: { link: "#switch", img: ImgSw },
+    Roteador: { link: "#roteador", img: ImgHo },
+    "Conversor de Midia": { link: "#conversor", img: ImgConv },
+    "Módulo SFP": { link: "#modulo-sfp", img: ImgSfp },
+    "Onu/Ont": { link: "#onu-ont", img: ImgOnt },
   };
+
+  function handleSignOut() {
+    localStorage.removeItem("admin");
+    window.location.reload();
+  }
 
   return (
     <div className="bg-[url('../assets/ttten.svg')] mb-2">
       <div id="top" className="flex justify-end px-4 text-slate-600 dark:text-white">
         <div className="flex gap-6 items-center">
           <p className="cursor-pointer hover:underline" onClick={openModal}>
-            {admin ? email : "login"}
+            {!admin && "login"}
           </p>
-          <p>avisos</p>
           <LoginModal />
+          {admin && (
+            <p className="cursor-pointer hover:underline" onClick={handleSignOut}>
+              <strong>logout</strong>
+            </p>
+          )}
+          <p className="cursor-pointer hover:underline" onClick={openModalAviso}>
+            avisos
+          </p>
+          <AvisoModal />
           <DarkModeToggle />
         </div>
       </div>

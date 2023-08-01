@@ -13,7 +13,7 @@ import { HiArrowUp } from "react-icons/hi2";
 export const AdminContext = createContext();
 
 function App() {
-  const [admin, setAdmin] = useState(true);
+  const [admin, setAdmin] = useState(localStorage.getItem("admin") === "true" ? true : false);
   const [HideAP, setHideAP] = useState(true);
   const [HideRADIO, setHideRADIO] = useState(true);
   const [HideHO, setHideHO] = useState(true);
@@ -24,7 +24,7 @@ function App() {
   const [updatedProduct, setUpdatedProduct] = useState("");
   const [ShowHide, setShowHide] = useState(true);
   const [modalIsOpen, setIsOpen] = useState(false);
-  const [email, setEmail] = useState("");
+  const [modalIsOpenAviso, setIsOpenAviso] = useState(false);
 
   const alternarMostrarOcultar = () => {
     setShowHide(!ShowHide);
@@ -45,6 +45,13 @@ function App() {
   function closeModal() {
     setIsOpen(false);
     setUpdatedProduct(false);
+  }
+
+  function openModalAviso() {
+    setIsOpenAviso(true);
+  }
+  function closeModalAviso() {
+    setIsOpenAviso(false);
   }
 
   return (
@@ -74,8 +81,9 @@ function App() {
             closeModal,
             modalIsOpen,
             setIsOpen,
-            email,
-            setEmail,
+            modalIsOpenAviso,
+            openModalAviso,
+            closeModalAviso,
           }}
         >
           <Header />
