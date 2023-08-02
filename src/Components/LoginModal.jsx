@@ -2,10 +2,10 @@ import React, { useEffect, useState, useContext } from "react";
 import Modal from "react-modal";
 import { AdminContext } from "../App";
 import { useSignInWithEmailAndPassword } from "react-firebase-hooks/auth";
-import { auth } from "../Database/firebase";
+import { auth } from "../database/firebase";
 import Swal from "sweetalert2";
 import { Button } from "flowbite-react";
-import OlimpoTextInput from "../ui/OlimpoTextInput";
+import OlimpoTextInput from "../ui/OlimpoInput";
 
 function LoginModal() {
   const { modalIsOpen, closeModal, setAdmin, admin } = useContext(AdminContext);
@@ -44,41 +44,39 @@ function LoginModal() {
     >
       <div>
         <form className="flex flex-col gap-2">
-          <>
-            <div className="text-4xl mb-4">
-              <h1 className="dark:text-white">Login</h1>
-            </div>
-            <OlimpoTextInput
-              label={"E-mail"}
-              type="text"
-              name="email"
-              id="email"
-              placeholder="altair@olimpo.com.br"
-              onChange={(e) => setEmail(e.target.value)}
-              required
-            />
+          <div className="text-4xl mb-4">
+            <h1 className="dark:text-white">Login</h1>
+          </div>
+          <OlimpoTextInput
+            label={"E-mail"}
+            type="text"
+            name="email"
+            id="email"
+            placeholder="altair@olimpo.com.br"
+            onChange={(e) => setEmail(e.target.value)}
+            required
+          />
 
-            <OlimpoTextInput
-              label={"Senha"}
-              type="password"
-              name="password"
-              id="password"
-              placeholder="********"
-              onChange={(e) => setPassword(e.target.value)}
-              required
-            />
-            <div className="flex justify-between mt-4 gap-2">
-              <button
-                className="w-full bg-itbs-default rounded-md h-10 text-white hover:bg-itbs-hover dark:bg-itbs-default dark:hover:bg-itbs-hover"
-                onClick={handleSignIn}
-              >
-                {loading ? "Acessando..." : "Entrar"}
-              </button>
-              <Button className="w-full" color="light" onClick={closeModal}>
-                Cancelar
-              </Button>
-            </div>
-          </>
+          <OlimpoTextInput
+            label={"Senha"}
+            type="password"
+            name="password"
+            id="password"
+            placeholder="********"
+            onChange={(e) => setPassword(e.target.value)}
+            required
+          />
+          <div className="flex justify-between mt-4 gap-2">
+            <button
+              className="w-full bg-itbs-default rounded-md h-10 text-white hover:bg-itbs-hover dark:bg-itbs-default dark:hover:bg-itbs-hover"
+              onClick={handleSignIn}
+            >
+              {loading ? "Acessando..." : "Entrar"}
+            </button>
+            <Button className="w-full" color="light" onClick={closeModal}>
+              Cancelar
+            </Button>
+          </div>
         </form>
       </div>
     </Modal>

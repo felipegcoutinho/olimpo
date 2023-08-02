@@ -1,5 +1,5 @@
 import * as React from "react";
-import {HiEye, HiEyeSlash, HiMagnifyingGlass} from "react-icons/hi2";
+import { HiEye, HiEyeSlash, HiMagnifyingGlass } from "react-icons/hi2";
 
 export default function OlimpoTable({
   tbody,
@@ -38,23 +38,17 @@ export default function OlimpoTable({
             {Hide && (
               <>
                 {admin && (
-                  <button
-                    className="mr-auto bg-itbs-default hover:bg-itbs-hover rounded-full px-4 py-2 text-white text-sm"
-                    onClick={openModal}>
+                  <button className="mr-auto bg-itbs-default hover:bg-itbs-hover rounded-full px-4 py-2 text-white text-sm" onClick={openModal}>
                     {createButton}
                   </button>
                 )}
 
                 {Device === "Switches" && (
-                  <button className="mr-auto bg-slate-500 hover:bg-slate-600 rounded-full px-4 py-2 text-white text-sm">
-                    Gerenciável Com PoE
-                  </button>
+                  <button className="mr-auto bg-slate-500 hover:bg-slate-600 rounded-full px-4 py-2 text-white text-sm">Gerenciável Com PoE</button>
                 )}
 
                 {selectedDevices.length <= 4 && (
-                  <button
-                    className="mr-auto bg-slate-500 hover:bg-slate-600 rounded-full px-4 py-2 text-white text-sm"
-                    onClick={handleCompareClick}>
+                  <button className="mr-auto bg-slate-500 hover:bg-slate-600 rounded-full px-4 py-2 text-white text-sm" onClick={handleCompareClick}>
                     Comparar
                   </button>
                 )}
@@ -83,9 +77,9 @@ export default function OlimpoTable({
               {tbody.length > 0 ? (
                 tbody
               ) : (
-                <td colSpan="15" className="text-center py-4 italic">
+                <th colSpan="15" className="text-center py-4 italic">
                   Nenhum equipamento encontrado :(
-                </td>
+                </th>
               )}
             </table>
           </div>

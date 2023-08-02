@@ -1,7 +1,7 @@
-import {OlimpoBtnCateg} from "./OlimpoTextInput";
+import { OlimpoBtnCateg } from "./OlimpoInput";
 import React from "react";
 
-function Tiles({setor, img, link}) {
+function Tiles({ setor, img, link }) {
   return (
     <div className="grid grid-cols-1 md:grid-cols-7 dark:border-slate-900 dark:hover:border-itbs-default">
       <a href={link} className="md:col-span-5 flex flex-col">

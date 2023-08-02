@@ -1,6 +1,5 @@
 import ModalComponent from "../../ui/Modal";
-import OlimpoSelect from "../../ui/OlimpoSelect";
-import OlimpoTextInput from "../../ui/OlimpoTextInput";
+import OlimpoTextInput, { OlimpoSelect } from "../../ui/OlimpoInput";
 import { RadioContext } from "./Radio";
 import { Button } from "flowbite-react";
 import React from "react";
@@ -53,14 +52,6 @@ function RadioModal() {
           <OlimpoTextInput
             label="Data de lançamento"
             type="date"
-            value={updatedProduct.date}
-            onChange={(e) => setUpdatedProduct({ ...updatedProduct, date: e.target.value })}
-          />
-
-          <OlimpoTextInput
-            label="Data de lançamento"
-            type="date"
-            placeholder="AP 1250 AC MAX"
             value={updatedProduct.date}
             onChange={(e) => setUpdatedProduct({ ...updatedProduct, date: e.target.value })}
           />
@@ -224,7 +215,7 @@ function RadioModal() {
           />
 
           <OlimpoSelect
-            label="Ocultar"
+            label="Ocultar Equipamento"
             required
             type="text"
             value={updatedProduct.ocultar}

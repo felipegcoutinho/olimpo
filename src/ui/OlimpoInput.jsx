@@ -1,9 +1,9 @@
-import {Label} from "flowbite-react";
+import { Label } from "flowbite-react";
 import React from "react";
-import {HiArrowSmRight} from "react-icons/hi";
-import {HiArrowTopRightOnSquare} from "react-icons/hi2";
+import { HiArrowSmRight } from "react-icons/hi";
+import { HiArrowTopRightOnSquare } from "react-icons/hi2";
 
-function OlimpoTextInput({label, ...rest}) {
+function OlimpoTextInput({ label, ...rest }) {
   return (
     <>
       <Label className="text-zinc-500 text-sm">{label}</Label>
@@ -13,6 +13,18 @@ function OlimpoTextInput({label, ...rest}) {
           {...rest}
         />
       </div>
+    </>
+  );
+}
+
+export function OlimpoSelect({ label, ...rest }) {
+  return (
+    <>
+      <Label className="text-zinc-500 text-sm">{label}</Label>
+      <select
+        className="block w-full border rounded border-gray-300 dark:border-slate-700 text-gray-900 dark:bg-itbs-modern-100 dark:text-white focus:border-green-500 focus:ring-green-500 p-2 text-sm"
+        {...rest}
+      />
     </>
   );
 }
@@ -28,9 +40,8 @@ export function OlimpoPageBtn() {
     </div>
   );
 }
-// Certifique-se de importar o ícone corretamente.
 
-export function OlimpoBtnCateg({setor}) {
+export function OlimpoBtnCateg({ setor }) {
   return (
     <button className="text-xs flex items-center font-normal justify-center p-2 w-full border border-itbs-default text-itbs-default hover:text-white hover:bg-itbs-default rounded-full">
       {setor} <HiArrowSmRight className="ml-1" />

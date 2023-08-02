@@ -1,5 +1,5 @@
 import { AdminContext } from "../App";
-import DarkModeToggle from "../Hooks/DarkModeToggle";
+import DarkModeToggle from "../hooks/DarkModeToggle";
 import ImgAp from "../assets/ap.png";
 import ImgConv from "../assets/conversor.png";
 import ImgHo from "../assets/ho.png";

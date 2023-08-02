@@ -1,13 +1,12 @@
 import ModalComponent from "../../ui/Modal";
-import OlimpoSelect from "../../ui/OlimpoSelect";
-import OlimpoTextInput from "../../ui/OlimpoTextInput";
+import OlimpoTextInput, { OlimpoSelect } from "../../ui/OlimpoInput";
 import { APContext } from "./Ap";
 import { Button } from "flowbite-react";
 import React from "react";
 import { useContext } from "react";
 
 function AP_Modal() {
-  const { addDevice, updateDevice, updatedProduct, setUpdatedProduct, closeModal, modalIsOpen } = useContext(APContext);
+  const { updateDevice, addDevice, updatedProduct, setUpdatedProduct, closeModal, modalIsOpen } = useContext(APContext);
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -251,7 +250,7 @@ function AP_Modal() {
         />
 
         <OlimpoSelect
-          label="Desabilitar equipamento"
+          label="Ocultar Equipamento"
           required
           type="text"
           value={updatedProduct.ocultar}

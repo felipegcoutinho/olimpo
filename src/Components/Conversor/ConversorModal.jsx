@@ -1,10 +1,9 @@
 import ModalComponent from "../../ui/Modal";
-import OlimpoSelect from "../../ui/OlimpoSelect";
-import OlimpoTextInput from "../../ui/OlimpoTextInput";
-import { ConversorContext } from "./Conversor";
+import OlimpoTextInput, { OlimpoSelect } from "../../ui/OlimpoInput";
 import { Button } from "flowbite-react";
 import React from "react";
 import { useContext } from "react";
+import { ConversorContext } from "./Conversor";
 
 function ConversorModal() {
   const { addDevice, updateDevice, updatedProduct, setUpdatedProduct, closeModal, modalIsOpen } = useContext(ConversorContext);
@@ -188,7 +187,7 @@ function ConversorModal() {
         />
 
         <OlimpoSelect
-          label="Desabilitar Equipamento"
+          label="Ocultar Equipamento"
           required
           type="text"
           value={updatedProduct.ocultar}

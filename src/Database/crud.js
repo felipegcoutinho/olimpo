@@ -1,5 +1,5 @@
-import {app, db} from "../Database/firebase";
-import {getDatabase, get, set, ref, push, remove} from "firebase/database";
+import { app, db } from "./firebase";
+import { getDatabase, get, set, ref, push, remove } from "firebase/database";
 import Swal from "sweetalert2";
 
 export function CrudFirebase() {
@@ -65,7 +65,7 @@ export function CrudFirebase() {
     closeModal();
   };
 
-  return {fetchDevices, addDevices, deleteDevices, updateDevices};
+  return { fetchDevices, addDevices, deleteDevices, updateDevices };
 }
 
 export default CrudFirebase;

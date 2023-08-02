@@ -1,6 +1,5 @@
 import ModalComponent from "../../ui/Modal";
-import OlimpoSelect from "../../ui/OlimpoSelect";
-import OlimpoTextInput from "../../ui/OlimpoTextInput";
+import OlimpoTextInput, { OlimpoSelect } from "../../ui/OlimpoInput";
 import { SfpContext } from "./Sfp";
 import { Button } from "flowbite-react";
 import React from "react";
@@ -205,7 +204,7 @@ function SfpModal() {
           />
 
           <OlimpoSelect
-            label="Desabilitar Equipamento"
+            label="Ocultar Equipamento"
             required
             type="text"
             value={updatedProduct.ocultar}

@@ -1,10 +1,9 @@
 import ModalComponent from "../../ui/Modal";
-import OlimpoSelect from "../../ui/OlimpoSelect";
-import OlimpoTextInput from "../../ui/OlimpoTextInput";
-import { OnuContext } from "./Onu";
+import OlimpoTextInput, { OlimpoSelect } from "../../ui/OlimpoInput";
 import { Button } from "flowbite-react";
 import React from "react";
 import { useContext } from "react";
+import { OnuContext } from "./Onu";
 
 function OnuModal() {
   const { addDevice, updateDevice, updatedProduct, setUpdatedProduct, closeModal, modalIsOpen } = useContext(OnuContext);

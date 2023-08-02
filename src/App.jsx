@@ -1,11 +1,11 @@
-import AccessPoints from "./Components/AccessPoint/Ap.jsx";
-import Conversores from "./Components/Conversor/Conversor.jsx";
-import Header from "./Components/Header.jsx";
-import Onu from "./Components/Onu/Onu.jsx";
-import RadiosOutdoor from "./Components/Radio/Radio.jsx";
-import RoteadoresHO from "./Components/Roteador/Roteador.jsx";
-import Sfp from "./Components/Sfp/Sfp.jsx";
-import Switches from "./Components/Switch/Switch.jsx";
+import AccessPoints from "./components/access-point/Ap.jsx";
+import Conversores from "./components/conversor/Conversor.jsx";
+import Header from "./components/Header.jsx";
+import Onu from "./components/onu/Onu.jsx";
+import RadiosOutdoor from "./components/radio/Radio.jsx";
+import RoteadoresHO from "./components/roteador/Roteador.jsx";
+import Sfp from "./components/sfp/Sfp.jsx";
+import Switches from "./components/switch/Switch.jsx";
 import React from "react";
 import { createContext, useState } from "react";
 import { HiArrowUp } from "react-icons/hi2";
@@ -99,7 +99,7 @@ function App() {
 
           <div className="fixed left-5 bottom-5">
             <a href="#top">
-              <button className="bg-itbs-default rounded-full p-3">
+              <button className="bg-itbs-default rounded-full p-4">
                 <HiArrowUp className="text-white text-lg" />
               </button>
             </a>

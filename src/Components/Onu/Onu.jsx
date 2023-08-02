@@ -1,10 +1,10 @@
 import { AdminContext } from "../../App";
-import CrudFirebase from "../../Database/crud";
-import UseAux from "../../Hooks/UseAux";
+import CrudFirebase from "../../database/crud";
+import UseAux from "../../hooks/UseAux";
 import TableHead from "../../TableHead";
 import DeviceImg from "../../assets/ont.png";
 import Content from "../../ui/Content";
-import { OlimpoPageBtn } from "../../ui/OlimpoTextInput";
+import { OlimpoPageBtn } from "../../ui/OlimpoInput";
 import OlimpoTable from "../../ui/Table";
 import TableStart from "../../ui/TableStart";
 import OnuCompare from "./OnuCompare";
