@@ -2,7 +2,7 @@ import { app, db } from "./firebase";
 import { getDatabase, get, set, ref, push, remove } from "firebase/database";
 import Swal from "sweetalert2";
 
-export function CrudFirebase() {
+export function FirebaseActions() {
   /* Buscar Produto */
   const fetchDevices = async (path, setDevices) => {
     const db = getDatabase(app);
@@ -68,4 +68,4 @@ export function CrudFirebase() {
   return { fetchDevices, addDevices, deleteDevices, updateDevices };
 }
 
-export default CrudFirebase;
+export default FirebaseActions;

@@ -1,26 +1,24 @@
 import { AdminContext } from "../../App";
-import CrudFirebase from "../../database/crud";
+import FirebaseActions from "../../database/firebase-actions";
 import UseAux from "../../hooks/UseAux";
 import TableHead from "../../TableHead";
 import DeviceImg from "../../assets/ont.png";
 import Content from "../../ui/Content";
 import { OlimpoPageBtn } from "../../ui/OlimpoInput";
 import OlimpoTable from "../../ui/Table";
-import TableStart from "../../ui/TableStart";
+import TableModel from "../../ui/TableModel";
 import OnuCompare from "./OnuCompare";
 import OnuModal from "./OnuModal";
-import { React, useState, useEffect, useContext, createContext } from "react";
+import { React, useState, useEffect, useContext } from "react";
 import { HiPencil, HiXMark } from "react-icons/hi2";
 import Modal from "react-modal";
 
-export const OnuContext = createContext();
-
-export default function onu() {
+export default function Onu() {
   const { admin, HideONU, setHideONU, updatedProduct, setUpdatedProduct } = useContext(AdminContext);
   const [onu, setOnu] = useState([]);
   const [queryOnu, setQueryOnu] = useState("");
   const [modalIsOpen, setIsOpen] = useState(false);
-  const { fetchDevices, addDevices, deleteDevices, updateDevices } = CrudFirebase();
+  const { fetchDevices, addDevices, deleteDevices, updateDevices } = FirebaseActions();
   const { compareStatus, Possui, NaoPossui, InterfaceStyle, calculateDateDifference, currentDate } = UseAux();
   const { Onu_Header } = TableHead();
 
@@ -103,26 +101,15 @@ export default function onu() {
 
   return (
     <Content>
-      <OnuContext.Provider
-        value={{
-          updateDevice,
-          updatedProduct,
-          setUpdatedProduct,
-          modalIsOpen,
-          setIsOpen,
-          openModal,
-          closeModal,
-          addDevice,
-          admin,
-          comparisonDevices,
-          openModalCompare,
-          closeModalCompare,
-          modalIsOpenCompare,
-        }}
-      >
-        <OnuModal />
-        <OnuCompare />
-      </OnuContext.Provider>
+      <OnuModal
+        addDevice={addDevice}
+        closeModal={closeModal}
+        modalIsOpen={modalIsOpen}
+        setUpdatedProduct={setUpdatedProduct}
+        updateDevice={updateDevice}
+        updatedProduct={updatedProduct}
+      />
+      <OnuCompare closeModalCompare={closeModalCompare} comparisonDevices={comparisonDevices} modalIsOpenCompare={modalIsOpenCompare} />
 
       <div id="onu-ont" className="overflow-x-auto">
         <OlimpoTable
@@ -151,7 +138,7 @@ export default function onu() {
             })
             .map((onu) => {
               return (
-                <TableStart
+                <TableModel
                   handleProductSelect={() => handleProductSelect(onu.id)}
                   selectedDevicesLength={selectedDevices.length}
                   selectedDevicesIncludes={selectedDevices.includes(onu.id)}
@@ -192,7 +179,7 @@ export default function onu() {
                       </button>
                     </td>
                   )}
-                </TableStart>
+                </TableModel>
               );
             })}
         />

@@ -17,6 +17,7 @@ import { HiMagnifyingGlass } from "react-icons/hi2";
 export default function Header() {
   const { openModal, admin, openModalAviso } = useContext(AdminContext);
   const [urlValue, setUrlValue] = useState("");
+  const [logoutText, setLogoutText] = useState("sair");
 
   const urlSearch = `https://www.intelbras.com/pt-br/busca/?q=${urlValue}&tipo_busca=pagina-resultado`;
 
@@ -41,13 +42,16 @@ export default function Header() {
   };
 
   function handleSignOut() {
-    localStorage.removeItem("admin");
-    window.location.reload();
+    setLogoutText("saindo...");
+    setTimeout(() => {
+      localStorage.removeItem("admin");
+      window.location.reload();
+    }, 2000);
   }
 
   return (
-    <div className="bg-[url('../assets/ttten.svg')] mb-2">
-      <div id="top" className="flex justify-end px-4 text-slate-600 dark:text-white">
+    <div id="top" className="bg-[url('../assets/ttten.svg')] mb-2">
+      <div className="flex justify-end px-4 text-slate-600 dark:text-white">
         <div className="flex gap-6 items-center">
           <p className="cursor-pointer hover:underline" onClick={openModal}>
             {!admin && "login"}
@@ -55,7 +59,7 @@ export default function Header() {
           <LoginModal />
           {admin && (
             <p className="cursor-pointer hover:underline" onClick={handleSignOut}>
-              <strong>logout</strong>
+              <strong>{logoutText}</strong>
             </p>
           )}
           <p className="cursor-pointer hover:underline" onClick={openModalAviso}>

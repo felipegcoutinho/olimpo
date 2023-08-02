@@ -1,26 +1,24 @@
 import { AdminContext } from "../../App";
-import CrudFirebase from "../../database/crud";
+import FirebaseActions from "../../database/firebase-actions";
 import UseAux from "../../hooks/UseAux";
 import TableHead from "../../TableHead";
 import DeviceImg from "../../assets/conversor.png";
 import Content from "../../ui/Content";
 import { OlimpoPageBtn } from "../../ui/OlimpoInput";
 import OlimpoTable from "../../ui/Table";
-import TableStart from "../../ui/TableStart";
+import TableModel from "../../ui/TableModel";
 import ConversorCompare from "./ConversorCompare";
 import ConversorModal from "./ConversorModal";
-import { React, useState, useEffect, useContext, createContext } from "react";
+import { React, useState, useEffect, useContext } from "react";
 import { HiPencil, HiXMark } from "react-icons/hi2";
 import Modal from "react-modal";
-
-export const ConversorContext = createContext();
 
 export default function Conversor() {
   const { admin, HideConversor, setHideConversor, updatedProduct, setUpdatedProduct } = useContext(AdminContext);
   const [conversor, setConversor] = useState([]);
   const [queryCONVERSOR, setQueryConversor] = useState("");
   const [modalIsOpen, setIsOpen] = useState(false);
-  const { fetchDevices, addDevices, deleteDevices, updateDevices } = CrudFirebase();
+  const { fetchDevices, addDevices, deleteDevices, updateDevices } = FirebaseActions();
   const { compareStatus, InterfaceStyle, Possui, NaoPossui, calculateDateDifference, currentDate } = UseAux();
   const { Conversor_Header } = TableHead();
 
@@ -103,26 +101,15 @@ export default function Conversor() {
 
   return (
     <Content>
-      <ConversorContext.Provider
-        value={{
-          updateDevice,
-          updatedProduct,
-          setUpdatedProduct,
-          modalIsOpen,
-          setIsOpen,
-          openModal,
-          closeModal,
-          addDevice,
-          admin,
-          comparisonDevices,
-          openModalCompare,
-          closeModalCompare,
-          modalIsOpenCompare,
-        }}
-      >
-        <ConversorModal />
-        <ConversorCompare />
-      </ConversorContext.Provider>
+      <ConversorModal
+        addDevice={addDevice}
+        closeModal={closeModal}
+        modalIsOpen={modalIsOpen}
+        setUpdatedProduct={setUpdatedProduct}
+        updateDevice={updateDevice}
+        updatedProduct={updatedProduct}
+      />
+      <ConversorCompare closeModalCompare={closeModalCompare} comparisonDevices={comparisonDevices} modalIsOpenCompare={modalIsOpenCompare} />
 
       <div id="conversor" className="overflow-x-auto">
         <OlimpoTable
@@ -151,7 +138,7 @@ export default function Conversor() {
             })
             .map((conversor) => {
               return (
-                <TableStart
+                <TableModel
                   handleProductSelect={() => handleProductSelect(conversor.id)}
                   selectedDevicesLength={selectedDevices.length}
                   selectedDevicesIncludes={selectedDevices.includes(conversor.id)}
@@ -189,7 +176,7 @@ export default function Conversor() {
                       </button>
                     </td>
                   )}
-                </TableStart>
+                </TableModel>
               );
             })}
         />

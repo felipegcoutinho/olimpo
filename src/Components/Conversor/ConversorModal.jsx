@@ -2,12 +2,8 @@ import ModalComponent from "../../ui/Modal";
 import OlimpoTextInput, { OlimpoSelect } from "../../ui/OlimpoInput";
 import { Button } from "flowbite-react";
 import React from "react";
-import { useContext } from "react";
-import { ConversorContext } from "./Conversor";
 
-function ConversorModal() {
-  const { addDevice, updateDevice, updatedProduct, setUpdatedProduct, closeModal, modalIsOpen } = useContext(ConversorContext);
-
+function ConversorModal({ addDevice, updateDevice, updatedProduct, setUpdatedProduct, closeModal, modalIsOpen }) {
   const handleSubmit = (e) => {
     e.preventDefault();
     updatedProduct.id ? updateDevice() : addDevice();

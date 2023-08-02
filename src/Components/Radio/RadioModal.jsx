@@ -1,13 +1,9 @@
 import ModalComponent from "../../ui/Modal";
 import OlimpoTextInput, { OlimpoSelect } from "../../ui/OlimpoInput";
-import { RadioContext } from "./Radio";
 import { Button } from "flowbite-react";
 import React from "react";
-import { useContext } from "react";
 
-function RadioModal() {
-  const { addDevice, updateDevice, updatedProduct, setUpdatedProduct, modalIsOpen, closeModal } = useContext(RadioContext);
-
+function RadioModal({ addDevice, updateDevice, updatedProduct, setUpdatedProduct, modalIsOpen, closeModal }) {
   const handleSubmit = (e) => {
     e.preventDefault();
     updatedProduct.id ? updateDevice() : addDevice();

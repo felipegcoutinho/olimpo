@@ -1,12 +1,9 @@
 import ModalComponentCompare from "../ModalComponentCompare";
-import { APContext } from "./Ap";
-import React, { useContext } from "react";
+import React from "react";
 import { FaPlug } from "react-icons/fa";
 import { HiWifi, HiInformationCircle, HiComputerDesktop } from "react-icons/hi2";
 
-function ApCompare() {
-  const { comparisonDevices, modalIsOpenCompare, closeModalCompare } = useContext(APContext);
-
+function AccessPointCompare({ comparisonDevices, modalIsOpenCompare, closeModalCompare }) {
   const groupIcons = {
     Wireless: HiWifi,
     "Informações Gerais": HiInformationCircle,
@@ -39,9 +36,9 @@ function ApCompare() {
       closeModalCompare={closeModalCompare}
       groupIcons={groupIcons}
       propertyMappings={propertyMappings}
-      sector={"Wi-Fi Empresarial"}
+      setor={"Wi-Fi Empresarial"}
     />
   );
 }
 
-export default ApCompare;
+export default AccessPointCompare;

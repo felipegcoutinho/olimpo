@@ -1,4 +1,4 @@
-import {HiCheckCircle, HiXCircle} from "react-icons/hi2";
+import { HiCheckCircle, HiXCircle } from "react-icons/hi2";
 
 function UseAux() {
   function compareStatus(a, b) {
@@ -33,10 +33,7 @@ function UseAux() {
   );
 
   function InterfaceStyle(device) {
-    const modulacaoClass =
-      device.interface === "Fast"
-        ? "bg-orange-500 shadow-orange-500/50"
-        : "bg-green-500 shadow-green-500/50";
+    const modulacaoClass = device.interface === "Fast" ? "bg-orange-500 shadow-orange-500/50" : "bg-green-500 shadow-green-500/50";
     return `${modulacaoClass} px-3 py-1 rounded-2xl font-bold text-white shadow-sm`;
   }
 
@@ -55,7 +52,13 @@ function UseAux() {
 
   const currentDate = new Date().toLocaleDateString("en-US");
 
-  return {compareStatus, NaoPossui, Possui, InterfaceStyle, calculateDateDifference, currentDate};
+  const statusStyles = {
+    Ativo: "bg-lime-600 shadow-green-400/50",
+    Descontinuado: "bg-red-600 shadow-red-400/50",
+    Estendido: "bg-amber-400 shadow-amber-400/50",
+  };
+
+  return { compareStatus, NaoPossui, Possui, InterfaceStyle, calculateDateDifference, currentDate, statusStyles };
 }
 
 export default UseAux;

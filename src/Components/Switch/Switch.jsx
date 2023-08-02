@@ -1,26 +1,24 @@
 import { AdminContext } from "../../App";
-import CrudFirebase from "../../database/crud";
+import FirebaseActions from "../../database/firebase-actions";
 import UseAux from "../../hooks/UseAux";
 import TableHead from "../../TableHead";
 import DeviceImg from "../../assets/sw.png";
 import Content from "../../ui/Content";
 import { OlimpoPageBtn } from "../../ui/OlimpoInput";
 import OlimpoTable from "../../ui/Table";
-import TableStart from "../../ui/TableStart";
+import TableModel from "../../ui/TableModel";
 import SwModal from "./SwModal";
 import SwitchModalCompare from "./SwitchCompare";
-import { React, useState, useEffect, useContext, createContext } from "react";
+import { React, useState, useEffect, useContext } from "react";
 import { HiPencil, HiXMark } from "react-icons/hi2";
 import Modal from "react-modal";
 
-export const SwContext = createContext();
-
-export default function Switches() {
+export default function Switch() {
   const { admin, HideSwitch, setHideSwitch, updatedProduct, setUpdatedProduct } = useContext(AdminContext);
   const [switches, setSwitches] = useState([]);
   const [querySWITCH, setQuerySWITCH] = useState("");
   const [modalIsOpen, setIsOpen] = useState(false);
-  const { fetchDevices, addDevices, deleteDevices, updateDevices } = CrudFirebase();
+  const { fetchDevices, addDevices, deleteDevices, updateDevices } = FirebaseActions();
   const { compareStatus, InterfaceStyle, Possui, NaoPossui, calculateDateDifference, currentDate } = UseAux();
   const { Switch_Header } = TableHead();
 
@@ -103,26 +101,15 @@ export default function Switches() {
 
   return (
     <Content>
-      <SwContext.Provider
-        value={{
-          updateDevice,
-          updatedProduct,
-          setUpdatedProduct,
-          modalIsOpen,
-          setIsOpen,
-          openModal,
-          closeModal,
-          addDevice,
-          admin,
-          comparisonDevices,
-          openModalCompare,
-          closeModalCompare,
-          modalIsOpenCompare,
-        }}
-      >
-        <SwModal />
-        <SwitchModalCompare />
-      </SwContext.Provider>
+      <SwModal
+        addDevice={addDevice}
+        closeModal={closeModal}
+        modalIsOpen={modalIsOpen}
+        setUpdatedProduct={setUpdatedProduct}
+        updateDevice={updateDevice}
+        updatedProduct={updatedProduct}
+      />
+      <SwitchModalCompare closeModalCompare={closeModalCompare} comparisonDevices={comparisonDevices} modalIsOpenCompare={modalIsOpenCompare} />
 
       <div id="switch" className="overflow-x-auto">
         <OlimpoTable
@@ -152,7 +139,7 @@ export default function Switches() {
             })
             .map((sw) => {
               return (
-                <TableStart
+                <TableModel
                   handleProductSelect={() => handleProductSelect(sw.id)}
                   selectedDevicesLength={selectedDevices.length}
                   selectedDevicesIncludes={selectedDevices.includes(sw.id)}
@@ -192,7 +179,7 @@ export default function Switches() {
                       </button>
                     </td>
                   )}
-                </TableStart>
+                </TableModel>
               );
             })}
         />

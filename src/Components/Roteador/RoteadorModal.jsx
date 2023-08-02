@@ -1,13 +1,9 @@
 import ModalComponent from "../../ui/Modal";
 import OlimpoTextInput, { OlimpoSelect } from "../../ui/OlimpoInput";
-import { HOContext } from "./Roteador";
 import { Button } from "flowbite-react";
 import React from "react";
-import { useContext } from "react";
 
-function RoteadoresModal() {
-  const { addDevice, updateDevice, updatedProduct, setUpdatedProduct, closeModal, modalIsOpen } = useContext(HOContext);
-
+function RoteadoresModal({ addDevice, updateDevice, updatedProduct, setUpdatedProduct, closeModal, modalIsOpen }) {
   const handleSubmit = (e) => {
     e.preventDefault();
     updatedProduct.id ? updateDevice() : addDevice();

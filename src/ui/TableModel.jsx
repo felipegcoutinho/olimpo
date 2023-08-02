@@ -1,7 +1,8 @@
 import React from "react";
 import { HiChevronUp } from "react-icons/hi2";
+import UseAux from "../hooks/UseAux";
 
-function TableStart({
+function TableModel({
   handleProductSelect,
   selectedDevicesLength,
   selectedDevicesIncludes,
@@ -13,11 +14,7 @@ function TableStart({
   children,
   admin,
 }) {
-  const statusStyles = {
-    Ativo: "bg-lime-600 shadow-green-400/50",
-    Descontinuado: "bg-red-600 shadow-red-400/50",
-    Estendido: "bg-amber-400 shadow-amber-400/50",
-  };
+  const { statusStyles } = UseAux();
 
   return (
     <tbody className="text-slate-700 dark:text-slate-200">
@@ -58,4 +55,4 @@ function TableStart({
   );
 }
 
-export default TableStart;
+export default TableModel;

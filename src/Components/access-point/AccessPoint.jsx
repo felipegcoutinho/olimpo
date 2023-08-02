@@ -1,26 +1,24 @@
 import { AdminContext } from "../../App";
-import CrudFirebase from "../../database/crud";
+import FirebaseActions from "../../database/firebase-actions";
 import UseAux from "../../hooks/UseAux";
 import TableHead from "../../TableHead";
 import DeviceImg from "../../assets/ap.png";
 import Content from "../../ui/Content";
 import { OlimpoPageBtn } from "../../ui/OlimpoInput";
 import OlimpoTable from "../../ui/Table";
-import TableStart from "../../ui/TableStart";
-import ApCompare from "./ApCompare";
-import Ap_Modal from "./ApModal";
-import { React, useState, useEffect, useContext, createContext } from "react";
+import TableModel from "../../ui/TableModel";
+import AccessPointCompare from "./AccessPointCompare";
+import { React, useState, useEffect, useContext } from "react";
 import { HiPencil, HiXMark } from "react-icons/hi2";
 import Modal from "react-modal";
+import AccessPointModal from "./AccessPointModal";
 
-export const APContext = createContext();
-
-export default function Ap() {
+export default function AccessPoint() {
   const { admin, HideAP, setHideAP, updatedProduct, setUpdatedProduct } = useContext(AdminContext);
   const [accessPoint, setAccessPoint] = useState([]);
   const [queryAP, setQueryAP] = useState("");
   const [modalIsOpen, setIsOpen] = useState(false);
-  const { fetchDevices, addDevices, deleteDevices, updateDevices } = CrudFirebase();
+  const { fetchDevices, addDevices, deleteDevices, updateDevices } = FirebaseActions();
   const { compareStatus, Possui, NaoPossui, InterfaceStyle, calculateDateDifference, currentDate } = UseAux();
   const { AP_Header } = TableHead();
 
@@ -47,7 +45,7 @@ export default function Ap() {
 
   //Adiciona os produtos no firebase
   const addDevice = async () => {
-    await addDevices("aps", closeModal, fetchDevices, setUpdatedProduct, updatedProduct);
+    await addDevices("aps", fetchDevices, closeModal, setUpdatedProduct, updatedProduct);
     fetchDevices("aps", setAccessPoint);
   };
 
@@ -104,26 +102,15 @@ export default function Ap() {
 
   return (
     <Content>
-      <APContext.Provider
-        value={{
-          updateDevice,
-          updatedProduct,
-          setUpdatedProduct,
-          modalIsOpen,
-          setIsOpen,
-          openModal,
-          closeModal,
-          addDevice,
-          admin,
-          comparisonDevices,
-          openModalCompare,
-          closeModalCompare,
-          modalIsOpenCompare,
-        }}
-      >
-        <Ap_Modal />
-        <ApCompare />
-      </APContext.Provider>
+      <AccessPointModal
+        addDevice={addDevice}
+        closeModal={closeModal}
+        modalIsOpen={modalIsOpen}
+        setUpdatedProduct={setUpdatedProduct}
+        updateDevice={updateDevice}
+        updatedProduct={updatedProduct}
+      />
+      <AccessPointCompare closeModalCompare={closeModalCompare} comparisonDevices={comparisonDevices} modalIsOpenCompare={modalIsOpenCompare} />
 
       <div id="wifi-empresarial" className="overflow-x-auto">
         <OlimpoTable
@@ -148,7 +135,7 @@ export default function Ap() {
             })
             .map((ap) => {
               return (
-                <TableStart
+                <TableModel
                   handleProductSelect={() => handleProductSelect(ap.id)}
                   selectedDevicesLength={selectedDevices.length}
                   selectedDevicesIncludes={selectedDevices.includes(ap.id)}
@@ -189,7 +176,7 @@ export default function Ap() {
                       </button>
                     </td>
                   )}
-                </TableStart>
+                </TableModel>
               );
             })}
         />

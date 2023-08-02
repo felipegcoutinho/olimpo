@@ -1,14 +1,14 @@
-import AccessPoints from "./components/access-point/Ap.jsx";
+import classNames from "classnames";
+import AccessPoints from "./components/access-point/AccessPoint.jsx";
 import Conversores from "./components/conversor/Conversor.jsx";
 import Header from "./components/Header.jsx";
 import Onu from "./components/onu/Onu.jsx";
 import RadiosOutdoor from "./components/radio/Radio.jsx";
 import RoteadoresHO from "./components/roteador/Roteador.jsx";
 import Sfp from "./components/sfp/Sfp.jsx";
-import Switches from "./components/switch/Switch.jsx";
-import React from "react";
-import { createContext, useState } from "react";
-import { HiArrowUp } from "react-icons/hi2";
+import React, { createContext, useState } from "react";
+import BtnTop from "./ui/BtnTop.jsx";
+import Switch from "./components/switch/Switch.jsx";
 
 export const AdminContext = createContext();
 
@@ -36,6 +36,11 @@ function App() {
     setHideSFP(!ShowHide);
     setHideONU(!ShowHide);
   };
+
+  const buttonClasses = classNames("border border-black dark:border-white px-4 py-1 mt-4 ml-4 font-normal rounded-full text-sm", {
+    "bg-transparent dark:text-white": ShowHide,
+    "bg-black dark:bg-itbs-default text-white": !ShowHide,
+  });
 
   /* Modal */
   function openModal() {
@@ -88,26 +93,14 @@ function App() {
         >
           <Header />
 
-          <button
-            className={` ${
-              ShowHide ? "bg-transparent dark:text-white" : "bg-black dark:bg-itbs-default text-white dark:border-transparent"
-            } border border-black dark:border-white px-4 py-1 mt-4 ml-4 font-normal rounded-full text-sm`}
-            onClick={alternarMostrarOcultar}
-          >
+          <button className={buttonClasses} onClick={alternarMostrarOcultar}>
             {ShowHide ? "Ocultar Tudo" : "Mostrar Tudo"}
           </button>
 
-          <div className="fixed left-5 bottom-5">
-            <a href="#top">
-              <button className="bg-itbs-default rounded-full p-4">
-                <HiArrowUp className="text-white text-lg" />
-              </button>
-            </a>
-          </div>
-
+          <BtnTop />
           <AccessPoints />
           <RadiosOutdoor />
-          <Switches />
+          <Switch />
           <RoteadoresHO />
           <Conversores />
           <Sfp />

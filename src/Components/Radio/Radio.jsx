@@ -1,26 +1,24 @@
 import { AdminContext } from "../../App";
-import CrudFirebase from "../../database/crud";
+import FirebaseActions from "../../database/firebase-actions";
 import UseAux from "../../hooks/UseAux";
 import TableHead from "../../TableHead";
 import DeviceImg from "../../assets/radio.png";
 import Content from "../../ui/Content";
 import { OlimpoPageBtn } from "../../ui/OlimpoInput";
 import OlimpoTable from "../../ui/Table";
-import TableStart from "../../ui/TableStart";
+import TableModel from "../../ui/TableModel";
 import RadioModalCompare from "./RadioCompare";
 import RadioModal from "./RadioModal";
-import { React, useState, useEffect, useContext, createContext } from "react";
+import { React, useState, useEffect, useContext } from "react";
 import { HiPencil, HiXMark } from "react-icons/hi2";
 import Modal from "react-modal";
 
-export const RadioContext = createContext();
-
-export default function Radios() {
+export default function Radio() {
   const { admin, HideRADIO, setHideRADIO, updatedProduct, setUpdatedProduct } = useContext(AdminContext);
   const [RadiosOutdoor, setRadiosOutdoor] = useState([]);
   const [queryRADIO, setQueryRADIO] = useState("");
   const [modalIsOpen, setIsOpen] = useState(false);
-  const { fetchDevices, addDevices, deleteDevices, updateDevices } = CrudFirebase();
+  const { fetchDevices, addDevices, deleteDevices, updateDevices } = FirebaseActions();
   const { compareStatus, InterfaceStyle, calculateDateDifference, currentDate } = UseAux();
   const { Radio_Header } = TableHead();
 
@@ -103,26 +101,15 @@ export default function Radios() {
 
   return (
     <Content>
-      <RadioContext.Provider
-        value={{
-          updateDevice,
-          updatedProduct,
-          setUpdatedProduct,
-          modalIsOpen,
-          setIsOpen,
-          openModal,
-          closeModal,
-          addDevice,
-          admin,
-          comparisonDevices,
-          openModalCompare,
-          closeModalCompare,
-          modalIsOpenCompare,
-        }}
-      >
-        <RadioModal />
-        <RadioModalCompare />
-      </RadioContext.Provider>
+      <RadioModal
+        addDevice={addDevice}
+        closeModal={closeModal}
+        modalIsOpen={modalIsOpen}
+        setUpdatedProduct={setUpdatedProduct}
+        updateDevice={updateDevice}
+        updatedProduct={updatedProduct}
+      />
+      <RadioModalCompare closeModalCompare={closeModalCompare} comparisonDevices={comparisonDevices} modalIsOpenCompare={modalIsOpenCompare} />
 
       <div id="radio-outdoor" className="overflow-x-auto">
         <OlimpoTable
@@ -150,7 +137,7 @@ export default function Radios() {
             })
             .map((radio) => {
               return (
-                <TableStart
+                <TableModel
                   handleProductSelect={() => handleProductSelect(radio.id)}
                   selectedDevicesLength={selectedDevices.length}
                   selectedDevicesIncludes={selectedDevices.includes(radio.id)}
@@ -189,7 +176,7 @@ export default function Radios() {
                       </button>
                     </td>
                   )}
-                </TableStart>
+                </TableModel>
               );
             })}
         />

@@ -1,13 +1,9 @@
 import ModalComponent from "../../ui/Modal";
 import OlimpoTextInput, { OlimpoSelect } from "../../ui/OlimpoInput";
-import { APContext } from "./Ap";
 import { Button } from "flowbite-react";
 import React from "react";
-import { useContext } from "react";
 
-function AP_Modal() {
-  const { updateDevice, addDevice, updatedProduct, setUpdatedProduct, closeModal, modalIsOpen } = useContext(APContext);
-
+function AccessPointModal({ addDevice, updateDevice, updatedProduct, setUpdatedProduct, closeModal, modalIsOpen }) {
   const handleSubmit = (e) => {
     e.preventDefault();
     updatedProduct.id ? updateDevice() : addDevice();
@@ -278,4 +274,4 @@ function AP_Modal() {
   );
 }
 
-export default AP_Modal;
+export default AccessPointModal;
