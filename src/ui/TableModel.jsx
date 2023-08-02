@@ -45,7 +45,9 @@ function TableModel({
                 <HiChevronUp className="text-slate-600 dark:text-slate-200" />
               </p>
               <p>{ocultar === "Sim" && <span className="ml-1 uppercase border dark:border-white rounded border-black px-1 text-xs">Oculto</span>}</p>
-              {calculateDateDifference <= 30 && <p className="ml-1 uppercase rounded bg-itbs-default text-white px-2 text-xs">New</p>}
+              {calculateDateDifference <= 30 && (
+                <p className="ml-1 uppercase rounded bg-transparent border border-itbs-default text-itbs-default px-2 text-xs">New</p>
+              )}
             </div>
           </div>
         </td>
