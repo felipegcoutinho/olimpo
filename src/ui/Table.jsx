@@ -94,7 +94,7 @@ export default function OlimpoTable({
                     type="text"
                     value={query}
                     onChange={handleSearchChange}
-                    className="p-2 pl-10 text-sm text-slate-500 placeholder:text-slate-500 border border-slate-400 bg-slate-50 dark:border-green-900 rounded-full w-60 dark:bg-itbs-modern-400 dark:text-white focus:ring-green-500 focus:border-green-500"
+                    className="p-2 pl-10 text-sm text-slate-500 placeholder:text-slate-500 border border-slate-400 bg-slate-50 dark:border-green-900 rounded-full w-60 dark:bg-itbs-modern-400 dark:text-white focus:border-itbs-default focus:ring-itbs-default"
                     placeholder="Buscar Equipamentos"
                   />
                 </div>

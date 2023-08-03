@@ -9,6 +9,7 @@ import Sfp from "./components/sfp/Sfp.jsx";
 import React, { createContext, useState } from "react";
 import BtnTop from "./ui/BtnTop.jsx";
 import Switch from "./components/switch/Switch.jsx";
+import { HiOutlineXCircle } from "react-icons/hi2";
 
 export const AdminContext = createContext();
 
@@ -37,10 +38,12 @@ function App() {
     setHideONU(!ShowHide);
   };
 
-  const buttonClasses = classNames("border border-black dark:border-white px-4 py-1 mt-4 ml-4 font-normal rounded-full text-sm", {
-    "bg-transparent dark:text-white": ShowHide,
-    "bg-black dark:bg-itbs-default text-white": !ShowHide,
-  });
+  const getButtonClasses = (isActive) => {
+    const baseClasses = "flex items-center gap-1 mr-auto rounded-full px-4 mt-6 py-1 ml-4 text-slate-600 dark:text-white text-sm";
+    return isActive
+      ? `${baseClasses} bg-slate-800 border border-slate-800 text-white dark:border-itbs-default hover:bg-slate-800 hover:text-white`
+      : `${baseClasses} bg-transparent border border-slate-600 dark:border-white hover:bg-slate-800 hover:text-white`;
+  };
 
   /* Modal */
   function openModal() {
@@ -92,9 +95,8 @@ function App() {
           }}
         >
           <Header />
-
-          <button className={buttonClasses} onClick={alternarMostrarOcultar}>
-            {ShowHide ? "Ocultar Tudo" : "Mostrar Tudo"}
+          <button onClick={alternarMostrarOcultar} className={getButtonClasses(!ShowHide)}>
+            {ShowHide ? "Ocultar Tudo" : "Mostrar Tudo"} {!ShowHide && <HiOutlineXCircle className="text-lg text-slate-200" />}
           </button>
 
           <BtnTop />
