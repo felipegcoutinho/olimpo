@@ -75,24 +75,21 @@ export default function Header() {
           <p className="text-itbs-default text-5xl font-[MuseoModerno] italic">Olimpo</p>
         </div>
 
-        <div className="flex mt-10 items-center">
+        <div className="relative mt-10">
+          <div className="absolute z-10 inset-y-0 left-0 flex items-center pl-3 pointer-events-none">
+            <HiMagnifyingGlass className="text-slate-500" />
+          </div>
           <input
             type="text"
-            className="rounded-lg backdrop-blur-[3px] bg-transparent text-black dark:text-white focus:ring-itbs-default focus:border-itbs-default border dark:border-itbs-default 
-            text-center w-96 h-14"
             value={urlValue}
-            placeholder="Pesquise em intelbras.com.br"
             onChange={handleSearch}
             onKeyDown={handleKeyPress}
+            className="pl-10 text-center w-96 h-14 text-slate-500 placeholder:text-slate-500 border-b border-slate-400 backdrop-blur-sm bg-transparent dark:border-green-900 rounded-full dark:bg-itbs-modern-400 dark:text-white focus:ring-itbs-default focus:border-itbs-default"
+            placeholder="Pesquise em intelbras.com.br"
           />
-
-          <a target="_blank" rel="noopener noreferrer" href={urlSearch}>
-            <button className="flex m-1 bg-itbs-default hover:bg-itbs-hover p-4 rounded text-white h-14">
-              <HiMagnifyingGlass className="mr-1 text-2xl" />
-            </button>
-          </a>
         </div>
-        <div className="flex flex-wrap gap-2 mt-10">
+
+        <div className="flex flex-wrap gap-2 mt-10 mb-2">
           {Object.entries(setorTiles).map(([setor, tiles]) => (
             <Tiles key={setor} img={tiles.img} setor={setor} link={tiles.link} />
           ))}
