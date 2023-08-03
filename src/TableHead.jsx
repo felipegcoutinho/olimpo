@@ -1,7 +1,7 @@
-import {AdminContext} from "./App";
-import React, {useContext} from "react";
+import { AdminContext } from "./App";
+import React, { useContext } from "react";
 
-function Header({children}) {
+function Header({ children }) {
   return (
     <thead className="text-xs text-slate-700 bg-slate-200 h-14 dark:bg-slate-800 dark:text-slate-200">
       <tr>{children}</tr>
@@ -10,7 +10,7 @@ function Header({children}) {
 }
 
 function TableHead() {
-  const {admin} = useContext(AdminContext);
+  const { admin } = useContext(AdminContext);
 
   const AP_Header = (
     <Header>
@@ -115,9 +115,7 @@ function TableHead() {
       <th className="text-left">Interface</th>
       <th>Qtde Portas</th>
       <th>Gerenciável</th>
-      <th>
-        Alimenta via <br></br> PoE Ativo
-      </th>
+      <th>PoE Ativo</th>
       <th>
         Taxa de Encam. <br></br> de Pacotes
       </th>
@@ -138,10 +136,7 @@ function TableHead() {
       <th className="text-center">Modelo</th>
       <th>Interface</th>
       <th className="px-2 underline">
-        <a
-          target="_blank"
-          rel="noopener noreferrer"
-          href="https://www.intelbras.com/pt-br/redes/passivos-opticos/conector-de-campo">
+        <a target="_blank" rel="noopener noreferrer" href="https://www.intelbras.com/pt-br/redes/passivos-opticos/conector-de-campo">
           Conector
         </a>
       </th>

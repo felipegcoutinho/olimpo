@@ -1,5 +1,6 @@
 import * as React from "react";
-import { HiEye, HiEyeSlash, HiMagnifyingGlass } from "react-icons/hi2";
+import { HiX } from "react-icons/hi";
+import { HiEye, HiEyeSlash, HiMagnifyingGlass, HiOutlineXCircle } from "react-icons/hi2";
 
 export default function OlimpoTable({
   tbody,
@@ -16,7 +17,28 @@ export default function OlimpoTable({
   DeviceImg,
   DeviceText,
   handleHide,
+  PoE,
+  Gerenciavel,
+  handlePoE,
+  handleGerenciavel,
+  handleNaoGerenciavel,
+  NaoGerenciavel,
 }) {
+  const getButtonClasses = (isDisabled, isActive) => {
+    const baseClasses = "flex items-center gap-1 mr-auto rounded-full px-6 py-1 text-slate-600 dark:text-white text-sm";
+    if (isDisabled) {
+      return `${baseClasses} cursor-not-allowed bg-slate-100 text-slate-300 dark:bg-slate-900 dark:text-slate-800`;
+    } else {
+      return `${baseClasses} ${
+        isActive
+          ? "bg-slate-800 border border-slate-800 text-white dark:border-itbs-default"
+          : "bg-transparent border border-slate-600 dark:border-white"
+      } hover:bg-slate-800 hover:text-white`;
+    }
+  };
+
+  const IconX = <HiOutlineXCircle className="text-lg text-slate-200" />;
+
   return (
     <section className="px-1 mx-auto ">
       <div className="relative overflow-hidden">
@@ -43,8 +65,20 @@ export default function OlimpoTable({
                   </button>
                 )}
 
-                {Device === "Switches" && (
-                  <button className="mr-auto bg-slate-500 hover:bg-slate-600 rounded-full px-4 py-2 text-white text-sm">Gerenciável Com PoE</button>
+                {Device === "Switch" && (
+                  <>
+                    <button onClick={handlePoE} className={getButtonClasses(false, PoE)}>
+                      PoE Ativo {PoE && IconX}
+                    </button>
+
+                    <button onClick={NaoGerenciavel ? null : handleGerenciavel} className={getButtonClasses(NaoGerenciavel, Gerenciavel)}>
+                      Gerenciável {Gerenciavel && IconX}
+                    </button>
+
+                    <button onClick={Gerenciavel ? null : handleNaoGerenciavel} className={getButtonClasses(Gerenciavel, NaoGerenciavel)}>
+                      Não Gerenciável {NaoGerenciavel && IconX}
+                    </button>
+                  </>
                 )}
 
                 {selectedDevices.length <= 4 && (
@@ -61,7 +95,7 @@ export default function OlimpoTable({
                     type="text"
                     value={query}
                     onChange={handleSearchChange}
-                    className="block p-2 pl-10 text-sm text-gray-900 border border-gray-300 dark:border-green-900 rounded-lg w-60 bg-gray-50 dark:bg-itbs-modern-400 dark:text-white focus:ring-green-500 focus:border-green-500  "
+                    className="p-2 pl-10 text-sm text-slate-500 placeholder:text-slate-500 border border-slate-400 bg-slate-50 dark:border-green-900 rounded-full w-60 dark:bg-itbs-modern-400 dark:text-white focus:ring-green-500 focus:border-green-500"
                     placeholder="Buscar Equipamentos"
                   />
                 </div>

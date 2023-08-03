@@ -33,7 +33,13 @@ function UseAux() {
   );
 
   function InterfaceStyle(device) {
-    const modulacaoClass = device.interface === "Fast" ? "bg-orange-500 shadow-orange-500/50" : "bg-green-500 shadow-green-500/50";
+    const modulacaoClass =
+      device.interface === "Fast"
+        ? "bg-orange-500 shadow-orange-500/50"
+        : device.interface === "Giga" || device.interface === "Giga | Fast" || device.interface === "10 Giga"
+        ? "bg-green-500 shadow-green-500/50"
+        : "bg-yellow-400 shadow-yellow-400/50";
+
     return `${modulacaoClass} px-3 py-1 rounded-2xl font-bold text-white shadow-sm`;
   }
 

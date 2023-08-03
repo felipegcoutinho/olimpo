@@ -52,10 +52,10 @@ function ConversorModal({ addDevice, updateDevice, updatedProduct, setUpdatedPro
         />
 
         <OlimpoSelect
-          label="Modulação"
+          label="Interface"
           type="text"
           value={updatedProduct.interface}
-          onChange={(e) => setUpdatedProduct({ ...updatedProduct, modulação: e.target.value })}
+          onChange={(e) => setUpdatedProduct({ ...updatedProduct, interface: e.target.value })}
         >
           {!updatedProduct.id && (
             <option selected disabled>

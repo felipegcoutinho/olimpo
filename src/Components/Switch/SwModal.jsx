@@ -53,7 +53,7 @@ function SwModal({ addDevice, updateDevice, updatedProduct, setUpdatedProduct, c
         />
 
         <OlimpoSelect
-          label="Modulação"
+          label="Interface"
           type="text"
           value={updatedProduct.interface}
           onChange={(e) => setUpdatedProduct({ ...updatedProduct, interface: e.target.value })}

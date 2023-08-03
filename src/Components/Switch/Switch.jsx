@@ -99,6 +99,22 @@ export default function Switch() {
     openModalCompare();
   };
 
+  const [PoE, setPoE] = useState(false);
+  const [Gerenciavel, setGerenciavel] = useState(false);
+  const [NaoGerenciavel, setNaoGerenciavel] = useState(false);
+
+  const handlePoE = () => {
+    setPoE(!PoE);
+  };
+
+  const handleGerenciavel = () => {
+    setGerenciavel(!Gerenciavel);
+  };
+
+  const handleNaoGerenciavel = () => {
+    setNaoGerenciavel(!NaoGerenciavel);
+  };
+
   return (
     <Content>
       <SwModal
@@ -126,15 +142,33 @@ export default function Switch() {
           admin={admin}
           createButton="Novo Switch"
           thead={Switch_Header}
-          // handlePoE={handlePoE}
+          handleGerenciavel={handleGerenciavel}
+          Gerenciavel={Gerenciavel}
+          handlePoE={handlePoE}
+          PoE={PoE}
+          handleNaoGerenciavel={handleNaoGerenciavel}
+          NaoGerenciavel={NaoGerenciavel}
           tbody={switches
             .sort(compareStatus)
             .filter((sw) => {
-              if (sw.modelo.toLowerCase().includes(querySWITCH.toLowerCase())) {
-                return sw;
-              } else if (sw.interface.toLowerCase().includes(querySWITCH.toLowerCase())) {
-                return sw;
+              if (PoE && Gerenciavel && NaoGerenciavel) {
+                return (
+                  sw.poe !== "-" &&
+                  (sw.gerenciavel === "Sim" || sw.gerenciavel === "-") &&
+                  sw.modelo.toLowerCase().includes(querySWITCH.toLowerCase())
+                );
+              } else if (PoE && Gerenciavel) {
+                return sw.poe !== "-" && sw.gerenciavel === "Sim" && sw.modelo.toLowerCase().includes(querySWITCH.toLowerCase());
+              } else if (PoE && NaoGerenciavel) {
+                return sw.poe !== "-" && sw.gerenciavel === "-" && sw.modelo.toLowerCase().includes(querySWITCH.toLowerCase());
+              } else if (PoE) {
+                return sw.poe !== "-" && sw.modelo.toLowerCase().includes(querySWITCH.toLowerCase());
+              } else if (Gerenciavel) {
+                return sw.gerenciavel === "Sim" && sw.modelo.toLowerCase().includes(querySWITCH.toLowerCase());
+              } else if (NaoGerenciavel) {
+                return sw.gerenciavel === "-" && sw.modelo.toLowerCase().includes(querySWITCH.toLowerCase());
               } else {
+                return sw.modelo.toLowerCase().includes(querySWITCH.toLowerCase());
               }
             })
             .map((sw) => {

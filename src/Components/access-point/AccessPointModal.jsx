@@ -53,11 +53,11 @@ function AccessPointModal({ addDevice, updateDevice, updatedProduct, setUpdatedP
         />
 
         <OlimpoSelect
-          label="Modulação"
+          label="Interface"
           required
           type="text"
           value={updatedProduct.interface}
-          onChange={(e) => setUpdatedProduct({ ...updatedProduct, modulação: e.target.value })}
+          onChange={(e) => setUpdatedProduct({ ...updatedProduct, interface: e.target.value })}
         >
           {!updatedProduct.id && (
             <option selected disabled>

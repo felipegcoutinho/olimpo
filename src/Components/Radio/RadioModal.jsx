@@ -69,7 +69,7 @@ function RadioModal({ addDevice, updateDevice, updatedProduct, setUpdatedProduct
           </OlimpoSelect>
 
           <OlimpoSelect
-            label="Modulação"
+            label="Interface"
             required
             type="text"
             placeholder="Modulação"

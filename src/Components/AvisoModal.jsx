@@ -38,6 +38,7 @@ function AvisoModal() {
         oficial.
       </p>
       <hr />
+      <p className="font-bold mt-4 dark:text-white">Status dos Equipamentos</p>
       {statusDescriptions.map(({ title, content }) => (
         <div className="flex items-center dark:text-white my-4" key={title}>
           <div className={`p-2 rounded-full shadow-sm ${statusStyles[title]} mr-5`}></div>
