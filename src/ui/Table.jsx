@@ -1,5 +1,4 @@
 import * as React from "react";
-import { HiX } from "react-icons/hi";
 import { HiEye, HiEyeSlash, HiMagnifyingGlass, HiOutlineXCircle } from "react-icons/hi2";
 
 export default function OlimpoTable({
