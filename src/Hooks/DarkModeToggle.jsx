@@ -1,10 +1,8 @@
-import React, {useState, useEffect} from "react";
-import {HiMoon, HiSun} from "react-icons/hi2";
+import React, { useState, useEffect } from "react";
+import { HiMoon, HiSun } from "react-icons/hi2";
 
 const DarkModeToggle = () => {
-  const [darkMode, setDarkMode] = useState(
-    localStorage.getItem("darkMode") === "true" ? true : false
-  );
+  const [darkMode, setDarkMode] = useState(localStorage.getItem("darkMode") === "true" ? true : false);
 
   useEffect(() => {
     if (darkMode) {
@@ -23,12 +21,8 @@ const DarkModeToggle = () => {
   return (
     <button onClick={handleToggle}>
       <div className="flex items-center gap-2">
-        {darkMode ? (
-          <HiSun className="text-yellow-300 text-base" />
-        ) : (
-          <HiMoon className="text-blue-400 text-base" />
-        )}
-        {darkMode ? "tema light" : "tema dark"}
+        {darkMode ? <HiSun className="text-yellow-300 text-base" /> : <HiMoon className="text-blue-400 text-base" />}
+        {darkMode ? "modo light" : "modo dark"}
       </div>
     </button>
   );
