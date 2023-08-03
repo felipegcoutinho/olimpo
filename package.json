@@ -1,5 +1,6 @@
 {
-  "name": "projeto-olimpo",
+  "homepage": "https;//felipegcoutinho.github.io/olimpo",
+  "name": "olimpo",
   "private": true,
   "version": "0.0.0",
   "type": "module",
@@ -7,7 +8,9 @@
     "dev": "vite",
     "build": "vite build",
     "preview": "vite preview",
-    "host": "vite --host"
+    "host": "vite --host",
+    "predeploy": "npm run build",
+    "deploy": "gh-pages -d dist"
   },
   "dependencies": {
     "autoprefixer": "^10.4.14",
