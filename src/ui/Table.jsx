@@ -58,12 +58,6 @@ export default function OlimpoTable({
           <div className="flex flex-col flex-shrink-0 space-y-3 md:flex-row md:items-center lg:justify-end md:space-y-0 md:space-x-3">
             {Hide && (
               <>
-                {admin && (
-                  <button className="mr-auto bg-itbs-default hover:bg-itbs-hover rounded-full px-4 py-2 text-white text-sm" onClick={openModal}>
-                    {createButton}
-                  </button>
-                )}
-
                 {Device === "Switch" && (
                   <>
                     <button onClick={handlePoE} className={getButtonClasses(false, PoE)}>
@@ -78,6 +72,12 @@ export default function OlimpoTable({
                       Não Gerenciável {NaoGerenciavel && IconX}
                     </button>
                   </>
+                )}
+
+                {admin && (
+                  <button className="mr-auto bg-itbs-default hover:bg-itbs-hover rounded-full px-4 py-2 text-white text-sm" onClick={openModal}>
+                    {createButton}
+                  </button>
                 )}
 
                 {selectedDevices.length <= 4 && (

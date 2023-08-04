@@ -2,7 +2,7 @@ import { AdminContext } from "../../App";
 import FirebaseActions from "../../database/firebase-actions";
 import UseAux from "../../hooks/UseAux";
 import TableHead from "../../TableHead";
-import DeviceImg from "../../assets/ho.png";
+import DeviceImg from "../../assets/twibi.png";
 import Content from "../../ui/Content";
 import { OlimpoPageBtn } from "../../ui/OlimpoInput";
 import OlimpoTable from "../../ui/Table";

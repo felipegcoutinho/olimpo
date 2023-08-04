@@ -1,4 +1,3 @@
-import classNames from "classnames";
 import AccessPoints from "./components/access-point/AccessPoint.jsx";
 import Conversores from "./components/conversor/Conversor.jsx";
 import Header from "./components/Header.jsx";
@@ -10,12 +9,14 @@ import React, { createContext, useState } from "react";
 import BtnTop from "./ui/BtnTop.jsx";
 import Switch from "./components/switch/Switch.jsx";
 import { HiOutlineXCircle } from "react-icons/hi2";
+import Qi5 from "./components/qi5/Qi5.jsx";
 
 export const AdminContext = createContext();
 
 function App() {
   const [admin, setAdmin] = useState(localStorage.getItem("admin") === "true" ? true : false);
   const [HideAP, setHideAP] = useState(true);
+  const [HideQi5, setHideQi5] = useState(true);
   const [HideRADIO, setHideRADIO] = useState(true);
   const [HideHO, setHideHO] = useState(true);
   const [HideSwitch, setHideSwitch] = useState(true);
@@ -71,6 +72,8 @@ function App() {
             setAdmin,
             HideAP,
             setHideAP,
+            HideQi5,
+            setHideQi5,
             HideRADIO,
             setHideRADIO,
             HideHO,
@@ -103,6 +106,7 @@ function App() {
           <AccessPoints />
           <RadiosOutdoor />
           <Switch />
+          <Qi5 />
           <RoteadoresHO />
           <Conversores />
           <Sfp />

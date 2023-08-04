@@ -2,8 +2,9 @@ import { AdminContext } from "../App";
 import DarkModeToggle from "../hooks/DarkModeToggle";
 import ImgAp from "../assets/ap.png";
 import ImgConv from "../assets/conversor.png";
-import ImgHo from "../assets/ho.png";
+import ImgHo from "../assets/twibi.png";
 import ImgOnt from "../assets/ont.png";
+import ImgQi5 from "../assets/qi5.png";
 import ImgRadio from "../assets/radio.png";
 import ImgSfp from "../assets/sfp.png";
 import ImgSw from "../assets/sw.png";
@@ -35,6 +36,7 @@ export default function Header() {
     "Wi-Fi Empresarial": { link: "#wifi-empresarial", img: ImgAp },
     "Radio Outdoor": { link: "#radio-outdoor", img: ImgRadio },
     Switch: { link: "#switch", img: ImgSw },
+    "5G": { link: "#qi5", img: ImgQi5 },
     Roteador: { link: "#roteador", img: ImgHo },
     "Conversor de Midia": { link: "#conversor", img: ImgConv },
     "Módulo SFP": { link: "#modulo-sfp", img: ImgSfp },
@@ -89,7 +91,7 @@ export default function Header() {
           />
         </div>
 
-        <div className="flex flex-wrap gap-2 mt-10 mb-2">
+        <div className="flex flex-wrap gap-1 mt-10 mb-2">
           {Object.entries(setorTiles).map(([setor, tiles]) => (
             <Tiles key={setor} img={tiles.img} setor={setor} link={tiles.link} />
           ))}

@@ -109,6 +109,43 @@ function TableHead() {
     </Header>
   );
 
+  const Qi5_Header = (
+    <Header>
+      <th className="text-center">Modelo</th>
+      <th>Interface</th>
+      <th>Cobertura</th>
+      <th className="pr-6">Raio</th>
+      <th className="pr-6">
+        Usuários <br></br> Máx.
+      </th>
+      <th>
+        Plano <br></br> Recomendado
+      </th>
+      <th>
+        Datarate <br></br> Máx. 2G
+      </th>
+      <th>
+        Datarate <br></br> Máx. 5G
+      </th>
+      <th>Alimentação</th>
+      <th>
+        Modo <br></br> Repetidor
+      </th>
+      <th>
+        Modo <br></br> Roteador AP
+      </th>
+      <th>
+        Cliente <br></br> Wireless
+      </th>
+      <th>
+        Modo <br></br> AP
+      </th>
+      <th className="text-center">Garantia</th>
+      <th className="text-center">Página</th>
+      {admin && <th className="text-center">Ações</th>}
+    </Header>
+  );
+
   const Switch_Header = (
     <Header>
       <th className="text-center">Modelo</th>
@@ -231,6 +268,7 @@ function TableHead() {
     AP_Header,
     Radio_Header,
     Roteador_Header,
+    Qi5_Header,
     Switch_Header,
     Conversor_Header,
     Sfp_Header,
