@@ -135,7 +135,7 @@ export default function Switch() {
       <div id="switch" className="overflow-x-auto">
         <OlimpoTable
           Hide={HideSwitch}
-          Device={"Switch"}
+          Device={"Switches"}
           DeviceImg={DeviceImg}
           DeviceText={"Robustez e alta performance para transmissão de dados"}
           selectedDevices={selectedDevices.length >= 2 && selectedDevices}

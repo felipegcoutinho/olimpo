@@ -1,5 +1,5 @@
 {
-  "homepage": "https;//felipegcoutinho.github.io/olimpo",
+  "homepage": "https://olimpo.felipecoutinho.com",
   "name": "olimpo",
   "private": true,
   "version": "0.0.0",
@@ -10,7 +10,8 @@
     "preview": "vite preview",
     "host": "vite --host",
     "predeploy": "npm run build",
-    "deploy": "gh-pages -d dist"
+    "deploy": "echo olimpo.felipecoutinho.com > ./build/CNAME && gh-pages -d build"
+
   },
   "dependencies": {
     "autoprefixer": "^10.4.14",

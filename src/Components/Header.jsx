@@ -78,9 +78,6 @@ export default function Header() {
         </div>
 
         <div className="relative mt-10">
-          <div className="absolute z-10 inset-y-0 left-0 flex items-center pl-3 pointer-events-none">
-            <HiMagnifyingGlass className="text-slate-500" />
-          </div>
           <input
             type="text"
             value={urlValue}
