@@ -100,11 +100,16 @@ export default function Switch() {
   };
 
   const [PoE, setPoE] = useState(false);
+  const [SemPoE, setSemPoE] = useState(false);
   const [Gerenciavel, setGerenciavel] = useState(false);
   const [NaoGerenciavel, setNaoGerenciavel] = useState(false);
 
   const handlePoE = () => {
     setPoE(!PoE);
+  };
+
+  const handleSemPoE = () => {
+    setSemPoE(!SemPoE);
   };
 
   const handleGerenciavel = () => {
@@ -146,31 +151,21 @@ export default function Switch() {
           Gerenciavel={Gerenciavel}
           handlePoE={handlePoE}
           PoE={PoE}
+          SemPoE={SemPoE}
+          handleSemPoE={handleSemPoE}
           handleNaoGerenciavel={handleNaoGerenciavel}
           NaoGerenciavel={NaoGerenciavel}
           tbody={switches
             .sort(compareStatus)
             .filter((sw) => {
-              if (PoE && Gerenciavel && NaoGerenciavel) {
-                return (
-                  sw.poe !== "-" &&
-                  (sw.gerenciavel === "Sim" || sw.gerenciavel === "-") &&
-                  sw.modelo.toLowerCase().includes(querySWITCH.toLowerCase())
-                );
-              } else if (PoE && Gerenciavel) {
-                return sw.poe !== "-" && sw.gerenciavel === "Sim" && sw.modelo.toLowerCase().includes(querySWITCH.toLowerCase());
-              } else if (PoE && NaoGerenciavel) {
-                return sw.poe !== "-" && sw.gerenciavel === "-" && sw.modelo.toLowerCase().includes(querySWITCH.toLowerCase());
-              } else if (PoE) {
-                return sw.poe !== "-" && sw.modelo.toLowerCase().includes(querySWITCH.toLowerCase());
-              } else if (Gerenciavel) {
-                return sw.gerenciavel === "Sim" && sw.modelo.toLowerCase().includes(querySWITCH.toLowerCase());
-              } else if (NaoGerenciavel) {
-                return sw.gerenciavel === "-" && sw.modelo.toLowerCase().includes(querySWITCH.toLowerCase());
-              } else {
-                return sw.modelo.toLowerCase().includes(querySWITCH.toLowerCase());
-              }
+              const isPoE = PoE ? sw.poe !== "-" : true;
+              const isSemPoE = SemPoE ? sw.poe === "-" : true;
+              const isGerenciavel = Gerenciavel ? sw.gerenciavel === "Sim" : true;
+              const isNaoGerenciavel = NaoGerenciavel ? sw.gerenciavel === "-" : true;
+
+              return isPoE && isSemPoE && isGerenciavel && isNaoGerenciavel && sw.modelo.toLowerCase().includes(querySWITCH.toLowerCase());
             })
+
             .map((sw) => {
               return (
                 <TableModel

@@ -17,6 +17,8 @@ export default function OlimpoTable({
   DeviceText,
   handleHide,
   PoE,
+  handleSemPoE,
+  SemPoE,
   Gerenciavel,
   handlePoE,
   handleGerenciavel,
@@ -24,7 +26,7 @@ export default function OlimpoTable({
   NaoGerenciavel,
 }) {
   const getButtonClasses = (isDisabled, isActive) => {
-    const baseClasses = "flex items-center gap-1 mr-auto rounded-full px-6 py-1 text-slate-600 dark:text-white text-sm";
+    const baseClasses = "flex items-center gap-1 mr-auto rounded-full px-5 py-1 text-slate-600 dark:text-white text-sm";
     if (isDisabled) {
       return `${baseClasses} cursor-not-allowed bg-slate-100 text-slate-200 text-opacity-30 dark:bg-slate-900 dark:text-slate-800`;
     } else {
@@ -60,8 +62,12 @@ export default function OlimpoTable({
               <>
                 {Device === "Switch" && (
                   <>
-                    <button onClick={handlePoE} className={getButtonClasses(false, PoE)}>
+                    <button onClick={SemPoE ? null : handlePoE} className={getButtonClasses(SemPoE, PoE)}>
                       PoE Ativo {PoE && IconX}
+                    </button>
+
+                    <button onClick={PoE ? null : handleSemPoE} className={getButtonClasses(PoE, SemPoE)}>
+                      Sem PoE {SemPoE && IconX}
                     </button>
 
                     <button onClick={NaoGerenciavel ? null : handleGerenciavel} className={getButtonClasses(NaoGerenciavel, Gerenciavel)}>
