@@ -31,6 +31,7 @@ function App() {
   const alternarMostrarOcultar = () => {
     setShowHide(!ShowHide);
     setHideAP(!ShowHide);
+    setHideQi5(!ShowHide);
     setHideRADIO(!ShowHide);
     setHideHO(!ShowHide);
     setHideSwitch(!ShowHide);

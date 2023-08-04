@@ -16,7 +16,7 @@ html {
 
 body {
   font-family: "Roboto", segoe UI, arial;
-  @apply bg-zinc-100 dark:bg-itbs-modern-300;
+  @apply bg-zinc-100 dark:bg-itbs-modern-400;
 }
 
 tbody:nth-child(odd) {
