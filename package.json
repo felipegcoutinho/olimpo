@@ -10,7 +10,7 @@
     "preview": "vite preview",
     "host": "vite --host",
     "predeploy": "npm run build",
-    "deploy": "echo olimpo.felipecoutinho.com > ./build/CNAME && gh-pages -d build"
+    "deploy": "echo olimpo.felipecoutinho.com > ./dist/CNAME && gh-pages -d dist"
 
   },
   "dependencies": {
