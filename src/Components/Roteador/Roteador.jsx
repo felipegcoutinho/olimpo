@@ -160,10 +160,11 @@ export default function Roteador() {
                   <td>{roteador.datarateMax2G}</td>
                   <td>{roteador.datarateMax5G === "-" ? NaoPossui : roteador.datarateMax5G}</td>
                   <td>{roteador.tensao}</td>
-                  <td>{roteador.repetidor === "-" ? NaoPossui : Possui}</td>
-                  <td>{roteador.roteador === "-" ? NaoPossui : Possui}</td>
-                  <td>{roteador.cliente === "-" ? NaoPossui : Possui}</td>
-                  <td>{roteador.ap === "-" ? NaoPossui : Possui}</td>
+                  <td>{roteador.repetidor === "N/A" ? "N/A" : roteador.repetidor === "-" ? NaoPossui : Possui}</td>
+                  <td>{roteador.roteador === "N/A" ? "N/A" : roteador.roteador === "-" ? NaoPossui : Possui}</td>
+                  <td>{roteador.cliente === "N/A" ? "N/A" : roteador.cliente === "-" ? NaoPossui : Possui}</td>
+                  <td>{roteador.ap === "N/A" ? "N/A" : roteador.ap === "-" ? NaoPossui : Possui}</td>
+
                   <td className="text-center">{roteador.garantia}</td>
                   <td>
                     <a target="_blank" rel="noopener noreferrer" href={roteador.pagina}>
