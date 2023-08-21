@@ -119,7 +119,7 @@ function TableHead() {
         Usuários <br></br> Máx.
       </th>
       <th>
-        Plano <br></br> Recomendado
+       Interface SIM
       </th>
       <th>
         Datarate <br></br> Máx. 2G

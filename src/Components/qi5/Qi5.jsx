@@ -152,7 +152,7 @@ export default function Qi5() {
                   <td>{qi5.cobertura}</td>
                   <td>{qi5.raio}</td>
                   <td>{qi5.usuarioMax}</td>
-                  <td>{qi5.planoRecomendado}</td>
+                  <td>{qi5.interfaceSim === "-" ? NaoPossui : qi5.interfaceSim}</td>
                   <td>{qi5.datarateMax2G}</td>
                   <td>{qi5.datarateMax5G === "-" ? NaoPossui : qi5.datarateMax5G}</td>
                   <td>{qi5.tensao}</td>

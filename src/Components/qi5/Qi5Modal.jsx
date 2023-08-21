@@ -69,6 +69,22 @@ function Qi5Modal({ addDevice, updateDevice, updatedProduct, setUpdatedProduct, 
           <option value="N/A">N/A</option>
         </OlimpoSelect>
 
+        <OlimpoSelect
+          label="Interface SIM"
+          type="text"
+          value={updatedProduct.interfaceSim}
+          onChange={(e) => setUpdatedProduct({ ...updatedProduct, interfaceSim: e.target.value })}
+        >
+          {!updatedProduct.id && (
+            <option selected disabled>
+              Escolha
+            </option>
+          )}
+          <option value="Single - 4FF Nano SIM">Single - 4FF Nano SIM</option>
+          <option value="-">Não Possui</option> 
+          <option value="N/A">N/A</option>
+        </OlimpoSelect>
+
         <OlimpoTextInput
           label="Área de cobertura (Em m²)"
           type="text"

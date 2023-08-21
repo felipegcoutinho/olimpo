@@ -65,7 +65,7 @@ function SwModal({ addDevice, updateDevice, updatedProduct, setUpdatedProduct, c
           )}
           <option value="Giga">Giga</option>
           <option value="Fast">Fast</option>
-          <option value="Giga (Uplink)">Giga (Uplink)</option>
+          <option value="Giga | Fast">Giga | Fast</option>
           <option value="N/A">N/A</option>
         </OlimpoSelect>
 
