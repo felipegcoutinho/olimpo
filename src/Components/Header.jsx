@@ -13,7 +13,6 @@ import AvisoModal from "./AvisoModal";
 import LoginModal from "./LoginModal";
 import React, { useState } from "react";
 import { useContext } from "react";
-import { HiMagnifyingGlass } from "react-icons/hi2";
 
 export default function Header() {
   const { openModal, admin, openModalAviso } = useContext(AdminContext);
@@ -41,6 +40,7 @@ export default function Header() {
     "Conversor de Midia": { link: "#conversor", img: ImgConv },
     "Módulo SFP": { link: "#modulo-sfp", img: ImgSfp },
     "Onu/Ont": { link: "#onu-ont", img: ImgOnt },
+    "Projetos Especiais": { link: "#projetos-especiais", img: ImgOnt },
   };
 
   function handleSignOut() {

@@ -22,6 +22,7 @@ function App() {
   const [HideSwitch, setHideSwitch] = useState(true);
   const [HideConversor, setHideConversor] = useState(true);
   const [HideSFP, setHideSFP] = useState(true);
+  const [HideSwEspecial, setHideSwEspecial] = useState(true);
   const [HideONU, setHideONU] = useState(true);
   const [updatedProduct, setUpdatedProduct] = useState("");
   const [ShowHide, setShowHide] = useState(true);
@@ -38,6 +39,7 @@ function App() {
     setHideConversor(!ShowHide);
     setHideSFP(!ShowHide);
     setHideONU(!ShowHide);
+    setHideSwEspecial(!ShowHide);
   };
 
   const getButtonClasses = (isActive) => {
@@ -87,6 +89,8 @@ function App() {
             setHideSFP,
             HideONU,
             setHideONU,
+            HideSwEspecial,
+            setHideSwEspecial,
             updatedProduct,
             setUpdatedProduct,
             openModal,
