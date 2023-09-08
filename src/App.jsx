@@ -1,4 +1,4 @@
-import AccessPoints from "./components2/access-point/AccessPoint.jsx";
+import AccessPoints from "./components/access-point/AccessPoint.jsx";
 import Conversores from "./components/conversor/Conversor.jsx";
 import Header from "./components/Header.jsx";
 import Onu from "./components/onu/Onu.js";
