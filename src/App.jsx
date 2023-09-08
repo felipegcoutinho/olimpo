@@ -107,7 +107,7 @@ function App() {
             {ShowHide ? "Ocultar Tudo" : "Mostrar Tudo"} {!ShowHide && <HiOutlineXCircle className="text-lg text-slate-200" />}
           </button>
 
-          <BtnTop /> //Botão para voltar ao topo da página
+          <BtnTop />  {/*Botão para voltar ao topo da página */}
           <AccessPoints />
           <RadiosOutdoor />
           <Switch />
