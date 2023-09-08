@@ -1,15 +1,15 @@
+import Header from "./components/Header.jsx";
 import AccessPoints from "./components/access-point/AccessPoint.jsx";
 import Conversores from "./components/conversor/Conversor.jsx";
-import Header from "./components/Header.jsx";
-import Onu from "./components/onu/Onu.js";
+import Onu from "./components/onu/Onu.jsx";
 import RadiosOutdoor from "./components/radio/Radio.jsx";
 import RoteadoresHO from "./components/roteador/Roteador.jsx";
 import Sfp from "./components/sfp/Sfp.jsx";
-import React, { createContext, useState } from "react";
-import BtnTop from "./ui/BtnTop.jsx";
 import Switch from "./components/switch/Switch.jsx";
-import { HiOutlineXCircle } from "react-icons/hi2";
+import BtnTop from "./ui/BtnTop.jsx";
 import Qi5 from "./components/qi5/Qi5.jsx";
+import React, { createContext, useState } from "react";
+import { HiOutlineXCircle } from "react-icons/hi2";
 
 export const AdminContext = createContext();
 
@@ -107,7 +107,7 @@ function App() {
             {ShowHide ? "Ocultar Tudo" : "Mostrar Tudo"} {!ShowHide && <HiOutlineXCircle className="text-lg text-slate-200" />}
           </button>
 
-          <BtnTop />
+          <BtnTop /> //Botão para voltar ao topo da página
           <AccessPoints />
           <RadiosOutdoor />
           <Switch />

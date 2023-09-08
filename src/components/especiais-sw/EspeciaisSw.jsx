@@ -13,7 +13,7 @@ import { React, useState, useEffect, useContext } from "react";
 import { HiPencil, HiXMark } from "react-icons/hi2";
 import Modal from "react-modal";
 
-export default function Switch() {
+export default function especialSw() {
   const { admin, HideSwitch, setHideSwitch, updatedProduct, setUpdatedProduct } = useContext(AdminContext);
   const [switches, setSwitches] = useState([]);
   const [querySWITCH, setQuerySWITCH] = useState("");
