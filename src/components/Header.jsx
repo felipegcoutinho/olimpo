@@ -14,6 +14,11 @@ import LoginModal from "./LoginModal";
 import React, { useState } from "react";
 import { useContext } from "react";
 
+import AccessPoints from "../components/access-point/AccessPoint.jsx";
+import RadiosOutdoor from "../components/radio/Radio.jsx";
+
+
+
 export default function Header() {
   const { openModal, admin, openModalAviso } = useContext(AdminContext);
   const [urlValue, setUrlValue] = useState("");
@@ -72,7 +77,7 @@ export default function Header() {
         </div>
       </div>
 
-      <div className="items-center flex flex-col">
+      <div className="items-center flex flex-col py-10">
         <div className="mt-20">
           <p className="text-itbs-default text-5xl font-[MuseoModerno] italic">Olimpo</p>
         </div>
@@ -88,11 +93,11 @@ export default function Header() {
           />
         </div>
 
-        <div className="flex flex-wrap gap-1 mt-10 mb-2">
+        {/* <div className="flex flex-wrap gap-1 mt-10 mb-2">
           {Object.entries(setorTiles).map(([setor, tiles]) => (
             <Tiles key={setor} img={tiles.img} setor={setor} link={tiles.link} />
           ))}
-        </div>
+        </div> */}
       </div>
     </div>
   );

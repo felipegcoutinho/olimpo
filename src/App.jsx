@@ -10,6 +10,10 @@ import BtnTop from "./ui/BtnTop.jsx";
 import Qi5 from "./components/qi5/Qi5.jsx";
 import React, { createContext, useState } from "react";
 import { HiOutlineXCircle } from "react-icons/hi2";
+// import { Tabs } from 'flowbite-react';
+
+import { Tab, Tabs, TabList, TabPanel } from 'react-tabs';
+import 'react-tabs/style/react-tabs.css';
 
 export const AdminContext = createContext();
 
@@ -28,6 +32,8 @@ function App() {
   const [ShowHide, setShowHide] = useState(true);
   const [modalIsOpen, setIsOpen] = useState(false);
   const [modalIsOpenAviso, setIsOpenAviso] = useState(false);
+
+
 
   const alternarMostrarOcultar = () => {
     setShowHide(!ShowHide);
@@ -66,6 +72,18 @@ function App() {
     setIsOpenAviso(false);
   }
 
+  const tabsName = [
+    "Wi-Fi Empresarial",
+    "Rádio Outdoor",
+    "Switch",
+    "5G",
+    "Roteador",
+    "Conversor de Mídia",
+    "Módulo SFP",
+    "Onu/Ont",
+    "Projetos Especiais",
+  ];
+
   return (
     <div className="flex flex-col">
       <div className="w-[85%] self-center bg-white dark:bg-itbs-modern-100">
@@ -103,19 +121,97 @@ function App() {
           }}
         >
           <Header />
-          <button onClick={alternarMostrarOcultar} className={getButtonClasses(!ShowHide)}>
+          {/* <button onClick={alternarMostrarOcultar} className={getButtonClasses(!ShowHide)}>
             {ShowHide ? "Ocultar Tudo" : "Mostrar Tudo"} {!ShowHide && <HiOutlineXCircle className="text-lg text-slate-200" />}
-          </button>
+          </button> */}
+
+          {/* <Tabs.Group aria-label="Pills" style="underline" className="flex justify-center ">
+
+            <Tabs.Item active title="Wi-Fi Empresarial">
+              <AccessPoints />
+            </Tabs.Item>
+
+            <Tabs.Item title="Rádio Outdoor">
+              <RadiosOutdoor />
+            </Tabs.Item>
+
+            <Tabs.Item title="Switch">
+              <Switch />
+            </Tabs.Item>
+
+            <Tabs.Item title="5G">
+              <Qi5 />
+            </Tabs.Item>
+
+            <Tabs.Item title="Roteador">
+              <RoteadoresHO />
+            </Tabs.Item>
+
+            <Tabs.Item title="Conversor de Mídia">
+              <Conversores />
+            </Tabs.Item>
+
+            <Tabs.Item title="Módulo SFP">
+              <Sfp />
+            </Tabs.Item>
+
+            <Tabs.Item title="Onu/Ont">
+              <Onu />
+            </Tabs.Item>
+
+            <Tabs.Item title="Projetos Especiais">
+              <Onu />
+            </Tabs.Item>
+
+          </Tabs.Group> */}
+
+          <Tabs>
+            <TabList className="flex justify-center bg-slate-50">
+
+              {tabsName.map((tabName) => (
+                <Tab key={tabName}>{tabName}</Tab>
+              ))}
+
+            </TabList>
+
+            <TabPanel>
+              <AccessPoints />
+            </TabPanel>
+            <TabPanel>
+              <RadiosOutdoor />
+            </TabPanel>
+            <TabPanel>
+              <Switch />
+            </TabPanel>
+            <TabPanel>
+              <Qi5 />
+            </TabPanel>
+            <TabPanel>
+              <RoteadoresHO />
+            </TabPanel>
+            <TabPanel>
+              <Conversores />
+            </TabPanel>
+            <TabPanel>
+              <Sfp />
+            </TabPanel>
+            <TabPanel>
+              <Onu />
+            </TabPanel>
+            <TabPanel>
+              <Onu />
+            </TabPanel>
+          </Tabs>
 
           <BtnTop />  {/*Botão para voltar ao topo da página */}
-          <AccessPoints />
-          <RadiosOutdoor />
-          <Switch />
+          {/* <AccessPoints />
+          <RadiosOutdoor /> */}
+          {/* <Switch />
           <Qi5 />
           <RoteadoresHO />
           <Conversores />
           <Sfp />
-          <Onu />
+          <Onu /> */}
         </AdminContext.Provider>
       </div>
     </div>
