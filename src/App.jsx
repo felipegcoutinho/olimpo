@@ -11,9 +11,18 @@ import Qi5 from "./components/qi5/Qi5.jsx";
 import React, { createContext, useState } from "react";
 import { HiOutlineXCircle } from "react-icons/hi2";
 // import { Tabs } from 'flowbite-react';
+import ImgAp from "./assets/ap.png";
+import ImgConv from "./assets/conversor.png";
+import ImgHo from "./assets/twibi.png";
+import ImgOnt from "./assets/ont.png";
+import ImgQi5 from "./assets/qi5.png";
+import ImgRadio from "./assets/radio.png";
+import ImgSfp from "./assets/sfp.png";
+import ImgSw from "./assets/sw.png";
 
 import { Tab, Tabs, TabList, TabPanel } from 'react-tabs';
 import 'react-tabs/style/react-tabs.css';
+import Tiles from "./ui/Tiles.jsx";
 
 export const AdminContext = createContext();
 
@@ -83,6 +92,18 @@ function App() {
     "Onu/Ont",
     "Projetos Especiais",
   ];
+
+  const setorTiles = {
+    "Wi-Fi Empresarial": { link: "#wifi-empresarial", img: ImgAp },
+    "Radio Outdoor": { link: "#radio-outdoor", img: ImgRadio },
+    Switch: { link: "#switch", img: ImgSw },
+    "5G": { link: "#qi5", img: ImgQi5 },
+    Roteador: { link: "#roteador", img: ImgHo },
+    "Conversor de Midia": { link: "#conversor", img: ImgConv },
+    "Módulo SFP": { link: "#modulo-sfp", img: ImgSfp },
+    "Onu/Ont": { link: "#onu-ont", img: ImgOnt },
+    "Projetos Especiais": { link: "#projetos-especiais", img: ImgOnt },
+  };
 
   return (
     <div className="flex flex-col">
@@ -166,11 +187,21 @@ function App() {
           </Tabs.Group> */}
 
           <Tabs>
-            <TabList className="flex justify-center bg-slate-50">
+            <TabList className="flex justify-center ">
 
-              {tabsName.map((tabName) => (
-                <Tab key={tabName}>{tabName}</Tab>
+
+              {Object.entries(setorTiles).map(([setor, tiles]) => (
+                <>
+                  <Tab>
+                    <Tiles key={setor} img={tiles.img} setor={setor} link={tiles.link} />
+                  </Tab>
+                </>
               ))}
+
+
+              {/* {tabsName.map((tabName) => (
+                <Tab key={tabName}>{tabName}</Tab>
+              ))} */}
 
             </TabList>
 
