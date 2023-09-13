@@ -1,7 +1,6 @@
-
 import React from "react";
 import { HiInformationCircle } from "react-icons/hi2";
-import ModalComponentCompare from "../ModalComponentCompare";
+import ModalComponentCompare from "../../ui/ModalComponentCompare";
 
 function ConversorCompare({ comparisonDevices, modalIsOpenCompare, closeModalCompare }) {
   const groupIcons = {

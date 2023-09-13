@@ -1,7 +1,7 @@
 import React, { useContext } from "react";
 import Modal from "react-modal";
-import { AdminContext } from "../App";
-import UseAux from "../hooks/UseAux";
+import { AdminContext } from "../../App";
+import UseAux from "../../hooks/UseAux";
 
 function AvisoModal() {
   const { modalIsOpenAviso, closeModalAviso } = useContext(AdminContext);

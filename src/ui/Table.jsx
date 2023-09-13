@@ -1,5 +1,5 @@
 import * as React from "react";
-import { HiEye, HiEyeSlash, HiMagnifyingGlass, HiOutlineXCircle } from "react-icons/hi2";
+import { HiMagnifyingGlass, HiOutlineXCircle } from "react-icons/hi2";
 
 export default function OlimpoTable({
   tbody,
@@ -15,7 +15,6 @@ export default function OlimpoTable({
   Device,
   DeviceImg,
   DeviceText,
-  handleHide,
   PoE,
   handleSemPoE,
   SemPoE,
@@ -47,12 +46,7 @@ export default function OlimpoTable({
           <div className="flex flex-1 items-center">
             <img src={DeviceImg} alt={Device} className="w-20 h-20" />
             <div className="flex flex-col flex-1">
-              <p className="text-2xl font-bold dark:text-white">
-                {Device}
-                <button onClick={handleHide}>
-                  <div className="flex items-center ml-2">{Hide ? <HiEyeSlash /> : <HiEye />}</div>
-                </button>
-              </p>
+              <p className="text-2xl font-bold dark:text-white">{Device}</p>
               <p className="text-zinc-600 text-sm dark:text-white">{DeviceText}</p>
             </div>
           </div>
@@ -109,26 +103,18 @@ export default function OlimpoTable({
           </div>
         </div>
 
-        {Hide ? (
-          <div className="overflow-x-auto">
-            <table className="w-full text-sm text-left text-gray-500">
-              {thead}
-              {tbody.length > 0 ? (
-                tbody
-              ) : (
-                <th colSpan="15" className="text-center py-4 italic">
-                  Nenhum equipamento encontrado :(
-                </th>
-              )}
-            </table>
-          </div>
-        ) : (
-          <div className="flex justify-center items-center h-28 bg-slate-200 dark:bg-slate-800">
-            <div className="flex text-slate-700 dark:text-slate-200 italic text-sm items-center gap-1">
-              <HiEyeSlash /> Dados Ocultos
-            </div>
-          </div>
-        )}
+        <div className="overflow-x-auto">
+          <table className="w-full text-sm text-left text-gray-500">
+            {thead}
+            {tbody.length > 0 ? (
+              tbody
+            ) : (
+              <th colSpan="15" className="text-center py-4 italic">
+                Nenhum equipamento encontrado :(
+              </th>
+            )}
+          </table>
+        </div>
       </div>
     </section>
   );

@@ -14,7 +14,7 @@ import { HiPencil, HiXMark } from "react-icons/hi2";
 import Modal from "react-modal";
 
 export default function especialSw() {
-  const { admin, HideSwitch, setHideSwitch, updatedProduct, setUpdatedProduct } = useContext(AdminContext);
+  const { admin, HideSwitch, updatedProduct, setUpdatedProduct } = useContext(AdminContext);
   const [switches, setSwitches] = useState([]);
   const [querySWITCH, setQuerySWITCH] = useState("");
   const [modalIsOpen, setIsOpen] = useState(false);
@@ -33,7 +33,6 @@ export default function especialSw() {
     setUpdatedProduct(false);
   }
 
-  const handleHideSwitch = () => setHideSwitch(!HideSwitch);
   const handleSearchChangeSwitch = (e) => {
     setQuerySWITCH(e.target.value);
   };
@@ -134,7 +133,6 @@ export default function especialSw() {
 
       <div id="switch" className="overflow-x-auto">
         <OlimpoTable
-          Hide={HideSwitch}
           Device={"Switches"}
           DeviceImg={DeviceImg}
           DeviceText={"Robustez e alta performance para transmissão de dados"}

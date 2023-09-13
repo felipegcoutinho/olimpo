@@ -1,4 +1,4 @@
-import ModalComponentCompare from "../ModalComponentCompare";
+import ModalComponentCompare from "../../ui/ModalComponentCompare";
 import React from "react";
 import { FaPlug } from "react-icons/fa";
 import { HiWifi, HiInformationCircle, HiComputerDesktop } from "react-icons/hi2";

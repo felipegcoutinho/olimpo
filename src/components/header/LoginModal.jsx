@@ -1,11 +1,11 @@
 import React, { useEffect, useState, useContext } from "react";
 import Modal from "react-modal";
-import { AdminContext } from "../App";
+import { AdminContext } from "../../App";
 import { useSignInWithEmailAndPassword } from "react-firebase-hooks/auth";
-import { auth } from "../database/firebase";
+import { auth } from "../../database/firebase";
 import Swal from "sweetalert2";
 import { Button } from "flowbite-react";
-import OlimpoTextInput from "../ui/OlimpoInput";
+import OlimpoTextInput from "../../ui/OlimpoInput";
 
 function LoginModal() {
   const { modalIsOpen, closeModal, setAdmin, admin } = useContext(AdminContext);
