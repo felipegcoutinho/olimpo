@@ -66,7 +66,7 @@ function LinkBar() {
         <Onu />
       </TabPanel>
       <TabPanel>
-        <Onu />
+        <Qi5 />
       </TabPanel>
     </Tabs>
   );

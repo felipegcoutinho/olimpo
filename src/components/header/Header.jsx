@@ -54,7 +54,7 @@ export default function Header() {
         </div>
 
         <div className="items-center flex flex-col py-10">
-          <p className="text-itbs-default text-5xl font-[MuseoModerno] italic">Olimpo</p>
+          <p className="text-itbs-default text-5xl font-[MuseoModerno] italic tracking-tighter">Olimpo</p>
 
           <div className="relative mt-8">
             <input
@@ -62,7 +62,7 @@ export default function Header() {
               value={urlValue}
               onChange={handleSearch}
               onKeyDown={handleKeyPress}
-              className="pl-10 text-center w-96 h-14 text-slate-500 placeholder:text-slate-500 border-b border-slate-400 backdrop-blur-sm bg-transparent dark:border-green-900 rounded-full dark:bg-itbs-modern-400 dark:text-white focus:ring-itbs-default focus:border-itbs-default"
+              className="pl-10 font-bold text-center w-96 h-14 text-slate-500 placeholder:text-slate-500 border-b border-slate-400 backdrop-blur-sm bg-transparent dark:border-green-900 rounded-full dark:bg-itbs-modern-400 dark:text-white focus:ring-itbs-default focus:border-itbs-default"
               placeholder="Pesquise em intelbras.com.br"
             />
           </div>
