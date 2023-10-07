@@ -54,7 +54,9 @@ export default function Header() {
         </div>
 
         <div className="items-center flex flex-col py-10">
-          <p className="text-itbs-default text-5xl font-[MuseoModerno] italic tracking-tighter">Olimpo</p>
+          <a href="http://olimpo.felipecoutinho.com">
+            <p className="text-itbs-default text-5xl font-[MuseoModerno] tracking-tighter">Olimpo</p>
+          </a>
 
           <div className="relative mt-8">
             <input
@@ -62,7 +64,7 @@ export default function Header() {
               value={urlValue}
               onChange={handleSearch}
               onKeyDown={handleKeyPress}
-              className="pl-10 font-bold text-center w-96 h-14 text-slate-500 placeholder:text-slate-500 border-b border-slate-400 backdrop-blur-sm bg-transparent dark:border-green-900 rounded-full dark:bg-itbs-modern-400 dark:text-white focus:ring-itbs-default focus:border-itbs-default"
+              className="font-bold text-center w-96 h-12 text-slate-500 placeholder:text-slate-500 border border-slate-400 backdrop-blur-[1px] bg-transparent dark:border-green-900 rounded-full dark:bg-itbs-modern-400 dark:text-white focus:ring-itbs-default focus:border-itbs-default"
               placeholder="Pesquise em intelbras.com.br"
             />
           </div>

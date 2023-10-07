@@ -119,7 +119,6 @@ export default function Switch() {
   const handleNaoGerenciavel = () => {
     setNaoGerenciavel(!NaoGerenciavel);
   };
-
   return (
     <Content>
       <SwModal

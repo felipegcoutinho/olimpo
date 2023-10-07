@@ -1,6 +1,6 @@
 import Header from "./components/header/Header.jsx";
 import React, { createContext, useState } from "react";
-
+import { FaGithub } from "react-icons/fa6";
 export const AdminContext = createContext();
 
 function App() {
@@ -12,12 +12,10 @@ function App() {
   const [HideSwitch, setHideSwitch] = useState(true);
   const [HideConversor, setHideConversor] = useState(true);
   const [HideSFP, setHideSFP] = useState(true);
-  const [HideSwEspecial, setHideSwEspecial] = useState(true);
   const [HideONU, setHideONU] = useState(true);
   const [updatedProduct, setUpdatedProduct] = useState("");
   const [modalIsOpen, setIsOpen] = useState(false);
   const [modalIsOpenAviso, setIsOpenAviso] = useState(false);
-
 
   /* Modal */
   function openModal() {
@@ -59,8 +57,6 @@ function App() {
             setHideSFP,
             HideONU,
             setHideONU,
-            HideSwEspecial,
-            setHideSwEspecial,
             updatedProduct,
             setUpdatedProduct,
             openModal,
@@ -70,9 +66,18 @@ function App() {
             modalIsOpenAviso,
             openModalAviso,
             closeModalAviso,
-          }}>
+          }}
+        >
           <Header />
         </AdminContext.Provider>
+        <div className="bg-itbs-default text-white p-6 text-center mb-4">
+          <a href="http://github.felipecoutinho.com">
+            <span className="flex justify-center items-center gap-2">
+              <FaGithub />
+              github.felipecoutinho.com
+            </span>
+          </a>
+        </div>
       </div>
     </div>
   );

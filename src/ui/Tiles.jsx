@@ -1,15 +1,12 @@
-import { OlimpoBtnCateg } from "./OlimpoInput";
 import React from "react";
 
-function Tiles({ setor, img, link }) {
+function Tiles({ setor, img }) {
   return (
-    <div className="grid grid-cols-1 sm:grid-cols-1 lg:grid-cols-7 md:grid-cols-5 dark:border-slate-900 dark:hover:border-itbs-default">
-      <a href={link} className="md:col-span-5 flex flex-col">
-        <img src={img} alt={setor} className="w-full h-auto md:h-20 object-contain" />
-        <div className="w-full h-full flex justify-center items-center backdrop-blur-[3px] bg-transparent mt-2">
-          <OlimpoBtnCateg setor={setor} />
-        </div>
-      </a>
+    <div className="grid dark:border-slate-900 dark:hover:border-itbs-default mx-4 mb-4">
+      <img src={img} alt={setor} className="w-full h-24 object-contain" />
+      <button className="text-sm font-bold w-full px-4 py-2 backdrop-blur-[1px] border border-itbs-default text-itbs-default hover:text-white hover:bg-itbs-default rounded-full">
+        {setor}
+      </button>
     </div>
   );
 }

@@ -57,11 +57,11 @@ export default function OlimpoTable({
                 {Device === "Switches" && (
                   <>
                     <button onClick={SemPoE ? null : handlePoE} className={getButtonClasses(SemPoE, PoE)}>
-                      PoE Ativo {PoE && IconX}
+                      Com PoE Ativo {PoE && IconX}
                     </button>
 
                     <button onClick={PoE ? null : handleSemPoE} className={getButtonClasses(PoE, SemPoE)}>
-                      Sem PoE {SemPoE && IconX}
+                      Sem PoE Ativo {SemPoE && IconX}
                     </button>
 
                     <button onClick={NaoGerenciavel ? null : handleGerenciavel} className={getButtonClasses(NaoGerenciavel, Gerenciavel)}>

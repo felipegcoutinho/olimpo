@@ -20,15 +20,14 @@ import Tiles from "../../ui/Tiles.jsx";
 
 function LinkBar() {
   const setorTiles = {
-    "Wi-Fi Empresarial": { link: "#wifi-empresarial", img: ImgAp },
-    "Radio Outdoor": { link: "#radio-outdoor", img: ImgRadio },
-    Switch: { link: "#switch", img: ImgSw },
-    "5G": { link: "#qi5", img: ImgQi5 },
-    Roteador: { link: "#roteador", img: ImgHo },
-    "Conversor de Midia": { link: "#conversor", img: ImgConv },
-    "Módulo SFP": { link: "#modulo-sfp", img: ImgSfp },
-    "Onu/Ont": { link: "#onu-ont", img: ImgOnt },
-    "Projetos Especiais": { link: "#projetos-especiais", img: ImgOnt },
+    "Wi-Fi Empresarial": { img: ImgAp },
+    "Radio Outdoor": { img: ImgRadio },
+    Switch: { img: ImgSw },
+    "5G": { img: ImgQi5 },
+    Roteador: { img: ImgHo },
+    "Conversor de Midia": { img: ImgConv },
+    "Módulo SFP": { img: ImgSfp },
+    "Onu/Ont": { img: ImgOnt },
   };
 
   return (
@@ -36,7 +35,7 @@ function LinkBar() {
       <TabList className="flex justify-center bg-[url('../assets/ttten.svg')]">
         {Object.entries(setorTiles).map(([setor, tiles]) => (
           <Tab>
-            <Tiles key={setor} img={tiles.img} setor={setor} link={tiles.link} />
+            <Tiles key={setor} img={tiles.img} setor={setor} />
           </Tab>
         ))}
       </TabList>
@@ -64,9 +63,6 @@ function LinkBar() {
       </TabPanel>
       <TabPanel>
         <Onu />
-      </TabPanel>
-      <TabPanel>
-        <Qi5 />
       </TabPanel>
     </Tabs>
   );
