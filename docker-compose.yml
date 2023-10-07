@@ -1,0 +1,10 @@
+version: "3"
+services:
+  olimpoPage:
+    image: httpd:alpine3.18
+    container_name: olimpoPage
+    restart: always
+    ports:
+      - "8080:80" 
+    volumes:
+      - "./source/:/usr/local/apache2/htdocs/"
